@@ -1,5 +1,5 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
+  "$schema": "https://mintlify.com/docs_nav.json",
   "theme": "mint",
   "name": "Air Athelas User Guide",
   "colors": {
@@ -16,7 +16,7 @@
           {
             "group": "Getting started",
             "pages": [
-              "index"
+              "Index"
             ]
           }
         ]
