@@ -1,0 +1,23 @@
+{
+  "$schema": "https://mintlify.com/docs.schema.json",
+  "theme": "mint",
+  "name": "Hello World",
+  "colors": {
+    "primary": "#16A34A",
+    "light": "#07C983",
+    "dark": "#15803D"
+  },
+  "favicon": "/Athelas_logo.png",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          { "group": "Getting started", "pages": ["index"] },
+          { "group": "Customization", "pages": ["index"] },
+          { "group": "Writing content", "pages": ["index"] }
+        ]
+      }
+    ]
+  }
+}
