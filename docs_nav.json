@@ -7,7 +7,7 @@
     "light": "#07C983",
     "dark": "#15803D"
   },
- { "favicon": "/Athelas_logo.png",
+  "favicon": "/Athelas_logo.png",
   "navigation": {
     "tabs": [
       {
@@ -16,13 +16,11 @@
           {
             "group": "Getting started",
             "pages": [
-              "Index"
+              "index"
             ]
-          },
+          }
         ]
       }
-    ],
-  },
-  
-
+    ]
+  }
 }
