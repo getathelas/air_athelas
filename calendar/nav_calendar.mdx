@@ -13,14 +13,78 @@ mode: "wide"
         You can select as many providers and facilities as you’d like on this page to appear on the calendar. Whenever you’re done selecting these fields, the calendar will automatically populate.
 
         <img
-          src="/5_calendar_hover.gif"
+          src="/calendar/2_open_calendar.gif"
           alt="Feature demo"
           width="720"
         />
       </Card>
     </Step>
     <Step title="Setting your Time and Compact preferences" titleSize="h3">
-      
+      <Card title=" ">
+        Switch from day, week and month views to select your preferred view. “Today” icon on the top left will automatically navigate the user to today’s date.
+
+        <img
+          src="/calendar/3_calendar_view.gif"
+          alt="Feature demo"
+          width="720"
+        />
+
+        To the left of that you can select how compact you’d like your calendar to be.
+
+        <Expandable title="Standard View">
+          This is set as standard at default, but there are two modes additional modes to select from: compact and ultra compact.
+
+          ![Std Cal View Web](/calendar/std_cal_view.webp)
+        </Expandable>
+        <Expandable title="Compact View">
+          The compact view will show the entire schedule for the day or week on bigger screens, but may get cut off in smaller ones. The schedule block will have less detail than standard.
+
+          ![Cpt Cal View Web](/calendar/cpt_cal_view.webp)
+        </Expandable>
+        <Expandable title="Fit to Screen View">
+          The fit to screen view will show the entire schedule for bigger and smaller screens, however additional details may be omitted further.
+
+          ![Fit Cal View Web](/calendar/fit_cal_view.webp)
+        </Expandable>
+        <Tip>
+          **Smart Tip:** Drag and drop appointments to change rendering providers
+        </Tip>
+      </Card>
+    </Step>
+    <Step title="Instantly view key appointment information" icon="star" iconType="solid" stepNumber={0} titleSize="h3">
+      <Danger>
+        **Hover over the appointment icons to view patient eligibility alerts, payment due and insurance type**
+
+        ![5 Calendar Hover Gi](/5_calendar_hover.gif)
+
+        **However over provider name to view no. of appointments for the day by status**
+
+        <img
+          src="/calendar/hover_appt_status.webp"
+          alt="Hover Appt Status Web"
+          title="Hover Appt Status Web"
+          style={{ width:"33%" }}
+        />
+      </Danger>
     </Step>
   </Steps>
 </Card>
+
+
+<Accordion title="Understand your Calendar Icons" icon="book" iconType="regular">
+  
+</Accordion>
+
+
+<Accordion title="Calendar Settings" defaultOpen icon="book" iconType="regular">
+
+  <Expandable title="Set your Appointment Type preferences">
+    
+  </Expandable>
+  <Expandable title="Set your Calendar Preferences">
+    
+  </Expandable>
+  <Expandable title="Set your Provider Credentials">
+    
+  </Expandable>
+</Accordion>
