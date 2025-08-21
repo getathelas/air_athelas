@@ -61,11 +61,65 @@ mode: "wide"
 ## Understand your Calendar Icons
 
 <Accordion title="Appointment Stages" iconType="regular">
-  
+  As appointments move through their different stages, the blocks will reflect the designs below. Some advantages:
+
+  - Easier to see canceled appointments
+  - Completed appointments fade from the schedule so you can focus on scheduled/confirmed appointments
+
+  <img
+    src="/calendar/appt_stages.webp"
+    alt="Appt Stages Web"
+    title="Appt Stages Web"
+    style={{ width:"52%" }}
+  />
 </Accordion>
 
 <Accordion title="Appointment Tooltip" iconType="regular">
-  
+  Hover over a Calendar block to view the tooltip. Below is the **Condensed \+ Expanded View.**
+
+  <img
+    src="/calendar/tooltip_view.webp"
+    alt="Tooltip View Web"
+    title="Tooltip View Web"
+    style={{ width:"75%" }}
+  />
+
+  The tooltip shows you the most helpful information first, namely:
+
+  <AccordionGroup>
+    <Accordion title="Appointment Status - Hover over your appointment to update status" defaultOpen>
+      <img
+        src="/calendar/tooltip_appt_status.webp"
+        alt="Tooltip Appt Status Web"
+        title="Tooltip Appt Status Web"
+        style={{ width:"38%" }}
+      />
+    </Accordion>
+    <Accordion title="Case and Appointment Type" defaultOpen>
+      <img
+        src="/calendar/case_tooltip.webp"
+        alt="Case Tooltip Web"
+        title="Case Tooltip Web"
+        style={{ width:"28%" }}
+      />
+    </Accordion>
+    <Accordion title="Eligibility Status and Insurance" defaultOpen>
+      <img
+        src="/calendar/tooltip_eligibility.webp"
+        alt="Tooltip Eligibility Web"
+        title="Tooltip Eligibility Web"
+        style={{ width:"42%" }}
+      />
+    </Accordion>
+    <Accordion title="Authorization Status and Next Visit Scheduling" defaultOpen>
+      <img
+        src="/calendar/auth_tooltip.webp"
+        alt="Auth Tooltip Web"
+        title="Auth Tooltip Web"
+        style={{ width:"46%" }}
+      />
+    </Accordion>
+  </AccordionGroup>
 </Accordion>
 
 <Accordion title="Appointment Alerts" iconType="regular">
@@ -75,13 +129,81 @@ mode: "wide"
 ## Set your Calendar Settings
 
 <Accordion title="Appointment Type preferences">
-  
+  Appointment Types reference unique type of visit your practice conducts.
+
+  Our Appointment Type configuration allows you to construct an appointment that represents the exact conditions you would like to see. For instance, you and your practice have the ability to configure the Duration, the specific Color, the Dynamic EHR Template and which Components you would like to see.
+
+  Clicking on the top right icon “\+ Add Appointment Type” creates a completely new appointment type. On the other hand, the Pencil icon on the left hand side of the screen allows you to edit any pre-existing appointment types.
+
+  ![Appt Types Web](/calendar/appt_types.webp)
+
+  When creating a new appointment type, the following information will be available for configuration:
+
+  - Appointment Type Name
+  - Appointment Duration
+  - Appointment Color
+  - Section selection and order
+  - Option to sync duration with time in clinic - This means that the time spent within the actual appointment with the patient will be reflected within the calendar.
+
+  <img
+    src="/calendar/select_appt_sec.webp"
+    alt="Select Appt Sec Web"
+    title="Select Appt Sec Web"
+    style={{ width:"58%" }}
+  />
+
+  Sections are divided between default and custom sections. Default sections are hard coded components that are created by Athelas. Custom sections are the templates that the users created. Any number of sections can be selected and ordered in any way. This order is what will appear on the chart note.
+
+  <img
+    src="/calendar/order_appt_type.webp"
+    alt="Order Appt Type Web"
+    title="Order Appt Type Web"
+    style={{ width:"67%" }}
+  />
+
+  If measurements are a selected section indicated within the appointment type, you will be able to specify the specific measurements you’d like to see each time this appointment type is scheduled for a patient.
+
+  <img
+    src="/calendar/appt_type_meas.webp"
+    alt="Appt Type Meas Web"
+    title="Appt Type Meas Web"
+    style={{ width:"59%" }}
+  />
+
+  For **Clinical Note Types** beyond the Initial Evaluation you are able to select the specific Sections you would like to carry over, hence, if Measurements are not necessary beyond the Initial Evaluation you can configure accordingly
 </Accordion>
 
 <Accordion title="Calendar Preferences">
-  
+  **Set calendar timings:** You can configure the calendar start and end times. Head to Preferences → Calendar → Start & End Times. Here you can select the starting time and an the ending time.
+
+  **Default timings:** By default, the calendar start and end times are set to display 06:00am to 08:00pm and this is applied at a site level (i.e. all facilities adopt the same times). You can choose to set one site-wide start & end time or set specific times for specific facilities.
+
+  ![Cal Pref Web](/calendar/cal_pref.webp)
+
+  **Unique timings across specific facilities:** If you wish to specify unique start & end times to specific facilities, select the “Facility” option and a table should appear below.
+
+  On this table, selecting any facility will make its start & end time controls appear on the right. Select multiple facilities to modify multiple facilities at once. Once complete, you updates should already be live in the calendar.
+
+  ![Cal Times Web](/calendar/cal_times.webp)
+
+  \*\*Calendar Refresh Mode: \*\*You now have the ability to select how how quickly the calendar updates. Standard refresh mode means that the calendar will only update if the browser is refreshed.
+
+  However, real-time refresh mode will be updated in real-time. E.g. if multiple front-desk staff are altering the calendar (ex: creating, cancelling, editing, checking in appointments) the calendar will immediately reflect those changes.
 </Accordion>
 
 <Accordion title="Provider Credentials">
-  
+  Within the Global Preferences section, our EHR also allows for specific configuration
+
+  ![Prov Creds Web](/calendar/prov_creds.webp)
+
+  **Provider Configurations:**
+
+  You have the ability to choose the Provider type, Select a Default Supervising or Lock particular sections for a given Provider
+
+  <img
+    src="/calendar/prov_config.webp"
+    alt="Prov Config Web"
+    title="Prov Config Web"
+    style={{ width:"33%" }}
+  />
 </Accordion>
