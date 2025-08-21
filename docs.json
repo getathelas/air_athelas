@@ -1,9 +1,9 @@
 {
   "$schema": "https://mintlify.com/docs.schema.json",
   "theme": "mint",
-  "name": "Hello World",
+  "name": "Air Athelas User Guide",
   "colors": {
-    "primary": "#16A34A",
+    "primary": "#FA5478",
     "light": "#07C983",
     "dark": "#15803D"
   },
