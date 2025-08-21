@@ -4,7 +4,7 @@ description: "Once you log into Air you can view your calendar and schedule for 
 mode: "wide"
 ---
 
-<Card title="Navigating your Calendar View" iconType="thin" color="#eeeded">
+<Accordion title="Navigating your Calendar View" defaultOpen iconType="regular">
   <Steps>
     <Step title="Opening your Calendar" iconType="sharp-solid" stepNumber={1} titleSize="h3">
       <Card title=" ">
@@ -31,29 +31,29 @@ mode: "wide"
 
         To the left of that you can select how compact you’d like your calendar to be.
 
-        <Expandable title="Standard View">
+        <Accordion title="Standard View">
           This is set as standard at default, but there are two modes additional modes to select from: compact and ultra compact.
 
           ![Std Cal View Web](/calendar/std_cal_view.webp)
-        </Expandable>
-        <Expandable title="Compact View">
+        </Accordion>
+        <Accordion title="Compact View">
           The compact view will show the entire schedule for the day or week on bigger screens, but may get cut off in smaller ones. The schedule block will have less detail than standard.
 
           ![Cpt Cal View Web](/calendar/cpt_cal_view.webp)
-        </Expandable>
-        <Expandable title="Fit to Screen View">
+        </Accordion>
+        <Accordion title="Fit to Screen View">
           The fit to screen view will show the entire schedule for bigger and smaller screens, however additional details may be omitted further.
 
           ![Fit Cal View Web](/calendar/fit_cal_view.webp)
-        </Expandable>
+        </Accordion>
         <Tip>
-          **Smart Tip:** Drag and drop appointments to change rendering providers
+          **Smart Tip:** Drag and drop appointments between providers to change the rendering provider
         </Tip>
       </Card>
     </Step>
-    <Step title="Instantly view key appointment information" icon="star" iconType="solid" stepNumber={0} titleSize="h3">
+    <Step title="Instantly view key appointment information" iconType="solid" stepNumber={3} titleSize="h3">
       <Danger>
-        **Hover over the appointment icons to view patient eligibility alerts, payment due and insurance type**
+        **Hover over the appointment icons to view patient eligibility alerts, payment   due and insurance type**
 
         ![5 Calendar Hover Gi](/5_calendar_hover.gif)
 
@@ -68,16 +68,13 @@ mode: "wide"
       </Danger>
     </Step>
   </Steps>
-</Card>
-
+</Accordion>
 
 <Accordion title="Understand your Calendar Icons" icon="book" iconType="regular">
   
 </Accordion>
 
-
 <Accordion title="Calendar Settings" defaultOpen icon="book" iconType="regular">
-
   <Expandable title="Set your Appointment Type preferences">
     
   </Expandable>
