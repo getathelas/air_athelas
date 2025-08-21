@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Air Athelas User Guide",
   "colors": {
-    "primary": "#FA5478",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#F9345F",
+    "light": "#FA5478",
+    "dark": "#FB8DA5"
   },
   "favicon": "/Athelas_logo.png",
   "navigation": {
