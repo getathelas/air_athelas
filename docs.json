@@ -11,11 +11,10 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Providers",
         "groups": [
-          { "group": "Getting started", "pages": ["index"] },
-          { "group": "Customization", "pages": ["index"] },
-          { "group": "Writing content", "pages": ["index"] }
+          { "group": "Overview of Air", "pages": ["calendar/nav_calendar"] },
+          { "group": "Customization", "pages": ["index"] }
         ]
       }
     ]
