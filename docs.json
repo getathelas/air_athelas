@@ -18,6 +18,7 @@
                         "icon": "calendar",
                         "pages": [
                             "calendar/nav_calendar",
+                            "calendar/calendar_icons",
                             "calendar/calendar_settings"
                         ]
                     },
