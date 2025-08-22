@@ -14,7 +14,7 @@
                 "tab": "Providers",
                 "groups": [
                     {
-                        "group": "Overview of Air",
+                        "group": "Navigate your Calendar",
                         "pages": [
                             "calendar/nav_calendar",
                             "calendar/calendar_settings"
@@ -23,7 +23,7 @@
                     {
                         "group": "Customization",
                         "pages": [
-                            "index.mdx"
+                            "./index"
                         ]
                     }
                 ]
