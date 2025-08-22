@@ -20,7 +20,7 @@ mode: "wide"
   </Step>
   <Step title="Set your Time and Compact preferences" titleSize="h3">
     <Card title=" ">
-      **Time Preferences**: Switch between Day, Week, and Month views to adjust your Calendar display. Use the **Today** icon in the top left to instantly return to today’s date.
+      **Time Preferences**: Switch between Day, Week, and Month views to adjust your Calendar display. Use the **Today** icon in the top left to instantly return to today's date.
 
       <img
         src="/calendar/3_calendar_view.gif"
@@ -28,32 +28,56 @@ mode: "wide"
         width="720"
       />
 
-      **Compact Preferences:** Select how compact you’d like your calendar to be.
+      **Compact Preferences:** Select how compact you'd like your calendar to be.
 
       - **Standard View (default):** Best if most appointments are under 30 minutes.
       - **Compact View:** Fits more appointments on the screen. Works well on large displays, but details may be cut off on smaller screens.
       - **Fit to Screen View:** Adjusts automatically to fit the screen size for large and small screens. Shows the full schedule, but with fewer details.
 
-      <div style={{ padding:"1rem",backgroundColor:"#FBE9ED",border:"0.2px solid #F4C3CD",borderRadius:"0.8rem" }}>
-      **Smart Tip:** Drag and drop appointments between providers to reassign the rendering Provider
+      <Danger>
+        **Smart Tip:** Drag and drop appointments between providers to reassign the rendering Provider
+      </Danger>
+      <Accordion title="Filter Appointments" iconType="regular">
+        <Card title=" ">
+          Click the **Filter** icon to apply up to **seven filter options:**
 
-      </div>
+          - **Provider:** When multiple Providers are selected, each appears as a separate column in the Calendar view.
+          - **Facility:** When multiple Facilities are selected, each appears as a tab across the top of the Calendar.
+          - **Insurance:** Show only appointments for patients whose insurance matches your selection.
+          - **Patient:** Show only appointments for specific patients you select.
+          - **Cancellations:** Hide all appointments marked as _Cancelled_.
+          - **No Shows:** Hide all appointments marked as _No Show_.
+          - **Weekends:** Hide Saturdays and Sundays from the Calendar view (applies to Day, Week, and Month views).
+
+          ![4 Calendar Filter Gi](/calendar/4_calendar_filter.gif)
+
+          At any time, you can reset by clicking **Clear All** at the top of the Calendar.
+
+          **Note**: Hover over a Provider's name to see the number of appointments for the day, organized by status.
+
+          <img
+            src="/calendar/hover_appt_status.webp"
+            alt="Hover Appt Status Web"
+            title="Hover Appt Status Web"
+            style={{ width:"24%" }}
+          />
+        </Card>
+      </Accordion>
     </Card>
   </Step>
   <Step title="Instantly view key appointment information" iconType="solid" stepNumber={3} titleSize="h3">
     <Card title=" ">
-    <div style={{ padding:"1rem",backgroundColor:"#FBE9ED",border:"0.2px solid #F4C3CD",borderRadius:"0.8rem" }}>
-       Hover over appointment icons to quickly view eligibility alerts, payment due, and insurance type.
-    ![5 Calendar Hover Gi](/5_calendar_hover.gif)
+      <Danger>
+        \*\*Smart Tip: \*\*Hover over appointment icons to quickly view eligibility alerts, payment due, and insurance type.
+      </Danger>
+      <img
+        src="/calendar/calendar_card_full.webp"
+        alt="Calendar Card Full Web"
+        title="Calendar Card Full Web"
+        style={{ width:"49%" }}
+      />
 
-       Hover over a Provider’s name to see the number of appointments for the day, organized by status.
-       <img
-      src="/calendar/hover_appt_status.webp"
-      alt="Hover Appt Status Web"
-      title="Hover Appt Status Web"
-      style={{ width:"33%" }}
-    />
-  </div>
+      ![5 Calendar Hover Gi](/5_calendar_hover.gif)
     </Card>
   </Step>
 </Steps>
@@ -61,125 +85,134 @@ mode: "wide"
 ## Understand your Calendar Icons
 
 <Accordion title="Appointment Stages" iconType="regular">
-  As appointments progress through different stages, their blocks update visually. This helps you:
+  <Card title=" ">
+    As appointments progress through different stages, their blocks update visually. This helps you:
 
-  - Identify canceled appointments at a glance
-  - Focus on active appointments (completed ones fade automatically)
+    - Identify canceled appointments at a glance
+    - Focus on active appointments (completed ones fade automatically)
 
-  <img
-    src="/calendar/appt_stages.webp"
-    alt="Appt Stages Web"
-    title="Appt Stages Web"
-    style={{ width:"52%" }}
-  />
+    <img
+      src="/calendar/appt_stages.webp"
+      alt="Appt Stages Web"
+      title="Appt Stages Web"
+      style={{ width:"52%" }}
+    />
+  </Card>
 </Accordion>
 
-<Accordion title="Appointment Tooltip" iconType="regular">
-  Hover over any Calendar block to view a tooltip. You can switch between **Condensed** and **Expanded** views.
+<Accordion title="Appointment Icons and Tooltip" iconType="regular">
+  <Card title=" ">
+    Hover over any Calendar block to view a tooltip.
 
-  <img
-    src="/calendar/tooltip_view.webp"
-    alt="Tooltip View Web"
-    title="Tooltip View Web"
-    style={{ width:"75%" }}
-  />
+    <img
+      src="/calendar/calendar_card_full.webp"
+      alt="Calendar Card Full Web"
+      title="Calendar Card Full Web"
+      style={{ width:"59%" }}
+    />
 
-  The tooltip displays the most helpful information first, including Case and Appointment Type, Eligibility Status and Insurance, Prior Authorization Status and Future Visits Scheduled.
+    You can switch between **Condensed** and **Expanded** views by clicking on the caret icons.
 
-  Hover over the Appointment Status to update the Status.
+    The tooltip displays the most helpful information first, including Case and Appointment Type, Eligibility Status and Insurance, Prior Authorization Status, Future Visits Scheduled and Appointment Status.
 
-  <img
-    src="/calendar/tooltip_appt_status.webp"
-    alt="Tooltip Appt Status Web"
-    title="Tooltip Appt Status Web"
-    style={{ width:"29%" }}
-  />
-</Accordion>
-
-<Accordion title="Appointment Alerts" iconType="regular">
-  
+    <img
+      src="/calendar/tooltip_full2.webp"
+      alt="Tooltip Full2 Web"
+      title="Tooltip Full2 Web"
+      style={{ width:"68%" }}
+    />
+  </Card>
 </Accordion>
 
 ## Set your Calendar Settings
 
 <Accordion title="Appointment Type preferences">
-  Appointment Types represent the different types of visits your practice offers.
+  <Card title=" ">
+    Appointment Types represent the different types of visits your practice offers.
 
-  You can configure Appointment Types to match the exact needs of your practice, including **Duration, Color, Dynamic EHR Template, and Components.**
+    You can configure Appointment Types to match the exact needs of your practice, including **Duration, Color, Dynamic EHR Template, and Components.**
 
-  - Use the **\+ Add Appointment Type** button (top right) to create a new Appointment Type.
-  - Use the **Pencil** icon (left side) to edit an existing Appointment Type.
+    - Use the **\+ Add Appointment Type** button (top right) to create a new Appointment Type.
+    - Use the **Pencil** icon (left side) to edit an existing Appointment Type.
 
-  ![Appt Types Web](/calendar/appt_types.webp)
+    ![Appt Types Web](/calendar/appt_types.webp)
 
-  **When creating a new Appointment Type, you can configure:**
+    **When creating a new Appointment Type, you can configure:**
 
-  - Appointment Type Name
-  - Appointment Duration
-  - Appointment Color
-  - Section selection and order
-  - Option to sync duration with in-clinic time (the time spent with the patient in-clinic will be reflected on the Calendar)
+    - Appointment Type Name
+    - Appointment Duration
+    - Appointment Color
+    - Section selection and order
+    - Option to sync duration with in-clinic time (the time spent with the patient in-clinic will be reflected on the Calendar)
 
-  <img
-    src="/calendar/select_appt_sec.webp"
-    alt="Select Appt Sec Web"
-    title="Select Appt Sec Web"
-    style={{ width:"58%" }}
-  />
+    <img
+      src="/calendar/select_appt_sec.webp"
+      alt="Select Appt Sec Web"
+      title="Select Appt Sec Web"
+      style={{ width:"58%" }}
+    />
 
-  Sections can be either **Default** (pre-built by Athelas) or **Custom** (templates created by your practice). You may add and order as many sections as needed; the selected order will appear in the chart note.
+    Sections can be either **Default** (pre-built by Athelas) or **Custom** (templates created by your practice). You may add and order as many sections as needed; the selected order will appear in the chart note.
 
-  <img
-    src="/calendar/order_appt_type.webp"
-    alt="Order Appt Type Web"
-    title="Order Appt Type Web"
-    style={{ width:"67%" }}
-  />
+    <img
+      src="/calendar/order_appt_type.webp"
+      alt="Order Appt Type Web"
+      title="Order Appt Type Web"
+      style={{ width:"67%" }}
+    />
 
-  If **Measurements** are included, you can specify which ones should appear whenever this Appointment Type is scheduled.
+    For **Clinical Note Types** beyond the Initial Evaluation, you can configure which Sections should carry over. For example, Measurements may be excluded in follow-up visits if not needed.
 
-  <img
-    src="/calendar/appt_type_meas.webp"
-    alt="Appt Type Meas Web"
-    title="Appt Type Meas Web"
-    style={{ width:"59%" }}
-  />
+      
 
-  For **Clinical Note Types** beyond the Initial Evaluation, you can configure which Sections should carry over. For example, Measurements may be excluded in follow-up visits if not needed.
+    If **Measurements** are included, you can specify which ones should appear whenever this Appointment Type is scheduled.
+
+    <img
+      src="/calendar/appt_type_meas.webp"
+      alt="Appt Type Meas Web"
+      title="Appt Type Meas Web"
+      style={{ width:"59%" }}
+    />
+  </Card>
 </Accordion>
 
 <Accordion title="Calendar Preferences">
-  **Calendar Timings:** Set Calendar start and end times in **Preferences → Calendar → Start & End Times.**
+  <Card title=" ">
+    **Calendar Timings:** Set Calendar start and end times in **Preferences → Calendar → Start & End Times.**
 
-  By default, Calendars display **6:00 AM – 8:00 PM**. This applies at the site level, meaning all Facilities follow the same schedule unless otherwise configured.
+    By default, Calendars display **6:00 AM – 8:00 PM**. This applies at the site level, meaning all Facilities follow the same schedule unless otherwise configured.
 
-  ![Cal Pref Web](/calendar/cal_pref.webp)
+    ![Cal Pref Web](/calendar/cal_pref.webp)
 
-  **Unique timings for specific facilities:** To set different timings for select Facilities, select the “Facility” option.
+    **Unique timings for specific facilities:** To set different timings for select Facilities, select the "Facility" option.
 
-  On the table below, selecting a Facility displays its start & end time settings on the right. Multiple Facilities can be selected and updated at once. Changes are applied immediately to the Calendar
+    On the table below, selecting a Facility displays its start & end time settings on the right. Multiple Facilities can be selected and updated at once. Changes are applied immediately to the Calendar.
 
-  ![Cal Times Web](/calendar/cal_times.webp)
+    ![Cal Times Web](/calendar/cal_times.webp)
+  </Card>
+  <Card title=" ">
+    **Calendar Refresh Mode:** Choose how frequently your Calendar updates:
 
-  \*\*Calendar Refresh Mode: \*\*Choose how frequently your Calendar updates:
-
-  - **Standard Refresh Mode:** Updates only when the browser is refreshed.
-  - **Real-Time Refresh Mode:** Updates instantly. For example, if front desk staff create, cancel, edit, or check in appointments, the Calendar reflects the changes immediately.
+    - **Standard Refresh Mode:** Updates only when the browser is refreshed.
+    - **Real-Time Refresh Mode:** Updates instantly. For example, if front desk staff create, cancel, edit, or check in appointments, the Calendar reflects the changes immediately.
+  </Card>
 </Accordion>
 
 <Accordion title="Provider Credentials">
-  Within Global Preferences, you can configure Provider details, including:
+  <Card title=" ">
+    Within Global Preferences, you can configure Provider details, including:
 
-  - **Provider Type**
-  - **Default Supervising Provider**
-  - **Locked Sections** (to restrict editing access for specific Providers)
+    - **Provider Type**
+    - **Default Supervising Provider**
+    - **Locked Sections** (to restrict editing access for specific Providers)
 
-  ![Prov Creds Web](/calendar/prov_creds.webp)
+    ![Prov Creds Web](/calendar/prov_creds.webp)
 
-  <img
-    src="/calendar/prov_config.webp"
-    alt="Prov Config Web"
-    title="Prov Config Web"
-    style={{ width:"33%" }}
-  />
+    <img
+      src="/calendar/prov_config.webp"
+      alt="Prov Config Web"
+      title="Prov Config Web"
+      style={{ width:"33%" }}
+    />
+  </Card>
 </Accordion>
