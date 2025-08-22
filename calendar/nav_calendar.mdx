@@ -9,8 +9,6 @@ mode: "wide"
     <Card title=" ">
       When you open the Calendar, the default view allows you to select which Providers and Facilities you want to display.
 
-         
-
       You can select multiple Providers and Facilities. Once selected, the Calendar automatically updates to display the corresponding schedules.
 
       <img
@@ -22,7 +20,7 @@ mode: "wide"
   </Step>
   <Step title="Set your Time and Compact preferences" titleSize="h3">
     <Card title=" ">
-      **Time Preferences: **Switch between Day, Week, and Month views to adjust your Calendar display. Use the **Today** icon in the top left to instantly return to today’s date.
+      **Time Preferences**: Switch between Day, Week, and Month views to adjust your Calendar display. Use the **Today** icon in the top left to instantly return to today’s date.
 
       <img
         src="/calendar/3_calendar_view.gif"
@@ -36,27 +34,27 @@ mode: "wide"
       - **Compact View:** Fits more appointments on the screen. Works well on large displays, but details may be cut off on smaller screens.
       - **Fit to Screen View:** Adjusts automatically to fit the screen size for large and small screens. Shows the full schedule, but with fewer details.
 
-      <Tip>
-        **Smart Tip:** Drag and drop appointments between providers to reassign the rendering Provider
-      </Tip>
+      <div style={{ padding:"1rem",backgroundColor:"#FBE9ED",border:"0.2px solid #F4C3CD",borderRadius:"0.8rem" }}>
+      **Smart Tip:** Drag and drop appointments between providers to reassign the rendering Provider
+
+      </div>
     </Card>
   </Step>
   <Step title="Instantly view key appointment information" iconType="solid" stepNumber={3} titleSize="h3">
-    <Danger>
-      **Hover over appointment icons to quickly view eligibility alerts, payment due, and insurance type.**
+    <Card title=" ">
+    <div style={{ padding:"1rem",backgroundColor:"#FBE9ED",border:"0.2px solid #F4C3CD",borderRadius:"0.8rem" }}>
+       Hover over appointment icons to quickly view eligibility alerts, payment due, and insurance type.
+    ![5 Calendar Hover Gi](/5_calendar_hover.gif)
 
-      ![5 Calendar Hover Gi](/5_calendar_hover.gif)
-    </Danger>
-    <Danger>
-      **Hover over a Provider’s name to see the number of appointments for the day, organized by status.**
-
-      <img
-        src="/calendar/hover_appt_status.webp"
-        alt="Hover Appt Status Web"
-        title="Hover Appt Status Web"
-        style={{ width:"33%" }}
-      />
-    </Danger>
+       Hover over a Provider’s name to see the number of appointments for the day, organized by status.
+       <img
+      src="/calendar/hover_appt_status.webp"
+      alt="Hover Appt Status Web"
+      title="Hover Appt Status Web"
+      style={{ width:"33%" }}
+    />
+  </div>
+    </Card>
   </Step>
 </Steps>
 
@@ -153,7 +151,7 @@ mode: "wide"
 <Accordion title="Calendar Preferences">
   **Calendar Timings:** Set Calendar start and end times in **Preferences → Calendar → Start & End Times.**
 
-  By default, Calendars display **6:00 AM – 8:00 PM**. This applies at the site level, meaning all Facilities follow the same schedule unless otherwise configured. 
+  By default, Calendars display **6:00 AM – 8:00 PM**. This applies at the site level, meaning all Facilities follow the same schedule unless otherwise configured.
 
   ![Cal Pref Web](/calendar/cal_pref.webp)
 
@@ -163,7 +161,7 @@ mode: "wide"
 
   ![Cal Times Web](/calendar/cal_times.webp)
 
-  **Calendar Refresh Mode: **Choose how frequently your Calendar updates:
+  \*\*Calendar Refresh Mode: \*\*Choose how frequently your Calendar updates:
 
   - **Standard Refresh Mode:** Updates only when the browser is refreshed.
   - **Real-Time Refresh Mode:** Updates instantly. For example, if front desk staff create, cancel, edit, or check in appointments, the Calendar reflects the changes immediately.
