@@ -23,9 +23,11 @@
                         ]
                     },
                     {
-                        "group": "Customization",
+                        "group": "Check-in your Patient",
+                        "icon": "book",
                         "pages": [
-                            "index"
+                            "check-in/check-in",
+                            "check-in/edit_appt"
                         ]
                     }
                 ]
