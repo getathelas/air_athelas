@@ -25,7 +25,8 @@
                     {
                         "group": "Customization",
                         "pages": [
-                            "index"
+                            "index", 
+                            "test"
                         ]
                     }
                 ]
