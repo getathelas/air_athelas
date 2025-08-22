@@ -1,22 +1,33 @@
 {
-  "$schema": "https://mintlify.com/docs.schema.json",
-  "theme": "mint",
-  "name": "Air Athelas User Guide",
-  "colors": {
-    "primary": "#F9345F",
-    "light": "#FA5478",
-    "dark": "#FB8DA5"
-  },
-  "favicon": "/athelas_favicon.png",
-  "navigation": {
-    "tabs": [
-      {
-        "tab": "Providers",
-        "groups": [
-          { "group": "Overview of Air", "pages": ["calendar/nav_calendar"] },
-          { "group": "Customization", "pages": ["index"] }
+    "$schema": "https://mintlify.com/docs.schema.json",
+    "theme": "mint",
+    "name": "Air Athelas User Guide",
+    "colors": {
+        "primary": "#F9345F",
+        "light": "#FA5478",
+        "dark": "#FB8DA5"
+    },
+    "favicon": "/athelas_favicon.png",
+    "navigation": {
+        "tabs": [
+            {
+                "tab": "Providers",
+                "groups": [
+                    {
+                        "group": "Overview of Air",
+                        "pages": [
+                            "calendar/nav_calendar",
+                            "calendar/calendar_settings"
+                        ]
+                    },
+                    {
+                        "group": "Customization",
+                        "pages": [
+                            "index.mdx"
+                        ]
+                    }
+                ]
+            }
         ]
-      }
-    ]
-  }
+    }
 }
