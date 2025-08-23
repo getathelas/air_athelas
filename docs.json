@@ -3,19 +3,39 @@
     "theme": "mint",
     "toc": "true",
     "name": "Air Athelas User Guide",
-  "styling": {"eyebrows": "breadcrumbs"},
-  "colors": {
+    "styling": {"eyebrows": "breadcrumbs"},
+    "colors": {
         "primary": "#F9345F",
         "light": "#FA5478",
         "dark": "#FB8DA5"
     },
     "favicon": "/athelas_favicon.png",
+    "topbarCtaButton": {
+    "type": "link",
+    "name": "Try the Quiz Now",
+    "url": "https://YOUR-QUIZ-URL.com"
+  },
     "navigation": {
         "tabs": [
             {
                 "tab": "Providers",
+                "anchors":[
+                  {
+                "anchors": "Beginner guide to Air",
+                "icon": "sparkles",
+                "pages": [
+                   "calendar/nav_calendar", 
+                   "check-in/check-in",
+                   "patient_details/patient_info"
+                  ]
+                  }
+                 ], 
                 "groups": [
                     {
+                      "group": "All features on Air",
+                       "icon": "book",
+                       "pages":[
+                        {
                         "group": "Navigate your Calendar",
                         "icon": "calendar",
                         "pages": [
@@ -23,14 +43,16 @@
                             "calendar/calendar_icons",
                             "calendar/calendar_settings"
                         ]
-                    },
-                    {
+                        },
+                        {
                         "group": "Check-in your Patient",
                         "icon": "book",
                         "pages": [
                             "check-in/check-in",
                             "check-in/edit_appt"
                         ]
+                         }
+                       ]
                     }
                 ]
             }
