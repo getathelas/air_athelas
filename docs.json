@@ -3,7 +3,8 @@
     "theme": "mint",
     "toc": "true",
     "name": "Air Athelas User Guide",
-    "colors": {
+  "styling": {eyebrows": "breadcrumbs"},
+  "colors": {
         "primary": "#F9345F",
         "light": "#FA5478",
         "dark": "#FB8DA5"
