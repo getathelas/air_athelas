@@ -10,11 +10,13 @@
         "dark": "#FB8DA5"
     },
     "favicon": "/athelas_favicon.png",
-    "topbarCtaButton": {
-    "type": "link",
-    "name": "Try the Quiz Now",
-    "url": "https://YOUR-QUIZ-URL.com"
-  },
+    "navbar": {  
+      "primary": {
+      "type": "button",
+      "label": "Try the Air Athelas Quiz",
+      "href": "https://dashboard.mintlify.com"
+      }
+    },
     "navigation": {
         "tabs": [
             {
@@ -29,7 +31,7 @@
                    "patient_details/patient_info"
                   ]
                   }
-                 ], 
+                 ],
                 "groups": [
                     {
                       "group": "All features on Air",
@@ -52,7 +54,7 @@
                         ]
                          },
                         {
-                        "group": "View Details of your Patient",
+                        "group": "View Patient Details",
                         "icon": "note",
                         "pages": [
                             "patient_details/patient_info",
