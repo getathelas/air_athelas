@@ -25,20 +25,15 @@
                   {
                     "anchor": "Introductory Guide to Air",
                     "icon": "sparkles",
-                    "groups": [
-                      {
-                        "group": "Introductory Guide to Air",
-                        "pages": [
+                    "pages": [
                          "calendar/nav_calendar", 
                          "check-in/check-in",
                          "patient_details/patient_info"
                         ]
-                      }
-                  ]
-                  },
+                      },
                   {
                     "anchor": "All features on Air",
-                    "groups": [
+                    "pages": [
                       {
                         "group": "Navigate your Calendar",
                         "icon": "calendar",
