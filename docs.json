@@ -33,7 +33,7 @@
                       },
                   {
                     "anchor": "All features on Air",
-                    "pages": [
+                    "groups": [
                       {
                         "group": "Navigate your Calendar",
                         "icon": "calendar",
