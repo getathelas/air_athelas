@@ -23,11 +23,11 @@
                 "tab": "Providers",
                 "anchors":[
                   {
-                    "anchor": "Beginner guide to Air",
+                    "anchor": "Introductory Guide to Air",
                     "icon": "sparkles",
                     "groups": [
                       {
-                        "group": "Beginner guide to Air",
+                        "group": "Introductory Guide to Air",
                         "pages": [
                          "calendar/nav_calendar", 
                          "check-in/check-in",
