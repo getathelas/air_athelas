@@ -1,9 +1,7 @@
 {
     "$schema": "https://mintlify.com/docs.schema.json",
     "theme": "mint",
-    "toc": "true",
     "name": "Air Athelas User Guide",
-    "styling": {"eyebrows": "breadcrumbs"},
     "colors": {
         "primary": "#F9345F",
         "light": "#FA5478",
@@ -23,7 +21,7 @@
                 "tab": "Providers",
                 "anchors":[
                   {
-                    "anchor": "Introductory Guide to Air",
+                    "anchor": "Test 1",
                     "icon": "sparkles",
                     "pages": [
                          "calendar/nav_calendar", 
@@ -32,39 +30,17 @@
                         ]
                       },
                   {
-                    "anchor": "All features on Air",
-                    "groups": [
+                    "anchor": "Test 2",
+                    "pages": [
                       {
-                        "group": "Navigate your Calendar",
-                        "icon": "calendar",
-                        "pages": [
                             "calendar/nav_calendar",
                             "calendar/calendar_icons",
                             "calendar/calendar_settings"
-                        ]
-                        },
-                      {
-                        "group": "Check-in your Patient",
-                        "icon": "book",
-                        "pages": [
-                            "check-in/check-in",
-                            "check-in/edit_appt"
-                        ]
-                         },
-                      {
-                        "group": "View Patient Details",
-                        "icon": "note",
-                        "pages": [
-                            "patient_details/patient_info",
-                            "patient_details/patient_demog",
-                            "patient_details/patient_appts",
-                            "patient_details/patient_attachments"
-                        ]
                       }
                     ]
                   } 
                 ]
             }
         ]
-                         }
+    }
 }
