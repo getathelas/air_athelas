@@ -23,20 +23,23 @@
                 "tab": "Providers",
                 "anchors":[
                   {
-                "anchors": "Beginner guide to Air",
-                "icon": "sparkles",
-                "pages": [
-                   "calendar/nav_calendar", 
-                   "check-in/check-in",
-                   "patient_details/patient_info"
+                    "anchor": "Beginner guide to Air",
+                    "icon": "sparkles",
+                    "groups": [
+                      {
+                        "group": "Group 1",
+                        "pages": [
+                         "calendar/nav_calendar", 
+                         "check-in/check-in",
+                         "patient_details/patient_info"
+                        ]
+                      }
                   ]
-                  }
-                 ],
-                "groups": [
-                    {
-                      "group": "All features on Air",
-                      "pages":[
-                        {
+                  },
+                  {
+                    "anchor": "All features on Air",
+                    "groups": [
+                      {
                         "group": "Navigate your Calendar",
                         "icon": "calendar",
                         "pages": [
@@ -45,7 +48,7 @@
                             "calendar/calendar_settings"
                         ]
                         },
-                        {
+                      {
                         "group": "Check-in your Patient",
                         "icon": "book",
                         "pages": [
@@ -53,7 +56,7 @@
                             "check-in/edit_appt"
                         ]
                          },
-                        {
+                      {
                         "group": "View Patient Details",
                         "icon": "note",
                         "pages": [
@@ -62,11 +65,11 @@
                             "patient_details/patient_appts",
                             "patient_details/patient_attachments"
                         ]
-                         }
-                       ]
-                    }
+                      }
+                    ]
+                  } 
                 ]
             }
         ]
-    }
+                         }
 }
