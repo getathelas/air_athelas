@@ -2,6 +2,7 @@
     "$schema": "https://mintlify.com/docs.schema.json",
     "theme": "mint",
     "name": "Air Athelas User Guide",
+    "styling": {"eyebrows": "breadcrumbs"},
     "colors": {
         "primary": "#F9345F",
         "light": "#FA5478",
@@ -19,23 +20,45 @@
         "tabs": [
             {
                 "tab": "Providers",
-                "anchors":[
+                "anchors": [
                   {
-                    "anchor": "Test 1",
+                    "anchor": "Introductory Guide to Air",
                     "icon": "sparkles",
                     "pages": [
                          "calendar/nav_calendar", 
                          "check-in/check-in",
                          "patient_details/patient_info"
                         ]
-                      },
+                  },
                   {
-                    "anchor": "Test 2",
-                    "pages": [
+                    "anchor": "All features within Air",
+                    "groups": [
                       {
+                        "group": "Navigate your Calendar",
+                        "icon": "calendar",
+                        "pages": [
                             "calendar/nav_calendar",
                             "calendar/calendar_icons",
                             "calendar/calendar_settings"
+                        ]
+                      },
+                      {
+                        "group": "Check-in your Patient",
+                        "icon": "book",
+                        "pages": [
+                            "check-in/check-in",
+                            "check-in/edit_appt"
+                        ]
+                      },
+                      {
+                        "group": "Patient Details",
+                        "icon": "note",
+                        "pages": [
+                            "patient_details/patient_info",
+                            "patient_details/patient_demog",
+                            "patient_details/patient_appts",
+                            "patient_details/patient_attachments"
+                        ]
                       }
                     ]
                   } 
