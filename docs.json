@@ -27,7 +27,7 @@
                     "icon": "sparkles",
                     "groups": [
                       {
-                        "group": "Group 1",
+                        "group": "Beginner guide to Air",
                         "pages": [
                          "calendar/nav_calendar", 
                          "check-in/check-in",
