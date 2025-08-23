@@ -33,8 +33,7 @@
                 "groups": [
                     {
                       "group": "All features on Air",
-                       "icon": "book",
-                       "pages":[
+                      "pages":[
                         {
                         "group": "Navigate your Calendar",
                         "icon": "calendar",
@@ -50,6 +49,16 @@
                         "pages": [
                             "check-in/check-in",
                             "check-in/edit_appt"
+                        ]
+                         },
+                        {
+                        "group": "View Details of your Patient",
+                        "icon": "note",
+                        "pages": [
+                            "patient_details/patient_info",
+                            "patient_details/patient_demog",
+                            "patient_details/patient_appts",
+                            "patient_details/patient_attachments"
                         ]
                          }
                        ]
