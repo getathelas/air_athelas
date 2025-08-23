@@ -1,5 +1,99 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Patient Appointment Details"
+description: "Review and manage patient appointments, chart notes, billing documents, and imported medical records."
 ---
 
+### View past appointment chart notes
+
+<Card title=" ">
+  Open **Chart Notes** → Click on the **Appointments** tab at the top.
+
+     
+
+  Click on the **square icon** (to the right of the calendar icon) to open the Chart Note for the desired appointment.
+
+  ![Pt Appt Past Web](/images/pt_appt_past.webp)
+</Card>
+
+### Filter appointments
+
+<Card title=" ">
+  Filter appointments by: Date of Appointment - Provider - Case - Facility - Status - Custom Tags
+
+  ![16 Filter Pt Appointments Gi](/images/16_filter_pt_appointments.gif)
+</Card>
+
+### Download patient schedule
+
+<Card title=" ">
+  Select appointments by checking the box to the left of each appointment → Choose to **Download** or **Fax** the patient’s schedule.
+
+  ![Appt Download Schedule Web](/images/appt_download_schedule.webp)
+</Card>
+
+### Preview past Billing and Plan of Care documents
+
+<Card title=" ">
+  Once an appointment is in **Completed** status, you can download related documents
+
+  ![Appt Doc Download Web](/images/appt_doc_download.webp)
+
+  The **Eye icon** changes from gray to black when the document is available.
+
+  <img
+    src="/images/doc_black_eye.webp"
+    alt="Doc Black Eye Web"
+    title="Doc Black Eye Web"
+    style={{ width:"29%" }}
+  />
+
+  We provide both a **Medical Billing PDF** and a **Plan of Care PDF.**
+</Card>
+
+### Import patient’s medical records from old EHR
+
+**Import into Current Appointment Chart Note**
+
+<Card title=" ">
+  <Danger>
+    ✨**Smart Tip:** Import an existing record by selecting **Athelas AI** (bottom right) → **Import Existing Record**.
+  </Danger>
+  <img
+    src="/images/import_doc_in_scribe.webp"
+    alt="Import Doc In Scribe Web"
+    title="Import Doc In Scribe Web"
+    style={{ width:"51%" }}
+  />
+
+  <Accordion title="Alternate method: Through Chart Note" defaultOpen>
+    Open the **Chart Note** → Click on the **Import** tab (top right)
+
+    <img
+      src="/images/import_doc_chart_note.webp"
+      alt="Import Doc Chart Note Web"
+      title="Import Doc Chart Note Web"
+      style={{ width:"53%" }}
+    />
+  </Accordion>
+</Card>
+
+**Import Records for Past Appointments**
+
+<Card title=" ">
+  - Click the **\+ icon** to the right of the appointment → **Set Up Chart Note**.
+  - Select the **Case, Appointment Type,** and **Clinical Note Type**.
+  - Upload the document.
+
+  ![17 Import Records Gi](/images/17_import_records.gif)
+
+  **Note:** Select **For Documentation Only** when uploading.
+
+  <img
+    src="/images/for_doc_only.webp"
+    alt="For Doc Only Web"
+    title="For Doc Only Web"
+    style={{ width:"37%" }}
+  />
+
+  This option ensures the imported chart note is **not billable**. It is especially useful when you need to manually add the Initial Evaluation while continuing the Plan of Care for a Progress Note or Re-Evaluation.
+</Card>
