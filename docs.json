@@ -29,9 +29,11 @@
                          "check-in/check-in",
                          "patient_details/patient_info"
                         ]
-                  },
+                  }
+                ],
+                "anchors": [
                   {
-                    "group": "All Features within Air",
+                    "anchor": "All Features within Air",
                     "pages": [
                         {
                             "group": "Navigate your Calendar",
