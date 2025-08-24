@@ -47,7 +47,7 @@
                         },
                   {
                             "group": "Check-in your Patient",
-                    "icon": {"name":"circle-user-circle-check", "type":"duotone", "color":"#F9345F"},
+                    "icon": {"name":"clipboard-list-check", "type":"duotone", "color":"#F9345F"},
                             "pages": [
                                 "check-in/check-in",
                                 "check-in/edit_appt"
