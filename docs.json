@@ -1,6 +1,6 @@
 {
     "$schema": "https://mintlify.com/docs.schema.json",
-    "theme": "maple",
+    "theme": "willow",
     "toc": "true",
     "name": "Air Athelas User Guide",
     "styling": {"eyebrows": "breadcrumbs"},
@@ -23,7 +23,7 @@
                 "tab": "Providers",
                 "groups": [
                   {
-                    "group": "All Features within Air1",
+                    "group": "Getting Started with Air",
                     "pages": [
                                 "calendar/nav_calendar",
                                 "check-in/check-in",
@@ -50,7 +50,8 @@
                             "pages": [
                                 "patient_details/patient_info",
                                 "patient_details/patient_demog",
-                                "patient_details/patient_appts"
+                                "patient_details/patient_appts",
+                                "patient_details/patient_attachments"
                             ]
                         }
                     ]
