@@ -21,9 +21,9 @@
         "tabs": [
             {
                 "tab": "Providers",
-                "groups": [
+                "anchors": [
                   {
-                    "group": "Introductory Guide to Air",
+                    "anchor": "Introductory Guide to Air",
                     "icon": "sparkles",
                     "pages": [
                          "calendar/nav_calendar", 
@@ -32,7 +32,7 @@
                         ]
                   },
                   {
-                    "group": "All Features within Air",
+                    "anchor": "All Features within Air",
                     "groups": [
                       {
                         "group": "Navigate your Calendar",
