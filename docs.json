@@ -21,17 +21,15 @@
         "tabs": [
             {
                 "tab": "Providers",
-                "groups": [
+                "anchors": [
                   {
-                    "group": "Introductory Guide to Air",
+                    "anchor": "Introductory Guide to Air",
                     "pages": [
                          "calendar/nav_calendar", 
                          "check-in/check-in",
                          "patient_details/patient_info"
                         ]
-                  }
-                ],
-                "anchors": [
+                  },
                   {
                     "anchor": "All Features within Air",
                     "pages": [
