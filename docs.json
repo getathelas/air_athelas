@@ -1,6 +1,6 @@
 {
     "$schema": "https://mintlify.com/docs.schema.json",
-    "theme": "aspen",
+    "theme": "willow",
     "toc": "true",
     "name": "Air Athelas User Guide",
     "styling": {"eyebrows": "breadcrumbs"},
