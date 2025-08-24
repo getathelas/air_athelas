@@ -1,6 +1,7 @@
-{
+  {
     "$schema": "https://mintlify.com/docs.schema.json",
     "theme": "mint",
+    "toc": "true",
     "name": "Air Athelas User Guide",
     "styling": {"eyebrows": "breadcrumbs"},
     "colors": {
@@ -20,18 +21,20 @@
         "tabs": [
             {
                 "tab": "Providers",
-                "anchors": [
+                "groups": [
                   {
-                    "anchor": "Introductory Guide to Air",
+                    "group": "Introductory Guide to Air",
                     "icon": "sparkles",
                     "pages": [
                          "calendar/nav_calendar", 
                          "check-in/check-in",
                          "patient_details/patient_info"
                         ]
-                  },
+                  }
+                ],
+                "anchors": [
                   {
-                    "anchor": "All features within Air",
+                    "anchor": "All Features within Air",
                     "groups": [
                       {
                         "group": "Navigate your Calendar",
@@ -51,13 +54,12 @@
                         ]
                       },
                       {
-                        "group": "Patient Details",
+                        "group": "View Patient Details",
                         "icon": "note",
                         "pages": [
                             "patient_details/patient_info",
                             "patient_details/patient_demog",
-                            "patient_details/patient_appts",
-                            "patient_details/patient_attachments"
+                            "patient_details/patient_appts"
                         ]
                       }
                     ]
