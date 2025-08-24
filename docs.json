@@ -1,8 +1,12 @@
 {
     "$schema": "https://mintlify.com/docs.schema.json",
-    "theme": "willow",
+    "theme": "maple",
     "toc": "true",
     "name": "Air Athelas User Guide",
+    "logo": {
+    "light": "images/air_logo.webp",
+    "dark": "images/air_logo_darkwebp",
+     },
     "styling": {"eyebrows": "breadcrumbs"},
     "colors": {
         "primary": "#F9345F",
@@ -13,7 +17,7 @@
     "navbar": {  
       "primary": {
       "type": "button",
-      "label": "Try the Air Athelas Quiz",
+      "label": "Try the Air Athelas Quiz Now",
       "href": "https://dashboard.mintlify.com"
       }
     },
