@@ -21,10 +21,9 @@
         "tabs": [
             {
                 "tab": "Providers",
-                "anchors": [
+                "groups": [
                   {
-                    "anchor": "Introductory Guide to Air",
-                    "icon": "sparkles",
+                    "group": "Introductory Guide to Air",
                     "pages": [
                          "calendar/nav_calendar", 
                          "check-in/check-in",
@@ -32,34 +31,31 @@
                         ]
                   },
                   {
-                    "anchor": "All Features within Air",
-                    "groups": [
-                      {
-                        "group": "Navigate your Calendar",
-                        "icon": "calendar",
-                        "pages": [
-                            "calendar/nav_calendar",
-                            "calendar/calendar_icons",
-                            "calendar/calendar_settings"
-                        ]
-                      },
-                      {
-                        "group": "Check-in your Patient",
-                        "icon": "book",
-                        "pages": [
-                            "check-in/check-in",
-                            "check-in/edit_appt"
-                        ]
-                      },
-                      {
-                        "group": "View Patient Details",
-                        "icon": "note",
-                        "pages": [
-                            "patient_details/patient_info",
-                            "patient_details/patient_demog",
-                            "patient_details/patient_appts"
-                        ]
-                      }
+                    "group": "All Features within Air",
+                    "pages": [
+                        {
+                            "group": "Navigate your Calendar",
+                            "pages": [
+                                "calendar/nav_calendar",
+                                "calendar/calendar_icons",
+                                "calendar/calendar_settings"
+                            ]
+                        },
+                        {
+                            "group": "Check-in your Patient",
+                            "pages": [
+                                "check-in/check-in",
+                                "check-in/edit_appt"
+                            ]
+                        },
+                        {
+                            "group": "View Patient Details",
+                            "pages": [
+                                "patient_details/patient_info",
+                                "patient_details/patient_demog",
+                                "patient_details/patient_appts"
+                            ]
+                        }
                     ]
                   } 
                 ]
