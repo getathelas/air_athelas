@@ -5,7 +5,7 @@
     "name": "Air Athelas User Guide",
     "logo": {
     "light": "images/air_logo.webp",
-    "dark": "images/air_logo_darkwebp"
+    "dark": "images/air_logo_dark.webp"
      },
     "styling": {"eyebrows": "breadcrumbs"},
     "colors": {
@@ -13,7 +13,7 @@
         "light": "#FA5478",
         "dark": "#FB8DA5"
     },
-    "favicon": "/athelas_favicon.png",
+    "favicon": "images/athelas_favicon_bkg.png",
     "navbar": {  
       "primary": {
       "type": "button",
@@ -28,8 +28,9 @@
                 "groups": [
                   {
                     "group": "Getting Started with Air",
-                    "icon": "star",
+                    "icon": {"name":"stars", "type":"duotone", "color":"#F9345F"},
                     "pages": [
+                                "index",
                                 "calendar/nav_calendar",
                                 "check-in/check-in",
                                 "patient_details/patient_info"
@@ -37,7 +38,7 @@
                   },
                   {
                             "group": "Navigate your Calendar",
-                    "icon": "calendar",        
+                    "icon": {"name":"calendar", "type":"duotone", "color":"#F9345F"},
                     "pages": [
                                 "calendar/nav_calendar",
                                 "calendar/calendar_icons",
@@ -46,7 +47,7 @@
                         },
                   {
                             "group": "Check-in your Patient",
-                    "icon": "note",
+                    "icon": {"name":"map-pin-check-inside", "type":"duotone", "color":"#F9345F"},
                             "pages": [
                                 "check-in/check-in",
                                 "check-in/edit_appt"
@@ -54,7 +55,7 @@
                         },
                   {
                             "group": "View Patient Details",
-                    "icon": "id-card",
+                    "icon": {"name":"square-user", "type":"duotone", "color":"#F9345F"},
                             "pages": [
                                 "patient_details/patient_info",
                                 "patient_details/patient_demog",
