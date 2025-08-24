@@ -5,7 +5,7 @@
     "name": "Air Athelas User Guide",
     "logo": {
     "light": "images/air_logo.webp",
-    "dark": "images/air_logo_darkwebp",
+    "dark": "images/air_logo_darkwebp"
      },
     "styling": {"eyebrows": "breadcrumbs"},
     "colors": {
@@ -54,7 +54,7 @@
                         },
                   {
                             "group": "View Patient Details",
-                    "icon": "person",
+                    "icon": "id-card",
                             "pages": [
                                 "patient_details/patient_info",
                                 "patient_details/patient_demog",
