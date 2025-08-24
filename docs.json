@@ -23,7 +23,7 @@
                 "tab": "Providers",
                 "anchors": [
                   {
-                    "anchor": "All Features within Air",
+                    "anchor": "All Features within Air1",
                     "pages": [
                         {
                             "group": "Navigate your Calendar",
@@ -51,7 +51,7 @@
                     ]
                   },
                   {
-                    "anchor": "All Features within Air",
+                    "anchor": "All Features within Air2",
                     "pages": [
                         {
                             "group": "Navigate your Calendar",
