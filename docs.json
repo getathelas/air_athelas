@@ -21,17 +21,35 @@
         "tabs": [
             {
                 "tab": "Providers",
-                "groups": [
-                  {
-                    "group": "Introductory Guide to Air",
-                    "pages": [
-                         "calendar/nav_calendar", 
-                         "check-in/check-in",
-                         "patient_details/patient_info"
-                        ]
-                  }
-                ],
                 "anchors": [
+                  {
+                    "anchor": "All Features within Air",
+                    "pages": [
+                        {
+                            "group": "Navigate your Calendar",
+                            "pages": [
+                                "calendar/nav_calendar",
+                                "calendar/calendar_icons",
+                                "calendar/calendar_settings"
+                            ]
+                        },
+                        {
+                            "group": "Check-in your Patient",
+                            "pages": [
+                                "check-in/check-in",
+                                "check-in/edit_appt"
+                            ]
+                        },
+                        {
+                            "group": "View Patient Details",
+                            "pages": [
+                                "patient_details/patient_info",
+                                "patient_details/patient_demog",
+                                "patient_details/patient_appts"
+                            ]
+                        }
+                    ]
+                  },
                   {
                     "anchor": "All Features within Air",
                     "pages": [
