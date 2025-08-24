@@ -21,9 +21,9 @@
         "tabs": [
             {
                 "tab": "Providers",
-                "anchors": [
+                "groups": [
                   {
-                    "anchor": "All Features within Air1",
+                    "group": "All Features within Air1",
                     "pages": [
                         {
                             "group": "Navigate your Calendar",
@@ -51,7 +51,7 @@
                     ]
                   },
                   {
-                    "anchor": "All Features within Air2",
+                    "group": "All Features within Air2",
                     "pages": [
                         {
                             "group": "Navigate your Calendar",
