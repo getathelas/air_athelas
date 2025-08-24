@@ -1,4 +1,4 @@
-  {
+{
     "$schema": "https://mintlify.com/docs.schema.json",
     "theme": "mint",
     "toc": "true",
@@ -30,11 +30,9 @@
                          "check-in/check-in",
                          "patient_details/patient_info"
                         ]
-                  }
-                ],
-                "anchors": [
+                  },
                   {
-                    "anchor": "All Features within Air",
+                    "group": "All Features within Air",
                     "groups": [
                       {
                         "group": "Navigate your Calendar",
