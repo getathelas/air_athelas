@@ -2,61 +2,61 @@
 title: "View your Patient's Information"
 mode: "wide"
 ---
+
 Once you check in a patient, you can view past visit summaries and detailed patient information.
 
-### Summary of Past Visits
+<Steps>
+  <Step title="View a Summary of Past Visits" stepNumber={1} titleSize="h3">
+    <Icon icon="message-lines" iconType="duotone" color="#F9345F" size={23} />  **AI-Generated Summary**
 
-**AI-Generated Summary**
+    <Card title=" ">
+      <Danger>
+        ✨**Smart Tip:** Scroll through the _Subjective_ section of the Chart Note to review an AI-generated summary of previous appointments.
+      </Danger>
+      ![19 Ai Summary2 Gi](/images/19_ai_summary2.gif)
+    </Card>
+    <Accordion title="Alternate method: Review past visit Chart Notes">
+      - Open **Chart Notes**.
+      - Click on the **Appointments** tab at the top.
+      - Click on the **square icon** (to the right of the calendar icon) to open the Chart Note for the desired appointment.
 
-<Card title=" ">
-  <Danger>
-    ✨**Smart Tip:** Scroll through the _Subjective_ section of the Chart Note to review an AI-generated summary of previous appointments.
-  </Danger>
-  ![19 Ai Summary2 Gi](/images/19_ai_summary2.gif)
-</Card>
+      **Note**: From this page, you can also view past [Billing and Plan of Care](patient_details/patient_appts.mdx) documents by clicking on the "eye" icon to the left of the date.
 
-<Accordion title="Alternate method: Review past visit Chart Notes">
-  - Open **Chart Notes**.
-  - Click on the **Appointments** tab at the top.
-  - Click on the **square icon** (to the right of the calendar icon) to open the Chart Note for the desired appointment.
+      ![Pt Appt Past Web](/images/pt_appt_past.webp)
+    </Accordion>
+  </Step>
+  <Step title="Review Patient Details" stepNumber={2} titleSize="h3">
+    <Icon icon="magnifying-glass-plus" iconType="duotone" color="#F9345F" size={23} />  **Ask Athelas AI**
 
-  **Note**: From this page, you can also view past [Billing and Plan of Care](patient_details/patient_appts.mdx) documents by clicking on the "eye" icon to the left of the date.
+    <Card title=" ">
+      <Danger>
+        ✨**Smart Tip:** Use Athelas AI to ask targeted questions about the patient for quick insights.
+      </Danger>
+    </Card>
+    <Icon icon="image-user" iconType="duotone" color="#F9345F" size={23} />  **Open Patient Information Tabs**
 
-  ![Pt Appt Past Web](/images/pt_appt_past.webp)
-</Accordion>
+    <Card title=" ">
+      Use the tabs at the top of the Chart Note to navigate patient information, including:
 
-### Review Patient Details
+      - [Patient Demographics](patient_details/patient_demog.mdx)
+      - [Patient Appointment Details](patient_details/patient_appts.mdx)
+      - [Patient Documents](patient_details/patient_attachments.mdx) (including faxes and images)
+      - Tasks, Medications, Allergies, Visits, Immunizations and Labs
 
-**Ask Athelas AI**
+      ![Patient Info Chart Notes Web](/images/patient_info_chart_notes.webp)
 
-<Card title=" ">
-  <Danger>
-    ✨**Smart Tip:** Use Athelas AI to ask targeted questions about the patient for quick insights.
-  </Danger>
-</Card>
+      <Accordion title="Alternate method: Open Patient Profile">
+        Click on the **Patient** tab in the left menu → Search and select your patient by entering their details.
 
-**Open Patient Information Tabs**
+        ![Pt Tab Web](/images/pt_tab.webp)
 
-<Card title=" ">
-  Use the tabs at the top of the Chart Note to navigate patient information, including:
+        This opens the patient’s full profile for review.
 
-  - [Patient Demographics](patient_details/patient_demog.mdx)
-  - [Patient Appointment Details](patient_details/patient_appts.mdx)
-  - [Patient Documents](patient_details/patient_attachments.mdx) (including faxes and images)
-  - Tasks, Medications, Allergies, Visits, Immunizations and Labs
-
-  ![Patient Info Chart Notes Web](/images/patient_info_chart_notes.webp)
-
-  <Accordion title="Alternate method: Open Patient Profile">
-    Click on the **Patient** tab in the left menu → Search and select your patient by entering their details.
-
-    ![Pt Tab Web](/images/pt_tab.webp)
-
-    This opens the patient’s full profile for review.
-
-    ![Pt Appt Past Web](/images/pt_appt_past.webp)
-  </Accordion>
-</Card>
+        ![Pt Appt Past Web](/images/pt_appt_past.webp)
+      </Accordion>
+    </Card>
+  </Step>
+</Steps>
 
 <Info>
   **FAQ:** I can’t see my patient’s past chart notes from my old EHR → How do I import their medical records? [Click here](patient_details/patient_appts.mdx)
