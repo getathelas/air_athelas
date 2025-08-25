@@ -27,19 +27,21 @@
                 "tab": "Providers",
                 "groups": [
                   {
-                    "group": "Getting Started with Air",
-                    "icon": {"name":"stars", "type":"duotone", "color":"#F9345F"},
-                    "pages": [
+                            "group": "Getting Started with Air",
+                            "icon":"stars",
+                            "pages": [
                                 "index",
                                 "calendar/nav_calendar",
                                 "check-in/check-in",
-                                "patient_details/patient_info"
+                                "patient_details/patient_info",
+                                "chart_note/nav_chart_note",
+                                "inbox/nav_inbox"
                             ]
                   },
                   {
                             "group": "Navigate your Calendar",
-                    "icon": {"name":"calendar", "type":"duotone", "color":"#F9345F"},
-                    "pages": [
+                            "icon": "calendar", 
+                            "pages": [
                                 "calendar/nav_calendar",
                                 "calendar/calendar_icons",
                                 "calendar/calendar_settings"
@@ -47,7 +49,7 @@
                         },
                   {
                             "group": "Check-in your Patient",
-                    "icon": {"name":"clipboard-list-check", "type":"duotone", "color":"#F9345F"},
+                            "icon": "clipboard-list-check",
                             "pages": [
                                 "check-in/check-in",
                                 "check-in/edit_appt"
@@ -55,12 +57,30 @@
                         },
                   {
                             "group": "View Patient Details",
-                    "icon": {"name":"square-user", "type":"duotone", "color":"#F9345F"},
+                            "icon": "square-user",
                             "pages": [
                                 "patient_details/patient_info",
                                 "patient_details/patient_demog",
                                 "patient_details/patient_appts",
                                 "patient_details/patient_attachments"
+                            ]
+                        },
+                  {
+                            "group": "Submit a Chart Note",
+                            "icon":"notes",
+                            "pages": [
+                                "chart_note/nav_chart_note",
+                                "chart_note/other_sec_chart_note",
+                                "chart_note/chart_note_templates",
+                                "chart_note/scribe_faq",
+                                "chart_note/flowsheet_custom_interventions"
+                            ]
+                        },
+                  {
+                            "group": "Check your Inbox",
+                            "icon": "mail",
+                            "pages": [
+                                "inbox/nav_inbox"
                             ]
                         }
                     ]
