@@ -1,5 +1,94 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Customize Flowsheets"
 ---
 
+Create and manage custom interventions, groups, and progress tracking within Flowsheets to tailor care documentation to your practice.
+
+### Create and Edit Custom Interventions
+
+**Create a New Intervention**
+
+<Card title=" ">
+  - Navigate to **Interventions** in the left navigation bar.
+  - Click **New Intervention**.
+
+  ![New Intervention Pn](/images/new_intervention.png)
+
+  You can specify:
+
+  - The **name** and **instructions** to be included in the HEP communication to patients.
+  - Optional defaults such as CPT code, number of minutes to bill, justification, and an image in the Media tab.
+  - The **type of activity** (exercise, modality, manual therapy), category, movement, and body type.
+
+  <img
+    src="/images/intervention_type_filter.png"
+    alt="Intervention Type Filter Pn"
+    title="Intervention Type Filter Pn"
+    style={{ width:"72%" }}
+  />
+</Card>
+
+**Create a New Intervention Group**
+
+<Card title=" ">
+  - In the Intervention Manager, click **New Group**.
+  - Enter a **group name**. Select a body part or movement type.
+
+  ![New Intervention Group Web](/images/new_intervention_group.webp)
+
+  - Filter interventions by **name, body part, or activity type** and add them to the group.
+  - Adjust the order of interventions and any sub-groups by dragging them.
+
+  <img
+    src="/images/select_interventions_group.webp"
+    alt="Select Interventions Group Web"
+    title="Select Interventions Group Web"
+    style={{ width:"77%" }}
+  />
+</Card>
+
+**Edit an Existing Intervention**
+
+<Card title=" ">
+  Click the **name** of an intervention to edit its details or view associated media.
+
+  ![Edit Intervention Pn](/images/edit_intervention.png)
+</Card>
+
+### Mark an Intervention as Concurrent
+
+<Card title=" ">
+  In some cases, two interventions may occur at the same time, and you don’t want to bill them separately. In these cases, you can mark interventions as **concurrent**.
+
+  **Example:** Before: (10 \+ 2 \+ 10 \+ 15 = 37)
+
+  ![Concurrent Before Web](/images/concurrent_before.webp)
+
+  \*\*Example: \*\*After: (10 \+ 2 \+ max(15,10) = 27)
+
+  ![Concurrent After Web](/images/concurrent_after.webp)
+
+  **Prerequisites for marking an intervention as concurrent:**
+
+  - The intervention must be marked as **Done**.
+  - Both interventions must have the **same procedure code**.
+
+  When these conditions are met, the EHR will automatically show all interventions that can be marked as concurrent.
+
+  Once you mark Intervention B as concurrent with Intervention A, Intervention A will also be auto-selected with Intervention B (creating a two-way mapping).
+
+  **Note:** You cannot change the procedure code until the concurrent link is removed.
+</Card>
+
+### View Intervention Progress
+
+<Card title=" ">
+  Click **Intervention Progress** in the Flowsheet section to view statistics from all previous interventions.
+
+  - If an intervention was performed in a specific visit, its background will appear grey.
+  - The text in each cell represents **weight – sets – reps**.
+
+  ![Intervention Progress Web](/images/intervention_progress.webp)
+
+  Alternate Option: View Intervention progress from [patient’s active case details](https://www.notion.so/Patient-Demographics-249f92a633f280f79ffbf2dc123583b5?pvs=21)
+</Card>
