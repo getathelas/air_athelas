@@ -31,11 +31,13 @@
                             "icon":"stars",
                             "pages": [
                                 "index",
+                                "set-up",
                                 "calendar/nav_calendar",
                                 "check-in/check-in",
                                 "patient_details/patient_info",
                                 "chart_note/nav_chart_note",
-                                "inbox/nav_inbox"
+                                "inbox/nav_inbox",
+                                "troubleshoot/faqs"
                             ]
                   },
                   {
@@ -77,8 +79,8 @@
                             ]
                         },
                   {
-                            "group": "Check your Inbox",
-                            "icon": "mail",
+                            "group": "My Tasks & Reports",
+                            "icon": "envelope",
                             "pages": [
                                 "inbox/nav_inbox"
                             ]

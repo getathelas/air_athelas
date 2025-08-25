@@ -1,277 +1,293 @@
 ---
 title: "Navigate your Chart Note"
 sidebarTitle: "Submit a Chart Note"
-mode: "wide"
 ---
 
 As you begin a patient consult, set up, complete, and submit a Chart Note.
 
-<Steps>
-  <Step title="Navigate your Chart Note" titleSize="h3">
-    <Icon icon="folder-open" iconType="duotone" color="#F9345F" size={23} />  **Opening a Chart Note**
+## Navigate your Chart Note
 
-    <Card title=" ">
-      1. Open the **Calendar**.
-      2. Select the desired **Appointment**.
-      3. Click **View Note** in the top-right corner.
-      4. Once opened, patient details appear in the top bar, with Chart Note sections listed in the left sidebar.
+### <Icon icon="folder-open" iconType="duotone" color="#F9345F" size={23} />  **Opening a Chart Note**
 
-      <img
-        src="/images/open_chart_note.webp"
-        alt="Open Chart Note Web"
-        title="Open Chart Note Web"
-        style={{ width:"54%" }}
-      />
+<Card title=" ">
+  1. Open the **Calendar**.
+  2. Select the desired **Appointment**.
+  3. Click **View Note** in the top-right corner.
+  4. Once opened, patient details appear in the top bar, with Chart Note sections listed in the left sidebar.
 
-      **Note:** You must check-in the appointment before you can open its Chart Note.
+  <img
+    src="/images/open_chart_note.webp"
+    alt="Open Chart Note Web"
+    title="Open Chart Note Web"
+    style={{ width:"48%" }}
+  />
 
-      ![20 View Chart Note Gi](/images/20_view_chart_note.gif)
+  **Note:** You must check-in the appointment before you can open its Chart Note.
 
-      Alternate method: **<u>View notes from Patient Profile</u>**
-    </Card>
-    <Icon icon="list-timeline" iconType="duotone" color="#F9345F" size={23} />  **Plan of Care**
+  ![20 View Chart Note Gi](/images/20_view_chart_note.gif)
 
-    <Card title>
-      When selecting **Plan of Care**, you will be prompted to enter: Start Date and End Date,
+  Alternate method: **<u>View notes from Patient Profile</u>**
+</Card>
 
-      Frequency & Units, Duration & Units, Visit Count
+### <Icon icon="list-timeline" iconType="duotone" color="#F9345F" size={23} />  **Plan of Care**
 
-      ![22 Plan Of Care Gi](/images/22_plan_of_care.gif)
+<Card title>
+  When selecting **Plan of Care**, you will be prompted to enter: Start Date and End Date,
+
+  Frequency & Units, Duration & Units, Visit Count
+
+  ![22 Plan Of Care Gi](/images/22_plan_of_care.gif)
+
+  <Danger>
+    ✨ **Smart Tip**: If you enter a Start Date, Frequency, and Duration, the system will automatically calculate the End Date and Visit Count.
+  </Danger>
+</Card>
+
+### <Icon icon="notes-medical" iconType="duotone" color="#F9345F" size={23} />  **Other sections in the Chart Note**
+
+<Card title>
+  In addition to the Plan of Care, you can view other sections such as:
+
+  - **<u>Measurements</u>**
+  - **<u>Goals</u>**
+  - **<u>Treatments</u>**
+  - **<u>Visits</u>**
+</Card>
+
+## Smart fill your Chart Note
+
+### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Auto-Fill with Athelas AI Scribe**
+
+<Card title>
+  More details: [**<u>EHR Scribe v2 User Guide</u>**](/1c0f92a633f28065a151d1447b4247f1?pvs=25)
+
+  The Athelas AI Scribe allows you to record a patient consultation and automatically generate detailed documentation.
+
+  <Steps>
+    <Step title="Patient Consent for Scribe" icon="file-signature" iconType="duotone" stepNumber={1} titleSize="p">
+      Re-confirm patient consent before recording. Patient consent will be taken as part of the Patient Intake Form
+    </Step>
+    <Step title="Record using Scribe" icon="microphone" iconType="duotone" titleSize="p">
+      - Click the blue button in the bottom-right corner to open the AI Widget
+      - Select **Scribe**
+      - Click **Start Recording**. You can minimize the widget and continue working within the EHR
+
+      ![29 Start Scribe Gi](/images/29_start_scribe.gif)
+
+      - End or cancel the recording when finished
+
+      ![30 Stop Scribe Gi](/images/30_stop_scribe.gif)
 
       <Danger>
-        ✨ **Smart Tip**: If you enter a Start Date, Frequency, and Duration, the system will automatically calculate the End Date and Visit Count.
+        ✨ **Smart Tip:** While uploading, you can start a new chat on the script to ask questions about the current consultation recording.
       </Danger>
-    </Card>
-    <Icon icon="notes-medical" iconType="duotone" color="#F9345F" size={23} />  **Other sections in the Chart Note**
-
-    <Card title>
-      In addition to the Plan of Care, you can view other sections such as:
-
-      - **<u>Measurements</u>**
-      - **<u>Goals</u>**
-      - **<u>Treatments</u>**
-      - **<u>Visits</u>**
-    </Card>
-  </Step>
-  <Step title="Smart fill your Chart Note" stepNumber={2} titleSize="h3">
-    <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Auto-Fill with Athelas AI Scribe**
-
-    <Card title>
-      More details: [**<u>EHR Scribe v2 User Guide</u>**](/1c0f92a633f28065a151d1447b4247f1?pvs=25)
-
-      The Athelas AI Scribe allows you to record a patient consultation and automatically generate detailed documentation.
-
-      <Steps>
-        <Step title="Patient Consent for Scribe" icon="file-signature" iconType="duotone" stepNumber={1} titleSize="p">
-          Re-confirm patient consent before recording. Patient consent will be taken as part of the Patient Intake Form
-        </Step>
-        <Step title="Record using Scribe" icon="microphone" iconType="duotone" titleSize="p">
-          - Click the blue button in the bottom-right corner to open the AI Widget
-          - Select **Scribe**
-          - Click **Start Recording**. You can minimize the widget and continue working within the EHR
-
-          ![29 Start Scribe Gi](/images/29_start_scribe.gif)
-
-          - End or cancel the recording when finished
-
-          ![30 Stop Scribe Gi](/images/30_stop_scribe.gif)
-
-          <Danger>
-            ✨ **Smart Tip:** While uploading, you can start a new chat on the script to ask questions about the current consultation recording.
-          </Danger>
-        </Step>
-        <Step title="Apply scribe" icon="note-medical" iconType="duotone" titleSize="p">
-          - Review the generated content in the Scribe Application Page. Scroll through the Tabs to review all sections
-          - Each section includes a checkbox to apply or exclude the scribe output into the Chart Note.
-          - Click **Apply Scribe**
-
-          <img
-            src="/images/apply_scribe.webp"
-            alt="Apply Scribe Web"
-            title="Apply Scribe Web"
-            style={{ width:"45%" }}
-          />
-
-          Note: You can also [<u>lock a section to disable the scribe</u>](/24df92a633f28009b75dfaae9217117d?v=24cf92a633f2800f97bd000cc57886f6&pvs=25) for that section.
-
-          <Danger>
-            ✨ **Smart Tip**: Use **Reapply Scribe** to restore the most recent recording if you need to revert back. This is helpful if you've edited fields after scribing.
-          </Danger>
-          Alternate Option: **<u>Air scribe (mobile app)</u>**
-        </Step>
-      </Steps>
-    </Card>
-    <Icon icon="message-medical" iconType="duotone" color="#F9345F" size={23} />  **Dictate into a section**
-
-    <Card title>
-      More details: [EHR Dictation v1 User Guide](https://www.notion.so/EHR-Dictation-v1-User-Guide-1c9f92a633f28000a6e7e0517ece550a?pvs=21)
-
-      Dictation allows you to use your voice to enter text directly into a Chart Note.
-
-      - Open Athelas AI and click **Dictate**.
-      - Speak normally and watch text appear in real time.
-      - Smart punctuation automatically inserts commas, periods, and question marks.
-      - Click **Stop** to end dictation.
-
-      ![27 Ai Dictation Gi](/images/27_ai_dictation.gif)
-    </Card>
-    <Icon icon="timer" iconType="duotone" color="#F9345F" size={23} />  **Pull data from a previous Chart Note**
-
-    <Card title>
-      Click the curled arrow icon in any section to import data from a patient’s prior Chart Note.
+    </Step>
+    <Step title="Apply scribe" icon="note-medical" iconType="duotone" titleSize="p">
+      - Review the generated content in the Scribe Application Page. Scroll through the Tabs to review all sections
+      - Each section includes a checkbox to apply or exclude the scribe output into the Chart Note.
+      - Click **Apply Scribe**
 
       <img
-        src="/images/pull_hist_data_notes.webp"
-        alt="Pull Hist Data Notes Web"
-        title="Pull Hist Data Notes Web"
-        style={{ width:"34%" }}
+        src="/images/apply_scribe.webp"
+        alt="Apply Scribe Web"
+        title="Apply Scribe Web"
+        style={{ width:"35%" }}
       />
-    </Card>
-    <Icon icon="input-text" iconType="duotone" color="#F9345F" size={23} />  **Use pre-defined Text Snippets**
 
-    <Card title>
-      Type "/**"** in a text field to quickly insert pre-made text snippets.
+      Note: You can also [<u>lock a section to disable the scribe</u>](/24df92a633f28009b75dfaae9217117d?v=24cf92a633f2800f97bd000cc57886f6&pvs=25) for that section.
 
-      ![25 Text Snippets Gi](/images/25_text_snippets.gif)
-    </Card>
-  </Step>
-  <Step title="Fill your Flowsheets" stepNumber={3} titleSize="h3">
-    More details: [<u>Flowsheets/Intervention Manager User Guide</u>](/1cdf92a633f280a09b7fc27c23b0e830?pvs=25)
+      <Danger>
+        ✨ **Smart Tip**: Use **Reapply Scribe** to restore the most recent recording if you need to revert back. This is helpful if you've edited fields after scribing.
+      </Danger>
+      Alternate Option: **<u>Air scribe (mobile app)</u>**
+    </Step>
+  </Steps>
+</Card>
 
-    Flowsheets allow you to track interventions, treatments, and evaluative procedures within the Chart Note.
+### <Icon icon="message-medical" iconType="duotone" color="#F9345F" size={23} />  **Dictate into a section**
 
-    <Icon icon="notebook" iconType="duotone" color="#F9345F" size={23} />  **Filling a Flowsheet**
+<Card title>
+  More details: [EHR Dictation v1 User Guide](https://www.notion.so/EHR-Dictation-v1-User-Guide-1c9f92a633f28000a6e7e0517ece550a?pvs=21)
 
-    <Card title>
-      <Steps>
-        <Step title="Add Treatments" icon="person-walking" titleSize="p">
-          **Add Interventions:**
+  Once a note is generated, you have the option to add more content through a direct dictation. Dictation allows you to use your voice to enter text directly into a Chart Note.
 
-          - Click **Add Interventions** within the Chart Note, or use the Intervention Manager in the right sidebar.
-          - Search by body part, treatment, movement, or category.
-          - Selected interventions will appear in the flowsheet in the order chosen.
+  - Open Athelas AI and click **Dictate**.
+  - Speak normally and watch text appear in real time.
+  - Smart punctuation automatically inserts commas, periods, and question marks.
+  - Click **Stop** to end dictation.
 
-          ![33 Add Intervention Gi](/images/33_add_intervention.gif)
+  ![27 Ai Dictation Gi](/images/27_ai_dictation.gif)
+</Card>
 
-          **Add Evaluative Procedures:**
+### <Icon icon="timer" iconType="duotone" color="#F9345F" size={23} />  **Pull data from a previous Chart Note**
 
-          Click Add Evaluative Procedure → Select the procedure type and CPT codes → These will appear in the blue header alongside other procedures.
+<Card title>
+  Click the curled arrow icon in any section to import data from a patient’s prior Chart Note.
 
-          <img
-            src="/images/evaluative_procedures.webp"
-            alt="Evaluative Procedures Web"
-            title="Evaluative Procedures Web"
-            style={{ width:"51%" }}
-          />
+  <img
+    src="/images/pull_hist_data_notes.webp"
+    alt="Pull Hist Data Notes Web"
+    title="Pull Hist Data Notes Web"
+    style={{ width:"34%" }}
+  />
+</Card>
 
-          ![34 Add Eval Procedure Gi](/images/34_add_eval_procedure.gif)
+### <Icon icon="input-text" iconType="duotone" color="#F9345F" size={23} />  **Use pre-defined Text Snippets**
 
-          **Add Modalities:**\
-          You can create custom interventions for modalities such as ice or hot packs.
+<Card title>
+  Type "/**"** in a text field to quickly insert pre-made text snippets.
 
-          <Danger>
-            ✨**Smart Tip: Reuse past Interventions** - Click on clock icon → select a visit date → Re-Use Selected Rows
-          </Danger>
-          ![32 Add Historic Intervention Gi](/images/32_add_historic_intervention.gif)
-        </Step>
-        <Step title="Mark Intervention as Done" icon="square-check" titleSize="p">
-          - Enter weight, sets, and repetitions (free text).
-          - Enter treatment duration (in minutes).
-          - Expand the intervention using the caret icon to add notes, CPT codes, provider details, justifications, and modifiers.
-          - Mark the intervention as done by clicking the checkbox.
+  **Note**: You can customize your text snippets from the **<u>Preferences tab</u>**.
 
-          ![36 Fill Intervention Gi](/images/36_fill_intervention.gif)
+  ![25 Text Snippets Gi](/images/25_text_snippets.gif)
+</Card>
 
-          **Note**: An intervention cannot be marked as done until it is associated with a CPT Code.
+## Fill your Flowsheets
 
-          <Danger>
-            ✨ **Smart Tip**: Use **Full-Screen Mode** by clicking the resize icon. This makes flowsheet data entry easier.
-          </Danger>
-          ![35 Zoom Screen Gi](/images/35_zoom_screen.gif)
-        </Step>
-      </Steps>
-    </Card>
-    <Icon icon="money-bill-1" iconType="duotone" color="#F9345F" size={23} />  **Billing Calculations**
+More details: [<u>Flowsheets/Intervention Manager User Guide</u>](/1cdf92a633f280a09b7fc27c23b0e830?pvs=25)
 
-    <Card title>
-      - **Auto-calculate:** The system automatically calculates treatment time and units.
-      - **Manual entry:** Turn off auto-calculation toggles if you want to manually enter total time or units (useful for concurrent exercises). You can also add up to four modifiers to a procedure.
+Flowsheets allow you to track interventions, treatments, and evaluative procedures within the Chart Note.
 
-      Note: In some cases, if two interventions may occur at the same time, you can **<u>mark them as concurrent</u>**
+### <Icon icon="notebook" iconType="duotone" color="#F9345F" size={23} />  **Filling a Flowsheet**
 
-      ![37 Manual Units Time Gi](/images/37_manual_units_time.gif)
-    </Card>
-    <Icon icon="person-walking" iconType="duotone" color="#F9345F" size={23} />  **Creating & sending a HEP (Home Exercise Plan)**
+<Card title>
+  <Steps>
+    <Step title="Add Treatments" icon="person-walking" titleSize="p">
+      **Add Interventions:**
 
-    <Card title>
-      - Mark the checkbox labeled **HEP** next to an intervention.
-      - Click the double caret icon to add notes that will appear only in the HEP (not in billing).
-      - Preview and send the HEP via email, text, or print as a PDF.
+      - Click **Add Interventions** within the Chart Note, or use the Intervention Manager in the right sidebar.
+      - Search by body part, treatment, movement, or category.
+      - Selected interventions will appear in the flowsheet in the order chosen.
 
-      Note: Double click an intervention to mark it as a \*\*To-do \*\*(exercises to be done today).
+      ![33 Add Intervention Gi](/images/33_add_intervention.gif)
 
-      ![Hep Web](/images/hep.webp)
+      **Add Evaluative Procedures:**
 
-      ![38 Hep Gi](/images/38_hep.gif)
-    </Card>
-  </Step>
-  <Step title="Sign & Submit" stepNumber={4} titleSize="h3">
-    <Icon icon="badge-check" iconType="duotone" color="#F9345F" size={23} />  **Compliance Checks**
-
-    <Card title=" ">
-      **Compliance checkmarks** ensure that specific details required for compliance are captured in the Chart Note.
-
-      - If the detail is missing, the checkmark appears **grey**.
-      - Once the detail is documented, the checkmark turns **green**.
-
-      You can capture this information either by typing it manually or by using the AI Scribe.
-
-      ![Compliance Checkmarks Web](/images/compliance_checkmarks.webp)
-    </Card>
-    <Icon icon="money-check-pen" iconType="duotone" color="#F9345F" size={23} />  **Sign a Note**
-
-    <Card title>
-      The signature section compiles all compliance validations for review. Here, the rendering provider and any co-signers can sign the note.
+      Click Add Evaluative Procedure → Select the procedure type and CPT codes → These will appear in the blue header alongside other procedures.
 
       <img
-        src="/images/notarize_note.webp"
-        alt="Notarize Note Web"
-        title="Notarize Note Web"
-        style={{ width:"65%" }}
+        src="/images/evaluative_procedures.webp"
+        alt="Evaluative Procedures Web"
+        title="Evaluative Procedures Web"
+        style={{ width:"51%" }}
       />
 
-      - To fax the encounter to a referring provider, select their name from the dropdown, enter their fax number, and check **Fax note to referring provider**.
-      - You may also include a signature request section if needed.
-    </Card>
-    <Icon icon="file-magnifying-glass" iconType="duotone" color="#F9345F" size={23} />  **Preview Chart Note before submitting**
+      ![34 Add Eval Procedure Gi](/images/34_add_eval_procedure.gif)
 
-    <Card title>
-      Navigate to **Notarize** within the Chart Note and select **Preview Billing PDF** (next to Fax to Ref. Provider).
+      **Add Modalities:**\
+      You can create custom interventions for modalities such as ice or hot packs.
 
-      ![41 Preview Pdf Gi](/images/41_preview_pdf.gif)
-    </Card>
-    <Icon icon="check-to-slot" iconType="duotone" color="#F9345F" size={23} />  **Submit Encounter**
+      <Danger>
+        ✨**Smart Tip: Reuse past Interventions** - Click on clock icon → select a visit date → Re-Use Selected Rows
+      </Danger>
+      ![32 Add Historic Intervention Gi](/images/32_add_historic_intervention.gif)
+    </Step>
+    <Step title="Mark Intervention as Done" icon="square-check" titleSize="p">
+      - Enter weight, sets, and repetitions (free text).
+      - Enter treatment duration (in minutes).
+      - Expand the intervention using the caret icon to add notes, CPT codes, provider details, justifications, and modifiers.
+      - Mark the intervention as done by clicking the checkbox.
 
-    <Card title>
-      - Sign the note under **Notarize** and click **Submit**.
-      - If the patient has future appointments scheduled, you can choose to update them with the completed note.
-      - Next, you’ll be asked if you’d like to review the appointment in RCM/Billing. Click **View Encounter Details** or **View Claim Details**, or simply click **Complete**.
+      ![36 Fill Intervention Gi](/images/36_fill_intervention.gif)
 
-      <img
-        src="/images/submit_note.webp"
-        alt="Submit Note Web"
-        title="Submit Note Web"
-        style={{ width:"65%" }}
-      />
-    </Card>
-    <Icon icon="folder-arrow-up" iconType="duotone" color="#F9345F" size={23} />  **Post Submission**
+      **Note**: An intervention cannot be marked as done until it is associated with a CPT Code.
 
-    <Card title=" ">
-      Once you sign & submit a Chart Note, you can:
+      <Danger>
+        ✨ **Smart Tip**: Use **Full-Screen Mode** by clicking the resize icon. This makes flowsheet data entry easier.
+      </Danger>
+      ![35 Zoom Screen Gi](/images/35_zoom_screen.gif)
+    </Step>
+  </Steps>
+</Card>
 
-      - **<u>Fax a Chart Note</u>**
-      - **<u>View and download updated Note</u>**
-      - **<u>Discharge your Patient</u>**
-    </Card>
-  </Step>
-</Steps>
+### <Icon icon="money-bill-1" iconType="duotone" color="#F9345F" size={23} />  **Billing Calculations**
+
+<Card title>
+  - **Auto-calculate:** The system automatically calculates treatment time and units.
+  - **Manual entry:** Turn off auto-calculation toggles if you want to manually enter total time or units (useful for concurrent exercises). You can also add up to four modifiers to a procedure.
+
+  Note: In some cases, if two interventions may occur at the same time, you can **<u>mark them as concurrent</u>**
+
+  ![37 Manual Units Time Gi](/images/37_manual_units_time.gif)
+</Card>
+
+### <Icon icon="person-walking" iconType="duotone" color="#F9345F" size={23} />  **Creating & sending a HEP (Home Exercise Plan)**
+
+<Card title>
+  - Mark the checkbox labeled **HEP** to select interventions to print.
+  - Click the double caret icon to add notes that will appear only in the HEP (not in billing).
+  - Preview and send the HEP via email, text, or print as a PDF.
+
+  Note: Double click an intervention to mark it as a **To-do** (exercises to be done today).
+
+  ![Hep Web](/images/hep.webp)
+
+  ![38 Hep Gi](/images/38_hep.gif)
+</Card>
+
+## Sign & Submit
+
+### <Icon icon="badge-check" iconType="duotone" color="#F9345F" size={23} />  **Compliance Checks**
+
+<Card title=" ">
+  **Compliance checkmarks** ensure that specific details required for compliance are captured in the Chart Note.
+
+  - If the detail is missing, the checkmark appears **grey**.
+  - Once the detail is documented, the checkmark turns **green**.
+
+  You can capture this information either by typing it manually or by using the AI Scribe.
+
+  ![Compliance Checkmarks Web](/images/compliance_checkmarks.webp)
+</Card>
+
+### <Icon icon="money-check-pen" iconType="duotone" color="#F9345F" size={23} />  **Sign a Note**
+
+<Card title>
+  The signature section compiles all compliance validations for review. Here, the rendering provider and any co-signers can sign the note.
+
+  <img
+    src="/images/notarize_note.webp"
+    alt="Notarize Note Web"
+    title="Notarize Note Web"
+    style={{ width:"53%" }}
+  />
+
+  - To fax the encounter to a referring provider, select their name from the dropdown, enter their fax number, and check **Fax note to referring provider**.
+  - You may also include a signature request section if needed.
+</Card>
+
+### <Icon icon="file-magnifying-glass" iconType="duotone" color="#F9345F" size={23} />  **Preview Chart Note before submitting**
+
+<Card title>
+  Navigate to **Notarize** within the Chart Note and select **Preview Billing PDF** (next to Fax to Ref. Provider).
+
+  ![41 Preview Pdf Gi](/images/41_preview_pdf.gif)
+</Card>
+
+### <Icon icon="check-to-slot" iconType="duotone" color="#F9345F" size={23} />  **Submit Encounter**
+
+<Card title>
+  - Sign the note under **Notarize** and click **Submit**.
+  - If the patient has future appointments scheduled, you can choose to update them with the completed note.
+  - Next, you’ll be asked if you’d like to review the appointment in RCM/Billing. Click **View Encounter Details** or **View Claim Details**, or simply click **Complete**.
+
+  <img
+    src="/images/submit_note.webp"
+    alt="Submit Note Web"
+    title="Submit Note Web"
+    style={{ width:"53%" }}
+  />
+</Card>
+
+### <Icon icon="folder-arrow-up" iconType="duotone" color="#F9345F" size={23} />  **Post Submission**
+
+<Card title=" ">
+  Once you sign & submit a Chart Note, you can:
+
+  <Accordion title="Discharge your Patient">
+    - **Change your Chart Note to a Discharge Note** to automatically adjust the template and included sections.
+    - **Discharge a patient** from the [case table within the Patient Profile](https://air_athelas.mintlify.app/patient_details/patient_demog#active-and-discharged-cases)
+  </Accordion>
+  - **<u>Fax a Chart Note</u>**
+  - **<u>View and download updated Note</u>**
+</Card>
