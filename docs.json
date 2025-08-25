@@ -17,8 +17,8 @@
     "navbar": {  
       "primary": {
       "type": "button",
-      "label": "Try the Air Athelas Quiz Now",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Try the Air Athelas Training Now",
+      "href": "https://athelas.app.workramp.com/login"
       }
     },
     "navigation": {
