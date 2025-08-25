@@ -16,7 +16,14 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
       3. Click **View Note** in the top-right corner.
       4. Once opened, patient details appear in the top bar, with Chart Note sections listed in the left sidebar.
 
-      **Note:** You must check-in the appointment before you can open its Chart Note. 
+      <img
+        src="/images/open_chart_note.webp"
+        alt="Open Chart Note Web"
+        title="Open Chart Note Web"
+        style={{ width:"54%" }}
+      />
+
+      **Note:** You must check-in the appointment before you can open its Chart Note.
 
       ![20 View Chart Note Gi](/images/20_view_chart_note.gif)
 
@@ -67,6 +74,10 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
 
           ![29 Start Scribe Gi](/images/29_start_scribe.gif)
 
+          - End or cancel the recording when finished
+
+          ![30 Stop Scribe Gi](/images/30_stop_scribe.gif)
+
           <Danger>
             ✨ \*\*Smart Tip: \*\*While uploading, you can start a new chat on the script to ask questions about the current consultation recording.
           </Danger>
@@ -75,6 +86,13 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
           - Review the generated content in the Scribe Application Page. Scroll through the Tabs to review all sections
           - Each section includes a checkbox to apply or exclude the scribe output into the Chart Note.
           - Click **Apply Scribe**
+
+          <img
+            src="/images/apply_scribe.webp"
+            alt="Apply Scribe Web"
+            title="Apply Scribe Web"
+            style={{ width:"45%" }}
+          />
 
           Note: You can also [<u>lock a section to disable the scribe</u>](/24df92a633f28009b75dfaae9217117d?v=24cf92a633f2800f97bd000cc57886f6&pvs=25) for that section.
 
@@ -98,16 +116,27 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
       - Speak normally and watch text appear in real time.
       - Smart punctuation automatically inserts commas, periods, and question marks.
       - Click **Stop** to end dictation.
+
+      ![27 Ai Dictation Gi](/images/27_ai_dictation.gif)
     </Card>
     <Icon icon="timer" iconType="duotone" color="#F9345F" size={23} />  **Pull data from a previous Chart Note**
 
     <Card title>
       Click the curled arrow icon in any section to import data from a patient’s prior Chart Note.
+
+      <img
+        src="/images/pull_hist_data_notes.webp"
+        alt="Pull Hist Data Notes Web"
+        title="Pull Hist Data Notes Web"
+        style={{ width:"34%" }}
+      />
     </Card>
     <Icon icon="input-text" iconType="duotone" color="#F9345F" size={23} />  **Use pre-defined Text Snippets**
 
     <Card title>
       Type "/**"** in a text field to quickly insert pre-made text snippets.
+
+      ![25 Text Snippets Gi](/images/25_text_snippets.gif)
     </Card>
   </Step>
   <Step title="Fill your Flowsheets" stepNumber={3} titleSize="h3">
@@ -126,9 +155,20 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
           - Search by body part, treatment, movement, or category.
           - Selected interventions will appear in the flowsheet in the order chosen.
 
+          ![33 Add Intervention Gi](/images/33_add_intervention.gif)
+
           **Add Evaluative Procedures:**
 
           Click Add Evaluative Procedure → Select the procedure type and CPT codes → These will appear in the blue header alongside other procedures.
+
+          <img
+            src="/images/evaluative_procedures.webp"
+            alt="Evaluative Procedures Web"
+            title="Evaluative Procedures Web"
+            style={{ width:"51%" }}
+          />
+
+          ![34 Add Eval Procedure Gi](/images/34_add_eval_procedure.gif)
 
           **Add Modalities:**\
           You can create custom interventions for modalities such as ice or hot packs.
@@ -136,6 +176,7 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
           <Danger>
             ✨ **Smart Tip**: \*\*Reuse past Interventions \*\*- Click on clock icon → select a visit date → Re-Use Selected Rows
           </Danger>
+          ![32 Add Historic Intervention Gi](/images/32_add_historic_intervention.gif)
         </Step>
         <Step title="Mark Intervention as Done" icon="square-check" titleSize="p">
           - Enter weight, sets, and repetitions (free text).
@@ -143,11 +184,14 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
           - Expand the intervention using the caret icon to add notes, CPT codes, provider details, justifications, and modifiers.
           - Mark the intervention as done by clicking the checkbox.
 
+          ![36 Fill Intervention Gi](/images/36_fill_intervention.gif)
+
           **Note**: An intervention cannot be marked as done until it is associated with a CPT Code.
 
           <Danger>
             ✨ **Smart Tip**: Use **Full-Screen Mode** by clicking the resize icon. This makes flowsheet data entry easier.
           </Danger>
+          ![35 Zoom Screen Gi](/images/35_zoom_screen.gif)
         </Step>
       </Steps>
     </Card>
@@ -156,6 +200,8 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
     <Card title>
       - **Auto-calculate:** The system automatically calculates treatment time and units.
       - **Manual entry:** Turn off auto-calculation toggles if you want to manually enter total time or units (useful for concurrent exercises). You can also add up to four modifiers to a procedure.
+
+      ![37 Manual Units Time Gi](/images/37_manual_units_time.gif)
     </Card>
     <Icon icon="person-walking" iconType="duotone" color="#F9345F" size={23} />  **Creating & sending a HEP (Home Exercise Plan)**
 
@@ -163,6 +209,10 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
       - Mark the checkbox labeled **HEP** next to an intervention.
       - Click the double caret icon to add notes that will appear only in the HEP (not in billing).
       - Preview and send the HEP via email, text, or print as a PDF.
+
+      ![Hep Web](/images/hep.webp)
+
+      ![38 Hep Gi](/images/38_hep.gif)
     </Card>
   </Step>
   <Step title="Sign & Submit" stepNumber={4} titleSize="h3">
@@ -173,6 +223,13 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
     <Card title>
       The signature section compiles all compliance validations for review. Here, the rendering provider and any co-signers can sign the note.
 
+      <img
+        src="/images/notarize_note.webp"
+        alt="Notarize Note Web"
+        title="Notarize Note Web"
+        style={{ width:"65%" }}
+      />
+
       - To fax the encounter to a referring provider, select their name from the dropdown, enter their fax number, and check **Fax note to referring provider**.
       - You may also include a signature request section if needed.
     </Card>
@@ -180,6 +237,8 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
 
     <Card title>
       Navigate to **Notarize** within the Chart Note and select **Preview Billing PDF** (next to Fax to Ref. Provider).
+
+      ![41 Preview Pdf Gi](/images/41_preview_pdf.gif)
     </Card>
     <Icon icon="check-to-slot" iconType="duotone" color="#F9345F" size={23} />  **Submit Encounter**
 
@@ -187,6 +246,13 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
       - Sign the note under **Notarize** and click **Submit**.
       - If the patient has future appointments scheduled, you can choose to update them with the completed note.
       - Next, you’ll be asked if you’d like to review the appointment in RCM/Billing. Click **View Encounter Details** or **View Claim Details**, or simply click **Complete**.
+
+      <img
+        src="/images/submit_note.webp"
+        alt="Submit Note Web"
+        title="Submit Note Web"
+        style={{ width:"65%" }}
+      />
     </Card>
     **Fax a Chart Note**
 
