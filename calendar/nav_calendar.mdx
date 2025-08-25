@@ -6,76 +6,76 @@ toc: "true"
 
 Once you log into Air, you can view your Calendar and manage your schedule for the day.
 
-<Steps>
-  <Step title="Open your Calendar" iconType="duotone" stepNumber={1} titleSize="h3">
+### <Icon icon="calendar-check" iconType="duotone" color="#F9345F" size={23} />  Open your Calendar
+
+<Card title=" ">
+  When you open the Calendar, the default view allows you to select which Providers and Facilities you want to display.
+
+  You can select multiple Providers and Facilities. Once selected, the Calendar automatically updates to display the corresponding schedules.
+
+  ![2 Open Calendar Gi](/images/2_open_calendar.gif)
+</Card>
+
+### <Icon icon="timer" iconType="duotone" color="#F9345F" size={23} />  Set your Time and Compact preferences
+
+<Card title=" ">
+  **Time Preferences**: Switch between Day, Week, and Month views to adjust your Calendar display. Use the **Today** icon in the top left to instantly return to today's date.
+
+  ![3 Calendar View Gi](/images/3_calendar_view.gif)
+
+  **Compact Preferences:** Select how compact you'd like your calendar to be.
+
+  - **Standard View (default):** Best if most appointments are under 30 minutes.
+  - **Compact View:** Fits more appointments on the screen. Works well on large displays, but details may be cut off on smaller screens.
+  - **Fit to Screen View:** Adjusts automatically to fit the screen size for large and small screens. Shows the full schedule, but with fewer details.
+
+  <Danger>
+    ✨**Smart Tip:** Drag and drop appointments between providers to reassign the rendering Provider
+  </Danger>
+  <Accordion title="Filter Appointments" iconType="regular">
     <Card title=" ">
-      When you open the Calendar, the default view allows you to select which Providers and Facilities you want to display.
+      Click the **Filter** icon to apply up to **seven filter options:**
 
-      You can select multiple Providers and Facilities. Once selected, the Calendar automatically updates to display the corresponding schedules.
+      - **Provider:** When multiple Providers are selected, each appears as a separate column in the Calendar view.
+      - **Facility:** When multiple Facilities are selected, each appears as a tab across the top of the Calendar.
+      - **Insurance:** Show only appointments for patients whose insurance matches your selection.
+      - **Patient:** Show only appointments for specific patients you select.
+      - **Cancellations:** Hide all appointments marked as _Cancelled_.
+      - **No Shows:** Hide all appointments marked as _No Show_.
+      - **Weekends:** Hide Saturdays and Sundays from the Calendar view (applies to Day, Week, and Month views).
 
-      ![2 Open Calendar Gi](/images/2_open_calendar.gif)
-    </Card>
-  </Step>
-  <Step title="Set your Time and Compact preferences" iconType="duotone" titleSize="h3">
-    <Card title=" ">
-      **Time Preferences**: Switch between Day, Week, and Month views to adjust your Calendar display. Use the **Today** icon in the top left to instantly return to today's date.
+      ![4 Calendar Filter Gi](/images/4_calendar_filter.gif)
 
-      ![3 Calendar View Gi](/images/3_calendar_view.gif)
+      At any time, you can reset by clicking **Clear All** at the top of the Calendar.
 
-      **Compact Preferences:** Select how compact you'd like your calendar to be.
-
-      - **Standard View (default):** Best if most appointments are under 30 minutes.
-      - **Compact View:** Fits more appointments on the screen. Works well on large displays, but details may be cut off on smaller screens.
-      - **Fit to Screen View:** Adjusts automatically to fit the screen size for large and small screens. Shows the full schedule, but with fewer details.
-
-      <Danger>
-        ✨**Smart Tip:** Drag and drop appointments between providers to reassign the rendering Provider
-      </Danger>
-      <Accordion title="Filter Appointments" iconType="regular">
-        <Card title=" ">
-          Click the **Filter** icon to apply up to **seven filter options:**
-
-          - **Provider:** When multiple Providers are selected, each appears as a separate column in the Calendar view.
-          - **Facility:** When multiple Facilities are selected, each appears as a tab across the top of the Calendar.
-          - **Insurance:** Show only appointments for patients whose insurance matches your selection.
-          - **Patient:** Show only appointments for specific patients you select.
-          - **Cancellations:** Hide all appointments marked as _Cancelled_.
-          - **No Shows:** Hide all appointments marked as _No Show_.
-          - **Weekends:** Hide Saturdays and Sundays from the Calendar view (applies to Day, Week, and Month views).
-
-          ![4 Calendar Filter Gi](/images/4_calendar_filter.gif)
-
-          At any time, you can reset by clicking **Clear All** at the top of the Calendar.
-
-          **Note**: Hover over a Provider's name to see the number of appointments for the day, organized by status.
-
-          <img
-            src="/images/hover_appt_status.webp"
-            alt="Hover Appt Status Web"
-            title="Hover Appt Status Web"
-            style={{ width:"31%" }}
-          />
-        </Card>
-      </Accordion>
-    </Card>
-  </Step>
-  <Step title="Instantly view key appointment information" iconType="solid" stepNumber={3} titleSize="h3">
-    <Card title=" ">
-      <Danger>
-        ✨**Smart Tip:** Hover over appointment icons to quickly view eligibility alerts, payment due, and insurance type.
-      </Danger>
-      <img
-        src="/images/calendar_card_full.webp"
-        alt="Calendar Card Full Web"
-        title="Calendar Card Full Web"
-        style={{ width:"47%" }}
-      />
+      **Note**: Hover over a Provider's name to see the number of appointments for the day, organized by status.
 
       <img
-        src="/images/5_calendar_hover.gif"
-        alt="5 Calendar Hover Gi"
-        style={{ width:"100%" }}
+        src="/images/hover_appt_status.webp"
+        alt="Hover Appt Status Web"
+        title="Hover Appt Status Web"
+        style={{ width:"31%" }}
       />
     </Card>
-  </Step>
-</Steps>
+  </Accordion>
+</Card>
+
+### <Icon icon="calendar-circle-user" iconType="duotone" color="#F9345F" size={23} />  Instantly view key appointment information
+
+<Card title=" ">
+  <Danger>
+    ✨**Smart Tip:** Hover over appointment icons to quickly view eligibility alerts, payment due, and insurance type.
+  </Danger>
+  <img
+    src="/images/calendar_card_full.webp"
+    alt="Calendar Card Full Web"
+    title="Calendar Card Full Web"
+    style={{ width:"47%" }}
+  />
+
+  <img
+    src="/images/5_calendar_hover.gif"
+    alt="5 Calendar Hover Gi"
+    style={{ width:"100%" }}
+  />
+</Card>
