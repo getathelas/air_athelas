@@ -1,3 +1,172 @@
 ---
-title: "New file"
+sidebarTitle: "Edit Chart Note Templates"
+title: "Edit Chart Note Templates"
 ---
+
+Customize Chart Notes by adding sections, creating templates, and setting measurement or treatment preferences.
+
+### Add sections to Chart Note
+
+<Card title=" ">
+  To add a new section to a Chart Note:
+
+  - Navigate to the desired section.
+  - Click **\+ Add Section**.
+  - Select your section from the dropdown menu.
+
+  ![31 Add Flowsheets Gi](/images/31_add_flowsheets.gif)
+
+  <img
+    src="/images/add_sections.webp"
+    alt="Add Sections Web"
+    title="Add Sections Web"
+    style={{ width:"71%" }}
+  />
+
+  **Note:** Adding a **Flowsheet** section will remove the **Treatments** section.
+
+  ![Treatments Vs Flowsheet Web](/images/treatments_vs_flowsheet.webp)
+</Card>
+
+### Create custom chart note Templates
+
+<Card title=" ">
+  - From the left navigation menu, go to **Utilities → Templates**.
+  - On the Templates page, search or filter to find existing templates.
+  - To create a new template, click **\+ Create New Template** in the top-right corner.
+
+  ![New Template Web](/images/new_template.webp)
+
+  You will be taken to a configuration page where you can:
+
+  - Title your template at the top.
+  - Drag and drop components from the left-hand panel to the right to build your template.
+  - Once your form is complete, select the type of template (EHR Chart Note or Patient Intake Form) and click **Save**.
+
+  ![Template Types Web](/images/template_types.webp)
+
+  **Components available include:**
+
+  <AccordionGroup>
+    <Accordion title="Single Choice">
+      Ask a question with one selectable answer.
+
+      ![Template Single Choice Web](/images/template_single_choice.webp)
+    </Accordion>
+    <Accordion title="Short Answer">
+      Accepts short, typed responses.
+
+      ![Template Short Ans Web](/images/template_short_ans.webp)
+    </Accordion>
+    <Accordion title="Multiple Choice">
+      Ask a question with multiple selectable answers.
+
+      ![Template Multiple Choice Web](/images/template_multiple_choice.webp)
+    </Accordion>
+    <Accordion title="Paragraph Answer">
+      Accepts longer, free-text responses.
+
+      ![Template Para Ans Web](/images/template_para_ans.webp)
+    </Accordion>
+    <Accordion title="Yes/No Question">
+      Provides a binary choice.
+
+      ![Template Yes No Ans Web](/images/template_yes_no_ans.webp)
+    </Accordion>
+    <Accordion title="Number Answer">
+      Accepts numeric input.
+
+      ![Template No Ans Web](/images/template_no_ans.webp)
+    </Accordion>
+    <Accordion title="Rating Question">
+      Collects a rating (e.g., 1–5 scale).
+
+      ![Template Rating Web](/images/template_rating.webp)
+    </Accordion>
+    <Accordion title="Table Answer">
+      Displays responses in a table format, with columns added using the **\+** button.
+
+      ![Template Table Web](/images/template_table.webp)
+    </Accordion>
+    <Accordion title="Date Question">
+      Accepts a date input.
+
+      ![Template Date Web](/images/template_date.webp)
+    </Accordion>
+    <Accordion title="Text Box">
+      Only available for patient intake forms (not EHR templates).
+
+      ![Template Text Web](/images/template_text.webp)
+    </Accordion>
+  </AccordionGroup>
+</Card>
+
+### Add Custom Compliance checkmarks
+
+<Card title=" ">
+  **How to create a Compliance Checkmark**
+
+  - Go to **Utilities → Templates** → open the template you want (or click **\+ Create New Template**).
+  - Locate (or add) a question where you want the checkmark to apply. Compliance checkmarks can be configured for **Short Answer** and **Paragraph** type questions in templates.
+  - Click \*\*\+ Add Trait \*\*→ Name the checkmark
+  - Add a **Yes/No** prompt that states the requirement you want to verify, e.g.:\
+    “**Does the text list prior medications?**”
+  - Click **Save**
+  - As providers fill out notes, the system will automatically check off each compliance requirement when the information is detected.
+
+  ![Compliance New Web](/images/compliance_new.webp)
+
+  **Examples of Compliance Traits**
+
+  You can create checkmarks for traits such as:
+
+  - **Symptoms** – Does the note list the patient’s symptoms?
+  - **Medications** – Does the note mention prior or current medications?
+  - **Date of Onset / Chronicity** – Does the note state when the condition began or whether it is chronic?
+  - **Mechanism of Injury** – Does the note describe the physical forces that caused the injury?
+  - **Prior Level of Function** – Does the note include details of the patient’s baseline (e.g., “walking 10,000 steps per day before injury”)?
+  - **Body Part Injured** – Is the affected body part identified?
+  - **Functional Limitations** – Does the note describe what the patient is unable to do (e.g., “unable to walk without assistance”)?
+</Card>
+
+### Create Custom Preferences
+
+**Measurement Preferences**
+
+<Card title=" ">
+  You can view, add, configure, and delete measurements individually.
+
+  - Open **Preferences** from the left navigation bar
+  - Click on the **Measurements** tab
+  - Click **Add New Measurement** to create a new measurement and configure its response fields.
+
+  ![Add New Measurement Template Web](/images/add_new_measurement_template.webp)
+
+  **Measurements can be displayed in two formats:**
+
+  - **Text Type:** Fields appear as single-line entries (best for a few simple measurements).
+
+    ![Measurement Single Create Web](/images/measurement_single_create.webp)
+  - **Table Type:** Fields are displayed in a table format (best when comparing bilateral values, e.g., left vs. right knee).
+
+    ![Measurement Table Create Web](/images/measurement_table_create.webp)
+
+  **Measurement Groups:** Click **Add New Measurement Group** to create a group of related measurements. Enter a group name and assign the individual measurements.
+
+  ![Measurement Groups Create Web](/images/measurement_groups_create.webp)
+</Card>
+
+**Treatment Preferences**
+
+<Card title=" ">
+  - From the left navigation menu, go to **Settings → MyPractice**.
+  - Select **Treatments** from the top bar.
+  - Add new treatments or configure existing ones as needed.
+
+  <img
+    src="/images/add_new_treatment.webp"
+    alt="Add New Treatment Web"
+    title="Add New Treatment Web"
+    style={{ width:"72%" }}
+  />
+</Card>
