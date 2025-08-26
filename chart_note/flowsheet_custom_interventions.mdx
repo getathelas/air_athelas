@@ -1,5 +1,5 @@
 ---
-title: "Customize Flowsheets"
+title: "Customize Interventions within Flowsheets"
 ---
 
 Create and manage custom interventions, groups, and progress tracking within Flowsheets to tailor care documentation to your practice.
@@ -16,9 +16,10 @@ Create and manage custom interventions, groups, and progress tracking within Flo
 
   You can specify:
 
-  - The **name** and **instructions** to be included in the HEP communication to patients.
-  - Optional defaults such as CPT code, number of minutes to bill, justification, and an image in the Media tab.
-  - The **type of activity** (exercise, modality, manual therapy), category, movement, and body type.
+  - The **name** (required) and **instructions** (to be included in the HEP communication to patients).
+  - _(Recommended but optional)_ Add a **default CPT code** and **default minutes** for billing.
+  - Attach any relevant **images** in the Media tab.
+  - Specify the **activity type** (exercise, modality, manual therapy), **category**, **movement**, and **body type**.
 
   <img
     src="/images/intervention_type_filter.png"
@@ -32,12 +33,12 @@ Create and manage custom interventions, groups, and progress tracking within Flo
 
 <Card title=" ">
   - In the Intervention Manager, click **New Group**.
-  - Enter a **group name**. Select a body part or movement type.
+  - Enter a **group name**. Group names are internal only; they do not appear in chart notes or PDFs.
+  - _(Optional)_ Assign a **Body Part** or **Movement Type**.
+  - Filter interventions by name, body part, or activity type, then click to add them to the right-hand panel.
+  - Create **subgroups** as needed and adjust the **order** of interventions or subgroups.
 
   ![New Intervention Group Web](/images/new_intervention_group.webp)
-
-  - Filter interventions by **name, body part, or activity type** and add them to the group.
-  - Adjust the order of interventions and any sub-groups by dragging them.
 
   <img
     src="/images/select_interventions_group.webp"
@@ -50,7 +51,8 @@ Create and manage custom interventions, groups, and progress tracking within Flo
 **Edit an Existing Intervention**
 
 <Card title=" ">
-  Click the **name** of an intervention to edit its details or view associated media.
+  - Click the intervention’s **name** to open it.
+  - Edit details such as instructions, media, CPT code, or default minutes.
 
   ![Edit Intervention Pn](/images/edit_intervention.png)
 </Card>
@@ -60,11 +62,13 @@ Create and manage custom interventions, groups, and progress tracking within Flo
 <Card title=" ">
   In some cases, two interventions may occur at the same time, and you don’t want to bill them separately. In these cases, you can mark interventions as **concurrent**.
 
+  The duration is billed as the **maximum** of the overlapping times, not the sum.
+
   **Example:** Before: (10 \+ 2 \+ 10 \+ 15 = 37)
 
   ![Concurrent Before Web](/images/concurrent_before.webp)
 
-  \*\*Example: \*\*After: (10 \+ 2 \+ max(15,10) = 27)
+  **Example:** After: (10 \+ 2 \+ max(15,10) = 27)
 
   ![Concurrent After Web](/images/concurrent_after.webp)
 
@@ -73,14 +77,14 @@ Create and manage custom interventions, groups, and progress tracking within Flo
   - The intervention must be marked as **Done**.
   - Both interventions must have the **same procedure code**.
 
-  When these conditions are met, the EHR will automatically show all interventions that can be marked as concurrent.
+  Air auto-suggests concurrent options. Selecting one intervention as concurrent automatically maps it back to the other.
 
   Once you mark Intervention B as concurrent with Intervention A, Intervention A will also be auto-selected with Intervention B (creating a two-way mapping).
 
-  **Note:** You cannot change the procedure code until the concurrent link is removed.
+  **Note:** You cannot change the CPT code until the concurrent link is removed. You cannot set an intervention to Pending until the concurrent link is removed.
 </Card>
 
-### View Intervention Progress
+### Review Intervention Progress
 
 <Card title=" ">
   Click **Intervention Progress** in the Flowsheet section to view statistics from all previous interventions.

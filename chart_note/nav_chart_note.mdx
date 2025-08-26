@@ -59,7 +59,7 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
 ### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Auto-Fill with Athelas AI Scribe**
 
 <Card title>
-  More details: [**EHR Scribe v2 User Guide**](https://www.notion.so/athelas-public/EHR-Scribe-v2-User-Guide-1c0f92a633f28065a151d1447b4247f1)
+  More details: [**EHR Scribe v2 User Guide**](https://athelas-public.notion.site/Air-Scribe-v2-User-Guide-203f92a633f28053987ec9be32d0b198)
 
   The Athelas AI Scribe allows you to record a patient consultation and automatically generate detailed documentation.
 
@@ -100,6 +100,21 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
         ✨ **Smart Tip**: Use **Reapply Scribe** to restore the most recent recording if you need to revert back. This is helpful if you've edited fields after scribing.
       </Danger>
       Alternate Option: [**Air scribe (mobile app)**](https://athelas-public.notion.site/Air-Scribe-User-Guide-1dcf92a633f28089ad12c6783d5b8ec0)
+    </Step>
+    <Step title="Quickly access scribes" icon="microphone" iconType="duotone" titleSize="h3">
+      The **Visits** tab provides a quick view of today’s appointments. It displays only the appointments assigned to your provider.
+
+      - **If a scribe already exists** for an appointment, clicking the appointment opens the **Scribe Application Page**, where you can review and apply the scribe to the patient’s Chart Note.
+      - **If no scribe exists,** clicking the appointment opens the **New Recording Page**, where you can start a new audio recording for the visit.
+
+      <img
+        src="/images/scribe_visits.webp"
+        alt="Scribe Visits Web"
+        title="Scribe Visits Web"
+        style={{ width:"42%" }}
+      />
+
+      You can also view past or upcoming appointments by selecting a date in the **date picker** at the top or by using the **left and right arrows** to move one day forward or backward.
     </Step>
   </Steps>
 </Card>
@@ -144,7 +159,7 @@ As you begin a patient consult, set up, complete, and submit a Chart Note.
 
 ## Fill your Flowsheets
 
-More details: [Flowsheets/Intervention Manager User Guide](https://athelas-public.notion.site/Flowsheets-Intervention-Manager-User-Guide-1cdf92a633f280a09b7fc27c23b0e830?pvs=74)
+More details: [Flowsheets/Intervention Manager User Guide](https://athelas-public.notion.site/Flowsheets-and-Interventions-v2-237f92a633f28029869efb031cbafc87)
 
 Flowsheets allow you to track interventions, treatments, and evaluative procedures within the Chart Note.
 
@@ -156,14 +171,25 @@ Flowsheets allow you to track interventions, treatments, and evaluative procedur
       **Add Interventions:**
 
       - Click **Add Interventions** within the Chart Note, or use the Intervention Manager in the right sidebar.
-      - Search by body part, treatment, movement, or category.
+      - Search, filter, and select interventions by:
+        - **Type**: Modality, Exercise, Manual Therapy
+        - **Body Part**
+        - **Category**
+        - **CPT Code**
+        - **Movement Type**
+      - Or use the \*\*search bar \*\*to quickly find interventions by name.
       - Selected interventions will appear in the flowsheet in the order chosen.
+      - Drag and drop interventions to change their order. The order is saved and persists across future notes.
+
+      **Note:** Click the **trash icon** to remove an intervention. Interventions marked as **DONE** must be unmarked before deletion.
 
       ![33 Add Intervention Gi](/images/33_add_intervention.gif)
 
       **Add Evaluative Procedures:**
 
-      Click Add Evaluative Procedure → Select the procedure type and CPT codes → These will appear in the blue header alongside other procedures.
+      - Click **Add Evaluative Procedure** to select CPT codes not tied to interventions.
+      - These appear in the blue header alongside other procedures.
+      - Remove evaluative procedures directly if no longer needed.
 
       <img
         src="/images/evaluative_procedures.webp"
@@ -178,35 +204,44 @@ Flowsheets allow you to track interventions, treatments, and evaluative procedur
       You can create custom interventions for modalities such as ice or hot packs.
 
       <Danger>
-        ✨**Smart Tip: Reuse past Interventions** - Click on clock icon → select a visit date → Re-Use Selected Rows
+        **✨Smart Tip: Reuse Interventions from Past Visits**
+
+        - Click on clock icon → select a visit date
+        - Vew visit-by-visit intervention history
+        - Select interventions to re-use values from, then click **Re-Use Selected Rows** to pull data into the current visit.
       </Danger>
       ![32 Add Historic Intervention Gi](/images/32_add_historic_intervention.gif)
     </Step>
     <Step title="Mark Intervention as Done" icon="square-check" titleSize="p">
-      - Enter weight, sets, and repetitions (free text).
-      - Enter treatment duration (in minutes).
-      - Expand the intervention using the caret icon to add notes, CPT codes, provider details, justifications, and modifiers.
-      - Mark the intervention as done by clicking the checkbox.
+      - Enter **weights, sets, reps** (free text).
+      - Add **treatment duration/minutes** (number input).
+      - Use carry-forward icons:
+        - **Calendar icon** → carry forward values to next note.
+        - **Notes icon** → carry forward weights, sets, reps, and notes.
+      - Expand the caret icon for additional fields (e.g., justification, modifiers).
+      - Select **CPT Code** (search by name or numeric code). Default values from pre-defined custom interventions (duration, CPT, justification) flow into the flowsheet automatically.
+      - Select the provider who performed the intervention (default is **Rendering Provider**)
+      - Mark an intervention as **DONE** only after linking it to a CPT code.
 
       ![36 Fill Intervention Gi](/images/36_fill_intervention.gif)
 
-      **Note**: An intervention cannot be marked as done until it is associated with a CPT Code.
-
       <Danger>
-        ✨ **Smart Tip**: Use **Full-Screen Mode** by clicking the resize icon. This makes flowsheet data entry easier.
+        ✨ **Smart Tip**: Use **Full-Screen Mode** by clicking the resize icon for easier data entry.
       </Danger>
       ![35 Zoom Screen Gi](/images/35_zoom_screen.gif)
     </Step>
   </Steps>
 </Card>
 
-### <Icon icon="money-bill-1" iconType="duotone" color="#F9345F" size={23} />  **Billing Calculations**
+### <Icon icon="money-bill-1" iconType="duotone" color="#F9345F" size={23} />  **Unit & Time Calculations**
 
 <Card title>
   - **Auto-calculate:** The system automatically calculates treatment time and units.
-  - **Manual entry:** Turn off auto-calculation toggles if you want to manually enter total time or units (useful for concurrent exercises). You can also add up to four modifiers to a procedure.
+  - **Manual entry:** Turn off auto-calculation toggles if you want to manually enter total time or units (useful for concurrent exercises). You can also add up to four modifiers to a procedure after marking it as done.
 
-  Note: In some cases, if two interventions may occur at the same time, you can [**mark them as concurrent**](https://air_athelas.mintlify.app/chart_note/flowsheet_custom_interventions#mark-an-intervention-as-concurrent)
+  **Note**: In some cases, if two interventions may occur at the same time, you can [**mark them as concurrent**](https://air_athelas.mintlify.app/chart_note/flowsheet_custom_interventions#mark-an-intervention-as-concurrent)
+
+  Users can toggle the visibility of modifiers and justification fields in **Preferences**.
 
   ![37 Manual Units Time Gi](/images/37_manual_units_time.gif)
 </Card>
@@ -216,9 +251,9 @@ Flowsheets allow you to track interventions, treatments, and evaluative procedur
 <Card title>
   - Mark the checkbox labeled **HEP** (Home Exercise Plan) to select interventions to print.
   - Click the double caret icon to add notes that will appear only in the HEP (not in billing).
-  - Preview and send the HEP via email, text, or print as a PDF.
+  - Click **Print HEP** to preview and send the HEP via email, text, or print as a PDF.
 
-  Note: Double click an intervention to mark it as a **To-do** (exercises to be done today).
+  **Note**: Double click an intervention to mark it as a **To-do** (green border, moves to top)as an exercise to be done today. Reversing a **DONE** intervention to To-Do removes its associated procedure.
 
   ![Hep Web](/images/hep.webp)
 
@@ -256,7 +291,7 @@ Flowsheets allow you to track interventions, treatments, and evaluative procedur
   - You may also include a signature request section if needed.
 </Card>
 
-### <Icon icon="file-magnifying-glass" iconType="duotone" color="#F9345F" size={23} />  \*\*Preview Chart Note \*\*
+### <Icon icon="file-magnifying-glass" iconType="duotone" color="#F9345F" size={23} />  Preview Chart Note
 
 <Card title>
   Navigate to **Notarize** within the Chart Note and select **Preview Billing PDF** (next to Fax to Ref. Provider).
@@ -284,10 +319,22 @@ Flowsheets allow you to track interventions, treatments, and evaluative procedur
 <Card title=" ">
   Once you sign & submit a Chart Note, you can:
 
-  <Accordion title="Discharge your Patient">
-    - **If the patient is in-office: **Change your Chart Note to a Discharge Note to automatically adjust the template and included sections.
-    - **If the patient does not visit the office: **Discharge the patient from the [case table within the Patient Profile](https://air_athelas.mintlify.app/patient_details/patient_demog#active-and-discharged-cases)
+  <Accordion title="View and download updated Note">
+    Once a Chart Note is completed, it becomes visible in the [Appointments section](https://air_athelas.mintlify.app/patient_details/patient_appts#preview-past-billing-and-plan-of-care-documents) of the Patient’s Profile.
   </Accordion>
-  - **<u>Fax a Chart Note</u>**
-  - **<u>View and download updated Note</u>**
+  <Accordion title="Fax a Chart Note">
+    To fax a completed chart note, click **“\+Create Fax”** at the bottom of the note. A side panel will open where you can choose the fax type.
+
+    ![39 Fax Docs Gi](/images/39_fax_docs.gif)
+
+    **Three fax types are available:**
+
+    - **Provider:** Select from a dropdown of referring providers within Air. If a fax number is saved for the provider, it will auto-populate.
+    - **Individual Fax Number:** Enter any fax number manually to send the completed chart note.
+    - **Imaging Request:** Sends the chart note along with an imaging request. This includes diagnosis codes, procedure codes, rule-out information, result medium, attachments, and imaging facility details.
+  </Accordion>
+  <Accordion title="Discharge your Patient">
+    - \*\*If the patient is in-office: \*\*Change your Chart Note to a Discharge Note to automatically adjust the template and included sections.
+    - \*\*If the patient does not visit the office: \*\*Discharge the patient from the [case table within the Patient Profile](https://air_athelas.mintlify.app/patient_details/patient_demog#active-and-discharged-cases)
+  </Accordion>
 </Card>
