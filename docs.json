@@ -99,7 +99,6 @@
                                 "calendar/nav_calendar",
                                 "check-in/check-in",
                                 "patient_details/patient_info",
-                                "reports/kpi_dashboard",
                                 "troubleshoot/faqs"
                             ]
                   },
@@ -128,15 +127,8 @@
                                 "patient_details/patient_appts",
                                 "patient_details/patient_attachments"
                             ]
-                        },
-                  {
-                            "group": "My Tasks & Reports",
-                            "icon": "envelope",
-                            "pages": [
-                                "reports/kpi_dashboard"
-                            ]
                         }
-                    ]
+                ]
                   },
             {
                 "tab": "Back Office",
