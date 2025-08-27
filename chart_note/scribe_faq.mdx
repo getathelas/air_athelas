@@ -4,10 +4,10 @@ title: "AI Scribe FAQs"
 
 Answers to common questions on setting up, recording, and managing AI Scribe in Chart Notes.
 
-### How do I set up Scribe?
+### How do I set up Scribe - my Scribe is not working?
 
 <Card title=" ">
-  Before using Scribe to capture and document patient encounters, please ensure the following steps are completed:
+  If the “wave” is not moving when recording a session, something might not be working with the  audio. Before using Scribe to capture and document patient encounters, please ensure the following steps are completed:
 
   - **Check your internet connection**\
     Make sure you are connected to a stable, active internet connection for uninterrupted recording and upload.
@@ -18,7 +18,7 @@ Answers to common questions on setting up, recording, and managing AI Scribe in 
   - **Enable microphone permissions on your device**
     - On Mac: Go to **System Settings → Privacy & Security → Microphone** and allow browser access.
     - On Windows: Go to **Settings → Privacy → Microphone** and ensure permissions are turned on for your browser.
-  - **Ensure your mcirophone is not muted before you start recording**
+  - **Confirm your mcirophone is turned on and not muted before you start recording**
 </Card>
 
 ### How do I lock sections from AI Scribe?
@@ -41,6 +41,16 @@ Answers to common questions on setting up, recording, and managing AI Scribe in 
   />
 </Card>
 
+### Why is it taking so long for Scribe to upload recording?
+
+<Card title=" ">
+  - Do not log out of your account on the device that has the pending upload, they will not save
+  - Connect to a strong Wifi
+  - Select “Retry” to retry the upload
+
+  **Note**: If scribes are huge MB files, they will struggle to upload on a mobile device
+</Card>
+  
 ### How do I record again for an appointment?
 
 <Card title=" ">
@@ -55,8 +65,15 @@ Answers to common questions on setting up, recording, and managing AI Scribe in 
     src="/images/apply_scribe.webp"
     alt="Apply Scribe Web"
     title="Apply Scribe Web"
-    style={{ width:"61%" }}
+    style={{ width:"47%" }}
   />
+</Card>
+
+
+### Why is my scribe missing sections?
+
+<Card title=" ">
+  If you add new sections to the patient’s Chart Note **after** the recording has been uploaded, those sections will not be included in the original scribe. To capture them, you must manually regenerate the scribe with the updated sections. 
 </Card>
 
 ### How do I regenerate a Scribe?
@@ -79,25 +96,14 @@ Answers to common questions on setting up, recording, and managing AI Scribe in 
   3. Confirm cancellation when prompted.
 </Card>
 
-### Why is my scribe missing sections?
-
-<Card title=" ">
-  If you add new sections to the patient’s Chart Note **after** the recording has been uploaded, those sections will not be included in the original scribe. To capture them, you must manually regenerate the scribe with the updated sections. See: _Regenerating a Scribe._
-</Card>
-
 ### Why are some sections blank?
 
 <Card title=" ">
   There are a few reasons why EHR Scribe may not generate outputs for certain sections:
 
+  - **Locked sections cannot be applied** - If a section is locked, unlock the section first, then check the box next to it to include it for application.
   - **Insufficient information in the audio** – If the recording doesn’t provide enough detail, Scribe will leave the section blank.
   - **Unrecognized template** – If the template cannot be interpreted by Scribe, the section will remain blank.
-</Card>
-
-### Why are some sections not being applied to the Chart Note?
-
-<Card title=" ">
-  Locked sections cannot be applied. Unlock the section first, then check the box next to it to include it for application.
 </Card>
 
 ### Why is the Visits tab missing appointments?

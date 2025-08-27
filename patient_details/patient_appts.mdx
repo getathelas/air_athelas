@@ -6,7 +6,7 @@ Review and manage patient appointments, chart notes, billing documents, and impo
 
 To open a Patient's Profile: i) Click on the Top Tab of the Chart Note, ii) Open Patients Tab on the left navigation bar and select the desired patient.
 
-### View chart notes for an appointment
+### <Icon icon="note-medical" iconType="duotone" color="#F9345F" size={23} />  View chart notes for an appointment
 
 <Card title=" ">
   Click on the **Appointments** tab at the top of the Patient Profile
@@ -16,7 +16,7 @@ To open a Patient's Profile: i) Click on the Top Tab of the Chart Note, ii) Open
   ![Pt Appt Past Web](/images/pt_appt_past.webp)
 </Card>
 
-### Filter appointments
+### <Icon icon="filter" iconType="duotone" color="#F9345F" size={23} />  Filter appointments
 
 <Card title=" ">
   Filter appointments by: Date of Appointment - Provider - Case - Facility - Status - Custom Tags
@@ -24,7 +24,7 @@ To open a Patient's Profile: i) Click on the Top Tab of the Chart Note, ii) Open
   ![16 Filter Pt Appointments Gi](/images/16_filter_pt_appointments.gif)
 </Card>
 
-### Download patient schedule
+### <Icon icon="download" iconType="duotone" color="#F9345F" size={23} />  Download patient schedule
 
 <Card title=" ">
   Select appointments by checking the box to the left of each appointment → Choose to **Download** or **Fax** the patient’s schedule.
@@ -32,7 +32,7 @@ To open a Patient's Profile: i) Click on the Top Tab of the Chart Note, ii) Open
   ![Appt Download Schedule Web](/images/appt_download_schedule.webp)
 </Card>
 
-### Preview past Billing and Plan of Care documents
+### <Icon icon="file-pdf" iconType="duotone" color="#F9345F" size={23} />  Preview past Billing and Plan of Care documents
 
 <Card title=" ">
   Once an appointment is in **Completed** status, you can download related documents
@@ -66,13 +66,13 @@ To open a Patient's Profile: i) Click on the Top Tab of the Chart Note, ii) Open
   />
 </Card>
 
-### Import patient’s medical records from old EHR
+### <Icon icon="upload" iconType="duotone" color="#F9345F" size={23} />  Import patient’s medical records from old EHR
 
 **Import into Current Appointment Chart Note**
 
 <Card title=" ">
   <Danger>
-    ✨**Smart Tip:** Import an existing record by selecting **Athelas AI** (bottom right) → **Import Existing Record**.
+    ✨**Smart Tip:** Import an existing record by selecting **Athelas AI** (bottom right) → **Import Existing Reco**
   </Danger>
   <img
     src="/images/import_doc_in_scribe.webp"
@@ -96,20 +96,22 @@ To open a Patient's Profile: i) Click on the Top Tab of the Chart Note, ii) Open
 **Import Records for Past Appointments**
 
 <Card title=" ">
+  **Context:**
+
+  - Plan of Care details will not be migrated from the old EHR into Athelas Air.
+  - For returning patients seen in Air for the first time, providers will need to reference their previous documentation and set up the Plan of Care in Air.
+  - This is a one-time step: once entered, the Plan of Care will automatically carry forward from note to note.
+
+  **Steps:**
+
+  - Open the recent-most Progress note / Initial Eval for the patient on your old EHR which has the Plan of Care.
+  - Find that appt on Athelas Air by entering the Attachment’s tab of the Patient’s Profile
   - Click the **\+ icon** to the right of the appointment → **Set Up Chart Note**.
-  - Select the **Case, Appointment Type,** and **Clinical Note Type**.
+  - Select the right **Case, Appointment Type,** and **Clinical Note Type** [Progress Note, Initial Evaluation, etc.]
+  - Select **For Documentation Only** when uploading. This option ensures the imported chart note is **not billable**.
   - Upload the document.
+  - Type in the Plan of Care from your Old EHR into the Air Chart Note.
+  - You will now see the correct Plan of Care visits moving forward in future Chart Notes made on Air.
 
   ![17 Import Records Gi](/images/17_import_records.gif)
-
-  **Note:** Select **For Documentation Only** when uploading.
-
-  <img
-    src="/images/for_doc_only.webp"
-    alt="For Doc Only Web"
-    title="For Doc Only Web"
-    style={{ width:"37%" }}
-  />
-
-  This option ensures the imported chart note is **not billable**. It is especially useful when you need to manually add the Initial Evaluation while continuing the Plan of Care for a Progress Note or Re-Evaluation.
 </Card>
