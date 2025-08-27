@@ -14,6 +14,17 @@
   },
   "favicon": "images/athelas_favicon_bkg.png",
   "navigation": {
+    "anchor": [
+      {
+        "group": "Getting Started",
+        "icon": "stars",
+        "pages": [
+          "index",
+          "set-up",
+          "troubleshoot/faqs"
+        ]
+      }
+    ],
     "tabs": [
       {
         "tab": "General Overview of Air",
@@ -47,7 +58,8 @@
           {
             "group": "Communication",
             "icon": "envelope",
-            "pages": [            ]
+            "pages": [
+            ]
           }
         ]
       },
@@ -98,7 +110,6 @@
             "group": "Chart Note",
             "icon": "notes",
             "pages": [
-              "chart_note/custom_templates"
             ]
           },
           {
@@ -112,19 +123,9 @@
             "group": "System Management",
             "icon": "settings",
             "pages": [
+
             ]
           }
-        ]
-      }
-    ],
-    "anchor": [
-      {
-        "group": "Getting Started",
-        "icon": "stars",
-        "pages": [
-          "index",
-          "set-up",
-          "troubleshoot/faqs"
         ]
       }
     ]
