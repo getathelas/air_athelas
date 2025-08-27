@@ -1,6 +1,6 @@
 {
     "$schema": "https://mintlify.com/docs.schema.json",
-    "theme": "maple",
+    "theme": "mint",
     "toc": "true",
     "name": "Air Athelas User Guide",
     "logo": {
@@ -14,18 +14,10 @@
         "dark": "#FB8DA5"
     },
     "favicon": "images/athelas_favicon_bkg.png",
-    "navbar": {  
-      "primary": {
-      "type": "button",
-      "label": "Try the Air Athelas Training Now",
-      "href": "https://athelas-academy.workramp.io/paths"
-      }
-    },
     "navigation": {
         "tabs": [
             {
                 "tab": "Providers",
-                "pages":[
                 "groups": [
                   {
                             "group": "Getting Started with Air",
@@ -87,11 +79,9 @@
                             ]
                         }
                     ]
-                ]
                   },
             {
                 "tab": "Front Desk",
-                "pages": [
                 "groups": [
                   {
                             "group": "Getting Started with Air",
@@ -132,11 +122,9 @@
                             ]
                         }
                 ]
-                ]
                   },
             {
                 "tab": "Back Office",
-                "pages":[
                 "groups": [
                   {
                             "group": "Getting Started with Air",
@@ -180,8 +168,15 @@
                                 "reports/kpi_dashboard"
                             ]
                         }
-                    ]]
+                    ]
                   } 
                 ]
-            }
+            },
+    "navbar": {  
+      "primary": {
+      "type": "button",
+      "label": "Try the Air Athelas Training Now",
+      "href": "https://athelas-academy.workramp.io/paths"
+      }
+    }
 }
