@@ -19,15 +19,6 @@
         "tab": "General Overview of Air",
         "groups": [
           {
-            "group": "Getting Started",
-            "icon": "stars",
-            "pages": [
-              "index",
-              "set-up",
-              "troubleshoot/faqs"
-            ]
-          },
-          {
             "group": "Calendar",
             "icon": "calendar",
             "pages": [
@@ -56,23 +47,13 @@
           {
             "group": "Communication",
             "icon": "envelope",
-            "pages": [
-            ]
+            "pages": [            ]
           }
         ]
       },
       {
         "tab": "Provider",
         "groups": [
-          {
-            "group": "Getting Started",
-            "icon": "stars",
-            "pages": [
-              "index",
-              "set-up",
-              "troubleshoot/faqs"
-            ]
-          },
           {
             "group": "Chart Note",
             "icon": "notes",
@@ -96,12 +77,9 @@
         "tab": "Front Desk",
         "groups": [
           {
-            "group": "Getting Started",
-            "icon": "stars",
+            "group": "Front Desk Resources",
+            "icon": "clipboard",
             "pages": [
-              "index",
-              "set-up",
-              "troubleshoot/faqs"
             ]
           }
         ]
@@ -109,15 +87,6 @@
       {
         "tab": "Admin",
         "groups": [
-          {
-            "group": "Getting Started",
-            "icon": "stars",
-            "pages": [
-              "index",
-              "set-up",
-              "troubleshoot/faqs"
-            ]
-          },
           {
             "group": "Calendar",
             "icon": "calendar",
@@ -145,6 +114,17 @@
             "pages": [
             ]
           }
+        ]
+      }
+    ],
+    "anchor": [
+      {
+        "group": "Getting Started",
+        "icon": "stars",
+        "pages": [
+          "index",
+          "set-up",
+          "troubleshoot/faqs"
         ]
       }
     ]
