@@ -14,23 +14,18 @@
   },
   "favicon": "images/athelas_favicon_bkg.png",
   "navigation": {
-    "anchor": [
-      {
-        "group": "Getting Started",
+    "groups": [
+          {
+        "group": "Getting Started with Air",
         "icon": "stars",
         "pages": [
           "index",
           "set-up",
           "troubleshoot/faqs"
         ]
-      }
-    ],
-    "tabs": [
-      {
-        "tab": "General Overview of Air",
-        "groups": [
+      },
           {
-            "group": "Calendar",
+            "group": "View your Calendar",
             "icon": "calendar",
             "pages": [
               "calendar/nav_calendar",
@@ -38,7 +33,7 @@
             ]
           },
           {
-            "group": "Check-in",
+            "group": "Check-in a Patient",
             "icon": "clipboard-list-check",
             "pages": [
               "check-in/check-in",
@@ -46,7 +41,7 @@
             ]
           },
           {
-            "group": "Patient Details",
+            "group": "Review Patient Details",
             "icon": "square-user",
             "pages": [
               "patient_details/patient_info",
@@ -56,78 +51,43 @@
             ]
           },
           {
-            "group": "Communication",
+            "group": "Communicate with Patients",
             "icon": "envelope",
             "pages": [
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Provider",
-        "groups": [
+          },
           {
-            "group": "Chart Note",
+            "group": "Providers: Fill a Chart Note",
             "icon": "notes",
             "pages": [
               "chart_note/nav_chart_note",
               "chart_note/other_sec_chart_note",
               "chart_note/flowsheet_custom_interventions",
-              "chart_note/scribe_faq"
-            ]
-          },
-          {
-            "group": "Inbox",
-            "icon": "envelope",
-            "pages": [
+              "chart_note/scribe_faq",
               "inbox/nav_inbox"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Front Desk",
-        "groups": [
-          {
-            "group": "Front Desk Resources",
-            "icon": "clipboard",
-            "pages": [
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Admin",
-        "groups": [
-          {
-            "group": "Calendar",
-            "icon": "calendar",
-            "pages": [
-              "calendar/calendar_settings"
-            ]
           },
           {
-            "group": "Chart Note",
-            "icon": "notes",
+            "group": "Administration: Manage your Practice",
+            "icon": "gear",
             "pages": [
-            ]
-          },
-          {
-            "group": "Reports",
-            "icon": "bar-chart",
-            "pages": [
+              "calendar/calendar_settings",
+              "chart_note/chart_note_templates",
               "reports/kpi_dashboard"
             ]
+          }
+          ],
+    "groups": [
+          {
+            "group": "Front Desk: Take in a Patient",
+            "icon": "clipboard",
+            "pages": []
           },
           {
-            "group": "System Management",
-            "icon": "settings",
-            "pages": [
-
-            ]
+            "group": "Front Desk: Other Resources",
+            "icon": "clipboard",
+            "pages": []
           }
-        ]
-      }
     ]
   },
   "navbar": {
