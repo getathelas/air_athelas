@@ -75,9 +75,7 @@
               "chart_note/chart_note_templates",
               "reports/kpi_dashboard"
             ]
-          }
-          ],
-    "groups": [
+          },
           {
             "group": "Front Desk: Take in a Patient",
             "icon": "clipboard",
