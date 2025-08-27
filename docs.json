@@ -25,6 +25,7 @@
         "tabs": [
             {
                 "tab": "Providers",
+                "pages":[
                 "groups": [
                   {
                             "group": "Getting Started with Air",
@@ -86,9 +87,11 @@
                             ]
                         }
                     ]
+                ]
                   },
             {
                 "tab": "Front Desk",
+                "pages": [
                 "groups": [
                   {
                             "group": "Getting Started with Air",
@@ -129,9 +132,11 @@
                             ]
                         }
                 ]
+                ]
                   },
             {
                 "tab": "Back Office",
+                "pages":[
                 "groups": [
                   {
                             "group": "Getting Started with Air",
@@ -175,7 +180,7 @@
                                 "reports/kpi_dashboard"
                             ]
                         }
-                    ]
+                    ]]
                   } 
                 ]
             }
