@@ -1,117 +1,159 @@
 {
-    "$schema": "https://mintlify.com/docs.schema.json",
-    "theme": "mint",
-    "toc": "true",
-    "name": "Air Athelas User Guide",
-    "logo": {
+  "$schema": "https://mintlify.com/docs.schema.json",
+  "theme": "mint",
+  "name": "Air Athelas User Guide",
+  "logo": {
     "light": "images/air_logo.webp",
     "dark": "images/air_logo_dark.webp"
-     },
-    "styling": {"eyebrows": "breadcrumbs"},
-    "colors": {
-        "primary": "#F9345F",
-        "light": "#FA5478",
-        "dark": "#FB8DA5"
-    },
-    "favicon": "images/athelas_favicon_bkg.png",
-    "navigation": {
-        "tabs": [
-            {
-                "tab": "Providers",
-                "groups": [
-                  {
-                            "group": "Getting Started with Air",
-                            "icon":"stars",
-                            "pages": [
-                                "index",
-                                "set-up",
-                                "calendar/nav_calendar",
-                                "check-in/check-in",
-                                "patient_details/patient_info",
-                                "chart_note/nav_chart_note",
-                                "inbox/nav_inbox",
-                                "reports/kpi_dashboard",
-                                "troubleshoot/faqs"
-                            ]
-                  },
-                  {
-                            "group": "Navigate your Calendar",
-                            "icon": "calendar", 
-                            "pages": [
-                                "calendar/nav_calendar",
-                                "calendar/calendar_icons"
-                            ]
-                        },
-                  {
-                            "group": "Check-in your Patient",
-                            "icon": "clipboard-list-check",
-                            "pages": [
-                                "check-in/check-in",
-                                "check-in/edit_appt"
-                            ]
-                        },
-                  {
-                            "group": "View Patient Details",
-                            "icon": "square-user",
-                            "pages": [
-                                "patient_details/patient_info",
-                                "patient_details/patient_demog",
-                                "patient_details/patient_appts",
-                                "patient_details/patient_attachments"
-                            ]
-                        },
-                  {
-                            "group": "Submit a Chart Note",
-                            "icon":"notes",
-                            "pages": [
-                                "chart_note/nav_chart_note",
-                                "chart_note/other_sec_chart_note",
-                                "chart_note/scribe_faq",
-                                "chart_note/flowsheet_custom_interventions"
-                            ]
-                        },
-                  {
-                            "group": "My Inbox",
-                            "icon": "envelope",
-                            "pages": [
-                                "inbox/nav_inbox"
-                            ]
-                        }
-                    ]
-                  },
-            {
-                "tab": "Back Office",
-                "groups": [
-                  {
-                            "group": "Navigate your Calendar",
-                            "icon": "calendar", 
-                            "pages": [
-                                "calendar/calendar_settings"
-                            ]
-                        },
-                  {
-                            "group": "Customize Chart Notes",
-                            "icon":"notes",
-                            "pages": [
-                                "chart_note/chart_note_templates"
-                            ]
-                        },
-                  {
-                            "group": "My Tasks & Reports",
-                            "icon": "envelope",
-                            "pages": [
-                                "reports/kpi_dashboard"
-                            ]
-                        }
-                    ]
-                  } 
-                ]
-            },
-    "navbar": {  
-      "primary": {
+  },
+  "styling": {"eyebrows": "breadcrumbs"},
+  "colors": {
+    "primary": "#F9345F",
+    "light": "#FA5478",
+    "dark": "#FB8DA5"
+  },
+  "favicon": "images/athelas_favicon_bkg.png",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "General Overview of Air",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "stars",
+            "pages": [
+              "index",
+              "set-up",
+              "troubleshoot/faqs"
+            ]
+          },
+          {
+            "group": "Calendar",
+            "icon": "calendar",
+            "pages": [
+              "calendar/nav_calendar",
+              "calendar/calendar_icons"
+            ]
+          },
+          {
+            "group": "Check-in",
+            "icon": "clipboard-list-check",
+            "pages": [
+              "check-in/check-in",
+              "check-in/edit_appt"
+            ]
+          },
+          {
+            "group": "Patient Details",
+            "icon": "square-user",
+            "pages": [
+              "patient_details/patient_info",
+              "patient_details/patient_demog",
+              "patient_details/patient_appts",
+              "patient_details/patient_attachments"
+            ]
+          },
+          {
+            "group": "Communication",
+            "icon": "envelope",
+            "pages": [
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Provider",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "stars",
+            "pages": [
+              "index",
+              "set-up",
+              "troubleshoot/faqs"
+            ]
+          },
+          {
+            "group": "Chart Note",
+            "icon": "notes",
+            "pages": [
+              "chart_note/nav_chart_note",
+              "chart_note/other_sec_chart_note",
+              "chart_note/flowsheet_custom_interventions",
+              "chart_note/scribe_faq"
+            ]
+          },
+          {
+            "group": "Inbox",
+            "icon": "envelope",
+            "pages": [
+              "inbox/nav_inbox"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Front Desk",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "stars",
+            "pages": [
+              "index",
+              "set-up",
+              "troubleshoot/faqs"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Admin",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "stars",
+            "pages": [
+              "index",
+              "set-up",
+              "troubleshoot/faqs"
+            ]
+          },
+          {
+            "group": "Calendar",
+            "icon": "calendar",
+            "pages": [
+              "calendar/calendar_settings"
+            ]
+          },
+          {
+            "group": "Chart Note",
+            "icon": "notes",
+            "pages": [
+              "chart_note/custom_templates"
+            ]
+          },
+          {
+            "group": "Reports",
+            "icon": "bar-chart",
+            "pages": [
+              "reports/kpi_dashboard"
+            ]
+          },
+          {
+            "group": "System Management",
+            "icon": "settings",
+            "pages": [
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "primary": {
       "type": "button",
       "label": "Try the Air Athelas Training Now",
       "href": "https://athelas-academy.workramp.io/paths"
-      }
     }
+  }
 }
