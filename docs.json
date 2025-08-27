@@ -54,6 +54,7 @@
             "group": "Communicate with Patients",
             "icon": "envelope",
             "pages": [
+              "messages/messages"
             ]
           },
           {
@@ -62,30 +63,44 @@
             "pages": [
               "chart_note/nav_chart_note",
               "chart_note/other_sec_chart_note",
-              "chart_note/flowsheet_custom_interventions",
+              "chart_note/flowsheets",
               "chart_note/scribe_faq",
               "inbox/nav_inbox"
+            ]
+          },
+                {
+            "group": "Front Desk: Take in a Patient",
+            "icon": "clipboard",
+            "pages": []
+          },
+          {
+            "group": "Front Desk: Manage your Tasks",
+            "icon": "clipboard",
+            "pages": [
+              "front_desk/faxes",
+              "front_desk/tasks"
             ]
           },
           {
             "group": "Administration: Manage your Practice",
             "icon": "gear",
             "pages": [
-              "calendar/calendar_settings",
-              "chart_note/chart_note_templates",
-              "reports/kpi_dashboard"
+              "admin/practice_settings",
+              "admin/Prov_credentials",
+              "admin/calendar_settings",
+              "admin/chart_note_templates",
+              "admin/fax_admin"
             ]
           },
           {
-            "group": "Front Desk: Take in a Patient",
-            "icon": "clipboard",
-            "pages": []
-          },
-          {
-            "group": "Front Desk: Other Resources",
-            "icon": "clipboard",
-            "pages": []
+            "group": "Administration: Analyze your Reports",
+            "icon": "gear",
+            "pages": [
+              "reports/kpi_dashboard",
+              "reports/all_reports"
+            ]
           }
+
     ]
   },
   "navbar": {
