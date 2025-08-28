@@ -4,6 +4,9 @@ title: "Create Patient Workflows"
 
 Create and automate patient intake forms and workflows to streamline data collection and appointment reminders.
 
+- Patient portal
+- Access HEP
+
 ### Create a Patient Intake Form
 
 <Card title>
@@ -13,7 +16,14 @@ Create and automate patient intake forms and workflows to streamline data collec
   2. Drag and drop **components** from the left panel to the right to add fields.
   3. Each component can be marked as required, duplicated, or deleted. The type of component is displayed in the top-right corner of the field.
   4. Once your form is built, give it a name and click \*\*Save. \*\*Be sure to select **Save as Patient Intake Template** so it’s stored as a patient intake form.
-     **Components available include:**
+
+  ![Create Intake Form Web](/images/create_intake_form.webp)
+
+  **Note: **Set options within the Preferences tab to allow providers to edit patient intake forms directly within the chart note. This will not replace the original form (in the patient attachments) but will allow modifications to be made in the chart note.
+
+    
+
+  **Components available include:**
 
   <AccordionGroup>
     <Accordion title="Single Choice">
@@ -58,13 +68,14 @@ Create and automate patient intake forms and workflows to streamline data collec
 
   - When completed, these forms automatically update patient and insurance information in the Demographics tab of the patient profile.
   - **Note:** These forms cannot be edited, even if an edit option appears.
-</Card>
 
-**Create new patient flows:**
+  **Create new patient flows:**
 
-<Card title>
   - Click **\+ Add New Workflow.**
   - On the Workflows page, name your workflow and configure the rules for when intake forms and reminders should be sent.
+
+  ![Patient Flow Nav Web](/images/patient_flow_nav.webp)
+
   - At the top of the page: Name your workflow and configure specifications for when intake forms and reminders should be sent. **Specifications include:**
     - Appointment Types – Define which appointment types trigger the workflow.
     - Appointment Reasons – Specify applicable reasons.
@@ -75,7 +86,9 @@ Create and automate patient intake forms and workflows to streamline data collec
     - Minimum/Maximum Age – Set age limits for eligibility.
   - To send intake forms immediately when an appointment is created, check **Send Immediately on Appointment Creation.**
   - Select delivery methods: **Email** and/or **Text.** Both use the same customizable message.
-  - Use the **Message Preview** at the bottom to confirm formatting before sending. Always test with a test patient to avoid errors.
+  - Use the **Message Preview** at the bottom to confirm formatting. Always test with a test patient to avoid errors.
+
+  ![Message Format Web](/images/message_format.webp)
 
   <Danger>
     \*\*✨Smart Tip: \*\*Hover over the “i” icon in the **Message Templates** section to see dynamic fields (e.g., `patient_name`) that auto-fill with patient-specific data.
@@ -91,4 +104,46 @@ Create and automate patient intake forms and workflows to streamline data collec
 
   - If you create an appointment for the next day, a reminder set for “1 day before” will not send.
   - However, a reminder set for “1 hour before” will send successfully.
+
+  <img
+    src="/images/message_frequency.webp"
+    alt="Message Frequency Web"
+    title="Message Frequency Web"
+    style={{ width:"75%" }}
+  />
+</Card>
+
+### Send Text Blasts to All Patients
+
+<Card title>
+  The **Text Blast** page allows you to create reusable templates and send one-off mass texts with dynamic information tags, so each patient sees details personalized specifically for them.
+
+  **Note**: Text blasts are one-way only, patients will not be able to reply back these messages.
+
+  - Navigate to the Text Blast page within Automation on the left navigation pane. Click **Create New Text Blast.**
+  - Enter a descriptive name for your blast.
+  - Choose recipients. Leaving a field blank means “all.”
+  - Compose your message. To add dynamic fields, enclose each variable in `{brackets}` and replace spaces with underscores. Example: `Hi {patient_name}!`
+
+  <img
+    src="/images/text_templates.png"
+    alt="Text Templates Pn"
+    title="Text Templates Pn"
+    style={{ width:"68%" }}
+  />
+
+  - Click **Preview Text Blast** to review: Message text, Number of recipients, Estimated cost (\$0.01 per recipient)
+  - Language translations: Patients receive texts in their preferred language; Default is English if none is listed.
+  - Once confirmed, click **Send.** Depending on the number of recipients, sending may take a few minutes. The blast will then appear in the main page log.
+
+  <img
+    src="/images/preview_blast.png"
+    alt="Preview Blast Pn"
+    title="Preview Blast Pn"
+    style={{ width:"60%" }}
+  />
+
+  **Each logged blast displays: Delivered** (successful), **Sent** (in progress), **Failed** (undelivered). Hover over _Failure Reason_ to see details (e.g., landline numbers cannot receive texts). You can also download a report for spreadsheet review.
+
+  Patients receive a personalized text with their details (e.g., name, facility). They may reply **Stop** to opt out of future texts, reply **Unstop** to opt back in.
 </Card>

@@ -81,7 +81,8 @@
             "icon": "clipboard",
             "pages": [
               "front_desk/faxes",
-              "front_desk/tasks"
+              "front_desk/tasks",
+              "front_desk/lead_tracker_use"
             ]
           },
           {
@@ -91,7 +92,8 @@
               "admin/practice_settings",
               "admin/Prov_credentials",
               "admin/calendar_settings",
-              "admin/patient_intake",
+              "admin/patient_workflows",
+              "admin/appointment_types",
               "admin/chart_note_templates",
               "admin/fax_admin"
             ]
