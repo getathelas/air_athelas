@@ -71,7 +71,10 @@
                 {
             "group": "Front Desk: Take in a Patient",
             "icon": "clipboard",
-            "pages": []
+            "pages": [
+              "patient_intake/new_appt",
+              "patient_intake/prep_appt"
+            ]
           },
           {
             "group": "Front Desk: Manage your Tasks",
