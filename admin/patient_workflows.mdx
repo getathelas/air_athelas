@@ -1,0 +1,94 @@
+---
+title: "Create Patient Workflows"
+---
+
+Create and automate patient intake forms and workflows to streamline data collection and appointment reminders.
+
+### Create a Patient Intake Form
+
+<Card title>
+  Navigate to the **Templates** tab under **Utilities** in the left navigation pane. To create a new intake form:
+
+  1. Click **\+ Create New Template** in the top-right corner.
+  2. Drag and drop **components** from the left panel to the right to add fields.
+  3. Each component can be marked as required, duplicated, or deleted. The type of component is displayed in the top-right corner of the field.
+  4. Once your form is built, give it a name and click \*\*Save. \*\*Be sure to select **Save as Patient Intake Template** so it’s stored as a patient intake form.
+     **Components available include:**
+
+  <AccordionGroup>
+    <Accordion title="Single Choice">
+      Ask a question with one selectable answer.
+    </Accordion>
+    <Accordion title="Short Answer">
+      Accepts short, typed responses.
+    </Accordion>
+    <Accordion title="Multiple Choice">
+      Ask a question with multiple selectable answers.
+    </Accordion>
+    <Accordion title="Paragraph Answer">
+      Accepts longer, free-text responses.
+    </Accordion>
+    <Accordion title="Yes/No Question">
+      Provides a binary choice.
+    </Accordion>
+    <Accordion title="Number Answer">
+      Accepts numeric input.
+    </Accordion>
+    <Accordion title="Rating Question">
+      Collects a rating (e.g., 1–5 scale).
+    </Accordion>
+    <Accordion title="Table Answer">
+      Displays responses in a table format, with columns added using the **\+** button.
+    </Accordion>
+    <Accordion title="Date Question">
+      Accepts a date input.
+    </Accordion>
+    <Accordion title="Text Box">
+      Only available for patient intake forms (not EHR templates).
+    </Accordion>
+  </AccordionGroup>
+</Card>
+
+### Create a Patient Flow
+
+<Card title>
+  You can automate the patient intake process through **Patient Flow**.
+
+  **Two pre-built forms** come with write-back capabilities: Patient Update and Insurance Update.
+
+  - When completed, these forms automatically update patient and insurance information in the Demographics tab of the patient profile.
+  - **Note:** These forms cannot be edited, even if an edit option appears.
+</Card>
+
+**Create new patient flows:**
+
+<Card title>
+  - Click **\+ Add New Workflow.**
+  - On the Workflows page, name your workflow and configure the rules for when intake forms and reminders should be sent.
+  - At the top of the page: Name your workflow and configure specifications for when intake forms and reminders should be sent. **Specifications include:**
+    - Appointment Types – Define which appointment types trigger the workflow.
+    - Appointment Reasons – Specify applicable reasons.
+    - Patients – Choose which patients receive the workflow (useful for testing with a single test patient).
+    - Facilities – Choose which facilities are included.
+    - Providers – Restrict the workflow to certain providers.
+    - Appointment Insurances – Require specific insurance types.
+    - Minimum/Maximum Age – Set age limits for eligibility.
+  - To send intake forms immediately when an appointment is created, check **Send Immediately on Appointment Creation.**
+  - Select delivery methods: **Email** and/or **Text.** Both use the same customizable message.
+  - Use the **Message Preview** at the bottom to confirm formatting before sending. Always test with a test patient to avoid errors.
+
+  <Danger>
+    \*\*✨Smart Tip: \*\*Hover over the “i” icon in the **Message Templates** section to see dynamic fields (e.g., `patient_name`) that auto-fill with patient-specific data.
+  </Danger>
+</Card>
+
+### Create an Appointment Reminder
+
+<Card title>
+  Appointment reminders can be configured to send up to **three times** (in addition to any immediate sends). You can set how many **days/hours before the appointment** reminders should be delivered.
+
+  **Note:** Reminders are queued at midnight each day.
+
+  - If you create an appointment for the next day, a reminder set for “1 day before” will not send.
+  - However, a reminder set for “1 hour before” will send successfully.
+</Card>
