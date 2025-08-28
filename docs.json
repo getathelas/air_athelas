@@ -72,8 +72,8 @@
             "group": "Front Desk: Take in a Patient",
             "icon": "clipboard",
             "pages": [
-              "patient_intake/new_appt",
-              "patient_intake/prep_appt"
+              "front_desk/new_appt",
+              "front_desk/prep_appt"
             ]
           },
           {
@@ -91,6 +91,7 @@
               "admin/practice_settings",
               "admin/Prov_credentials",
               "admin/calendar_settings",
+              "admin/patient_intake",
               "admin/chart_note_templates",
               "admin/fax_admin"
             ]
