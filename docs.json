@@ -59,7 +59,7 @@
           {
             "group": "Fill a Chart Note",
             "icon": "user-doctor",
-            "tag": "Providers",
+            "tag": "notes-medical",
             "pages": [
               "chart_note/nav_chart_note",
               "chart_note/other_sec_chart_note",
@@ -79,7 +79,7 @@
           },
           {
             "group": "Manage your Tasks",
-            "icon": "clipboard",
+            "icon": "list-check",
             "tag": "Front Desk",
             "pages": [
               "front_desk/faxes",
@@ -103,7 +103,7 @@
           },
           {
             "group": "Analyze your Reports",
-            "icon": "gear",
+            "icon": "chart-column",
             "tag": "Admin",
             "pages": [
               "reports/kpi_dashboard",
