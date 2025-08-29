@@ -28,9 +28,7 @@
             "group": "View your Calendar",
             "icon": "calendar",
             "pages": [
-              "calendar/nav_calendar",
-              "calendar/calendar_icons"
-            ]
+              "calendar/nav_calendar"            ]
           },
           {
             "group": "Check-in a Patient",
