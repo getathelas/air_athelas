@@ -18,6 +18,7 @@
           {
         "group": "Getting Started with Air",
         "icon": "stars",
+        "tag": "START HERE",
         "pages": [
           "index",
           "set-up",
@@ -29,14 +30,6 @@
             "icon": "calendar",
             "pages": [
               "calendar/nav_calendar"            ]
-          },
-          {
-            "group": "Check-in a Patient",
-            "icon": "clipboard-list-check",
-            "pages": [
-              "check-in/check-in",
-              "check-in/edit_appt"
-            ]
           },
           {
             "group": "Review Patient Details",
@@ -56,8 +49,18 @@
             ]
           },
           {
-            "group": "Providers: Fill a Chart Note",
+            "group": "Check-in a Patient",
             "icon": "user-doctor",
+            "tag": "Providers",
+            "pages": [
+              "check-in/check-in",
+              "check-in/edit_appt"
+            ]
+          },
+          {
+            "group": "Fill a Chart Note",
+            "icon": "user-doctor",
+            "tag": "Providers",
             "pages": [
               "chart_note/nav_chart_note",
               "chart_note/other_sec_chart_note",
@@ -66,17 +69,19 @@
               "inbox/nav_inbox"
             ]
           },
-                {
-            "group": "Front Desk: Take in a Patient",
+          {
+            "group": "Take in a Patient",
             "icon": "clipboard",
+            "tag": "Front Desk",
             "pages": [
               "front_desk/new_appt",
               "front_desk/prep_appt"
             ]
           },
           {
-            "group": "Front Desk: Manage your Tasks",
+            "group": "Manage your Tasks",
             "icon": "clipboard",
+            "tag": "Front Desk",
             "pages": [
               "front_desk/faxes",
               "front_desk/tasks",
@@ -84,8 +89,9 @@
             ]
           },
           {
-            "group": "Administration: Manage your Practice",
+            "group": "Manage your Practice",
             "icon": "gear",
+            "tag": "Administration",
             "pages": [
               "admin/practice_settings",
               "admin/Prov_credentials",
@@ -97,8 +103,9 @@
             ]
           },
           {
-            "group": "Administration: Analyze your Reports",
+            "group": "Analyze your Reports",
             "icon": "gear",
+            "tag": "Administration",
             "pages": [
               "reports/kpi_dashboard",
               "reports/all_reports"
