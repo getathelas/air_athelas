@@ -90,7 +90,7 @@
           {
             "group": "Manage your Practice",
             "icon": "gear",
-            "tag": "Administration",
+            "tag": "Admin",
             "pages": [
               "admin/practice_settings",
               "admin/Prov_credentials",
@@ -104,7 +104,7 @@
           {
             "group": "Analyze your Reports",
             "icon": "gear",
-            "tag": "Administration",
+            "tag": "Admin",
             "pages": [
               "reports/kpi_dashboard",
               "reports/all_reports"
