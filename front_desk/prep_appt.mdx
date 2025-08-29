@@ -6,13 +6,9 @@ sidebarTitle: "Prepare for Appointment"
 ### <Icon icon="calendar-circle-user" iconType="duotone" color="#F9345F" size={23} />  Edit an Appointment
 
 <Card title>
-  Click on an appointment to open the Appointment details pop-up. 
-
-    
+  Click on an appointment to open the Appointment details pop-up.
 
   Click on the edit (pencil) icon on the top right to edit appointment details entered (such as data, time, provider, facility, patient details).
-
-    
 
   You can also review patient demographics by clicking on the patient's name, see change logs of the appointment.
 
@@ -58,7 +54,9 @@ sidebarTitle: "Prepare for Appointment"
 
   **Note:** You can select multiple forms but only one workflow. **Workflows** automate which forms/reminders are sent, to whom, and when.
 
-  \*\*Patient Portal: \*\*Patients can review the forms and reminders from the Patient Portal. Through this they can complete actions directly from replying to messages, paying charges, confirming/canceling appointments, accessing home exercise programs and filling out forms.
+    
+
+  **Patient Portal: **Patients can review the forms and reminders from the Patient Portal. Through this they can complete actions directly from replying to messages, paying charges, confirming/canceling appointments, accessing home exercise programs and filling out forms.
 
   <img
     src="/images/patient_portal.webp"
@@ -68,26 +66,16 @@ sidebarTitle: "Prepare for Appointment"
   />
 </Card>
 
-### <Icon icon="bell-exclamation" iconType="duotone" color="#F9345F" size={23} />  Track Prior Authorizations & Visit Alerts
+### <Icon icon="bell-exclamation" iconType="duotone" color="#F9345F" size={23} />  Track Prior Authorizations
 
 <Card title>
-  Air will automatically alert you when prior authorizations or visit counts are nearing expiration/limits.
+  You can check the status of Prior Authorizations and link an existing authorization or add a new authorization if required.
 
-  - **Orange alert** = nearing expiration
-  - **Red alert** = expired or no visits left
+  Click on**\+New Prior Auth**  to add a Pre-Certification or Referral along with the Authorization number, # visits, effective to and from date.
+
+  You can also edit an existing authorization or delete it. If you delete an authorization you will still be able to restore it.  
 
   ![15 Priorauth Gi](/images/15_priorauth.gif)
-
-  \*\*Updating visit limits: \*\*These details can be edited directly in the appointment. You can manually add an annual visit limit for a new service type by clicking to the edit (pencil) icon near the visit. More details on visits can be found **<u>here</u>**.
-
-  ![16 Visitalerts Gi](/images/16_visitalerts.gif)
-
-  <img
-    src="/images/new_visits.webp"
-    alt="New Visits Web"
-    title="New Visits Web"
-    style={{ width:"40%" }}
-  />
 
   **Tracking Prior Auth Status:**
 
@@ -104,6 +92,38 @@ sidebarTitle: "Prepare for Appointment"
     title="image.png"
     style={{ width:"58%" }}
   />
+</Card>
+
+### <Icon icon="bell-exclamation" iconType="duotone" color="#F9345F" size={23} />  Track Visit Alerts
+
+<Card title>
+  Air will automatically alert you when prior authorizations or visit counts are nearing expiration/limits.
+
+  - **Orange alert** = nearing expiration
+  - **Red alert** = expired or no visits left
+    Updating visit limits: These details can be edited directly in the appointment. You can manually add an annual visit limit for a new service type by clicking to the edit (pencil) icon near the visit. More details on visits can be found here.
+
+  ![16 Visitalerts Gi](/images/16_visitalerts.gif)
+
+  **Expanding this section provides a detailed view, including:**
+
+  - Annual Appointment limits (you can manually set these limits if required)
+  - Prior authorization visit limits
+  - Remaining Plan of Care visits
+  - Remaining Medicare thresholds
+  - Progress note upcoming (e.g., every 10 visits, every 45 days)
+  - Future appointments scheduled
+
+  You can customize these limis to be hard alerts or soft alerts from **Preferences**.
+
+  ![Chart Note Limits Web](/images/chart_note_limits.webp)
+
+  <Info>
+    **FAQ: The visit counter is not accurate:**
+
+    - Check if the same prior authorization is attached to all past visits
+    - Ensure all previous chart notes are completed, else they may not be accounted within the visits counter
+  </Info>
 </Card>
 
 ### <Icon icon="money-check-dollar" iconType="duotone" color="#F9345F" size={23} />  Conduct Eligibility Checks
