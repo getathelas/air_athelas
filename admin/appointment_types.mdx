@@ -4,18 +4,27 @@ title: "Appointment Types"
 
 You can create and manage custom appointment types, each with its own settings, clinical note structure, and optional CPT codes.
 
-**Create a Custom Appointment Type**
+![Appt Types Web](/images/appt_types.webp)
+
+**Custom Appointment Types**
 
 <Card title>
-  1. Navigate to the **Preferences** tab in the left navigation pane and open **Appointment Types**.
-  2. Click **\+ Appointment Type** in the top-right corner.
-  3. Enter the **Name**, **Duration**, and **Color** for the appointment type.
-  4. Select the **sections** to include (and their order).
-     - You can choose to make them available for the Scribe to write into.
-     - If you include **Measurements**, you can set default measurements to auto-populate.
-  5. (Optional) Assign **CPT codes** that will auto-populate for this appointment type.
-  6. Select a **default clinical note type**, then click **Create**.
-  7. You can edit or delete appointment types from the same tab at any time.
+  - Navigate to the **Preferences** tab in the left navigation pane and open **Appointment Types**.
+  - Click **\+ Appointment Type** in the top-right corner or click on the pencil icon to edit an existing appointment
+  - Enter the **Name**, **Duration**, and **Color** for the appointment type.
+  - Select the **sections** to include (and their order).
+    - You can choose to make them available for the Scribe to write into.
+    - If you include **Measurements**, you can set default measurements to auto-populate whenever this Appointment Type is scheduled.
+  - (Optional) Sync duration with in-clinic time (the time spent with the patient in-clinic will be reflected on the Calendar)
+  - (Optional) Assign **CPT codes** that will auto-populate for this appointment type.
+  - Select a **default clinical note type**, then click **Create**.
+  - You can edit or delete appointment types from the same tab at any time.
+
+  **Note:** Sections can be either **Default** (pre-built by Athelas) or **Custom** (templates created by your practice).
+
+     
+
+  **Note:** For **Clinical Note Types** beyond the Initial Evaluation, you can configure which Sections should carry over. For example, Measurements may be excluded in follow-up visits if not needed.
 
   ![Appt Type Web](/images/appt_type.webp)
 </Card>
