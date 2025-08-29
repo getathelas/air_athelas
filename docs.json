@@ -18,7 +18,6 @@
           {
         "group": "Getting Started with Air",
         "icon": "stars",
-        "tag": "START HERE",
         "pages": [
           "index",
           "set-up",
