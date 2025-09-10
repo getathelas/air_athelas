@@ -7,6 +7,13 @@
     "dark": "images/air_logo_dark.webp"
   },
   "styling": {"eyebrows": "breadcrumbs"},
+  "styles": {
+    "global": {
+      "img": {
+        "margin": "0 !important"
+      }
+    }
+  },
   "colors": {
     "primary": "#F9345F",
     "light": "#FA5478",
