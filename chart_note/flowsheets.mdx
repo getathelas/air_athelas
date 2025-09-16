@@ -11,9 +11,7 @@ More details: [Flowsheets/Intervention Manager User Guide](https://athelas-publi
 
 <Card title>
   <Steps>
-    <Step title="Add Treatments" icon="person-walking" titleSize="p">
-      **Add Interventions:**
-
+    <Step title="Add Interventions" icon="person-walking" titleSize="p">
       - Click **Add Interventions** within the Chart Note, or use the Intervention Manager in the right sidebar.
       - Search, filter, and select interventions by:
         - **Type**: Modality, Exercise, Manual Therapy
@@ -21,7 +19,7 @@ More details: [Flowsheets/Intervention Manager User Guide](https://athelas-publi
         - **Category**
         - **CPT Code**
         - **Movement Type**
-      - Or use the **search bar** to quickly find interventions by name.
+      - Or use the **search bar** to quickly find interventions by name. Interventions search is sorted by user's most-used interventions
       - Selected interventions will appear in the flowsheet in the order chosen.
       - Drag and drop interventions to change their order. The order is saved and persists across future notes.
 
@@ -67,7 +65,16 @@ More details: [Flowsheets/Intervention Manager User Guide](https://athelas-publi
       - Select the provider who performed the intervention (default is **Rendering Provider**)
       - Mark an intervention as **DONE** only after linking it to a CPT code.
 
-      **Note:** Showing modifiers at a per intervention level and justifications can be configured on or off from the Preferences tab.
+      **Mark an Intervention To-do: **Double click an intervention to mark it as a **To-do** (green border, moves to top) as an exercise to be done today. Only an intervention not marked as done can be marked as a to-do
+
+      <img
+        src="/images/flowsheet_mark_todo.webp"
+        alt="Flowsheet Mark Todo Web"
+        title="Flowsheet Mark Todo Web"
+        style={{ width:"46%" }}
+      />
+
+      **Note:** Showing modifiers at a per intervention level and justifications can be configured on or off from the Preferences tab. 
 
       ![36 Fill Intervention Gi](/images/36_fill_intervention.gif)
 
@@ -86,11 +93,11 @@ More details: [Flowsheets/Intervention Manager User Guide](https://athelas-publi
 
   The duration is billed as the **maximum** of the overlapping times, not the sum.
 
-  **Example:** Before: (10 \+ 2 \+ 10 \+ 15 = 37)
+  **Example:** Before: (10 + 2 + 10 + 15 = 37)
 
   ![Concurrent Before Web](/images/concurrent_before.webp)
 
-  **Example:** After: (10 \+ 2 \+ max(15,10) = 27)
+  **Example:** After: (10 + 2 + max(15,10) = 27)
 
   ![Concurrent After Web](/images/concurrent_after.webp)
 
@@ -110,9 +117,10 @@ More details: [Flowsheets/Intervention Manager User Guide](https://athelas-publi
 
 <Card title>
   - **Auto-calculate:** The system automatically calculates treatment time and units.
-  - **Manual entry:** Turn off auto-calculation toggles if you want to manually enter total time or units (useful for concurrent exercises). You can also add up to four modifiers to a procedure after marking it as done.
+  - **Manual entry:** Turn off auto-calculation toggles if you want to manually enter total time or units (useful for concurrent exercises). Clicking the CPT code in the blue box will highlight all related interventions in blue for faster visual sorting and editing of the associated intervention(s).
+  - You can also add up to four modifiers to a procedure after marking it as done. 
 
-  **Note**: In some cases, if two interventions may occur at the same time, you can **mark them as concurrent.**
+  **Note**: In some cases, if two interventions may occur at the same time, you can **mark them as concurrent. **
 
     
 
@@ -128,7 +136,7 @@ More details: [Flowsheets/Intervention Manager User Guide](https://athelas-publi
   - Click the double caret icon to add notes that will appear only in the HEP (not in billing).
   - Click **Print HEP** to preview and send the HEP via email, text, or print as a PDF.
 
-  **Note**: Double click an intervention to mark it as a **To-do** (green border, moves to top)as an exercise to be done today. Reversing a **DONE** intervention to To-Do removes its associated procedure.
+  **Note**: Any interventions marked as HEP in the previous appointment will appear as checked in the current appointment as well. 
 
   ![Hep Web](/images/hep.webp)
 
@@ -152,6 +160,9 @@ More details: [Flowsheets/Intervention Manager User Guide](https://athelas-publi
   - Attach any relevant **images** in the Media tab.
   - Specify the **activity type** (exercise, modality, manual therapy), **category**, **movement**, and **body type**.
 
+  <Info>
+    **Note**: We recommend keeping standardized intervention names as they will be printed as part of the chart note PDFs. You can customize group names (e.g. John Doe's Interventions) as they will not be printed in the PDFs.
+  </Info>
   <img
     src="/images/intervention_type_filter.png"
     alt="Intervention Type Filter Pn"

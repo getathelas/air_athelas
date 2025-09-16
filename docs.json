@@ -100,11 +100,11 @@
             "tag": "Admin",
             "pages": [
               "admin/practice_settings",
-              "admin/Prov_credentials",
-              "admin/calendar_settings",
-              "admin/patient_workflows",
               "admin/appointment_types",
               "admin/chart_note_templates",
+              "admin/patient_workflows",
+              "admin/calendar_settings",
+              "admin/Prov_credentials",
               "admin/fax_admin"
             ]
           },

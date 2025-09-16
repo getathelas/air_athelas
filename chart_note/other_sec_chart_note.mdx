@@ -3,7 +3,7 @@ title: "Other Sections within the Chart Note"
 sidebarTitle: "Chart Note Sections"
 ---
 
-In addition to the Plan of Care, Chart Notes include sections for Measurements, Goals, Treatments, and Visits.
+In addition to the Plan of Care, Chart Notes include pre-built sections for Measurements, Goals, Treatments, and Visits.
 
 ### <Icon icon="tape" iconType="duotone" color="#F9345F" size={23} />  Measurements
 
@@ -104,6 +104,18 @@ In addition to the Plan of Care, Chart Notes include sections for Measurements, 
 <Card title=" ">
   The **Treatments** section allows providers to select treatments tied to corresponding CPT codes.
 
+  To add a new treatment:
+
+  - Click on Add Treatment on the top right of the section
+  - Select the Treatment from the drop down search box
+  - Select the Diagnosis Codes (options available will be based on the ICD-10 codes entered in the Diagnosis section above Treatments)
+  - Optional: Add in minutes, units, notes, justification
+
+  Note on calculating units and time:
+
+  - **Auto-calculate:** The system automatically calculates treatment time and units.
+  - **Manual entry:** Turn off auto-calculation toggles if you want to manually enter total time or units. 
+
   ![Treatments Web](/images/treatments.webp)
 
   <Danger>
@@ -119,4 +131,18 @@ In addition to the Plan of Care, Chart Notes include sections for Measurements, 
   Learn more about visit alerts [here](https://air_athelas.mintlify.app/front_desk/prep_appt#track-visit-alerts).
 
   ![24 Visits Gi](/images/24_visits.gif)
+</Card>
+
+### Add sections to your Chart Note
+
+<Card title=" ">
+  To add a new section to a Chart Note:
+
+  - Open **Preferences** in the left navigation tab **→ Appointment Types** and create or edit an appointment type
+  - Click **\+ Add Section**.
+  - Select your section from the dropdown menu.
+
+  You can add flowsheets, measurements and multiple other such custom sections.
+
+  **Note:** Adding a **Flowsheet** section will remove the **Treatments** section.
 </Card>
