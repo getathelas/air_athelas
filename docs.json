@@ -125,12 +125,5 @@
       "label": "Try the Air Athelas Training Now",
       "href": "https://athelas-academy.workramp.io/paths"
     }
-  },
-  "settings": {
-    "customScripts": [
-      {
-        "src": "/custom_style.css"
-      }
-    ]
   }
 }
