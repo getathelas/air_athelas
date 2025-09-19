@@ -78,6 +78,19 @@ Easily create, copy, and manage patient appointments directly from the calendar 
   - You can then view the patients details within the Patient Tab as needed.
 </Card>
 
+### Add Pinned Patient Notes
+
+<Card title>
+  When enabled within the Preferences Tab, pinned notes will open automatically when the patient's profile or appointments or chart notes are opened.
+
+  <img
+    src="/images/pinned_notes.webp"
+    alt="Pinned Notes Web"
+    title="Pinned Notes Web"
+    style={{ width:"55%" }}
+  />
+</Card>
+
 ### Add a New Case
 
 <Card title>
@@ -155,20 +168,24 @@ Easily create, copy, and manage patient appointments directly from the calendar 
 ## <Icon icon="envelopes-bulk" iconType="duotone" color="#F9345F" size={23} />  Create new appointment (bulk)
 
 <Card title>
-  Create schedule blocks for meetings, vacations, or admin time. Use **Create New → Bulk Create Appointments** or click directly on the calendar.
+  Create schedule blocks for meetings, vacations, or admin time.
 
-  Choose the provider, title, time/date, and recurrence.
+  - Use **Create New → Bulk Create Appointments** or click directly on the calendar.
+  - Choose the provider, title, time/date, and recurrence.
+
+  \*\*Note: \*\*You can bulk-schedule with a primary and a backup (alternate) provider. The calendar shows availability for both, you can pick who covers each date, and the system creates the right appointments under the right provider. If your practice policy allows you can also note credentialing exceptions during scheduling.
 </Card>
 
-## <Icon icon="timer" iconType="duotone" color="#F9345F" size={23} />  Create scheduled blocks
 
-<Card title>
-  Create schedule blocks for meetings, vacations, or admin time. Use **Create New → New Schedule Block** or click directly on the calendar. Choose the provider, title, time/date, and recurrence.
+<Accordion title="FAQ: Updating a case after the appointment is completed">
+  **We do not support updating a case for a completed appointment**. Sites must make sure the case is linked correctly **before finalizing the chart note in Air**. 
 
-  <img
-    src="/images/schedule_block.webp"
-    alt="Schedule Block Web"
-    title="Schedule Block Web"
-    style={{ width:"54%" }}
-  />
-</Card>
+  If a site encounters this issue:
+
+  1. A completed appointment cannot be archived. Every completed appointment (which is typically intended to bill) will always have an encounter/claim.
+  2. The site should schedule a **new appointment** on the same day with the same provider, linked to the **correct case**.
+  3. Import the PDF of the incorrect case into this new appointment.
+  4. Mark this new appointment as **“for documentation only”** so no duplicate encounters/claims are generated.
+  5. Once the document is imported, they can apply Scribe to the chart note.
+  6. Going forward, they will be able to carry forward information from the correct case into future appointments for that case.
+</Accordion>

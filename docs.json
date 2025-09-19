@@ -104,7 +104,6 @@
               "admin/chart_note_templates",
               "admin/patient_workflows",
               "admin/calendar_settings",
-              "admin/Prov_credentials",
               "admin/fax_admin"
             ]
           },
