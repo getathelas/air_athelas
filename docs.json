@@ -72,6 +72,7 @@
               "chart_note/other_sec_chart_note",
               "chart_note/flowsheets",
               "chart_note/scribe_faq",
+              "chart_note/medications",
               "inbox/nav_inbox"
             ]
           },
@@ -104,6 +105,7 @@
               "admin/chart_note_templates",
               "admin/patient_workflows",
               "admin/calendar_settings",
+              "admin/register_providers_rx",
               "admin/fax_admin"
             ]
           },
