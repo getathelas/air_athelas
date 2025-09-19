@@ -3,14 +3,16 @@ title: "Review your Tasks"
 sidebarTitle: "Tasks"
 ---
 
-The **Tasks** page allows you to assign and receive tasks from colleagues, set due dates, and track progress. It can be used for any type or size of task—whether you’re requesting that a colleague upload supporting documentation on a claim or arranging a replacement MRI machine.
+The **Tasks** page allows you to assign and receive tasks from colleagues, set due dates, and track progress. It can be used for any type or size of task - whether you’re requesting that a colleague upload supporting documentation on a claim or arranging a replacement MRI machine.
 
-When you navigate to the Tasks page, you’ll see two tabs:
+When you navigate to the Tasks page, you’ll see four tabs:
 
 - **My Tasks** – tasks assigned to you
-- **Assigned Tasks** – tasks you have assigned to others
+- **Available Group Tasks** - tasks assigned to groups you are a member of
+- **Assigned by Me** – tasks you have assigned to others
+- **All Tasks** - tasks assigned across the organization
 
-![My Tasks Web](/images/my_tasks.webp)
+![All Tasks Web](/images/all_tasks.webp)
 
 ### Create a New Task
 
@@ -31,12 +33,21 @@ When you navigate to the Tasks page, you’ll see two tabs:
     title="Create Task Pn"
     style={{ width:"34%" }}
   />
+
+  When a task is assigned to you, you will be notified (with an update shown on the bell icon on top of the page)
+
+  <img
+    src="/images/task_notif.webp"
+    alt="Task Notif Web"
+    title="Task Notif Web"
+    style={{ width:"64%" }}
+  />
 </Card>
 
-### Change Task Status
+### Update Tasks
 
 <Card title>
-  You can edit, delete, or update the status of a task by clicking the corresponding icons.
+  **Update Task Status:** You can edit, delete, or update the status of a task by clicking the corresponding icons.
 
   <img
     src="/images/update_task.png"
@@ -44,12 +55,12 @@ When you navigate to the Tasks page, you’ll see two tabs:
     title="Update Task Pn"
     style={{ width:"38%" }}
   />
-</Card>
 
-### Bulk edit Tasks
+  \*\*Sort Tasks: \*\*Click the arrow in any column header to sort by ascending, descending, or neutral order. Shift-Sort - Sort one column, then hold _Shift_ while sorting another column to apply multiple sorting rules.
 
-<Card title>
-  To manage multiple tasks at once, check the boxes beside them and click on the edit button on the top to perform bulk actions.
+  \*\*View Archived Tasks: \*\*To view archived tasks, use the Filter in the upper-right corner and include Archived in the statuses shown.
+
+  \*\*Bulk edit Tasks: \*\*To manage multiple tasks at once, check the boxes beside them and click on the edit button on the top to perform bulk actions.
 
   <img
     src="/images/bulk_tasks.png"
@@ -59,14 +70,135 @@ When you navigate to the Tasks page, you’ll see two tabs:
   />
 </Card>
 
-### Sort Tasks
+### Assign Tasks to User Groups
 
 <Card title>
-  Click the arrow in any column header to sort by ascending, descending, or neutral order. Shift-Sort - Sort one column, then hold _Shift_ while sorting another column to apply multiple sorting rules.
+  Tasks can be assigned to 1 group OR 1 individual at any point of time. Once a task is self-assigned from a group, the task will be unassigned from the group and moved to your “My Tasks” tab.
+
+  \*\*View Group Details: \*\*View your groups, search members, browse membership lists by clicking on **My Groups.**
+
+  ![User Group Members Web](/images/user_group_members.webp)
+
+  **Assign a task to a group:**
+
+  1. Click **\+ Task** (top right).
+  2. In the drawer:
+     - Add **Title** and optional **Description**.
+     - Choose **Assign to a Group** tab → pick a group from the dropdown.
+     - Complete other required fields (priority, due date, etc.).
+     - Click **Create**.
+  3. Find your task in **Assigned by Me** tab. You can edit or delete the task here.
+
+  ![Create Group Task Web](/images/create_group_task.webp)
+
+  **Self assign a task:** Open **Available Group Tasks** tab, from here:
+
+  - **Edit/Delete** group tasks if you have permissions.
+  - **Self-assign** → click **Assign to Me**.
+  - Confirm → task moves from **Group** → **My Tasks** tab.
+
+  ![Assign Task Self Web](/images/assign_task_Self.webp)
+
+  **Note**: Once you self-assign a task it will be unassigned from the group and moved to your “My Tasks” tab.
+
+  <Accordion title="FAQ: I have assigned myself a group task, but I want to reassign this task to the group for another member to claim">
+    In your “My Tasks” tab, search or filter for the corresponding task and select the pencil icon to bring up the “Edit Task” drawer.
+
+    Click on the “Assign to a Group” tab, and select a group that you want to assign to.
+
+    Save your changes, and the task will be reassigned to the group that you have selected.
+  </Accordion>
+  <Accordion title="FAQ: Can I assign tasks to both a group and a user">
+    No, a task can only have one assignee at any point of time. This means that if the task is assigned to a group, it cannot be assigned to a user.
+
+    Likewise, a task cannot be assigned to a group when it is assigned to a user. This helps to simplify task assignment and prevent duplicate efforts within your team.
+  </Accordion>
 </Card>
 
-### View Archived Tasks
+### Set-up User Groups
 
 <Card title>
-  To view archived tasks, use the Filter in the upper-right corner and include Archived in the statuses shown.
+  Go to **Preferences → User Groups**.
+
+  - Click **Create Group** (top right).
+  - In the drawer:
+    - Enter **Group Name** (must be unique).
+    - Add an optional **Description**.
+    - Add **Users** (optional).
+  - Click **Create**.
+  - After the groups are created you can search for them, edit group name, description or members, delete the group.
+
+  ![User Groups Pref Web](/images/user_groups_pref.webp)
+</Card>
+
+### Create Tasks linked to patient Attachments
+
+<Card title>
+  For a given attachment, you can create a task associated to it. The task created will be pre-filled with the attachment linked to it.
+
+  Navigate to the **Patient Attachments** page \> Each row in the attachments table has a **Manage Tasks** button on the right.
+
+  The notifications next to the attachment will have one of the below icons:
+
+  - **Incomplete task** → <Icon icon="circle-dot" iconType="duotone" color="#fa0b0b" /> Red icon
+  - **Complete task** → <Icon icon="circle-dot" iconType="duotone" color="#058a17" /> Green icon
+  - **No task attached** → No icon
+
+  ![Task Attach Web](/images/task_attach.webp)
+
+  \*\*To add a task: \*\*
+
+  - Click Manage Tasks \> **New Task** (bottom left)
+  - Fill in required fields:
+    - Task Title
+    - Assignee
+    - Priority
+    - Due date
+    - Task type
+  - The task will be **automatically linked** to the current attachment.
+  - Click **Create** to save.
+  - Once created you can view details, edit, delete or update the task status. Status options include: _Not Started, In Progress, Done, or Archived._
+
+  Once you create your task, you can view the task from the Attachments page and the Task page.
+
+  <Accordion title="FAQ: Can I link an attachment to an existing Task on the Task page">
+    You can create a new task linked to an attachment only from the patient's attachment page. However, you can view and manage existing tasks linked to attachments from the Tasks page.
+  </Accordion>
+</Card>
+
+### Create Tasks linked to Faxes
+
+<Card title=" ">
+  For a given incoming or outgoing fax, you can create a task associated to it. The task created will be pre-filled with the fax number linked to it.
+
+    
+
+  Navigate to the **Fax **page \> Each row in the Fax table has a **Manage Tasks** button on the right.
+
+  The notifications next to the attachment will have one of the below icons:
+
+  - **Incomplete task** → <Icon icon="circle-dot" iconType="duotone" color="#fa0b0b" /> Red icon
+  - **Complete task** → <Icon icon="circle-dot" iconType="duotone" color="#058a17" /> Green icon
+  - **No task attached** → No icon
+
+  ![Fax Task Pn](/images/fax_task.png)
+
+  **To add a task:**
+
+  - Click Manage Tasks \> **New Task** (bottom left)
+  - Fill in required fields:
+    - Task Title
+    - Assignee
+    - Priority
+    - Due date
+    - Task type
+  - The task will be **automatically linked** to the current fax.
+  - Click **Create** to save.
+  - Once created you can view details, edit, delete or update the task status. Status options include: _Not Started, In Progress, Done, or Archived._
+
+  Once you create your task, you can view the task from the Fax page and the Task page.
+
+  <Accordion title="FAQ: Can I link a Fax to an existing Task on the Task page">
+    You can create a new task linked to a Fax only from the Fax page. However, you can view and manage existing tasks linked to a Fax from the Tasks page.
+  </Accordion>
 </Card>
