@@ -1,0 +1,56 @@
+---
+title: "Prescriber Agents"
+sidebarTitle: "Prescriber Agents"
+---
+
+**Providers can designate staff members as prescriber agents, granting them the ability to:**
+
+- Draft prescriptions (for controlled medications)
+- Prescribe medications (for non-controlled medications)
+
+Providers can assign prescriber agents by facility and set permissions for whether they can only create draft prescriptions or also prescribe medications.
+
+### Creating a Prescriber Agent
+
+<Card title=" ">
+  In some cases, two interventions may occur at the same time, and you don’t want to bill them separately. In these cases, you can mark interventions as **concurrent**.
+
+  The duration is billed as the **maximum** of the overlapping times, not the sum.
+
+  **Prerequisites for marking an intervention as concurrent:**
+
+  - The intervention must be marked as **Done**.
+  - Both interventions must have the **same procedure code**.
+
+  Air auto-suggests concurrent options. Selecting one intervention as concurrent automatically maps it back to the other.
+
+  Once you mark Intervention B as concurrent with Intervention A, Intervention A will also be auto-selected with Intervention B (creating a two-way mapping).
+
+  **Note:** You cannot change the CPT code until the concurrent link is removed. You cannot set an intervention to Pending until the concurrent link is removed.
+</Card>
+
+### Prescribe Medications as a Prescriber Agent
+
+<Card title=" ">
+  Prescriber Agents can go to the Patient's Profile \> Select **Medications** tab.
+
+  - Create a medication order.
+  - When selecting an appointment, prescriber agent will only see appointments by facility for which they are appointed to be prescriber agent.
+  - On the medication form, they will be able to select either of the two options - “Prescribe as agent” or “save draft”. Save draft is the only option they can select if they are ineligible to prescribe for that facility, or if they are dealing with controlled medications.
+  - On review, the medications which are marked as save as draft will show up as Draft
+  - Once they submit the medications, the draft medications will appear on the medications table, and a confirmation toast will show the information of the medications created.
+  - There will also be created a task created for the provider which the provider can refer to to sign off on the medications.
+  - Prescriber agent can edit the draft medications, but they cannot prescribe draft medications once they have created the draft.
+</Card>
+
+### Review Prescriptions by Prescriber Agents
+
+<Card title=" ">
+  **When a draft prescription is created:**
+
+  - Providers receive a task notification on the notification bell
+  - Clicking the notification takes them to the **Tasks** page, where they can view the associated patient profile
+  - From there, they can navigate to the patient’s profile page and review the draft prescriptions under the **Medications** section
+
+  **Note: **Providers can make changes to draft, but they cannot save drafts, they can only prescribe them directly.
+</Card>
