@@ -71,8 +71,10 @@
               "chart_note/nav_chart_note",
               "chart_note/other_sec_chart_note",
               "chart_note/flowsheets",
-              "chart_note/scribe_faq",
+              "chart_note/functional_outcomes",
               "chart_note/medications",
+              "chart_note/prescriber_agents",
+              "chart_note/scribe_faq",
               "inbox/nav_inbox"
             ]
           },
