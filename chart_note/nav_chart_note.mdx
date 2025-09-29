@@ -92,6 +92,8 @@ Click "Get Started" to start the demo. Click on the fullscreen icon on the top r
 
   Add a section to the Chart Note by selection options from the dropdown.
 
+  **Note:** Adding a **Flowsheet** section will remove the **Treatments** section.
+
   ![Add Note Section Web](/images/add_note_Section.webp)
 </Card>
 
@@ -107,76 +109,100 @@ Click "Get Started" to start the demo. Click on the fullscreen icon on the top r
 
 </div>
 
+More details: [**EHR Scribe v2 User Guide**](https://athelas-public.notion.site/Air-Scribe-v2-User-Guide-203f92a633f28053987ec9be32d0b198)
 
-  More details: [**EHR Scribe v2 User Guide**](https://athelas-public.notion.site/Air-Scribe-v2-User-Guide-203f92a633f28053987ec9be32d0b198)
+The Athelas AI Scribe allows you to record a patient consultation and automatically generate detailed documentation.
 
-  The Athelas AI Scribe allows you to record a patient consultation and automatically generate detailed documentation.
+### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Patient Consent for Scribe**
 
-  ### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Patient Consent for Scribe**
-<Card title="">
-      Re-confirm patient consent before recording. Patient consent will be taken as part of the Patient Intake Form
+<Card title>
+  Re-confirm patient consent before recording. Patient consent will be taken as part of the Patient Intake Form
 </Card>
-  ### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Record using Scribe**
-    <Card title="">
-      - Click the blue button in the bottom-right corner to open the AI Widget
-      - Select **Scribe**
-      - Click **Start Recording**. You can minimize the widget and continue working within the EHR
 
-      ![29 Start Scribe Gi](/images/29_start_scribe.gif)
+### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Record using Scribe**
 
-      - End or cancel the recording when finished
+<Card title>
+  - Click the blue button in the bottom-right corner to open the AI Widget
+  - Select **Scribe**
+  - Click **Start Recording**. You can minimize the widget and continue working within the EHR
 
-      ![30 Stop Scribe Gi](/images/30_stop_scribe.gif)
+  ![29 Start Scribe Gi](/images/29_start_scribe.gif)
 
-      <Danger>
-        ✨ **Smart Tip:** While uploading, you can start a new chat on the script to ask questions about the current consultation recording.
-      </Danger>
-    </Card>
+  - End or cancel the recording when finished
 
-      ### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Apply scribe**
-        <Card title="">
-      - Review the generated content in the Scribe Application Page. Scroll through the Tabs to review all sections
-      - Each section includes a checkbox to apply or exclude the scribe output into the Chart Note.
-      - Click **Apply Scribe**
+  ![30 Stop Scribe Gi](/images/30_stop_scribe.gif)
 
-      <img
-        src="/images/select_scribe_sections.webp"
-        alt="Select Scribe Sections Web"
-        title="Select Scribe Sections Web"
-        style={{ width:"37%" }}
-      />
+  <Danger>
+    ✨ **Smart Tip:** While uploading, you can start a new chat on the script to ask questions about the current consultation recording.
+  </Danger>
+</Card>
 
-      Note: You can also [lock a section to disable the scribe](https://trainings.air.athelas.com/chart_note/scribe_faq#how-do-i-lock-sections-from-ai-scribe) for that section.
+### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Apply scribe**
 
-      <Danger>
-        ✨ **Smart Tip**: Use **Reapply Scribe** to restore the most recent recording if you need to revert back. This is helpful if you've edited fields after scribing.
-      </Danger>
-      Alternate Option: [**Air scribe (mobile app)**](https://athelas-public.notion.site/Air-Scribe-User-Guide-1dcf92a633f28089ad12c6783d5b8ec0)
-    </Card>
-    ### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Quickly access scribes**
-    <Card title="">
-      The **Visits** tab provides a quick view of today’s appointments. It displays only the appointments assigned to your provider.
+<Card title>
+  - Review the generated content in the Scribe Application Page. Scroll through the Tabs to review all sections
+  - Each section includes a checkbox to apply or exclude the scribe output into the Chart Note.
+  - Click **Apply Scribe**
 
-      - **If a scribe already exists** for an appointment, clicking the appointment opens the **Scribe Application Page**, where you can review and apply the scribe to the patient’s Chart Note.
-      - **If no scribe exists,** clicking the appointment opens the **New Recording Page**, where you can start a new audio recording for the visit.
+  <img
+    src="/images/select_scribe_sections.webp"
+    alt="Select Scribe Sections Web"
+    title="Select Scribe Sections Web"
+    style={{ width:"37%" }}
+  />
 
-      <img
-        src="/images/scribe_visits.webp"
-        alt="Scribe Visits Web"
-        title="Scribe Visits Web"
-        style={{ width:"42%" }}
-      />
+  Note: You can also [lock a section to disable the scribe](https://trainings.air.athelas.com/chart_note/scribe_faq#how-do-i-lock-sections-from-ai-scribe) for that section.
 
-      You can also view past or upcoming appointments by selecting a date in the **date picker** at the top or by using the **left and right arrows** to move one day forward or backward.
-  </Card>
-  ### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Update your text using Athelas AI**
-    <Card title="">
-      Select the text and click on **Cmd / Ctrl + K**. Select the update type to the text.
+  <Danger>
+    ✨ **Smart Tip**: Use **Reapply Scribe** to restore the most recent recording if you need to revert back. This is helpful if you've edited fields after scribing.
+  </Danger>
+  Alternate Option: [**Air scribe (mobile app)**](https://athelas-public.notion.site/Air-Scribe-User-Guide-1dcf92a633f28089ad12c6783d5b8ec0)
+</Card>
 
-      You can choose to select or reject the change which will automatically update in the Chart Note.
+### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Quickly access scribes**
 
-      ![8 Commandk Gi](/images/8_commandk.gif)
-   </Card>
+<Card title>
+  The **Visits** tab provides a quick view of today’s appointments. It displays only the appointments assigned to your provider.
+
+  - **If a scribe already exists** for an appointment, clicking the appointment opens the **Scribe Application Page**, where you can review and apply the scribe to the patient’s Chart Note.
+  - **If no scribe exists,** clicking the appointment opens the **New Recording Page**, where you can start a new audio recording for the visit.
+
+  <img
+    src="/images/scribe_visits.webp"
+    alt="Scribe Visits Web"
+    title="Scribe Visits Web"
+    style={{ width:"42%" }}
+  />
+
+  You can also view past or upcoming appointments by selecting a date in the **date picker** at the top or by using the **left and right arrows** to move one day forward or backward.
+</Card>
+
+### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Update your text using Athelas AI**
+
+<Card title>
+  Select the text and click on **Cmd / Ctrl + K**. Select the update type to the text.
+
+  You can choose to select or reject the change which will automatically update in the Chart Note.
+
+  ![8 Commandk Gi](/images/8_commandk.gif)
+</Card>
+
+### <Icon icon="file-pen" iconType="duotone" color="#F9345F" size={23} />  **Review Section Updates**
+
+<Card title>
+  Click the “Last updated” button in the heading of a section to view updates made.
+
+  <img
+    src="/images/section_change_log.webp"
+    alt="Section Change Log Web"
+    title="Section Change Log Web"
+    style={{ width:"75%" }}
+  />
+
+  Click on a change log to view the detailed changes.
+
+  ![Change History 1 Web](/images/change_history_1.webp)
+</Card>
 
 ## Other ways to fill your Chart Note
 
@@ -184,8 +210,6 @@ Click "Get Started" to start the demo. Click on the fullscreen icon on the top r
 
 <Card title>
   More details: [EHR Dictation v1 User Guide](https://www.notion.so/EHR-Dictation-v1-User-Guide-1c9f92a633f28000a6e7e0517ece550a?pvs=21)
-
-    
 
   Once a note is generated, you have the option to add more content through a direct dictation. Dictation allows you to use your voice to enter text directly into a Chart Note.
 
@@ -210,6 +234,8 @@ Click "Get Started" to start the demo. Click on the fullscreen icon on the top r
   />
 
   **Note**: Historical data can only be pulled forward between appointments of the same Case.
+
+  ![Image D01d9f09 Bf09 42e9 A115 F70ea5ccc768 Web](/images/image-d01d9f09-bf09-42e9-a115-f70ea5ccc768.webp)
 </Card>
 
 ### <Icon icon="input-text" iconType="duotone" color="#F9345F" size={23} />  **Use pre-defined Text Snippets**
@@ -242,10 +268,12 @@ Click "Get Started" to start the demo. Click on the fullscreen icon on the top r
   - If the detail is missing, the checkmark appears **grey**.
   - Once the detail is documented, the checkmark turns **green**.
 
-  <Danger>
-    ✨ **Smart Tip**: Click on **Review**  on the bottom right of the Athelas AI widget. This will ask Athelas AI to provide a comprehensive compliance check.
-  </Danger>
-  ![5 Compliancecheck Gi](/images/5_compliancecheck.gif)
+  Click on **Review**  on the bottom right of the Athelas AI widget. This will ask Athelas AI to provide a comprehensive compliance check.
+
+  - You will get a **compliance score out of 100**
+  - Additional recommendations to ensure no billing compliance issues related to the Chart Note.
+
+  ![Image Ba968932 B349 4cd0 A394 9ca74638b61c Web](/images/image-ba968932-b349-4cd0-a394-9ca74638b61c.webp)
 
   You can also check the compliance status for each chart note section while entering it in.
 
