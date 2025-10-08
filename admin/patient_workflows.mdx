@@ -5,16 +5,34 @@ title: "Create Patient Workflows"
 ### Create a Patient Intake Form
 
 <Card title>
-  Navigate to the **Templates** tab under **Utilities** in the left navigation pane. To create a new intake form:
+  Navigate to the **Templates** tab under **Utilities** in the left navigation pane. 
+
+  View your forms, duplicate and edit them. 
+
+  Select from the drop down on the top left to move between EHR (chart note templates) and Patient Intake form templates.
+
+  ![Select Form Type Jpe](/images/select_form_type.jpeg)
+
+  To create a new intake form:
 
   1. Click **\+ Create New Template** in the top-right corner.
   2. Drag and drop **components** from the left panel to the right to add fields.
   3. Each component can be marked as required, duplicated, or deleted. The type of component is displayed in the top-right corner of the field.
-  4. Once your form is built, give it a name and click **Save.** Be sure to select **Save as Patient Intake Template** so it’s stored as a patient intake form.
+  4. Once your form is built, give it a name on the top left and click **Save** on the top right**.** Be sure to select **Save as Patient Intake Template** so it’s stored as a patient intake form.
+  5. You can also choose to show the intake form within the chart note by clicking on the checkbox on the top right.
+
+  **Tip:** You can add text blocks to add headings or legal clauses to the form. Add Signature Blocks to require a signature / consent from the patient.
 
   ![Create Intake Form Web](/images/create_intake_form.webp)
 
-  \*\*Note: \*\*Set options within the Preferences tab to allow providers to edit patient intake forms directly within the chart note. This will not replace the original form (in the patient attachments) but will allow modifications to be made in the chart note.
+  **Note: **Set options within the Preferences tab to allow providers to edit patient intake forms directly within the chart note. This will not replace the original form (in the patient attachments) but will allow modifications to be made in the chart note.
+
+  We have a **three pre-built forms with capabilities for patients to upload content** that will write back into Air**. **
+
+  - Patient Update: This will auto-fill information within the Patient's Profile page in the Demographics section
+  - Insurance Update: This will auto-fill information within the Patient's Profile page in the Demographics section. Patients can share a photo of their insurance card which will auto-create an attachment available in the patient profile.
+  - Paperwork upload: Patients can share any documents they would like (e.g. diagnostic tests, etc.) which will auto-create an attachment available in the patient profile.
+  - **Note:** These forms cannot be edited, even if an edit option appears.
 
   **Components available include:**
 
@@ -57,10 +75,7 @@ title: "Create Patient Workflows"
 <Card title>
   You can automate the patient intake process through **Patient Flow**.
 
-  **Two pre-built forms** come with write-back capabilities: Patient Update and Insurance Update.
-
-  - When completed, these forms automatically update patient and insurance information in the Demographics tab of the patient profile.
-  - **Note:** These forms cannot be edited, even if an edit option appears.
+    
 
   **Create new patient flows:**
 
@@ -98,8 +113,6 @@ title: "Create Patient Workflows"
 
 <Card title>
   Appointment reminders can be configured to send up to **three times** (in addition to any immediate sends). You can set how many **days/hours before the appointment** reminders should be delivered.
-
-    
 
   **Note:** Reminders are queued at midnight each day.
 
