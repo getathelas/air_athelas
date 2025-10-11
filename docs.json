@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.schema.json",
   "theme": "aspen",
-  "name": "Air Athelas User Guide",
+  "name": "Air by Athelas",
   "logo": {
     "light": "images/air_logo.webp",
     "dark": "images/air_logo_dark.webp"
@@ -21,14 +21,17 @@
   },
   "favicon": "images/athelas_favicon_bkg.png",
   "navigation": {
-    "groups": [
+    "tabs": [
+      {
+        "tab": "Air User Guide",
+        "icon": "/images/air_logo.webp",
+        "groups": [
           {
-        "group": "Getting Started with - 2.0",
+        "group": "Getting Started with Air",
         "icon": "stars",
         "pages": [
           "index",
           "set-up",
-          "sample",
           "troubleshoot/faqs"
         ]
       },
@@ -123,6 +126,32 @@
             ]
           }
 
+    ]
+       },
+      {
+        "tab": "What's New",
+        "icon": "stars",
+        "groups": [
+          {
+        "group": "Product Releases",
+        "pages": [
+          "blogs"
+        ]
+      }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "bullhorn",
+        "groups": [
+          {
+        "group": "Product Releases",
+        "pages": [
+          "changelog"
+        ]
+      }
+        ]
+      }
     ]
   },
   "navbar": {
