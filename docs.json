@@ -27,15 +27,6 @@
         "icon": "laptop-medical",
         "groups": [
           {
-        "anchors": [
-        {
-          "anchor": "Try the Air Athelas Training",
-          "icon": "arrow-pointer",
-          "href": "https://athelas-academy.workramp.io/paths"
-        }
-      ]
-          },
-          {
        "group": "Getting Started with Air",
         "icon": "stars",
         "pages": [
@@ -134,27 +125,26 @@
               "reports/all_reports"
             ]
           }
-
-    ]
+        ]
        },
       {
         "tab": "What's New",
         "icon": "stars",
         "groups": [
           {
-            "group": " ",
+            "group": "Blog Landing Page",
             "pages":[
-              "blogs"
+              "Blogs"
             ]
           },
           {
-        "group": "Product Releases",
+        "group": "Air",
         "pages": [
           "Blog1"
         ]
          },
           {
-        "group": "Customer Stories",
+        "group": "Insights",
         "pages": [
           "Blog2"
         ]   
@@ -171,10 +161,16 @@
         ]
       },
   "navbar": {
+    "links": [
+      {
+        "label": "Try the Athelas Workramp Trainings Now",
+        "href": "https://athelas-academy.workramp.io/paths"
+      }
+    ],
     "primary": {
       "type": "button",
       "label": "Sign-in on Insights",
       "href": "https://insights.athelas.com"
-    }
+    } 
   }
 }
