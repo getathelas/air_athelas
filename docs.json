@@ -3,8 +3,8 @@
   "theme": "aspen",
   "name": "Air by Athelas",
   "logo": {
-    "light": "images/air_logo.webp",
-    "dark": "images/air_logo_dark.webp"
+    "light": "images/athelas_logo_2.png",
+    "dark": "images/athelas_logo_2.png"
   },
   "styling": {"eyebrows": "breadcrumbs"},
   "styles": {
@@ -21,13 +21,22 @@
   },
   "favicon": "images/athelas_favicon_bkg.png",
   "navigation": {
-    "tabs": [
+     "tabs": [
       {
         "tab": "Air User Guide",
-        "icon": "/images/air_logo.webp",
+        "icon": "laptop-medical",
         "groups": [
           {
-        "group": "Getting Started with Air",
+        "anchors": [
+        {
+          "anchor": "Try the Air Athelas Training",
+          "icon": "arrow-pointer",
+          "href": "https://athelas-academy.workramp.io/paths"
+        }
+      ]
+          },
+          {
+       "group": "Getting Started with Air",
         "icon": "stars",
         "pages": [
           "index",
@@ -133,32 +142,39 @@
         "icon": "stars",
         "groups": [
           {
+            "group": " ",
+            "pages":[
+              "blogs"
+            ]
+          },
+          {
         "group": "Product Releases",
         "pages": [
-          "blogs"
+          "Blog1"
         ]
-      }
+         },
+          {
+        "group": "Customer Stories",
+        "pages": [
+          "Blog2"
+        ]   
+          }
         ]
       },
       {
         "tab": "Changelog",
         "icon": "bullhorn",
-        "groups": [
-          {
-        "group": "Product Releases",
         "pages": [
           "changelog"
         ]
       }
         ]
-      }
-    ]
-  },
+      },
   "navbar": {
     "primary": {
       "type": "button",
-      "label": "Try the Air Athelas Training Now",
-      "href": "https://athelas-academy.workramp.io/paths"
+      "label": "Sign-in on Insights",
+      "href": "https://insights.athelas.com"
     }
   }
 }
