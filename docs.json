@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.schema.json",
-  "theme": "aspen",
+  "theme": "almond",
   "name": "Air by Athelas",
   "logo": {
     "light": "images/athelas_logo_2.png",
@@ -132,20 +132,22 @@
         "icon": "stars",
         "groups": [
           {
-            "group": " ",
+            "group": "Welcome to our Blogs",
             "pages":[
-              "Blogs"
+              "Blogs",
+               "prod_release",
+               "customer_stories"
             ]
           },
           {
-        "group": "Air",
+        "group": "Product Releases",
         "pages": [
           "Blog1"
         ]
          },
           {
-        "group": "Insights",
-        "pages": [
+        "group": "Customer Stories",
+        "pages": [         
           "Blog2"
         ]   
           }
