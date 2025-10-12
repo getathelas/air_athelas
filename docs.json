@@ -134,7 +134,7 @@
           {
             "group": "Welcome to our Blogs",
             "pages":[
-              "Blogs",
+              "all_publications",
                "prod_release",
                "customer_stories"
             ]
