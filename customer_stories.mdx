@@ -5,23 +5,43 @@ description: "Description of your new file."
 
 Sample ...
 
-import { Card, Columns, Tabs, Tab, Info, Warning } from '@mintlify/mdx'
+import { Card, Columns } from '@mintlify/mdx'
 
-<div className="demo-apps-header">
-  <h1>All demo apps</h1>
-  <div className="search-section">
-    <div className="search-bar">
-      <svg className="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <circle cx="11" cy="11" r="8"></circle>
-        <path d="m21 21-4.35-4.35"></path>
-      </svg>
-      <span className="search-placeholder">Search...</span>
-    </div>
-    <div className="filter-buttons">
-      <div className="filter-dropdown">
-        <button className="filter-btn active">All Publications <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6,9 12,15 18,9"></polyline></svg></button>
-        <button className="filter-btn">Products <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6,9 12,15 18,9"></polyline></svg></button>
-      </div>
+<div style={{marginBottom: '2rem'}}>
+  <h1 style={{fontSize: '2.5rem', fontWeight: '700', color: '#1a1a1a', marginBottom: '1.5rem'}}>All demo apps</h1>
+  
+  <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem'}}>
+    <div style={{display: 'flex', gap: '0.5rem'}}>
+      <select style={{
+        padding: '8px 16px',
+        background: '#f0f0f0',
+        border: '1px solid #c0c0c0',
+        borderRadius: '20px',
+        fontSize: '14px',
+        color: '#333',
+        cursor: 'pointer',
+        minWidth: '150px'
+      }}>
+        <option value="all">All Publications</option>
+        <option value="lead-tracker">Lead Tracker</option>
+        <option value="agents">Agents</option>
+        <option value="air">Air</option>
+        <option value="product-releases">Product Releases</option>
+      </select>
+      <select style={{
+        padding: '8px 16px',
+        background: 'white',
+        border: '1px solid #e0e0e0',
+        borderRadius: '20px',
+        fontSize: '14px',
+        color: '#333',
+        cursor: 'pointer',
+        minWidth: '120px'
+      }}>
+        <option value="all">Products</option>
+        <option value="featured">Featured</option>
+        <option value="new">New</option>
+      </select>
     </div>
   </div>
 </div>
@@ -30,17 +50,38 @@ import { Card, Columns, Tabs, Tab, Info, Warning } from '@mintlify/mdx'
   <Card 
     title="Power Intelligent Referral Management with the Athelas Lead Tracker" 
     href="/lead-tracker" 
-    img="/images/kpi_dash.webp"
-    className="demo-card"
+    img="/images/lead-tracker-preview.webp"
   >
-    <div className="card-content">
-      <div className="card-authors">Ansh Mehta & Alvin Tsui</div>
-      <div className="card-tags">
-        <span className="tag tag-primary">Lead Tracker</span>
-        <span className="tag tag-secondary">Product Releases</span>
-      </div>
-      <div className="card-description">
-        Streamline your referral process with intelligent tracking and management tools.
+    <div style={{padding: '1rem'}}>
+      <div style={{display: 'flex', gap: '0.75rem', flexWrap: 'wrap'}}>
+        <span style={{
+          display: 'inline-block',
+          padding: '6px 16px',
+          borderRadius: '20px',
+          fontSize: '0.75rem',
+          fontWeight: '600',
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
+          background: '#fef3c7',
+          color: '#92400e',
+          border: '1px solid #fde68a'
+        }}>
+          Lead Tracker
+        </span>
+        <span style={{
+          display: 'inline-block',
+          padding: '6px 16px',
+          borderRadius: '20px',
+          fontSize: '0.75rem',
+          fontWeight: '600',
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
+          background: '#fef7cd',
+          color: '#a16207',
+          border: '1px solid #fde68a'
+        }}>
+          Product Releases
+        </span>
       </div>
     </div>
   </Card>
@@ -48,17 +89,38 @@ import { Card, Columns, Tabs, Tab, Info, Warning } from '@mintlify/mdx'
   <Card 
     title="Introducing Agents Center — Your AI-Powered Clinical Helpers" 
     href="/agents-center" 
-    img="/images/kpi_dash.webp"
-    className="demo-card"
+    img="/images/agents-preview.webp"
   >
-    <div className="card-content">
-      <div className="card-authors">Benjamin Miller, Lucas Huang, & Krishna Choudhary</div>
-      <div className="card-tags">
-        <span className="tag tag-primary">Agents</span>
-        <span className="tag tag-secondary">Product Releases</span>
-      </div>
-      <div className="card-description">
-        Discover AI-powered clinical assistants that enhance your workflow efficiency.
+    <div style={{padding: '1rem'}}>
+      <div style={{display: 'flex', gap: '0.75rem', flexWrap: 'wrap'}}>
+        <span style={{
+          display: 'inline-block',
+          padding: '6px 16px',
+          borderRadius: '20px',
+          fontSize: '0.75rem',
+          fontWeight: '600',
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
+          background: '#fef3c7',
+          color: '#92400e',
+          border: '1px solid #fde68a'
+        }}>
+          Agents
+        </span>
+        <span style={{
+          display: 'inline-block',
+          padding: '6px 16px',
+          borderRadius: '20px',
+          fontSize: '0.75rem',
+          fontWeight: '600',
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
+          background: '#fef7cd',
+          color: '#a16207',
+          border: '1px solid #fde68a'
+        }}>
+          Product Releases
+        </span>
       </div>
     </div>
   </Card>
@@ -66,17 +128,38 @@ import { Card, Columns, Tabs, Tab, Info, Warning } from '@mintlify/mdx'
   <Card 
     title="Your day, made clearer. Meet the new Athelas Air Calendar" 
     href="/air-calendar" 
-    img="/images/kpi_dash.webp"
-    className="demo-card"
+    img="/images/calendar-preview.webp"
   >
-    <div className="card-content">
-      <div className="card-authors">Alex Young-Davies</div>
-      <div className="card-tags">
-        <span className="tag tag-primary">Air</span>
-        <span className="tag tag-secondary">Product Releases</span>
-      </div>
-      <div className="card-description">
-        Organize your schedule with our intuitive calendar interface designed for healthcare professionals.
+    <div style={{padding: '1rem'}}>
+      <div style={{display: 'flex', gap: '0.75rem', flexWrap: 'wrap'}}>
+        <span style={{
+          display: 'inline-block',
+          padding: '6px 16px',
+          borderRadius: '20px',
+          fontSize: '0.75rem',
+          fontWeight: '600',
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
+          background: '#fef3c7',
+          color: '#92400e',
+          border: '1px solid #fde68a'
+        }}>
+          Air
+        </span>
+        <span style={{
+          display: 'inline-block',
+          padding: '6px 16px',
+          borderRadius: '20px',
+          fontSize: '0.75rem',
+          fontWeight: '600',
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
+          background: '#fef7cd',
+          color: '#a16207',
+          border: '1px solid #fde68a'
+        }}>
+          Product Releases
+        </span>
       </div>
     </div>
   </Card>
@@ -84,191 +167,39 @@ import { Card, Columns, Tabs, Tab, Info, Warning } from '@mintlify/mdx'
   <Card 
     title="Meet Assistant in Air: Your AI Assistant for Smarter Patient and Scheduling Workflows" 
     href="/air-assistant" 
-    img="/images/kpi_dash.webp"
-    className="demo-card"
+    img="/images/assistant-preview.webp"
   >
-    <div className="card-content">
-      <div className="card-authors">Ruzbeh Irani</div>
-      <div className="card-tags">
-        <span className="tag tag-primary">Air</span>
-        <span className="tag tag-secondary">Product Releases</span>
-      </div>
-      <div className="card-description">
-        Leverage AI assistance for smarter patient management and scheduling workflows.
+    <div style={{padding: '1rem'}}>
+      <div style={{display: 'flex', gap: '0.75rem', flexWrap: 'wrap'}}>
+        <span style={{
+          display: 'inline-block',
+          padding: '6px 16px',
+          borderRadius: '20px',
+          fontSize: '0.75rem',
+          fontWeight: '600',
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
+          background: '#fef3c7',
+          color: '#92400e',
+          border: '1px solid #fde68a'
+        }}>
+          Air
+        </span>
+        <span style={{
+          display: 'inline-block',
+          padding: '6px 16px',
+          borderRadius: '20px',
+          fontSize: '0.75rem',
+          fontWeight: '600',
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
+          background: '#fef7cd',
+          color: '#a16207',
+          border: '1px solid #fde68a'
+        }}>
+          Product Releases
+        </span>
       </div>
     </div>
   </Card>
 </Columns>
-
-<style jsx>{`
-  .demo-apps-header {
-    margin-bottom: 2rem;
-  }
-
-  .demo-apps-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 1.5rem;
-  }
-
-  .search-section {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .search-bar {
-    position: relative;
-    flex: 1;
-    max-width: 400px;
-  }
-
-  .search-bar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #f5f5f5;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    z-index: 1;
-  }
-
-  .search-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #666;
-    z-index: 2;
-  }
-
-  .search-placeholder {
-    position: absolute;
-    left: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #999;
-    font-size: 14px;
-    z-index: 2;
-  }
-
-  .filter-buttons {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .filter-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 8px 16px;
-    background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 20px;
-    font-size: 14px;
-    color: #333;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .filter-btn:hover {
-    background: #f8f8f8;
-    border-color: #d0d0d0;
-  }
-
-  .filter-btn.active {
-    background: #f0f0f0;
-    border-color: #c0c0c0;
-  }
-
-  .demo-card {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .demo-card :global(.card-content) {
-    padding: 1rem;
-  }
-
-  .card-content {
-    padding: 1rem;
-  }
-
-  .card-authors {
-    font-size: 0.875rem;
-    color: #666;
-    margin-bottom: 0.75rem;
-    font-weight: 500;
-  }
-
-  .card-tags {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 16px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-  }
-
-  .tag-primary {
-    background: #fef3c7;
-    color: #92400e;
-    border: 1px solid #fde68a;
-  }
-
-  .tag-secondary {
-    background: #fef7cd;
-    color: #a16207;
-    border: 1px solid #fde68a;
-  }
-
-  .card-description {
-    font-size: 0.875rem;
-    color: #555;
-    line-height: 1.5;
-  }
-
-  /* External link icon simulation */
-  .demo-card::after {
-    content: '↗';
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 0.875rem;
-    color: #666;
-    opacity: 0.7;
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .search-section {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    
-    .search-bar {
-      max-width: none;
-    }
-    
-    .filter-buttons {
-      justify-content: center;
-    }
-    
-    .demo-apps-header h1 {
-      font-size: 2rem;
-    }
-  }
-`}</style>
