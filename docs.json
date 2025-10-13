@@ -6,7 +6,9 @@
     "light": "images/athelas_logo_2.png",
     "dark": "images/athelas_logo_2.png"
   },
-  "styling": {"eyebrows": "breadcrumbs"},
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
   "styles": {
     "global": {
       "img": {
@@ -21,25 +23,26 @@
   },
   "favicon": "images/athelas_favicon_bkg.png",
   "navigation": {
-     "tabs": [
+    "tabs": [
       {
         "tab": "Air User Guide",
         "icon": "laptop-medical",
         "groups": [
           {
-       "group": "Getting Started with Air",
-        "icon": "stars",
-        "pages": [
-          "index",
-          "set-up",
-          "troubleshoot/faqs"
-        ]
-      },
+            "group": "Getting Started with Air",
+            "icon": "stars",
+            "pages": [
+              "index",
+              "set-up",
+              "troubleshoot/faqs"
+            ]
+          },
           {
             "group": "View your Calendar",
             "icon": "calendar",
             "pages": [
-              "calendar/nav_calendar"            ]
+              "calendar/nav_calendar"
+            ]
           },
           {
             "group": "Review Patient Details",
@@ -126,30 +129,18 @@
             ]
           }
         ]
-       },
+      },
       {
         "tab": "What's New",
         "icon": "stars",
         "groups": [
           {
             "group": "Welcome to our Blogs",
-            "pages":[
+            "pages": [
               "all_publications",
-               "prod_release",
-               "customer_stories"
+              "prod_release",
+              "customer_stories"
             ]
-          },
-          {
-        "group": "Product Releases",
-        "pages": [
-          "Blog1"
-        ]
-         },
-          {
-        "group": "Customer Stories",
-        "pages": [         
-          "Blog2"
-        ]   
           }
         ]
       },
@@ -160,8 +151,8 @@
           "changelog"
         ]
       }
-        ]
-      },
+    ]
+  },
   "footer": {
     "socials": {
       "x": "https://x.com/CommureOS",
@@ -180,6 +171,6 @@
       "type": "button",
       "label": "Sign-in on Insights",
       "href": "https://insights.athelas.com"
-    } 
+    }
   }
 }
