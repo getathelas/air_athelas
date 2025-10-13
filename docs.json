@@ -162,6 +162,13 @@
       }
         ]
       },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/CommureOS",
+      "facebook": "https://www.facebook.com/p/Commure-Health-61565050580971/",
+      "linkedin": "https://www.linkedin.com/company/commure/"
+    }
+  },
   "navbar": {
     "links": [
       {
