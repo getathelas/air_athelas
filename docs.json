@@ -138,11 +138,10 @@
             "group": "Welcome to our Blogs",
             "pages": [
               "blogs/all_publications",
-              "blogs/prod_release",
               "blogs/customer_stories"
             ]
           },
-         {
+          {
             "group": "Product Release",
             "pages": [
               "blogs/kx_modifier",
