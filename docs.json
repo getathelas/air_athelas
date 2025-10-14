@@ -137,9 +137,16 @@
           {
             "group": "Welcome to our Blogs",
             "pages": [
-              "all_publications",
-              "prod_release",
-              "customer_stories"
+              "blogs/all_publications",
+              "blogs/prod_release",
+              "blogs/customer_stories"
+            ]
+          },
+         {
+            "group": "Product Release",
+            "pages": [
+              "blogs/kx_modifier",
+              "blogs/lead_tracker"
             ]
           }
         ]
