@@ -135,7 +135,7 @@
         "icon": "money-check-dollar",
         "groups":[
           {
-            "group":"Welcome to Athelas Insights",
+            "group":"Getting started with Insights",
             "pages":[
               "insights/insights_landing"
             ]
