@@ -25,7 +25,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Air User Guide",
+        "tab": "Air",
         "icon": "laptop-medical",
         "groups": [
           {
@@ -126,6 +126,18 @@
             "pages": [
               "reports/kpi_dashboard",
               "reports/all_reports"
+            ]
+          }
+        ]
+      },
+      {
+        "tab":"Insights",
+        "icon": "money-check-dollar",
+        "groups":[
+          {
+            "group":"Welcome to Athelas Insights",
+            "pages":[
+              "insights/insights_landing"
             ]
           }
         ]
