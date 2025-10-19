@@ -146,8 +146,9 @@
             "pages": [
               "blogs/kx_modifier",
               "blogs/lead_tracker",
-              "blogs/ai_assistant",
-              "blogs/agents_center"
+              "blogs/new_calendar",
+              "blogs/agents_center",
+              "blogs/ai_assistant"
             ]
           }
         ]
