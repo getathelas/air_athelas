@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.schema.json",
   "theme": "palm",
-  "name": "Air by Athelas",
+  "name": "Athelas",
   "logo": {
     "light": "images/athelas_logo_2.png",
     "dark": "images/athelas_logo_2.png"
