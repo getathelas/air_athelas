@@ -107,6 +107,7 @@
               "admin/chart_note_templates",
               "admin/patient_workflows",
               "admin/provider_settings",
+              "admin/provider_credentials",
               "admin/calendar_settings",
               "admin/register_providers_rx",
               "admin/fax_admin"
