@@ -1,0 +1,199 @@
+---
+title: "Changelog"
+description: "See what's new and stay up to date on Product updates, fixes, and features."
+---
+
+<Update label="Aug 22, 2025" tags={["Insights"]} description="v1.0.0">
+  **Insights now fully supports creating and updating the financially responsible party for any patient**
+
+  <Expandable title="Content">
+    This means that you can designate a parent or guardian to be in charge of all outstanding balances for their dependent.
+
+    You can manage the financial guarantor-dependent relationships in Insights through the patient profile:
+
+    - Click on edit in the top right corner 
+    - Select “Someone else is financially responsible” 
+    - Select the parent or create a financially guarantor if they are not already a patient in our system 
+    - Checking in families just got a whole lot easier! Once the relationship is established, you will be able to pay off the entire family’s balance anywhere you'd collect balances today
+  </Expandable>
+</Update>
+
+<Update label="Aug 21, 2025" tags={["Air"]} description="v1.2.0">
+  **Additional improvements in Flowsheet intervention search and Bulk Scheduling**
+
+  <Expandable title="Content">
+    #### Provider user improvements
+
+    - **Flowsheets intervention search is now sorted by the user’s most-used interventions:** Vs. currently, it’s sorted by the global last-edited, which often returned results which felt random. This should significantly improve how long it takes a provider to get to the intervention they are actually looking for.
+
+    #### Admin user improvements
+
+    - 🪨**Bulk scheduling flow can now search an alternate provider in addition to the original provider:** You can now bulk-schedule with a primary and a backup (alternate) provider. The calendar shows availability for both, you can pick who covers each date, and the system creates the right appointments under the right provider. There’s a new, simple picker for choosing providers/patients, and (when your policy allows) you can note credentialing exceptions during scheduling.
+  </Expandable>
+  **Provider Credential Groups replaces a tedious one-to-one credentialing workflow with a many-to-many**
+
+  <Expandable title="Content">
+    Previously, the provider credentialing system only supported individual provider-to-insurance credentialing relationships, requiring users to manually create credentials for each provider-insurance pair. This approach became inefficient when managing multiple providers who needed identical credentialing across the same set of insurance companies. Users had to repeatedly select the same insurance companies for different providers, leading to time-consuming manual work and potential inconsistencies in credentialing management.
+
+    **New Workflows Enabled:**
+
+    1. **Bulk Credentialing Group Creation**: Users can create named groups of insurance companies and reuse them across multiple providers
+    2. **Group-Based Provider Credentialing**: When adding credentials for a provider, users can select credentialing groups instead of individual insurances, automatically creating credentials for all insurances within those groups
+    3. **Centralized Group Management**: Users can edit existing credentialing groups to add/remove insurance companies, with changes affecting future credentialing operations
+    3. **Advanced Filtering**: Users can filter the credentialing matrix by specific credentialing groups to focus on relevant provider-insurance relationships
+
+    [Product Guide here](https://docs.athelas.com/topic/documentation/self-service-credentialing)
+  </Expandable>
+  **Assistant Chart Review gives providers a compliance consultant in their pocket**
+
+  <Expandable title="Content">
+    <iframe src="https://www.youtube.com/embed/R5FQOijRFB0" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+  </Expandable>
+  **Voice mode lets you talk directly to Assistant**
+
+  <Expandable title="Content">
+    <iframe src="https://www.youtube.com/embed/J5VRrfTz8kM" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+  </Expandable>
+  **Create Tasks directly from Attachments page**
+
+  <Expandable title="Content">
+    Tasks can now be created directly from the Attachments page. These attachments are then auto-linked to the task in the Task page, for easy access when the admin is working their Tasks.
+
+    - Tasks created from the Attachments page
+
+      <iframe src="https://www.youtube.com/embed/h76mqhB0jyU" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+    - Attachments auto-linked to the Task page
+  </Expandable>
+  **Air Functional Outcome measurement tool quantifies patient PT progress**
+
+  <Expandable title="Content">
+    Functional outcomes are one of the most critical ways that PTs communicate to each other and insurers that the work they’re doing is justified and directly improving patient outcomes. Previously, Air did not support functional outcome tracking, so customers would either have to use un-integrated external third-parties (going through painful workflows like: during a visit, the patient goes to https://orthotoolkit.com/ \> patient fills out the form in front of the provider \> provider then downloads the response from orthoToolkit \> provider uploads it to Air as an attachment. This was not a good experience.) or forego functional outcomes entirely.
+
+    But now, we have a natively-built functional outcome measure tracking tool!
+
+    Feature capabilities:
+
+    - Providers send functional outcome forms to patients
+    - Patients fill out the form remotely
+    - Providers view the results from within the chart note
+    - Providers can see the longitudinal history of the measure
+
+    [Product guide here](https://docs.athelas.com/topic/documentation/functional-outcome-measurements)
+  </Expandable>
+</Update>
+
+<Update label="Aug 13, 2025" tags={["Air"]} description="v1.1.0">
+  **Cycles 29 and 30: Additional Improvements**
+
+  <Expandable title="Content">
+    \*\*Assistant workflow richness: \*\*Assistant has been enhanced with additional data fetching support for common user flows, like appointment default, patient referrals, patient claims, patient prior auth, patient demographics, providers’ unsigned visits, and provider metrics.
+
+    \*\*Scribe offline mode: \*\*If a user loses their internet connection before the Scribe successfully completes or uploads, Scribe will be locally saved to their computer in order to be able to retry upload when the connection is regained.
+
+    \*\*Flowsheet group interventions search improvements: \*\*Users can now choose to only search individual interventions, excluding Groups. When included, Flowsheets interventions search will now also auto-collapse group interventions.
+
+    \*\*Primary signature-required inbox filter: \*\*Inbox can be filtered to only notes “Ready for Primary Signature”, meaning the signature of the credentialed rendering provider. This will make it much faster for providers to find the notes requiring their primary signature.
+
+    **Active Patient Tracker provider can now be an assigned “Case-owning provider”:** Instead of only the initial appointment’s rendering provider, the associated provider can be any assigned “Case owner”. Users will now be able to assign the correct provider for tracking, even if they were not the first rendering provider. This will additionally improve accuracy of retrospective performance metrics.
+  </Expandable>
+  **Scribe “Fast mode” generates 5-7x faster**
+
+  <Expandable title="Content">
+    In exchange for a very slight drop in accuracy, users can choose to generate their Scribe 5-7x faster than normal mode. Scribe will also stream the Scribe sections into the note as they are generated, so the perception of speed is faster as well.
+  </Expandable>
+  **Provider credentials can be bulk edited**
+
+  <Expandable title="Content">
+    Users can now update credentials in bulk, vs. one-by-one.
+  </Expandable>
+  **Custom lead management landing page creates a home for potential new patients**
+
+  <Expandable title="Content">
+    New custom landing page creates a beautiful entry point for potential new patients into our customers. This will also then create new Leads in our Lead Tracker, configurable in settings.
+  </Expandable>
+  **AI text quick-editing accessed through “Command-K”**
+
+  <Expandable title="Content">
+    Users can quickly AI edit highlighted text selections, simply by typing “Command-K” and their instructions or preferences for the text.
+
+    <iframe src="https://www.youtube.com/embed/TclTJ7Iq9SE" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+  </Expandable>
+</Update>
+
+<Update label="Aug 08, 2025" tags={["Air"]} description="v1.0.0">
+  **Filter your inbox to notes requiring signature**
+
+  <Expandable title="Content">
+    Inbox can now be filtered to only notes requiring the provider’s signature.
+  </Expandable>
+  **Create tasks directly from your Fax page and refer back to those auto-linked faxes in the Tasks page**
+
+  <Expandable title="Content">
+    Tasks can now be created directly from the Fax page. These faxes are then auto-linked to the task in the Task page, for easy access when you are working your Tasks.
+
+    Tasks created from the fax page below:
+
+    <iframe src="https://www.youtube.com/embed/8NFSP7j4PDk" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+
+    Faxes auto-linked to the Task page:
+  </Expandable>
+  **Intelligent AI Fax ingestion will auto-generate leads from faxes**
+
+  <Expandable title="Content">
+    Leads can now be auto-generated from faxes. Air will extract the referral information from inbound faxes, and automatically create leads in the Lead Tracker using the context, including `first_name`, `middle_name`, `last_name, date_of_birth `and `phone_number`
+
+    Leads created with this flow will default to “Fax” as the referral source, and the first stage will be assigned as “Lead”.
+
+    <iframe src="https://www.youtube.com/embed/XceOEc8l2Q4" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+  </Expandable>
+  **Flowsheets are now 39% lower latency (faster) across the board**
+
+  <Expandable title="Content">
+    Flowsheets are now meaningfully more performant.
+
+    Average Before time to request an endpoint was ****2.023 s. Now it’s1.02 s.****
+
+    Average improvement is **39% faster response**.
+
+    Before, 95% of endpoint requests would take a full **4** s. This is now**1.6 s**
+
+    | Type of request               | Before | After  | % Improvement |
+    | :---------------------------- | :----- | :----- | :------------ |
+    | Mark all as Done              | 1.7 s  | 1.2 s  | 29%           |
+    | Mark all as Undone            | 4 s    | 1.9 s  | 52%           |
+    | Mark all as Done              | 2.6 s  | 1.2 s  | 54%           |
+    | Mark all as Undone            | 2.9 s  | 1.5 s  | 48%           |
+    | Mark 1 intervention Done      | 507 ms | 504 ms | 1%            |
+    | Mark 1 intervention Undone    | 546 ms | 391 ms | 28%           |
+    | Mark 2 interventions Done     | 1.35 s | 722 ms | 47%           |
+    | Mark all as Done              | 2.1 s  | 1.2 s  | 43%           |
+    | Mark 1 intervention Undone    | 696 ms | 693 ms | 0%            |
+    | Mark 2 intervention Undone    | 660 ms | 565 ms | 14%           |
+    | Mark all as Done              | 1.3 s  | 909 ms | 30%           |
+    | Mark all as Undone            | 3.57 s | 1.6 s  | 55%           |
+    | Mark all as Done              | 2.9 s  | 1.2 s  | 59%           |
+    | Mark all as Undone            | 2.4 s  | 1.6 s  | 33%           |
+    | Mark all as Done              | 2.2 s  | 1 s    | 55%           |
+    | Add 1 concurrent intervention | 3.1 s  | 524 ms | 83%           |
+    | Add 1 concurrent intervention | 630 ms | 489 ms | 22%           |
+    | Add 1 concurrent intervention | 761 ms | 712 ms | 6%            |
+    | Mark all as Undone            | 2.4 s  | 1.4 s  | 42%           |
+    | Mark all as Done              | 4.13 s | 1.1 s  | 73%           |
+  </Expandable>
+  **Calendar redesign creates quick-glance payer, eligibility, appointment status, key detail clarity**
+
+  <Expandable title="Content">
+    This calendar update preserves all existing functionality while delivering a richer, more modern experience. Compact blocks now show patient, time, status, case, and alerts at a glance—letting you fit more context in the same space. Hovering opens a streamlined tooltip with status and actions. We’ve also refreshed colors and icons to match the clean, familiar feel of modern calendars.
+
+    Key improvements:
+
+    - Calendar blocks are more information dense
+    - Appointment status is clear upon first glance
+    - Hover over the appointment to see all key information (Appointment status, case and appointment type, eligibility and payer, authorization status, next visit scheduled status)
+    - Change the appointment status directly from the tooltip! No more needing to go to the drawer
+    - Alerts flag key information through icons and in the tooltip
+    - Look and feel is overhauled to be cleaner, modern, and intuitive
+
+    View our Blog post here.
+  </Expandable>
+</Update>

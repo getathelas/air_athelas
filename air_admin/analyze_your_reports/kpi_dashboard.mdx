@@ -1,0 +1,75 @@
+---
+title: "Review your KPI Dashboard"
+sidebarTitle: "Performance Analysis"
+---
+
+Analyze key statistics to monitor and evaluate your practice’s operational efficiency, patient outcomes, and financial performance.
+
+### <Icon icon="message-plus" iconType="duotone" color="#F9345F" size={23} />  **Ask Athelas AI for quick statistics**
+
+<Card title>
+  <Danger>
+    ✨**Smart Tip:** Use Athelas AI to generate quick reports and surface key statistics instantly. You can also use Voice Mode.
+  </Danger>
+  ![7 Reports Gi](/images/air_admin/analyze_your_reports/kpi_dashboard/kpi_dashboard_1.gif)
+</Card>
+
+### <Icon icon="chart-line" iconType="duotone" color="#F9345F" size={23} />  **Review detailed reports**
+
+<Card title=" ">
+  Access a full overview of KPIs in **Insights → Performance Analysis** on the left navigation bar.
+
+  <img
+    src="/images/air_admin/analyze_your_reports/kpi_dashboard/kpi_dashboard_4.webp"
+    alt="Sample Kpi Card Web"
+    title="Sample Kpi Card Web"
+    style={{ width:"57%" }}
+  />
+
+  - **Definitions:** Hover over the info icon on any card to see a definition of the metric.
+  - **Filters:** Apply filters by Date Range, Facility, and Provider. Most cards, tables, and downloads respect these filters
+    - Exceptions include Active, Scheduled, and Dropped Patients (which are based on case status rather than date).
+    - Appointment Total cards include their own dropdown filters, allowing you to quickly view appointment metrics by status.
+  - **Trends:** Each card highlights current values with a “last period” comparison to indicate positive or negative changes. _“Last Period”_ refers to the previous interval equal to the selected date range (e.g., if you select 7 days, “last period” means 8–14 days ago).
+  - **Export:** Each card includes a download option for CSV export. Reports include detailed fields such as appointment IDs and patient contact information to enable effective follow-up.
+
+  **Note:** Clicking on a card opens a detailed table. For example, the **Underscheduled Patients** card displays patient IDs, names, Plan of Care details, and progress percentages. Each patient ID links directly to the patient’s EHR profile for quick action.
+
+  <img
+    src="/images/air_admin/analyze_your_reports/kpi_dashboard/kpi_dashboard_4.webp"
+    alt="Underscheduled Web"
+    title="Underscheduled Web"
+    style={{ width:"59%" }}
+  />
+
+  ![Kpi Dash Web](/images/air_admin/analyze_your_reports/kpi_dashboard/kpi_dashboard_4.webp)
+
+  | **Card**                          | **Description**                                                                                              |
+  | :-------------------------------- | :----------------------------------------------------------------------------------------------------------- |
+  | **Active Patients**               | Number of patients with an open case (not archived or discharged).                                           |
+  | **Scheduled Patients**            | Patients with an open case and at least one future appointment scheduled.                                    |
+  | **Dropped Patients**              | Patients with an open case but no future appointments scheduled.                                             |
+  | **Underscheduled Patients**       | Patients with fewer completed/checked-in visits than expected in their Plan of Care (scheduling ratio \< 1). |
+  | **Average POC Allocation**        | The average scheduling ratio across all patients with a valid Plan of Care.                                  |
+  | **Discharges**                    | Patients discharged with their case closed during the selected timeframe.                                    |
+  | **Unsigned Notes**                | Total number of unsigned notes, plus count of notes signed during the selected period.                       |
+  | **Arrival Rate**                  | Percentage of scheduled appointments that were checked in or completed.                                      |
+  | **No Show Rate**                  | Percentage of scheduled appointments marked as “No Show.”                                                    |
+  | **Cancellation Rate**             | Percentage of scheduled appointments that were cancelled.                                                    |
+  | **Provider Efficiency**           | Completed/checked-in appointments compared to a benchmark (80 per week per provider, soon configurable).     |
+  | **Appointment Count**             | Total number of appointments, filterable by status (default = Scheduled).                                    |
+  | **Average Frequency of Visit**    | Average visits per week per active patient, calculated over a rolling 4-week period.                         |
+  | **Initial Evaluations Scheduled** | Number of scheduled or completed appointments of the “Initial Evaluation” type.                              |
+</Card>
+
+### <Icon icon="chart-user" iconType="duotone" color="#F9345F" size={23} />  **Review the status of Active Patients**
+
+<Card title>
+  Access the Active Patient Breakdown in **Insights → Performance Analysis** on the left navigation bar.
+
+  - **Definition:** An Active patient is any patient with an open case during the defined data range. You can see the % of patients with 0, 1, 2 and 3+ scheduled visits in the future.
+  - **Filters:** Apply filters by Date Range, Facility, and Provider.
+  - **Export:** You can download the top 4 cards for a CSV export. Reports include detailed fields from the table below including Patient name, Case, Provider, Insurance, # visits, Drop Offs, % Arrival, Last Appt., Appts Next week, Appts Following week and Notes.
+
+  ![Pt Active Breakdown Web](/images/air_admin/analyze_your_reports/kpi_dashboard/kpi_dashboard_4.webp)
+</Card>

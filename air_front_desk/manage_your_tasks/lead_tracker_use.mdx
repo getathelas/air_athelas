@@ -1,0 +1,178 @@
+---
+title: "Manage your Leads"
+sidebarTitle: "Lead Tracker"
+---
+
+Healthcare practices can lose up to 75% of potential patients due to ineffective lead management.  Athelas Lead Tracker provides a structured approach to managing leads by breaking the process into stages and sub-stages. This makes it easy to see where each lead stands, what actions are required, and how to move them forward.
+
+Here are the types of data and information the lead tracker can capture for you:
+
+![Lead Tracker Nav Web](/images/air_front_desk/manage_your_tasks/lead_tracker_use/lead_tracker_use_3.webp)
+
+**Key Definitions**
+
+| **Term**               | **Meaning**                                                                |
+| :--------------------- | :------------------------------------------------------------------------- |
+| **Lead**               | A potential patient record with key metadata (e.g., referral type, stage). |
+| **Reporting category** | Groups stages for reporting purposes (e.g., Converted, In Progress).       |
+| **Stage**              | The main phase a lead passes through (e.g., New, Contacted, Converted).    |
+| **Sub-stage**          | Specific steps within a stage for more granular tracking.                  |
+| **Referral type**      | Categorizes the source of a lead (e.g., Provider, Online Form, Fax).       |
+| **Treatment Declined** | Marks leads that declined treatment, useful for reporting and tracking.    |
+
+## Setting up the Lead Tracker
+
+### Lead Stages
+
+<Card title>
+  1. Go to **Lead Tracker \> Settings**.
+  2. Click **\+ Add Stage** to create a new stage.
+  3. Edit, rename, reorder, or delete stages as needed.
+  4. Configure stage details:
+     - Columns to display
+     - Sub-stages
+     - Reporting category (By default, a stage belongs to No Category, modified reporting category would be reflected in the performance analysis - KPI dashboard)
+  5. Add sub-stages by clicking **\+ Add Sub-stage**.
+  6. Customize sub-stages with names, unique colors, and order. You can show/hide and even change the ordering of the stage
+  7. Assign a reporting category (default = No Category).
+  8. Click **Save Changes** to confirm.
+
+  ![21 Leadtrackerconfig Mp4 Gi](/images/air_front_desk/manage_your_tasks/lead_tracker_use/lead_tracker_use_1.gif)
+
+  <img
+    src="/images/air_front_desk/manage_your_tasks/lead_tracker_use/lead_tracker_use_3.webp"
+    alt="Lead Config2 Web"
+    title="Lead Config2 Web"
+    style={{ width:"79%" }}
+  />
+</Card>
+
+### Reporting Categories
+
+<Card title>
+  1. In **Lead Tracker \> Settings**, open **Stages**.
+  2. Under **Reporting Category**, choose:
+     - **Converted**
+     - **In Progress**
+     - **No Category** (default)
+  3. Save changes.
+</Card>
+
+### Referral Types
+
+<Card title>
+  1. In **Lead Tracker \> Settings**, open the **Referral Types** tab.
+  2. Click **\+ Add New** to create a new referral type.
+  3. Edit names of the referral types with the pencil icon.
+  4. Delete referral types if no longer needed.
+  5. Click **Save Changes** to confirm.
+</Card>
+
+## Managing Leads
+
+### Creating a Lead
+
+<Card title>
+  1. Click **\+ New**.
+  2. Enter patient's First Name, Last Name, and DOB.
+  3. Select referral type.
+  4. Assign a facility and referring provider (optional).
+  5. Choose referral stage and sub-stage.
+  6. Add first/last contact dates.
+  7. Assign responsibility to a staff member.
+  8. Link patient - leads can be linked one-time to a **new** or **existing patient** or not be linked to any patient (if there is not enough information). While linking, Air will automatically suggest patients.
+  9. Click **Save**.
+
+  ![Lead New Web](/images/air_front_desk/manage_your_tasks/lead_tracker_use/lead_tracker_use_3.webp)
+</Card>
+
+### Updating a Lead Status
+
+<Card title>
+  - Click on the pencil icon on the right of a lead
+  - Update referral stage, sub-stage and last contacted details.
+  - **Scheduled status:** To move a lead status to scheduled you can update the status and click on the patient name to open the patient's profile and schedule an appointment.
+  - **Treatment declined:** Click Treatment Declined on the bottom right in red of the edit lead pop-up and select a reason. Leads marked declined can be tracked in the **Declined Treatment tab**. This status can be undone if needed.
+
+  ![21 Denytreatmentleads Gi](/images/air_front_desk/manage_your_tasks/lead_tracker_use/lead_tracker_use_1.gif)
+</Card>
+
+### Automatic lead creation from Faxes
+
+<Card title>
+  If enabled, inbound faxes can automatically generate new leads.
+
+  1. **Inbound faxing:**
+     - The inbound faxes received at site will be saved and automatically be processed by a GPT-powered document parser if the feature flag is enabled.
+     - The system will analyze the document to detect a referral section containing lead information.
+     - The GPT model will attempt to extract the following structured fields:
+       - **First Name** (Required)
+       - **Middle Name** (Optional)
+       - **Last Name** (Required)
+       - **Date of Birth (DOB)** (Required)
+       - **Phone Number** (Optional)
+  2. **Validation**
+     - A lead will only be created if **First Name**, **Last Name**, and **DOB** are all successfully extracted.
+     - If any of the required fields are missing or ambiguous, the lead creation will be skipped.
+  3. **Lead Creation**
+     - A new lead object will be created in the system.
+     - The **referral type** will be set to **"Fax"**.
+     - The lead will be placed in the **first referral stage**, ready for front-desk or intake review.
+     - Leads generated through this process will be saved with note: _Automatically imported through inbound fax_
+</Card>
+
+## View Lead Tracker Reporting
+
+<Card title>
+  **Note**: You will need to select a category of your preference for each Lead stage to ensure its tracked in the Report. Options include Converted, In Progress, No Category (Default selection)
+
+  To view the report:
+
+  - Go to **Insights \> Performance Analysis \> Lead Tracker**.
+
+    <img
+      src="/images/air_front_desk/manage_your_tasks/lead_tracker_use/lead_tracker_use_1.png"
+      alt="Lead Tracker Kpi Pn"
+      title="Lead Tracker Kpi Pn"
+      style={{ width:"53%" }}
+    />
+  - View metrics such as:
+    - Total leads created
+    - Total leads converted (Calculated based on leads in the stage with a reporting category as Converted)
+    - Conversion % (Total leads converted / Total leads created)
+    - Therapy Refused % (Total Treatment Declined / Total leads created)
+    - In Progress (Calculated based on leads in the stage with a reporting category as In Progress OR No Category)
+    - In Progress % (Total In Progress / Total leads created)
+  - Breakdowns are shown per facility and as totals.
+  - Reports can be downloaded as CSV.
+
+    <img
+      src="/images/air_front_desk/manage_your_tasks/lead_tracker_use/lead_tracker_use_1.png"
+      alt="Detailed Kpis Lead Tracker Pn"
+      title="Detailed Kpis Lead Tracker Pn"
+      style={{ width:"82%" }}
+    />
+</Card>
+
+## Creating a Custom Landing Page
+
+<Card title>
+  You can collect leads directly from your website using a branded landing page. Forms filled by potential interested patients on the site will directly feed in to the lead tracker.
+
+  1. Go to **Lead Tracker \> Settings \> Landing Page**
+  2. Toggle **Landing Page Active** ON.
+  3. Configure required fields:
+     - Header (max 30 chars): Main title visitors will see
+     - Welcome message (max 255 chars): Subtitle / description
+     - Referral type: Select how leads from the website will be categorized in the tracker
+     - Stage assignment: Assign which pipeline stage these leads will be placed in
+     - Logo (PNG/JPG, max 4.2MB): Site branding image
+  4. Save changes.
+  5. You will find the external website link in the Preview button
+
+  ![Lead Landing Page Web](/images/air_front_desk/manage_your_tasks/lead_tracker_use/lead_tracker_use_3.webp)
+
+  Patients visiting the page will submit details (name, DOB, phone, email, preferred facility), and new leads will be automatically created in the tracker.
+
+  ![Landing Page Web](/images/air_front_desk/manage_your_tasks/lead_tracker_use/lead_tracker_use_3.webp)
+</Card>
