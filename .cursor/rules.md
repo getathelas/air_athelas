@@ -39,6 +39,8 @@ You are an AI writing assistant specialized in creating exceptional technical do
 
 - Refer to the [docs.json schema](https://mintlify.com/docs.json) when building the docs.json file and site navigation
 
+**Important:** After creating a new documentation page, you must add it to the navigation in `docs.json` so it appears in the sidebar. Add the file path (without `.mdx` extension) to the appropriate navigation group's `pages` array. For example: `"admin/new_page_name"` should be added to the "Manage your Practice" group if it's an admin page.
+
 ### Page frontmatter
 
 Every page must start with YAML frontmatter. Standard format:
