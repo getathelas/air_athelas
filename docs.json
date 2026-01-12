@@ -32,33 +32,33 @@
             "group": "Getting Started with Air",
             "icon": "stars",
             "pages": [
-              "index",
-              "set-up",
-              "troubleshoot/faqs"
+              "air_onboard/getting_started_with_air/index",
+              "air_onboard/getting_started_with_air/set_up",
+              "air_onboard/getting_started_with_air/faqs"
             ]
           },
           {
             "group": "View your Calendar",
             "icon": "calendar",
             "pages": [
-              "calendar/nav_calendar"
+              "air_front_desk/view_your_calendar/nav_calendar"
             ]
           },
           {
             "group": "Review Patient Details",
             "icon": "square-user",
             "pages": [
-              "patient_details/patient_info",
-              "patient_details/patient_demog",
-              "patient_details/patient_appts",
-              "patient_details/patient_attachments"
+              "air_provider/review_patient_details/patient_info",
+              "air_provider/review_patient_details/patient_demog",
+              "air_provider/review_patient_details/patient_appts",
+              "air_provider/review_patient_details/patient_attachments"
             ]
           },
           {
             "group": "Communicate with Patients",
             "icon": "envelope",
             "pages": [
-              "messages/messages"
+              "air_front_desk/communicate_with_patients/messages"
             ]
           },
           {
@@ -66,8 +66,8 @@
             "icon": "user-doctor",
             "tag": "Provider",
             "pages": [
-              "check-in/check-in",
-              "check-in/edit_appt"
+              "air_provider/check_in_a_patient/check_in",
+              "air_provider/check_in_a_patient/edit_appt"
             ]
           },
           {
@@ -75,14 +75,14 @@
             "icon": "notes-medical",
             "tag": "Provider",
             "pages": [
-              "chart_note/nav_chart_note",
-              "chart_note/other_sec_chart_note",
-              "chart_note/flowsheets",
-              "chart_note/functional_outcomes",
-              "chart_note/medications",
-              "chart_note/prescriber_agents",
-              "chart_note/scribe_faq",
-              "inbox/nav_inbox"
+              "air_provider/fill_a_chart_note/nav_chart_note",
+              "air_provider/fill_a_chart_note/other_sec_chart_note",
+              "air_provider/fill_a_chart_note/flowsheets",
+              "air_provider/fill_a_chart_note/functional_outcomes",
+              "air_provider/fill_a_chart_note/medications",
+              "air_provider/fill_a_chart_note/prescriber_agents",
+              "air_provider/fill_a_chart_note/scribe_faq",
+              "air_provider/fill_a_chart_note/nav_inbox"
             ]
           },
           {
@@ -90,8 +90,8 @@
             "icon": "clipboard",
             "tag": "Front Desk",
             "pages": [
-              "front_desk/new_appt",
-              "front_desk/prep_appt"
+              "air_front_desk/take_in_a_patient/new_appt",
+              "air_front_desk/take_in_a_patient/prep_appt"
             ]
           },
           {
@@ -99,9 +99,9 @@
             "icon": "list-check",
             "tag": "Front Desk",
             "pages": [
-              "front_desk/faxes",
-              "front_desk/tasks",
-              "front_desk/lead_tracker_use"
+              "air_front_desk/manage_your_tasks/faxes",
+              "air_front_desk/manage_your_tasks/tasks",
+              "air_front_desk/manage_your_tasks/lead_tracker_use"
             ]
           },
           {
@@ -109,15 +109,15 @@
             "icon": "gear",
             "tag": "Admin",
             "pages": [
-              "admin/practice_settings",
-              "admin/appointment_types",
-              "admin/chart_note_templates",
-              "admin/patient_workflows",
-              "admin/provider_settings",
-              "admin/provider_credentials",
-              "admin/calendar_settings",
-              "admin/register_providers_rx",
-              "admin/fax_admin"
+              "air_admin/manage_your_practice/practice_settings",
+              "air_admin/manage_your_practice/appointment_types",
+              "air_admin/manage_your_practice/chart_note_templates",
+              "air_admin/manage_your_practice/patient_workflows",
+              "air_admin/manage_your_practice/provider_settings",
+              "air_admin/manage_your_practice/provider_credentials",
+              "air_admin/manage_your_practice/calendar_settings",
+              "air_admin/manage_your_practice/register_providers_rx",
+              "air_admin/manage_your_practice/fax_admin"
             ]
           },
           {
@@ -125,8 +125,8 @@
             "icon": "chart-column",
             "tag": "Admin",
             "pages": [
-              "reports/kpi_dashboard",
-              "reports/all_reports"
+              "air_admin/analyze_your_reports/kpi_dashboard",
+              "air_admin/analyze_your_reports/all_reports"
             ]
           }
         ]
@@ -138,7 +138,7 @@
           {
             "group":"Getting started with Insights",
             "pages":[
-              "insights/insights_landing"
+              "insights_onboard/insights/insights_landing"
             ]
           }
         ]
@@ -150,18 +150,18 @@
           {
             "group": "Welcome to our Blogs",
             "pages": [
-              "blogs/product_release",
-              "blogs/customer_stories"
+              "master_blogs/product_release",
+              "master_blogs/customer_stories"
             ]
           },
           {
             "group": "Product Release",
             "pages": [
-              "blogs/kx_modifier",
-              "blogs/lead_tracker",
-              "blogs/new_calendar",
-              "blogs/agents_center",
-              "blogs/ai_assistant"
+              "master_blogs/kx_modifier",
+              "master_blogs/lead_tracker",
+              "master_blogs/new_calendar",
+              "master_blogs/agents_center",
+              "master_blogs/ai_assistant"
             ]
           }
         ]
@@ -170,7 +170,7 @@
         "tab": "Changelog",
         "icon": "bullhorn",
         "pages": [
-          "changelog"
+          "master_changelogs/changelog"
         ]
       }
     ]
