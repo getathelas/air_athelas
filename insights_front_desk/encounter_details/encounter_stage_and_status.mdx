@@ -1,0 +1,72 @@
+---
+title: "Encounter Stage and Status"
+---
+
+### At a Glance
+
+This guide will help you understand the flow and lifecycle of an encounter in Insights, from creation to finalization, with explanations of all statuses and stages in between.
+
+<img src="/images/insights_front_desk/encounter_details/encounter_stage_and_status/encounter_stage_and_status_1.png" alt="" />
+
+###
+
+### Summary of the Encounter Stage/Status Journey
+
+Encounters are created for each appointment. If the claim submission is successful, then primary insurance—or Payer 1—will either deny the claim or send a remittance and pay at least part of the claim.
+
+Once Payer 1 pays everything they’re going to pay, any remaining balance is pushed to the next payer. This process repeats either until the claim is balanced or there are no more payers and the balance is pushed to PR.
+
+### Definitions of Stage and Status Terminology
+
+- **Encounter Status**
+
+- **Import Error**Import errors can occur for several reasons, including unrecognized or missing insurance, missing procedures or ICD-10, etc.
+- **Self-Pay**The patient is self-pay, so the full balance is PR.
+- **Queued for Submission**The encounter will be submitted in its corresponding batch.
+- **Submission Error**There was a problem with submission. Athelas is working on it.
+- **Submission Success**The claim was successfully submitted and awaits either approval or denial.
+- **Approved**The current payer has paid, or the next payer balance is > 0. In other words, if any payer has paid any amount.
+- **Rejected**Claims can be **rejected by a clearinghouse** for a number of reasons before they are sent to insurance companies for either approval or denial.In rare cases, an error will slip past a clearinghouse and be rejected directly by the payer.
+- **Denied**Claims can also be denied by a payer for numerous reasons.
+- **Voided**Athelas voids claims when they contain so many errors that it would be easier to create and submit an entirely new claim, rather than revising the current one.
+- **Pre-Launch**These are claims that Athelas imported from the time prior to our partnership with your practice (before the ‘Go Live date’).
+
+- **Encounter Stage**
+
+- **Payer 1, 2, 3**The current payer responsible for adjudicating the remaining balance on the claim.
+- **Patient**The balance is now PR.
+- **Finalization Pending**If there are any pending/manual review remittances, the encounter will enter the ‘Finalization Pending’ stage instead of the ‘Finalized’ stage. Posting the remits or archiving them will lead to finalization.
+- **Finalized**No further actions will be taken on this encounter.
+
+- **Encounter Stage Reason**
+
+Stage Reasons give a bit more context as to why a claim is categorized in its current stage.
+
+Hover your cursor over a claim’s stage reason to see further details.
+
+<img src="/images/insights_front_desk/encounter_details/encounter_stage_and_status/encounter_stage_and_status_2.png" alt="" />
+
+- **Decision Pending**These claims have been resubmitted or are reprocessing. We’re awaiting an updated decision from the payer.We tuck these out of sight because no further action is required until either (a) we hear back from the payer with a remittance, or (b) the payer takes long enough to respond that our Recon Team proactively seeks a decision from the payer.
+- **Unposted Remittances**Although these claims are considered Denied, they have unposted remittances that are likely to change the claim outcome. Generally this happens when new remittances arrive without a reversal of the previous decision.These claims are managed by the Posting Team rather than the Denials team, as the unposted remittance(s) may indicate that the claim is no longer denied.
+- **Missing Recon**We’ve received a remittance indicating nonpayment, but some portion of the remittance also appears to be missing. This most often occurs when a payer makes a decision for a one procedure before the rest of the claim, creating a fragmented remittance.To resolve this issue the Athelas Recon Team will hunt down the missing data, after which the claim will automatically be assigned to the correct team for resolution. The claim will still appear as ‘Missing Recon’ until the Recon Team completes their task.
+- **Capitation Denial**The payer has indicated that portions of these claims were not paid due to a capitation agreement. Capitation payments will be paid to you separately rather than at the claim level. For that reason, these claims do not require action and are not included in your worklist by default.
+- **Information Code Denial**Claims that get to this sub-stage include only informational CPT codes (they end in ‘F’) , and at least one procedure is listed with an allowed amount of $0. We don’t expect payment for these claims, no action required, then we mark them as approved and finalized.
+- **Partial Denial**At least one procedure in the claim has an allowed amount of $0, and another has an allowed amount greater than $0.
+- **Unresolved Balance**Each procedure has been approved with at least some payment towards all, but at least one is not yet balanced because the **payer** has not yet paid in full. These are distinct from ‘Partially Paid’ claims, in which the **patient** has not yet paid in full.
+- **Overposted**These claims have been denied but also have conflicting remittances posted. Usually these conflicting remittances indicate that an approval has followed a previous denial, but without a reversal of the original decision.The remittances need to be untangled by our Posting Team before it’s clear if the claim needs to be worked as a denial.
+- **Balanced**These denials have been resolved, leaving no outstanding balance. No further action will be taken on them. Finalized denials include claims determined to be non-workable, manual write-offs, failed appeals, encounters switched to self-pay, and other denial types that have reached their final state of resolution.
+- **Unpaid**The patient has not yet paid the PR on these claims. Ask the patient to pay
+- **Partially Paid**Claims with this sub-stage have a payment associated with them, but a balance remains because the **patient** has not paid in full (as opposed to missing **payer** payment, indicated by the ‘Unresolved Balance’ sub-stage).
+- **Inconclusive Remittance**Although the payer has denied these claims, they’ve also indicated that their denial should be disregarded in favor of another outcome—one that is currently missing from our records. This typically occurs in three cases:- **OA-18**: Denied as Duplicate – Indicates we should defer to a previous decision.
+- **B11**: Transferred – Means another payer is responsible for the final outcome.
+- **A1**: Service Denied – A placeholder CARC used instead of the actual denial reason.
+When one of these CARCs is received, we should already have a corresponding decision on file. If no such record exists, the claim is escalated to the Athelas Recon Team, which is responsible for identifying the correct outcome. Once the true outcome is located, the claim will be automatically routed to the Denials team—if it is still considered denied.
+- **Manual Force Finalized**In rare circumstances, Athelas will force finalize erroneous edge cases that should not count as Denials, such as bad imports or pre-launch encounters that were already finalized, for example.
+
+ PR is generated only after a remittance is balanced across all payers on a patient’s profile
+
+### Encounter Lifecycle Flowchart
+
+Here is a flowchart going into greater detail on the encounter lifecycle. Click the image to expand it.
+
+<img src="/images/insights_front_desk/encounter_details/encounter_stage_and_status/encounter_stage_and_status_3.png" alt="" />

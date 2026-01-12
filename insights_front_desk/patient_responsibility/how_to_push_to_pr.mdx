@@ -1,0 +1,73 @@
+---
+title: "How to Push to PR"
+---
+
+#### Important Notes
+
+- **PR can take 10-15 minutes to generate**. Please wait for our system to update before attempting to make further adjustments.
+- **We advise against creating negative balances when posting remittances or adjustments.** Negative balances occur when total recorded payments exceed total charges.
+- **Here is a quick description of when PR gets sent to the patient.**
+
+- PR (whether sent to the patient's account or not) is a part of the Balance.
+- **PR is only sent to the patient when all other balances are resolved, such that** `PR amount` = `Balance amount`.
+- So a balance consisting of $10 Denied + $20 PR will not go to the patient, because the $10 Denied must first be reconciled.
+- When that $10 is resolved (written off, or added to the PR amount) we get one of the following cases:- $0 Denied ($10 written off) + $20 PR, or
+- $10 PR (moved from denied to PR) + $20 PR (previously existing)
+
+- In either case, the balance will now be equal the total PR. This will cause it to be sent to the patient.
+
+#### Here's How to Do It
+
+There are several ways to push to PR in Insights. Here are two good options.
+
+#### From a Claim in Claim Details, Denials Worklist, or Rejections
+
+Click into a claim on the [Claim Details page](https://insights.athelas.com/v3/claim_level_view) (or [Denials Worklist](https://insights.athelas.com/v3/denials) or [Rejections](https://insights.athelas.com/v2/rejections)), then open the ‘Actions’ menu in the top right corner and select `Push to PR`.
+
+Note that this option will only be available if a balance exists that can be pushed to PR.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_push_to_pr/how_to_push_to_pr_1.png" alt="" />
+
+You’ll see each charge listed with its Current PR, as well as an adjustable field for the Final PR Amount.
+
+You also have the option to ‘**Keep current insurance**’ or ‘**Switch to self-pay**.’
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_push_to_pr/how_to_push_to_pr_2.png" alt="" />
+
+Switch to Self-Pay is a good option when the payer will definitely not pay, for example if the claim was denied and not being appealed, or a patient has reached their benefit maximum.
+
+Make adjustments if necessary. Then, you can check or uncheck the box to ‘Automatically Write Off Remaining Balances.’
+
+Finally, write a reason for the push to PR, then click `Confirm Push to PR`.
+
+####
+
+#### With the Posting Tool
+
+This walkthrough illustrates an efficient method using the [Posting Tool page](https://insights.athelas.com/posting-tool).
+
+Navigate to the [Posting Tool](https://insights.athelas.com/posting-tool) and filter for the encounter in question.
+
+Click the arrow next to the encounter to see all its procedures. Find the one you’d like to edit and click `Post/Adjust`.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_push_to_pr/how_to_push_to_pr_3.png" alt="" />
+
+In the Posted Payments list, find the row with the payer charge to be written off. Click the three dot menu in its ‘Actions’ column and select `Push to PR`.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_push_to_pr/how_to_push_to_pr_4.png" alt="" />
+
+Fill in the amount you’d like to push to PR and write a note explaining the reason for the push.
+
+Then click `Push to PR`.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_push_to_pr/how_to_push_to_pr_5.png" alt="" />
+
+You’ll see your pushed charge as a (mandatory and automatic) preview, highlighted green, in the Posted Payments list.
+
+Check the potential result in the Procedure Summary section at the top, which shows potential changes in blue text. If something looks incorrect, you can always undo the write off by clicking the ‘Undo’ arrow in the ‘Actions’ column on the preview.
+
+When everything looks correct, click `Confirm Posting`.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_push_to_pr/how_to_push_to_pr_6.png" alt="" />
+
+Done!

@@ -1,0 +1,75 @@
+---
+title: "Athelas Assistant Common Functionalities"
+---
+
+#### Individual Tools Available to Assistant
+
+**Patient Management:**
+
+- **Search for patients:** Find patients by name, ID, phone number, or date of birth.
+- **Get patient details:** Retrieve a patient's details. Contains the following:
+
+- **Get patient demographics:** Get a patients name, dob, gender, phone number, and more!
+- **Manage patient cases:** List all medical cases associated with a patient.
+- **View patient insurance:** List a patient's insurance information.
+- **View patient appointments:** Can check a patients most recent appointment statuses (can specify a larger, smaller date range as needed)
+
+- **Search patient chart notes**: Can retrieve up to 10 historical chart notes for a patient
+- **Check patient prior auth**
+- **Check patient claims**
+- **Check patient referrals**
+**Appointment Scheduling:**
+
+- **Book appointments:** Schedule a new appointment for a patient.
+
+- **Get appointment defaults:** Grabs the latest appointment type, case, rendering provider, insurance used for a patient to help speed up scheduling an appointment.
+
+- **View provider appointments:** See a provider's schedule for a given date range.
+- **Update appointment status:** Change the status of an existing appointment (e.g., 'Scheduled', 'Checked In', 'Completed').
+- **Check for conflicts:** Identify potential scheduling conflicts for a provider.
+- **List appointment types:** See all available appointment types for the site.
+**Provider and Site Information:**
+
+- **List providers:** Get a list of all providers at a site.
+- **List facilities:** See all facilities associated with a site.
+- **Get current provider:** Identify the provider who is currently logged in.
+- **Get provider unsigned visits**
+
+#### End to End Workflows
+
+##### Example Workflow 1: Pre-Encounter Chart Preparation
+
+This workflow demonstrates how a clinical user (like a doctor or medical assistant) can quickly check in and navigate to the patients note for an upcoming appointment.
+
+**User's Goal:** A provider is about to see a patient and needs to quickly check their patient in and then navigate to the chart note page so they can begin scribing.
+
+- **Request a Patient Summary**: The provider asks Assistant to prepare them for their next encounter.
+
+- *User says: "I'm ready for my next patient, John Appleseed. Can you check him in and navigate to his appointment page"*
+
+- **Copilot's Background Actions**: Copilot understands the multi-part request and gets to work:
+
+- It finds John Appleseed in the system and locates his appointment for the day.
+- It updates the appointment status to "Checked-In."
+- Then, since it has the context of the exact appointment, it can navigate to the note immediately in the same conversation turn.
+
+##### Example Workflow 2: Scheduling a New Appointment in a Single Request
+
+This workflow shows how a user can book a new appointment with a single, detailed command, allowing Copilot to handle all the intermediate steps in the background.
+
+**User's Goal:** A scheduler needs to book a new appointment and has all the necessary details.
+
+- **Make a Comprehensive Request**: The user issues a single, detailed command to Assistant.
+
+- *User says: "Book a new patient visit for Jane Doe, with Dr. Smith at our downtown clinic for this Friday at 2 PM. Use her primary Aetna insurance for the 'Knee Pain' case."*
+
+- **Copilot's Background Actions**: Assistant parses the entire request and performs a series of actions without further user input:
+
+- It first identifies Jane Doe and verifies her identity using her date of birth.
+- It looks up Dr. Smith, the downtown clinic, the "New Patient Visit" appointment type, the patient's Aetna insurance, and the "Knee Pain" case, resolving all of them to their correct system IDs.
+- It checks Dr. Smith's schedule to ensure there are no conflicts at the requested time.
+- Assuming the time slot is free, it proceeds to book the appointment.
+
+- **Final Confirmation**: Assistant completes the workflow by confirming the action is done.
+
+- *Example Copilot response: "Done. I've scheduled Jane Doe for a new patient visit with Dr. Smith at the downtown clinic this Friday at 2 PM. The appointment is linked to her 'Knee Pain' case with her Aetna insurance."*

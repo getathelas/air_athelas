@@ -1,0 +1,39 @@
+---
+title: "How to Set up AI Compliance"
+---
+
+Compliance checkmarks are a feature within Air that can be configured for any template within the EHR. They are used to track specific details that should be captured within the chart note. If the detail is not captured, the compliance checkmark will be a grey color. If it is the icon will turn green. You have the ability to either type in this information or utilize scribe.
+
+<img src="/images/Provider-Workflows/AI-Scribe---&---Tooling/how-to-set-up-ai-compliance/how-to-set-up-ai-compliance-1.png" alt="" />
+
+#### How to Add Compliance Check Marks
+
+Compliance check marks are created during the custom template creation process. For "Paragraph Answer" type template components, you're able to add the Question Trait, Prompt, and which notes types the compliance check mark will be applied to
+
+<img src="/images/Provider-Workflows/AI-Scribe---&---Tooling/how-to-set-up-ai-compliance/how-to-set-up-ai-compliance-2.png" alt="" />
+
+<img src="/images/Provider-Workflows/AI-Scribe---&---Tooling/how-to-set-up-ai-compliance/how-to-set-up-ai-compliance-3.png" alt="" />
+
+#### Check Mark Prompting Quick Tips
+
+Compliance checks confirm whether required details are in your clinical note. Write each prompt so it can be answered **Yes (True)** or **No (False)**.
+
+**Tips**
+
+- Be specific: Name the exact info to look for.
+
+- Good: "Does the note list blood pressure and heart rate?"
+- Poor: "Did you record vitals?"
+
+- **Use clinical language:** Match your documentation style.
+
+- Good: "Is a follow-up plan documented in the Plan section?"
+
+- **One item per prompt:** Split multiple checks into separate prompts.
+- **Keep it yes/no:** Avoid open-ended questions.
+**Examples**
+
+- "Is the patient’s chief complaint documented?"
+- "Are range-of-motion measurements included?"
+- "Is a diagnosis listed in the Assessment section?"
+- "Are follow-up instructions included?"

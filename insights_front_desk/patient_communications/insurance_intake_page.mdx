@@ -1,0 +1,30 @@
+---
+title: "Insurance Intake Page"
+---
+
+### At a Glance
+
+The [Insurance Intake page](https://insights.athelas.com/v2/patient-insurance) can automate insurance form collection. It can also auto-text patients after their visit for updated information if a remittance comes back showing inactive insurance.
+
+<img src="/images/insights_front_desk/patient_communications/insurance_intake_page/insurance_intake_page_1.png" alt="" />
+
+#### Core Feature Walkthrough
+
+#### Insurance Intake Flow
+
+- A patient’s insurance receives a coverage-related denial.
+- That patient receives a post-visit text to update their insurance information in the patient portal.
+- They log in into their patient portal and get redirected to the Insurance Confirmation Form.
+- The Insurance Confirmation Form consists of three instances of the form below: one for each of primary, secondary, and tertiary insurance.
+
+For each instance, there are three options that can be chosen:
+
+- **Current Insurance**: Writes back the current appointment insurance into the form
+- **New Insurance**: A blank form, patient adds new insurance information to be updated in the appointment
+- **No Insurance**: Patient chooses to self-pay for the appointment
+
+- Patient fills in their information and submits
+- Eligibility check is run on the primary insurance
+- Insurance Update flow concludes
+
+<img src="/images/insights_front_desk/patient_communications/insurance_intake_page/insurance_intake_page_2.png" alt="" />

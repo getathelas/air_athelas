@@ -1,0 +1,33 @@
+---
+title: "Collections Report"
+---
+
+<img src="/images/insights_biller/reports/collections_report/collections_report_1.png" alt="" />
+
+#### Summary
+
+The collections report provides an overview of all collected amounts—both insurance and patient payments—within a specific date range for your site.
+
+####
+
+#### Notes
+
+- Columns labeled with `overall_` are already aggregated and cannot be used to sum payments.
+
+- For example, if there is a column labeled **`overall**_amount_paid` and another labeled `amount_paid`, use the `amount_paid` column for aggregation.
+
+- If a patient payment has a recorded payment date (entered by the user), this date will be shown instead of the system-generated payment date.
+- The report does not account for the date of service. It only tracks the date when the payment was posted in our system.
+- Insurance payments reflect what is posted in Insights and may not correspond to actual bank deposits.
+- Insurance names are based on Athelas' insurance mapping. Contact your account manager if you need to update the mapping.
+- Each insurance payment may be linked to a bank deposit through our [Plaid](https://plaid.com/) banking integration. If you're interested in this feature, please reach out to Athelas staff.
+
+####
+
+#### Filters Supported
+
+- Facilities
+- Date Range: Date Posted
+- Patients
+- Rendering Providers
+- Payers

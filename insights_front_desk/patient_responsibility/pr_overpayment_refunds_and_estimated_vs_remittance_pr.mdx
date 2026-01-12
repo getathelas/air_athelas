@@ -1,0 +1,64 @@
+---
+title: "PR Overpayment Refunds and Estimated vs. Remittance PR"
+---
+
+### What’s in the Guide
+
+<img src="/images/insights_front_desk/patient_responsibility/pr_overpayment_refunds_and_estimated_vs_remittance_pr/pr_overpayment_refunds_and_estimated_vs_remittance_pr_1.png" alt="" />
+
+When Athelas receives a remittance, often the Patient Responsibility (PR) specified is different from what the patient paid at time of service. This guide walks you step-by-step through how Payments and PR are handled in this circumstance.
+
+## Overview
+
+### Part 1: In-Office
+
+When a patient arrives at your office and makes a payment, a couple of things will be recorded to their patient profile:
+
+- First, the patient’s **payment is recorded**.
+
+<img src="/images/insights_front_desk/patient_responsibility/pr_overpayment_refunds_and_estimated_vs_remittance_pr/pr_overpayment_refunds_and_estimated_vs_remittance_pr_2.png" alt="" />
+
+- Then Athelas records the ‘**Estimated Patient Responsibility**’ for the patient, based on the amount paid. Think of this Estimated PR is a *placeholder*, intended to be replaced by finalized PR once we receive a remittance from the payer.
+
+<img src="/images/insights_front_desk/patient_responsibility/pr_overpayment_refunds_and_estimated_vs_remittance_pr/pr_overpayment_refunds_and_estimated_vs_remittance_pr_3.png" alt="" />
+
+- Estimated PR is created in the exact amount and type of the patient’s payment, to balance the patient’s account. For example, a $20 copay would result in the recording of:- `**$20**` Payment of type ‘Copay’
+- `**$20**` Estimated PR of type ‘Copay’
+
+This combination of Payment and Estimated PR makes sure that the patient’s balance is not impacted by the payment, keeping those funds locked away until we receive a remittance for the associated claim.
+
+### Part 2: Post-Remittance
+
+Once a claim has been submitted and the Payer sends a remittance, Athelas often needs to update the total patient responsibility. **Here’s how that process works:**
+
+- The PR for this date of service is updated to the amount specified in the remittance.
+
+<img src="/images/insights_front_desk/patient_responsibility/pr_overpayment_refunds_and_estimated_vs_remittance_pr/pr_overpayment_refunds_and_estimated_vs_remittance_pr_4.png" alt="" />
+
+- The remittance type is also changed from **Estimated PR** to **Remittance PR**.
+
+- Then the new PR amount is compared against the amount previously paid, and depending the result, one of the following happens:
+
+- **If Payment is equal to PR.** In this case, no further action is taken.
+- **If Payment is less than PR**: The difference is added to the patient’s balance, and will be included on their next patient statement.
+
+<img src="/images/insights_front_desk/patient_responsibility/pr_overpayment_refunds_and_estimated_vs_remittance_pr/pr_overpayment_refunds_and_estimated_vs_remittance_pr_5.png" alt="" />
+
+- **If Payment is greater than PR**: In this case, the overpayment will become a **credit** on the patient’s account, to be spent at a later date.
+
+<img src="/images/insights_front_desk/patient_responsibility/pr_overpayment_refunds_and_estimated_vs_remittance_pr/pr_overpayment_refunds_and_estimated_vs_remittance_pr_6.png" alt="" />
+
+- **Note:** Credits created in this way are **locked to the appointment’s date of service** by default, and will not automatically be applied to balances for other dates of service. However your staff (or the patient) can still apply them to balances manually.
+- For more details, check out our guide on [Credits: Flexible and Date of Service](https://www.notion.so/All-About-Credits-12a28254d0a84d99bac4a44bb75d82e4?pvs=21).
+
+**Features Supported:**
+
+- Import credits
+- Add/remove credits
+- Refund credits back to the patient’s card
+- Write-off charges
+- Manage(add/remove) cards on file
+
+### In Conclusion
+
+While Athelas Eligibility combined with the know-how of your team can provide a strong baseline for up-front PR collection, some portion of PR from the payers’ final decision will inevitably differ from what is collected. For these cases, Athelas automatically takes the appropriate followup action, allowing your staff to focus on more important things, like taking care of patients.

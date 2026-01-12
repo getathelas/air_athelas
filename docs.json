@@ -136,9 +136,384 @@
         "icon": "money-check-dollar",
         "groups":[
           {
-            "group":"Getting started with Insights",
-            "pages":[
-              "insights_onboard/insights/insights_landing"
+            "group": "Getting Started with Insights",
+            "icon": "stars",
+            "pages": [
+              "insights_onboard/getting_started_as_a_biller",
+              "insights_onboard/getting_started_as_a_healthcare_provider",
+              "insights_onboard/getting_started_as_a_staff_member",
+              "insights_onboard/getting_started_as_an_owneradministrator"
+            ]
+          },
+          {
+            "group": "Analytics",
+            "icon": "chart-column",
+            "tag": "Biller",
+            "pages": [
+              "insights_biller/analytics/the_denials_analysis_page",
+              "insights_biller/analytics/the_revenue_analysis_page"
+            ]
+          },
+          {
+            "group": "Athelas Assistant",
+            "icon": "robot",
+            "tag": "Biller",
+            "pages": [
+              "insights_biller/athelas_assistant/getting_started_with_your_rcm_assistant",
+              "insights_biller/athelas_assistant/rcm_ai_prompt_library"
+            ]
+          },
+          {
+            "group": "Front Office Payments",
+            "icon": "credit-card",
+            "tag": "Biller",
+            "pages": [
+              "insights_biller/front_office_payments/how_to_create_suggested_pr_rules",
+              "insights_biller/front_office_payments/self_pay_fee_schedule",
+              "insights_biller/front_office_payments/target_allowed_amounts"
+            ]
+          },
+          {
+            "group": "General Billing",
+            "icon": "file-invoice",
+            "tag": "Biller",
+            "pages": [
+              "insights_biller/general_billing/how_to_set_block_pr_rules",
+              "insights_biller/general_billing/remittances",
+              "insights_biller/general_billing/the_billing_rules_engine",
+              "insights_biller/general_billing/the_review_charges_page"
+            ]
+          },
+          {
+            "group": "Reports",
+            "icon": "chart-column",
+            "tag": "Biller",
+            "pages": [
+              "insights_biller/reports/ar_reports",
+              "insights_biller/reports/building_and_running_reports",
+              "insights_biller/reports/claim_adjustments_report",
+              "insights_biller/reports/collections_report",
+              "insights_biller/reports/custom_collections_report",
+              "insights_biller/reports/detailed_charges_report",
+              "insights_biller/reports/export_claim_details",
+              "insights_biller/reports/generate_a_transaction_report",
+              "insights_biller/reports/patient_balances_report",
+              "insights_biller/reports/patient_charges_report",
+              "insights_biller/reports/patient_claims_one_pagers",
+              "insights_biller/reports/patient_collections_report",
+              "insights_biller/reports/patient_eligibility_report",
+              "insights_biller/reports/posting_log_report",
+              "insights_biller/reports/site_transaction_report",
+              "insights_biller/reports/site_transaction_report_summary",
+              "insights_biller/reports/submitted_claims_report",
+              "insights_biller/reports/upcoming_patient_statements_report"
+            ]
+          },
+          {
+            "group": "Agents Center",
+            "icon": "users",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/agents_center/components_of_the_dashboard",
+              "insights_front_desk/agents_center/getting_started_with_agents_center",
+              "insights_front_desk/agents_center/make_an_outbound_call",
+              "insights_front_desk/agents_center/understanding_use_cases"
+            ]
+          },
+          {
+            "group": "Appointments",
+            "icon": "calendar",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/appointments/adding_prior_auth_and_alerting",
+              "insights_front_desk/appointments/alternate_methods_for_scheduling",
+              "insights_front_desk/appointments/appt_features_not_supported",
+              "insights_front_desk/appointments/how_to_add_a_walk_in_patient",
+              "insights_front_desk/appointments/how_to_run_an_eligibility_check",
+              "insights_front_desk/appointments/how_to_schedule_an_appointment",
+              "insights_front_desk/appointments/how_to_take_payments",
+              "insights_front_desk/appointments/sending_out_reminders_and_forms",
+              "insights_front_desk/appointments/the_insights_appointments_page",
+              "insights_front_desk/appointments/understanding_appointment_details",
+              "insights_front_desk/appointments/updating_appointment_statuses"
+            ]
+          },
+          {
+            "group": "Athelas Assistant",
+            "icon": "robot",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/athelas_assistant/getting_started_with_your_rcm_assistant",
+              "insights_front_desk/athelas_assistant/rcm_ai_prompt_library"
+            ]
+          },
+          {
+            "group": "Calendar",
+            "icon": "calendar",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/calendar/calendar_start_end_times",
+              "insights_front_desk/calendar/features_not_supported",
+              "insights_front_desk/calendar/filter_the_calendar_view",
+              "insights_front_desk/calendar/getting_started_with_the_calendar",
+              "insights_front_desk/calendar/modify_calendar_views",
+              "insights_front_desk/calendar/viewing_multiple_providers"
+            ]
+          },
+          {
+            "group": "Claim Details",
+            "icon": "file-invoice",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/claim_details/claim_details_page",
+              "insights_front_desk/claim_details/encounter_timeline_for_claims",
+              "insights_front_desk/claim_details/how_to_download_cms_1500_forms",
+              "insights_front_desk/claim_details/how_to_resubmit_a_single_claim",
+              "insights_front_desk/claim_details/how_to_resubmit_claims_in_bulk",
+              "insights_front_desk/claim_details/how_to_send_documentation",
+              "insights_front_desk/claim_details/other_submission_types_secondary_specialty_etc",
+              "insights_front_desk/claim_details/submissions_and_remits"
+            ]
+          },
+          {
+            "group": "Daily Operations",
+            "icon": "briefcase",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/daily_operations/how_to_reconcile_your_cash_drawer"
+            ]
+          },
+          {
+            "group": "Encounter Details",
+            "icon": "notes-medical",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/encounter_details/encounter_details_page",
+              "insights_front_desk/encounter_details/encounter_stage_and_status",
+              "insights_front_desk/encounter_details/how_to_update_insurance",
+              "insights_front_desk/encounter_details/insights_prior_authorization"
+            ]
+          },
+          {
+            "group": "Faxing",
+            "icon": "fax",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/faxing/attach_task_follow_ups_to_faxes",
+              "insights_front_desk/faxing/faxing_features_not_supported",
+              "insights_front_desk/faxing/getting_started_with_faxing",
+              "insights_front_desk/faxing/send_and_receive_a_fax",
+              "insights_front_desk/faxing/tying_faxes_to_patients",
+              "insights_front_desk/faxing/tying_inbound_faxes_to_outbound_faxes"
+            ]
+          },
+          {
+            "group": "Messaging",
+            "icon": "envelope",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/messaging/how_to_receive_messages",
+              "insights_front_desk/messaging/how_to_send_messages",
+              "insights_front_desk/messaging/messages_page"
+            ]
+          },
+          {
+            "group": "Patient Communications",
+            "icon": "envelope",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/patient_communications/complete_intake_forms",
+              "insights_front_desk/patient_communications/functional_outcome_measurements",
+              "insights_front_desk/patient_communications/general_patient_flows_features",
+              "insights_front_desk/patient_communications/getting_started_with_patient_portal",
+              "insights_front_desk/patient_communications/insurance_intake_page",
+              "insights_front_desk/patient_communications/manage_patient_appointments",
+              "insights_front_desk/patient_communications/manage_payments_through_patient_portal",
+              "insights_front_desk/patient_communications/navigating_patient_workflows",
+              "insights_front_desk/patient_communications/patient_intake_automation",
+              "insights_front_desk/patient_communications/text_blast_page",
+              "insights_front_desk/patient_communications/update_insurance_info",
+              "insights_front_desk/patient_communications/view_home_exercise_programs"
+            ]
+          },
+          {
+            "group": "Patient Demographics",
+            "icon": "square-user",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/patient_demographics/addedit_a_patients_insurance",
+              "insights_front_desk/patient_demographics/addedit_patient_cases",
+              "insights_front_desk/patient_demographics/addedit_patients_prior_authorization",
+              "insights_front_desk/patient_demographics/getting_started_with_demographics"
+            ]
+          },
+          {
+            "group": "Patient Profiles",
+            "icon": "square-user",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile",
+              "insights_front_desk/patient_profiles/how_to_resubmit_claims"
+            ]
+          },
+          {
+            "group": "Patient Responsibility",
+            "icon": "dollar-sign",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/patient_responsibility/charge_saved_credit_cards",
+              "insights_front_desk/patient_responsibility/how_to_cancel_pr",
+              "insights_front_desk/patient_responsibility/how_to_push_to_pr",
+              "insights_front_desk/patient_responsibility/how_to_record_payments",
+              "insights_front_desk/patient_responsibility/how_to_refund_a_payment",
+              "insights_front_desk/patient_responsibility/how_to_request_via_text_or_email",
+              "insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link",
+              "insights_front_desk/patient_responsibility/how_to_set_up_miscellaneous_line_item_charges",
+              "insights_front_desk/patient_responsibility/how_to_take_payment_for_families",
+              "insights_front_desk/patient_responsibility/how_to_undo_a_write_off",
+              "insights_front_desk/patient_responsibility/how_to_write_off_pr",
+              "insights_front_desk/patient_responsibility/manage_credit_cards",
+              "insights_front_desk/patient_responsibility/patient_responsibility_page",
+              "insights_front_desk/patient_responsibility/pr_overpayment_refunds_and_estimated_vs_remittance_pr",
+              "insights_front_desk/patient_responsibility/pr_settings",
+              "insights_front_desk/patient_responsibility/pr_timeline",
+              "insights_front_desk/patient_responsibility/setting_up_a_payment_plan"
+            ]
+          },
+          {
+            "group": "Patient Statements",
+            "icon": "file-text",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/patient_statements/how_to_spread_pr_statement_emails",
+              "insights_front_desk/patient_statements/manage_patient_statements",
+              "insights_front_desk/patient_statements/print_patient_statements",
+              "insights_front_desk/patient_statements/send_email_statements",
+              "insights_front_desk/patient_statements/send_one_off_paper_statements",
+              "insights_front_desk/patient_statements/send_patient_statements_via_emailtext",
+              "insights_front_desk/patient_statements/turn_off_patient_texts"
+            ]
+          },
+          {
+            "group": "Posting",
+            "icon": "upload",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/posting/how_to_handle_duplicate_remittances",
+              "insights_front_desk/posting/how_to_handle_partial_denials",
+              "insights_front_desk/posting/how_to_post_a_remittance_manually",
+              "insights_front_desk/posting/how_to_use_the_posting_tool_page",
+              "insights_front_desk/posting/how_to_write_off_a_balance"
+            ]
+          },
+          {
+            "group": "Tasking",
+            "icon": "list-check",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/tasking/how_to_create_tasks",
+              "insights_front_desk/tasking/sorting_archiving_bulk_actions"
+            ]
+          },
+          {
+            "group": "Utilities",
+            "icon": "wrench",
+            "tag": "Front Desk",
+            "pages": [
+              "insights_front_desk/utilities/bank_deposit_verification",
+              "insights_front_desk/utilities/download_edis_in_bulk",
+              "insights_front_desk/utilities/eob_creation_and_portal_checks",
+              "insights_front_desk/utilities/patient_subscriptions",
+              "insights_front_desk/utilities/process_virtual_cards",
+              "insights_front_desk/utilities/self_service_credentialing"
+            ]
+          },
+          {
+            "group": "My Practice",
+            "icon": "gear",
+            "tag": "Admin",
+            "pages": [
+              "insights_admin/my_practice/getting_started_with_your_practice",
+              "insights_admin/my_practice/manage_staff_permissions",
+              "insights_admin/my_practice/update_practice_information",
+              "insights_admin/my_practice/your_athelas_invoice"
+            ]
+          },
+          {
+            "group": "Reporting",
+            "icon": "chart-column",
+            "tag": "Admin",
+            "pages": [
+              "insights_admin/reporting/measuring_performance"
+            ]
+          },
+          {
+            "group": "AI Scribe & Tooling",
+            "icon": "wand-magic-sparkles",
+            "tag": "Provider",
+            "pages": [
+              "insights_provider/ai_scribe_and_tooling/additional_context_feature",
+              "insights_provider/ai_scribe_and_tooling/complete_a_visit_with_air_scribe",
+              "insights_provider/ai_scribe_and_tooling/edit_with_commandk",
+              "insights_provider/ai_scribe_and_tooling/how_to_apply_an_air_scribe",
+              "insights_provider/ai_scribe_and_tooling/how_to_set_up_ai_compliance",
+              "insights_provider/ai_scribe_and_tooling/setting_up_ai_compliance"
+            ]
+          },
+          {
+            "group": "Athelas Assistant",
+            "icon": "robot",
+            "tag": "Provider",
+            "pages": [
+              "insights_provider/athelas_assistant/athelas_assistant_best_practices",
+              "insights_provider/athelas_assistant/athelas_assistant_common_functionalities",
+              "insights_provider/athelas_assistant/getting_started_with_athelas_assistant"
+            ]
+          },
+          {
+            "group": "Chart Notes",
+            "icon": "notes-medical",
+            "tag": "Provider",
+            "pages": [
+              "insights_provider/chart_notes/ai_appt_summaries",
+              "insights_provider/chart_notes/auto_apply_kx_modifier",
+              "insights_provider/chart_notes/chart_note_clinical_types",
+              "insights_provider/chart_notes/chart_note_features_not_supported",
+              "insights_provider/chart_notes/download_chart_notes_as_pdfs",
+              "insights_provider/chart_notes/getting_started_with_chart_notes",
+              "insights_provider/chart_notes/goals_on_the_chart_note",
+              "insights_provider/chart_notes/how_to_add_measurements",
+              "insights_provider/chart_notes/import_previous_medical_history",
+              "insights_provider/chart_notes/navigating_flowsheets",
+              "insights_provider/chart_notes/navigating_inbox_workflows",
+              "insights_provider/chart_notes/navigating_the_chart_note",
+              "insights_provider/chart_notes/set_up_custom_chart_note_templates",
+              "insights_provider/chart_notes/setting_up_co_signers_on_your_note",
+              "insights_provider/chart_notes/sign_a_chart_note",
+              "insights_provider/chart_notes/text_snippets_for_your_note"
+            ]
+          },
+          {
+            "group": "Medications",
+            "icon": "pills",
+            "tag": "Provider",
+            "pages": [
+              "insights_provider/medications/designate_staff_as_provider_agents"
+            ]
+          },
+          {
+            "group": "Patient Profiles",
+            "icon": "square-user",
+            "tag": "Provider",
+            "pages": [
+              "insights_provider/patient_profiles/add_attachments_to_patient_profile",
+              "insights_provider/patient_profiles/getting_started_with_patient_profile",
+              "insights_provider/patient_profiles/navigating_labs",
+              "insights_provider/patient_profiles/prescribe_medications",
+              "insights_provider/patient_profiles/profile_features_not_supported",
+              "insights_provider/patient_profiles/record_allergies",
+              "insights_provider/patient_profiles/record_immunizations",
+              "insights_provider/patient_profiles/view_patients_appointments"
             ]
           }
         ]

@@ -1,0 +1,82 @@
+---
+title: "Understanding Use Cases"
+---
+
+#### 1. Inbound Call Handling
+
+With the Agents Center, your practice can:
+
+- Schedule new appointments for both new and existing patients
+- Reschedule existing appointments
+- Collect patient information including first name, last name, date of birth, insurance details, and member ID
+- Document reason for visit
+- Send appointment confirmation forms via text
+- Triage patient needs, leave messages, and escalate to humans when necessary
+Here is an example demo call:
+
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/b9kg7t_lmfI?iv_load_policy=3&rel=0&modestbranding=1&playsinline=1&autoplay=0&mute=1"
+  title="YouTube video player"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+/>
+
+#### 2. Call Tracking and Management
+
+During calls, the system provides near real-time updates including:
+
+- Different agents involved in each call
+- Actions taken during the call (creating, scheduling, cancelling, escalating)
+- Direct links to resources created (patient demographics, appointment page, showing appointment changes over time with user: Agent)
+After each call, the system:
+
+- Creates detailed call logs with transcripts (using the same model as Scribe with 99.4% accuracy)
+- Marks calls as "completed" when successfully handled
+- Flags calls that require human intervention as "needs action"
+
+<img src="/images/insights_front_desk/agents_center/understanding_use_cases/understanding_use_cases_1.png" alt="" />
+
+#### 3. Outbound Capabilities
+
+The system supports:
+
+- Appointment confirmations (24-hour prior calls)
+- Patient collections calling
+- Custom outbound campaigns using the Agent Builder
+- Appointment follow-ups
+
+<img src="/images/insights_front_desk/agents_center/understanding_use_cases/understanding_use_cases_2.png" alt="" />
+
+#### 4. Configuration
+
+This is where you’ll set the appointment types that can be scheduled, log provider scheduling preferences and availability, set insurance acceptance preferences, and set your call escalation number to a human-monitored line..
+
+<img src="/images/insights_front_desk/agents_center/understanding_use_cases/understanding_use_cases_3.png" alt="" />
+
+- #### EHR Integration
+Agent Call Center seamlessly:
+
+- Integrates with our EHR
+- Supports both read and write capabilities to ensure data fidelity for other EHR's
+- Automatically displays new appointments in your EHR system
+- Creates new patient records
+- Displays edits to appointments
+- Tracks all edits under an Agent user
+- #### Analytics
+Monitor call center performance with:
+
+- Call volume metrics
+- Success rates for appointment scheduling
+- Sentiment analysis (paired with "needs action" flagging and human escalation)
+- Event metrics (scheduling, rescheduling, cancelling)
+
+<img src="/images/insights_front_desk/agents_center/understanding_use_cases/understanding_use_cases_4.png" alt="" />
+
+#### Best Practices
+
+- Use the analytics to identify peak call times and adjust staffing accordingly
+- Regularly review calls marked as "needs action" to address complex patient inquiries
+- Customize your agent scripts to match your practice's specific protocols and terminology
+- Start with a limited scope of agent capabilities and expand as you become more comfortable with the system
