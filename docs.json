@@ -1,12 +1,14 @@
 {
   "$schema": "https://mintlify.com/docs.schema.json",
-  "theme": "maple",
-  "name": "Air Athelas User Guide",
+  "theme": "palm",
+  "name": "Athelas",
   "logo": {
-    "light": "images/air_logo.webp",
-    "dark": "images/air_logo_dark.webp"
+    "light": "images/athelas_logo_2.png",
+    "dark": "images/athelas_logo_2.png"
   },
-  "styling": {"eyebrows": "breadcrumbs"},
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
   "styles": {
     "global": {
       "img": {
@@ -21,21 +23,26 @@
   },
   "favicon": "images/athelas_favicon_bkg.png",
   "navigation": {
-    "groups": [
+    "tabs": [
+      {
+        "tab": "Air",
+        "icon": "laptop-medical",
+        "groups": [
           {
-        "group": "Getting Started with Air",
-        "icon": "stars",
-        "pages": [
-          "index",
-          "set-up",
-          "troubleshoot/faqs"
-        ]
-      },
+            "group": "Getting Started with Air",
+            "icon": "stars",
+            "pages": [
+              "index",
+              "set-up",
+              "troubleshoot/faqs"
+            ]
+          },
           {
             "group": "View your Calendar",
             "icon": "calendar",
             "pages": [
-              "calendar/nav_calendar"            ]
+              "calendar/nav_calendar"
+            ]
           },
           {
             "group": "Review Patient Details",
@@ -122,14 +129,70 @@
               "reports/all_reports"
             ]
           }
-
+        ]
+      },
+      {
+        "tab":"Insights",
+        "icon": "money-check-dollar",
+        "groups":[
+          {
+            "group":"Getting started with Insights",
+            "pages":[
+              "insights/insights_landing"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "What's New",
+        "icon": "stars",
+        "groups": [
+          {
+            "group": "Welcome to our Blogs",
+            "pages": [
+              "blogs/product_release",
+              "blogs/customer_stories"
+            ]
+          },
+          {
+            "group": "Product Release",
+            "pages": [
+              "blogs/kx_modifier",
+              "blogs/lead_tracker",
+              "blogs/new_calendar",
+              "blogs/agents_center",
+              "blogs/ai_assistant"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "bullhorn",
+        "pages": [
+          "changelog"
+        ]
+      }
     ]
   },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/CommureOS",
+      "facebook": "https://www.facebook.com/p/Commure-Health-61565050580971/",
+      "linkedin": "https://www.linkedin.com/company/commure/"
+    }
+  },
   "navbar": {
+    "links": [
+      {
+        "label": "Visit Athelas Academy",
+        "href": "https://athelas-academy.workramp.io/paths"
+      }
+    ],
     "primary": {
       "type": "button",
-      "label": "Try the Air Athelas Training Now",
-      "href": "https://athelas-academy.workramp.io/trainings"
+      "label": "Sign-in on Insights",
+      "href": "https://insights.athelas.com"
     }
   }
 }
