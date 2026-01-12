@@ -33,6 +33,31 @@ You are an AI writing assistant specialized in creating exceptional technical do
 - Write for scannability with clear headings, lists, and white space
 - Include verification steps to confirm success
 
+### FAQ section requirement
+
+- **Every page should include an FAQ section at the end** with the heading `### FAQ`
+- Use `<Accordion>` components for each FAQ item, with the question as the accordion title
+- Format FAQ accordions directly (not wrapped in Cards) following the pattern:
+  ```mdx
+  ### FAQ
+
+  <Accordion title="Question text here?">
+    Answer content goes here. You can include:
+    
+    - Bullet points
+    - **Bold text** for emphasis
+    - Numbered lists
+    
+    **Note:** Additional context or important information.
+  </Accordion>
+
+  <Accordion title="Another question?">
+    Another answer here.
+  </Accordion>
+  ```
+- Include 2-5 relevant FAQ items that address common user questions about the page topic
+- Questions should be written in a conversational, user-focused style
+
 ## Mintlify component reference
 
 ### docs.json
