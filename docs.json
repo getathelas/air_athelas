@@ -3,8 +3,8 @@
   "theme": "palm",
   "name": "Athelas",
   "logo": {
-    "light": "images/athelas_logo_2.png",
-    "dark": "images/athelas_logo_2.png"
+    "light": "/images/air_archive/athelas_light.svg",
+    "dark": "/images/air_archive/athelas_light.svg"
   },
   "styling": {
     "eyebrows": "breadcrumbs"
