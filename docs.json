@@ -157,10 +157,9 @@
           {
             "group": "Athelas Assistant",
             "icon": "robot",
-            "tag": "Biller",
             "pages": [
-              "insights_biller/athelas_assistant/getting_started_with_your_rcm_assistant",
-              "insights_biller/athelas_assistant/rcm_ai_prompt_library"
+              "insights_general/athelas_assistant/getting_started_with_your_rcm_assistant",
+              "insights_general/athelas_assistant/rcm_ai_prompt_library"
             ]
           },
           {
