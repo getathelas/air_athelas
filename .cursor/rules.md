@@ -81,37 +81,16 @@ mode: "wide"  # Optional - for wide layout pages (like homepage)
 
 ### Card component
 
-Cards are the primary container for content sections. Use them extensively:
+Cards are used selectively for homepage/landing pages and special callouts. **Do not wrap general content in Cards.**
 
-**Card with no title:**
-```mdx
-<Card title=" ">
-  Content goes here. Use this format when you don't need a card title.
-</Card>
-```
-
-**Card with title:**
-```mdx
-<Card title>
-  Content goes here. The heading above the card serves as the title.
-</Card>
-```
-
-**Card with icon and link (for homepage/landing pages):**
+**Card with icon and link (for homepage/landing pages only):**
 ```mdx
 <Card title="Card Title" icon="icon-name" iconType="duotone" color="#F9345F">
   Card content description.
 </Card>
 ```
 
-**Card inside Accordion:**
-```mdx
-<Accordion title="Accordion Title" iconType="regular">
-  <Card title=" ">
-    Content inside accordion.
-  </Card>
-</Accordion>
-```
+**For general documentation content:** Write content directly without Card wrappers. Use headings, paragraphs, lists, and other Mintlify components as needed.
 
 ### Icon component
 
@@ -195,22 +174,21 @@ Use Steps for multi-step procedures. Standard format:
 
 #### Accordions for collapsible content
 
-Accordions are used for progressive disclosure. Standard format:
+Accordions are primarily used for FAQ sections at the end of documentation pages. Standard format:
 
 ```mdx
-<Accordion title="Accordion Title" iconType="regular">
-  <Card title=" ">
-    Content inside the accordion. Always wrap content in a Card.
-    
-    - Bullet points work here
-    - Images and other content can be included
-    
-    ![Image Alt](/images/image.webp)
-  </Card>
+<Accordion title="Question text here?">
+  Answer content goes here. You can include:
+  
+  - Bullet points
+  - **Bold text** for emphasis
+  - Numbered lists
+  
+  **Note:** Additional context or important information.
 </Accordion>
 ```
 
-**Note:** Accordions are used sparingly. Most content is directly in Cards.
+**Note:** Accordions should not wrap general documentation content. Use them for FAQs and progressive disclosure when needed.
 
 ### Columns component
 
@@ -320,16 +298,16 @@ Use markdown table syntax for definitions and structured data:
 
 #### Lists and procedures
 
-Most procedures use numbered or bulleted lists within Cards:
+Procedures use numbered or bulleted lists directly in the content:
 
 ```mdx
-<Card title>
-  1. First step instruction.
-  2. Second step instruction.
-  3. Third step instruction.
-  
-  **Note:** Additional context or important information.
-</Card>
+**To complete this task:**
+
+1. First step instruction.
+2. Second step instruction.
+3. Third step instruction.
+
+**Note:** Additional context or important information.
 ```
 
 #### Links
@@ -352,10 +330,11 @@ Use markdown link syntax with bold for emphasis:
 
 - **User-focused language**: Write in second person ("you") for instructions
 - **Bold emphasis**: Use `**bold**` extensively for UI elements, key terms, and actions
-- **Clear procedures**: Break down tasks into numbered steps within Cards
-- **Visual guidance**: Include screenshots, GIFs, or videos for complex procedures
+- **Clear procedures**: Break down tasks into numbered steps or clear subsections
+- **Visual guidance**: Include screenshots, GIFs, or videos for complex procedures when available
 - **Smart Tips**: Use `<Danger>` component with `✨**Smart Tip:**` format for helpful hints
-- **Notes**: Use `**Note:**` or `**Note**:` within Cards for additional context
+- **Notes**: Use `**Note:**` inline for additional context
+- **Direct content**: Write content directly without unnecessary wrapper components
 
 ### Image requirements
 
@@ -385,9 +364,9 @@ Use markdown link syntax with bold for emphasis:
 
 ### Primary patterns
 
-1. **Cards** - Use `<Card title>` or `<Card title=" ">` for almost all content sections. This is the primary container component.
+1. **Direct content** - Write content directly using headings, paragraphs, lists, and emphasis. Avoid unnecessary wrapper components.
 
-2. **Icons with headings** - Use `<Icon>` component before H3 headings for visual hierarchy:
+2. **Icons with headings** - Use `<Icon>` component before H2 or H3 headings for visual hierarchy when appropriate:
    ```mdx
    ### <Icon icon="icon-name" iconType="duotone" color="#F9345F" size={23} />  Section Title
    ```
@@ -399,20 +378,21 @@ Use markdown link syntax with bold for emphasis:
    </Danger>
    ```
 
-4. **Numbered lists in Cards** - For procedures, use numbered lists within Cards rather than Steps component (Steps are used sparingly).
+4. **Numbered lists** - For procedures, use numbered lists directly in the content rather than Steps component.
 
-5. **Accordions** - Use sparingly for collapsible content that contains Cards.
+5. **Accordions for FAQs** - Use accordions primarily for FAQ sections at the end of pages.
 
-6. **Columns** - Use primarily on homepage/landing pages with icon Cards.
+6. **Cards for landing pages** - Use Cards with icons only on homepage/landing pages, not for general documentation.
 
 ### When to use each component
 
-- **Card** - Default container for all content sections
-- **Icon** - Before H3 section headings for visual hierarchy
+- **Headings and paragraphs** - Primary way to structure content
+- **Icon** - Before major section headings for visual hierarchy (use selectively)
 - **Danger** - For Smart Tips and important warnings
-- **Info** - For neutral informational callouts (used sparingly)
-- **Steps** - Only for multi-step procedures that need visual step indicators
-- **Accordion** - For collapsible sections that contain Cards
+- **Info** - For neutral informational callouts (use sparingly)
+- **Steps** - Only for multi-step procedures that need visual step indicators (rarely used)
+- **Accordion** - Primarily for FAQ sections
+- **Card** - Only for homepage/landing pages with icons, not for general content
 - **Columns** - For homepage multi-column layouts with icon Cards
 - **Images** - Use markdown syntax `![alt](/images/file.webp)` or HTML `<img>` with style attributes
 - **Iframes** - For YouTube videos and Arcade interactive demos
