@@ -1,0 +1,247 @@
+---
+title: "Auto-apply KX Modifier"
+---
+
+#### Overview
+
+The KX HCPCS modifier signals that “requirements specified in the medical policy have been met” and that services are medically necessary beyond a payer’s threshold (most commonly Medicare outpatient therapy thresholds for PT/OT/SLP). It attests that supporting documentation exists in the medical record. (Sources: [APTA](https://www.apta.org/your-practice/payment/medicare-payment/coding-billing/therapy-cap), [NGS Medicare](https://www.ngsmedicare.com/web/ngs/physical-therapy/occupational-therapy/speech-therapy?selectedArticleId=305496))
+
+#### Why we need it
+
+- Compliance: Medicare requires KX on claim lines once the beneficiary’s annual therapy threshold is exceeded (PT+SLP combined, and OT separately). Without KX, claims at/above the threshold can be denied.
+- Payment continuity: KX allows medically necessary therapy to continue beyond the threshold, with the understanding those services may be subject to targeted medical review (generally over $3,000).
+
+#### Types of Thresholds for Medicare
+
+**PT/SLP vs OT Medicare threshold remaining**
+
+- PT/SLP and OT are tracked in two separate “buckets” each calendar year. For CY2025 the thresholds are:
+
+- PT + SLP combined: $2,410
+- OT: $2,410
+
+- Deductible and coinsurance count toward these amounts.
+- “Threshold remaining” = threshold amount − total allowed therapy spend to date in that bucket (per calendar year)
+
+#### CPT Codes that require a KX Modifier
+
+**Physical & Occupational Therapy**
+
+| CPT Code | Description |
+|----------|-------------|
+| **97110** | Therapeutic exercise (per 15 min) |
+| **97112** | Neuromuscular reeducation |
+| **97116** | Gait training therapy |
+| **97140** | Manual therapy techniques |
+| **97530** | Therapeutic activities |
+| **97535** | Self-care/home management training |
+| **97542** | Wheelchair management training |
+| **97750** | Physical performance test or measurement |
+| **97760** | Orthotic fitting and training |
+| **97761** | Prosthetic training |
+| **97763** | Orthotic/prosthetic management & training (follow-up) |
+| **97150** | Group therapeutic procedures (must document medical necessity individually for each patient) |
+| **97597** | Selective debridement (when part of therapy plan) |
+
+**Speech-Language Pathology (SLP)**
+
+| CPT Code | Description |
+|----------|-------------|
+| **92507** | Treatment of speech, language, voice, communication |
+| **92508** | Group speech therapy |
+| **92526** | Treatment of swallowing dysfunction |
+| **92609** | Therapeutic use of speech-generating device |
+
+**Common Occupational Therapy CPT Codes That Require the KX Modifier (when over threshold)**
+
+| CPT Code | Description |
+|----------|-------------|
+| **97110** | Therapeutic exercise |
+| **97112** | Neuromuscular re-education |
+| **97116** | Gait training therapy |
+| **97150** | Group therapy |
+| **97140** | Manual therapy |
+| **97530** | Therapeutic activities (e.g., reaching, grasping) |
+| **97535** | Self-care/home management training |
+| **97537** | Community/work reintegration training |
+| **97542** | Wheelchair management training |
+| **97750** | Physical performance test |
+| **97755** | Assistive technology assessment |
+| **97760** | Orthotic training |
+| **97761** | Prosthetic training |
+| **97763** | Orthotic/prosthetic follow-up |
+
+#### When would be KX modifier auto-applied?
+
+- Patient has Medicare benefits applicable to outpatient therapy for the encounter
+- **Auto-apply KX modifier preference** is enabled
+- Rendering provider’s discipline maps to PT/SLP or OT for Medicare service type
+- The CPT code is in the qualifying therapy list for that service type (PT/SLP vs OT)
+- The calculation year is the appointment’s calendar year
+- The patient’s Medicare therapy threshold remaining for that service type is ≤ 0 (i.e., threshold exceeded)
+- KX isn’t already on the line; it’s appended alongside other therapy modifiers (e.g., GP/GO/GN)
+- If a precomputed “threshold remaining” value is supplied and indicates exceeded, it’s used
+
+#### Configuration
+
+Setting PT/OT threshold on a per-patient level
+
+1. On EHR > Calendar, click on any calendar cell.
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_1.png" alt="" />
+
+2. Click on the expand content
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_2.png" alt="" />
+
+3. On Appointment Details drawer > visits, expand the "Medicare Threshold Remaining"
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_3.png" alt="" />
+
+4. Click on "Other Medicare Threshold Used".
+
+You can modify the value according to your preference.
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_4.png" alt="" />
+
+5. You can see the updated remaining value
+
+$390.00 Medicare Threshold Remaining (PT/SLP)
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_5.png" alt="" />
+
+#### Enabling auto-apply KX modifier preference
+
+1. Go on EHR > Preferences
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_6.png" alt="" />
+
+2. Click on General Tab
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_7.png" alt="" />
+
+3. In the search box, type "KX"
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_8.png" alt="" />
+
+4. You would see an entry titled "Auto-Apply KX Modifier"
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_9.png" alt="" />
+
+5. Click on the switch to enable it
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_10.png" alt="" />
+
+6. Once you click it, you will see the message "Setting updated successfully"
+
+Click on the switch again if you want to turn it off.
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_11.png" alt="" />
+
+#### Setting KX modifier traits on a template
+
+1. Go to Templates Page
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_12.png" alt="" />
+
+2. Create or edit a Template
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_13.png" alt="" />
+
+3. Drag and drop Paragraph Answer
+
+Only “Paragraph Answer” supports question traits at the moment
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_14.png" alt="" />
+
+4. Fill the form
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_15.png" alt="" />
+
+5. Click on Create a new trait
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_16.png" alt="" />
+
+6. Type in the trait name
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_17.png" alt="" />
+
+7. Type in a prompt that should be evaluated
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_18.png" alt="" />
+
+8. Click on Evaluate only if Medicare has been reached
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_19.png" alt="" />
+
+9. Go to EHR Preferences > Appointment Types
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_20.png" alt="" />
+
+10. Add the new template to an Appointment Type
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_21.png" alt="" />
+
+11. Done! Now start using the Appointment Type you set up.
+
+#### Usage
+
+**Applying the KX modifier in the Treatment section**
+
+1. Go to a Appointment section of any selected Patient
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_22.png" alt="" />
+
+2. You’ll notice that for Medicare thresholds, there are two types: the PT/SLP Medicare Threshold and the OT Medicare Threshold.
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_23.png" alt="" />
+
+3. Check if the remaining Medicare threshold (e.g., PT/SLP) is negative (i.e., the threshold has been crossed).
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_24.png" alt="" />
+
+4. Scroll down to the Treatment section, where you can search for and choose a CPT code.
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_25.png" alt="" />
+
+5. Select one of the procedures (i.e., CPT codes) that is KX-modifier qualified (e.g., 97110)
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_26.png" alt="" />
+
+6. After adding the qualified procedure, the KX modifier is automatically applied with a tooltip.
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_27.png" alt="" />
+
+#### Applying the KX modifier in the Flowsheet Intervention section
+
+1. Go to a Appointment section of any selected Patient
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_28.png" alt="" />
+
+2. You’ll notice that for Medicare thresholds, there are two types: the PT/SLP Medicare Threshold and the OT Medicare Threshold.
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_29.png" alt="" />
+
+3. Check if the remaining Medicare threshold (e.g., PT/SLP) is negative (i.e., the threshold has been crossed).
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_30.png" alt="" />
+
+4. Scroll down to the Flowsheet section, where you can search for and choose a CPT code(i.e. “Search For Intervention).
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_31.png" alt="" />
+
+5. Select one of the interventions (e.g., Cervical Thrust Manipulation (HVLAT)).
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_32.png" alt="" />
+
+6. Select one of the procedures (i.e., CPT codes) that is KX-modifier qualified (e.g., 97110)
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_33.png" alt="" />
+
+7. Now Mark it as Done
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_34.png" alt="" />
+
+8. The KX modifier will be applied automatically, and you can also see the tooltip.
+
+<img src="/images/insights_provider/chart_notes/auto_apply_kx_modifier/auto_apply_kx_modifier_35.png" alt="" />

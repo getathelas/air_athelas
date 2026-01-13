@@ -1,0 +1,80 @@
+---
+title: "How to Record Payments"
+---
+
+### At a Glance
+
+Sometimes you need a record of an external payment to balance an encounter without charging a patient again. This is particularly useful if your organization has recently transitioned to Athelas from another billing company.
+
+### Here’s How to Do It
+
+**The short version:**
+
+- **Create available credits** in the exact amount that was previously paid.
+- **Create a miscellaneous charge** in that amount.
+- **Apply the credits you just created to that charge** to balance it out.
+
+### Full Walkthrough
+
+Navigate to the patient’s profile.
+
+Switch to the ‘Credits’ tab, then select `Edit Credits`.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_record_payments/how_to_record_payments_1.png" alt="" />
+
+Fill in the exact amount previously paid, then add a note explaining why you’re creating these credits. Be sure to check the box for `Available Credits` so that you can use them now, and they’re not tied to a date of service.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_record_payments/how_to_record_payments_2.png" alt="" />
+
+The credits will appear in the patient’s ‘Credits’ tab. You can click the arrow next to them to see the details you filled in.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_record_payments/how_to_record_payments_3.png" alt="" />
+
+Now, switch to the ‘Charges’ tab and click `+Miscellaneous Charge`.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_record_payments/how_to_record_payments_4.png" alt="" />
+
+A modal will appear with fields for you to input information.
+
+You’ll notice the warning at the top of this modal indicating how it can and cannot be used. Fortunately, this situation requires that both a payment and corresponding charge are created, so we’re good to go!
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_record_payments/how_to_record_payments_5.png" alt="" />
+
+Fill in the patient’s facility and current provider.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_record_payments/how_to_record_payments_6.png" alt="" />
+
+For the ‘Line Item’ section, you may need to create a line item for recording external payments.
+
+##### Here's a walkthrough on how to do that. Feel free to skip ahead if you've already set this up.
+
+- Navigate to [PR Settings](https://insights.athelas.com/v2/patient-responsibility-settings). You’ll land on the ‘General’ tab by default.
+- Scroll down to the ‘Custom Payment Types’ section.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_record_payments/how_to_record_payments_7.png" alt="" />
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_record_payments/how_to_record_payments_8.png" alt="" />
+- Click the `+` to create a custom payment line.
+- Enter a name like ‘Record of payment taken externally,’ set the Type to ‘Standard,’ and leave the default charge amount at 0. Click `Create`.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_record_payments/how_to_record_payments_9.png" alt="" />
+- You can see your new line item in the list in PR Settings.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_record_payments/how_to_record_payments_10.png" alt="" />
+Done! Now you can select this option in the ‘Line Item’ menu of the `Miscellaneous Charge` modal.
+
+##### If you already have the line item described above, great!
+
+Select it and enter the exact amount of credits you created in the ‘Pay Amount’ field.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_record_payments/how_to_record_payments_11.png" alt="" />
+
+Next, check the box to `Apply Credits` and the option to `Pay with Patient Credits` will select automatically.
+
+You can add a note to this payment if you like.
+
+Once everything looks correct, click `Confirm`.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_record_payments/how_to_record_payments_12.png" alt="" />
+
+Confirm the transaction once more, and then you’ll have the opportunity to download, print, or send a receipt to the patient via text or email. We advise against sending a receipt in this case, as that would cause the patient some confusion and it might look like they were just charged twice.

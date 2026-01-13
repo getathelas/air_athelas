@@ -1,0 +1,70 @@
+---
+title: "How to Set Up Miscellaneous Line Item Charges"
+---
+
+### At a Glance
+
+This guide covers line item charges that are separate from insurance payments. For example, if insurance will pay for an injection, but not the substance injected, you can charge the patient for the substance with a line item charge.
+
+**Note:** This feature may have access restricted to only Administrators and Billing Managers at your practice.
+
+### Create a Line Item
+
+In the General tab of [PR Settings](https://insights.athelas.com/v2/patient-responsibility-settings), scroll down to the **‘Custom Payment Types’** section. You’ll see a list of all currently active and disabled line items. The ‘Active’ items populate the list of options you’ll see when charging patients later.
+
+To create a new line item, click the `+` button. A window will pop up for you to edit.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_set_up_miscellaneous_line_item_charges/how_to_set_up_miscellaneous_line_item_charges_1.png" alt="" />
+
+Fill in the fields as needed, then click `Create`.
+
+***Note:** You can use the ‘Type’ designations of ‘Standard,’ ‘Add Credits,’ or ‘Self Pay’ to make those line items appear accurately in your reports.*
+
+*Use those designations if, for example, your practice requests a pre-visit deposit for new patients that you want automatically applied to their profile as credits.*
+
+- ***Standard**: These charges are independent of your self-pay fee schedule and insurance PR, so they can be used for most transactions.*
+- ***Add Credits**: Adds flexible credits to the patient’s account.*
+- ***Self Pay**: Functions like a regular self-pay line item, generating self-pay PR. Think of these line items as deposits that will be applied to future self-pay PR as mandated by your self-pay fee schedule.*
+You can view your new item in the list, or edit it using its pencil icon in the ‘Action’ column.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_set_up_miscellaneous_line_item_charges/how_to_set_up_miscellaneous_line_item_charges_2.png" alt="" />
+
+###
+
+### Charge a Patient for a Line Item
+
+Navigate to the patient’s profile and, in the Charges tab, click `+ Miscellaneous Charge`.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_set_up_miscellaneous_line_item_charges/how_to_set_up_miscellaneous_line_item_charges_3.png" alt="" />
+
+A window will pop up for you to fill in, along with the following **very important note on how this feature should and should not be used:**
+
+You **cannot collect outstanding balance** from this interface. Please use the `Pay Balance` button on the Patient's profile.
+
+You **cannot collect co-pay, coinsurance, or deductible** from this interface. Please use the '[Appointments](https://insights.athelas.com/v3/appointments)' page. Any charges created here will **not** apply to any PR created from an adjudicated claim.
+
+Using this tool will create both a **payment** and a **corresponding charge**. It will not pay off the patient's existing balance.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_set_up_miscellaneous_line_item_charges/how_to_set_up_miscellaneous_line_item_charges_4.png" alt="" />
+
+Fill in the facility and provider information, and you can add your new line item. The default charge you created will automatically populate the ‘Unit Price’ field.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_set_up_miscellaneous_line_item_charges/how_to_set_up_miscellaneous_line_item_charges_5.png" alt="" />
+
+**A Quick Note about Creating Line Items in This Popup**
+
+You can create new line items at the bottom of the list in this popup. However, no default charge will be associated with them, so only use this feature if absolutely necessary, otherwise different staff may charge different amounts for the same thing.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_set_up_miscellaneous_line_item_charges/how_to_set_up_miscellaneous_line_item_charges_6.png" alt="" />
+
+If the patient has any available credits on their account, you can apply those toward their payment and see it reflected in the Amount Due. You can see more details on the patient’s available credits by clicking the `Credit breakdown`.
+
+Then, choose how you would like to process or request payment. For this example, we’ll choose to ‘Pay with Patient Credits.’
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_set_up_miscellaneous_line_item_charges/how_to_set_up_miscellaneous_line_item_charges_7.png" alt="" />
+
+Click `Confirm`, then confirm again in the new popup. Finally, you’ll have the option to print or send a receipt to the patient.
+
+<img src="/images/insights_front_desk/patient_responsibility/how_to_set_up_miscellaneous_line_item_charges/how_to_set_up_miscellaneous_line_item_charges_8.png" alt="" />
+
+Done!

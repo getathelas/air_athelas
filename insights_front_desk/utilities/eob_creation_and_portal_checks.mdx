@@ -1,0 +1,176 @@
+---
+title: "EOB Creation and Portal Checks"
+---
+
+### At a Glance
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_1.png" alt="" />
+
+The [EOB Creation page](https://insights.athelas.com/v2/eob-posting) is your headquarters for manually uploading remittances to your claims.
+
+If you find yourself in possession of an EOB for an unreconciled claim, this is the tool you’ll use to update the claim status in Insights. It also accepts data from payer portal checks and good old fashioned calls to the payer.
+
+**Best Practices 1.** If you have an **EOB you need to import urgently**, this tool is your best path. Imported EOBs will appear in Athelas Insights within 24 hours of submission.
+
+**2. If you’re not in a hurry**, you can bulk-upload your EOBs to this tool and the Athelas reconciliation team will import the EOBs data (though this takes longer to process).
+
+**3. If you’re not sure what claims need remittances**, head over to the [AR Report page](https://insights.athelas.com/v3/payment/ar-report) to get a list of claims that are overdue for a decision.
+
+## Core Feature Walkthrough
+
+We will refer to all manual remittance types — EOBs, Payer Portal Checks, and Payer Calls — as ‘EOBs’ in this guide.
+
+Here’s how to upload a new EOB:
+
+### 1. View EOBs by Status
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_2.png" alt="" />
+
+When you land on the EOB Creation page, you will see six tabs indicating the status of the EOBs listed:
+
+- **Backlog**EOBs that have not yet been touched by your practice’s staff will populate the backlog.
+- **In Progress**EOBs located here are either being indexed (identifying what claims are on an EOB that require posted remits) or transcribed (writing the details of **each claim** on the EOB in Insights). Given that some EOBs can have 400+ claims, it is possible that they may be in this state for a few days.
+- **Partially Completed**EOBs in this tab were submitted, but at least one EOB failed.**Note:** A common error for EOBs here is a missing check number or check date. Any remit greater than $0.00 requires these two things to successfully post.
+- **Submitting**These EOBs are currently being submitted and will be done soon, depending on the number of associated claims.
+- **Posted**These EOBs have all been successfully posted.
+- **Blocked**Something is wrong and these won’t be posted. This usually happens for EOBs that are duplicates, or have some similar issue.
+Within any of these tabs, use the Multi-Search function to filter the EOBs listed by EOB ID, insurance, check number, patient name, or file name.
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_3.png" alt="" />
+
+You can also click the ‘**Actions**’ menu to either view or delete a file.
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_4.png" alt="" />
+
+### 2. Upload an EOB File or Screenshot
+
+Assuming you’re starting from scratch, click the ‘Post a New EOB’ button to get started.
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_5.png" alt="" />
+
+Select the **type of EOB** you’ll be importing. **Upload the file** and then click ‘**Continue**.’
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_6.png" alt="" />
+
+*Uploading is not technically required. However, for accurate record keeping and quality assurance, uploading evidence of the payer decision is strongly encouraged.*
+
+Next, you can use the search filters (Patient, Date of Service, Multi-Search) to find the claim(s) you want to link to the EOB. Then click ‘**Add to EOB**.’
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_7.png" alt="" />
+
+Repeat this process until you’ve added all the claims you want, then click ‘**Process EOBs**.’
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_8.png" alt="" />
+
+### 3. Enter the Remittance Data
+
+***Autosave*** This portion of the tool will automatically save your progress.
+
+Now it’s time to **fill in the key data** from the EOB.
+
+Keep an eye on your count of **validation errors** next to the submit button. This keeps a **live tally of issues** that need to be resolved in the EOB.
+
+Moving your cursor over this note will provide a list of the specific patients’ claims where the issues are located.
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_9.png" alt="" />
+
+Find the patient/claim with an error, indicated by red ‘**Information**’ icons. You can then hover your cursor over the icon to the right of the CPT code description to discover what the specific issue is and rectify it.
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_10.png" alt="" />
+
+If your EOB contains an adjustment that doesn’t fall into the most common categories, you can add a custom adjustment using the ‘**Add Adjustment**’ button.
+
+This is most often needed for Denials.
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_11.png" alt="" />
+
+Clicking the button will **add a new row** to your EOB to hold the custom adjustment:
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_12.png" alt="" />
+
+Here you’ll enter the following data:
+
+- **Group Code**For example, the “CO” in CO-45, or “PR” in PR-1.
+- **CARC**Claim Adjustment Reason Code, e.g. the “45” in CO-45.
+- **Amount**The dollar value of the adjustment.
+- **RARC**Remittance Advice Reason Code, these are optional codes that provide extra detail into the outcome of the claim.
+Continue to fill in remittance **data for each procedure** in the claim. As you go, our tool will be watching for inaccuracies and give you feedback in two ways:
+
+- **Unaccounted For**
+
+- In most EOBs, the total adjustments, patient responsibility, and insurance payments should be equal to the charge amount.
+- For this reason we provide a live tally of the difference between the charge amount and the data you’ve entered so far.- If you feel you’ve entered all the data from an EOB and there’s still a value showing in ‘Unaccounted for,’ then it’s worth double checking your entries.
+
+- **Validation Errors**
+
+- In the upper right of each procedure you’ll also find an icon indicating if any fields are missing, or if the value entered are not adding up.
+- Move your mouse over the icon to see a tooltip of all detected issues.
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_13.png" alt="" />
+
+Once all the remittances are filled in, **proceed to the next claim** and continue until the data for each claim has been completed.
+
+**Check Numbers & Dates** While these fields are not technically required, we strongly encourage you to enter the check number and check date for a claim if this is included on your EOB. This data has a number of uses, including helping Athelas to match the EOB to your bank deposits if you’re using our [Deposit Verification](https://athelas.helpkit.so/overviews/eWPj3tstxRFRmL2WdFA4cV/remittances-deposit-verification-and-connecting-bank-accounts/2ZixMDQ2HazU9RqoY1WiGB) feature.
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_14.png" alt="" />
+
+### 4. Submit the EOB!
+
+If everything has gone as planned you should now see a visual indicator that **all validation checks are passing**. If they’re not, this is a good moment to quickly check your work.
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_15.png" alt="" />
+
+Occasionally an EOB will truly contain data that fails validation checks. If that happens don’t worry, you can still submit your EOB!
+
+*Our validation checks are purely informational, and do not prevent you from submitting an EOB. As long as the required fields are filled in, you can always submit.*
+
+Click the ‘**Submit**’ button in the upper right of the page, and a window will pop up to request your final confirmation.
+
+Hit ‘Confirm’ to finalize your submission.
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_16.png" alt="" />
+
+The EOB will take a few moments to submit each claim linked to your EOB. For large numbers of claims this may take as long as half a minute.
+
+Once **submission is complete** you’ll be shown a confirmation message, then redirected back to the main EOB page. ***Success!***
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_17.png" alt="" />
+
+**And that’s it!** New EOB data will show up on your claims **within 24 hours**.
+
+While that data is processing, claims included in the EOB will be marked with a notification so your team knows that updates are in progress.
+
+<img src="/images/insights_front_desk/utilities/eob_creation_and_portal_checks/eob_creation_and_portal_checks_18.png" alt="" />
+
+#### General Summary of Features Supported:
+
+**Features Supported:**
+
+- Upload an EOB
+- Transcribe EOB and create remittances in the system
+- EOB copilot - AI transcription of EOBs
+**Features In Development:**
+
+- Post claim and provider adjustments on an EOB
+- Post interest payments on the claim level
+- Post checks for non-Athelas claims
+
+## ❓ Frequently Asked Questions
+
+{/* HTML preserved: <blockquote> */}
+**Am I required to upload a file for my EOB?**
+
+{/* HTML preserved: </blockquote> */}
+No, uploading a file or screenshot is optional (but it's strongly encouraged for record keeping).
+
+{/* HTML preserved: <blockquote> */}
+**What types of remittances can I upload?**
+
+{/* HTML preserved: </blockquote> */}
+You can upload an `EOB`, data from a `Payer Portal` check, or info from `Calling a Payer`.
+
+{/* HTML preserved: <blockquote> */}
+**Should I use this tool to upload EOBs I want Athelas to process?**
+
+{/* HTML preserved: </blockquote> */}
+Yes! EOBs intended for processing by the Athelas team should be bulk upload via this tool, which is monitored by the Athelas remittance team.

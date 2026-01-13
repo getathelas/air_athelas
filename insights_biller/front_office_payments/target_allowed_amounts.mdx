@@ -1,0 +1,45 @@
+---
+title: "Target Allowed Amounts"
+---
+
+> *"Look, if I made more than $165.00 on this claim, I'm not looking to chase the rest."*
+
+When it comes to balancing encounters and closing out A/R, Athelas starts by automatically resolving any denial adjustments that we've confirmed are not realistically workable. This strategy works well for many common adjustments, however as we get into the long-tail of *thousands of individual adjustment combinations*, this approach starts to become less effective.
+
+This is why we’re implementing a new complimentary strategy, the **Target Allowed Amount**.
+
+###
+
+#### What is a Target Allowed Amount?
+
+A Target Allowed Amount (TAA) is our answer to the question:
+
+> How much do I realistically expect to earn for this claim?
+
+With TAAs, Athelas is able to quickly identify encounters where we're satisfied with the payouts, then write off the balance and finalize the encounter. This allows us to resolve a large number of encounters where no further action is needed, reducing unnecessary inflation of a practice's A/R metrics.
+
+###
+
+#### How is a TAA different from a Contracted Rate?
+
+While these concepts are similar, a Contracted Rate is the letter of the law for how much a payer is *supposed* *to* pay for a procedure. But in practice, a variety of factors cause them to pay less. TAA on the other hand is more practical: it’s the amount you designate as the minimum your practice will accept for a claim configuration and not pursue further payment. If the payer exceeds that amount, even better.
+
+Contracted Rate and TAA amounts are often nearly the same, but TAA tends to be slightly lower.
+
+###
+
+#### How do TAAs work?
+
+- Athelas provides an internal tool to its Operations Team that lists a practices most common **claim configurations**, which are a unique combination of procedures (cpt/mod/units), payer, and place of service.
+- The Ops team can review all the **allowed amounts** we’ve received for this particular claim configuration, discuss with your practice, and together specify an acceptable TAA.
+- When the **Adjustment Rules Engine System** (**ARES**) finds an encounter that matches the claim configuration and has an allowed amount greater than the specified TAA, all remaining non-PR balances will be written off, resolving the encounter.
+
+###
+
+#### Are we required to use TAAs?
+
+Definitely not! Target Allowed Amounts are an *optional* tool meant to give you greater accuracy in your A/R metrics, help your team focus on working the most important claims, and get PR to your patients sooner.
+
+Athelas strongly recommends using TAAs, but in the end the choice is yours.
+
+If you and your practice would like to start setting Target Allowed Amounts to get a clearer picture of your A/R and resolve more encounters, talk to your Account Manager and we’ll get a TAA session set up.

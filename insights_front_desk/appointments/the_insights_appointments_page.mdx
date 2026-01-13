@@ -1,0 +1,192 @@
+---
+title: "The Insights Appointments Page"
+---
+
+#### At a Glance
+
+The tools provided in our [**Appointments**](https://insights.athelas.com/v3/appointments) page will empower your practice to drastically decrease eligibility-related denials, increase up-front patient payments, and reduce the amount of time that front desk staff spend chasing down patient responsibility.
+
+The Appointments page under Daily Operations allows you to:
+
+- Determine the eligibility of a patient’s insurance
+- Check their outstanding balances
+- Collect copays and pre-pay coinsurance and deductibles
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_1.png" alt="" />
+
+#### Best Practices
+
+**1.** Each week, **review the eligibility results** for the upcoming appointments. Reach out to any patients whose insurance appears to be invalid.
+
+**2.** At the end of the day, **check to see if any patients did not pay their copays**. If this is the case, use the ‘Request payment by text message’ (or email) payment option to send them a belated opportunity to pay.
+
+**3.** When a patient hasn’t met their deductible, **collect an upfront deductible deposit** while they’re in the office. You can set a default value to charge for unmet deductibles using your [Suggested PR Rules](https://insights.athelas.com/v2/patient-responsibility-settings?settings_tab=PRE_VISIT_RULES).
+
+#### Patient Eligibility Summary
+
+Every night, the Athelas will automatically pull in a list of your practice’s upcoming appointments and load them into your Appointments page. Then, our systems analyze all detected insurance to confirm whether your patients do in fact have eligible coverage.
+
+The results are visible on each row of the appointments tab as a high-level summary.
+
+- **Active**/**Inactive/Inconclusive** determination, indicated by a green checkmark, a red warning, or a yellow warning, respectively.
+- Primary, secondary, and tertiary insurance will be displayed in their corresponding order from left to right.
+The results also show any patient responsibility and outstanding balances.
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_2.png" alt="" />
+
+Eligibility can also be re-run through the Appointment Details section of Calendar
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_3.png" alt="" />
+
+#### Appointments Page Toolbar
+
+You will notice a colorful toolbar at the top of the page, with buttons for adding a ‘Walk-in Patient,’ running a ‘Live Eligibility Check’ and so forth. The available guides for each of these features are linked below.
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_4.png" alt="" />
+
+**Download**: This button downloads a printable PDF appointment schedule based on the filters you’ve set. For example, if your only filter is the one set by default showing all appointments for today, the PDF will include only today’s appointments. This PDF may take up to a minute to download depending on how many appointments are included.
+
+#### Appointments Page Filters
+
+By default, your appointments will be filtered to display the current date and hour.
+
+You can, of course, close this filter or apply others (patient, provider, facility, other dates and times, etc.) to see any appointments matching your preferences.
+
+*You can also filter appointments by typing ‘Today,’ ‘Tomorrow,’ and ‘Yesterday.’*
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_5.png" alt="" />
+
+####
+
+#### Individual Appointment Details
+
+If you **click on an appointment, away from the patient’s name,** you will see all information pertaining to this appointment. From here, you can view their eligibility status and rerun eligibility, view their raw benefits, proceed to collect a payment, and see details about all of these items.
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_6.png" alt="" />
+
+On this page, there is an Actions dropdown menu in the top right corner with the following options:
+
+- **Appointment Type**
+
+- Describe what kind of appointment the patient has here
+
+- **Appointment Status**
+
+- Scheduled
+- Cancelled
+- No Show
+
+- **Patient Insurance**
+
+- Edit or create a new insurance for the patient here. If you also need to resubmit or forward a claim, we recommend updating insurance from the Encounter Details page and then performing those actions from there.
+- Be sure to update the patient's insurance information in your EHR as well so that Insights reflects the correct insurance information in the future.
+
+- **Delete**
+- **Copy Link**
+
+- Copy a link to this appointment to easily share with colleagues
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_7.png" alt="" />
+
+**If you click near the patient’s name**, their patient profile will appear. Here, you will find information about their dates of service, charges, credits, etc.
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_8.png" alt="" />
+
+#### Eligibility Status
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_9.png" alt="" />
+
+Patients may have ‘**Active**’ or ‘**Inactive**’ eligibility. A patient’s eligibility may also return as ‘**Inconclusive**,’ in which case it may be worth double checking that their information matches that in your practice’s EHR.
+
+The following sections will appear if relevant to the appointment:
+
+- The ‘Rules Applied’ section shows which raw benefits apply to this patient.
+- If there are any ‘Appointment Rules’ set, for example if a particular Service Type Code should apply for this appointment, they show up in the corresponding section.
+- The ‘Eligibility Rules Applied’ section shows details about how Athelas prioritizes elements of a patient’s eligibility.
+Note that you can also view and edit Visit Limits for this appointment type. Prior authorization information will also appear here. If necessary, you can update prior authorization using the ‘Prior Authorization’ tab in the [patient’s profile](https://athelas.helpkit.so/how-to-guides/mx4v4WBLUG3MERujomrLhL/how-to-find-and-edit-a-patient%E2%80%99s-profile/k7Tz4h9MSHwdJ8LzVkJJCS).
+
+**See More Details**
+
+From the Eligibility Status section, click ‘**See More Details**’ for further information, as shown in the example below.
+
+This page will display information about the patient’s ‘Active Coverage,’ ‘Co-Insurance,’ and ‘Deductible.’ You can also specify the kind of information shown by choosing a category in the ‘**Service Type**’ dropdown menu on the right hand side.
+
+**Check-in Status**
+
+Below the Eligibility Status section, you will see that patient’s ‘Check-in Status.’
+
+If, for example, your practice has an onboarding workflow set up with Athelas and the patient has submitted any attendant forms, you will see the status of their submissions here.
+
+You can also see an example appointment reminder text, with a button to ‘Resend Text’ below.
+
+**Patient Charges**
+
+A green dot next to a charge indicates that the charge has been collected. Click on the small receipt icon to view the transaction report of a collected charge.
+
+### Missed Payments & Outstanding Balances
+
+Red text indicates an amount that wasn’t paid at time of service, and underlined red text indicates a large outstanding balance of high priority.
+
+Click the charge to see the patient’s statement.
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_10.png" alt="" />
+
+From here, you can **print** or **send** the statement to the patient to encourage full or partial payment of their bill.
+
+**If the front desk can collect** all or part of an outstanding charge from a patient, click ‘**Charge**.’
+
+A 'Review Balance' window will appear, in which you can select which charges to collect. Once you've selected charges, click 'Confirm' to move on to the payment window.
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_11.png" alt="" />
+
+#### Payment Methods
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_12.png" alt="" />
+
+When you’re ready to take payment, you’ve got options.
+
+- **Request via Email**: Send the patient an email of their charges with a secure link to pay.
+- **Request via Text**: Send a text message with a mobile-friendly payment link.
+- **Pay via Credit Card**: Use a saved credit card if the patient has one, or you can manually enter credit card details and charge them.
+- **Athelas Card Reader**: Use your on-premise card swiper and the patient’s card will automatically be saved for future use.
+- **Record Payment:** And lastly, if you’re taking payment via cash, check, or a credit card reader *not connected to Athelas*, you can record the payment here to keep your records accurate.
+
+- **Important!** If you take external payment and do not record it in Athelas, future PR collection attempts will be inaccurate as Athelas will not know what portion of PR has previously been paid. *This tends to irritate everyone involved, so be sure to record any external payments!*
+
+- **Add a Discount: **For custom line items only, not standard PR like copay, coinsurance, or deductible.
+- **Apply credits: **The patient's total available credits balance will appear here, if they have available credits.
+- **Add note to this payment: **In case further explanation is needed
+**Bonus Feature:** *Send Welcome Message*
+
+When completing a payment you’ve got a checkbox option to send the patient a welcome text message that encourages them to save the number in their phone. This will help them feel more comfortable when they receive future text messages requesting payment for their patient responsibility.
+
+**Note that if your card reader is down, you can still enter card information manually to collect payments**. Simply select the `Pay via Credit Card` option, review the charges, and then enter the patient’s card information.
+
+**Skip Payment**
+
+If you need to skip a payment, click ‘**Skip Payment**.'
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_13.png" alt="" />
+
+A **reason for the skipped payment is required,** so fill it out accordingly and click ‘Confirm.’
+
+#### Send a Receipt
+
+Once you’ve collected payment you can either download the receipt or send it directly to the patient via email and text message. Once that’s complete, you’re all set!
+
+<img src="/images/insights_front_desk/appointments/the_insights_appointments_page/the_insights_appointments_page_14.png" alt="" />
+
+### In Conclusion
+
+That’s the rundown on the core features of the Athelas Appointments page. With these skills mastered you have everything you need to smoothly check insurance and collect payment from patients as they come into the office.
+
+**Features Supported:**
+
+- View appointments
+- Create walk in appointments
+- View and collect (suggested) charges for appointments
+- View patient notes
+- Filters around time
+**Features In Development:**
+
+- Printable Appointments Page

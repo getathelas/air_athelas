@@ -1,0 +1,151 @@
+---
+title: "Getting Started with the Claims Page"
+sidebarTitle: "Getting Started with the Claims Page"
+---
+
+The Claims Page is where you manage your billing workflow in Insights. It centralizes claim review, validation, assignment, and submission in one interface, helping you process claims faster and catch errors before they become rejections.
+
+![Claims Page Overview](/images/insights_biller/claim_details/claim_details_page/claim_details_page_1.png)
+
+<Info>
+Rolling out February 2nd, 2026. All existing comments and encounters from Encounter Details will be available from day one.
+</Info>
+
+<Note>
+We're transitioning from "encounters" to "claims" terminology to better match industry standards—the underlying data remains the same.
+</Note>
+
+## **What is the Claims Page?**
+
+The Claims Page gives you a unified view of all claims requiring review or action. You can filter claims by status, insurance, or age, assign work to team members, review AI-suggested corrections, and submit claims—all without switching between tools.
+
+**Key capabilities:**
+
+- **Filter and save views** to focus on specific claim types, providers, or deadlines
+- **Assign claims** individually or in bulk to balance team workload
+- **Review AI validation** that flags errors and suggests corrections before submission
+- **Collaborate with your team** through comments and activity tracking (coming soon)
+- **Submit with the correct form** - Claims automatically generate in the appropriate format (CMS-1500, UB-04, or ADA) based on the selected payer
+
+## **Getting Started**
+
+### **Accessing the Claims Page**
+
+Log in to Insights at [**insights.athelas.com**](https://insights.athelas.com/) and navigate to **Claims** from the Daily Operations tab. The page opens with your most recent view, or a default table showing all active claims.
+
+<Tip>
+Press **Ctrl-K** (Windows) or **Command-K** (Mac) anywhere in Insights to quickly search for specific claims, patients, or navigate to different pages.
+</Tip>
+
+![Claims Page Overview](/images/insights_biller/claim_details/claim_details_page/claim_details_page_1.png)
+
+When you first access the page, you'll see a table of claims with columns for patient name, date of service, insurance, claim amount, status, and assigned team member. Click any claim to open the detail view.
+
+## **Working with Claims**
+
+### **Organizing Your Workflow with Filters**
+
+![Claims Page Filters](/images/insights_biller/claim_details/claim_details_page/claim_details_page_4.png)
+
+The filter bar at the top of the table lets you narrow your view by any combination of attributes: encounter status, insurance provider, claim amount, age, assigned team member, provider, or date range.
+
+<video controls>
+  <source src="/images/insights_biller/claim_details/claim_details_page/claim_details_page_3.mp4" type="video/mp4" />
+</video>
+
+**Creating custom views:**
+
+1. Apply filters that match your workflow (e.g., filter for claims older than 85 days with status "Ready to Submit")
+2. Sort by the column that matters most (typically date of service for timely filing)
+3. Click **Save View** and name it (e.g., "In Progress")
+4. Click 'Save' button one more time and the saved view will appears in the view dropdown
+
+<aside>
+🪶
+
+**Custom views are personal by default**, meaning your saved views won't be seen by anyone else.
+
+</aside>
+
+### **Assigning Claims to Your Team**
+
+![Claims Page Interface](/images/insights_biller/claim_details/claim_details_page/claim_details_page_4.png)
+
+Claims work best when someone owns them. Use assignment to designate responsibility and prevent duplicate effort.
+
+<video controls>
+  <source src="/images/insights_biller/claim_details/claim_details_page/claim_details_page_9.mp4" type="video/mp4" />
+</video>
+
+**To assign claims:**
+
+- **Single claim:** Click the claim row, then select a team member from the **Assigned To** dropdown in the detail view
+- **Bulk assignment:** Select multiple claims using checkboxes, then click **Bulk Actions > Assign** and choose the team member
+
+Managers can filter by assigned team member to view individual workloads and redistribute claims when needed. You can also filter to show only unassigned claims for easy morning triage.
+
+### **Reviewing Claims with AI Validation**
+
+![Claims Page Details](/images/insights_biller/claim_details/claim_details_page/claim_details_page_5.png)
+
+When you open a claim, Athelas AI automatically scans for common submission errors: missing modifiers, incorrect diagnosis codes, invalid addresses, and clearinghouse rule violations.
+
+**How validation appears:**
+
+Issues are flagged directly on the relevant fields with a red indicator. Click any flagged field to see the specific problem and recommended fix.
+
+When you preview the submission, you'll see a sparkles icon (✨) next to fields that were automatically adjusted by billing rules to meet payer requirements (e.g., changing Place of Service code from 11→12).
+
+### **Collaborating Through Comments**
+
+![Claims Page Comments](/images/insights_biller/claim_details/claim_details_page/claim_details_page_8.png)
+
+The activity feed at the bottom of the claim shows all team member comments, and also files attached to the comments.
+
+**Using comments effectively:**
+
+- Leave context for the next person who reviews the claim
+- Use @mentions to notify specific team members (e.g., "@Sarah can you verify this diagnosis code?")
+- Check the feed before working on a claim to see if someone already identified issues
+
+Comments persist across sessions, so your team maintains context even when claims change hands.
+
+### **Submitting Claims**
+
+![Claims Page Submission](/images/insights_biller/claim_details/claim_details_page/claim_details_page_6.png)
+
+The submission detail panel lets you work with the claim data and preview the formatted output simultaneously, giving you confidence before you submit.
+
+<video controls>
+  <source src="/images/insights_biller/claim_details/claim_details_page/claim_details_page_10.mp4" type="video/mp4" />
+</video>
+
+**Working with side-by-side preview:**
+
+1. **Review the claim** in the standard view on the left - this shows all your claim data fields
+2. **Click Preview Submission** to see the formatted form (CMS-1500, UB-04, or ADA) on the right
+    - The preview displays exactly how the claim will appear when submitted to the payer
+    - Work with both views open to verify your claim data translates correctly to the final format
+3. **Make changes to the claim** as needed - when you edit claim fields, the preview becomes semi-transparent and shows "Not Synced" to indicate it needs to be refreshed
+4. **Refresh the preview** to see your changes reflected in the formatted submission
+5. Review the standard view to confirm all fields are correct
+6. Click **Preview PDF** to see the formatted CMS-1500, UB-04, or ADA form exactly as it will submit
+
+<video controls>
+  <source src="/images/insights_biller/claim_details/claim_details_page/claim_details_page_11.mp4" type="video/mp4" />
+</video>
+
+**Editing the submission directly:**
+
+After billing rules are applied, you can make final adjustments to the submission itself:
+
+1. Click the **pencil icon** in the submission preview to edit specific fields
+2. These edits only affect this submission and don't change the underlying claim data
+
+**Final submission:**
+
+Once you've verified everything looks correct:
+
+1. Review patient, insurance, diagnosis, and procedure information one final time
+2. Click **Submit** when ready
+3. The claim moves to "Submitted" status and appears in your submission history

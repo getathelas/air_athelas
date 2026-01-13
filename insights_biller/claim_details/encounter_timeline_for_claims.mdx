@@ -1,0 +1,83 @@
+---
+title: "Encounter Timeline for Claims"
+---
+
+### At a Glance
+
+The Encounter Timeline tracks **all events related to a claim**, organized chronologically. This overview will cover the functionality and events visible in each claim’s Encounter Timeline.
+
+***The Encounter Timeline applies to claims**, rather than patients. Therefore, events like self-pay patient encounters will not appear here.*
+
+## Core Feature Walkthrough
+
+From the [Claim Details](https://insights.athelas.com/v2/claim_level_view) page, choose a claim. That claim’s encounter details will pop up, and then you can click the **‘Timeline’ tab** to view the complete life cycle of that claim to date.
+
+<img src="/images/insights_front_desk/claim_details/encounter_timeline_for_claims/encounter_timeline_for_claims_1.png" alt="" />
+
+### Events Found in the Encounter Timeline
+
+The Encounter Timeline is organized into events, represented by cards, and filled in with relevant information.
+
+The timeline will generally begin with the claim submission creation. Athelas will then import the corresponding encounter, and finally that claim submission will be sent to our clearinghouse for review.
+
+There, it will either be rejected to fix known errors or sent along to the payer.
+
+There are several more possible events that the Encounter Timeline will capture. The ideal final result is payment in full by either payer or patient, at which point the Timeline will end.
+
+Below are some example cards you may find on the Encounter Timeline, with notes calling out important points and further action you can take, when applicable.
+
+**Claim Submission Created**
+
+<img src="/images/insights_front_desk/claim_details/encounter_timeline_for_claims/encounter_timeline_for_claims_2.png" alt="" />
+
+**Encounter Imported**
+
+<img src="/images/insights_front_desk/claim_details/encounter_timeline_for_claims/encounter_timeline_for_claims_3.png" alt="" />
+
+**Claim Submission Sent**
+
+<img src="/images/insights_front_desk/claim_details/encounter_timeline_for_claims/encounter_timeline_for_claims_4.png" alt="" />
+
+**Procedure Remittance (ERA or EOB), approved or denied**
+
+<img src="/images/insights_front_desk/claim_details/encounter_timeline_for_claims/encounter_timeline_for_claims_5.png" alt="" />
+
+*Procedure Remittances will indicate whether their information originates from an ERA or an EOB. You can also click on the **‘Adjustments’** dropdown for a detailed explanation and amount for an adjustment.*
+
+***Approved** remittances will appear in **green**, while those that have been **denied** will appear in **red**.*
+
+<img src="/images/insights_front_desk/claim_details/encounter_timeline_for_claims/encounter_timeline_for_claims_6.png" alt="" />
+
+**Claim Voided**
+
+<img src="/images/insights_front_desk/claim_details/encounter_timeline_for_claims/encounter_timeline_for_claims_7.png" alt="" />
+
+In rare cases, if Athelas finds a claim with an error that requires special attention, we will void the claim entirely. We will then create and send a new one.
+
+### Encounter Timeline Errors
+
+**Claim Pre-check Failed**
+
+<img src="/images/insights_front_desk/claim_details/encounter_timeline_for_claims/encounter_timeline_for_claims_8.png" alt="" />
+
+Some form of validation failed upon pre-check. Athelas will correct these.
+
+**Claim Submission Error**
+
+<img src="/images/insights_front_desk/claim_details/encounter_timeline_for_claims/encounter_timeline_for_claims_9.png" alt="" />
+
+Some form of validation failed upon submission. Athelas will correct these. Click the ‘Error Message’ dropdown to read details about a claim submission error.
+
+**Claim Rejected**
+
+<img src="/images/insights_front_desk/claim_details/encounter_timeline_for_claims/encounter_timeline_for_claims_10.png" alt="" />
+
+Click the ‘Error Message’ dropdown to read details about a claim rejection. In this example, we can see that an invalid character in the claim threw a wrench in the works.
+
+**Features Supported:**
+
+- View encounter timeline that shows when submission(s) were sent, payments were received, payments were posted
+- View changes made to the encounter over time
+**Features In Development:**
+
+- More clear view of the encounter timeline with better visibility into who made the changes

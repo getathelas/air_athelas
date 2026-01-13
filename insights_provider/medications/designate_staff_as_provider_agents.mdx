@@ -1,0 +1,104 @@
+---
+title: "Designate Staff as Provider Agents"
+---
+
+#### Problem Statement
+
+Providers can prescribe medications in the EHR, but given their busy schedules, they often don’t have time to fill out multiple fields and submit prescriptions themselves. Instead, they rely on staff, typically MAs, to draft prescriptions for later review and sign-off, or to directly prescribe when the medications are not controlled.
+
+#### Solution
+
+Providers can designate staff members as **prescriber agents**, granting them the ability to **draft prescriptions for controlled medications** and **prescribe non-controlled medications** on their behalf. Providers can assign prescriber agents by facility and set permissions for whether they can only create draft prescriptions or also prescribe medications.
+
+When a draft prescription is created, providers receive a task notification on the notification bell. Clicking the notification takes them to the **Tasks** page, where they can view the associated patient profile. From there, they can navigate to the patient’s profile page and review the draft prescriptions under the **Medications** section.
+
+#### How it helps?
+
+Providers save time by just signing off on medications instead of creating them. As part of MA’s day to day tasks, they create medications via this feature.
+
+#### How to use this feature?
+
+#### Prerequisite
+
+- Provider should have the facilities they want to prescribe forEHR > Preferences > Provider
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_1.png" alt="" />
+
+- Provider should be nominated for the facilities they want to prescribe medications -EHR > Preferences > Medications > Provider Nominations
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_2.png" alt="" />
+
+#### Step 1 - Add prescriber agents for the provider
+
+Go to : EHR > Preferences > Medications > Prescriber Agents
+
+Click on “Add Prescriber Agent”
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_3.png" alt="" />
+
+You will see yourself as the provider selected by default. This cannot be changed because prescriber agents should be set up by the provider/admin.
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_4.png" alt="" />
+
+Select agents, and add the facilities you want to allow the prescriber agent to create draft medications for. “Can Prescribe” allows the prescriber agent to prescribe uncontrolled substances directly.
+
+If “Can prescribe” is checked, the prescriber agent can still be able to create draft, they will be able to choose to prescribe along with it.
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_5.png" alt="" />
+
+Click submit after done. This creates the prescriber agents for the site and the facilities.
+
+#### Step 2 - Create medications as prescriber agent
+
+Prescriber Agent can go to the patient profile page, and select medications tab.
+
+Create a medication order.
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_6.png" alt="" />
+
+When selecting an appointment, prescriber agent will only see appointments by facility for which they are appointed to be prescriber agent.
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_7.png" alt="" />
+
+On the medication form, they will be able to select either of the two options - “Prescribe as agent” or “save draft”. Save draft is the only option they can select if they are ineligible to prescribe for that facility, or if they are dealing with controlled medications.
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_8.png" alt="" />
+
+On review, the medications which are marked as save as draft will show up as Draft
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_9.png" alt="" />
+
+Once they submit the medications, the draft medications will appear on the medications table, and a confirmation toast will show the information of the medications created.
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_10.png" alt="" />
+
+There will also be created a task created for the provider which the provider can refer to to sign off on the medications.
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_11.png" alt="" />
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_12.png" alt="" />
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_13.png" alt="" />
+
+Prescriber agent can edit the draft medications, but they cannot prescribe draft medications once they have created the draft.
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_14.png" alt="" />
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_15.png" alt="" />
+
+#### Providers can also make changes to draft, but they cannot save drafts, they can only prescribe them directly.
+
+<img src="/images/insights_provider/medications/designate_staff_as_provider_agents/designate_staff_as_provider_agents_16.png" alt="" />
+
+#### Video 1 - Create/Update medications as prescriber agent and provider
+
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/Lew72frKPPM?iv_load_policy=3&rel=0&modestbranding=1&playsinline=1&autoplay=0&mute=1"
+  title="YouTube video player"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+
+####

@@ -1,0 +1,45 @@
+---
+title: "How to Set Block PR Rules"
+---
+
+#### At a Glance
+
+Setting default rules for blocking PR is a powerful tool in Insights that will save your staff lots of time from needing to individually adjust PR after it’s been generated.
+
+###
+
+### Here’s How to Do It
+
+Go to the Blocked PR Rules tab in [PR Settings](https://insights.athelas.com/v2/patient-responsibility-settings?settings_tab=POST_VISIT_RULES).
+
+Here, you will see all existing rules listed. To edit these rules, or copy their settings to create a new rule, you can click the buttons in the Action column.
+
+For this example, we’ll click ‘Add Rule,’ and the new rule modal will appear.
+
+<img src="/images/insights_biller/general_billing/how_to_set_block_pr_rules/how_to_set_block_pr_rules_1.png" alt="" />
+
+Let’s say we want a rule to block PR from appointments with the CPT code 90912. We’ll give the rule an appropriate name, then enter its priority.
+
+**Note** that higher numbers indicate higher priority. Higher priority rules override lower priority rules when applicable. If no priority is set, the rule becomes global and cannot be edited. If needed, create a specific rule with higher priority to negate its behavior.
+
+This rule will have a priority of 5. If a contradictory rule were written later with a priority of 6, for example, it would override this rule.
+
+<img src="/images/insights_biller/general_billing/how_to_set_block_pr_rules/how_to_set_block_pr_rules_2.png" alt="" />
+
+In the Actions block, we selected ‘Block post visit PRs.’
+
+Then, in the Conditions block, we indicated that an encounter needed to meet All of the following statement criteria (for rules like this one with only a single statement, it doesn’t really matter if we select ‘All’ or ‘Any’).
+
+Then we created the statement. The Variable is set to CPT Code, which must contain all of the value 90912.
+
+Note that the Value menu will populate with information (in this case, CPT codes) that already exists in Athelas’ records for your organization. Contact your account manager if information you need is missing.
+
+Click ‘Save.’
+
+The rule is now available in the list of rules in the Blocked PR Rules tab and can be edited or copied.
+
+<img src="/images/insights_biller/general_billing/how_to_set_block_pr_rules/how_to_set_block_pr_rules_3.png" alt="" />
+
+#### Further Assistance
+
+We’re here to help! Please get in touch with [support@getathelas.com](mailto:support@getathelas.com) if you’d like some hands-on assistance.

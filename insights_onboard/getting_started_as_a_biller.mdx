@@ -1,0 +1,274 @@
+---
+title: "Getting Started as a Biller"
+description: "Everything you need to start processing claims efficiently—from filtering your queue to submitting with confidence."
+---
+
+# Getting Started with the Claims Page
+
+The Claims Page is where you'll spend most of your time managing your claim workflow. It's designed to help you work faster with fewer errors by giving you powerful tools for filtering, reviewing, and submitting claims.
+
+Here's what you'll learn:
+
+- How to find the claims you need to work on
+- How to review and fix claims quickly
+- How to submit claims with confidence
+- How to work with your team
+
+## Find What You Need to Work On
+
+The Claims Page shows you all encounters in your system. With thousands of claims, the key is filtering down to exactly what you need right now.
+
+### <Icon icon="filter" iconType="duotone" color="#F9345F" size={23} />  Use filters to focus your work
+
+Click **Filter** at the top of the page to narrow down your list. You can filter by:
+
+- **Encounter Status** - Draft, Ready for Review, Approved, Submitted, Denied
+- **Assignment** - Claims assigned to you, others, or unassigned
+- **Insurance Provider** - Specific payers
+- **Claim Amount** - Dollar value ranges
+- **Age** - How long the claim has been in the system
+- **Date Ranges** - Creation, submission, or payment dates
+
+Combine multiple filters to get exactly what you need. For example: "Show me all Blue Cross claims over $500 that are ready for review."
+
+### <Icon icon="bookmark" iconType="duotone" color="#F9345F" size={23} />  Save views for quick access
+
+Once you've set up filters you use regularly, save them as views.
+
+1. Apply your filters and column settings
+2. Click **Save View** in the top right
+3. Give it a descriptive name like "My High Value BCBS Claims"
+
+Your saved views appear in the **Views** dropdown and persist across sessions. Each team member creates their own views based on how they work.
+
+**Common views to start with:**
+
+- Filter for claims assigned to you + status "Ready for Review" or "Approved"
+- Filter for unassigned claims to pick up new work
+- Filter for recent denials to work through corrections
+
+### <Icon icon="user-check" iconType="duotone" color="#F9345F" size={23} />  Assign claims to track ownership
+
+Every claim should have an owner. This prevents duplicate work and ensures nothing falls through the cracks.
+
+**To assign a claim to yourself:**
+
+1. Find the claim in your list
+2. Click the **Assigned To** dropdown
+3. Select your name
+
+The claim now appears in any "assigned to you" filtered views you've created.
+
+**To assign multiple claims at once:**
+
+1. Select the checkboxes next to multiple claims (or click the header checkbox to select all visible)
+2. Click **Bulk Actions**
+3. Choose **Assign** and select the team member
+
+This is useful for distributing work across your team or picking up batches of unassigned claims.
+
+---
+
+## Review and Fix Claims
+
+When you're ready to work on a claim, click it to open the encounter details. Most of your work happens on the **Content** tab.
+
+### <Icon icon="clipboard-check" iconType="duotone" color="#F9345F" size={23} />  What to check on every claim
+
+Before submitting, verify:
+
+- **Patient demographics** - Name, DOB, address, insurance details
+- **Date of service** - Correct and matches documentation
+- **Provider information** - Correct provider and facility NPI
+- **Diagnosis codes** - Support the procedures billed
+- **Procedure codes** - Match services provided
+- **Units and charges** - Accurate for the services
+
+### <Icon icon="sparkles" iconType="duotone" color="#F9345F" size={23} />  Let AI help you catch errors
+
+The system automatically validates every claim and helps you fix issues before submission.
+
+**Sparkles (✨) show where AI improved your claim**
+
+When you see sparkles next to a field, AI made a change to maximize reimbursement or ensure compliance. Common improvements:
+
+- Corrected zip codes or addresses
+- Added required modifiers to procedure codes
+- Updated place of service codes
+- Suggested better-matching diagnosis codes
+
+Click the sparkle to see what changed and why. Accept if it makes sense, reject if it doesn't apply to this case.
+
+**Error flags show what needs fixing**
+
+Red or yellow flags indicate problems that will cause rejections:
+
+- Missing required fields (DOB, insurance ID, provider NPI)
+- Invalid diagnosis or procedure codes
+- Conflicting information
+
+Fix these immediately. The claim can't be submitted until all flags are resolved.
+
+**Blocking rules prevent bad submissions**
+
+If a critical issue will definitely cause denial, the system blocks submission entirely:
+
+- Missing required information in critical fields
+- CHC compliance violations (for federally qualified health centers)
+- Known payer rejection patterns based on historical data
+- Internal rules your organization has configured
+
+You'll see a clear error message explaining what needs fixing. If you can't fix it immediately, assign it to someone who can.
+
+### <Icon icon="magnifying-glass" iconType="duotone" color="#F9345F" size={23} />  Preview before submitting
+
+Click **Preview** to see exactly what will be sent to the payer. You can view it in standard format or PDF. This is your last chance to catch any issues before the claim goes out.
+
+On the **Submissions** tab, you'll see "X rules applied" showing which billing rules were automatically applied to optimize your claim. Click to review the logic behind each rule.
+
+### <Icon icon="comment-dots" iconType="duotone" color="#F9345F" size={23} />  Get help when you need it
+
+**Ask the AI Copilot**
+
+Click the **AI Copilot** button to ask questions about the claim. Examples:
+
+- "Why would this diagnosis code be rejected?"
+- "What's the correct way to code this for Blue Cross?"
+- "Does this procedure require a modifier?"
+
+The copilot understands the claim context and provides guidance on coding guidelines and payer rules.
+
+**Collaborate with your team**
+
+Some claims need input from others. Use the **Activity** section to:
+
+- See all recent changes and who made them
+- Add comments and @mention specific team members
+- Reply to questions and document decisions
+
+All communication stays with the claim, so context doesn't get lost.
+
+---
+
+## Submit with Confidence
+
+Once you've fixed all errors, reviewed AI changes, and previewed the claim, you're ready to submit.
+
+### <Icon icon="paper-plane" iconType="duotone" color="#F9345F" size={23} />  Submit the claim
+
+1. Click **Submit** at the top of the encounter details page
+2. Review the confirmation dialog (payer, amount, procedures)
+3. Click **Confirm Submission**
+
+You'll see "Claim successfully submitted" and the status updates to **Submitted**.
+
+**What happens next:**
+
+- **1-3 days** - Payer acknowledges receipt
+- **14-30 days** - Payer processes the claim
+- **30-45 days** - You receive payment or denial
+
+Return to your Claims Page and move to the next claim in your queue.
+
+---
+
+## Handle Denials
+
+Denials happen. When they do, your goal is to understand why, fix the issue, and resubmit quickly.
+
+### <Icon icon="triangle-exclamation" iconType="duotone" color="#F9345F" size={23} />  Find your denials
+
+Filter by **Status: Denied** to see all rejected claims. Sort by:
+
+- **Claim amount (highest first)** - Tackle high-dollar denials first
+- **Denial date (oldest first)** - Avoid timely filing limits
+- **Payer** - Spot patterns in rejection reasons
+
+If you see the same denial reason across multiple claims from one payer, flag this pattern to your team lead.
+
+### <Icon icon="wrench" iconType="duotone" color="#F9345F" size={23} />  Fix and resubmit
+
+1. Open the denied claim
+2. Go to **Payment Overview** to see the denial code and reason
+3. Check **Remittances** for the full ERA with additional details
+4. Make corrections based on the denial reason
+5. Document your changes in the Activity Feed
+6. Resubmit following the same process
+
+Common denial reasons and fixes:
+
+- **Missing/invalid information** - Add missing demographics, insurance details, or authorization numbers
+- **Coding errors** - Correct diagnosis or procedure codes, add required modifiers
+- **Duplicate claim** - Verify if already paid or add note explaining it's not a duplicate
+- **Medical necessity** - Add documentation or escalate to provider
+- **Timely filing** - Document original submission date if submitted on time
+
+**Note:** Timely filing deadlines are strict (typically 60-90 days from date of service). If you're approaching the deadline, prioritize that claim immediately.
+
+---
+
+## Understanding Claim Statuses
+
+As claims move through your workflow, they'll have different statuses:
+
+| Status | What It Means | What To Do |
+| --- | --- | --- |
+| **Draft** | Incomplete information | Complete missing fields |
+| **Ready for Review** | Complete and waiting for biller review | Review for accuracy, fix errors |
+| **Approved** | Reviewed and ready to submit | Final verification, then submit |
+| **Submitted** | Sent to payer | Monitor for response |
+| **Paid** | Payment received | Reconcile and close |
+| **Denied** | Rejected by payer | Review reason, correct, resubmit |
+
+---
+
+## Common Questions
+
+<Accordion title="Which claims should I work on first?" iconType="regular">
+Prioritize in this order:
+
+1. **High-value claims nearing timely filing deadlines** - Sort by claim amount and age
+2. **Claims from your top payers** - Where most of your revenue comes from
+3. **Recent denials** - Still have time to correct and resubmit
+4. **Older claims (10+ days)** - Prevent aging out
+
+Create saved views for each priority level and switch between them as you work.
+</Accordion>
+
+<Accordion title="What if AI suggests something I know is wrong?" iconType="regular">
+This happens. AI uses general rules but you have payer-specific knowledge.
+
+1. Click the sparkle and select **Reject**
+2. Make the correct change manually
+3. Add a comment explaining why: "Rejected AI suggestion. This payer requires modifier XU per their 2024 policy."
+
+If you see AI consistently wrong for a specific payer, report it to your team lead. Good billers reject 5-10% of AI suggestions based on their expertise.
+</Accordion>
+
+<Accordion title="Should I submit claims with error flags?" iconType="regular">
+No. Error flags indicate problems that will likely cause denials.
+
+Fix all flags before submission. The extra 2-3 minutes now saves 20-30 minutes of denial rework later. If you can't fix a flag, assign the claim to someone who can.
+</Accordion>
+
+<Accordion title="How do I collaborate with my team on a claim?" iconType="regular">
+Use the **Activity** section within the encounter details:
+
+- Add comments to ask questions or flag issues
+- @mention specific team members to notify them
+- Review the change history to see what others have done
+
+All communication stays with the claim so context doesn't get lost.
+</Accordion>
+
+<Accordion title="Can I customize what columns I see?" iconType="regular">
+Yes. Click the **Columns** button at the top of the Claims Page to choose which fields to display. Your column preferences save with your custom views.
+
+Common column setups:
+- For submission work: Patient, DOS, Provider, Amount, Status, Assigned To
+- For denials: Patient, Payer, Denial Reason, Denial Date, Amount
+</Accordion>
+
+---
+
+That's it. You now know how to find claims, review them efficiently, submit with confidence, and handle denials. Start by creating your first saved view and working through a few claims to get comfortable with the workflow.
