@@ -184,6 +184,21 @@
             ]
           },
           {
+            "group": "Claim Details",
+            "icon": "file-invoice",
+            "tag": "Biller",
+            "pages": [
+              "insights_biller/claim_details/claim_details_page",
+              "insights_biller/claim_details/encounter_timeline_for_claims",
+              "insights_biller/claim_details/how_to_download_cms_1500_forms",
+              "insights_biller/claim_details/how_to_resubmit_a_single_claim",
+              "insights_biller/claim_details/how_to_resubmit_claims_in_bulk",
+              "insights_biller/claim_details/how_to_send_documentation",
+              "insights_biller/claim_details/other_submission_types_secondary_specialty_etc",
+              "insights_biller/claim_details/submissions_and_remits"
+            ]
+          },
+          {
             "group": "Reports",
             "icon": "chart-column",
             "tag": "Biller",
@@ -257,21 +272,6 @@
               "insights_front_desk/calendar/getting_started_with_the_calendar",
               "insights_front_desk/calendar/modify_calendar_views",
               "insights_front_desk/calendar/viewing_multiple_providers"
-            ]
-          },
-          {
-            "group": "Claim Details",
-            "icon": "file-invoice",
-            "tag": "Front Desk",
-            "pages": [
-              "insights_front_desk/claim_details/claim_details_page",
-              "insights_front_desk/claim_details/encounter_timeline_for_claims",
-              "insights_front_desk/claim_details/how_to_download_cms_1500_forms",
-              "insights_front_desk/claim_details/how_to_resubmit_a_single_claim",
-              "insights_front_desk/claim_details/how_to_resubmit_claims_in_bulk",
-              "insights_front_desk/claim_details/how_to_send_documentation",
-              "insights_front_desk/claim_details/other_submission_types_secondary_specialty_etc",
-              "insights_front_desk/claim_details/submissions_and_remits"
             ]
           },
           {

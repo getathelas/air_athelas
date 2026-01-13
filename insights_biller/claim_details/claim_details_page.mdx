@@ -1,0 +1,147 @@
+---
+title: "Getting Started with the Claims Page"
+sidebarTitle: "Getting Started with the Claims Page"
+---
+
+The Claims Page is where you manage your billing workflow in Insights. It centralizes claim review, validation, assignment, and submission in one interface, helping you process claims faster and catch errors before they become rejections.
+
+![Claims Page Overview](/images/insights_biller/claim_details/claim_details_page/claim_details_page_1.png)
+
+<Info>
+Rolling out February 2nd, 2026. All existing comments and encounters from Encounter Details will be available from day one.
+</Info>
+
+## What is the Claims Page?
+
+The Claims Page gives you a unified view of all claims requiring review or action. You can filter claims by status, insurance, or age, assign work to team members, review AI-suggested corrections, and submit claims—all without switching between tools.
+
+**Key capabilities:**
+
+- **Filter and save views** to focus on specific claim types, providers, or deadlines
+- **Assign claims** individually or in bulk to balance team workload  
+- **Review AI validation** that flags errors and suggests corrections before submission
+- **Collaborate with your team** through comments and activity tracking
+- **Submit in any format** after reviewing as standard view or PDF (CMS-1500, UB-04, ADA)
+
+## Getting Started
+
+### Accessing the Claims Page
+
+Log in to Insights at [**insights.athelas.com**](https://insights.athelas.com) and navigate to **Claims** from the main menu. The page opens with your most recent view, or a default table showing all active claims.
+
+<Tip>
+Press **Command-K** (Mac) or **Ctrl-K** (Windows) anywhere in Insights to quickly search for specific claims, patients, or navigate to different pages.
+</Tip>
+
+![Claims Page Overview](/images/insights_biller/claim_details/claim_details_page/claim_details_page_1.png)
+
+When you first access the page, you'll see a table of claims with columns for patient name, date of service, insurance, claim amount, status, and assigned team member. Click any claim to open the detail view.
+
+## Working with Claims
+
+### Organizing Your Workflow with Filters
+![Claims Page Features](/images/insights_biller/claim_details/claim_details_page/claim_details_page_2.png)
+
+The filter bar at the top of the table lets you narrow your view by any combination of attributes: encounter status, insurance provider, claim amount, age, assigned team member, provider, or date range.
+
+<video controls>
+  <source src="/images/insights_biller/claim_details/claim_details_page/claim_details_page_3.mp4" type="video/mp4" />
+</video>
+**Creating custom views:**
+
+1. Apply filters that match your workflow (e.g., filter for claims older than 85 days with status "Ready to Submit")
+2. Sort by the column that matters most (typically date of service for timely filing)
+3. Click **Save View** and name it (e.g., "Urgent - Timely Filing")
+4. Your view saves automatically and appears in the view dropdown
+
+Custom views are personal by default. Managers can create team-wide views that appear for everyone, ensuring consistent workflows across your billing team.
+
+<Tip>
+Create separate views for different work modes—one for quick wins (fully validated claims), one for complex cases (flagged errors), and one for timely filing urgency.
+</Tip>
+
+### Assigning Claims to Your Team
+![Claims Page Interface](/images/insights_biller/claim_details/claim_details_page/claim_details_page_4.png)
+
+Claims work best when someone owns them. Use assignment to designate responsibility and prevent duplicate effort.
+
+![Claims Page Interface](/images/insights_biller/claim_details/claim_details_page/claim_details_page_4.png)
+
+**To assign claims:**
+
+- **Single claim:** Click the claim row, then select a team member from the **Assigned To** dropdown in the detail view
+- **Bulk assignment:** Select multiple claims using checkboxes, then click **Bulk Actions > Assign** and choose the team member
+
+Managers can filter by assigned team member to view individual workloads and redistribute claims when needed. You can also filter to show only unassigned claims for easy morning triage.
+
+### Reviewing Claims with AI Validation
+
+![Claims Page Details](/images/insights_biller/claim_details/claim_details_page/claim_details_page_5.png)
+
+When you open a claim, Athelas AI automatically scans for common submission errors: missing modifiers, incorrect diagnosis codes, invalid addresses, and clearinghouse rule violations.
+
+**How validation appears:**
+
+Issues are flagged directly on the relevant fields with a red indicator. Click any flagged field to see the specific problem and recommended fix.
+
+AI-suggested corrections appear with a sparkles icon (✨). Click the sparkles to see:
+
+- What changed (e.g., "Added modifier -59 to CPT 97110")
+- Why it changed (e.g., "Multiple therapy units on same day require modifier -59 per Medicare guidelines")
+- The option to accept or reject the change
+
+**Note:** You control all modifications. Rejected suggestions don't apply, and the claim retains original data. AI learns from your decisions to improve future accuracy.
+
+### Collaborating Through Comments
+![Claims Page Actions](/images/insights_biller/claim_details/claim_details_page/claim_details_page_8.png)
+
+The activity feed on the right side of the detail view shows all team member comments, status changes, and submission history in chronological order.
+
+**Using comments effectively:**
+
+- Leave context for the next person who reviews the claim
+- Use @mentions to notify specific team members (e.g., "@Sarah can you verify this diagnosis code?")
+- Check the feed before working on a claim to see if someone already identified issues
+
+Comments persist across sessions, so your team maintains context even when claims change hands.
+
+### Submitting Claims
+![Claims Page Actions](/images/insights_biller/claim_details/claim_details_page/claim_details_page_6.png)
+
+After reviewing validation and making any necessary corrections, you can submit directly from the detail view.
+
+**Before submitting:**
+
+1. Review the standard view to confirm all fields are correct
+2. Click **Preview PDF** to see the formatted CMS-1500, UB-04, or ADA form exactly as it will submit
+3. Verify patient, insurance, diagnosis, and procedure information
+4. Click **Submit** when ready
+
+The claim moves to "Submitted" status and appears in your submission history. You can track clearinghouse acceptance and eventual remittance through the claim timeline.
+
+
+## FAQ
+
+<Accordion title="Will my existing claim data transfer to the new Claims Page?">
+Yes, all existing comments and encounters from Encounter Details will be visible on the Claims Page from day one (February 2nd, 2026). Your team won't lose any historical data or context during the transition.
+</Accordion>
+
+<Accordion title="Can I still access the old Encounter Details page?">
+After the February 2nd launch, the new Claims Page will become the primary interface for claim management. Historical claims (submitted before February 2026) will remain accessible in Encounter Details, but all new claims will use the new interface.
+</Accordion>
+
+<Accordion title="How do I know which claims need my attention?">
+Use the filtering system to create custom views for your workflow. Common useful views include: unassigned claims, claims with AI-flagged errors, claims approaching timely filing deadlines, and claims assigned to you. Views save automatically so you can return to them each day.
+</Accordion>
+
+<Accordion title="What happens if I reject an AI suggestion?">
+You have full control over AI suggestions. If you reject a modification, the claim retains its original data. You can add a comment explaining why you rejected the suggestion to help improve AI accuracy for similar cases in the future.
+</Accordion>
+
+<Accordion title="Can managers see all team members' assigned claims?">
+Yes, managers can view individual biller queues and create custom views that show claims assigned to specific team members. This helps with workload balancing and identifying bottlenecks.
+</Accordion>
+
+<Accordion title="What should I do if I encounter an error or bug?">
+Use the feedback button in the Insights interface to report issues directly to our support team. Include details about what you were trying to do and any error messages you received. For urgent issues affecting claim submission, contact support immediately.
+</Accordion>
