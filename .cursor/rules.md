@@ -104,29 +104,38 @@ Common icon names: `laptop`, `calendar-check`, `filter`, `timer`, `clipboard-che
 
 ### Callout components
 
-#### Danger - Smart Tips and important cautions
+#### Tip - Smart Tips and helpful best practices
 
-Used extensively for "Smart Tips" with the standard format:
+Used for "Smart Tips" with the standard format:
 
 ```mdx
-<Danger>
+<Tip>
   ✨**Smart Tip:** Your helpful tip text here.
-</Danger>
-```
-
-Also used for warnings:
-```mdx
-<Danger>
-  Critical information about potential issues or important cautions.
-</Danger>
+</Tip>
 ```
 
 #### Info - Neutral contextual information
 
 ```mdx
 <Info>
-  **✨Smart Tip**: Your informational message here.
+  Important contextual information or announcements.
 </Info>
+```
+
+#### Warning - Important cautions
+
+```mdx
+<Warning>
+  Important warnings about potential issues or limitations.
+</Warning>
+```
+
+#### Danger - Critical warnings
+
+```mdx
+<Danger>
+  Critical information about potential issues that could cause problems.
+</Danger>
 ```
 
 #### Note - Additional helpful information
@@ -332,7 +341,7 @@ Use markdown link syntax with bold for emphasis:
 - **Bold emphasis**: Use `**bold**` extensively for UI elements, key terms, and actions
 - **Clear procedures**: Break down tasks into numbered steps or clear subsections
 - **Visual guidance**: Include screenshots, GIFs, or videos for complex procedures when available
-- **Smart Tips**: Use `<Danger>` component with `✨**Smart Tip:**` format for helpful hints
+- **Smart Tips**: Use `<Tip>` component with `✨**Smart Tip:**` format for helpful hints
 - **Notes**: Use `**Note:**` inline for additional context
 - **Direct content**: Write content directly without unnecessary wrapper components
 
@@ -371,11 +380,11 @@ Use markdown link syntax with bold for emphasis:
    ### <Icon icon="icon-name" iconType="duotone" color="#F9345F" size={23} />  Section Title
    ```
 
-3. **Danger for Smart Tips** - Use `<Danger>` component for "Smart Tips":
+3. **Tip for Smart Tips** - Use `<Tip>` component for "Smart Tips":
    ```mdx
-   <Danger>
+   <Tip>
      ✨**Smart Tip:** Your helpful tip here.
-   </Danger>
+   </Tip>
    ```
 
 4. **Numbered lists** - For procedures, use numbered lists directly in the content rather than Steps component.
@@ -388,8 +397,10 @@ Use markdown link syntax with bold for emphasis:
 
 - **Headings and paragraphs** - Primary way to structure content
 - **Icon** - Before major section headings for visual hierarchy (use selectively)
-- **Danger** - For Smart Tips and important warnings
+- **Tip** - For Smart Tips and helpful best practices
 - **Info** - For neutral informational callouts (use sparingly)
+- **Warning** - For important cautions and limitations
+- **Danger** - For critical warnings (use rarely)
 - **Steps** - Only for multi-step procedures that need visual step indicators (rarely used)
 - **Accordion** - Primarily for FAQ sections
 - **Card** - Only for homepage/landing pages with icons, not for general content
