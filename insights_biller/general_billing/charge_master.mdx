@@ -6,20 +6,20 @@ sidebarTitle: "Charge Master"
 Charge Master is a centralized billing management system that consolidates all your billing information—CPT codes, revenue codes, modifiers, payers, and pricing—in one place. This eliminates the need for billers to manually look up charges and ensures you know exactly what each service will be charged for each payer.
 
 <Info>
-Charge Master is a superset of fee schedules. While fee schedules typically include CPT codes, fee schedule types, insurance company IDs, modifiers, and effective dates, Charge Master extends this to include revenue codes (essential for hospitals), facility IDs, and comprehensive pricing information across all payers.
+Charge Master expands standard fee schedules by including codes, payers, revenue codes (for hospitals), facility IDs, and pricing for all payers. It gives you one complete source for every billing rule.
 </Info>
 
 ## **What is Charge Master?**
 
 Before Charge Master, billers had to manually look up billing information for each service, payer, and modifier combination. This was time-consuming and error-prone. Charge Master provides a centralized repository where you can:
 
-- **Store all billing configurations** in one place—CPT codes, revenue codes, modifiers, payers, and pricing
+- **Store all billing configurations** in one place - CPT codes, revenue codes, modifiers, payers, and pricing, and more
 - **Know exact charges** for each service by payer, facility, and modifier combination
 - **Manage effective dates** to schedule future pricing changes
 - **Track changes** with complete version history and activity logs
 - **Transfer configurations** between facilities with bulk operations
 
-Charge Master supports both CPT-based billing (for most practices) and revenue code-based billing (for hospitals), making it a universal solution for all billing needs.
+Charge Master supports both CPT-based billing and revenue code-based billing, making it a universal solution for all billing needs.
 
 <Tip>
 Press **Command-K** (Mac) or **Ctrl-K** (Windows) anywhere in Insights to quickly search for Charge Master or navigate to it directly.
@@ -70,9 +70,7 @@ After upload, you'll see a column mapping prompt. Match your CSV column names to
 The system uses facility IDs to organize charges. Make sure your CSV includes the correct facility IDs for each charge entry.
 </Note>
 
-## **Waiting for Files to Upload**
-
-### **Processing Time**
+## **System File Upload**
 
 For first-time uploads, especially large files, processing may take some time. This is normal and expected. The system is:
 
@@ -87,8 +85,8 @@ You can continue working in other parts of Insights while your file processes in
 
 Once processing completes, the system will prompt you about any duplicates found. Duplicates are identified when:
 
-1. **Same charge, different price** - Multiple entries exist with identical payer, modifier, CPT/revenue code, and facility combinations, but with different pricing
-2. **Exact duplicates** - Identical entries that already exist in your Charge Master
+1. **Exact duplicates** - Identical entries that already exist in your Charge Master
+2. **Same charge, different price** - Multiple entries exist with identical payer, modifier, CPT/revenue code, and facility combinations, but with different pricing
 
 The system checks for duplicates both within your uploaded file and against existing Charge Master entries. You'll be able to review and resolve these duplicates before finalizing the import.
 
