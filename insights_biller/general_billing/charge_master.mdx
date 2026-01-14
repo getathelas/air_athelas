@@ -25,7 +25,10 @@ Charge Master supports both CPT-based billing and revenue code-based billing, ma
 Press **Command-K** (Mac) or **Ctrl-K** (Windows) anywhere in Insights to quickly search for Charge Master or navigate to it directly.
 </Tip>
 
+
 ## **Getting Started with Charge Master**
+Charge Master is located in the **Automation** section of the Insights sidebar. If you've previously uploaded fee schedules, they will appear pre-populated when you first access Charge Master.
+
 
 ### **First-Time Setup**
 
@@ -38,7 +41,7 @@ If you're new to Charge Master, you'll be greeted with a start page that guides 
    - This is the fastest way to get started if you already have your billing data in a spreadsheet
 
 2. **Manual Entry** (Row by row)
-   - Add charges one at a time through the interface
+   - Add charges one at a time through the interface by selecting billing type, CPT/revenue code, payer, modifiers, facility, and effective dates
    - Useful for adding individual charges or making small updates
 
 ### **Importing Your Data**
@@ -71,6 +74,10 @@ The system uses facility IDs to organize charges. Make sure your CSV includes th
 </Note>
 
 ## **System File Upload**
+
+<Info>
+CSV uploads are **additive only**—they add new charges to your existing Charge Master without removing or modifying existing entries. Duplicates are identified and can be reviewed before finalizing the import.
+</Info>
 
 For first-time uploads, especially large files, processing may take some time. This is normal and expected. The system is:
 
@@ -271,13 +278,3 @@ This global view helps you:
 <Info>
 The activity log provides a complete audit trail for Charge Master, helping you maintain accountability and track all billing configuration changes.
 </Info>
-
-## **Best Practices**
-
-- **Start with CSV import** if you have existing billing data—it's faster than manual entry
-- **Review duplicates carefully** before resolving them to avoid losing important pricing variations
-- **Use scheduled status** for future pricing changes to ensure smooth transitions
-- **Group by facility** when managing multi-facility practices to see pricing differences
-- **Filter before bulk actions** to ensure you're only affecting the charges you intend to
-- **Check activity logs regularly** to stay informed about changes made by your team
-- **Retire instead of delete** to maintain historical records for auditing purposes
