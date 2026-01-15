@@ -3,13 +3,39 @@ title: "Charge Master"
 sidebarTitle: "Charge Master"
 ---
 
+![Charge Master Overview](/images/insights_biller/general_billing/charge_master/charge_master_hero.png)
+
 Charge Master is a centralized billing management system that consolidates all your billing information—CPT codes, revenue codes, modifiers, payers, and pricing—in one place. This eliminates the need for billers to manually look up charges and ensures you know exactly what each service will be charged for each payer.
 
 <Info>
-Charge Master expands standard fee schedules by including codes, payers, revenue codes (for hospitals), facility IDs, and pricing for all payers. It gives you one complete source for every billing rule.
+Charge Master expands standard **fee schedules** by including codes, payers, revenue codes (for hospitals), facility IDs, and pricing for all payers. It gives you one complete source for every billing rule.
 </Info>
 
-## **What is Charge Master?**
+## Quick Start
+
+<Steps>
+<Step title="Access Charge Master">
+Navigate to the **Automation** section in the Insights sidebar to find Charge Master.
+</Step>
+
+<Step title="Download the CSV template">
+From the start page, download the Charge Master template CSV file.
+</Step>
+
+<Step title="Fill in your billing data">
+Complete the template with your CPT codes, revenue codes, payers, modifiers, pricing, effective dates, and facility IDs.
+</Step>
+
+<Step title="Upload and map your data">
+Import your CSV file and map the columns to Charge Master fields. The system will validate and process your data.
+</Step>
+
+<Step title="Resolve any issues">
+Review and resolve any duplicate entries or payer mapping issues flagged by the system.
+</Step>
+</Steps>
+
+## What is Charge Master?
 
 Before Charge Master, billers had to manually look up billing information for each service, payer, and modifier combination. This was time-consuming and error-prone. Charge Master provides a centralized repository where you can:
 
@@ -22,146 +48,14 @@ Before Charge Master, billers had to manually look up billing information for ea
 Charge Master supports both CPT-based billing and revenue code-based billing, making it a universal solution for all billing needs.
 
 <Tip>
-Press **Command-K** (Mac) or **Ctrl-K** (Windows) anywhere in Insights to quickly search for Charge Master or navigate to it directly.
+Press **Ctrl-K** (Windows) or **Command-K** (Mac) anywhere in Insights to quickly search for Charge Master or navigate to it directly.
 </Tip>
 
+## Understanding Key Concepts
 
-## **Getting Started with Charge Master**
-Charge Master is located in the **Automation** section of the Insights sidebar. If you've previously uploaded fee schedules, they will appear pre-populated when you first access Charge Master.
+Before setting up your Charge Master, it's important to understand how charges are organized and managed in the system.
 
-
-### **First-Time Setup**
-
-If you're new to Charge Master, you'll be greeted with a start page that guides you through the initial setup process.
-
-**You have two options to populate your Charge Master:**
-
-1. **Import from CSV** (Recommended for bulk setup)
-   - We provide a template CSV file that you can download and fill in with your billing information
-   - This is the fastest way to get started if you already have your billing data in a spreadsheet
-
-2. **Manual Entry** (Row by row)
-   - Add charges one at a time through the interface by selecting billing type, CPT/revenue code, payer, modifiers, facility, and effective dates
-   - Useful for adding individual charges or making small updates
-
-### **Importing Your Data**
-
-<Steps>
-<Step title="Prepare your CSV file">
-Download the Charge Master template CSV file from the start page. Fill in all required fields:
-- CPT codes or revenue codes
-- Payer information
-- Modifiers
-- Pricing
-- Effective dates
-- Facility IDs
-</Step>
-
-<Step title="Upload your file">
-Click **Import** and select your CSV file. The system will begin processing your upload.
-</Step>
-
-<Step title="Map your columns">
-After upload, you'll see a column mapping prompt. Match your CSV column names to the Charge Master fields:
-- The system will automatically detect common column names
-- Review each mapping to ensure accuracy
-- (Coming soon) If you've only mapped some entries and left others unmapped, the system will prompt you about missing entries to ensure complete data import
-</Step>
-</Steps>
-
-<Note>
-The system uses facility IDs to organize charges. Make sure your CSV includes the correct facility IDs for each charge entry.
-</Note>
-
-## **System File Upload**
-
-<Info>
-CSV uploads are **additive only**—they add new charges to your existing Charge Master without removing or modifying existing entries. Duplicates are identified and can be reviewed before finalizing the import.
-</Info>
-
-For first-time uploads, especially large files, processing may take some time. This is normal and expected. The system is:
-
-- Validating all entries
-- Checking for duplicates
-- Verifying data integrity
-- Mapping relationships between payers, facilities, and charges
-
-You can continue working in other parts of Insights while your file processes in the background.
-
-### **Handling Duplicates & Error Logs**
-
-After your file is processed, the system automatically scans for issues such as duplicate entries and unmatched payers. If anything needs your attention, you’ll receive a clear summary with prompts to guide you through resolution.
-
-**How duplicate charges are flagged:**
-
-1. **Exact duplicates** – The entry in your upload is identical to an existing charge in your Charge Master.
-2. **Same charge, different price** – The entry matches on payer, modifier, CPT/revenue code, and facility, but with a different price than an existing charge.
-
-<Info>
-Any successfully imported (error-free) entries will be added to your Charge Master immediately. You can focus just on resolving the items flagged as issues—there’s no need to re-upload the entire file unless you’re addressing outstanding errors.
-</Info>
-
-**Payer mapping issues:**  
-If your import includes a payer that isn’t recognized in your Charge Master, you’ll see a special "Payer Mapping" pop-out. This dedicated prompt lets you quickly search for or create the missing payer and decide whether to save (“memorize”) your selection for future uploads. This streamlined process helps resolve the most common import roadblock with minimal friction.
-
-Once you’ve finished resolving all errors—whether duplicates or payer mapping issues—simply retry uploading the corrected file. The system checks for duplicates both within your new upload and against existing Charge Master data, ensuring nothing gets added twice. You’ll always be able to review each resolved item and confirm before any changes are finalized.
-
-### **Viewing Your Charges**
-
-Once your import is complete, you'll see a populated table showing all your charges. Each row displays the key information: CPT/revenue code, payer, modifier, facility, price, and status.
-
-## **Configuring Display**
-
-### **Customizing Column Visibility**
-
-You can configure which columns appear in your Charge Master table to focus on what matters most to your workflow.
-
-**To customize display:**
-
-1. Click the **Display Properties** or column settings icon
-2. Check or uncheck columns to show or hide them
-3. For example, you can hide revenue codes if you only work with CPT codes, or hide facility columns if you work with a single facility
-
-This customization is saved to your personal view preferences.
-
-### **Grouping Charges**
-
-Grouping helps you organize and analyze your charges by different dimensions.
-
-**Common grouping options:**
-
-- **Group by CPT code** - See all payer variations for a specific procedure
-- **Group by Facility** - View what each facility charges for services
-- **Group by Payer** - Compare pricing across different insurance companies
-- **Group by Modifier** - Review how modifiers affect pricing
-
-To group your table, select a grouping option from the dropdown menu. The table will reorganize to show your charges in the selected groups.
-
-<Note>
-No payer is universal—each payer and facility combination may have different pricing. Grouping helps you see these relationships clearly.
-</Note>
-
-## **Filtering Charges**
-
-Charge Master includes extensive filtering capabilities to help you find exactly what you need.
-
-**You can filter by:**
-
-- **Status** - Published, Retired, or Scheduled
-- **Payer** - Specific insurance companies
-- **Facility** - Individual facilities or all facilities
-- **CPT Code** - Specific procedure codes
-- **Revenue Code** - Hospital revenue codes
-- **Modifier** - Specific modifiers
-- **Effective Date** - Date ranges for when charges are active
-- **Last Updated** - Who last modified the charge
-- **Date Range** - When charges were created or modified
-
-Combine multiple filters to create highly specific views. For example, filter for "Published charges for Facility A with Modifier 25, effective after January 1st."
-
-## **Understanding Attributes**
-
-### **Status: Published, Retired, and Scheduled**
+### Status: Published, Retired, and Scheduled
 
 Each charge in Charge Master has a **Status** attribute with three possible values:
 
@@ -177,54 +71,250 @@ Each charge in Charge Master has a **Status** attribute with three possible valu
 - **Retired charges** are archived but remain visible in the system for historical tracking
 - **Scheduled charges** have future effective dates—once the scheduled date arrives, they automatically transition to Published status
 
+<Note>
+Understanding charge status is essential as you'll use these states throughout your workflow—from importing data to managing future pricing changes.
+</Note>
+
 You can filter and view charges by status to see what's active, what's coming up, and what's been archived.
 
-### **Other Key Attributes**
+## Getting Started with Charge Master
 
-- **Effective Dates** - When a charge becomes active or expires
-- **Last Updated** - The most recent person who modified the charge
-- **Facility ID** - Which facility the charge applies to
-- **Payer** - The insurance company or payer
-- **Modifier** - Any modifiers that affect pricing
-- **CPT Code / Revenue Code** - The procedure or service code
+Charge Master is located in the **Automation** section of the Insights sidebar. If you've previously uploaded fee schedules, they will appear pre-populated when you first access Charge Master.
 
-## **Bulk Actions**
+### First-Time Setup
 
-### **Bulk Selection**
+![First-Time Setup Screen](/images/insights_biller/general_billing/charge_master/charge_master_first_time_setup.png)
+
+If you're new to Charge Master, you'll be greeted with a start page that guides you through the initial setup process.
+
+**You have two options to populate your Charge Master:**
+
+1. **Import from CSV** (Recommended for bulk setup)
+    - We provide a template CSV file that you can download and fill in with your billing information
+    - This is the fastest way to get started if you already have your billing data in a spreadsheet
+2. **Manual Entry** (Row by row)
+    - Add charges one at a time through the interface by selecting billing type, CPT/revenue code, payer, modifiers, facility, and effective dates
+    - Useful for adding individual charges or making small updates
+
+## Importing Your Data
+
+Setting up your Charge Master through CSV import is the fastest way to get all your billing configurations into the system at once.
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/charge_master/charge_master_import_csv.mp4" type="video/mp4" />
+</video>
+
+<Steps>
+<Step title="Prepare your CSV file">
+Download the Charge Master template CSV file from the start page. Fill in all required fields:
+
+- CPT codes or revenue codes
+- Payer information
+- Modifiers
+- Pricing
+- Effective dates
+- Facility IDs
+</Step>
+
+<Step title="Upload your file">
+Click **Import** and select your CSV file. The system will begin processing your upload.
+</Step>
+
+<Step title="Map your columns">
+After upload, you'll see a column mapping prompt. Match your CSV column names to the Charge Master fields:
+
+- The system will automatically detect common column names
+- Review each mapping to ensure accuracy
+- (Coming soon) If you've only mapped some entries and left others unmapped, the system will prompt you about missing entries to ensure complete data import
+</Step>
+</Steps>
+
+<Note>
+The system uses facility IDs to organize charges. Make sure your CSV includes the correct facility IDs for each charge entry.
+</Note>
+
+### Understanding File Processing
+
+<Info>
+CSV uploads are **additive only**—they add new charges to your existing Charge Master without removing or modifying existing entries. Duplicates are identified and can be reviewed before finalizing the import.
+</Info>
+
+For first-time uploads, especially large files, processing may take some time. This is normal and expected. The system is:
+
+- Validating all entries
+- Checking for duplicates
+- Verifying data integrity
+- Mapping relationships between payers, facilities, and charges
+
+<Note>
+You can continue working in other parts of Insights while your file processes in the background.
+</Note>
+
+### Resolving Import Issues
+
+After your file is processed, the system automatically scans for issues such as duplicate entries and unmatched payers. If anything needs your attention, you'll receive a clear summary with prompts to guide you through resolution.
+
+#### Types of Duplicate Charges
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/charge_master/charge_master_duplicate_logs.mp4" type="video/mp4" />
+</video>
+
+**How duplicate charges are flagged:**
+
+1. **Same charge, different price** – The entry matches on payer, modifier, CPT/revenue code, and facility, but with a different price than an existing charge.
+2. **Exact duplicates** – The entry in your upload is identical to an existing charge in your Charge Master.
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/charge_master/charge_master_duplicate_reupload.mp4" type="video/mp4" />
+</video>
+
+<Info>
+Any successfully imported (error-free) entries will be added to your Charge Master immediately. You can focus just on resolving the items flagged as issues—there's no need to re-upload the entire file unless you're addressing outstanding errors.
+</Info>
+
+#### Payer Mapping Issues
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/charge_master/charge_master_payer_mapping.mp4" type="video/mp4" />
+</video>
+
+If your import includes a payer that isn't recognized in your Charge Master, you'll see a special "Payer Mapping" pop-out. This dedicated prompt lets you quickly search for or create the missing payer and decide whether to save ("memorize") your selection for future uploads. This streamlined process helps resolve the most common import roadblock with minimal friction.
+
+<Tip>
+After mapping your payers, you'll need to upload your file again to import the charges with the newly mapped payer information. The payer mapping pop-out only helps you map or create the missing payers – it doesn't complete the upload.
+</Tip>
+
+#### Re-uploading Corrected Files
+
+Once you've finished resolving all errors, simply retry uploading the corrected file. The system checks for duplicates both within your new upload and against existing Charge Master data, ensuring nothing gets added twice. You'll always be able to review each resolved item and confirm before any changes are finalized.
+
+### Viewing Your Charges
+
+![Charge Master Table View](/images/insights_biller/general_billing/charge_master/charge_master_hero.png)
+
+Once your import is complete, you'll see a populated table showing all your charges. Each row displays the key information: CPT, Revenue Code, Payer, Modifier, Facility, Price, and Status.
+
+## Working with Your Charges
+
+Now that your Charge Master is populated, you can customize how you view and interact with your billing data to match your workflow.
+
+### Filtering Charges
+
+Charge Master includes extensive filtering capabilities to help you find exactly what you need.
+
+![Filtering Charges](/images/insights_biller/general_billing/charge_master/charge_master_filtering.png)
+
+**You can filter by:**
+
+- **Payer** - Specific insurance companies
+- **Facility** - Individual facilities or all facilities
+- **Status** - Published, Retired, or Scheduled
+- **CPT Code** - Specific procedure codes
+- **Revenue Code** - Hospital revenue codes
+- **Modifier** - Specific modifiers
+- **Expiration Date** - Date ranges for when charges are active
+- **Effective Date** - Date ranges for when charges are effective
+- …
+
+<Tip>
+Combine multiple filters to create highly specific views. For example, filter for "Published charges for Facility A with Modifier 25, effective after January 1st."
+</Tip>
+
+### Customizing Column Visibility
+
+You can configure which columns appear in your Charge Master table to focus on what matters most to your workflow.
+
+**To customize display:**
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/charge_master/charge_master_customize_columns.mp4" type="video/mp4" />
+</video>
+
+1. Click the **Display Properties** or column settings icon
+2. Check or uncheck columns to show or hide them
+3. For example, you can hide revenue codes if you only work with CPT codes, or hide facility columns if you work with a single facility
+
+This customization is saved to your personal view preferences.
+
+### Grouping Charges
+
+Grouping helps you organize and analyze your charges by different dimensions.
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/charge_master/charge_master_grouping.mp4" type="video/mp4" />
+</video>
+
+**Common grouping options:**
+
+- **Group by CPT code** - See all payer variations for a specific procedure
+- **Group by Facility** - View what each facility charges for services
+- **Group by Payer** - Compare pricing across different insurance companies
+- **Group by Modifier** - Review how modifiers affect pricing
+
+To group your table, select a grouping option from the dropdown menu. The table will reorganize to show your charges in the selected groups.
+
+<Note>
+No payer is universal—each payer and facility combination may have different pricing. Grouping helps you see these relationships clearly.
+</Note>
+
+## Managing Charges at Scale
+
+For larger operations, Charge Master provides powerful bulk actions that let you manage multiple charges efficiently.
+
+### Bulk Selection
 
 Select multiple charges at once using the checkboxes in the table. Bulk selection is especially powerful when combined with filters—filter to show exactly what you want, then select all matching charges.
 
-### **Bulk Archive (Retire)**
+<Tip>
+Use filters before bulk actions to ensure you're operating on exactly the right set of charges. This prevents accidental changes to unintended items.
+</Tip>
+
+### Bulk Archive (Retire)
 
 Bulk archive allows you to retire multiple charges at once, which is helpful when:
+
 - Updating to new pricing across many charges
 - Removing outdated charge configurations
 - Cleaning up test or duplicate entries
 
 **To bulk archive:**
 
+<video controls>
+  <source src="/images/insights_biller/general_billing/charge_master/charge_master_bulk_archive.mp4" type="video/mp4" />
+</video>
+
 1. Apply filters to show the charges you want to archive
 2. Select the charges using checkboxes (or select all)
 3. Click **Bulk Actions > Archive**
 4. Confirm the action
 
-### **Bulk Transfer to Another Facility**
+<Warning>
+Archived (retired) charges cannot be unarchived. Make sure you've selected the correct charges before confirming. You can always create new charges with the same configuration if needed.
+</Warning>
+
+### Bulk Transfer to Another Facility
 
 Transfer charges from one facility to another with optional price adjustments.
 
 **Use cases:**
+
 - Setting up a new facility with similar pricing structure
 - Standardizing pricing across facilities
 - Copying charge configurations with modifications
 
 **To transfer charges:**
 
+<video controls>
+  <source src="/images/insights_biller/general_billing/charge_master/charge_master_bulk_transfer.mp4" type="video/mp4" />
+</video>
+
 1. Filter and select the charges you want to transfer
 2. Click **Bulk Actions > Transfer to Facility**
 3. Select the target facility
 4. Choose adjustment type:
-   - **Absolute adjustment** - Add or subtract a fixed dollar amount (e.g., add $5.00 to each charge)
-   - **Percentage adjustment** - Apply a percentage change (e.g., increase all prices by 5%)
+    - **Absolute adjustment** - Add or subtract a fixed dollar amount (e.g., add $5.00 to each charge)
+    - **Percentage adjustment** - Apply a percentage change (e.g., increase all prices by 5%)
 5. Review the preview of adjusted prices
 6. Confirm the transfer
 
@@ -232,25 +322,31 @@ Transfer charges from one facility to another with optional price adjustments.
 Transferred charges maintain their history and relationship to the original charges, so you can track where they came from.
 </Note>
 
-## **Version History & Activity Logs**
+## Tracking Changes & Compliance
 
-### **Individual Charge History**
+Charge Master maintains a complete audit trail of all changes, helping you track modifications and maintain compliance with billing regulations.
+
+### Individual Charge History
+
+![Individual Charge History](/images/insights_biller/general_billing/charge_master/charge_master_individual_history.png)
 
 When you click into a specific charge, you'll see a detailed view that includes:
 
 - **Complete charge information** - All attributes, pricing, effective dates, and relationships
 - **Activity log** - A chronological record of everything that happened to this specific charge:
-  - Who created it
-  - Who edited it and when
-  - When it was published, scheduled, or retired
-  - Any price changes
-  - Facility transfers
+    - Who created it
+    - Who edited it and when
+    - When it was published, scheduled, or retired
+    - Any price changes
+    - Facility transfers
 
 This detailed history helps you track changes and understand the evolution of each charge over time.
 
-### **Global Activity History**
+### Global Activity History
 
 From the main Charge Master page, there's a **History** tab that shows activities across the entire Charge Master system.
+
+![Global Activity History](/images/insights_biller/general_billing/charge_master/charge_master_global_history.png)
 
 **The global history includes:**
 
@@ -261,14 +357,17 @@ From the main Charge Master page, there's a **History** tab that shows activitie
 
 **Filtering global history:**
 
+<video controls>
+  <source src="/images/insights_biller/general_billing/charge_master/charge_master_filter_history.mp4" type="video/mp4" />
+</video>
+
 You can filter the activity log to focus on specific information:
+
 - **Filter by person** - See all changes made by a specific team member
 - **Filter by action type** - View only archived charges, only edits, only new charges, etc.
-- **Filter by date range** - See activity within a specific time period
-- **Filter by facility** - Track changes for a specific facility
-- **Filter by status** - See when charges were published, retired, or scheduled
 
 This global view helps you:
+
 - Audit changes across your entire Charge Master
 - Track team activity and workload
 - Identify patterns in charge management
