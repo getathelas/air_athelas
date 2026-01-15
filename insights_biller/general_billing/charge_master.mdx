@@ -88,24 +88,23 @@ For first-time uploads, especially large files, processing may take some time. T
 
 You can continue working in other parts of Insights while your file processes in the background.
 
-### **Handling Duplicates**
+### **Handling Duplicates & Error Logs**
 
-Once processing completes, the system will prompt you about any duplicates found. Duplicates are identified when:
+After your file is processed, the system automatically scans for issues such as duplicate entries and unmatched payers. If anything needs your attention, you’ll receive a clear summary with prompts to guide you through resolution.
 
-1. **Exact duplicates** - Identical entries that already exist in your Charge Master
-2. **Same charge, different price** - Multiple entries exist with identical payer, modifier, CPT/revenue code, and facility combinations, but with different pricing
+**How duplicate charges are flagged:**
 
-The system checks for duplicates both within your uploaded file and against existing Charge Master entries. You'll be able to review and resolve these duplicates before finalizing the import.
+1. **Exact duplicates** – The entry in your upload is identical to an existing charge in your Charge Master.
+2. **Same charge, different price** – The entry matches on payer, modifier, CPT/revenue code, and facility, but with a different price than an existing charge.
 
-### **Validation and Error Logs**
+<Info>
+Any successfully imported (error-free) entries will be added to your Charge Master immediately. You can focus just on resolving the items flagged as issues—there’s no need to re-upload the entire file unless you’re addressing outstanding errors.
+</Info>
 
-After validation checks complete, you can download a detailed log that shows:
-- Any unmapped fields
-- Validation errors
-- Duplicate entries
-- Successfully imported charges
+**Payer mapping issues:**  
+If your import includes a payer that isn’t recognized in your Charge Master, you’ll see a special "Payer Mapping" pop-out. This dedicated prompt lets you quickly search for or create the missing payer and decide whether to save (“memorize”) your selection for future uploads. This streamlined process helps resolve the most common import roadblock with minimal friction.
 
-Review this log to ensure all your data imported correctly.
+Once you’ve finished resolving all errors—whether duplicates or payer mapping issues—simply retry uploading the corrected file. The system checks for duplicates both within your new upload and against existing Charge Master data, ensuring nothing gets added twice. You’ll always be able to review each resolved item and confirm before any changes are finalized.
 
 ### **Viewing Your Charges**
 
