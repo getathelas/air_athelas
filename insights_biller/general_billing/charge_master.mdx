@@ -57,6 +57,8 @@ Before setting up your Charge Master, it's important to understand how charges a
 
 ### Status: Published, Retired, and Scheduled
 
+![Status Overview](/images/insights_biller/general_billing/charge_master/charge_master_17.png)
+
 Each charge in Charge Master has a **Status** attribute with three possible values:
 
 | Status | Description | Use Case |
@@ -69,13 +71,7 @@ Each charge in Charge Master has a **Status** attribute with three possible valu
 
 - **Published charges** are the ones currently being used for billing
 - **Retired charges** are archived but remain visible in the system for historical tracking
-- **Scheduled charges** have future effective dates—once the scheduled date arrives, they automatically transition to Published status
-
-<Note>
-Understanding charge status is essential as you'll use these states throughout your workflow—from importing data to managing future pricing changes.
-</Note>
-
-You can filter and view charges by status to see what's active, what's coming up, and what's been archived.
+- **Scheduled charges** have future effective dates - once the scheduled date arrives, they automatically transition to Published status
 
 ## Getting Started with Charge Master
 
@@ -83,9 +79,10 @@ Charge Master is located in the **Automation** section of the Insights sidebar. 
 
 ### First-Time Setup
 
-![First-Time Setup Screen](/images/insights_biller/general_billing/charge_master/charge_master_2.png)
-
 If you're new to Charge Master, you'll be greeted with a start page that guides you through the initial setup process.
+
+
+![First-Time Setup Screen](/images/insights_biller/general_billing/charge_master/charge_master_15.png)
 
 **You have two options to populate your Charge Master:**
 
@@ -125,19 +122,14 @@ After upload, you'll see a column mapping prompt. Match your CSV column names to
 
 - The system will automatically detect common column names
 - Review each mapping to ensure accuracy
-- (Coming soon) If you've only mapped some entries and left others unmapped, the system will prompt you about missing entries to ensure complete data import
 </Step>
 </Steps>
 
 <Note>
-The system uses facility IDs to organize charges. Make sure your CSV includes the correct facility IDs for each charge entry.
+(Coming soon) If you've only mapped some entries and left others unmapped, the system will prompt you about missing entries to ensure complete data import
 </Note>
 
 ### Understanding File Processing
-
-<Info>
-CSV uploads are **additive only**—they add new charges to your existing Charge Master without removing or modifying existing entries. Duplicates are identified and can be reviewed before finalizing the import.
-</Info>
 
 For first-time uploads, especially large files, processing may take some time. This is normal and expected. The system is:
 
@@ -146,9 +138,9 @@ For first-time uploads, especially large files, processing may take some time. T
 - Verifying data integrity
 - Mapping relationships between payers, facilities, and charges
 
-<Note>
-You can continue working in other parts of Insights while your file processes in the background.
-</Note>
+<Info>
+CSV uploads are **additive only**—they add new charges to your existing Charge Master without removing or modifying existing entries. Duplicates are identified and can be reviewed before finalizing the import.
+</Info>
 
 ### Resolving Import Issues
 
@@ -179,15 +171,11 @@ Any successfully imported (error-free) entries will be added to your Charge Mast
   <source src="/images/insights_biller/general_billing/charge_master/charge_master_6.mp4" type="video/mp4" />
 </video>
 
-If your import includes a payer that isn't recognized in your Charge Master, you'll see a special "Payer Mapping" pop-out. This dedicated prompt lets you quickly search for or create the missing payer and decide whether to save ("memorize") your selection for future uploads. This streamlined process helps resolve the most common import roadblock with minimal friction.
+If your import includes a payer that isn't recognized in your Charge Master, you'll see a special "Payer Mapping" pop-out. This dedicated prompt lets you quickly search for or create the missing payer and decide whether to save/remember your selection for future uploads. 
 
 <Tip>
 After mapping your payers, you'll need to upload your file again to import the charges with the newly mapped payer information. The payer mapping pop-out only helps you map or create the missing payers – it doesn't complete the upload.
 </Tip>
-
-#### Re-uploading Corrected Files
-
-Once you've finished resolving all errors, simply retry uploading the corrected file. The system checks for duplicates both within your new upload and against existing Charge Master data, ensuring nothing gets added twice. You'll always be able to review each resolved item and confirm before any changes are finalized.
 
 ### Viewing Your Charges
 
@@ -201,9 +189,9 @@ Now that your Charge Master is populated, you can customize how you view and int
 
 ### Filtering Charges
 
-Charge Master includes extensive filtering capabilities to help you find exactly what you need.
+![Filtering Charges](/images/insights_biller/general_billing/charge_master/charge_master_2.png)
 
-![Filtering Charges](/images/insights_biller/general_billing/charge_master/charge_master_7.png)
+Charge Master includes extensive filtering capabilities to help you find exactly what you need.
 
 **You can filter by:**
 
@@ -263,6 +251,9 @@ No payer is universal—each payer and facility combination may have different p
 For larger operations, Charge Master provides powerful bulk actions that let you manage multiple charges efficiently.
 
 ### Bulk Selection
+
+![Bulk Selection Example](/images/insights_biller/general_billing/charge_master/charge_master_18.png)
+
 
 Select multiple charges at once using the checkboxes in the table. Bulk selection is especially powerful when combined with filters—filter to show exactly what you want, then select all matching charges.
 
@@ -328,7 +319,7 @@ Charge Master maintains a complete audit trail of all changes, helping you track
 
 ### Individual Charge History
 
-![Individual Charge History](/images/insights_biller/general_billing/charge_master/charge_master_12.png)
+![Individual Charge History](/images/insights_biller/general_billing/charge_master/charge_master_13.png)
 
 When you click into a specific charge, you'll see a detailed view that includes:
 
@@ -346,7 +337,7 @@ This detailed history helps you track changes and understand the evolution of ea
 
 From the main Charge Master page, there's a **History** tab that shows activities across the entire Charge Master system.
 
-![Global Activity History](/images/insights_biller/general_billing/charge_master/charge_master_13.png)
+![Global Activity History](/images/insights_biller/general_billing/charge_master/charge_master_16.png)
 
 **The global history includes:**
 
