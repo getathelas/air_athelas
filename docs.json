@@ -532,6 +532,7 @@
           {
             "group": "Product Release",
             "pages": [
+              "master_blogs/introducing_new_claims_page",
               "master_blogs/kx_modifier",
               "master_blogs/lead_tracker",
               "master_blogs/new_calendar",
