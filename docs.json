@@ -529,17 +529,6 @@
               "master_blogs/product_release",
               "master_blogs/customer_stories"
             ]
-          },
-          {
-            "group": "Product Release",
-            "pages": [
-              "master_blogs/introducing_new_claims_page",
-              "master_blogs/kx_modifier",
-              "master_blogs/lead_tracker",
-              "master_blogs/new_calendar",
-              "master_blogs/agents_center",
-              "master_blogs/ai_assistant"
-            ]
           }
         ]
       },
