@@ -4,6 +4,8 @@ sidebarTitle: "Getting Started with the Claims Page"
 tag: "New"
 ---
 
+## THIS DOC IS NOT COMPLETE DO NOT SHARE
+
 ### **Getting Started with the Claims Page**
 
 The Claims Page is where you manage your billing workflow in Insights. It centralizes claim review, validation, assignment, and submission in one interface, helping you process claims faster and catch errors before they become rejections.
@@ -18,7 +20,7 @@ We're transitioning from "encounters" to "claims" terminology to better match in
 
 ## **What is the Claims Page?**
 
-The Claims Page gives you a unified view of all claims requiring review or action. You can filter claims by status, insurance, or age, assign work to team members, review AI-suggested corrections, and submit claims—all without switching between tools.
+The Claims Page gives you a unified view of all claims requiring review or action. You can filter claims by status, insurance, or age, assign work to team members, review AI validation flags, and submit claims—all without switching between tools.
 
 **Key capabilities:**
 
@@ -26,13 +28,15 @@ The Claims Page gives you a unified view of all claims requiring review or actio
 - **Assign claims** individually or in bulk to balance team workload
 - **Review AI validation** that flags errors and suggests corrections before submission
 - **Collaborate with your team** through comments and activity tracking (coming soon)
-- **Submit with the correct form** - Claims automatically generate in the appropriate format (CMS-1500, UB-04, or ADA) based on the selected payer
+- **Submit with the correct form** - Claims automatically generate in the appropriate format (CMS-1500, UB-04, or ADA) based on the selected payer(s)
 
 ## **Getting Started**
 
 ### **Accessing the Claims Page**
 
 Log in to Insights at **[insights.athelas.com](https://insights.athelas.com/)** and navigate to **Claims** from the Daily Operations tab. The page opens with your most recent view, or a default table showing all active claims.
+
+## TODO: Update this section when BOBA-5140 and BOBA-5527 are implemented. Default view behavior will change to "My Claims" and users will have saved default selected views per user in DB. 
 
 ![Claims Page Table View](/images/insights_biller/claim_details/claim_details_page/claim_details_page_1.png)
 
@@ -120,16 +124,20 @@ The submission detail panel lets you work with the claim data and preview the fo
 
 **Working with side-by-side preview:**
 
-1. **Review the claim** in the standard view on the left - this shows all your claim data fields
+1. **Review the claim** in the Claim Details panel on the left - this shows all your claim data fields
 2. **Click Preview Submission** to see the formatted form (CMS-1500, UB-04, or ADA) on the right
     - The preview displays exactly how the claim will appear when submitted to the payer
     - Work with both views open to verify your claim data translates correctly to the final format
-3. **Make changes to the claim** as needed - when you edit claim fields, the preview becomes semi-transparent and shows "Not Synced" to indicate it needs to be refreshed
-4. **Refresh the preview** to see your changes reflected in the formatted submission
-5. Review the standard view to confirm all fields are correct
+3. **Make changes to the claim** as needed - when you edit claim fields, the preview becomes semi-transparent and shows "Not Synced" to indicate it needs to be refreshed. This occurs because the submission hasn't run through billing rules since your last update, making the preview stale relative to the current claim state.
+4. **Save your edits to the claim** to refresh the preview and see your changes reflected in the formatted submission
+5. Review the Claim Details panel to confirm all fields are correct
 6. Click **Preview PDF** to see the formatted CMS-1500, UB-04, or ADA form exactly as it will submit
 
 **Editing the submission directly:**
+
+<Warning>
+Edits made directly to the submission will NOT go through billing rules. These edits only affect the submission output and bypass the normal billing rules engine.
+</Warning>
 
 After billing rules are applied, you can make final adjustments to the submission itself:
 
@@ -143,3 +151,35 @@ Once you've verified everything looks correct:
 1. Review patient, insurance, diagnosis, and procedure information one final time
 2. Click **Submit** when ready
 3. The claim moves to "Submitted" status and appears in your submission history
+
+### FAQ
+
+<Accordion title="How do I know if a claim is ready to submit?">
+Review the AI validation flags in the Claim Details panel. Claims are ready to submit when:
+- All required fields are filled in
+- No critical validation errors are present (red indicators)
+- The preview submission shows the correct format for your payer
+- Patient, insurance, diagnosis, and procedure information is accurate
+
+**Note:** You can still submit claims with warnings, but it's recommended to resolve validation issues first to avoid rejections.
+</Accordion>
+
+<Accordion title="What's the difference between editing the claim and editing the submission directly?">
+When you edit the claim in the Claim Details panel, your changes go through billing rules and update the underlying claim data. This ensures consistency and proper rule application.
+
+When you edit the submission directly (using the pencil icon in the preview), your changes bypass billing rules and only affect that specific submission output. The underlying claim data remains unchanged.
+
+**Note:** Direct submission edits should be used sparingly for final adjustments only, as they don't go through the normal billing rules engine.
+</Accordion>
+
+<Accordion title="Can I share my saved views with other team members?">
+Currently, custom views are personal by default and won't be visible to other team members. Each user can create and save their own views based on their workflow needs.
+</Accordion>
+
+<Accordion title="What happens if I need to make changes after submitting a claim?">
+Once a claim moves to "Submitted" status, you'll need to work with your billing team to make adjustments. The claim will appear in your submission history, and you may need to resubmit or make corrections depending on your practice's workflow.
+</Accordion>
+
+<Accordion title="How do I filter claims by multiple criteria at once?">
+Use the filter bar at the top of the table to apply multiple filters simultaneously. You can combine filters for status, insurance provider, claim amount, age, assigned team member, provider, and date range. Once you've set up your ideal filter combination, save it as a custom view for quick access later.
+</Accordion>
