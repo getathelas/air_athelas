@@ -5,7 +5,18 @@ description: "See what's new and stay up to date on Product updates, fixes, and 
 
 <Update label="Jan 31, 2026" tags={["Insights"]}>
 
+  ### Claims Page launches
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_11_30/claims-page-interface.png" alt="New Claims Page interface showing claims table with status, stage, patient, provider, and payment information" />
+
+  We are launching the new Claims Page to all sites starting Feburary 2nd. The new claims page now includes submission preview (view CMS and UB claims as PDFs before submitting), rules visibility showing which billing rules applied and what changed, activity feed for notes and claim history, side-by-side panels to view claim, submission preview, PDF, and rules simultaneously, and Athelas AI copilot for intelligent assistance.
+
+  The new claims details endpoint runs **more than 3x faster** than the previous version. To get started, please check out our [Claims Page guide](/insights_biller/claim_details/claim_details_page).
+
+
   ### [Beta user only] Charge Master released to pilot sites
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_01_31/charge-master-interface.png" alt="Charge Master interface showing CPT codes, billing types, modifiers, payers, and facility charges" />
 
   Charge Master is now available, a comprehensive tool to manage your charge masters across payers and facilities. The feature set includes:
 
@@ -22,7 +33,7 @@ description: "See what's new and stay up to date on Product updates, fixes, and 
 
   ### Improved eligibility infrastructure
 
-  We've completed major infrastructure improvements for eligibility:
+  We've completed some infrastructure improvements for eligibility:
 
   - Historical eligibility records table storing full payload and parsed benefits
   - Site and payer-level source configuration (choose Waystar, Change Healthcare, etc.)
@@ -34,27 +45,21 @@ description: "See what's new and stay up to date on Product updates, fixes, and 
   ### Bug fixes and improvements
 
   **Eligibility & Benefits:**
-  - Fixed insurance deductible and remaining benefits calculations
-  - Corrected appointment eligibility counts displayed to staff
-  - Fixed eligibility timestamp to show in user's local timezone
+  - Fixed an error where insurance deductible and remaining benefits were calculating incorrect amounts for patients
+  - Fixed an issue where appointment eligibility counts shown to staff were displaying incorrect numbers in the system
+  - Fixed a problem where eligibility timestamps were not displaying in the user's local timezone, causing confusion about when eligibility was last checked
 
   **Collections & Reporting:**
-  - Fixed outstanding balance calculations in end-of-day emails
-  - Corrected patient exclusion logic in daily collections reports
+  - Corrected an error in end-of-day emails where outstanding balance calculations were showing inaccurate amounts
+  - Fixed an issue where patient exclusion logic in daily collections reports was incorrectly filtering out patients who should have been included
 
   **Claims & Encounter Details:**
-  - Fixed diagnosis code saving errors
-  - Resolved date range filtering issues across multiple pages
-  - Fixed various posting tool and encounter details errors
+  - Fixed an error where diagnosis codes were not saving properly when editing encounter details
+  - Fixed a problem where date range filters were not working correctly across claims and reporting pages
+  - Resolved various errors in the posting tool and encounter details pages that were preventing users from completing their workflows
 </Update>
 
 <Update label="Dec 19, 2025" tags={["Insights"]}>
-
-  ### [Beta user only] Claims Page launches
-
-  On December 19, 2025, we launched the new Claims Page to select beta sites. The complete professional claims flow includes submission preview (view CMS and UB claims as PDFs before submitting), rules visibility showing which billing rules applied and what changed, activity feed for notes and claim history, side-by-side panels to view claim, submission preview, PDF, and rules simultaneously, and Athelas AI copilot for intelligent assistance.
-
-  The new claims details endpoint runs **more than 3x faster** than the previous version. Available to beta sites with broader rollout planned for Q1 2026.
 
   ### [Beta user only] AI Report Builder beta release
 
@@ -77,17 +82,14 @@ description: "See what's new and stay up to date on Product updates, fixes, and 
   ### Bug fixes and improvements
 
   **Claims & EOB:**
-  - Fixed currency conversion errors in EOB remittance posting
-  - Improved claims history query performance (significantly faster)
-  - Fixed claim form generation speed (2x faster)
-  - Fixed EOB posting for large files (now handles 2,800+ remittances)
+  - Fixed an error where currency values were being converted incorrectly during EOB remittance posting, causing payment amounts to be wrong
+  - Improved claims history query performance to load significantly faster, reducing wait times for users reviewing claim timelines
+  - Fixed a performance issue where claim form generation was taking too long, making it 2x faster to generate claim PDFs
+  - Resolved an error where EOB posting would fail or time out when processing large files, now successfully handles files with 2,800+ remittances
 
   **User Interface:**
-  - Fixed denials page scrolling and navigation issues
-  - Fixed user logout errors when working with deposits
-  - Corrected currency display in downloaded reports (cents to dollars)
-  - Added security masking for bank account numbers
-  - Fixed encounter details error code display
+  - Fixed an issue where the denials page would not scroll properly and navigation buttons were not working correctly
+  - Resolved an error where users were being logged out unexpectedly when working with deposit transactions
 </Update>
 
 <Update label="Nov 30, 2025" tags={["Insights"]}>
@@ -118,17 +120,13 @@ description: "See what's new and stay up to date on Product updates, fixes, and 
   ### Bug fixes and improvements
 
   **Payments & Refunds:**
-  - Fixed credit card refund processing errors
-  - Resolved subscription balance calculation issues
-  - Fixed patient responsibility cancellation errors
-
-  **Patient Statements:**
-  - Fixed paper statement delivery failures at multiple sites
-  - Resolved statement mailing service issues
+  - Fixed an error where credit card refunds were failing to process correctly, preventing staff from completing refund transactions
+  - Resolved an issue where subscription balances were calculating incorrectly, showing wrong amounts owed by patients
+  - Fixed an error that prevented staff from canceling patient responsibility requests when needed
 
   **Patient Workflows:**
-  - Fixed verification code timing issues that blocked payments
-  - Resolved workflow errors affecting patient check-in
+  - Fixed a timing issue where verification codes were expiring too quickly, blocking patients from completing online payments
+  - Resolved workflow errors that were preventing patients from successfully completing the check-in process
 </Update>
 
 <Update label="Nov 30, 2025" tags={["Air"]}>
@@ -158,11 +156,15 @@ description: "See what's new and stay up to date on Product updates, fixes, and 
 
   Internal messaging allows your team to communicate within the practice, while external messaging connects directly to patients using the Interact system. The new tasking feature lets you create task lists for team members with status tracking and priority levels, including group-level task assignment.
 
-  ### Check-in and check-out
+  ### Patient Check-in and check-out
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_10_25/patient-flow-check-in.png" alt="Patient Flow interface showing room status and patient check-in tracking" />
 
   Streamlined patient check-in and check-out workflows help your front desk process patients faster. You can now copy and paste appointments for recurring visits, print upcoming appointment lists, and manage patient flow more efficiently.
 
   ### DME billing support
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_10_25/dme-billing-interface.png" alt="DME billing interface showing L1845 DME code with prior authorization tracking" />
 
   If your practice bills for Durable Medical Equipment (DME), Air EHR now supports DME billing codes and documentation. The system includes prior authorization tracking by billable units with the ability to override calculations when needed, plus soft alerts to flag potential issues.
 
@@ -177,17 +179,17 @@ description: "See what's new and stay up to date on Product updates, fixes, and 
   ### Bug fixes and improvements
 
   **Chart Notes:**
-  - Fixed auto-save reliability issues
-  - Resolved template editing and conversion errors
-  - Improved dynamic template rendering
+  - Fixed an issue where chart notes were not auto-saving reliably, causing providers to lose their work
+  - Resolved errors that occurred when editing or converting chart note templates, which prevented template modifications
+  - Improved how dynamic templates render to eliminate display issues and ensure all fields show correctly
 
   **Permissions:**
-  - Billing managers and admins can now edit and submit notes
-  - Enhanced role-based access controls
+  - Added the ability for billing managers and admins to edit and submit chart notes, expanding access beyond just providers
+  - Enhanced role-based access controls to provide more granular permission settings across the system
 
   **Data Management:**
-  - Added delete/archive capabilities for cases, insurances, and prior authorizations
-  - Fixed appointment editing issues
+  - Added the ability to delete and archive cases, insurances, and prior authorizations that are no longer needed
+  - Fixed errors that prevented users from editing appointment details after they were created
 </Update>
 
 <Update label="Oct 31, 2025" tags={["Insights"]}>
@@ -232,15 +234,15 @@ description: "See what's new and stay up to date on Product updates, fixes, and 
   ### Bug fixes and improvements
 
   **Payments:**
-  - Fixed issues with credits being incorrectly applied to subscriptions
-  - Resolved payment processing timeouts
-  - Fixed gift card payment errors
+  - Fixed an error where patient account credits were being incorrectly applied to subscription balances instead of the intended charges
+  - Resolved timeout issues that were causing payment processing to fail, preventing patients from completing their transactions
+  - Fixed errors that prevented gift card payments from being processed successfully
 
   **Patient Statements:**
-  - Fixed patients not receiving statements at multiple sites
-  - Corrected mailing address display issues
-  - Fixed statement scheduling errors
-  - Corrected batch history balance calculations
+  - Resolved an issue where patients at multiple sites were not receiving their statements due to delivery failures
+  - Fixed a display problem where mailing addresses were showing incorrectly or incompletely on statements
+  - Fixed errors in the statement scheduling system that prevented statements from being sent on their scheduled dates
+  - Corrected calculation errors in batch history where balance amounts were displaying incorrectly
 </Update>
 
 <Update label="Sep 17, 2025" tags={["Air"]}>
@@ -266,13 +268,13 @@ description: "See what's new and stay up to date on Product updates, fixes, and 
   ### Bug fixes and improvements
 
   **Forms & Intake:**
-  - Added Spanish language intake documents
-  - Fixed duplicate insurance entry issues
+  - Added Spanish language versions of patient intake documents to better serve Spanish-speaking patients
+  - Fixed an error where duplicate insurance entries were being created when patients submitted intake forms
 
   **Faxing:**
-  - Enabled sending multiple files in a single fax
-  - Improved Plan of Care fax tracking and delivery rates
-  - Implemented zero-downtime fax transition for new sites
+  - Added the ability to send multiple files in a single fax transmission instead of requiring separate faxes
+  - Improved Plan of Care fax tracking and increased delivery success rates by addressing reliability issues
+  - Implemented a seamless zero-downtime fax service transition process for new sites migrating to the platform
 </Update>
 
 <Update label="Sep 30, 2025" tags={["Insights"]}>
@@ -313,14 +315,14 @@ description: "See what's new and stay up to date on Product updates, fixes, and 
   ### Bug fixes and improvements
 
   **Patient Statements:**
-  - Fixed statements not being sent for guarantors with dependents
-  - Resolved duplicate statements appearing in downloaded ZIP files
-  - Fixed electronic statement delivery failures
+  - Fixed an issue where statements were not being sent to financial guarantors who had dependents, leaving families without billing information
+  - Resolved a problem where duplicate copies of the same statement were appearing in downloaded ZIP files
+  - Fixed errors that were preventing electronic statements from being delivered successfully to patients via email
 
   **Payments & Billing:**
-  - Fixed incorrect copay calculations for self-pay appointments
-  - Corrected Stripe transaction fee errors
-  - Improved appointment reminder delivery reliability
+  - Fixed an error where copay amounts were calculating incorrectly for self-pay appointments, showing wrong amounts due
+  - Corrected calculation errors in Stripe transaction fees that were resulting in incorrect fee amounts being recorded
+  - Improved the reliability of appointment reminder delivery to ensure patients consistently receive their reminders on time
 </Update>
 
 <Update label="Aug 22, 2025" tags={["Insights"]}>
