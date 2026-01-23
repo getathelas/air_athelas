@@ -3,6 +3,316 @@ title: "Changelog"
 description: "See what's new and stay up to date on Product updates, fixes, and features."
 ---
 
+<Update label="Jan 31, 2026" tags={["Insights"]}>
+
+  ### [Beta user only] Charge Master released to pilot sites
+
+  Charge Master is now available, a comprehensive tool to manage your charge masters across payers and facilities. The feature set includes:
+
+  - CSV upload with intelligent column mapping and payer identification
+  - Manual charge master creation for individual entries
+  - Bulk editing and retirement of charge masters
+  - Copy charge masters across facilities
+  - Complete activity logging for audit trails
+  - Multiple effective dates with date range management
+  - NDC (National Drug Code) support
+  - Search across main table and activity log
+
+  The tool includes comprehensive validation for CPT codes, billing types, and payer mappings. Contact your account manager for access.
+
+  ### Improved eligibility infrastructure
+
+  We've completed major infrastructure improvements for eligibility:
+
+  - Historical eligibility records table storing full payload and parsed benefits
+  - Site and payer-level source configuration (choose Waystar, Change Healthcare, etc.)
+  - Rule change detection triggering automatic eligibility updates
+  - Unified benefit parsing across clearinghouses
+
+  These improvements reduce manual intervention, improve data consistency, and enable better troubleshooting when eligibility issues arise.
+
+  ### Bug fixes and improvements
+
+  **Eligibility & Benefits:**
+  - Fixed insurance deductible and remaining benefits calculations
+  - Corrected appointment eligibility counts displayed to staff
+  - Fixed eligibility timestamp to show in user's local timezone
+
+  **Collections & Reporting:**
+  - Fixed outstanding balance calculations in end-of-day emails
+  - Corrected patient exclusion logic in daily collections reports
+
+  **Claims & Encounter Details:**
+  - Fixed diagnosis code saving errors
+  - Resolved date range filtering issues across multiple pages
+  - Fixed various posting tool and encounter details errors
+</Update>
+
+<Update label="Dec 19, 2025" tags={["Insights"]}>
+
+  ### [Beta user only] Claims Page launches
+
+  On December 19, 2025, we launched the new Claims Page to select beta sites. The complete professional claims flow includes submission preview (view CMS and UB claims as PDFs before submitting), rules visibility showing which billing rules applied and what changed, activity feed for notes and claim history, side-by-side panels to view claim, submission preview, PDF, and rules simultaneously, and Athelas AI copilot for intelligent assistance.
+
+  The new claims details endpoint runs **more than 3x faster** than the previous version. Available to beta sites with broader rollout planned for Q1 2026.
+
+  ### [Beta user only] AI Report Builder beta release
+
+  On December 15, 2025, we launched the AI Report Builder to 4 external beta sites. Teams can ask questions in plain English and get instant reports backed by their data, with natural language queries, automatic SQL generation with security post-processing, patient-level security enforcement, saved reports library, CSV downloads, and quality checking system.
+
+  ### [Beta user only] Remittances Dashboard released
+
+  The Remittances Overview Dashboard provides comprehensive cash flow visibility with waterfall charts visualizing deposits flowing through your system, dynamic grouping by deposit source, matching status, facility, or provider, score cards showing key metrics, drill-down navigation to click any chart element and see underlying transactions, and filtering across all views.
+
+  ### Accounts Receivable Report dramatically faster
+
+  We've achieved dramatic performance improvements on the A/R Report Page through query optimization and infrastructure changes:
+
+  - Arizona Urology: 1.7 minutes → 3 seconds (**34x faster**)
+  - Buffalo: 3 minutes → 15 seconds (**12x faster**)
+  - Multiple other sites seeing 10-30x improvements
+
+  The improvements use optimized query patterns while maintaining backwards compatibility for all calculation methods.
+
+  ### Bug fixes and improvements
+
+  **Claims & EOB:**
+  - Fixed currency conversion errors in EOB remittance posting
+  - Improved claims history query performance (significantly faster)
+  - Fixed claim form generation speed (2x faster)
+  - Fixed EOB posting for large files (now handles 2,800+ remittances)
+
+  **User Interface:**
+  - Fixed denials page scrolling and navigation issues
+  - Fixed user logout errors when working with deposits
+  - Corrected currency display in downloaded reports (cents to dollars)
+  - Added security masking for bank account numbers
+  - Fixed encounter details error code display
+</Update>
+
+<Update label="Nov 30, 2025" tags={["Insights"]}>
+
+  ### Financially Responsible Party support
+
+  We've enhanced payment handling to properly support Financially Responsible Parties (FRP). This allows you to designate and manage different responsible parties for patient accounts, ensuring payments and statements go to the correct person or entity. The feature includes improved payment processing, statement routing, and balance tracking for FRP scenarios.
+
+  ### [Beta user only] Patient Responsibility Explainability: Charges Details
+
+  We've released Charges Details to pilot sites, helping patients understand exactly what they owe. The new view shows detailed procedure breakdowns for each date of service, current balance and payment history, available refund amounts, and direct access to payment and refund actions. Staff can now refund payments, write off charges, cancel patient responsibility requests, and view remittance details—all from a single interface.
+
+  ### FQHC Revenue Activity Report
+
+  For FQHC customers, we've built a comprehensive Revenue Activity Report showing month-over-month financial performance:
+
+  - Charges, payments, and adjustments broken down by category
+  - Sliding fee adjustments properly categorized
+  - Contractual adjustments and net transfers
+  - Delta version showing changes versus absolute values
+
+  The report is available for use in monthly closes and federal reporting.
+
+  ### UDS 9D federal reporting tool
+
+  We've created the UDS 9D report required for FQHC federal reporting submissions. The report properly splits charges across payers, handles bad debt and sliding fees according to federal guidelines, and excludes specific code ranges per UDS requirements.
+
+  ### Bug fixes and improvements
+
+  **Payments & Refunds:**
+  - Fixed credit card refund processing errors
+  - Resolved subscription balance calculation issues
+  - Fixed patient responsibility cancellation errors
+
+  **Patient Statements:**
+  - Fixed paper statement delivery failures at multiple sites
+  - Resolved statement mailing service issues
+
+  **Patient Workflows:**
+  - Fixed verification code timing issues that blocked payments
+  - Resolved workflow errors affecting patient check-in
+</Update>
+
+<Update label="Nov 30, 2025" tags={["Air"]}>
+
+  ### E-prescribing with controlled substances
+
+  We completed DEA certification for controlled substance prescribing through the Drummond Group. 
+
+  You can now prescribe both controlled and non-controlled substances directly from the EHR with secure identity verification through ID.me. The system tracks prescription status, refills, and pharmacy submissions automatically.
+
+  ### Scribe integration with redesigned EHR
+
+  The AI Scribe now works seamlessly with the redesigned EHR and dynamic template system. Notes generated by Scribe automatically populate the correct template sections, saving providers time on documentation. Existing sites can now migrate to the new EHR design with full Scribe functionality.
+</Update>
+
+<Update label="Oct 25, 2025" tags={["Air"]}>
+
+  ### Complete EHR redesign launched
+
+  We completed a major redesign of all core EHR pages with a modern, intuitive interface. The new design includes improved calendar views, streamlined patient search, cleaner demographics displays, organized attachments, and a completely rebuilt chart note system with dynamic templates.
+
+  ### Labs ordering complete
+
+  Lab ordering is now fully integrated into the chart note. You can order labs from Quest, Pathgroup, and other vendors through HealthGorilla, with results automatically captured and displayed in the EHR. The system supports both third-party lab orders and in-house lab billing for practices with their own lab facilities.
+
+  ### Messaging and tasking
+
+  Internal messaging allows your team to communicate within the practice, while external messaging connects directly to patients using the Interact system. The new tasking feature lets you create task lists for team members with status tracking and priority levels, including group-level task assignment.
+
+  ### Check-in and check-out
+
+  Streamlined patient check-in and check-out workflows help your front desk process patients faster. You can now copy and paste appointments for recurring visits, print upcoming appointment lists, and manage patient flow more efficiently.
+
+  ### DME billing support
+
+  If your practice bills for Durable Medical Equipment (DME), Air EHR now supports DME billing codes and documentation. The system includes prior authorization tracking by billable units with the ability to override calculations when needed, plus soft alerts to flag potential issues.
+
+  ### Data migration improvements
+
+  We've dramatically improved the data migration process for new sites. Migrations from WebPT, Raintree, and Empower now complete in 15-30 minutes instead of 6-8 hours. We've successfully migrated over 20,000 chart notes across 14 sites with minimal manual intervention.
+
+  ### Performance improvements
+
+  Chart note pages load significantly faster with improved typing responsiveness. Flowsheets now load approximately 39% faster, and we've added batch update capabilities for more efficient data entry.
+
+  ### Bug fixes and improvements
+
+  **Chart Notes:**
+  - Fixed auto-save reliability issues
+  - Resolved template editing and conversion errors
+  - Improved dynamic template rendering
+
+  **Permissions:**
+  - Billing managers and admins can now edit and submit notes
+  - Enhanced role-based access controls
+
+  **Data Management:**
+  - Added delete/archive capabilities for cases, insurances, and prior authorizations
+  - Fixed appointment editing issues
+</Update>
+
+<Update label="Oct 31, 2025" tags={["Insights"]}>
+
+  ### Stripe Separate Charges & Transfers migration
+
+  We've migrated sites to Stripe's Separate Charges & Transfers (SC&T) infrastructure, providing better payment handling and financial controls:
+  - Customer mapping for sites with Stripe accounts per facility or provider
+  - Auto-retry mechanism for failed transfers
+  - Race condition fixes when creating or reversing transfers
+  - Manual transfer capability for advanced payment scenarios
+  - Improved payout tracking in ledgers
+
+  These improvements reduce payment processing errors and give your team better visibility into financial transfers.
+
+  ### Patient workflow improvements
+
+  We've enhanced patient workflows and intake forms with better validation and reliability:
+  - Improved validation error messages for patient intake forms
+  - Better network error handling and display
+  - Fixed form ordering alignment issues
+  - Enhanced patient update template submissions
+
+  These improvements make patient check-in and paperwork submission smoother and more reliable across all sites.
+
+  ### Suggested charges automatically stay in sync
+
+  We rebuilt the suggested charges infrastructure to use event-driven architecture instead of queue-based processing. Now when eligibility changes, suggested charges update automatically through listeners rather than waiting in a queue.
+
+  This resolves the slow-draining queue issue from early October and ensures patients always see the most current cost estimates based on their latest eligibility information.
+
+  ### Report performance optimizations
+
+  We've moved multiple resource-intensive operations to read replicas, reducing load on the primary database:
+  - All KPI metrics queries
+  - Revenue Analysis page endpoints (now fully cached)
+  - Patient Breakdown queries
+  - Claims count queries
+
+  We also added strategic database indexes to eliminate slow sequential scans, improving page load times across the reporting suite.
+
+  ### Bug fixes and improvements
+
+  **Payments:**
+  - Fixed issues with credits being incorrectly applied to subscriptions
+  - Resolved payment processing timeouts
+  - Fixed gift card payment errors
+
+  **Patient Statements:**
+  - Fixed patients not receiving statements at multiple sites
+  - Corrected mailing address display issues
+  - Fixed statement scheduling errors
+  - Corrected batch history balance calculations
+</Update>
+
+<Update label="Sep 17, 2025" tags={["Air"]}>
+
+  ### Template Builder
+
+  Create custom chart notes, patient intake forms, and scribe templates using the new Template Builder. This tool allows you to configure templates specific to your practice needs without requiring engineering support. The builder is now available across Scribe, EHR, and Interact products for flexible form creation.
+
+  ### Patient outcome tracking
+
+  New functional outcome measurement tools let you track patient progress directly in the EHR. The patient activity tracker monitors engagement, while automatic KX Modifier calculation ensures compliance with Medicare requirements. You can now also add notes to patient demographics, appointments, and encounters for better documentation.
+
+  ### Lead management and credentialing
+
+  A new lead management landing page helps organize and track incoming patient leads. Providers can now handle their own credentialing through the self-service credentialing interface, including managing credentialing groups without administrative assistance.
+
+  ### Bug fixes and improvements
+
+  **Forms & Intake:**
+  - Added Spanish language intake documents
+  - Fixed duplicate insurance entry issues
+
+  **Faxing:**
+  - Enabled sending multiple files in a single fax
+  - Improved Plan of Care fax tracking and delivery rates
+  - Implemented zero-downtime fax transition for new sites
+</Update>
+
+<Update label="Sep 30, 2025" tags={["Insights"]}>
+
+  ### [Beta user only] Kiosk patient check-in
+
+  Your patients can now check in for appointments and pay outstanding balances using the self-service Kiosk. The Kiosk verifies patient identity, checks insurance eligibility in real-time, and processes payments—reducing front desk workload and improving patient flow.
+
+  Available at select sites. Contact your account manager to join the beta program.
+
+  ### [Beta user only] Check Deposit Manager
+
+  The Check Deposit Manager gives your team visibility into checks, deposits, and remittances. View check-level remittance data, track deposit sources, and understand cash flow through comprehensive tables and filtering. Features include deposit slip generation and CSV downloads.
+
+  Currently available to pilot sites.
+
+  ### Cost-saving patient statements
+
+  We've redesigned patient statements to significantly reduce your mailing costs. The new black and white format uses fewer pages while maintaining clarity. Key improvements include:
+
+  - Mail check address added to first page
+  - Patient ID and name on every date of service
+  - Reduced page count to lower postage costs
+  - Revenue codes added for hospital statements
+
+  The redesign is feature-flagged for gradual rollout, allowing us to collect feedback before broader deployment.
+
+  ### Performance improvements
+
+  We resolved a critical database connection pool issue that was causing timeouts across multiple services. The fix reduced mean query times from 15 seconds to sub-second performance, stabilizing the system during high-traffic periods.
+
+  We also stabilized the eligibility batch job queue after an overload incident, implementing better resource allocation and scheduling to prevent future backlogs.
+
+  ### Bug fixes and improvements
+
+  **Patient Statements:**
+  - Fixed statements not being sent for guarantors with dependents
+  - Resolved duplicate statements appearing in downloaded ZIP files
+  - Fixed electronic statement delivery failures
+
+  **Payments & Billing:**
+  - Fixed incorrect copay calculations for self-pay appointments
+  - Corrected Stripe transaction fee errors
+  - Improved appointment reminder delivery reliability
+</Update>
+
 <Update label="Aug 22, 2025" tags={["Insights"]}>
 
   **Insights now fully supports creating and updating the financially responsible party for any patient**
@@ -194,6 +504,5 @@ description: "See what's new and stay up to date on Product updates, fixes, and 
   - Change the appointment status directly from the tooltip! No more needing to go to the drawer
   - Alerts flag key information through icons and in the tooltip
   - Look and feel is overhauled to be cleaner, modern, and intuitive
-
   View our Blog post here.
 </Update>
