@@ -190,7 +190,6 @@
             "icon": "file-invoice",
             "tag": "Biller",
             "pages": [
-              "insights_biller/claim_details/claim_details_page",
               "insights_biller/claim_details/encounter_timeline_for_claims",
               "insights_biller/claim_details/how_to_download_cms_1500_forms",
               "insights_biller/claim_details/how_to_resubmit_a_single_claim",
