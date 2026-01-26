@@ -199,6 +199,14 @@
             ]
           },
           {
+            "group": "Patient Responsibility",
+            "icon": "dollar-sign",
+            "tag": "Biller",
+            "pages": [
+              "insights_biller/patient_responsibility/managing_patient_responsibility"
+            ]
+          },
+          {
             "group": "Reports",
             "icon": "chart-column",
             "tag": "Biller",

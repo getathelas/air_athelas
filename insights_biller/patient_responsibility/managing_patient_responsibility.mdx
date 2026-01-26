@@ -1,0 +1,132 @@
+---
+title: "Managing Patient Responsibility"
+sidebarTitle: "Managing Patient Responsibility"
+---
+
+The Patient Responsibility page is where you track and manage patient-owed balances, view payment history, and understand how payments flow through your billing system. 
+
+The three-panel layout puts patient info on the left, your workspace in the center, and Copilot on the right for quick, context-aware billing help.
+
+![Patient Responsiblity New View](/images/insights_biller/patient_responsibility/managing_patient_responsibility/managing_patient_responsibility_1.png)
+
+## **Understanding the Three-Panel Layout**
+
+The interface organizes your workspace into three panels, each serving a specific purpose in your billing workflow.
+
+**Left Panel - Patient Information**
+
+![Left Panel Patient Info](/images/insights_biller/patient_responsibility/managing_patient_responsibility/managing_patient_responsibility_2.png)
+
+The left sidebar displays patient demographics, contact information, insurance details, and quick action buttons.
+
+**Center Panel - Main Content**
+
+![Center Panel Main Content](/images/insights_biller/patient_responsibility/managing_patient_responsibility/managing_patient_responsibility_3.png)
+
+
+The center panel is your primary workspace where you interact with transactions, credits, and other patient financial data. This area provides space to review transaction histories and payment allocations.
+
+**Right Panel - Copilot AI Assistant** 
+
+![Copilot Context Awareness](/images/insights_biller/patient_responsibility/managing_patient_responsibility/managing_patient_responsibility_4.png)
+
+
+The right panel displays **Athelas Copilot**, your AI assistant that understands the context of what's on your screen.
+
+**Context-aware Copilot:**
+
+Note that the Athelas agent on this panel is context aware, click on any transaction to select it. You can then ask Copilot "explain this charge" or "where did this payment go?" and it will reference the selected transaction. Copilot pulls context from your screen and backend data, so you don't need to specify transaction IDs or dates.
+
+<video controls className="w-full aspect-video rounded-l">
+  <source src="/images/insights_biller/patient_responsibility/managing_patient_responsibility/managing_patient_responsibility_5.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<Tip>
+**Tip:** As you review transaction histories, ask Copilot questions about the specific transaction you're viewing. It works across all tabs—transactions, credits, and other patient financial information.
+</Tip>
+
+## **Working with Transactions**
+
+### <Icon icon="file-invoice-dollar" iconType="duotone" color="#F9345F" size={23} /> Transaction Details Panel
+
+When you click a transaction, the detail panel shows a financial breakdown with four metrics:
+
+![Transaction Details Breakdown](/images/insights_biller/patient_responsibility/managing_patient_responsibility/managing_patient_responsibility_6.png)
+
+**Financial breakdown fields:**
+
+1. **Initial Transaction Amount** - The original amount charged to the patient
+2. **Total Applied** - Amount currently applied to specific dates of service
+3. **Total Refunded** - Money returned to the patient (left your system)
+4. **Total in Credits** - Amount stored as patient credits (in your system but not applied)
+
+<Info>
+These four values always balance: **Initial Transaction Amount = Total Applied + Total Refunded + Total in Credits**
+</Info>
+
+
+### <Icon icon="clock-rotate-left" iconType="duotone" color="#F9345F" size={23} /> Activity Timeline
+
+The activity timeline shows the complete chronological history of a transaction.
+
+![Activity Timeline](/images/insights_biller/patient_responsibility/managing_patient_responsibility/managing_patient_responsibility_8.png)
+
+**Timeline entries include:**
+
+- Initial payment transaction and date
+- Movements to and from credits with timestamps
+- Refunds back to the patient
+- Reallocations to different dates of service
+- Adjustments or corrections
+
+<Tip>
+**Tip:** Use the activity timeline to review the complete history of transactions that have been moved multiple times.
+</Tip>
+
+
+### Understanding Activitiy & Breakdown
+
+**Example 1: Full amount moved to credits**
+
+![Fully Moved to Credits Example](/images/insights_biller/patient_responsibility/managing_patient_responsibility/managing_patient_responsibility_7.png)
+
+- Initial Transaction Amount: $59.55
+- Total Applied: $0.00
+- Total Refunded: $0.00
+- Total in Credits: $59.55
+
+The allocation table shows that the entire transaction was moved to credits because the patient responsibility was determined to be not eligible.
+
+
+**Example 2: Partial refund with remainder in credits**
+Transaction partially refunded back to the patient, partially moved to credits
+
+**Example 3: Partial refund with remainder reapplied**
+
+![Reallocated Transaction Example](/images/insights_biller/patient_responsibility/managing_patient_responsibility/managing_patient_responsibility_9.png)
+
+- Initial Transaction Amount: $50.00
+- Total Applied: $35.00
+- Total Refunded: $15.00
+- Total in Credits: $0.00
+
+Balance: $50.00 = $35.00 + $15.00 + $0.00
+
+This transaction shows a $50.00 payment where $15.00 was refunded to the patient, and the remaining $35.00 was moved to credits and then reapplied to the same date of service. The activity timeline shows the complete chronological history of the refund, credit creation, and reapplication.
+
+
+## **Managing Credits**
+
+### <Icon icon="money-bill-transfer" iconType="duotone" color="#F9345F" size={23} /> Credits Timeline View
+
+![Credits Timeline](/images/insights_biller/patient_responsibility/managing_patient_responsibility/managing_patient_responsibility_10.png)
+
+The **Credits** tab displays a chronological view of all credit transactions for a patient.
+
+
+Each entry shows:
+- Date of the credit transaction
+- Amount added to or removed from credits
+- Running balance after the transaction
+- Related date of service (if applicable)
