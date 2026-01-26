@@ -178,6 +178,7 @@
             "icon": "file-invoice",
             "tag": "Biller",
             "pages": [
+              "insights_biller/general_billing/getting_started_with_charge_master",
               "insights_biller/general_billing/how_to_set_block_pr_rules",
               "insights_biller/general_billing/remittances",
               "insights_biller/general_billing/the_billing_rules_engine",
