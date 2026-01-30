@@ -3,13 +3,76 @@ title: "Changelog"
 description: "Stay up to date with the latest product updates, bug fixes, and new features."
 ---
 
+<Update label="January 31, 2026" tags={["Air"]}>
+
+  ### [Beta user only] Waitlist launches
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_01_31/waitlist.png" alt="Waitlist interface showing patient waitlist requests and management" />
+
+  On January 5, 2026, we launched Waitlist to select customers. Waitlist helps practices fill open schedules faster by automatically offering cancelled appointment slots to patients who couldn't find available times. 
+
+  Patients can join the waitlist through the Patient Portal by specifying their provider, facility, appointment type, and time preferences. Staff can also manually add patients to the waitlist from the Calendar's Requests tab. When a cancellation occurs, the system automatically offers the slot to the first matching patient on the list via text and email. 
+
+  Waitlist includes configurable settings for approval requirements, offer expiration times, minimum fill times, and automatic cancellation of duplicate appointments. Available to beta customers, contact your account manager if you are interested to join the beta.
+
+  ### [Beta user only] Custom Orders and Letters
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_01_31/custom-order.png" alt="Custom Orders and Letters interface showing template builder" />
+
+  We've completed development for Custom Orders and Letters, enabling practices to create reusable templates for medical orders that can be quickly filled out and sent to recipients. The feature includes:
+
+  - Template builder with rich text editor supporting formatting, tables, and interactive fields
+  - Variable system that automatically populates patient, provider, facility, and insurance information
+  - Auto-fill of diagnosis codes and procedures from appointments
+  - Interactive fields (text inputs, text areas, diagnosis code fields) for customizing each order
+  - Live preview panel to see how templates will appear when printed or sent
+  - Draft saving to continue editing orders later
+
+  <video controls className="w-full aspect-video rounded-xl">
+    <source src="/images/master_changelogs/changelog/2026_01_31/custom-orders.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  ### [Beta user only] NPS Survey for post-visit feedback
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_01_31/nps-promoter.gif" alt="NPS Survey workflow showing patient feedback collection and review prompts" />
+
+  We've launched NPS Survey workflows to collect patient feedback following visits. The workflow can be added to Outreach Flows, prompting patients to rate their experience and provide feedback via text or email. 
+  
+  Detractor responses automatically trigger email notifications to practice stakeholders for immediate follow-up, while promoter responses can direct patients to leave public reviews on Google, Yelp, or other review platforms. Survey responses are stored as PDFs in patient attachments for easy reference. 
+
+
+  ### Bug fixes and improvements
+
+  **Appointments & Scheduling:**
+  - Fixed an issue where waitlist pop-up messages didn't display the patient's name, making it unclear which patient was being offered an appointment
+  - Fixed a problem where external appointment type IDs were missing, causing scheduling errors when booking appointments through the patient portal
+
+  **Quality Measures:**
+  - Resolved multiple quality measure alerting issues affecting BMI screening, depression screening, diabetes mellitus, controlling high blood pressure, falls screening, medication documentation, and post-fracture communication, ensuring alerts now appear consistently in chart notes for proper patient care tracking
+
+  **Chart Notes & Orders:**
+  - Completed migration for Time In/Out storage in chart notes to support Medicare compliance requirements for documenting visit duration
+  - Fixed an issue where discharge notes didn't automatically discharge the patient case upon submission, requiring manual discharge steps
+  - Fixed KX modifier visibility in the flowsheet, ensuring that the auto-applied KX modifier for therapy cap exceptions is properly displayed
+
+  **User Interface:**
+  - Implemented automatic task creation for failed fax transmissions, ensuring staff are notified when faxes don't go through successfully
+
+  **Integrations:**
+  - Fixed an error where the prior authorization report was broken for Lattimore, preventing staff from viewing authorization statuses
+  - Resolved an issue where users were unable to create or save measurements in the EHR, blocking documentation of patient vitals and assessments
+
+</Update>
+
+
 <Update label="January 30, 2026" tags={["Insights"]}>
 
-  ### [Beta user only] Charge Master released to pilot sites
+  ### [Beta user only] Charge Master released to pilot customers
 
   <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_01_30/charge-master-interface.png" alt="Charge Master interface showing comprehensive charge master management with CPT codes, payers, and facilities" />
 
-  Charge Master is now available for selected pilot sites, a comprehensive tool to manage your charge masters across payers and facilities. The feature set includes:
+  Charge Master is now available for selected pilot customers, a comprehensive tool to manage your charge masters across payers and facilities. The feature set includes:
 
   - CSV upload with intelligent column mapping and payer identification
   - Manual charge master creation for individual entries
@@ -29,7 +92,7 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
     Your browser does not support the video tag.
   </video>
 
-  We launched the AI Report Builder to selected external beta sites. Teams can ask questions in plain English and get instant reports backed by their data, with natural language queries, automatic SQL generation with security post-processing, patient-level security enforcement, saved reports library, CSV downloads, and quality checking system.
+  We launched the AI Report Builder to selected external beta customers. Teams can ask questions in plain English and get instant reports backed by their data, with natural language queries, automatic SQL generation with security post-processing, patient-level security enforcement, saved reports library, CSV downloads, and quality checking system.
 
 
   ### [Beta User Only] Patient Profile redesign
