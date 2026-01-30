@@ -60,7 +60,7 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
   - Implemented automatic task creation for failed fax transmissions, ensuring staff are notified when faxes don't go through successfully
 
   **Integrations:**
-  - Fixed an error where the prior authorization report was broken for Lattimore, preventing staff from viewing authorization statuses
+  - Fixed an error where the prior authorization report was broken for a customer, preventing staff from viewing authorization statuses
   - Resolved an issue where users were unable to create or save measurements in the EHR, blocking documentation of patient vitals and assessments
 
 </Update>
@@ -118,10 +118,6 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
 
   We've added filtering capabilities to help you analyze payment patterns. New features include deposit source filters across Waterfall, Checks, and Deposits views, provider-based deposit breakdowns showing payouts per check by rendering provider, and improved empty states.
 
-  ### UDS 9D Report for FQHCs
-
-  We've delivered the UDS 9D Report to multiple FQHC customers, providing comprehensive reporting for federal health center requirements. The report is now available for KCS, WFHC, and SunLife with additional sites coming soon.
-
   ### Bug fixes and improvements
 
   **Eligibility & Benefits:**
@@ -152,11 +148,7 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
 
   ### Accounts Receivable Report dramatically faster
 
-  We've achieved dramatic performance improvements on the A/R Report Page through query optimization and infrastructure changes:
-
-  - Arizona Urology: 1.7 minutes → 3 seconds (**34x faster**)
-  - Buffalo: 3 minutes → 15 seconds (**12x faster**)
-  - Multiple other customers seeing 10-30x improvements
+  We've achieved dramatic performance improvements on the A/R Report Page through query optimization and infrastructure changes.
 
   The improvements use optimized query patterns while maintaining backwards compatibility for all calculation methods.
 
