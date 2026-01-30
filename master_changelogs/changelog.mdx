@@ -5,11 +5,9 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
 
 <Update label="January 30, 2026" tags={["Insights"]}>
 
-  ### [Beta user only] AI Report Builder beta release
-
-  On December 15, 2025, we launched the AI Report Builder to selected external beta sites. Teams can ask questions in plain English and get instant reports backed by their data, with natural language queries, automatic SQL generation with security post-processing, patient-level security enforcement, saved reports library, CSV downloads, and quality checking system.
-
   ### [Beta user only] Charge Master released to pilot sites
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_01_30/charge-master-interface.png" alt="Charge Master interface showing comprehensive charge master management with CPT codes, payers, and facilities" />
 
   Charge Master is now available, a comprehensive tool to manage your charge masters across payers and facilities. The feature set includes:
 
@@ -24,6 +22,22 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
 
   The tool includes comprehensive validation for CPT codes, billing types, and payer mappings. We've added payer mapping history tracking, downloadable CSV error reports, performance improvements for large file imports, and AI-powered bulk editing through Copilot. Contact your account manager for access.
 
+  ### [Beta user only] AI Report Builder beta release
+
+  <video controls className="w-full aspect-video rounded-xl">
+    <source src="/images/master_changelogs/changelog/2026_01_30/ai-report-builder.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  On December 15, 2025, we launched the AI Report Builder to selected external beta sites. Teams can ask questions in plain English and get instant reports backed by their data, with natural language queries, automatic SQL generation with security post-processing, patient-level security enforcement, saved reports library, CSV downloads, and quality checking system.
+
+
+  ### [Beta User Only] Patient Profile redesign
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_01_30/patient-profile-redesign.png" alt="Redesigned Patient Profile with 3-panel layout showing charges, transactions, and activity feed" />
+
+  We've redesigned the Patient Profile page with a new 3-panel layout that makes it easier to understand patient balances and payment history. The redesign includes separate tabs for Charges, Transactions, and Touchpoints, enhanced activity feed showing payment events, improved transaction details display, and contextual Copilot suggestions that adapt to your current view.
+
   ### Improved eligibility infrastructure
 
   We've completed major infrastructure improvements for eligibility:
@@ -34,10 +48,6 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
   - Unified benefit parsing across clearinghouses
 
   These improvements reduce manual intervention, improve data consistency, and enable better troubleshooting when eligibility issues arise.
-
-  ### Patient Profile redesign
-
-  We've redesigned the Patient Profile page with a new 3-panel layout that makes it easier to understand patient balances and payment history. The redesign includes separate tabs for Charges, Transactions, and Touchpoints, enhanced activity feed showing payment events, improved transaction details display, and contextual Copilot suggestions that adapt to your current view.
 
   ### Remittances Dashboard updates
 
@@ -50,25 +60,25 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
   ### Bug fixes and improvements
 
   **Eligibility & Benefits:**
-  - Fixed insurance deductible and remaining benefits calculations
-  - Corrected appointment eligibility counts displayed to staff
-  - Fixed eligibility timestamp to show in user's local timezone
-  - Improved eligibility parsing to better handle benefits from multiple insurance carriers
-  - Fixed query performance issues on the appointments endpoint for faster page loads
+  - Fixed an error where insurance deductibles and remaining benefits were being calculated incorrectly, causing inaccurate patient responsibility estimates
+  - Resolved an issue where appointment eligibility counts were displaying incorrect numbers to staff members
+  - Fixed eligibility timestamps to properly display in the user's local timezone instead of UTC
+  - Improved eligibility parsing to better handle complex scenarios with benefits from multiple insurance carriers, reducing errors when patients have secondary coverage
+  - Fixed query performance issues on the appointments endpoint, making appointment pages load significantly faster
 
   **Collections & Reporting:**
-  - Fixed outstanding balance calculations in end-of-day emails
-  - Corrected patient exclusion logic in daily collections reports
-  - Resolved A/R Report discrepancies between Insights calculations and external reports
-  - Enhanced report documentation and migrated guides to our new documentation platform
+  - Fixed an error where outstanding balances in end-of-day emails were being calculated incorrectly
+  - Corrected patient exclusion logic in daily collections reports, ensuring the right patients are included in collection metrics
+  - Resolved A/R Report discrepancies where Insights calculations didn't match external reports, improving data accuracy for financial reconciliation
+  - Enhanced report documentation and migrated all reporting guides to our new documentation platform for easier access
 
   **Claims & Encounter Details:**
-  - Fixed diagnosis code saving errors
-  - Resolved date range filtering issues across multiple pages
-  - Fixed various posting tool and encounter details errors
+  - Fixed an error where diagnosis codes would fail to save properly in certain scenarios
+  - Resolved date range filtering issues across multiple pages, ensuring filters work consistently throughout the application
+  - Fixed various errors in the posting tool and encounter details pages that were preventing users from completing their workflows
 
   **Payment Plans:**
-  - Added monitoring alerts for payment plan success rates to ensure reliable automated payments
+  - Added monitoring alerts for payment plan success rates to proactively identify and resolve issues, ensuring reliable automated payments for patients
 
 </Update>
 
