@@ -3,6 +3,76 @@ title: "Changelog"
 description: "Stay up to date with the latest product updates, bug fixes, and new features."
 ---
 
+<Update label="January 30, 2026" tags={["Insights"]}>
+
+  ### [Beta user only] AI Report Builder beta release
+
+  On December 15, 2025, we launched the AI Report Builder to selected external beta sites. Teams can ask questions in plain English and get instant reports backed by their data, with natural language queries, automatic SQL generation with security post-processing, patient-level security enforcement, saved reports library, CSV downloads, and quality checking system.
+
+  ### [Beta user only] Charge Master released to pilot sites
+
+  Charge Master is now available, a comprehensive tool to manage your charge masters across payers and facilities. The feature set includes:
+
+  - CSV upload with intelligent column mapping and payer identification
+  - Manual charge master creation for individual entries
+  - Bulk editing and retirement of charge masters
+  - Copy charge masters across facilities
+  - Complete activity logging for audit trails
+  - Multiple effective dates with date range management
+  - NDC (National Drug Code) support
+  - Search across main table and activity log
+
+  The tool includes comprehensive validation for CPT codes, billing types, and payer mappings. We've added payer mapping history tracking, downloadable CSV error reports, performance improvements for large file imports, and AI-powered bulk editing through Copilot. Contact your account manager for access.
+
+  ### Improved eligibility infrastructure
+
+  We've completed major infrastructure improvements for eligibility:
+
+  - Historical eligibility records table storing full payload and parsed benefits
+  - Site and payer-level source configuration (choose Waystar, Change Healthcare, etc.)
+  - Rule change detection triggering automatic eligibility updates
+  - Unified benefit parsing across clearinghouses
+
+  These improvements reduce manual intervention, improve data consistency, and enable better troubleshooting when eligibility issues arise.
+
+  ### Patient Profile redesign
+
+  We've redesigned the Patient Profile page with a new 3-panel layout that makes it easier to understand patient balances and payment history. The redesign includes separate tabs for Charges, Transactions, and Touchpoints, enhanced activity feed showing payment events, improved transaction details display, and contextual Copilot suggestions that adapt to your current view.
+
+  ### Remittances Dashboard updates
+
+  We've added filtering capabilities to help you analyze payment patterns. New features include deposit source filters across Waterfall, Checks, and Deposits views, provider-based deposit breakdowns showing payouts per check by rendering provider, and improved empty states.
+
+  ### UDS 9D Report for FQHCs
+
+  We've delivered the UDS 9D Report to multiple FQHC customers, providing comprehensive reporting for federal health center requirements. The report is now available for KCS, WFHC, and SunLife with additional sites coming soon.
+
+  ### Bug fixes and improvements
+
+  **Eligibility & Benefits:**
+  - Fixed insurance deductible and remaining benefits calculations
+  - Corrected appointment eligibility counts displayed to staff
+  - Fixed eligibility timestamp to show in user's local timezone
+  - Improved eligibility parsing to better handle benefits from multiple insurance carriers
+  - Fixed query performance issues on the appointments endpoint for faster page loads
+
+  **Collections & Reporting:**
+  - Fixed outstanding balance calculations in end-of-day emails
+  - Corrected patient exclusion logic in daily collections reports
+  - Resolved A/R Report discrepancies between Insights calculations and external reports
+  - Enhanced report documentation and migrated guides to our new documentation platform
+
+  **Claims & Encounter Details:**
+  - Fixed diagnosis code saving errors
+  - Resolved date range filtering issues across multiple pages
+  - Fixed various posting tool and encounter details errors
+
+  **Payment Plans:**
+  - Added monitoring alerts for payment plan success rates to ensure reliable automated payments
+
+</Update>
+
+
 <Update label="Dec 19, 2025" tags={["Insights"]}>
 
   ### Accounts Receivable Report dramatically faster
