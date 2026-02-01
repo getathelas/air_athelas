@@ -166,11 +166,12 @@
           {
             "group": "Front Office Payments",
             "icon": "credit-card",
-            "tag": "Biller",
+            "tag": "Front Desk",
             "pages": [
-              "insights_biller/front_office_payments/how_to_create_suggested_pr_rules",
-              "insights_biller/front_office_payments/self_pay_fee_schedule",
-              "insights_biller/front_office_payments/target_allowed_amounts"
+              "insights_front_desk/front_office_payments/automatic_service_charges",
+              "insights_front_desk/front_office_payments/how_to_create_suggested_pr_rules",
+              "insights_front_desk/front_office_payments/self_pay_fee_schedule",
+              "insights_front_desk/front_office_payments/target_allowed_amounts"
             ]
           },
           {
