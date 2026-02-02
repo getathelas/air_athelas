@@ -166,11 +166,12 @@
           {
             "group": "Front Office Payments",
             "icon": "credit-card",
-            "tag": "Biller",
+            "tag": "Front Desk",
             "pages": [
-              "insights_biller/front_office_payments/how_to_create_suggested_pr_rules",
-              "insights_biller/front_office_payments/self_pay_fee_schedule",
-              "insights_biller/front_office_payments/target_allowed_amounts"
+              "insights_front_desk/front_office_payments/automatic_service_charges",
+              "insights_front_desk/front_office_payments/how_to_create_suggested_pr_rules",
+              "insights_front_desk/front_office_payments/self_pay_fee_schedule",
+              "insights_front_desk/front_office_payments/target_allowed_amounts"
             ]
           },
           {
@@ -189,6 +190,7 @@
             "icon": "file-invoice",
             "tag": "Biller",
             "pages": [
+              "insights_biller/claim_details/claim_details_page",
               "insights_biller/claim_details/encounter_timeline_for_claims",
               "insights_biller/claim_details/how_to_download_cms_1500_forms",
               "insights_biller/claim_details/how_to_resubmit_a_single_claim",

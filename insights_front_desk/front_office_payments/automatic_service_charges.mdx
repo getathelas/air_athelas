@@ -1,0 +1,58 @@
+---
+title: "Post Encounter CPT Based Service Charges"
+sidebarTitle: "CPT Based Service Charges"
+---
+
+Athelas lets you calculate patient's service charges, post encounter, using specific CPT codes instead of just general appointment types, factoring in patient benefits, deductibles, and real-time eligibility to provide accurate estimates of what patients should pay before they leave your practice.
+
+### <Icon icon="circle-plus" iconType="duotone" color="#F9345F" size={23} />  Adding Service Charges to an Appointment
+
+
+<img src="/images/insights_front_desk/front_office_payments/automatic_service_charges/automatic_service_charges_1.png" alt="" />
+
+You can add service items to any appointment, and the system will calculate the charges based on your configured CPT rates.
+
+**To add service charges:**
+
+1. Navigate to the **Appointments** page and open the appointment
+2. Click on **Charges**
+3. Click **Add Service Item**
+4. The system calculates charges based on:
+   - Your CPT charge rates
+   - Patient's insurance benefits (Deductible, OOP, Coinsurance)
+
+
+### <Icon icon="gear" iconType="duotone" color="#F9345F" size={23} />  Configuring Service Charge Rates
+
+<img src="/images/insights_front_desk/front_office_payments/automatic_service_charges/automatic_service_charges_2.png" alt="" />
+
+Service charge rates are configured in your practice settings and determine the base amounts used for calculations.
+
+**To configure CPT charge rates:**
+
+1. Go to **My Practice**
+2. Navigate to **PR Settings**
+3. Navigate to **Service Charges** (located at the bottom of the settings menu)
+4. Add or update your CPT codes and their corresponding charge amounts
+
+### FAQ
+
+<Accordion title="What information does the calculation consider?">
+The calculation considers:
+
+- CPT charge rates configured in your Service Charges settings
+- Patient's current insurance eligibility and benefits
+- Deductible amounts (remaining or already met)
+- Out-of-pocket maximums
+- Appointment type and services rendered
+
+This provides a more accurate estimate than appointment-based charges alone.
+</Accordion>
+
+<Accordion title="Where can I view the calculated charges?">
+Calculated charges appear in the **Charges** section of the appointment details page. The system shows both the base charge amount and the estimated patient responsibility based on their insurance benefits.
+</Accordion>
+
+<Accordion title="Can I still manually adjust charges if needed?">
+Yes, you can manually adjust charges as needed. The calculation provides an initial estimate, but you maintain full control to modify charges based on specific circumstances or documentation.
+</Accordion>

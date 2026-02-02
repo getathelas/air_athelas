@@ -3,15 +3,152 @@ title: "Changelog"
 description: "Stay up to date with the latest product updates, bug fixes, and new features."
 ---
 
+<Update label="January 31, 2026" tags={["Air"]}>
+
+  ### [Beta user only] Patient Waitlist 
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_01_31/waitlist.png" alt="Waitlist interface showing patient waitlist requests and management" />
+
+  On January 5, 2026, we launched Waitlist to select customers. Waitlist helps practices fill open schedules faster by automatically offering cancelled appointment slots to patients who couldn't find available times. 
+
+  Patients can join the waitlist through the Patient Portal by specifying their provider, facility, appointment type, and time preferences. Staff can also manually add patients to the waitlist from the Calendar's Requests tab. When a cancellation occurs, the system automatically offers the slot to the first matching patient on the list via text and email. 
+
+  Waitlist includes configurable settings for approval requirements, offer expiration times, minimum fill times, and automatic cancellation of duplicate appointments. Available to beta customers, contact your account manager if you are interested to join the beta.
+
+  ### [Beta user only] Custom Orders and Letters
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_01_31/custom-order.png" alt="Custom Orders and Letters interface showing template builder" />
+
+  We've completed development for Custom Orders and Letters, enabling practices to create reusable templates for medical orders that can be quickly filled out and sent to recipients. The feature includes:
+
+  - Template builder with rich text editor supporting formatting, tables, and interactive fields
+  - Variable system that automatically populates patient, provider, facility, and insurance information
+  - Auto-fill of diagnosis codes and procedures from appointments
+  - Interactive fields (text inputs, text areas, diagnosis code fields) for customizing each order
+  - Live preview panel to see how templates will appear when printed or sent
+  - Draft saving to continue editing orders later
+
+  <video controls className="w-full aspect-video rounded-xl">
+    <source src="/images/master_changelogs/changelog/2026_01_31/custom-orders.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  ### [Beta user only] NPS Survey for post-visit feedback
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_01_31/nps-promoter.gif" alt="NPS Survey workflow showing patient feedback collection and review prompts" />
+
+  We've launched NPS Survey workflows to collect patient feedback following visits. The workflow can be added to Outreach Flows, prompting patients to rate their experience and provide feedback via text or email. 
+  
+  Detractor responses automatically trigger email notifications to practice stakeholders for immediate follow-up, while promoter responses can direct patients to leave public reviews on Google, Yelp, or other review platforms. Survey responses are stored as PDFs in patient attachments for easy reference. 
+
+
+  ### Bug fixes and improvements
+
+  **Appointments & Scheduling:**
+  - Fixed an issue where waitlist pop-up messages didn't display the patient's name, making it unclear which patient was being offered an appointment
+  - Fixed a problem where external appointment type IDs were missing, causing scheduling errors when booking appointments through the patient portal
+
+  **Quality Measures:**
+  - Resolved multiple quality measure alerting issues affecting BMI screening, depression screening, diabetes mellitus, controlling high blood pressure, falls screening, medication documentation, and post-fracture communication, ensuring alerts now appear consistently in chart notes for proper patient care tracking
+
+  **Chart Notes & Orders:**
+  - Completed migration for Time In/Out storage in chart notes to support Medicare compliance requirements for documenting visit duration
+  - Fixed an issue where discharge notes didn't automatically discharge the patient case upon submission, requiring manual discharge steps
+  - Fixed KX modifier visibility in the flowsheet, ensuring that the auto-applied KX modifier for therapy cap exceptions is properly displayed
+
+  **User Interface:**
+  - Implemented automatic task creation for failed fax transmissions, ensuring staff are notified when faxes don't go through successfully
+
+  **Integrations:**
+  - Fixed an error where the prior authorization report was broken for a customer, preventing staff from viewing authorization statuses
+  - Resolved an issue where users were unable to create or save measurements in the EHR, blocking documentation of patient vitals and assessments
+
+</Update>
+
+
+<Update label="January 30, 2026" tags={["Insights"]}>
+
+  ### [Beta user only] Charge Master released to pilot customers
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_01_30/charge-master-interface.png" alt="Charge Master interface showing comprehensive charge master management with CPT codes, payers, and facilities" />
+
+  Charge Master is now available for selected pilot customers, a comprehensive tool to manage your charge masters across payers and facilities. The feature set includes:
+
+  - CSV upload with intelligent column mapping and payer identification
+  - Manual charge master creation for individual entries
+  - Bulk editing and retirement of charge masters
+  - Copy charge masters across facilities
+  - Complete activity logging for audit trails
+  - Multiple effective dates with date range management
+  - NDC (National Drug Code) support
+  - Search across main table and activity log
+
+  The tool includes comprehensive validation for CPT codes, billing types, and payer mappings. We've added payer mapping history tracking, downloadable CSV error reports, performance improvements for large file imports, and AI-powered bulk editing through Copilot. Contact your account manager for access.
+
+  ### [Beta user only] AI Report Builder beta release
+
+  <video controls className="w-full aspect-video rounded-xl">
+    <source src="/images/master_changelogs/changelog/2026_01_30/ai-report-builder.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  We launched the AI Report Builder to selected external beta customers. Teams can ask questions in plain English and get instant reports backed by their data, with natural language queries, automatic SQL generation with security post-processing, patient-level security enforcement, saved reports library, CSV downloads, and quality checking system.
+
+
+  ### [Beta User Only] Patient Profile redesign
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_01_30/patient-profile-redesign.png" alt="Redesigned Patient Profile with 3-panel layout showing charges, transactions, and activity feed" />
+
+  We've redesigned the Patient Profile page with a new 3-panel layout that makes it easier to understand patient balances and payment history. 
+  
+  The redesign includes separate tabs for Patient Details, Charges, and Touchpoints, enhanced activity feed showing payment events, improved transaction details display, and contextual Copilot suggestions that adapt to your current view.
+
+  ### Improved eligibility infrastructure
+
+  We've completed major infrastructure improvements for eligibility:
+
+  - Historical eligibility records table storing full payload and parsed benefits
+  - Site and payer-level source configuration (choose Waystar, Change Healthcare, etc.)
+  - Rule change detection triggering automatic eligibility updates
+  - Unified benefit parsing across clearinghouses
+
+  These improvements reduce manual intervention, improve data consistency, and enable better troubleshooting when eligibility issues arise.
+
+  ### Remittances Dashboard updates
+
+  We've added filtering capabilities to help you analyze payment patterns. New features include deposit source filters across Waterfall, Checks, and Deposits views, provider-based deposit breakdowns showing payouts per check by rendering provider, and improved empty states.
+
+  ### Bug fixes and improvements
+
+  **Eligibility & Benefits:**
+  - Fixed an error where insurance deductibles and remaining benefits were being calculated incorrectly, causing inaccurate patient responsibility estimates
+  - Resolved an issue where appointment eligibility counts were displaying incorrect numbers to staff members
+  - Fixed eligibility timestamps to properly display in the user's local timezone instead of UTC
+  - Improved eligibility parsing to better handle complex scenarios with benefits from multiple insurance carriers, reducing errors when patients have secondary coverage
+  - Fixed query performance issues on the appointments endpoint, making appointment pages load significantly faster
+
+  **Collections & Reporting:**
+  - Fixed an error where outstanding balances in end-of-day emails were being calculated incorrectly
+  - Corrected patient exclusion logic in daily collections reports, ensuring the right patients are included in collection metrics
+  - Resolved A/R Report discrepancies where Insights calculations didn't match external reports, improving data accuracy for financial reconciliation
+  - Enhanced report documentation and migrated all reporting guides to our new documentation platform for easier access
+
+  **Claims & Encounter Details:**
+  - Fixed an error where diagnosis codes would fail to save properly in certain scenarios
+  - Resolved date range filtering issues across multiple pages, ensuring filters work consistently throughout the application
+  - Fixed various errors in the posting tool and encounter details pages that were preventing users from completing their workflows
+
+  **Payment Plans:**
+  - Added monitoring alerts for payment plan success rates to proactively identify and resolve issues, ensuring reliable automated payments for patients
+
+</Update>
+
+
 <Update label="Dec 19, 2025" tags={["Insights"]}>
 
   ### Accounts Receivable Report dramatically faster
 
-  We've achieved dramatic performance improvements on the A/R Report Page through query optimization and infrastructure changes:
-
-  - Arizona Urology: 1.7 minutes → 3 seconds (**34x faster**)
-  - Buffalo: 3 minutes → 15 seconds (**12x faster**)
-  - Multiple other customers seeing 10-30x improvements
+  We've achieved dramatic performance improvements on the A/R Report Page through query optimization and infrastructure changes.
 
   The improvements use optimized query patterns while maintaining backwards compatibility for all calculation methods.
 
@@ -78,56 +215,6 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
   The AI Scribe now works seamlessly with the redesigned EHR and dynamic template system. Notes generated by Scribe automatically populate the correct template sections, saving providers time on documentation. Existing customers can now migrate to the new EHR design with full Scribe functionality.
 </Update>
 
-<Update label="Oct 25, 2025" tags={["Air"]}>
-
-  ### Complete EHR redesign launched
-
-  We completed a major redesign of all core EHR pages with a modern, intuitive interface. The new design includes improved calendar views, streamlined patient search, cleaner demographics displays, organized attachments, and a completely rebuilt chart note system with dynamic templates.
-
-  ### Labs ordering complete
-
-  Lab ordering is now fully integrated into the chart note. You can order labs from Quest, Pathgroup, and other vendors through HealthGorilla, with results automatically captured and displayed in the EHR. The system supports both third-party lab orders and in-house lab billing for practices with their own lab facilities.
-
-  ### Messaging and tasking
-
-  Internal messaging allows your team to communicate within the practice, while external messaging connects directly to patients using the Interact system. The new tasking feature lets you create task lists for team members with status tracking and priority levels, including group-level task assignment.
-
-  ### Patient Check-in and check-out
-
-  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_10_25/patient-flow-check-in.png" alt="Patient Flow interface showing room status and patient check-in tracking" />
-
-  Streamlined patient check-in and check-out workflows help your front desk process patients faster. You can now copy and paste appointments for recurring visits, print upcoming appointment lists, and manage patient flow more efficiently.
-
-  ### DME billing support
-
-  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_10_25/dme-billing-interface.png" alt="DME billing interface showing L1845 DME code with prior authorization tracking" />
-
-  If your practice bills for Durable Medical Equipment (DME), Air EHR now supports DME billing codes and documentation. The system includes prior authorization tracking by billable units with the ability to override calculations when needed, plus soft alerts to flag potential issues.
-
-  ### Data migration improvements
-
-  We've dramatically improved the data migration process for new customers. Migrations from WebPT, Raintree, and Empower now complete in 15-30 minutes instead of 6-8 hours. We've successfully migrated over 20,000 chart notes across 14 customers with minimal manual intervention.
-
-  ### Performance improvements
-
-  Chart note pages load significantly faster with improved typing responsiveness. Flowsheets now load approximately 39% faster, and we've added batch update capabilities for more efficient data entry.
-
-  ### Bug fixes and improvements
-
-  **Chart Notes:**
-  - Fixed an issue where chart notes were not auto-saving reliably, causing providers to lose their work
-  - Resolved errors that occurred when editing or converting chart note templates, which prevented template modifications
-  - Improved how dynamic templates render to eliminate display issues and ensure all fields show correctly
-
-  **Permissions:**
-  - Added the ability for billing managers and admins to edit and submit chart notes, expanding access beyond just providers
-  - Enhanced role-based access controls to provide more granular permission settings across the system
-
-  **Data Management:**
-  - Added the ability to delete and archive cases, insurances, and prior authorizations that are no longer needed
-  - Fixed errors that prevented users from editing appointment details after they were created
-</Update>
-
 <Update label="Oct 31, 2025" tags={["Insights"]}>
 
   ### Stripe Separate Charges & Transfers migration
@@ -181,36 +268,54 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
   - Corrected calculation errors in batch history where balance amounts were displaying incorrectly
 </Update>
 
-<Update label="Sep 17, 2025" tags={["Air"]}>
+<Update label="Oct 25, 2025" tags={["Air"]}>
 
-  ### Template Builder
+  ### Complete EHR redesign launched
 
-  Create custom chart notes, patient intake forms, and scribe templates using the new Template Builder. This tool allows you to configure templates specific to your practice needs without requiring engineering support. The builder is now available across Scribe, EHR, and Interact products for flexible form creation.
+  We completed a major redesign of all core EHR pages with a modern, intuitive interface. The new design includes improved calendar views, streamlined patient search, cleaner demographics displays, organized attachments, and a completely rebuilt chart note system with dynamic templates.
 
-  ### Patient outcome tracking
+  ### Labs ordering complete
 
-  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_09_17/functional-outcomes-koos.png" alt="Functional Outcomes interface showing KOOS questionnaire with patient responses and scores" />
+  Lab ordering is now fully integrated into the chart note. You can order labs from Quest, Pathgroup, and other vendors through HealthGorilla, with results automatically captured and displayed in the EHR. The system supports both third-party lab orders and in-house lab billing for practices with their own lab facilities.
 
-  New functional outcome measurement tools let you track patient progress directly in the EHR. The patient activity tracker monitors engagement, while automatic KX Modifier calculation ensures compliance with Medicare requirements. You can now also add notes to patient demographics, appointments, and encounters for better documentation.
+  ### Messaging and tasking
 
-  ### Lead management and credentialing
+  Internal messaging allows your team to communicate within the practice, while external messaging connects directly to patients using the Interact system. The new tasking feature lets you create task lists for team members with status tracking and priority levels, including group-level task assignment.
 
-  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_09_17/lead-management-tracker-settings.png" alt="Lead management tracker settings showing landing page configuration options" />
+  ### Patient Check-in and check-out
 
-  A new lead management landing page helps organize and track incoming patient leads. Providers can now handle their own credentialing through the self-service credentialing interface, including managing credentialing groups without administrative assistance.
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_10_25/patient-flow-check-in.png" alt="Patient Flow interface showing room status and patient check-in tracking" />
 
-  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_09_17/lead-management-landing-page.png" alt="Lead management landing page with patient intake form" />
+  Streamlined patient check-in and check-out workflows help your front desk process patients faster. You can now copy and paste appointments for recurring visits, print upcoming appointment lists, and manage patient flow more efficiently.
+
+  ### DME billing support
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_10_25/dme-billing-interface.png" alt="DME billing interface showing L1845 DME code with prior authorization tracking" />
+
+  If your practice bills for Durable Medical Equipment (DME), Air EHR now supports DME billing codes and documentation. The system includes prior authorization tracking by billable units with the ability to override calculations when needed, plus soft alerts to flag potential issues.
+
+  ### Data migration improvements
+
+  We've dramatically improved the data migration process for new customers. Migrations from WebPT, Raintree, and Empower now complete in 15-30 minutes instead of 6-8 hours. We've successfully migrated over 20,000 chart notes across 14 customers with minimal manual intervention.
+
+  ### Performance improvements
+
+  Chart note pages load significantly faster with improved typing responsiveness. Flowsheets now load approximately 39% faster, and we've added batch update capabilities for more efficient data entry.
 
   ### Bug fixes and improvements
 
-  **Forms & Intake:**
-  - Added Spanish language versions of patient intake documents to better serve Spanish-speaking patients
-  - Fixed an error where duplicate insurance entries were being created when patients submitted intake forms
+  **Chart Notes:**
+  - Fixed an issue where chart notes were not auto-saving reliably, causing providers to lose their work
+  - Resolved errors that occurred when editing or converting chart note templates, which prevented template modifications
+  - Improved how dynamic templates render to eliminate display issues and ensure all fields show correctly
 
-  **Faxing:**
-  - Added the ability to send multiple files in a single fax transmission instead of requiring separate faxes
-  - Improved Plan of Care fax tracking and increased delivery success rates by addressing reliability issues
-  - Implemented a seamless zero-downtime fax service transition process for new customers migrating to the platform
+  **Permissions:**
+  - Added the ability for billing managers and admins to edit and submit chart notes, expanding access beyond just providers
+  - Enhanced role-based access controls to provide more granular permission settings across the system
+
+  **Data Management:**
+  - Added the ability to delete and archive cases, insurances, and prior authorizations that are no longer needed
+  - Fixed errors that prevented users from editing appointment details after they were created
 </Update>
 
 <Update label="Sep 30, 2025" tags={["Insights"]}>
@@ -259,6 +364,38 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
   - Fixed an error where copay amounts were calculating incorrectly for self-pay appointments, showing wrong amounts due
   - Corrected calculation errors in Stripe transaction fees that were resulting in incorrect fee amounts being recorded
   - Improved the reliability of appointment reminder delivery to ensure patients consistently receive their reminders on time
+</Update>
+
+<Update label="Sep 17, 2025" tags={["Air"]}>
+
+  ### Template Builder
+
+  Create custom chart notes, patient intake forms, and scribe templates using the new Template Builder. This tool allows you to configure templates specific to your practice needs without requiring engineering support. The builder is now available across Scribe, EHR, and Interact products for flexible form creation.
+
+  ### Patient outcome tracking
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_09_17/functional-outcomes-koos.png" alt="Functional Outcomes interface showing KOOS questionnaire with patient responses and scores" />
+
+  New functional outcome measurement tools let you track patient progress directly in the EHR. The patient activity tracker monitors engagement, while automatic KX Modifier calculation ensures compliance with Medicare requirements. You can now also add notes to patient demographics, appointments, and encounters for better documentation.
+
+  ### Lead management and credentialing
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_09_17/lead-management-tracker-settings.png" alt="Lead management tracker settings showing landing page configuration options" />
+
+  A new lead management landing page helps organize and track incoming patient leads. Providers can now handle their own credentialing through the self-service credentialing interface, including managing credentialing groups without administrative assistance.
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2025_09_17/lead-management-landing-page.png" alt="Lead management landing page with patient intake form" />
+
+  ### Bug fixes and improvements
+
+  **Forms & Intake:**
+  - Added Spanish language versions of patient intake documents to better serve Spanish-speaking patients
+  - Fixed an error where duplicate insurance entries were being created when patients submitted intake forms
+
+  **Faxing:**
+  - Added the ability to send multiple files in a single fax transmission instead of requiring separate faxes
+  - Improved Plan of Care fax tracking and increased delivery success rates by addressing reliability issues
+  - Implemented a seamless zero-downtime fax service transition process for new customers migrating to the platform
 </Update>
 
 <Update label="Aug 22, 2025" tags={["Insights"]}>
