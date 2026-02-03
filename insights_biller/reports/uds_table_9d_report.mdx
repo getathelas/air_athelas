@@ -1,0 +1,27 @@
+---
+title: "UDS Table 9D Report"
+---
+
+![Uds Scrnsht](/images/insights_biller/reports/uds_report/uds_scrnsht.png)
+
+#### Summary
+
+The **UDS Table 9D Report** supports Uniform Data System (UDS) reporting for health centers. It collects **patient service revenue** for a calendar year: charges, collections, adjustments, self-pay sliding fee discounts, and self-pay bad debt write-offs attributable to that year.
+
+You choose a **UDS year** (calendar year) and an **as-of date**. The as-of date reflects updates to that year’s charges made through that date (e.g., late postings or corrections). The report includes **Raw UDS 9D** (procedure-level and other detail for review or drill-down) and **UDS 9D Report** with the **Official UDS 9D** table (formatted for UDS reporting). You can **exclude visit carrier codes** (CPT codes); the UI provides a default list you can change. Use it to fulfill UDS Table 9D requirements and to reconcile UDS-year revenue and adjustments.
+
+#### Notes
+
+- The report is driven by **Year** and **As of Date** only (no start/end date range).
+- The UI will default the as of date to February 15th, the date the report is due.
+- **Exclude Visit Carrier Codes** lets you remove specific CPT codes from the official table; a default list is provided. This exclusion only affects the rollup, not the raw report.
+- Report is compliant to 2025 HRSA guidelines
+
+#### Filters Supported
+
+- Date Range Type:
+  - Charges Column is by encounter date of service or date of submission
+  - Other columns are by date posted
+- Year
+- As of Date
+- Exclude Visit Carrier Codes
