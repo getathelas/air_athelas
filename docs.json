@@ -133,9 +133,9 @@
         ]
       },
       {
-        "tab":"Insights",
+        "tab": "Insights",
         "icon": "money-check-dollar",
-        "groups":[
+        "groups": [
           {
             "group": "Getting Started with Insights",
             "icon": "stars",
@@ -205,6 +205,9 @@
             "icon": "chart-column",
             "tag": "Biller",
             "pages": [
+              "insights_biller/reports/uds_table_9d_report",
+              "insights_biller/reports/provider_line_item_report",
+              "insights_biller/reports/aging_ar_report",
               "insights_biller/reports/ar_reports",
               "insights_biller/reports/building_and_running_reports",
               "insights_biller/reports/claim_adjustments_report",
