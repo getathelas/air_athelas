@@ -86,6 +86,14 @@
             ]
           },
           {
+            "group": "Document Quality Measures",
+            "icon": "clipboard-check",
+            "tag": "Provider",
+            "pages": [
+              "air_provider/quality_measures/multimodal_pain_control"
+            ]
+          },
+          {
             "group": "Take in a Patient",
             "icon": "clipboard",
             "tag": "Front Desk",
