@@ -502,7 +502,8 @@
             "icon": "pills",
             "tag": "Provider",
             "pages": [
-              "insights_provider/medications/designate_staff_as_provider_agents"
+              "insights_provider/medications/designate_staff_as_provider_agents",
+              "insights_provider/medications/documentation_of_current_medications"
             ]
           },
           {
