@@ -57,4 +57,71 @@ ${ticket.description}
 - Follow ALL conventions in .cursor/rules/docs-writer.mdc exactly.
 `;
 
-  const res = await fetch('htt
+  const res = await fetch('https://api.cursor.com/aiserver/v1/cloud-agent/tasks', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${CURSOR_API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      repository: REPO,
+      branch: branchName,
+      task,
+      autoCreatePR: true
+    })
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Cursor API error: ${res.status} - ${err}`);
+  }
+
+  return await res.json();
+}
+
+async function markTicketInProgress(ticketId) {
+  const stateRes = await fetch('https://api.linear.app/graphql', {
+    method: 'POST',
+    headers: {
+      'Authorization': LINEAR_API_KEY,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      query: `{ workflowStates(filter: { type: { eq: "started" } }) { nodes { id name } } }`
+    })
+  });
+  const stateData = await stateRes.json();
+  const inProgressState = stateData.data.workflowStates.nodes[0];
+
+  await fetch('https://api.linear.app/graphql', {
+    method: 'POST',
+    headers: {
+      'Authorization': LINEAR_API_KEY,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      query: `mutation { issueUpdate(id: "${ticketId}", input: { stateId: "${inProgressState.id}" }) { success } }`
+    })
+  });
+}
+
+async function main() {
+  console.log('Checking Linear for cursor-docs tickets...');
+  const tickets = await getLinearTickets();
+  console.log(`Found ${tickets.length} ticket(s)`);
+
+  for (const ticket of tickets) {
+    console.log(`Processing: ${ticket.identifier} - ${ticket.title}`);
+    if (!ticket.description || ticket.description.trim().length < 50) {
+      console.log(`  ⚠️  Description too short or empty, skipping`);
+      continue;
+    }
+    const result = await triggerCursorAgent(ticket);
+    console.log(`  ✅ Agent task created:`, result);
+    await markTicketInProgress(ticket.id);
+  }
+
+  console.log('Done.');
+}
+
+main().catch(err => { console.error(err); process.exit(1); });
