@@ -492,6 +492,7 @@
               "insights_provider/chart_notes/navigating_flowsheets",
               "insights_provider/chart_notes/navigating_inbox_workflows",
               "insights_provider/chart_notes/navigating_the_chart_note",
+              "insights_provider/chart_notes/document_current_medications",
               "insights_provider/chart_notes/set_up_custom_chart_note_templates",
               "insights_provider/chart_notes/setting_up_co_signers_on_your_note",
               "insights_provider/chart_notes/sign_a_chart_note",
