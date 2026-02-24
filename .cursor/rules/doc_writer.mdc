@@ -1,0 +1,784 @@
+# Air Athelas documentation writing rule
+
+You are an AI writing assistant for the Air Athelas documentation repository, powered by Mintlify. This repo contains user-facing help documentation for two products:
+
+- **Air** -- An EHR (Electronic Health Records) platform for physical therapy and outpatient clinics.
+- **Insights** -- An RCM (Revenue Cycle Management) and billing platform for healthcare practices.
+
+Follow every convention in this rule when creating or editing documentation pages.
+
+---
+
+## 1. Repository structure
+
+### Top-level layout
+
+```
+air_athelas/
+├── docs.json                  # Mintlify site configuration and navigation
+├── css_style.css              # Global CSS overrides
+├── air_onboard/               # Air onboarding & tutorials
+│   └── getting_started_with_air/
+├── air_provider/              # Air provider workflows
+│   ├── review_patient_details/
+│   ├── check_in_a_patient/
+│   └── fill_a_chart_note/
+├── air_front_desk/            # Air front desk workflows
+│   ├── view_your_calendar/
+│   ├── communicate_with_patients/
+│   ├── take_in_a_patient/
+│   └── manage_your_tasks/
+├── air_admin/                 # Air admin management
+│   ├── manage_your_practice/
+│   └── analyze_your_reports/
+├── insights_onboard/          # Insights onboarding (files at root, no subfolders)
+├── insights_biller/           # Insights biller workflows
+│   ├── analytics/
+│   ├── general_billing/
+│   ├── claim_details/
+│   └── reports/
+├── insights_front_desk/       # Insights front desk workflows (largest section)
+│   ├── agents_center/
+│   ├── appointments/
+│   ├── calendar/
+│   ├── encounter_details/
+│   ├── faxing/
+│   ├── messaging/
+│   ├── patient_communications/
+│   ├── patient_demographics/
+│   ├── patient_profiles/
+│   ├── patient_responsibility/
+│   ├── patient_statements/
+│   ├── posting/
+│   ├── tasking/
+│   ├── utilities/
+│   ├── front_office_payments/
+│   ├── athelas_assistant/
+│   └── daily_operations/
+├── insights_provider/         # Insights provider workflows
+│   ├── ai_scribe_and_tooling/
+│   ├── athelas_assistant/
+│   ├── chart_notes/
+│   ├── medications/
+│   └── patient_profiles/
+├── insights_admin/            # Insights admin workflows
+│   ├── my_practice/
+│   └── reporting/
+├── insights_general/          # Insights cross-role content
+│   └── athelas_assistant/
+├── master_blogs/              # Product release blog posts (flat, no subfolders)
+├── master_changelogs/         # Changelog entries (flat, no subfolders)
+├── air_hidden/                # Hidden pages for beta/pre-launch features (Air)
+├── insights_hidden/           # Hidden pages for beta/pre-launch features (Insights)
+├── air_archive/               # Archived Air content
+├── insights_archive/          # Archived Insights content
+├── _scratch/                  # Scratch/experiment folder (gitignored)
+└── images/                    # All image and video assets (mirrors content structure)
+```
+
+### Folder convention
+
+Content follows a **role-based** structure with **activity-based** subfolders:
+
+```
+{product}_{role}/{activity}/{page}.mdx
+```
+
+Examples:
+- `air_provider/fill_a_chart_note/medications.mdx`
+- `insights_front_desk/appointments/how_to_schedule_an_appointment.mdx`
+- `insights_biller/reports/aging_ar_report.mdx`
+
+Exceptions: `insights_onboard/`, `master_blogs/`, and `master_changelogs/` hold MDX files directly at their root with no activity subfolders.
+
+### Image folder structure
+
+Images **mirror the content structure exactly**, with one folder per MDX file:
+
+```
+images/{product}_{role}/{activity}/{mdx_filename}/
+```
+
+Example mapping:
+```
+MDX:    air_provider/fill_a_chart_note/medications.mdx
+Images: images/air_provider/fill_a_chart_note/medications/
+        ├── medications_1.webp
+        ├── medications_2.gif
+        └── medications_3.webp
+```
+
+Quick formulas:
+```
+MDX path  → Image folder:  images/{role}/{activity}/{filename}/
+Image ref → MDX path:      {role}/{activity}/{filename}.mdx
+```
+
+---
+
+## 2. Naming conventions
+
+### Files and folders
+
+**Rule: Use underscores (`_`) for all file and folder names. No hyphens, no camelCase.**
+
+Correct: `patient_info.mdx`, `check_in_a_patient/`, `set_up.mdx`
+Wrong: `patient-info.mdx`, `checkInPatient/`, `set-up.mdx`
+
+### Images and videos
+
+**Rule: `{mdx_filename}_{sequential_number}.{ext}`**
+
+Number images sequentially in the order they appear in the MDX file. Videos use the same numbering sequence as images.
+
+Correct: `patient_info_1.webp`, `patient_info_2.gif`, `patient_info_3.mp4`
+Wrong: `patient-info-1.webp`, `1_patient_info.webp`, `patient_info.webp` (missing number)
+
+### Image format selection
+
+| Format   | Use for                                          |
+| :------- | :----------------------------------------------- |
+| `.webp`  | Screenshots, static UI images (preferred default)|
+| `.gif`   | Animated demonstrations and workflows            |
+| `.png`   | Diagrams, charts, images requiring transparency  |
+| `.jpeg`  | Photos (use sparingly)                           |
+| `.mp4`   | Video recordings                                 |
+
+---
+
+## 3. MDX frontmatter
+
+Every page must start with YAML frontmatter enclosed in `---` delimiters.
+
+### Required field
+
+- `title` -- The full page title displayed at the top of the page. Present on every MDX file.
+
+### Optional fields
+
+| Field          | Purpose                                     | When to use                                      |
+| :------------- | :------------------------------------------ | :----------------------------------------------- |
+| `sidebarTitle` | Shorter title shown in sidebar navigation   | When `title` is too long for the sidebar          |
+| `description`  | Meta description / subtitle                 | Blog posts (format: `"Date \| Author \| Role"`), changelogs |
+| `toc`          | Enable table of contents (`"true"`)         | Longer pages with many sections                   |
+| `mode`         | Page layout (`"wide"` or `"center"`)        | Homepages, landing pages, blog posts              |
+
+### Frontmatter examples
+
+**Standard documentation page:**
+```yaml
+---
+title: "Check-in the Patient"
+sidebarTitle: "Check-in Patient"
+toc: "true"
+---
+```
+
+**Blog post:**
+```yaml
+---
+title: "Your AI Assistant for Smarter Patient and Scheduling Workflows"
+sidebarTitle: "Personal AI Assistant"
+description: "Jul 28, 2025 | Ruzbeh Irani | User Experience Designer, Air"
+mode: "center"
+---
+```
+
+**Homepage / landing page:**
+```yaml
+---
+title: "Welcome to Air by Athelas!"
+mode: "wide"
+---
+```
+
+**Changelog:**
+```yaml
+---
+title: "Changelog"
+description: "Stay up to date with the latest product updates, bug fixes, and new features."
+---
+```
+
+**Minimal page (Insights sections commonly use this):**
+```yaml
+---
+title: "The Denials Analysis Page"
+---
+```
+
+---
+
+## 4. docs.json navigation
+
+### File location and schema
+
+The site navigation lives in `docs.json` at the repo root. There is no `mint.json`. Refer to the [Mintlify docs.json schema](https://mintlify.com/docs.json) for full reference.
+
+### Global configuration
+
+```json
+{
+  "theme": "palm",
+  "name": "Athelas",
+  "colors": { "primary": "#F9345F", "light": "#FA5478", "dark": "#FB8DA5" },
+  "favicon": "images/athelas_favicon_bkg.png",
+  "logo": {
+    "light": "/images/air_archive/athelas_light.svg",
+    "dark": "/images/air_archive/athelas_light.svg"
+  }
+}
+```
+
+Brand color: `#F9345F` (used for icons, primary UI accents).
+
+### Navigation structure
+
+```
+navigation.tabs[]                  # Top-level tabs
+  └── tab.groups[]                 # Groups within each tab
+        ├── group                  # Display name (e.g., "Fill a Chart Note")
+        ├── icon                   # FontAwesome icon name
+        ├── tag (optional)         # Role filter: "Provider", "Front Desk", "Admin", "Biller"
+        └── pages[]                # Array of page paths (no .mdx extension)
+```
+
+### The 4 tabs
+
+| Tab          | Icon                  | Content                                        |
+| :----------- | :-------------------- | :--------------------------------------------- |
+| Air          | `laptop-medical`      | `air_*` pages grouped by role + activity        |
+| Insights     | `money-check-dollar`  | `insights_*` pages grouped by role + activity   |
+| What's New   | `stars`               | `master_blogs/` (Product Release, Customer Stories) |
+| Changelog    | `bullhorn`            | `master_changelogs/changelog`                   |
+
+### How to add a page to navigation
+
+1. Create the MDX file in the correct `{role}/{activity}/` folder.
+2. Open `docs.json`.
+3. Find the correct tab and group.
+4. Add the page path (without `.mdx` extension) to the group's `pages` array.
+
+Example -- adding `air_admin/manage_your_practice/new_setting.mdx`:
+```json
+{
+  "group": "Manage your Practice",
+  "icon": "gear",
+  "tag": "Admin",
+  "pages": [
+    "air_admin/manage_your_practice/practice_settings",
+    "air_admin/manage_your_practice/new_setting"
+  ]
+}
+```
+
+### How to add a new navigation group
+
+Create a new object in the appropriate tab's `groups` array:
+
+```json
+{
+  "group": "New Workflow Name",
+  "icon": "icon-name",
+  "tag": "Provider",
+  "pages": [
+    "air_provider/new_workflow/page_one",
+    "air_provider/new_workflow/page_two"
+  ]
+}
+```
+
+### Common navigation icons
+
+| Icon                | Used for                    |
+| :------------------ | :-------------------------- |
+| `stars`             | Getting started             |
+| `calendar`          | Calendar / scheduling       |
+| `square-user`       | Patient information         |
+| `envelope`          | Messaging                   |
+| `user-doctor`       | Provider workflows          |
+| `notes-medical`     | Chart notes                 |
+| `clipboard`         | Intake / forms              |
+| `list-check`        | Tasks                       |
+| `gear`              | Settings / admin            |
+| `chart-column`      | Reports / analytics         |
+| `file-invoice`      | Billing / claims            |
+| `credit-card`       | Payments                    |
+| `robot`             | AI assistant                |
+| `wand-magic-sparkles` | AI scribe / tooling       |
+| `fax`               | Faxing                      |
+| `wrench`            | Utilities                   |
+
+---
+
+## 5. Core writing principles
+
+### Language and style
+
+- Use clear, direct language appropriate for healthcare practice staff.
+- Write in second person ("you") for instructions and procedures.
+- Use active voice over passive voice.
+- Employ present tense for current states, future tense for outcomes.
+- Avoid jargon unless necessary; define terms when first used.
+- Maintain consistent terminology throughout all documentation.
+- Keep sentences concise while providing necessary context.
+- Use parallel structure in lists, headings, and procedures.
+
+### Content organization
+
+- Lead with the most important information (inverted pyramid structure).
+- Use progressive disclosure: basic concepts before advanced ones.
+- Break complex procedures into numbered steps.
+- Include prerequisites and context before instructions.
+- Provide expected outcomes for each major step.
+- Use descriptive, keyword-rich headings for navigation and SEO.
+- Group related information logically with clear section breaks.
+
+### User-centered approach
+
+- Focus on user goals and outcomes rather than system features.
+- Anticipate common questions and address them proactively.
+- Include troubleshooting for likely failure points.
+- Write for scannability with clear headings, lists, and white space.
+- Include verification steps to confirm success.
+
+### Emphasis patterns
+
+- **Bold UI elements**: `**Preferences**`, `**Calendar**`, `**Check-in**`
+- **Bold key terms**: `**Appointment Type**`, `**Lead**`, `**Stage**`
+- **Bold actions**: `**Click**`, `**Select**`, `**Save**`
+- **Italics for roles**: `_(all users)_`, `_(providers)_`, `_(company admins)_`
+
+### FAQ section requirement
+
+**Every documentation page should include an FAQ section at the end** with the heading `### FAQ`. Use `<Accordion>` components for each FAQ item:
+
+```mdx
+### FAQ
+
+<Accordion title="Question text here?">
+  Answer content goes here. You can include:
+
+  - Bullet points
+  - **Bold text** for emphasis
+  - Numbered lists
+
+  **Note:** Additional context or important information.
+</Accordion>
+
+<Accordion title="Another question?">
+  Another answer here.
+</Accordion>
+```
+
+- Include 2-5 relevant FAQ items per page.
+- Write questions in a conversational, user-focused style.
+- Do not wrap FAQ accordions in Cards.
+
+---
+
+## 6. Mintlify component reference
+
+### Card
+
+Cards are used selectively for homepage/landing pages and special callouts. **Do not wrap general content in Cards.**
+
+**Card with icon (homepage/landing pages only):**
+```mdx
+<Card title="Card Title" icon="icon-name" iconType="duotone" color="#F9345F">
+  Card content description.
+</Card>
+```
+
+### Icon in headings
+
+Icons before H3 headings provide visual hierarchy:
+
+```mdx
+### <Icon icon="icon-name" iconType="duotone" color="#F9345F" size={23} />  Section Title
+```
+
+Common icon names: `laptop`, `calendar-check`, `filter`, `timer`, `clipboard-check`, `comment-check`, `circle-dot`, `note`, `image-user`, `box-circle-check`
+
+### Callout components
+
+**Tip** -- Smart Tips and helpful best practices:
+```mdx
+<Tip>
+  ✨**Smart Tip:** Your helpful tip here.
+</Tip>
+```
+
+**Info** -- Neutral contextual information (use sparingly):
+```mdx
+<Info>
+  Important contextual information or announcements.
+</Info>
+```
+
+**Warning** -- Important cautions:
+```mdx
+<Warning>
+  Important warnings about potential issues or limitations.
+</Warning>
+```
+
+**Danger** -- Critical warnings (use rarely):
+```mdx
+<Danger>
+  Critical information about potential issues that could cause problems.
+</Danger>
+```
+
+**Inline notes** -- Use bold formatting for brief notes:
+```mdx
+**Note:** Your note text here.
+```
+
+**Standalone Note component** (for longer supplementary information):
+```mdx
+<Note>
+  Supplementary information that supports the main content.
+</Note>
+```
+
+### Steps
+
+Use Steps for multi-step procedures that need visual step indicators. Used sparingly; prefer numbered lists for most procedures.
+
+```mdx
+<Steps>
+  <Step title="Step Title" iconType="duotone" stepNumber={1} titleSize="h3">
+    Step content and instructions.
+
+    ![Image Alt](/images/image.webp)
+  </Step>
+
+  <Step title="Next Step" stepNumber={2} titleSize="h3">
+    More content here.
+  </Step>
+</Steps>
+```
+
+### Accordion
+
+Primarily used for FAQ sections and alternate method disclosures:
+
+```mdx
+<Accordion title="Alternate method: Do something else">
+  Step-by-step instructions for the alternate approach.
+</Accordion>
+```
+
+### Columns
+
+Multi-column layouts for homepage or landing pages:
+
+```mdx
+<Columns cols={2}>
+  <Card title="Card Title" icon="icon-name" iconType="duotone" color="#F9345F">
+    Card content.
+  </Card>
+
+  <Card title="Another Card" icon="another-icon" iconType="duotone" color="#F9345F">
+    More content.
+  </Card>
+</Columns>
+```
+
+For blog index pages (`product_release.mdx`), use `cols={3}` with linked Cards:
+```mdx
+<Columns cols={3}>
+  <Card title="Blog Title" href="blog_slug" img="/images/master_blogs/blog_slug/blog_slug_1.png">
+    Jan 15, 2026
+  </Card>
+</Columns>
+```
+
+### Tables
+
+Use markdown table syntax. Bold the first column headers and key terms:
+
+```mdx
+| **Term**               | **Meaning**                                                                |
+| :--------------------- | :------------------------------------------------------------------------- |
+| **Lead**               | A potential patient record with key metadata (e.g., referral type, stage). |
+| **Reporting category** | Groups stages for reporting purposes (e.g., Converted, In Progress).       |
+```
+
+### Images
+
+**Markdown syntax (preferred for simple, full-width images):**
+```mdx
+![Descriptive Alt Text](/images/air_provider/fill_a_chart_note/medications/medications_1.webp)
+```
+
+**HTML img tag (when specific sizing is needed):**
+```mdx
+<img
+  src="/images/air_provider/fill_a_chart_note/medications/medications_1.webp"
+  alt="Descriptive Alt Text"
+  title="Image Title"
+  style={{ width:"48%" }}
+/>
+```
+
+Sizing guidelines:
+- `style={{ width:"100%" }}` -- full-width
+- `style={{ width:"70%" }}` -- medium
+- `style={{ width:"48%" }}` -- small / side-by-side
+
+Always include descriptive `alt` text. Include `title` for HTML img tags.
+
+Image paths always use the pattern:
+```
+/images/{role}/{activity}/{mdx_filename}/{mdx_filename}_{N}.{ext}
+```
+
+### Videos
+
+**Local MP4 files** (follow the same naming convention as images):
+```mdx
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/master_blogs/feature_name/feature_name_3.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+```
+
+**YouTube embeds:**
+```mdx
+<iframe
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  title="YouTube video player"
+  frameborder="0"
+  className="w-full aspect-video rounded-xl"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+/>
+```
+
+**Arcade interactive demos:**
+```mdx
+<div style={{ position:"relative",paddingBottom:"calc(54.21768707482993% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://demo.arcade.software/..."
+    title="Demo Title"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Caption text explaining the demo.
+  </p>
+</div>
+```
+
+### Content formatting patterns
+
+**Headings:**
+- `##` (H2) for major page sections
+- `###` (H3) for subsections, typically with an `<Icon>` component
+
+**Procedures:**
+```mdx
+**To complete this task:**
+
+1. First step instruction.
+2. Second step instruction.
+3. Third step instruction.
+
+**Note:** Additional context or important information.
+```
+
+**Links:**
+```mdx
+[**Link Text**](https://example.com)
+```
+
+### Component selection guide
+
+| Need                                | Use                           |
+| :---------------------------------- | :---------------------------- |
+| Structure content on a regular page | Headings, paragraphs, lists   |
+| Visual section markers              | `<Icon>` before H3 headings  |
+| Helpful best practices              | `<Tip>` with Smart Tip format|
+| Neutral informational callout       | `<Info>` (sparingly)          |
+| Important caution                   | `<Warning>`                   |
+| Critical warning                    | `<Danger>` (rarely)           |
+| Multi-step visual procedure         | `<Steps>` (rarely)            |
+| FAQ items / alternate methods       | `<Accordion>`                 |
+| Homepage or landing page cards      | `<Card>` with icon + color    |
+| Multi-column landing layouts        | `<Columns>` with Cards        |
+| Screenshots and diagrams            | `![alt](path)` or `<img>`    |
+| Video demos                         | `<video>`, `<iframe>`         |
+| Definitions or structured data      | Markdown tables               |
+
+---
+
+## 7. Adding new content
+
+### Adding a single new page
+
+1. **Create the MDX file** in the correct location:
+   ```
+   {role}/{activity}/new_page.mdx
+   ```
+
+2. **Add frontmatter** with at least `title`:
+   ```yaml
+   ---
+   title: "New Page Title"
+   sidebarTitle: "Short Title"
+   ---
+   ```
+
+3. **Create the image folder** (even if no images yet):
+   ```
+   images/{role}/{activity}/new_page/
+   ```
+
+4. **Add images** following the naming convention:
+   ```
+   new_page_1.webp, new_page_2.gif, etc.
+   ```
+
+5. **Update `docs.json`** -- add the page path (without `.mdx`) to the correct group's `pages` array.
+
+### Adding a blog post
+
+1. **Create the MDX file** in `master_blogs/`:
+   ```
+   master_blogs/new_blog_post.mdx
+   ```
+
+2. **Add frontmatter** with date and author:
+   ```yaml
+   ---
+   title: "Introducing New Feature"
+   sidebarTitle: "New Feature"
+   description: "Jan 15, 2026 | Author Name | Role"
+   mode: "center"
+   ---
+   ```
+
+3. **Create the image folder**:
+   ```
+   images/master_blogs/new_blog_post/
+   ```
+
+4. **Add a card to `master_blogs/product_release.mdx`** at the top of the `<Columns>` block (newest first):
+   ```mdx
+   <Card title="Introducing New Feature" href="new_blog_post" img="/images/master_blogs/new_blog_post/new_blog_post_1.png">
+     Jan 15, 2026
+   </Card>
+   ```
+
+5. **Update `docs.json`** -- add to the "Product Release" group (newest at top of the pages array):
+   ```json
+   "master_blogs/new_blog_post"
+   ```
+
+### Adding a new navigation group
+
+1. Create the activity subfolder and MDX files.
+2. Create matching image folders under `images/`.
+3. Add a new group object in the appropriate tab's `groups` array in `docs.json`:
+   ```json
+   {
+     "group": "New Workflow",
+     "icon": "icon-name",
+     "tag": "Provider",
+     "pages": [
+       "air_provider/new_workflow/page_one",
+       "air_provider/new_workflow/page_two"
+     ]
+   }
+   ```
+
+### Renaming an MDX file
+
+When renaming a file, update **5 things** in this order:
+
+1. **Rename the image folder:**
+   ```
+   images/{role}/{activity}/old_name → images/{role}/{activity}/new_name
+   ```
+
+2. **Rename all image files inside:**
+   ```
+   old_name_1.webp → new_name_1.webp
+   old_name_2.gif  → new_name_2.gif
+   ```
+
+3. **Rename the MDX file:**
+   ```
+   {role}/{activity}/old_name.mdx → {role}/{activity}/new_name.mdx
+   ```
+
+4. **Update image references** inside the MDX file:
+   Replace all `/images/{role}/{activity}/old_name/old_name_` with `/images/{role}/{activity}/new_name/new_name_`.
+
+5. **Update frontmatter and `docs.json`:**
+   - Update `title` and `sidebarTitle` in the MDX frontmatter if needed.
+   - Update the page path in `docs.json` (without `.mdx` extension).
+
+---
+
+## 8. Content quality standards
+
+### Writing style summary
+
+- **User-focused language**: Second person ("you") for instructions.
+- **Bold emphasis**: Use `**bold**` for UI elements, key terms, and actions.
+- **Clear procedures**: Break tasks into numbered steps or subsections.
+- **Visual guidance**: Include screenshots, GIFs, or videos for complex procedures.
+- **Smart Tips**: Use `<Tip>` with `✨**Smart Tip:**` format.
+- **Inline notes**: Use `**Note:**` for brief additional context.
+- **Direct content**: Write content directly without unnecessary wrapper components.
+
+### Image requirements
+
+- Use descriptive alt text that explains what the image shows.
+- Include `title` attributes for HTML img tags.
+- Use percentage widths to size images appropriately.
+- Prefer `.webp` for static images, `.gif` for animations.
+- Place images after the relevant text they illustrate.
+
+### Procedure documentation
+
+- Start with context explaining what the user will accomplish.
+- Use numbered lists for sequential steps.
+- Bold all UI element names: `**Preferences**`, `**Save**`, `**Check-in**`.
+- Add verification steps or expected outcomes.
+- Include troubleshooting notes for common issues.
+
+### Accessibility
+
+- Descriptive alt text for all images.
+- Specific, actionable link text (never "click here").
+- Proper heading hierarchy (H2 for major sections, H3 for subsections).
+- Content structured for scanning with clear headings and lists.
+
+---
+
+## 9. Validation checklist
+
+Before committing new or modified content, verify:
+
+- [ ] All file and folder names use underscores (`_`), not hyphens or camelCase
+- [ ] MDX file is in the correct `{role}/{activity}/` folder
+- [ ] Image folder exists at `images/{role}/{activity}/{mdx_filename}/`
+- [ ] Image files follow `{mdx_filename}_{N}.{ext}` naming
+- [ ] Image references in the MDX use the correct full path
+- [ ] `docs.json` navigation is updated with the page path (no `.mdx` extension)
+- [ ] Frontmatter includes at least `title`
+- [ ] Page ends with a `### FAQ` section (2-5 accordion items)
+- [ ] No orphaned image folders or duplicate files
+- [ ] All links and cross-references are valid
