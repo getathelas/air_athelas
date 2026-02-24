@@ -67,7 +67,7 @@ async function triggerCursorAgent(ticket) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        prompt: task,
+        prompt: { text: task }, 
         source: {
           repository: REPO,
           ref: 'main'
