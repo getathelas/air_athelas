@@ -1,4 +1,4 @@
-const fetch = (...args) => import('node-fetch').then(({default: f}) => f(...args));
+
 
 const LINEAR_API_KEY = process.env.LINEAR_API_KEY;
 const CURSOR_API_KEY = process.env.CURSOR_API_KEY;

@@ -16,9 +16,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: npm install node-fetch
-
       - name: Run docs agent trigger
         env:
           LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
