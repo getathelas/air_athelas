@@ -22,8 +22,9 @@ async function getLinearTickets() {
     body: JSON.stringify({
       query: `{
         issues(filter: {
-          labels: { name: { eq: "cursor-docs" } }
+          labels: { name: { eq: "agent-docs" } }
           state: { type: { eq: "unstarted" } }
+          assignee: { displayName: { eq: "Sean Shen" } }
         }) {
           nodes { id identifier title description url }
         }
@@ -43,31 +44,42 @@ async function triggerCursorAgent(ticket, notionUrl) {
   const task = `
 You are writing external user-facing documentation for the Athelas Air/Insights help site.
 
-## Your instructions (do these in order, do not skip any step)
+## FIRST THING: Read the rules file
+The documentation rules file is located at the repo root: \`doc_writer.mdc\`
+Read this file completely before doing anything else. It defines folder structure, file naming, MDX frontmatter, image handling, and docs.json navigation. Do not create any files until you have read it.
 
-1. READ the file .cursor/rules/docs-writer.mdc in this repository. This contains all the rules you must follow for folder structure, file naming, MDX format, image handling, and docs.json navigation. Do not write a single file until you have read it.
+## Steps (in order)
+
+1. Read \`doc_writer.mdc\` at the repo root.
 
 2. Fetch the Notion page at this URL: ${notionUrl}
-   - Extract all text content, headings, and structure from the page.
-   - Download every image on the page and save them locally as .webp files in the correct images/ folder (the path must mirror the MDX file path exactly, as described in the rules file).
-   - Do not reference images as external URLs — they must be committed to the repo.
+   - Extract all text, headings, and structure.
+   - Download every image and save locally as .webp files in the correct images/ folder, mirroring the MDX file path exactly as described in the rules.
+   - Do not use external image URLs — all images must be committed to the repo.
 
-3. Write a new MDX documentation page based on the Notion content, following the rules file exactly for:
-   - Correct folder and file path based on the product and role this feature belongs to
-   - Correct MDX frontmatter fields
-   - Correct image references pointing to the locally saved images
+3. Write the new MDX documentation page following the rules exactly for folder path, file name, frontmatter, and image references.
 
-4. Update docs.json to add the new page to the correct navigation section. Infer the right placement from the feature's product (Air or Insights) and role (provider, front desk, admin, biller).
+4. Update docs.json to add the new page to the correct navigation section based on the feature's product (Air or Insights) and role (provider, front desk, admin, biller).
 
-5. Commit all changes and push to the branch. Do not attempt to open a PR.
+5. Create a summary file at \`_scratch/pr-summary.json\` with the following structure (fill in real values):
+\`\`\`json
+{
+  "mdxFilePath": "the/full/path/to/created/file.mdx",
+  "imagesFolder": "images/the/full/path/to/images/",
+  "imageFiles": ["image1.webp", "image2.webp"],
+  "navigationSection": "the section in docs.json where it was added",
+  "pageTitle": "the title of the documentation page",
+  "summary": "2-3 sentence description of what this page covers"
+}
+\`\`\`
+
+6. Commit all changes including the summary file and push to the branch. Do not open a PR.
 
 ## Context
 Linear ticket: ${ticket.url}
 Feature name: ${ticket.title}
 Notion source: ${notionUrl}
-
-## Branch
-Use branch name: ${branchName}
+Branch: ${branchName}
 `;
 
   const res = await fetch('https://api.cursor.com/v0/agents', {
@@ -76,10 +88,7 @@ Use branch name: ${branchName}
     body: JSON.stringify({
       prompt: { text: task },
       source: { repository: REPO, ref: 'main' },
-      target: {
-        branchName: branchName,
-        autoCreatePr: false
-      }
+      target: { branchName, autoCreatePr: false }
     })
   });
 
@@ -107,8 +116,64 @@ async function waitForAgent(agentId) {
   throw new Error('Agent timed out after 20 minutes');
 }
 
-async function createPR(branchName, ticket, notionUrl) {
+async function fetchPRSummary(branchName) {
+  // Read the summary file the agent wrote to _scratch/pr-summary.json
   await new Promise(r => setTimeout(r, 5000));
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${REPO}/contents/_scratch/pr-summary.json?ref=${branchName}`,
+      {
+        headers: {
+          'Authorization': `Bearer ${GITHUB_TOKEN}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    const content = Buffer.from(data.content, 'base64').toString('utf8');
+    return JSON.parse(content);
+  } catch {
+    return null;
+  }
+}
+
+function buildPRBody(ticket, notionUrl, summary) {
+  if (summary) {
+    return `## 📄 ${summary.pageTitle}
+
+${summary.summary}
+
+---
+
+### What was created
+| Field | Value |
+|---|---|
+| MDX file | \`${summary.mdxFilePath}\` |
+| Images folder | \`${summary.imagesFolder}\` |
+| Images committed | ${summary.imageFiles?.length ? summary.imageFiles.map(f => `\`${f}\``).join(', ') : 'none'} |
+| Navigation section | ${summary.navigationSection} |
+
+### References
+- **Linear ticket:** ${ticket.url}
+- **Notion source:** ${notionUrl}
+
+---
+*Auto-generated by Cursor Cloud Agent — review for accuracy before merging.*`;
+  }
+
+  // Fallback if summary file wasn't created
+  return `Auto-generated documentation via Cursor Cloud Agent.\n\n**Linear ticket:** ${ticket.url}\n**Notion source:** ${notionUrl}`;
+}
+
+async function createPR(branchName, ticket, notionUrl) {
+  console.log(`  Fetching agent summary...`);
+  const summary = await fetchPRSummary(branchName);
+  if (summary) {
+    console.log(`  Summary found: ${summary.mdxFilePath}`);
+  } else {
+    console.log(`  No summary file found, using fallback PR body`);
+  }
 
   const prRes = await fetch(`https://api.github.com/repos/${REPO}/pulls`, {
     method: 'POST',
@@ -118,7 +183,7 @@ async function createPR(branchName, ticket, notionUrl) {
     },
     body: JSON.stringify({
       title: `docs: ${ticket.title} [${ticket.identifier}]`,
-      body: `Auto-generated documentation via Cursor Cloud Agent.\n\n**Linear ticket:** ${ticket.url}\n**Notion source:** ${notionUrl}`,
+      body: buildPRBody(ticket, notionUrl, summary),
       head: branchName,
       base: 'main'
     })
@@ -163,7 +228,7 @@ async function markTicketInProgress(ticketId) {
 }
 
 async function main() {
-  console.log('Checking Linear for cursor-docs tickets...');
+  console.log('Checking Linear for agent-docs tickets assigned to Sean Shen...');
   const tickets = await getLinearTickets();
   console.log(`Found ${tickets.length} ticket(s)`);
 
