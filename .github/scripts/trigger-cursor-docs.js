@@ -16,6 +16,7 @@ function extractNotionUrl(description) {
 }
 
 async function getLinearTickets() {
+  // DEBUG: run with NO filters first
   const res = await fetch('https://api.linear.app/graphql', {
     method: 'POST',
     headers: { 'Authorization': LINEAR_API_KEY, 'Content-Type': 'application/json' },
@@ -23,16 +24,15 @@ async function getLinearTickets() {
       query: `{
         issues(filter: {
           labels: { some: { name: { eq: "agent-docs" } } }
-          state: { type: { in: ["unstarted", "todo"] } }
-          assignee: { displayName: { eq: "Sean Shen" } }
         }) {
-          nodes { id identifier title description url }
+          nodes { id identifier title state { type name } assignee { displayName } labels { nodes { name } } }
         }
       }`
     })
   });
   const data = await res.json();
-  return data.data.issues.nodes;
+  console.log('DEBUG issues:', JSON.stringify(data.data?.issues?.nodes, null, 2));
+  // ...
 }
 
 async function triggerCursorAgent(ticket, notionUrl) {
