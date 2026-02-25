@@ -116,9 +116,40 @@ async function waitForAgent(agentId) {
   throw new Error('Agent timed out after 20 minutes');
 }
 
-async function fetchPRSummary(branchName) {
-  // Read the summary file the agent wrote to _scratch/pr-summary.json
+async function resolveActualBranch(expectedBranchName, ticketIdentifier) {
+  // Wait a moment for the branch to propagate to GitHub
   await new Promise(r => setTimeout(r, 5000));
+
+  // First check if the expected branch exists
+  const exactRes = await fetch(
+    `https://api.github.com/repos/${REPO}/branches/${encodeURIComponent(expectedBranchName)}`,
+    { headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}` } }
+  );
+  if (exactRes.ok) {
+    console.log(`  Branch found (exact match): ${expectedBranchName}`);
+    return expectedBranchName;
+  }
+
+  // Fall back: search all branches for one containing the ticket identifier
+  console.log(`  Exact branch not found, searching by ticket ID: ${ticketIdentifier}...`);
+  const listRes = await fetch(
+    `https://api.github.com/repos/${REPO}/branches?per_page=100`,
+    { headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}` } }
+  );
+  if (!listRes.ok) throw new Error(`Failed to list branches: ${listRes.status}`);
+  const branches = await listRes.json();
+  const match = branches.find(b =>
+    b.name.toLowerCase().includes(ticketIdentifier.toLowerCase())
+  );
+  if (match) {
+    console.log(`  Branch found (fuzzy match): ${match.name}`);
+    return match.name;
+  }
+
+  throw new Error(`Could not find a GitHub branch for ticket ${ticketIdentifier}. Expected: ${expectedBranchName}`);
+}
+
+async function fetchPRSummary(branchName) {
   try {
     const res = await fetch(
       `https://api.github.com/repos/${REPO}/contents/_scratch/pr-summary.json?ref=${branchName}`,
@@ -171,8 +202,10 @@ ${summary.summary}
 }
 
 async function createPR(branchName, ticket, notionUrl) {
+  const actualBranch = await resolveActualBranch(branchName, ticket.identifier);
+
   console.log(`  Fetching agent summary...`);
-  const summary = await fetchPRSummary(branchName);
+  const summary = await fetchPRSummary(actualBranch);
   if (summary) {
     console.log(`  Summary found: ${summary.mdxFilePath}`);
   } else {
@@ -188,7 +221,7 @@ async function createPR(branchName, ticket, notionUrl) {
     body: JSON.stringify({
       title: `docs: ${ticket.title} [${ticket.identifier}]`,
       body: buildPRBody(ticket, notionUrl, summary),
-      head: branchName,
+      head: actualBranch,
       base: 'main'
     })
   });
