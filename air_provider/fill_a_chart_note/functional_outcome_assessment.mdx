@@ -1,0 +1,91 @@
+---
+title: "Functional Outcome Assessment"
+toc: "true"
+---
+
+Use the **Functional Outcome Assessment** in a Visit Note to document whether a functional outcome assessment was completed, whether a deficiency was identified, and whether a plan of care was documented within 2 days.
+
+## Add the Functional Outcome Assessment to a Visit Note
+
+**To add the assessment:**
+
+1. Open the patient’s **Visit Note**.
+2. Go to **Assessment**.
+3. Add **Functional Outcome Assessment**.
+
+![Functional Outcome Assessment section in the Visit Note Assessment area](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_1.webp)
+
+### <Icon icon="circle-question" iconType="duotone" color="#F9345F" size={23} />  Understand the first two questions
+
+- **If the assessment was completed in the last 30 days:** the first question will show **True**, and you typically do not need to complete it again for this appointment date.
+- **If the first question is False:** you must add and complete a Functional Outcome form (next section).
+- **The second question stays False until a Functional Outcome form is added** to the Visit Note.
+
+**If the patient is not eligible to participate:** set **Patient not eligible to participate** to **True**. This is treated as an **exception**.
+
+## Add a Functional Outcome form (if needed)
+
+If the Functional Outcome Assessment indicates the patient needs a form, add a Functional Outcome form to the Visit Note.
+
+**To add a Functional Outcome form:**
+
+1. In the **Visit Note**, go to **Objective** → **Functional Outcomes**.
+2. Add any functional outcome form **except PHQ-9**.
+3. Have the patient complete the form.
+
+Once the form is added and completed, the second question in the Functional Outcome Assessment will change to **True**.
+
+**Note:** For detailed form workflows (add, edit, history), see [**Functional Outcome Measurements**](/air_provider/fill_a_chart_note/functional_outcomes).
+
+## Document whether a deficiency was identified
+
+After the form is completed, indicate whether a deficiency was identified:
+
+- If **no deficiency** is identified, set **Functional Outcome deficiency identified** to **False**.
+
+![Example of Functional Outcome deficiency identified set to False](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_2.webp)
+
+- If a **deficiency** is identified, set **Functional Outcome deficiency identified** to **True**.
+
+## Document whether a plan of care was documented within 2 days
+
+Indicate whether a plan of care was documented within **2 days**.
+
+### <Icon icon="badge-check" iconType="duotone" color="#F9345F" size={23} />  If Plan of Care documented within 2 days is True
+
+If **True**, the measure is treated as **performance met**.
+
+![Example of Performance Met when plan of care is documented within 2 days](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_3.webp)
+
+### <Icon icon="triangle-exclamation" iconType="duotone" color="#F9345F" size={23} />  If Plan of Care documented within 2 days is False
+
+If **False**:
+
+- If the patient is not eligible for a care plan, set **Patient not eligible for care plan** to **True**. This is treated as an **exception**.
+
+![Example of an exception when patient is not eligible for a care plan](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_4.webp)
+
+- If **Patient not eligible for care plan** is **not** selected, the measure is treated as **performance not met**.
+
+![Example of Performance Not Met when no exception is selected](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_5.webp)
+
+### FAQ
+
+<Accordion title="Why is the first question already True?">
+  If a functional outcome assessment was completed for the patient within the last **30 days** of the appointment date, Air will automatically mark the first question as **True** so you don’t have to repeat the assessment.
+</Accordion>
+
+<Accordion title="Which Functional Outcome forms count for this assessment?">
+  You can add and complete any Functional Outcome form in **Visit Note** → **Objective** → **Functional Outcomes**.
+
+  **Note:** The workflow for this assessment excludes **PHQ-9**.
+</Accordion>
+
+<Accordion title="What does “exception” mean here?">
+  An **exception** indicates the measure should not be counted against performance because the patient was not eligible to participate (or not eligible for a care plan). Make sure you explicitly set the relevant **not eligible** field to **True** when applicable.
+</Accordion>
+
+<Accordion title="What happens if Plan of Care documented within 2 days is False and I don’t select an exception?">
+  If the plan of care is **not** documented within 2 days and you do **not** mark **Patient not eligible for care plan** as **True**, the measure is treated as **performance not met**.
+</Accordion>
+
