@@ -114,6 +114,40 @@ MDX path  → Image folder:  images/{role}/{activity}/{filename}/
 Image ref → MDX path:      {role}/{activity}/{filename}.mdx
 ```
 
+### Product features and functionalities
+
+#### Air (EHR)
+
+- **AI-Powered Features**: Ambient Scribing (multi-language, lock sections, local save on internet loss), Athelas AI Assistant (voice/chat, context-aware with current chart note), AI Compliance Checks (score out of 100, custom checkmarks), AI Agents Center (inbound/outbound calls, call triaging, 24/7 scheduling)
+- **Patient Management**: Demographics, cases (active/discharged/restored), insurance (primary/secondary/tertiary, workers' comp, self-pay), history (AI-generated visit summaries, medications, allergies, immunizations, vitals, labs), attachments (upload, filter, tag, send via email/text/fax)
+- **Scheduling & Calendar**: Day/week/month views, saved filter presets, real-time updates, single/bulk/walk-in appointments, drag-and-drop provider reassignment, schedule blocks (recurring, allow-scheduling option), provider availability, waitlists
+- **Appointment Workflows**: Automated reminders (up to 3, email/text), intake forms, functional outcome measurement forms (ODI, NDI, LEFS, DASH, etc.), custom appointment types with duration/color/CPT codes/sections
+- **Clinical Documentation (Chart Notes)**: Plan of Care, diagnosis codes (ICD-10), measurements (custom groups, text/table display), goals (progress tracking), treatments (linked to CPT codes), flowsheets (interventions, concurrent marking, HEP creation), chart note templates (drag-and-drop builder), filling methods (AI Scribe, dictation, pull from previous note, text snippets via "/", import PDF/RTF records), signing/submission (compliance review, co-signers, fax to referring provider), billing addendums, PDF downloads (medical billing + plan of care)
+- **Medication Management**: Pharmacy orders via SureScripts, controlled/uncontrolled prescribing, pharmacy search (name/distance/type), custom SIGs with AI validator, prescriber agents (staff draft prescriptions for provider sign-off), provider registration (DEA via ID.me for controlled substances)
+- **Eligibility & Insurance Verification**: Run checks (auto 1-week and 1-day before appointment), Waystar/Availity/UHC integrations, eligibility alerts on calendar (active/inactive/inconclusive)
+- **Patient Communication**: Internal messaging (staff chat up to 10, Athelas AI in chat, file sharing), patient portal (24/7 access, self-service booking, health records, payments, HEP), email/text/text blasts (up to 2000 recipients), faxing (send/receive, contact list, link to patients/tasks)
+- **Patient Intake & Automation**: Custom forms (single/multiple choice, text, signature block, etc.), pre-built forms (patient update, insurance update, paperwork upload), automated sending based on appointment/patient/insurance criteria, insurance intake automation
+- **Reporting**: KPI Dashboard (active patients, no-show rate, arrival rate, cancellation rate, provider efficiency, average units per encounter, etc.), comprehensive CSV reports, drill-down tables, Athelas AI for quick statistics
+- **Practice Administration**: Team members & roles (granular feature/page permissions, user groups), practice/provider/calendar settings, provider credentialing matrix (group/individual, cosigner tracking), treatments with service type codes, taxonomy management
+
+#### Insights (RCM)
+
+- **Claims Management**: Claims page (unified view, filtering, saved views, bulk assignment, AI validation), encounter details (create/edit, insurance, service lines with CPT/modifiers/revenue codes, diagnosis codes, prior auths, templates, tags, working status), claim submission/resubmission (CMS-1500, UB-04, ADA), AI validation (error flags, suggested edits per CMS NCCI guidelines), billing rules engine (global + site-specific)
+- **Posting & Remittances**: Posting tool (manual posting, preview mode, procedure/claim-level, custom adjustments), auto-posting (within 6 hours), remittance management, deposit/check matching, EOB creation (upload, AI transcription via EOB copilot), EDI bulk downloads (835 files), Plaid bank integration (deposit verification, matching)
+- **Patient Responsibility**: PR page (balance tracking, age-of-balance analysis, patient/transaction views), payment collection (Athelas card reader, saved cards, manual entry, cash/check, Stripe), payment links/requests (email/text), payment plans & subscriptions (templates, enrollment, pause/cancel), refunds & write-offs (full/partial, custom reasons), PR timeline (chronological event display), service charges & fee schedules (CPT-based, self-pay), suggested PR rules, target allowed amounts (TAA with ARES integration), miscellaneous charges
+- **Patient Statements**: Automated delivery (email/text/paper at $1 each), frequency/threshold configuration (min/max amounts), batch management (upcoming/historical), performance metrics, exclusion settings (patients/insurances/CPT codes), alternate mailing addresses
+- **Eligibility & Prior Authorization**: Automatic nightly checks, manual rerun, raw benefits display, rules applied section, prior auth tracking with alerts (orange = nearing expiration, red = expired), visit limits, Medicare therapy thresholds
+- **Revenue Analysis**: Total payments, median time to decision, insurance paid rate, $/paid per encounter, monthly revenue charts (by date posted/check date/DOS), payments by segment (payers, facilities, providers, CPT codes, users), claims waterfall (encounters -> submissions -> clearinghouse pass -> reconciled -> paid), reconciliation speed, first pass rate
+- **Denials Analysis**: Denial rate vs 11% industry standard, resubmitted payments recovered, denial dollars saved, historical trends (monthly/weekly), filter by responsibility (Athelas/site/processing)
+- **Reports**: Claims reports (submitted, detailed charges, adjustments, export, one-pagers), revenue reports (posting log, collections, AR, aging AR by bucket 0-30/31-60/61-90/91-120/121-365/366+, provider line item), miscellaneous (patient eligibility, UDS Table 9D, upcoming statements), performance management (payroll bonus with configurable visit weight/benchmark)
+- **Front Office Operations**: Calendar (multi-provider views, filtering), daily operations (cash drawer reconciliation, bank deposit verification, virtual card processing), front office payments (self-pay fee schedule, automatic service charges, suggested PR rules, target allowed amounts)
+- **Appointments**: Walk-in scheduling, live eligibility checks, PR/balance display, copay/coinsurance/deductible collection, reminders, check-in tracking, download schedule PDF
+- **Patient Management**: Profiles (demographics, insurance, cases, appointments, charges, balance, statements), notes (universal, tagged), touchpoints tracking, attachments, portal registration, resubmit claims from profile
+- **Communication**: Internal messaging (staff threads up to 10, attachments, notifications), faxing (send/receive, contact list, link to patients/tasks/outbound faxes, bulk fax/download PDFs), AI Agents Center (inbound/outbound calls, scheduling, follow-ups, call analytics, patient triaging)
+- **AI & Automation**: Athelas AI assistant (claims questions, task execution, support tickets, RCM prompt library, share/copy/download responses), AI claim validation (zip codes, addresses, modifiers, diagnosis codes), AI posting automation, EOB AI transcription, KX modifier auto-application (Medicare therapy thresholds, PT/OT/SLP codes)
+- **Provider Features**: AI Scribe (ambient scribing, reapply/regenerate, multi-language, lock sections), chart notes, medications, patient profiles, Athelas AI assistant (context-aware)
+- **Administration**: Practice/provider/facility management, provider credentialing (self-service, credentialing groups), calendar settings, PR/billing/statement/fax settings, billing rules engine
+
 ---
 
 ## 2. Naming conventions

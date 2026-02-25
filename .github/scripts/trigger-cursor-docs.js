@@ -22,8 +22,8 @@ async function getLinearTickets() {
     body: JSON.stringify({
       query: `{
         issues(filter: {
-          labels: { name: { eq: "agent-docs" } }
-          state: { type: { eq: "unstarted" } }
+          labels: { some: { name: { eq: "agent-docs" } } }
+          state: { type: { in: ["unstarted", "todo"] } }
           assignee: { displayName: { eq: "Sean Shen" } }
         }) {
           nodes { id identifier title description url }
