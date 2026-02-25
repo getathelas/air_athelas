@@ -11,8 +11,14 @@ const cursorAuth = () => ({
 
 function extractNotionUrl(description) {
   if (!description) return null;
-  const match = description.match(/https:\/\/www\.notion\.so\/[^\s\)]+/);
-  return match ? match[0] : null;
+  // Handle plain URLs, markdown links [text](url), and angle-bracket links <url>
+  // Stop at any markdown/bracket/quote chars
+  const match = description.match(/https:\/\/(?:www\.)?notion\.so\/[^\s\)\]>"<]+/);
+  if (!match) return null;
+  // Strip any trailing punctuation that may have been captured
+  const url = match[0].replace(/[.,;:!?\])"'>]+$/, '');
+  console.log(`  Raw Notion URL extracted: ${url}`);
+  return url;
 }
 
 async function getLinearTickets() {
@@ -39,6 +45,7 @@ async function triggerCursorAgent(ticket, notionUrl) {
   const branchName = `cursor-${ticket.identifier.toLowerCase()}-${ticket.title
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
+    .replace(/-+$/, '')
     .slice(0, 50)}`;
 
   const task = `
@@ -98,7 +105,10 @@ Branch: ${branchName}
   }
 
   const data = await res.json();
-  return { ...data, branchName };
+  console.log(`  Cursor agent response: ${JSON.stringify(data)}`);
+  // Use branch name from Cursor's response if available, else fall back to ours
+  const resolvedBranch = data.target?.branchName || data.branchName || branchName;
+  return { ...data, branchName: resolvedBranch };
 }
 
 async function waitForAgent(agentId) {
@@ -110,55 +120,70 @@ async function waitForAgent(agentId) {
     });
     const agent = await res.json();
     console.log(`  [${(i + 1) * 30}s] Status: ${agent.status}`);
-    if (agent.status === 'FINISHED') return agent;
+    if (agent.status === 'FINISHED') {
+      console.log(`  Final agent data: ${JSON.stringify(agent)}`);
+      return agent;
+    }
     if (agent.status === 'FAILED') throw new Error(`Agent ${agentId} failed`);
   }
   throw new Error('Agent timed out after 20 minutes');
 }
 
-async function resolveActualBranch(expectedBranchName, ticketIdentifier) {
-  // Wait a moment for the branch to propagate to GitHub
-  await new Promise(r => setTimeout(r, 5000));
+async function getBranchFromCursorOrGitHub(agentData, expectedBranchName, ticketIdentifier) {
+  // 1. Try to get branch from Cursor's final agent response
+  const cursorBranch = agentData.target?.branchName || agentData.branchName;
+  if (cursorBranch && cursorBranch !== expectedBranchName) {
+    console.log(`  Using branch from Cursor response: ${cursorBranch}`);
+  }
+  const candidateBranch = cursorBranch || expectedBranchName;
 
-  // First check if the expected branch exists
+  // Give GitHub a moment to receive the push
+  await new Promise(r => setTimeout(r, 8000));
+
+  // 2. Check exact branch on GitHub
   const exactRes = await fetch(
-    `https://api.github.com/repos/${REPO}/branches/${encodeURIComponent(expectedBranchName)}`,
+    `https://api.github.com/repos/${REPO}/branches/${encodeURIComponent(candidateBranch)}`,
     { headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}` } }
   );
   if (exactRes.ok) {
-    console.log(`  Branch found (exact match): ${expectedBranchName}`);
-    return expectedBranchName;
+    console.log(`  ✅ Branch confirmed on GitHub: ${candidateBranch}`);
+    return candidateBranch;
   }
 
-  // Fall back: search all branches for one containing the ticket identifier
-  console.log(`  Exact branch not found, searching by ticket ID: ${ticketIdentifier}...`);
-  const listRes = await fetch(
-    `https://api.github.com/repos/${REPO}/branches?per_page=100`,
-    { headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}` } }
-  );
-  if (!listRes.ok) throw new Error(`Failed to list branches: ${listRes.status}`);
-  const branches = await listRes.json();
-  const match = branches.find(b =>
-    b.name.toLowerCase().includes(ticketIdentifier.toLowerCase())
-  );
-  if (match) {
-    console.log(`  Branch found (fuzzy match): ${match.name}`);
-    return match.name;
+  // 3. List all recent branches and fuzzy-match on ticket identifier
+  console.log(`  Branch "${candidateBranch}" not found, scanning all branches for ${ticketIdentifier}...`);
+  let page = 1;
+  while (page <= 5) {
+    const listRes = await fetch(
+      `https://api.github.com/repos/${REPO}/branches?per_page=100&page=${page}`,
+      { headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}` } }
+    );
+    if (!listRes.ok) break;
+    const branches = await listRes.json();
+    if (branches.length === 0) break;
+    const match = branches.find(b =>
+      b.name.toLowerCase().includes(ticketIdentifier.toLowerCase())
+    );
+    if (match) {
+      console.log(`  ✅ Branch found by ticket ID: ${match.name}`);
+      return match.name;
+    }
+    page++;
   }
 
-  throw new Error(`Could not find a GitHub branch for ticket ${ticketIdentifier}. Expected: ${expectedBranchName}`);
+  throw new Error(
+    `No GitHub branch found for ticket ${ticketIdentifier}.\n` +
+    `Expected: ${candidateBranch}\n` +
+    `The Cursor agent may have finished without committing any changes. ` +
+    `Check the agent at: https://cursor.com/agents/${agentData.id}`
+  );
 }
 
 async function fetchPRSummary(branchName) {
   try {
     const res = await fetch(
-      `https://api.github.com/repos/${REPO}/contents/_scratch/pr-summary.json?ref=${branchName}`,
-      {
-        headers: {
-          'Authorization': `Bearer ${GITHUB_TOKEN}`,
-          'Content-Type': 'application/json'
-        }
-      }
+      `https://api.github.com/repos/${REPO}/contents/_scratch/pr-summary.json?ref=${encodeURIComponent(branchName)}`,
+      { headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}` } }
     );
     if (!res.ok) return null;
     const data = await res.json();
@@ -197,14 +222,13 @@ ${summary.summary}
 *Auto-generated by Cursor Cloud Agent — review for accuracy before merging.*`;
   }
 
-  // Fallback if summary file wasn't created
   return `Auto-generated documentation via Cursor Cloud Agent.\n\n**Linear ticket:** ${ticket.url}\n**Notion source:** ${notionUrl}`;
 }
 
-async function createPR(branchName, ticket, notionUrl) {
-  const actualBranch = await resolveActualBranch(branchName, ticket.identifier);
+async function createPR(agentData, ticket, notionUrl) {
+  const actualBranch = await getBranchFromCursorOrGitHub(agentData, agentData.branchName, ticket.identifier);
 
-  console.log(`  Fetching agent summary...`);
+  console.log(`  Fetching agent summary from branch: ${actualBranch}`);
   const summary = await fetchPRSummary(actualBranch);
   if (summary) {
     console.log(`  Summary found: ${summary.mdxFilePath}`);
@@ -275,21 +299,24 @@ async function main() {
     const notionUrl = extractNotionUrl(ticket.description);
     if (!notionUrl) {
       console.log(`  ⚠️  No Notion URL found in description, skipping`);
+      console.log(`  Description: ${ticket.description?.slice(0, 200)}`);
       continue;
     }
     console.log(`  Notion URL: ${notionUrl}`);
 
     console.log(`  Triggering Cursor agent...`);
     const agent = await triggerCursorAgent(ticket, notionUrl);
-    console.log(`  Agent created: ${agent.target?.url || agent.id}`);
+    console.log(`  Agent ID: ${agent.id}`);
+    console.log(`  Agent URL: ${agent.target?.url || 'N/A'}`);
+    console.log(`  Branch: ${agent.branchName}`);
 
     await markTicketInProgress(ticket.id);
 
     console.log(`  Waiting for agent to finish...`);
-    await waitForAgent(agent.id);
+    const finishedAgent = await waitForAgent(agent.id);
 
     console.log(`  Creating PR...`);
-    await createPR(agent.branchName, ticket, notionUrl);
+    await createPR({ ...agent, ...finishedAgent, branchName: agent.branchName }, ticket, notionUrl);
   }
 
   console.log('\nAll done.');
