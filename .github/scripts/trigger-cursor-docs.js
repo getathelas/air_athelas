@@ -16,7 +16,6 @@ function extractNotionUrl(description) {
 }
 
 async function getLinearTickets() {
-  // DEBUG: run with NO filters first
   const res = await fetch('https://api.linear.app/graphql', {
     method: 'POST',
     headers: { 'Authorization': LINEAR_API_KEY, 'Content-Type': 'application/json' },
@@ -24,15 +23,16 @@ async function getLinearTickets() {
       query: `{
         issues(filter: {
           labels: { some: { name: { eq: "agent-docs" } } }
+          state: { type: { in: ["unstarted", "todo"] } }
+          assignee: { displayName: { eq: "seanshen" } }
         }) {
-          nodes { id identifier title state { type name } assignee { displayName } labels { nodes { name } } }
+          nodes { id identifier title description url }
         }
       }`
     })
   });
   const data = await res.json();
-  console.log('DEBUG issues:', JSON.stringify(data.data?.issues?.nodes, null, 2));
-  // ...
+  return data.data.issues.nodes;
 }
 
 async function triggerCursorAgent(ticket, notionUrl) {
@@ -140,6 +140,10 @@ async function fetchPRSummary(branchName) {
 
 function buildPRBody(ticket, notionUrl, summary) {
   if (summary) {
+    const imageList = Array.isArray(summary.imageFiles) && summary.imageFiles.length
+      ? summary.imageFiles.map(f => `\`${f}\``).join(', ')
+      : 'none';
+
     return `## 📄 ${summary.pageTitle}
 
 ${summary.summary}
@@ -151,7 +155,7 @@ ${summary.summary}
 |---|---|
 | MDX file | \`${summary.mdxFilePath}\` |
 | Images folder | \`${summary.imagesFolder}\` |
-| Images committed | ${summary.imageFiles?.length ? summary.imageFiles.map(f => `\`${f}\``).join(', ') : 'none'} |
+| Images committed | ${imageList} |
 | Navigation section | ${summary.navigationSection} |
 
 ### References
