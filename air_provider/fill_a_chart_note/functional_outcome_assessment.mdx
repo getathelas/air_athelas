@@ -1,0 +1,89 @@
+---
+title: "Functional Outcome Assessment"
+sidebarTitle: "Functional Outcome Assessment"
+toc: "true"
+---
+
+Use **Functional Outcome Assessment** in the Visit Note to document whether the patient completed an eligible functional outcome form, whether a deficiency was identified, and whether a plan of care was documented on time.
+
+## Complete the Functional Outcome Assessment
+
+### <Icon icon="clipboard-check" iconType="duotone" color="#F9345F" size={23} />  Open the assessment questions
+
+**To complete the Functional Outcome Assessment:**
+
+1. Open the patient’s **Visit Note**.
+2. Navigate to **Assessment**.
+3. Locate **Functional Outcome Assessment**.
+
+![Functional Outcome Assessment questions in the Visit Note Assessment section](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_1.webp)
+
+### <Icon icon="calendar-check" iconType="duotone" color="#F9345F" size={23} />  Confirm whether an assessment is required (last 30 days)
+
+If the functional outcome assessment was completed for the patient within the last **30 days** of the appointment date, the first question will be **True** and you do not need to repeat the assessment.
+
+If the first question is **False**, you must complete the assessment by adding a functional outcome form to the Visit Note.
+
+### <Icon icon="note" iconType="duotone" color="#F9345F" size={23} />  Add a functional outcome form (if needed)
+
+The second question will remain **False** until a functional outcome form is added to the Visit Note.
+
+**To add a functional outcome form:**
+
+1. Open the patient’s **Visit Note**.
+2. Navigate to **Objective** → **Functional Outcomes**.
+3. Add any functional outcome form **except PHQ-9**.
+4. Have the patient complete the form.
+
+Once the form is completed, the second question will become **True**.
+
+## Document the result and plan of care status
+
+### <Icon icon="circle-dot" iconType="duotone" color="#F9345F" size={23} />  Mark whether a deficiency was identified
+
+After the form is completed, document whether a **Functional Outcome deficiency** was identified.
+
+- If no deficiency is identified, mark **Functional Outcome deficiency identified** as **False**.
+
+  ![Example of Functional Outcome deficiency identified set to False](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_2.webp)
+
+- If a deficiency is identified, mark **Functional Outcome deficiency identified** as **True**.
+
+### <Icon icon="list-check" iconType="duotone" color="#F9345F" size={23} />  Mark whether a plan of care was documented within 2 days
+
+Indicate whether a **plan of care** was documented within **2 days**.
+
+- If you select **True**, the measure is recorded as **PERFORMANCE MET**.
+
+  ![Plan of care documented within 2 days set to True (performance met)](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_3.webp)
+
+- If you select **False**, you must also indicate whether the patient is not eligible for a care plan.
+  - If you mark **Patient is not eligible for care plan** as **True**, this is recorded as an **EXCEPTION**.
+
+    ![Plan of care not documented with exception selected](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_4.webp)
+
+  - If you do not select the eligibility exception, it is recorded as **PERFORMANCE NOT MET**.
+
+    ![Plan of care not documented without exception (performance not met)](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_5.webp)
+
+### <Icon icon="box-circle-check" iconType="duotone" color="#F9345F" size={23} />  When to use the eligibility exception
+
+If a form was not completed because the patient is not eligible, mark **Patient not eligible to participate** as **True**. This will be recorded as an **EXCEPTION**.
+
+### FAQ
+
+<Accordion title="Why does the first question show True before I add a form?">
+  If the functional outcome assessment was completed within the last **30 days** of the appointment date, Air treats the assessment as already completed for that visit, so you don’t need to add another form.
+</Accordion>
+
+<Accordion title="The second question stays False—what am I missing?">
+  The second question turns **True** only after a functional outcome form is added to the Visit Note and completed by the patient.
+
+  **Note:** PHQ-9 does not count for this assessment.
+</Accordion>
+
+<Accordion title="What’s the difference between Performance Not Met and Exception?">
+  - **PERFORMANCE MET**: You documented a plan of care within **2 days**.
+  - **EXCEPTION**: You indicated the patient was **not eligible** (for participation or for a care plan, depending on the question).
+  - **PERFORMANCE NOT MET**: You marked the item as **False** and did not select the eligibility exception.
+</Accordion>
