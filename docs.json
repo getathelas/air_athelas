@@ -127,6 +127,7 @@
             "tag": "Admin",
             "pages": [
               "air_admin/analyze_your_reports/kpi_dashboard",
+              "air_admin/analyze_your_reports/report_builder",
               "air_admin/analyze_your_reports/all_reports"
             ]
           }
