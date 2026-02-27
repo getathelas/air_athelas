@@ -1,0 +1,170 @@
+---
+title: "Report Builder"
+sidebarTitle: "Report Builder"
+toc: "true"
+---
+
+Use the **Report Builder** in **Insights** to create custom reports across your organization's visits, referrals, scheduling, documentation, and patient experience data.
+
+## Report categories
+
+Each report starts by selecting a **Category** and one or more **Key Metrics** within it. The table below shows every available category and the report types it contains.
+
+| **Category**                 | **Key Metrics**                                                                    |
+| :--------------------------- | :--------------------------------------------------------------------------------- |
+| **Executive Org Overview**   | Visits Summary, Visits Per FTE Per Day                                             |
+| **Clinic Provider**          | Chart Note Time to Completion, Scribe Notes                                        |
+| **Referral Management**      | Referrals Over Time, Referral Scheduled Rate, Referrals By Source, Leads By Stage  |
+| **Scheduling & Forecasting** | Capacity, Scheduling Metrics                                                       |
+| **Patient Experiences & NPS**| NPS Summary                                                                        |
+
+## Report controls
+
+### <Icon icon="layer-group" iconType="duotone" color="#F9345F" size={23} />  Data Grouping
+
+**Data Grouping** (Group by) breaks your report results into rows by dimension. Choose **Facility** to see one row per facility, or **Provider** to compare performance across providers.
+
+The available options depend on your selected **Key Metric**. When multiple metrics are selected, only grouping options supported by all of them appear.
+
+### <Icon icon="calendar" iconType="duotone" color="#F9345F" size={23} />  Timeframe
+
+- **Date range** — Set a start and end date. Every metric is calculated using only data within this range.
+- **Time slice** — Controls how dates are bucketed when viewing a time series. Options include **Daily**, **Weekly**, **Monthly**, **Quarterly**, **Yearly**, and rolling windows (**Trailing 7 / 30 / 90**) when supported.
+- **Time comparison** — Some reports support **Week over Week (WoW)** or **Month over Month (MoM)** comparison, showing the prior period alongside the current one.
+
+Available time slice options depend on the selected Key Metric.
+
+### <Icon icon="filter" iconType="duotone" color="#F9345F" size={23} />  Filters
+
+Filters restrict which data is included. Only records that match **all** selected filter values appear in results.
+
+| **Filter**              | **What it does**                                                              |
+| :---------------------- | :---------------------------------------------------------------------------- |
+| **Facility**            | Include only data for the selected facility or facilities.                    |
+| **Provider**            | Include only data for the selected provider(s).                               |
+| **Appointment status**  | Limit to specific statuses (Completed, Cancelled, No-show, Scheduled, etc.). |
+| **Appointment type**    | Limit to specific types (Initial Evaluation, Follow-up, etc.).               |
+
+Which filters appear depends on the selected Key Metric. The Report Builder only shows filters that apply to your current report type.
+
+## Key metrics
+
+### <Icon icon="clipboard-check" iconType="duotone" color="#F9345F" size={23} />  Visits Summary
+
+Provides a high-level view of visit volume and patient counts for your selected date range.
+
+- **Total visits** — Appointments with a status of **Checked in**, **Completed**, or **Ongoing** whose start and end dates fall within the range.
+- **Active patients** — Distinct patients with at least one qualifying visit. Each patient is counted once.
+- **New patients** — Patients whose first countable visit falls within the range (no prior non-cancelled, non-archived, non-no-show appointments before the range start).
+- **Discharged patients** — Patients who had visits in the range but currently have no open case at the site.
+
+Grouping by **Facility** or **Provider** breaks these totals into one row per dimension. **Appointment status** and **Appointment type** filters further restrict which appointments count.
+
+### <Icon icon="gauge-high" iconType="duotone" color="#F9345F" size={23} />  Visits Per FTE Per Day
+
+Measures visit volume relative to provider capacity.
+
+- **Visits per FTE per day** — Total qualifying appointments divided by **(FTE × number of days in the period)**. FTE defaults to 1.0 per provider if not configured.
+
+When grouped by **Provider**, each row uses that provider's FTE and appointments. When grouped by **Facility**, FTEs and appointments are aggregated at the facility level.
+
+### <Icon icon="chart-line" iconType="duotone" color="#F9345F" size={23} />  Referrals Over Time
+
+Shows referral volume as a time series based on referral creation date.
+
+- **Total referrals** — All referrals created in each time bucket.
+- **Refused referrals** — Referrals marked as refused therapy.
+- **Accepted referrals** — Referrals not refused.
+
+### <Icon icon="calendar-check" iconType="duotone" color="#F9345F" size={23} />  Referral Scheduled Rate
+
+Tracks how many referrals convert to scheduled appointments.
+
+- **Scheduled referrals** — Referrals that have an appointment created for them.
+- **Schedule rate** — (Scheduled referrals ÷ Total referrals) × 100%.
+
+### <Icon icon="arrow-right-to-bracket" iconType="duotone" color="#F9345F" size={23} />  Referrals By Source
+
+Breaks down referral counts by **source type**, **referring provider**, and/or **insurance company**.
+
+- **Referral count** — Total referrals in each group.
+- **Scheduled count** — Referrals with an appointment created.
+- **Refused count** — Referrals marked as refused therapy.
+
+### <Icon icon="bars-staggered" iconType="duotone" color="#F9345F" size={23} />  Leads By Stage
+
+Breaks down leads and referrals by **lead status** (stage).
+
+- **Lead count** — Number of leads in each stage.
+- **Scheduled count** — Leads with an appointment created.
+- **Patient-created count** — Leads linked to a new patient record.
+- **Refused count** — Leads marked as refused therapy.
+- **Scheduling rate** — (Scheduled count ÷ Lead count) × 100%.
+
+### <Icon icon="battery-three-quarters" iconType="duotone" color="#F9345F" size={23} />  Capacity
+
+Compares booked appointment time to available working time.
+
+- **Available working time** — Derived from provider schedules (configured working hours per weekday × number of weekdays in the range).
+- **Booked time** — Sum of appointment durations in the range.
+- **Filled capacity** — Booked hours ÷ Available working hours. A value of 0.80 means 80% of available time was filled.
+
+You can view this by **Provider** or **Facility**.
+
+### <Icon icon="list-check" iconType="duotone" color="#F9345F" size={23} />  Scheduling Metrics
+
+Shows appointment counts by status for the selected date range. Only appointments whose start and end dates both fall within the range are included.
+
+- **Total appointments**, **Scheduled**, **Cancelled**, **No-show**, **Completed**, **In progress**
+
+Each value is a simple count of appointments matching that status. Filters and data grouping apply as expected.
+
+### <Icon icon="notes-medical" iconType="duotone" color="#F9345F" size={23} />  Chart Note Time to Completion
+
+Measures the time from **appointment start** to **chart note signed** (in hours). Only non-documentation-only, signed chart notes are included.
+
+- **Average time to completion** — Average hours across all qualifying chart notes.
+- **Minimum / Maximum** — Shortest and longest completion times.
+- **Total chart notes** — Count of notes that met the criteria.
+
+You can break down by **Provider** and **Facility** to compare documentation speed.
+
+### <Icon icon="wand-magic-sparkles" iconType="duotone" color="#F9345F" size={23} />  Scribe Notes
+
+Tracks AI scribe adoption across your practice.
+
+- **Total chart notes** — Non-documentation-only chart notes in the date range.
+- **Total scribe notes** — Chart notes created with scribe-assisted documentation.
+- **Scribe adoption rate** — (Total scribe notes ÷ Total chart notes) × 100%.
+
+You can break down by **Provider** and **Facility**.
+
+### <Icon icon="face-smile" iconType="duotone" color="#F9345F" size={23} />  NPS Summary
+
+Based on NPS survey responses submitted within the date range. Only valid numeric responses (scores 0–10) are included.
+
+- **Promoters** — Responses scoring 9 or 10.
+- **Detractors** — Responses scoring 0–6.
+- **Passives** — Responses scoring 7 or 8.
+- **NPS score** — ((Promoters − Detractors) ÷ Total valid responses) × 100.
+- **Average rating** — Average numeric score across all valid responses.
+
+You can group by **Facility** or **Provider**.
+
+### FAQ
+
+<Accordion title="What counts as a visit in the Report Builder?">
+  A visit is any appointment with a status of **Checked in**, **Completed**, or **Ongoing** (in progress) whose start and end dates both fall within the selected date range. Cancelled, Archived, and No-show appointments are not counted as visits.
+</Accordion>
+
+<Accordion title="Which filters apply to which reports?">
+  **Facility** and **Provider** filters are available for most report types. **Appointment status** and **Appointment type** filters only appear for appointment-based reports (such as **Visits Summary** and **Scheduling Metrics**). The Report Builder automatically shows only the filters that apply to your current selection.
+</Accordion>
+
+<Accordion title="How is NPS calculated?">
+  NPS is calculated as ((Promoters − Detractors) ÷ Total valid responses) × 100. Promoters are scores of 9–10, detractors are scores of 0–6, and passives (scores 7–8) are excluded from the formula but included in the total. The result ranges from −100 to +100.
+</Accordion>
+
+<Accordion title="Why do some grouping options disappear when I select multiple metrics?">
+  When you select multiple **Key Metrics**, only grouping and time slice options supported by **all** selected metrics are shown. If an option disappears, one of your selected metrics does not support it. Try selecting metrics individually to see the full range of grouping options.
+</Accordion>
