@@ -9,16 +9,49 @@ const cursorAuth = () => ({
   'Content-Type': 'application/json'
 });
 
-function extractNotionUrl(description) {
-  if (!description) return null;
-  // Handle plain URLs, markdown links [text](url), and angle-bracket links <url>
-  // Stop at any markdown/bracket/quote chars
-  const match = description.match(/https:\/\/(?:www\.)?notion\.so\/[^\s\)\]>"<]+/);
-  if (!match) return null;
-  // Strip any trailing punctuation that may have been captured
-  const url = match[0].replace(/[.,;:!?\])"'>]+$/, '');
-  console.log(`  Raw Notion URL extracted: ${url}`);
-  return url;
+/** Supported doc sources: Notion, Google Docs, or any publicly viewable URL after "Document link:" */
+const DOC_LINK_PATTERNS = [
+  /Document\s+link:\s*(https:\/\/[^\s\)\]>"<\n]+)/i,
+  /https:\/\/(?:www\.)?notion\.so\/[^\s\)\]>"<\n]+/,
+  /https:\/\/docs\.google\.com\/document\/d\/[^\s\)\]>"<\n]+/,
+];
+
+/**
+ * Parse ticket description for doc request: type (new vs update), placement, and document URL.
+ * Document URL can be Notion, Google Docs, or any publicly viewable link.
+ * @returns {{ type: 'new'|'update', placement: string|null, documentUrl: string|null }}
+ */
+function parseDocRequest(description) {
+  const out = { type: null, placement: null, documentUrl: null };
+  if (!description) return out;
+
+  const text = description.replace(/\\n/g, '\n');
+
+  // Type: "Type: New page" or "Type: Updating an existing page"
+  const typeMatch = text.match(/Type:\s*(New\s+page|Updating\s+(?:an\s+)?existing\s+page)/i);
+  if (typeMatch) {
+    out.type = /new\s+page/i.test(typeMatch[1]) ? 'new' : 'update';
+  }
+
+  // Placement: "Placement: Air tab → ..."
+  const placementMatch = text.match(/Placement:\s*([^\n]+?)(?=\n\w|\n\n|$)/s);
+  if (placementMatch) {
+    out.placement = placementMatch[1].replace(/\s+/g, ' ').trim();
+  }
+
+  // Document URL: prefer explicit "Document link:" then Notion/Google Docs
+  for (const re of DOC_LINK_PATTERNS) {
+    const match = text.match(re);
+    if (match) {
+      const raw = (match[1] || match[0]).replace(/[.,;:!?\])"'>]+$/, '');
+      if (raw.startsWith('http')) {
+        out.documentUrl = raw;
+        break;
+      }
+    }
+  }
+
+  return out;
 }
 
 async function getLinearTickets() {
@@ -41,15 +74,22 @@ async function getLinearTickets() {
   return data.data.issues.nodes;
 }
 
-async function triggerCursorAgent(ticket, notionUrl) {
+async function triggerCursorAgent(ticket, docRequest) {
+  const { type, placement, documentUrl } = docRequest;
   const branchName = `cursor-${ticket.identifier.toLowerCase()}-${ticket.title
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/-+$/, '')
     .slice(0, 50)}`;
 
-  const task = `
-You are writing external user-facing documentation for the Athelas Air/Insights help site.
+  const isNewPage = type === 'new';
+  const placementBlock = placement
+    ? `\n**Placement (from ticket):** ${placement}\n`
+    : '';
+
+  const task = isNewPage
+    ? `
+You are writing external user-facing documentation for the Athelas Air/Insights help site. This is a **NEW page** request.
 
 ## FIRST THING: Read the rules file
 The documentation rules file is located at the repo root: \`doc_writer.mdc\`
@@ -59,14 +99,16 @@ Read this file completely before doing anything else. It defines folder structur
 
 1. Read \`doc_writer.mdc\` at the repo root.
 
-2. Fetch the Notion page at this URL: ${notionUrl}
+2. Fetch the source document at this URL (Notion, Google Docs, or other publicly viewable link): ${documentUrl}
    - Extract all text, headings, and structure.
    - Download every image and save locally as .webp files in the correct images/ folder, mirroring the MDX file path exactly as described in the rules.
    - Do not use external image URLs — all images must be committed to the repo.
+   - Video must not be embedded as YouTube links; use local assets or omit if not supported.
 
 3. Write the new MDX documentation page following the rules exactly for folder path, file name, frontmatter, and image references.
 
-4. Update docs.json to add the new page to the correct navigation section based on the feature's product (Air or Insights) and role (provider, front desk, admin, biller).
+4. Update docs.json to add the new page in the correct place according to the Placement instructions below. Match the requested section and order (e.g. "between X and Y" or "after Z").
+${placementBlock}
 
 5. Create a summary file at \`_scratch/pr-summary.json\` with the following structure (fill in real values):
 \`\`\`json
@@ -76,7 +118,8 @@ Read this file completely before doing anything else. It defines folder structur
   "imageFiles": ["image1.webp", "image2.webp"],
   "navigationSection": "the section in docs.json where it was added",
   "pageTitle": "the title of the documentation page",
-  "summary": "2-3 sentence description of what this page covers"
+  "summary": "2-3 sentence description of what this page covers",
+  "type": "new"
 }
 \`\`\`
 
@@ -85,7 +128,49 @@ Read this file completely before doing anything else. It defines folder structur
 ## Context
 Linear ticket: ${ticket.url}
 Feature name: ${ticket.title}
-Notion source: ${notionUrl}
+Document source: ${documentUrl}
+Branch: ${branchName}
+`
+    : `
+You are updating external user-facing documentation for the Athelas Air/Insights help site. This is an **UPDATE to an existing page** (not a new page).
+
+## FIRST THING: Read the rules file
+The documentation rules file is located at the repo root: \`doc_writer.mdc\`
+Read this file completely before doing anything else.
+
+## Steps (in order)
+
+1. Read \`doc_writer.mdc\` at the repo root.
+
+2. Use the Placement instructions below to find the **existing live documentation page** in this repo (docs site: https://docs.athelas.com/air_onboard/getting_started_with_air). Locate the exact MDX file and the section to update.
+${placementBlock}
+
+3. Fetch the source document at this URL (Notion, Google Docs, or other publicly viewable link): ${documentUrl}
+   - Extract all text, headings, and structure (the doc may contain only the updated sections).
+   - Download any images and save locally as .webp in the correct images/ folder for that page; do not use external image URLs.
+   - Video must not be embedded as YouTube links.
+
+4. Update the existing MDX page: add the new content to or replace the section as specified in Placement (e.g. "In the very end before FAQ section", "replace section X"). Preserve existing frontmatter and structure unless the update requires changes.
+
+5. Create a summary file at \`_scratch/pr-summary.json\` with the following structure (fill in real values):
+\`\`\`json
+{
+  "mdxFilePath": "the/full/path/to/updated/file.mdx",
+  "imagesFolder": "images/the/full/path/to/images/",
+  "imageFiles": ["image1.webp"],
+  "navigationSection": "unchanged or section name",
+  "pageTitle": "title of the documentation page",
+  "summary": "2-3 sentence description of what was updated",
+  "type": "update"
+}
+\`\`\`
+
+6. Commit all changes including the summary file and push to the branch. Do not open a PR.
+
+## Context
+Linear ticket: ${ticket.url}
+Feature name: ${ticket.title}
+Document source: ${documentUrl}
 Branch: ${branchName}
 `;
 
@@ -194,11 +279,12 @@ async function fetchPRSummary(branchName) {
   }
 }
 
-function buildPRBody(ticket, notionUrl, summary) {
+function buildPRBody(ticket, documentUrl, summary) {
   if (summary) {
     const imageList = Array.isArray(summary.imageFiles) && summary.imageFiles.length
       ? summary.imageFiles.map(f => `\`${f}\``).join(', ')
       : 'none';
+    const action = summary.type === 'update' ? 'Updated' : 'Created';
 
     return `## 📄 ${summary.pageTitle}
 
@@ -206,7 +292,7 @@ ${summary.summary}
 
 ---
 
-### What was created
+### What was ${action.toLowerCase()}
 | Field | Value |
 |---|---|
 | MDX file | \`${summary.mdxFilePath}\` |
@@ -216,16 +302,16 @@ ${summary.summary}
 
 ### References
 - **Linear ticket:** ${ticket.url}
-- **Notion source:** ${notionUrl}
+- **Document source:** ${documentUrl}
 
 ---
 *Auto-generated by Cursor Cloud Agent — review for accuracy before merging.*`;
   }
 
-  return `Auto-generated documentation via Cursor Cloud Agent.\n\n**Linear ticket:** ${ticket.url}\n**Notion source:** ${notionUrl}`;
+  return `Auto-generated documentation via Cursor Cloud Agent.\n\n**Linear ticket:** ${ticket.url}\n**Document source:** ${documentUrl}`;
 }
 
-async function createPR(agentData, ticket, notionUrl) {
+async function createPR(agentData, ticket, documentUrl) {
   const actualBranch = await getBranchFromCursorOrGitHub(agentData, agentData.branchName, ticket.identifier);
 
   console.log(`  Fetching agent summary from branch: ${actualBranch}`);
@@ -244,7 +330,7 @@ async function createPR(agentData, ticket, notionUrl) {
     },
     body: JSON.stringify({
       title: `docs: ${ticket.title} [${ticket.identifier}]`,
-      body: buildPRBody(ticket, notionUrl, summary),
+      body: buildPRBody(ticket, documentUrl, summary),
       head: actualBranch,
       base: 'main'
     })
@@ -296,16 +382,24 @@ async function main() {
   for (const ticket of tickets) {
     console.log(`\nProcessing: ${ticket.identifier} - ${ticket.title}`);
 
-    const notionUrl = extractNotionUrl(ticket.description);
-    if (!notionUrl) {
-      console.log(`  ⚠️  No Notion URL found in description, skipping`);
-      console.log(`  Description: ${ticket.description?.slice(0, 200)}`);
+    const docRequest = parseDocRequest(ticket.description);
+
+    if (!docRequest.documentUrl) {
+      console.log(`  ⚠️  No document URL found (expect Notion, Google Docs, or "Document link: <url>"), skipping`);
+      console.log(`  Description snippet: ${ticket.description?.slice(0, 300)}`);
       continue;
     }
-    console.log(`  Notion URL: ${notionUrl}`);
+    if (!docRequest.type) {
+      console.log(`  ⚠️  Could not determine Type: need "Type: New page" or "Type: Updating an existing page" in description, skipping`);
+      continue;
+    }
+
+    console.log(`  Type: ${docRequest.type === 'new' ? 'New page' : 'Update existing page'}`);
+    console.log(`  Document URL: ${docRequest.documentUrl}`);
+    if (docRequest.placement) console.log(`  Placement: ${docRequest.placement}`);
 
     console.log(`  Triggering Cursor agent...`);
-    const agent = await triggerCursorAgent(ticket, notionUrl);
+    const agent = await triggerCursorAgent(ticket, docRequest);
     console.log(`  Agent ID: ${agent.id}`);
     console.log(`  Agent URL: ${agent.target?.url || 'N/A'}`);
     console.log(`  Branch: ${agent.branchName}`);
@@ -316,7 +410,7 @@ async function main() {
     const finishedAgent = await waitForAgent(agent.id);
 
     console.log(`  Creating PR...`);
-    await createPR({ ...agent, ...finishedAgent, branchName: agent.branchName }, ticket, notionUrl);
+    await createPR({ ...agent, ...finishedAgent, branchName: agent.branchName }, ticket, docRequest.documentUrl);
   }
 
   console.log('\nAll done.');
