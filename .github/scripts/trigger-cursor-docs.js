@@ -123,7 +123,7 @@ ${placementBlock}
 }
 \`\`\`
 
-6. Commit all changes including the summary file and push to the branch. Do not open a PR.
+6. Commit all changes (including \`_scratch/pr-summary.json\`) and push to the branch. Cursor will open a PR; the summary file will provide the PR description.
 
 ## Context
 Linear ticket: ${ticket.url}
@@ -165,7 +165,7 @@ ${placementBlock}
 }
 \`\`\`
 
-6. Commit all changes including the summary file and push to the branch. Do not open a PR.
+6. Commit all changes (including \`_scratch/pr-summary.json\`) and push to the branch. Cursor will open a PR; the summary file will provide the PR description.
 
 ## Context
 Linear ticket: ${ticket.url}
@@ -180,7 +180,7 @@ Branch: ${branchName}
     body: JSON.stringify({
       prompt: { text: task },
       source: { repository: REPO, ref: 'main' },
-      target: { branchName, autoCreatePr: false }
+      target: { branchName, autoCreatePr: true }
     })
   });
 
@@ -407,10 +407,9 @@ async function main() {
     await markTicketInProgress(ticket.id);
 
     console.log(`  Waiting for agent to finish...`);
-    const finishedAgent = await waitForAgent(agent.id);
+    await waitForAgent(agent.id);
 
-    console.log(`  Creating PR...`);
-    await createPR({ ...agent, ...finishedAgent, branchName: agent.branchName }, ticket, docRequest.documentUrl);
+    console.log(`  ✅ Done. Cursor will create the PR when it pushes (autoCreatePr: true). Check the agent URL for the PR link.`);
   }
 
   console.log('\nAll done.');
