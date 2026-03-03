@@ -165,7 +165,7 @@ ${placementBlock}
 }
 \`\`\`
 
-6. Commit all changes including the summary file and push to the branch, and then create a PR.
+6. Commit all changes including the summary file and push to the branch. Do not open a PR.
 
 ## Context
 Linear ticket: ${ticket.url}
