@@ -1,0 +1,14 @@
+{
+  "mdxFilePath": "air_admin/analyze_your_reports/kpi_dashboard.mdx",
+  "imagesFolder": "images/air_admin/analyze_your_reports/kpi_dashboard/",
+  "imageFiles": [
+    "kpi_dashboard_1.gif",
+    "kpi_dashboard_2.webp",
+    "kpi_dashboard_4.webp",
+    "kpi_dashboard_5.webp"
+  ],
+  "navigationSection": "Air > Analyze your Reports (unchanged)",
+  "pageTitle": "Review your KPI Dashboard",
+  "summary": "Updated the Performance Analysis documentation page by cleaning up the KPI Dashboard section, correcting screenshot placement, and simplifying the content structure to match Mintlify conventions. Added clearer end-of-page guidance (before the FAQ) on using the Active Patients Breakdown to identify scheduling gaps and export data for outreach workflows.",
+  "type": "update"
+}
