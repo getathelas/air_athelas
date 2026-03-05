@@ -127,7 +127,7 @@
             "tag": "Admin",
             "pages": [
               "air_admin/analyze_your_reports/kpi_dashboard",
-              "air_admin/analyze_your_reports/report_builder",
+              "air_admin/analyze_your_reports/ehr_reports",
               "air_admin/analyze_your_reports/all_reports"
             ]
           }
@@ -144,7 +144,8 @@
               "insights_onboard/getting_started_as_a_biller",
               "insights_onboard/getting_started_as_a_healthcare_provider",
               "insights_onboard/getting_started_as_a_staff_member",
-              "insights_onboard/getting_started_as_an_owneradministrator"
+              "insights_onboard/getting_started_as_an_owneradministrator",
+              "insights_onboard/getting_started_as_biller_errors_rejections_and_denials"
             ]
           },
           {
