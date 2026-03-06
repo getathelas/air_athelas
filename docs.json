@@ -79,6 +79,7 @@
               "air_provider/fill_a_chart_note/other_sec_chart_note",
               "air_provider/fill_a_chart_note/flowsheets",
               "air_provider/fill_a_chart_note/functional_outcomes",
+              "air_provider/fill_a_chart_note/functional_outcome_assessment",
               "air_provider/fill_a_chart_note/medications",
               "air_provider/fill_a_chart_note/prescriber_agents",
               "air_provider/fill_a_chart_note/scribe_faq",
