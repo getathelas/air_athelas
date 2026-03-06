@@ -1,0 +1,27 @@
+{
+  "mdxFilePath": "air_front_desk/view_your_calendar/waitlist_user_guide.mdx",
+  "imagesFolder": "images/air_front_desk/view_your_calendar/waitlist_user_guide/",
+  "imageFiles": [
+    "waitlist_user_guide_1.webp",
+    "waitlist_user_guide_2.webp",
+    "waitlist_user_guide_3.webp",
+    "waitlist_user_guide_4.webp",
+    "waitlist_user_guide_5.webp",
+    "waitlist_user_guide_6.webp",
+    "waitlist_user_guide_7.webp",
+    "waitlist_user_guide_8.webp",
+    "waitlist_user_guide_9.webp",
+    "waitlist_user_guide_10.webp",
+    "waitlist_user_guide_11.webp",
+    "waitlist_user_guide_12.webp",
+    "waitlist_user_guide_13.webp",
+    "waitlist_user_guide_14.webp",
+    "waitlist_user_guide_15.webp",
+    "waitlist_user_guide_16.webp",
+    "waitlist_user_guide_17.webp"
+  ],
+  "navigationSection": "docs.json → Air tab → View your Calendar group",
+  "pageTitle": "Waitlist User Guide",
+  "summary": "Explains how patients join the waitlist from the Athelas Patient Portal and how staff can add and manage waitlist entries from the Calendar. Covers what happens when an opening is processed (offers, expiration, approvals) and where to configure waitlist settings.",
+  "type": "new"
+}
