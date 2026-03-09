@@ -118,7 +118,8 @@
               "air_admin/manage_your_practice/provider_credentials",
               "air_admin/manage_your_practice/calendar_settings",
               "air_admin/manage_your_practice/register_providers_rx",
-              "air_admin/manage_your_practice/fax_admin"
+              "air_admin/manage_your_practice/fax_admin",
+              "air_admin/manage_your_practice/plan_of_care_tracking"
             ]
           },
           {
