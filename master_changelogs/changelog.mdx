@@ -3,6 +3,131 @@ title: "Changelog"
 description: "Stay up to date with the latest product updates, bug fixes, and new features."
 ---
 
+<Update label="March 6, 2026" tags={["Insights"]}>
+
+  ### [Generally Available] Claims Page
+
+  <img className="w-full rounded-xl" src="/images/insights_biller/claim_details/claim_details_page/claim_details_page_1.png" alt="Claims Page overview showing the unified billing workflow interface with claim review, validation, assignment, and submission" />
+
+  The Claims Page is now available to all users, with a guided tour on first visit to help you get oriented. Claims can now be filtered by Billing Type (Federal, Commercial, Auto, or Workers' Comp), EHR ID, or WC/Auto, and exported as a CSV. Assignments also now work across parent and child sites, and views can be duplicated for easy reuse by right-clicking on a custom view. Copilot now has the ability to edit patient demographics, change insurances, trigger reviews, submit claims, and more. 
+  
+  To quickly copy a Claim ID, use `CMD` + `.` on Mac and `CTRL` + `.` on Windows. `CMD/CTRL` + `C` also copies a link to the claim to the clipboard.
+
+  To get started, check out the [Claims Page guide](https://docs.athelas.com/insights_biller/claim_details/claim_details_page).
+
+  ### Appointments List Page
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_02_28/appointment_list_page.png" alt="Appointments List Page showing daily schedule with AI-generated charge summaries, inline alerts, and patient demographics on hover" />
+
+  The new Appointments List page gives front desk and billing staff a focused view of the day's schedule. It supports filters and saved views, with "All Appointments" and "Check-in Today" available out of the box. Each appointment row includes an AI-generated summary of suggested charges and outstanding balance, along with inline alerts, charges, and notes with unread counts. Staff can tag appointments directly from the list, and hovering over a row surfaces key patient demographics without leaving the page.
+
+  ### [Beta Users Only] Patient Profile Update
+
+  The redesigned Patient Profile includes an improved charges and transactions view. The layout now surfaces cancelled charges while filtering out $0 rows to reduce noise, and Charge Details have been expanded to include provider, facility, and encounter ID — each linking directly to Transaction Details.
+
+  Both tables support infinite scroll, a "Who facilitated the payment" column has been added for visibility into payment history, and staff can now reverse accidentally cancelled patient responsibilities. Payment terminology throughout Copilot has also been updated to be more patient-friendly.
+
+  ### Bug fixes and improvements
+
+  **Patient Demographics:**
+  - You can now edit all patient demographic information including name, email, phone, address, gender, and date of birth. 
+
+  **Reports:**
+  - Extended report download link expiration from 12 to 24 hours, giving staff more flexibility when sharing reports
+  - Added inline documentation links directly within the Aging AR, UDS 9D, and Provider Line Item reports for faster reference
+
+  **Collections:**
+  - Added automated alerts for payment plan failure rates, surfacing issues proactively before they impact collections
+
+  **Patient Data:**
+  - Fixed an issue where eligibility checks were overwriting a patient's date of birth on the Appointments page, causing incorrect demographic data to display
+
+  **Eligibility:**
+  - Fixed a bug where the "Other Payer Exists" eligibility condition wasn't evaluating correctly in all scenarios, causing pre-visit rules to apply incorrectly
+
+</Update>
+
+
+<Update label="March 4, 2026" tags={["Insights"]}>
+
+  ### Claims Page
+
+  We've shipped a number of updates to the Claims Page this month, here's everything that's new:
+
+  #### Viewing All Claims
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_02_28/claims-bulk-download.png" alt="Claims page showing the Download CSV button in the top right corner for bulk exporting all rows" />
+
+  Added a bulk download button to let you download all rows in the table as a CSV (with the addition of a Facility column). If it takes longer than 10 seconds to generate, you will receive it by email once completed
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_02_28/claims-carc-rarc-filter.png" alt="Claims page showing new CARC and RARC filter options for sorting denials" />
+
+  Added CARC and RARC filters to quickly sort your denials
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_02_28/claims-billing-type-filter.png" alt="Insurance Billing Type filter showing Workers Comp, Auto, and Commercial options" />
+
+  Added filters for Workers' Comp, Auto, and Commercial under the `Insurance Billing Type` filter
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_02_28/claims-duplicate-view.png" alt="Right-click context menu showing option to duplicate a custom view" />
+
+  Added the ability to quickly duplicate views to start view creation from the baseline of another
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_02_28/claims-filters-hotkey.png" alt="Claims page showing F key hotkey to trigger the Filters panel" />
+
+  Added a hotkey to trigger the Filters functionality with the `F` key
+  - Added an additional filter for Submission ID (referred to as Claim ID on the Denials Worklist and Rejections)
+  - Updated the logic of the Charges column to align with the Claim Charge Amount inside the claim itself for consistency
+  - Reduced the number of clicks it takes to save a custom view
+  - Parent/child sites now have the ability to assign claims to parent/child users
+  - Improved load times when filtering by insurance
+
+  #### Editing a Claim
+
+  - Updated Athelas Assistant to now support:
+    - Resubmission and submission
+    - Fetching the claim's financial summary
+    - Updating patient and claim information
+    - Reviewing the claim against CCI and billing rules
+    - And more
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_02_28/claims-submission-type-preview.png" alt="Claim submission preview showing Professional/Institutional/Dental type label in top right corner" />
+
+  When previewing a submission, you can now quickly reference the type of submission that has been generated (Professional/Institutional/Dental) in the top right
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_02_28/claims-goto-link.png" alt="Go to link on Claim edit screen linking to Claim Details, Patient Responsibility, Posting Tool and Remittances" />
+
+  Added a "Go to…" link on the Claim edit screen that links you to the relevant page in Claim Details, Patient Responsibility, Posting Tool, and Remittances
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_02_28/claims-id-hotkey.png" alt="Claim edit screen showing CMD + period hotkey to copy claim ID to clipboard" />
+
+  Added a hotkey to copy a claim's ID to your clipboard with `CTRL` + `.` (`CMD` + `.` on Mac)
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_02_28/claims-diagnosis-pointer-drag.png" alt="Procedures table showing drag-and-drop reordering of diagnosis code pointers" />
+
+  Added the ability to drag-and-drop diagnosis code pointers on a procedure to make re-ordering much simpler
+  - Updated the main button on the Claim edit screen to say `Resubmit` instead of `Submit` if a submission already exists
+  - For sites using a charge master, you can now see the Charge Item in the Procedures table in its own column without clicking into the procedure
+  - Improved the assignee selection popover to be alphabetical and to filter out inactive users
+  - Improved the Diagnoses table by giving more space to the Description column for easier reading
+  - Added an error notification if a claim was imported from an external EHR with too many diagnosis codes
+  - Fixed a bug where you couldn't create a procedure after clearing all diagnosis pointers
+  - Improved the automatic collapsing behavior of the Properties and Controls panels on dynamic window sizes
+  - Fixed a bug where long comments without spaces did not wrap correctly in the Activity Feed
+
+  #### Institutional Claims
+
+  - Updated the logic behind the Discharge Date field to allow discharges after the claim's end date
+  - Updated the flow of adding diagnosis codes to simplify the addition of POA indicators and additional diagnosis labels
+  - Fixed a bug where you couldn't remove an occurrence code once added to an institutional claim
+
+  #### Dental Claims
+
+  - Updated dental claims to allow submission with no diagnoses
+  - Fixed an issue where duplicate diagnosis codes were appearing on dental claims, causing submission errors
+
+</Update>
+
+
 <Update label="January 31, 2026" tags={["Air"]}>
 
   ### [Beta user only] Patient Waitlist 
