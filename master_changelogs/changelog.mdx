@@ -3,6 +3,93 @@ title: "Changelog"
 description: "Stay up to date with the latest product updates, bug fixes, and new features."
 ---
 
+<Update label="March 9, 2026" tags={["Air"]}>
+
+  ### HEP Library Upgrades
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_03_09/hep-library-upgrades.png" alt="HEP Library showing upgraded exercise search with similarity matching and multi-select checkbox picker for planned interventions" />
+
+  The Home Exercise Program (HEP) Library has been significantly improved to make building and assigning exercise programs faster and more accurate. Providers are now alerted when a chart note contains deprecated interventions, with an in-app flow to replace them with current equivalents.
+
+  The Planned Interventions section is now a multi-select checkbox picker, the search prioritizes standard HEP library exercises over custom ones, and similarity matching surfaces the most relevant results. Uploaded exercise images now display correctly in intervention dialogs.
+
+  ### [Beta Users Only] Simplified Online Scheduling Access
+
+  Updating from the patient waitlist from the last change log, patients can now schedule appointments and join the waitlist without needing to create a patient portal account. The new Name + Date of Birth access model lets patients book directly from your practice's scheduling page, making it easier for new and returning patients to get on the calendar without front desk assistance.
+
+  Practices can display their site name on the scheduling landing page, and appointment notes are now supported so patients can provide context when booking online.
+
+  ### [Beta Users Only] Plan of Care Tracker
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_03_09/plan-of-care-tracker.png" alt="Plan of Care Tracker showing the new 10-state status lifecycle with facility and case status filters" />
+
+  The Plan of Care Tracker has been fully redesigned with a new 10-state status lifecycle, giving therapy practices a clearer view of where each patient stands in their plan of care.
+
+  The tracker now supports facility and case status filters, auto-faxes updated plans of care when changes are detected, and automatically closes tracker entries when a case is discharged. Appointment-level alerting shows Due Soon, Overdue, Sent, and Certified statuses directly on the calendar.
+
+  ### [Beta Users Only] Post-Visit Outreach and NPS Surveys
+
+  Automated NPS surveys can now be sent to patients after their visits to collect feedback on their care experience. The outreach flows engine has been expanded to support appointment-number-based messaging, so you can configure rules like "send a check-in message after the 3rd visit" or "trigger a satisfaction survey after the 10th appointment."
+
+  Message variables for appointment context are now available, and the sent messages table includes additional columns to help you track delivery and engagement.
+
+  For more information, check out the [Outreach Flows User Guides](https://www.notion.so/Outreach-Flows-User-Guides-2caf92a633f28097a76ac210255aa4cb).
+
+  ### [Beta Users Only] Provider-Specific Waitlist
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_03_09/provider-specific-waitlist.png" alt="Patient waitlist showing multi-provider selection and waitlist preference management from the demographics page" />
+
+  Patients can now select multiple providers when joining the waitlist, indicating they'll accept an appointment with any available clinician. Staff can filter the waitlist queue by site and view patient waitlist preferences directly from the demographics page. Full waitlist preference management is available from the appointments tab, and patients are also automatically prompted to join the waitlist when canceling an existing appointment.
+
+  Practices now have greater control over waitlist behavior with new configuration options. Admins can configure the messaging bucket size to set how many patients are simultaneously offered an open slot, and control whether a patient's provider preferences carry over after they accept a waitlist offer. It's also now possible to configure whether outstanding patient offers expire automatically when a new bucket is messaged.
+
+  ### [Beta Users Only] Order Sets (Medication Templates)
+
+  Providers can now build reusable order sets — pre-configured bundles of medications, labs, imaging, and referrals — and apply them directly within the chart note workflow. The Order Sets Manager lets you create, edit, favorite, and search order sets from a centralized view.
+
+  An Import Order Set pop-over allows quick selection from within a note, and optional fields for quantity, refills, and duration give providers flexibility when applying sets with variable dosing. Order sets for imaging, labs, referrals, and DME are in progress.
+
+  ### [Beta Users Only] Custom Face Sheets
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_03_09/custom-face-sheets.png" alt="Custom face sheet template builder in EHR Preferences with rich text editor, variable fields, and block nodes for medications, allergies, and diagnoses" />
+
+  Practices can now build custom face sheet templates in EHR Preferences using a rich text editor with variable fields drawn from patient demographics, insurance, provider, facility, vitals, and appointment data. Block nodes for medications, allergies, and diagnoses populate as tables automatically.
+
+  Templates can be previewed, set as the site default, and archived. Staff can print a single patient's face sheet from the Patient Flow calendar or bulk-generate face sheets for a full day's schedule by provider and date range.
+
+  ### [Beta Users Only] Dynamic Text Snippets
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_03_09/dynamic-text-snippets.png" alt="Dynamic text snippets interface showing configurable trigger characters and inline alternate word dropdowns within chart note sections" />
+
+  Providers can now create reusable text snippets scoped to specific providers and chart note sections, triggered by a configurable character (`/`, `.`, or `+`). Snippets support inline alternate word dropdowns, carry forward into subsequent notes, and render accurately in exported PDFs — reducing repetitive typing across high-volume documentation workflows.
+
+  ### [Beta Users Only] Bulk Chart Note Export
+
+  Chart notes now appear automatically on the Patient Attachments page once signed, eliminating the need to manually download and re-upload individual PDFs. Staff can select chart notes alongside other attachments — imaging documents, faxes, insurance cards, and more — for bulk download or fax in one action.
+
+  A per-row button on the Appointments view also lets staff manually push any specific chart note into the attachments page.
+
+  ### Bug Fixes and Improvements
+
+  **Scheduling:**
+  - Scheduling reserve blocks can now be capped by appointment type, giving practices finer control over how many patients can be booked into reserved slots
+
+  **Chart Notes & Documentation:**
+  - Chart notes now automatically generate versioned PDF attachments at submission that can be downloaded, faxed, and assigned via tasking
+  - Providers can create configurable text shortcuts with variable dropdown options that insert structured content directly into chart note sections, reducing repetitive documentation
+  - Fixed a regression where chart note billing fields (minutes, units, CPT modifiers) could not be edited after unlocking a note
+  - Resolved an issue where chart note attachments were not being created on submission
+  - Fixed an issue where HEP could not be sent when a chart note was locked
+
+  **Messaging:**
+  - Unread patient message threads now appear in bold, and staff can manually mark conversations as unread to flag them for follow-up
+
+  **Orders & Letters:**
+  - Site logos now appear on all order types, and appointment date of service and facility fax number are available as template variables in custom letters
+
+</Update>
+
+
 <Update label="March 6, 2026" tags={["Insights"]}>
 
   ### [Generally Available] Claims Page
@@ -54,7 +141,7 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
 
   We've shipped a number of updates to the Claims Page this month, here's everything that's new:
 
-  #### Viewing All Claims
+  #### Downloading All Claims
 
   <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_02_28/claims-bulk-download.png" alt="Claims page showing the Download CSV button in the top right corner for bulk exporting all rows" />
 
