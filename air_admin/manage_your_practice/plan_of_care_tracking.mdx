@@ -47,14 +47,14 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
 
   **Status Tabs**
 
-  | **Tab**                | **Description**                                     |
-  | :--------------------- | :-------------------------------------------------- |
-  | **All**                | Every POC currently being tracked                   |
-  | **Not Sent**           | POCs created but not yet sent to the physician      |
-  | **Awaiting Signature** | POCs sent to the physician, waiting to be returned  |
-  | **Due Soon**           | POCs unsigned for 20–30 days (approaching deadline) |
-  | **Overdue**            | POCs exceeding 30 days without a signature          |
-  | **Certified**          | POCs successfully signed by the physician           |
+  | **Tab** | **Description** |
+  | :-- | :-- |
+  | **All** | Every POC currently being tracked |
+  | **Not Sent** | POCs created but not yet sent to the physician |
+  | **Awaiting Signature** | POCs sent to the physician, waiting to be returned |
+  | **Due Soon** | POCs unsigned for 20–30 days (approaching deadline) |
+  | **Overdue** | POCs exceeding 30 days without a signature |
+  | **Certified** | POCs successfully signed by the physician |
 
   **Filter Options**
 
@@ -122,13 +122,13 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
 ### **Status Types**
 
 <Card>
-  | **Status**             | **Meaning**                                   | **Action Required**                                                    | **Risk Level**           |
-  | :--------------------- | :-------------------------------------------- | :--------------------------------------------------------------------- | :----------------------- |
-  | **Not Sent**           | POC created but not yet sent to the physician | Send POC via fax                                                       | Moderate                 |
-  | **Awaiting Signature** | POC sent, waiting to be signed                | Monitor; follow up if approaching 20 days                              | Low                      |
-  | **Due Soon**           | Unsigned for 20–30 days                       | Follow up with physician, confirm receipt, request expedited signature | Moderate                 |
-  | **Overdue**            | Not signed within 30 days                     | Priority follow-up, document all attempts, consider escalation         | High — claim denial risk |
-  | **Certified**          | Signed by physician, compliant                | None — system alerts when recertification approaches                   | None                     |
+  | **Status** | **Meaning** | **Action Required** | **Risk Level** |
+  | :-- | :-- | :-- | :-- |
+  | **Not Sent** | POC created but not yet sent to the physician | Send POC via fax | Moderate |
+  | **Awaiting Signature** | POC sent, waiting to be signed | Monitor; follow up if approaching 20 days | Low |
+  | **Due Soon** | Unsigned for 20–30 days | Follow up with physician, confirm receipt, request expedited signature | Moderate |
+  | **Overdue** | Not signed within 30 days | Priority follow-up, document all attempts, consider escalation | High — claim denial risk |
+  | **Certified** | Signed by physician, compliant | None — system alerts when recertification approaches | None |
 </Card>
 
 ### **Initial Script Exemption**
@@ -146,11 +146,11 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
 
   **Standard Path vs. Script Exemption Path**
 
-  |        | **Standard Path**             | **Script Exemption Path**                     |
-  | :----- | :---------------------------- | :-------------------------------------------- |
-  | Step 1 | Initial Eval completed        | Initial Eval completed                        |
-  | Step 2 | Send POC                      | Confirm signed script is on file              |
-  | Step 3 | Wait for returned signed POC  | Send POC once                                 |
+  |  | **Standard Path** | **Script Exemption Path** |
+  | :-- | :-- | :-- |
+  | Step 1 | Initial Eval completed | Initial Eval completed |
+  | Step 2 | Send POC | Confirm signed script is on file |
+  | Step 3 | Wait for returned signed POC | Send POC once |
   | Step 4 | Attach signed POC → Certified | Mark as Script Exempt → No signature required |
 
   **System Behavior When Exemption is Applied**
@@ -163,6 +163,7 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
   <Warning>
     The Script Exemption applies **only** to the initial POC certification. It **cannot** be used for any recertifications. You also cannot mark a case as Script Exempt without first successfully faxing the POC to the referring provider.
   </Warning>
+
   **Important Limitations**
 
   - Requires both a signed script **and** proof that the POC was sent.
@@ -209,6 +210,7 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
   <Tip>
     ✨**Smart Tip:** Enter the date the **physician signed** the document (as written on the POC), not the date you received it. This ensures your compliance timeline is accurate.
   </Tip>
+
   ---
 
   **Using the Script Exemption**
@@ -223,8 +225,6 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
   **Note:** This applies only to initial certifications. The checkbox is not available for recertification cases.
 
   ---
-
-  <video controls={true} className="w-full aspect-video rounded-xl" src="https://app.arcade.software/share/8pbqT98eF1HeodbWNNEn" />
 
   **POC Alerts in the Appointment Details Modal**
 
