@@ -154,3 +154,32 @@ In addition to the Plan of Care, Chart Notes include pre-built sections for Meas
 
   ![Add Note Section Web](/images/air_provider/fill_a_chart_note/other_sec_chart_note/other_sec_chart_note_4.webp)
 </Card>
+
+## Carry Forward Logic in Air
+
+In Air, content from your last note is automatically brought into your current one. 
+
+**How this works:**
+
+1. When a patient is **checked-in** the system automatically **creates the note **for the visit.
+2. Upon note creation, information from the patients previous appointment is Carried Forward into the note giving you a head start on documentation and a summary of want happened last visit. 
+
+By default, only Objective, Assessment, and Plan sections Carry Forward to Daily Notes. You can choose to include the Subjective section as well in Carry Forward. Talk with your Athelas admin about setting this up.
+
+**Initial Evaluatation → Daily Note**
+
+- Template sections from the Initial Evaluation that also exist in the Daily Note are carried forward (respecting OAP vs SOAP Carry Forward Configuration)
+
+**Daily Note -\> Daily Note**
+
+- All template sections from the Daily Note are carried forward
+
+**Daily Note -\> Progress Note**
+
+- All template sections from the Initial Evaluation are carried forward
+
+<Note>
+  #### **Carry Forward only applies to appointments in the same case.**
+</Note>
+
+<video controls className="w-full aspect-video rounded-xl" src="https://demo.arcade.software/HKpQWzMWMsAGvIEM7ydu?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" />
