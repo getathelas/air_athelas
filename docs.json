@@ -92,7 +92,8 @@
             "tag": "Front Desk",
             "pages": [
               "air_front_desk/take_in_a_patient/new_appt",
-              "air_front_desk/take_in_a_patient/prep_appt"
+              "air_front_desk/take_in_a_patient/prep_appt",
+              "air_front_desk/take_in_a_patient/schedule_and_reschedule_patient_appointments"
             ]
           },
           {
@@ -443,6 +444,7 @@
             "pages": [
               "insights_admin/my_practice/getting_started_with_your_practice",
               "insights_admin/my_practice/manage_staff_permissions",
+              "insights_admin/my_practice/how_to_add_a_new_user",
               "insights_admin/my_practice/update_practice_information",
               "insights_admin/my_practice/your_athelas_invoice"
             ]
