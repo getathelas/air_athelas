@@ -1,0 +1,268 @@
+---
+title: "Getting Started with Charge Master"
+sidebarTitle: "Getting Started with Charge Master"
+---
+
+![Charge Master Overview](/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_1.png)
+
+Charge Master is a centralized billing management system that consolidates your billing setup in one place: CPT codes, revenue codes, modifiers, payers, facilities, pricing, and effective dates.
+
+<Info>
+Charge Master expands standard fee schedules by combining codes, payer rules, pricing, dates, and facility-level variations so your team can manage billing logic from one source of truth.
+</Info>
+
+## Quick Start
+
+<Steps>
+<Step title="Access Charge Master">
+Navigate to the **Automation** section in the Insights sidebar and open **Charge Master**.
+</Step>
+
+<Step title="Download the CSV template">
+From the start screen, download the Charge Master CSV template.
+</Step>
+
+<Step title="Fill in your billing data">
+Add CPT/revenue codes, payers, modifiers, prices, facilities, and dates.
+</Step>
+
+<Step title="Upload and map your data">
+Import the CSV and map each column to a Charge Master field.
+</Step>
+
+<Step title="Resolve any import issues">
+Fix duplicate rows, payer mapping issues, and any required-field mapping gaps.
+</Step>
+</Steps>
+
+<Tip>
+If Charge Master is not visible in **Automation**, ask your admin to confirm your team-member permissions in **My Practice**.
+</Tip>
+
+## What is Charge Master?
+
+Charge Master replaces manual fee schedule lookups with a table you can filter, group, edit, and track over time.
+
+Key capabilities:
+
+- Store all billing configurations in one place
+- Know exact charges by payer, modifier, and facility
+- Add future effective dates for scheduled changes
+- Track updates through row-level and global history
+- Manage many rows at once with bulk tools
+
+## Understanding Key Concepts
+
+### Status: Published, Retired, and Scheduled
+
+![Status Overview](/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_17.png)
+
+| Status | Description | Use Case |
+| :----- | :---------- | :------- |
+| **Published** | Currently active and used for billing | Live charge in production |
+| **Retired** | Archived and no longer active | Old configuration kept for history |
+| **Scheduled** | Set to activate in the future | Future-dated charge becomes Published later |
+
+## Getting Started with Charge Master
+
+If your practice already uploaded fee schedules, Charge Master may open with rows already populated.
+
+### First-Time Setup
+
+![First-Time Setup Screen](/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_15.png)
+
+You can populate Charge Master in two ways:
+
+1. **Import from CSV** (recommended for bulk setup)
+2. **Manual entry** (one row at a time)
+
+## Importing Your Data
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_3.mp4" type="video/mp4" />
+</video>
+
+<Steps>
+<Step title="Prepare your CSV file">
+Download the template and fill in code, payer, pricing, and date data.
+</Step>
+
+<Step title="Upload your file">
+Click **Import** and select your file.
+</Step>
+
+<Step title="Map your columns">
+Match each CSV column to a Charge Master field. The mapper includes required indicators and warnings for unmapped columns.
+</Step>
+</Steps>
+
+<Info>
+During mapping, Charge Master can show row impact (for example, how many rows are ready to be added) and highlight required fields that still need mapping.
+</Info>
+
+### Understanding File Processing
+
+Large first-time imports can take longer while the system validates entries, checks duplicates, and verifies relationships across payer/facility data.
+
+<Info>
+CSV uploads are additive. They add new rows and do not automatically remove existing rows.
+</Info>
+
+### Resolving Import Issues
+
+After processing, you'll get a summary of any issues that need action.
+
+#### Types of Duplicate Charges
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_4.mp4" type="video/mp4" />
+</video>
+
+1. **Same charge, different price** - Same identifiers but different price than an existing row.
+2. **Exact duplicate** - Matches an existing row exactly.
+
+#### Payer Mapping Issues
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_6.mp4" type="video/mp4" />
+</video>
+
+If your file includes a payer value that is not recognized, Charge Master prompts you to map it during import.
+
+You can choose either:
+
+- **One-time mapping for this import flow** (do not persist for future imports), or
+- **Remember/save mapping** for future imports.
+
+<Tip>
+Confirming a payer mapping does not automatically complete the file import. After mapping, use the prompted reprocess/retry step to continue import.
+</Tip>
+
+### Viewing Your Charges
+
+![Charge Master Table View](/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_1.png)
+
+After import, your table displays key attributes such as CPT/revenue code, payer, modifier, facility, status, and price.
+
+## Working with Your Charges
+
+### Filtering Charges
+
+![Filtering Charges](/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_2.png)
+
+Use filters to quickly focus your table by:
+
+- Payer
+- Facility
+- Status
+- CPT code
+- Revenue code
+- Modifier
+- Effective date
+- Expiration date
+
+<Tip>
+The modifier filter is useful when your team needs to isolate rows tied to a specific modifier workflow across many codes.
+</Tip>
+
+### Customizing Column Visibility
+
+Use display settings to show or hide columns in your table view. This is helpful if you need to temporarily reveal additional fields (for example, payer or facility columns) while troubleshooting.
+
+### Grouping Charges
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_9.mp4" type="video/mp4" />
+</video>
+
+Common grouping choices:
+
+- CPT code
+- Facility
+- Payer
+- Modifier
+
+## Editing and Updating Charges
+
+### Edit a Single Charge
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_19.mp4" type="video/mp4" />
+</video>
+
+To edit a specific row:
+
+1. Click into the charge row first.
+2. Use the row-level **Edit** action.
+3. Update supported fields such as effective date(s) and facility/non-facility pricing.
+4. Save changes.
+
+<Note>
+On smaller displays, some row actions may be off-screen. Horizontally scroll the table to reveal all actions.
+</Note>
+
+### Smart Edit for Multi-Row Updates
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_20.mp4" type="video/mp4" />
+</video>
+
+Select multiple rows, then open **Smart Edit** for AI-assisted bulk updates. Smart Edit uses the selected rows as context and can help with tasks like:
+
+- Bulk updating facility/non-facility charges
+- Copying selected configurations across facilities
+- Updating effective dates across a selected set
+
+### Bulk Selection
+
+![Bulk Selection Example](/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_18.png)
+
+Select multiple rows with checkboxes. Combining filters with selection is the safest way to target the exact set you want to update.
+
+### Bulk Archive (Retire)
+
+<video controls>
+  <source src="/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_21.mp4" type="video/mp4" />
+</video>
+
+Use bulk archive when retiring outdated rows.
+
+1. Filter to your target set
+2. Select rows
+3. Click **Bulk Actions > Archive**
+4. Confirm
+
+### Bulk Transfer to Another Facility
+
+Copy selected rows to another facility and optionally apply:
+
+- Absolute price adjustment
+- Percentage adjustment
+
+## Downloading Your Charge Master
+
+You can download the full Charge Master report from the page so your team can review the current configuration offline.
+
+<Info>
+Use exports for validation, handoff reviews, or quick spot checks before larger bulk updates.
+</Info>
+
+## Tracking Changes & Compliance
+
+### Individual Charge History
+
+![Individual Charge History](/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_13.png)
+
+Each row includes a detailed activity timeline showing who changed what and when.
+
+### Global Activity History
+
+![Global Activity History](/images/insights_biller/general_billing/getting_started_with_charge_master/getting_started_with_charge_master_16.png)
+
+The History view on the main page tracks actions across the full Charge Master.
+
+You can filter this history by person and action type to support audits and operational review.
+
+<Info>
+UI labels and control placement may vary slightly as Charge Master evolves. If you do not see an option exactly as shown, use search, filters, or display settings to surface it.
+</Info>
