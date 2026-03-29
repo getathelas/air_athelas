@@ -80,6 +80,7 @@
               "air_provider/fill_a_chart_note/flowsheets",
               "air_provider/fill_a_chart_note/functional_outcomes",
               "air_provider/fill_a_chart_note/medications",
+              "air_provider/fill_a_chart_note/medication_order_set",
               "air_provider/fill_a_chart_note/prescriber_agents",
               "air_provider/fill_a_chart_note/scribe_faq",
               "air_provider/fill_a_chart_note/nav_inbox"
@@ -91,7 +92,8 @@
             "tag": "Front Desk",
             "pages": [
               "air_front_desk/take_in_a_patient/new_appt",
-              "air_front_desk/take_in_a_patient/prep_appt"
+              "air_front_desk/take_in_a_patient/prep_appt",
+              "air_front_desk/take_in_a_patient/schedule_and_reschedule_patient_appointments"
             ]
           },
           {
@@ -127,6 +129,7 @@
             "icon": "chart-column",
             "tag": "Admin",
             "pages": [
+              "air_admin/analyze_your_reports/audit_dashboard",
               "air_admin/analyze_your_reports/kpi_dashboard",
               "air_admin/analyze_your_reports/ehr_reports",
               "air_admin/analyze_your_reports/all_reports"
@@ -183,6 +186,7 @@
             "tag": "Biller",
             "pages": [
               "insights_biller/general_billing/how_to_set_block_pr_rules",
+              "insights_biller/general_billing/getting_started_with_charge_master",
               "insights_biller/general_billing/remittances",
               "insights_biller/general_billing/the_billing_rules_engine",
               "insights_biller/general_billing/the_review_charges_page"
@@ -442,6 +446,7 @@
             "pages": [
               "insights_admin/my_practice/getting_started_with_your_practice",
               "insights_admin/my_practice/manage_staff_permissions",
+              "insights_admin/my_practice/how_to_add_a_new_user",
               "insights_admin/my_practice/update_practice_information",
               "insights_admin/my_practice/your_athelas_invoice"
             ]
