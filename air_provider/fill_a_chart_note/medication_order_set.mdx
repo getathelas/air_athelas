@@ -1,0 +1,191 @@
+---
+title: "Medication Order Set"
+sidebarTitle: "Medication Order Set"
+toc: "true"
+---
+
+Medication Order Sets are reusable medication prescription templates that help you order faster and keep prescribing consistent across your practice.
+
+## What is a Medication Order Set?
+
+An order set lets you save a group of medications with default values once, then apply that set when ordering for a patient.
+
+- The system pre-fills medication fields such as **Prescription SIG**, **Duration**, **Quantity**, and **Refills**.
+- You can still adjust any value before you submit.
+- Order sets are **site-specific** and cannot be shared across clinic sites.
+
+## Where to find Medication Order Sets
+
+### Manage order sets
+
+Use this path to create, edit, duplicate, archive, and restore order sets:
+
+1. Open **Preferences** from the left sidebar.
+2. Click the **Order Sets** tab in the top navigation.
+
+### Use order sets while ordering
+
+You can apply order sets from:
+
+- **Patient Profile -> Medications -> Create New**
+- **Chart Note -> Medications -> Medication Order**
+- **Medication drawer -> Import Order Set**
+
+
+## Create a Medication Order Set
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_provider/fill_a_chart_note/medication_order_set/medication_order_set_1.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+### Step 1: Open the Order Sets page
+
+1. Open **Preferences**.
+2. Click **Order Sets**.
+3. Click **Add Order Set**.
+
+### Step 2: Name the order set
+
+1. Click the pencil icon next to **Name your order set**.
+2. Enter a clear name, such as `Knee Pain - NSAID Protocol`.
+
+**Note:** Names must be unique within your site.
+
+### Step 3: Add an optional description
+
+Add context that helps other providers understand when to use the set.
+
+### Step 4: Link optional diagnosis codes
+
+1. In **Diagnosis Code**, search ICD-10 codes or condition names.
+2. Select one or more codes from the dropdown.
+
+You can leave diagnosis codes blank if you plan to pick the set manually.
+
+### Step 5: Add medications
+
+1. In **Medication**, click the **+** button to add a row.
+2. Search and select the correct medication/formulation.
+3. Fill in these fields for each medication:
+   - **Prescription SIG**
+   - **Duration** (number + unit)
+   - **Quantity**
+   - **Refills**
+   - **Pharmacy** (optional)
+
+You can add multiple medications in one set. You can also use **Search Order Sets** in the right panel and click **Add** to copy medications from an existing set.
+
+### Step 6: Save
+
+Click **Create Order Set**.
+
+**Important behavior:**
+
+- You can save an order set with only a name, then add medications later.
+- If you add a medication row, that row must have a medication selected before saving.
+- You can mark the set as **Mark as my favorite** so it appears under Favorites when searching.
+
+## Manage Medication Order Sets
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_provider/fill_a_chart_note/medication_order_set/medication_order_set_2.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+
+### Active and Archived tabs
+
+- **Active**: available for use.
+- **Archived**: hidden from standard search and ordering popovers until restored.
+
+### Search
+
+Use the search field to filter by order set name or diagnosis code.
+
+### Row actions in Active
+
+- **Edit**: update name, description, diagnosis codes, and medications.
+- **Duplicate**: creates `Original name (Copy)` so the name remains unique.
+- **Archive**: moves the set to Archived after confirmation.
+
+### Archived actions
+
+- **Restore** returns the set to Active so it can be used again.
+
+### Favorites
+
+- **Mark as my favorite** is set in the edit view.
+- Favorites are **per user** and do not change the set for other users.
+
+## Use an Order Set When Ordering
+
+### From Patient Medications
+
+1. Open a patient profile and go to **Medications**.
+2. Click **Create New**.
+3. In the search popover, choose from tabs like **All**, **Favorites**, **Order Sets**, or **Individual Order**.
+4. Select an order set to prefill the medication drawer.
+5. Review and adjust fields, then submit.
+
+### From Chart Note
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_provider/fill_a_chart_note/medication_order_set/medication_order_set_3.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+
+1. Open the chart note and go to **Medications**.
+2. Click **Medication Order**.
+3. Select an order set or individual medication.
+4. Review and submit for the current patient and appointment.
+
+### Import Order Set inside the medication drawer
+
+If the drawer is already open:
+
+1. Click **Import Order Set**.
+2. Search and select an order set or medication.
+
+Behavior depends on existing rows:
+
+- If only an empty row exists, imported items replace that row.
+- If filled rows already exist, imported items are appended.
+
+You can import multiple times, add medications manually, or remove rows before submitting.
+
+## Tips and best practices
+
+- Use clear names so providers can find the right set quickly.
+- Group complete protocols into one set when possible.
+- Favorite the sets you use most often.
+- Archive older sets instead of deleting so you can restore later.
+- Remember order sets are templates; all standard validation and checks still apply before submission.
+
+## Quick reference
+
+| **Task** | **Where** | **Action** |
+| :--- | :--- | :--- |
+| **Create / edit / archive order sets** | **Preferences -> Order Sets** | **Add Order Set, Edit, Duplicate, Archive, Restore** |
+| **Use order set in Patient Medications** | **Patient -> Medications -> Create New** | **Select set or medication from popover** |
+| **Use order set in Chart Note** | **Chart Note -> Medications -> Medication Order** | **Select set or medication from popover** |
+| **Add set to current drawer** | **Inside medication drawer** | **Import Order Set, then search and add** |
+
+### FAQ
+
+<Accordion title="Can I share an order set across multiple clinic sites?">
+  No. Order sets are site-specific and only available within the current clinic site.
+</Accordion>
+
+<Accordion title="If I apply an order set, can I still change medication details?">
+  Yes. Applying a set pre-fills values, but you can edit SIG, duration, quantity, refills, and other fields before submitting.
+</Accordion>
+
+<Accordion title="What happens when I archive an order set?">
+  Archived order sets are hidden from standard search and ordering popovers. You can restore them from the Archived tab when needed.
+</Accordion>
+
+<Accordion title="Are Favorites shared with other users at my site?">
+  No. Favoriting is per user. Marking a set as favorite only affects your own search experience.
+</Accordion>
