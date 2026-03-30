@@ -241,7 +241,6 @@
             "tag": "Front Desk",
             "pages": [
               "insights_front_desk/agents_center/components_of_the_dashboard",
-              "insights_front_desk/agents_center/getting_started_with_agents_center",
               "insights_front_desk/agents_center/make_an_outbound_call",
               "insights_front_desk/agents_center/understanding_use_cases"
             ]
