@@ -1,0 +1,238 @@
+---
+title: "EHR Alert Rules"
+sidebarTitle: "Alert Rules"
+toc: "true"
+---
+
+The **EHR Alert Rules** feature lets you create configurable alert banners that automatically appear in chart note sections when specific appointment conditions are met.
+
+You can use Alert Rules to surface payer guidance, billing reminders, and clinical notes directly while providers document care. This helps reduce denials, prevent over- or under-billing, and remove manual rule lookup.
+
+Each site can configure up to **50 active alert rules**. Rules are site-scoped and visible to providers whose appointments match the configured conditions.
+
+<Info>
+  Alerts are **informational only**. They do not block chart note completion or **Sign & Submit**. Providers can dismiss alerts for the current session, and alerts appear again the next time the chart note loads.
+</Info>
+
+
+## Access Alert Rules
+
+**Access Alert Rules walkthrough**
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_admin/manage_your_practice/ehr_alert_rules/Access%20Alert%20Rules.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+To open the Alert Rules page:
+
+1. **Go** to **EHR Preferences**.
+2. Under **General Settings**, **select** the **Alert Rules** tab.
+
+![Alert Rules tab under General Settings in EHR Preferences](/images/air_admin/manage_your_practice/ehr_alert_rules/ehr_alert_rules_1.png)
+
+## View existing alert rules
+
+![View existing alert rules table with title, conditions, display locations, and active toggle](/images/air_admin/manage_your_practice/ehr_alert_rules/View%20existing%20alert%20rules.png)
+
+The **Alert Rules** tab shows all rules configured for your site in a paginated table with the total rule count.
+
+Each row includes:
+
+| **Column** | **What it shows** |
+| :--- | :--- |
+| **Title** | The alert rule name. |
+| **Conditions** | A **See Conditions** option to review matching criteria. |
+| **Display Locations** | Tags showing where the alert can render (for example, **Objective**, **Subjective**, and **Billing Details**). |
+| **Active** | A toggle to enable or disable the rule quickly. |
+
+## Before you create a rule
+
+- You must enter a **Title** and **Content**.
+- You must configure at least one condition value before you create the rule.
+- **Display Locations** are optional in the form, but if you leave them empty, the alert does not render in chart notes.
+
+<Warning>
+  You can keep up to **50 active rules** per site. If you hit this limit, deactivate another active rule before reactivating or creating one that should run.
+</Warning>
+
+## Create a new alert rule
+
+1. **Click** **Create Alert Rule**.
+2. Enter a required **Title** (for example, `Medicare Unit Limit`).
+3. Enter required **Content** as plain text. Multi-line content is supported.
+4. **Set** one or more values in the available condition dimensions.
+5. Optionally **set** one or more **Display Locations**.
+6. **Click** **Create**.
+7. Verify the rule appears in the Alert Rules table with expected conditions and display tags.
+
+**Condition dimensions you can configure:**
+
+| **Condition** | **How it works** |
+| :--- | :--- |
+| **Insurance Companies** | The alert appears only when the patient's primary insurance matches one of the selected companies. |
+| **Clinical Note Types** | The alert appears only for selected note types, such as Initial Evaluation, Daily Note, Progress Note, Discharge Note, or Re-Certification Note. |
+| **Appointment Types** | The alert appears only for selected appointment types configured for your site. |
+| **Facilities** | The alert appears only for appointments at selected facilities. |
+| **Provider Credentials** | The alert appears only when the rendering provider has one of the selected credentials. |
+
+## Condition logic (AND/OR behavior)
+
+Alert Rules use both **AND** and **OR** logic:
+
+- **OR within a condition dimension:** If you select multiple values in one dimension (for example, Medicare and Aetna under **Insurance Companies**), either value can match.
+- **AND across condition dimensions:** If you configure multiple dimensions (for example, **Insurance Companies** and **Clinical Note Types**), all configured dimensions must match.
+- **Unset dimensions match all:** Any condition dimension you leave empty does not filter the rule.
+
+<Tip>
+Start broad, verify where the alert appears, then narrow with additional conditions to reduce alert noise.
+</Tip>
+
+**Example:** If you set **Insurance Companies** to Medicare and Medicaid, **Clinical Note Types** to Initial Evaluation, and leave **Provider Credentials** empty, the alert appears for Medicare or Medicaid appointments that are Initial Evaluations regardless of credential.
+
+## Manage rules
+
+### Edit an alert rule
+
+**Edit an alert rule walkthrough**
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_admin/manage_your_practice/ehr_alert_rules/edit-alert-rules.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+1. Find the rule in the Alert Rules table.
+2. **Click** **Edit** (pencil icon).
+3. Update the needed fields.
+4. **Click** **Save**.
+
+The update takes effect immediately and appears the next time a matching chart note is loaded.
+
+### Activate or deactivate a rule
+
+**Activate or deactivate a rule walkthrough**
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_admin/manage_your_practice/ehr_alert_rules/active%20a%20rule.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+Use the **Active** toggle in the rules table:
+
+- **Active (On):** The rule is evaluated during chart note load and can show alerts.
+- **Inactive (Off):** The rule is skipped, but configuration is preserved.
+
+If you are at the active limit, you must deactivate another rule before you can reactivate an inactive one.
+
+### Delete a rule
+
+**Delete a rule walkthrough**
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_admin/manage_your_practice/ehr_alert_rules/delete%20rule.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+1. **Click** **Delete** (trash icon) on the rule row.
+2. Confirm the deletion.
+
+<Warning>
+  Deleting a rule permanently removes it from the site and cannot be undone from the UI.
+</Warning>
+
+## How alerts appear in chart notes
+
+![Example alert banners shown in chart note sections for a matching appointment](/images/air_admin/manage_your_practice/ehr_alert_rules/ehr_alert_rules_2.png)
+
+
+When a provider opens a chart note, the system evaluates all active site rules against appointment context, including insurance, note type, appointment type, facility, and provider credentials.
+
+Matching alerts appear as purple callout banners at the top of configured sections and include:
+
+- An information icon.
+- The alert **Title** in bold.
+- The alert **Content**.
+- A dismiss (**X**) action.
+
+**Important behavior:**
+
+- Alerts are non-blocking and do not prevent **Sign & Submit**.
+- **Dismissing** an alert hides it for the current session only.
+- Multi-line alert content is supported and preserves line breaks.
+- If the alert system encounters an error, chart notes still load normally.
+
+## Use Select All in condition dropdowns
+
+Each condition dropdown includes **Select All** so you can quickly include all available values for that condition dimension.
+
+Use this when you want broad matching and only need to remove a few exceptions.
+
+## Display locations and feature flags
+
+| **Location** | **When available** |
+| :--- | :--- |
+| **Subjective** | Always available. |
+| **Objective** | Always available. |
+| **Assessment** | Always available. |
+| **Plan** | Always available. |
+| **Other** | Always available. |
+| **Notarize** | Always available. |
+| **Vitals** | When Vitals is enabled. |
+| **Medications** | When EHR Medications is enabled. |
+| **Care Team** | When Care Team is enabled. |
+| **Clinical Results** | When Clinical Results is enabled. |
+| **Diagnostic Reports** | When Diagnostic Reports is enabled. |
+| **Billing Details** | When billing section is enabled in chart note settings and site is not demo mode. |
+| **Treatment / Exercises** | Based on flowsheet mode configuration. |
+
+## Common use cases
+
+### Payer-specific billing reminder
+
+- **Title:** `Medicare Unit Limit Reminder`
+- **Conditions:** Insurance Companies = Medicare
+- **Display Locations:** Billing Details
+- **Content example:** `Confirm documentation supports billed units and payer requirements before submission.`
+
+### Initial evaluation coding reminder
+
+- **Title:** `Initial Eval Coding Reminder`
+- **Conditions:** Clinical Note Types = Initial Evaluation
+- **Display Locations:** Billing Details, Assessment
+- **Content example:** `Include the appropriate evaluation code and supporting documentation for this visit.`
+
+### Credential-specific compliance prompt
+
+- **Title:** `PTA Supervision Reminder`
+- **Conditions:** Provider Credentials = PTA; Insurance Companies = Medicare
+- **Display Locations:** Subjective, Billing Details
+- **Content example:** `Document supervising provider details when required by payer policy.`
+
+### Facility-specific operational guidance
+
+- **Title:** `North Campus Authorization Reminder`
+- **Conditions:** Facilities = North Campus
+- **Display Locations:** Subjective
+- **Content example:** `Confirm authorization status before finalizing care plan decisions for this facility.`
+
+### FAQ
+
+<Accordion title="How many alert rules can I create?">
+  Each site can have up to **50 active rules**. Inactive rules do not count toward this limit.
+</Accordion>
+
+<Accordion title="Can I create patient-specific alert rules?">
+  Not in the current version. Rules are site-level and apply to appointments that match the configured conditions.
+</Accordion>
+
+<Accordion title="Will alert banners block providers from completing chart notes?">
+  No. Alerts are informational only. They do not block documentation flow or **Sign & Submit**.
+</Accordion>
+
+<Accordion title="What happens when a provider dismisses an alert?">
+  Dismissal applies only to the current session. The alert appears again the next time a matching chart note is opened.
+</Accordion>
+
+<Accordion title="Can alert content include rich text formatting?">
+  Not currently. Alert content is plain text only, but multi-line content is supported.
+</Accordion>
