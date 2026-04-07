@@ -1,0 +1,95 @@
+---
+title: "Orders"
+sidebarTitle: "Orders"
+toc: "true"
+---
+
+You can use Air to create and track different types of clinical orders from a global practice view or for a single patient.
+
+## What you can order
+
+Orders in Air include:
+
+- **Outbound Referrals**
+- **Imaging**
+- **Labs**
+- **DME**
+- **Custom Orders**
+
+Order types share common fields such as **Patient**, **Provider**, and **Diagnosis Codes**, and each type can include additional type-specific fields.
+
+## Access the Orders page
+
+### Global view: EHR -> Orders
+
+Use this view when you want to manage orders across all patients at your practice.
+
+<div style={{ position:"relative",paddingBottom:"calc(54.21768707482993% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://app.arcade.software/share/1kR4f37rA9cFgnKxFT8K"
+    title="Orders - Global View"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: Open and navigate Orders from the global EHR view.
+  </p>
+</div>
+
+### Patient-specific view: Patient Profile -> Orders
+
+Use this view when you are working within a single patient chart and want to create or review that patient's orders.
+
+<div style={{ position:"relative",paddingBottom:"calc(54.21768707482993% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://app.arcade.software/share/TEgqkMtTASjBIpl3GsMg"
+    title="Orders - Patient Profile View"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: Access Orders from a patient's profile.
+  </p>
+</div>
+
+## Create a new order
+
+After opening **Orders** from either entry point:
+
+1. Click **Create Order**.
+2. Select the **Order Type** you need.
+3. Fill in shared fields such as **Patient**, **Provider**, and **Diagnosis Codes**.
+4. Complete any type-specific fields required for that order.
+5. Review details and submit.
+
+**Note:** Field requirements can vary by order type, so review the full form before submitting.
+
+### FAQ
+
+<Accordion title="Should I use the global Orders page or the patient Orders page?">
+  Use **EHR -> Orders** when you need a practice-wide queue across patients. Use **Patient Profile -> Orders** when you are actively working on one patient and want to stay in that chart context.
+</Accordion>
+
+<Accordion title="Do all order types use the same fields?">
+  Not exactly. All order types share core fields such as **Patient**, **Provider**, and **Diagnosis Codes**, but each type can include additional fields based on the workflow.
+</Accordion>
+
+<Accordion title="Can I create orders from either access path?">
+  Yes. You can create orders from both the global Orders view and the patient-specific Orders view.
+</Accordion>

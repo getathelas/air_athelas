@@ -82,6 +82,7 @@
               "air_provider/fill_a_chart_note/medications",
               "air_provider/fill_a_chart_note/medication_order_set",
               "air_provider/fill_a_chart_note/prescriber_agents",
+              "air_provider/fill_a_chart_note/orders",
               "air_provider/fill_a_chart_note/scribe_faq",
               "air_provider/fill_a_chart_note/nav_inbox"
             ]
@@ -113,6 +114,7 @@
             "pages": [
               "air_admin/manage_your_practice/practice_settings",
               "air_admin/manage_your_practice/billing_addendums_and_retro_billing",
+              "air_admin/manage_your_practice/custom_orders",
               "air_admin/manage_your_practice/appointment_types",
               "air_admin/manage_your_practice/chart_note_templates",
               "air_admin/manage_your_practice/patient_workflows",
