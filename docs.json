@@ -41,7 +41,8 @@
             "group": "View your Calendar",
             "icon": "calendar",
             "pages": [
-              "air_front_desk/view_your_calendar/nav_calendar"
+              "air_front_desk/view_your_calendar/nav_calendar",
+              "air_front_desk/view_your_calendar/waitlist_user_guide"
             ]
           },
           {

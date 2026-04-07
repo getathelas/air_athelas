@@ -1,0 +1,156 @@
+---
+title: "Waitlist User Guide"
+sidebarTitle: "Waitlist"
+toc: "true"
+---
+
+Use the waitlist to fill last-minute openings faster by automatically offering newly available appointment times to patients who asked for earlier availability.
+
+## <Icon icon="circle-info" iconType="duotone" color="#F9345F" size={23} /> How the waitlist works
+
+- Patients can join the waitlist from the **Athelas Patient Portal** when they can’t find an available appointment time.
+- Staff can manually add patients to the waitlist from the **Calendar**.
+- When a matching appointment opens (for example, a cancellation), Air can send offers to the next eligible patient(s) based on your site’s waitlist settings.
+
+**Note:** Waitlist offers can be configured to require approval (creating an appointment request) or to auto-schedule when the patient accepts.
+
+## <Icon icon="calendar-circle-user" iconType="duotone" color="#F9345F" size={23} /> Join the waitlist from the Athelas Patient Portal
+
+When a patient schedules in the portal, they typically choose a **Provider**, **Facility**, and **Appointment Type** before seeing available times.
+
+![Patient portal scheduling filters for provider, facility, and appointment type](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_1.webp)
+
+If there are no available times that match the patient’s selections, they can join the waitlist.
+
+![Patient portal prompt to join the waitlist](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_2.webp)
+
+**To join the waitlist from the portal:**
+
+1. In the scheduling flow, **click** **Join Waitlist**.
+2. Select the patient’s preferences:
+   - **Facility**
+   - One or more **Providers**
+   - **Appointment Type**
+   - Preferred time windows (or **Anytime**)
+3. **Submit** the waitlist request.
+
+![Waitlist preference selection screen in the patient portal](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_3.webp)
+
+After submission, the patient can view and manage their waitlist entry from their appointments area (edit preferences or leave the waitlist).
+
+![Patient portal showing an active waitlist entry with options to edit or exit](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_4.webp)
+
+## <Icon icon="list-check" iconType="duotone" color="#F9345F" size={23} /> Add a patient to the waitlist from the Calendar
+
+If a patient can’t use the portal (or you’re creating the entry on their behalf), you can add them from the Calendar.
+
+**To add a patient to the waitlist:**
+
+1. Open the **Calendar**.
+2. In the lower-right corner, **select** the **Requests** tab.
+
+![Calendar view with the Requests tab highlighted](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_5.webp)
+
+3. Review existing entries, then **click** **Add to Waitlist**.
+
+![Requests drawer showing the Add to Waitlist action](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_6.webp)
+
+4. Enter the patient’s appointment preferences (for example: **Provider**, **Facility**, **Appointment Type**, and preferred times), then **save**.
+
+![Add to Waitlist form for setting patient preferences](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_7.webp)
+
+5. Confirm the patient appears in the list of waitlist entries.
+
+![Waitlist entries list showing the newly added patient](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_8.webp)
+
+From the Requests drawer you can also:
+
+- **Edit** an existing entry.
+- **Remove** an entry (using the **X**).
+- Hover over the **(i)** icon to see entry details.
+
+![Waitlist entry details shown from the information tooltip](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_9.webp)
+
+## <Icon icon="clipboard-check" iconType="duotone" color="#F9345F" size={23} /> Add waitlist preferences via the Waitlist Preferences intake form
+
+Your site can optionally collect preferred waitlist times through the global intake form **Waitlist Preferences**.
+
+- When a patient submits the form, Air automatically creates (or updates) a waitlist entry using those preferences.
+- You can still review and manage the entry from the Calendar **Requests** tab.
+
+**Note:** If your site uses this intake form as an ongoing “standing preference,” consider enabling settings like retaining waitlist requests (so the patient’s preferences remain available after they accept an offer).
+
+## <Icon icon="comment-check" iconType="duotone" color="#F9345F" size={23} /> What happens when the waitlist processes an opening
+
+When an appointment is canceled, Air can detect that the opening matches one or more waitlist entries. You’ll see a prompt giving you options to start processing or skip waitlist offers.
+
+![Popup prompting you to send waitlist offers or skip](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_10.webp)
+
+If you start the waitlist, the next eligible patient(s) receive an offer (typically by text and/or email).
+
+![Example of a waitlist offer notification message](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_11.webp)
+
+![Example of a second waitlist offer notification message](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_12.webp)
+
+When a patient opens the offer link, they can review the appointment details and **accept** or **decline**.
+
+![Patient offer acceptance page with accept and reject options](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_13.webp)
+
+If the patient doesn’t respond within the configured time window, the offer expires and the opening is offered to the next batch of eligible patients (based on your waitlist bucket size).
+
+If a patient opens an offer link after it expires (or after someone else has already accepted), they’ll see an expiration message.
+
+![Expired offer message shown when a waitlist offer is no longer available](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_14.webp)
+
+If your site requires approval for appointment requests, an accepted offer becomes an appointment request in the Requests tab. Otherwise, the acceptance schedules the appointment automatically.
+
+![Accepted offer converting into an appointment request or scheduled appointment](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_15.webp)
+
+## <Icon icon="gear" iconType="duotone" color="#F9345F" size={23} /> Configure waitlist settings
+
+Waitlist settings are configured in **EHR Preferences** under the **Calendar** tab.
+
+![EHR Preferences location for Calendar waitlist settings](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_16.webp)
+
+Common settings include:
+
+- **Waitlist on/off**: Enable or disable waitlist creation by patients and/or staff.
+- **Require approval on waitlist requests**: When enabled, promotions from the waitlist require review before they are scheduled.
+- **Cancel future appointment if waitlist slot is scheduled**: If the patient already has a future appointment and accepts a waitlist offer, Air cancels the next scheduled appointment (per your configuration).
+- **Minimum time to fill a newly opened slot**: Don’t send offers for last-minute openings inside your cutoff window.
+- **Same-patient waitlist offer exclusion period**: Prevent a single patient from receiving too many offers in a short period.
+- **Time to accept by patient**: The amount of time a patient has to accept before the next batch is offered the opening.
+- **Waitlist bucket size**: How many patients receive each batch of offers.
+- **Retain waitlist requests for future**: Keep the waitlist entry active after acceptance (moves the patient to the back of the list).
+- **Expire previous waitlist offers**: Expire older batches when a new batch is sent (or allow offers to remain active until someone accepts).
+
+![Waitlist preferences and configuration options in the Calendar settings](/images/air_front_desk/view_your_calendar/waitlist_user_guide/waitlist_user_guide_17.webp)
+
+### FAQ
+
+<Accordion title="Why can’t a patient see the option to join the waitlist?">
+  The **Join Waitlist** option only appears when there are no available times that match the patient’s selected **Provider**, **Facility**, and **Appointment Type**.
+
+  If there are available times, the patient will see appointment slots instead of a waitlist prompt.
+</Accordion>
+
+<Accordion title="What happens if multiple patients match a newly opened slot?">
+  Air processes offers based on your site’s waitlist configuration:
+
+  - **Waitlist bucket size** determines how many patients receive each batch of offers.
+  - **Time to accept** determines how long each batch has to respond.
+  - If no one accepts, Air continues offering the slot to the next eligible patient(s) until someone accepts or there are no matching entries left.
+</Accordion>
+
+<Accordion title="When does an accepted offer become an appointment request instead of scheduling automatically?">
+  If **Require approval on waitlist requests** is enabled, an accepted offer converts into an appointment request in the **Requests** tab for staff review.
+
+  If approval is not required, the appointment is scheduled automatically when the patient accepts.
+</Accordion>
+
+<Accordion title="Can a patient keep their preferences for future openings after accepting an offer?">
+  Yes—if **Retain waitlist requests for future** is enabled, accepting an offer keeps the waitlist entry active and moves the patient to the back of the list.
+
+  If it’s disabled, the entry is removed after acceptance and the patient would need to join the waitlist again for future openings.
+</Accordion>
+
