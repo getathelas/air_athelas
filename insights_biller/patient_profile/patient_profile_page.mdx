@@ -1,0 +1,218 @@
+---
+title: "Getting Started with the Patient Profile Page"
+sidebarTitle: "Getting Started with the Patient Profile Page"
+---
+
+### **Getting Started with the Patient Profile Page**
+
+The Patient Profile Page is where you manage everything about a patient's financial picture in Insights: their charges, payments, credits, and balance, all in a single view. Athelas AI sits alongside the page with full context, ready to explain any balance or trace any dollar back to where it came from.
+
+![Patient Profile Page Overview](/images/insights_biller/patient_profile/patient_profile_page/patient_profile_page_1.png)
+
+<Note>
+A few terms used throughout this page:
+
+- **PR (Patient Responsibility):** the portion of a charge the patient owes, as opposed to insurance.
+- **DOS (Date of Service):** the date a patient was seen. Charges and credits are tracked per DOS.
+- **Credit:** money on the patient's account that hasn't been applied to a charge yet, typically from an overpayment or a refunded payment that was kept on account.
+</Note>
+
+## **What is the Patient Profile Page?**
+
+The Patient Profile Page consolidates the entire financial history of a patient into one screen: every charge from pre-visit estimate through final remittance, every payment and refund, and every credit movement in between. It replaces jumping between the old charges list, payments list, and PR timeline to piece together what happened.
+
+**Key capabilities:**
+
+- **One-click AI balance summary:** click the patient's balance and Athelas AI will explain why they owe what they owe, with no prompting required.
+- **End-to-end transaction activity:** every credit is now traceable, linking back to the payment it originally came from, so "where did this money come from?" and "where did it go?" are always a couple of clicks away.
+- **Unified Charges table:** one row per DOS, showing the full lifecycle from estimate to finalized balance.
+- **Charge Details drawer:** per-CPT breakdown (Copay, Co-Insurance, Deductible, etc.) and the full PR timeline.
+- **Transactions table:** every incoming payment on the patient, with clear status and refund information inline.
+- **Athelas AI with screen context:** no need to re-type IDs. The assistant already knows the patient, charge, or transaction you're looking at, and can act on credits (apply, move, refund, write off).
+
+## **Getting Started**
+
+### **Accessing the Patient Profile**
+
+Log in to Insights at **[insights.athelas.com](https://insights.athelas.com/)** and navigate to a patient from the **Patients** tab, from a claim's **Patient** link, or directly from global search. The first time you open the new Patient Profile, a guided tour walks you through the layout automatically.
+
+![Patient Profile Layout](/images/insights_biller/patient_profile/patient_profile_page/patient_profile_page_2.png)
+
+The page uses a three-panel design:
+
+- **Left:** patient summary, quick actions, and communication/status controls.
+- **Center:** the Charges and Transactions tables, with drill-down views for details.
+- **Right:** the Athelas AI side panel, available throughout.
+
+<Tip>
+Press **Ctrl-K** (Windows) or **Command-K** (Mac) anywhere in Insights to quickly search for a patient or jump to another page without losing your place.
+</Tip>
+
+### **Quick Actions**
+
+The quick actions toolbar at the top of the patient summary is where you'll find the most common patient-level tasks: edit patient information, download statements, add a note to the account, and more.
+
+### **Communication & Status**
+
+The status controls let you manage how Athelas interacts with the patient: toggle automatic text messages on or off, set up a payment plan, or mark the account as **In Collections**. Changes take effect immediately and are logged in the patient's activity history.
+
+## **The Charges Table**
+
+![Charges Table](/images/insights_biller/patient_profile/patient_profile_page/patient_profile_page_4.png)
+
+The Charges tab shows one row per date-of-service charge and tracks the full lifecycle in a single row. Before this release, following a charge from estimate to final balance meant jumping between the charges view, the PR timeline, and remittance detail. Now it's visible at a glance.
+
+**Columns:**
+
+- **Appt. (Suggested):** the pre-visit estimate from the rule engine, before the patient arrived.
+- **Appt. (Charged):** how much was put on the patient's balance at check-in, whether or not they paid it.
+- **Appt. (Collected):** how much was actually collected from the patient at check-in.
+- **Final PR:** the patient's responsibility after insurance adjudicated the claim.
+- **Charge Status:** where the charge is in its lifecycle: `Initial Charge` → `Claim in Progress` → `Finalized`.
+- **Written Off / Paid / Refunded / Balance:** how the balance has been settled, and what remains.
+
+Use the filter and sort controls at the top of the table to narrow the view by status, date range, or balance.
+
+## **Charge Details**
+
+![Charge Details Drawer](/images/insights_biller/patient_profile/patient_profile_page/patient_profile_page_5.png)
+
+Clicking any row in the Charges table opens a detail panel with the full story of that charge:
+
+- **Per-CPT summary table:** a row per procedure code with Copay, Co-Insurance, Deductible, Other, and Self-Pay amounts.
+- **Overview:** charge events (claim submissions, remittance, adjustments) separated from transaction events (payments, credits, refunds) so each side of the ledger is easy to read.
+- **PR Timeline:** the full lifecycle from pre-visit estimate through final balance.
+
+This is the "drill all the way in" view when the balance summary or a Charges table row raises a question you need to answer precisely.
+
+## **The Transactions Table**
+
+![Transactions Table](/images/insights_biller/patient_profile/patient_profile_page/patient_profile_page_6.png)
+
+The Transactions tab shows every incoming payment on the patient. Refunds don't appear as their own rows; instead, refund activity is reflected on the originating payment through its status badge and inside its Transaction Details page.
+
+<Note>
+**"Refund" now strictly means money leaving the system.** Moving money from a payment into credits is labeled **"moved to credits"**. These used to look identical in the old UI, which was a frequent source of confusion. Credit operations (applications, movements between DOS) no longer clutter the transactions list; to see credit movements for a specific payment, open it and check the **Activity feed** on the Transaction Details page, or use the **Credits** tab.
+</Note>
+
+**Columns:**
+
+- **Date:** when the payment was created.
+- **Type:** the kind of transaction, covering the different payment sources Athelas supports (card, Smart Pay, cash, check, ACH, and more).
+- **Amount:** the dollar amount.
+- **Payment Method:** the specific method used for the transaction.
+- **Performed By:** the user or system that created the transaction.
+
+**Status badges:**
+
+- `Succeeded`: the payment went through cleanly and has not been refunded.
+- `Partially Refunded`: some portion of the payment has been refunded or moved to credits.
+- `Refunded`: the entire payment has been refunded or moved to credits.
+
+**Tabs:**
+
+- **All:** everything.
+- **Outstanding:** payments not yet fully applied.
+- **Paid:** fully applied payments.
+- **Canceled:** voided transactions.
+
+## **Transaction Details**
+
+![Transaction Details](/images/insights_biller/patient_profile/patient_profile_page/patient_profile_page_7.png)
+
+The Transaction Details page is where the new credit infrastructure really shows up. Every credit on a patient's account now carries a chain back to the payment that originally created it, no matter how many times it's been moved, split, or reapplied. The Transaction Details page is where that chain becomes visible.
+
+**Summary cards** across the top give you the state of the payment at a glance:
+
+- **Initial Amount:** what this payment started as.
+- **Total Applied:** how much of this payment has been applied to charges, whether directly or indirectly through credits.
+- **Total Refunded:** how much has left the system as a refund back to the patient.
+- **Total Credits:** how much is still sitting as credits on the account, traceable to this payment.
+
+Together, these four numbers should always add up to the initial amount, so you can quickly see whether a payment is fully accounted for.
+
+**Application breakdown by DOS:** a table showing every date of service that received money from this payment, including money applied indirectly through credits. Every row links back to the specific charge it paid.
+
+**Activity feed:** a chronological timeline of every event tied to this payment, including creation, applications, movements between dates of service, refunds, and credit creations. Each event expands for per-charge detail and cross-links to related transactions, so you can hop from a credit application on one DOS to the refund that created that credit to the original payment, and back.
+
+<Note>
+You can start from either end of the chain. From a charge, the credit application in the PR Timeline points you back to the payment that created the credit. From a payment, the application breakdown and activity feed point you forward to every charge and DOS that received money from it. Either direction, you can always follow the complete money trail.
+</Note>
+
+<Tip>
+When a credit-payment draws from more than one source payment (a split credit), each source produces its own credit record with its own chain. The activity feed surfaces both, so a $150 credit-payment sourced from a $100 payment and a $50 payment shows two separate events, each traceable to its own origin.
+</Tip>
+
+## **Tracing Credits with Athelas AI**
+
+![Athelas AI Tracing Credits](/images/insights_biller/patient_profile/patient_profile_page/patient_profile_page_8.png)
+
+Athelas AI lives in the right-hand panel of the Patient Profile Page and has the patient's full context at all times, so you don't have to paste an ID or describe what you're looking at. Open it anytime from the **Athelas AI** button in the top navigation.
+
+The fastest way to start is to click the patient's **balance** at the top of the profile. Athelas AI will read the full context on the page and produce a plain-English summary of how the current balance came to be, covering charge progression, insurance adjudication, payments applied, credits created or moved, and anything still outstanding. Use this as a first step when a patient calls with a balance question, then drill into the specific charge or transaction the summary references to verify the detail.
+
+**What Athelas AI can see on the Patient Profile Page:**
+
+- The active patient and their full financial history.
+- The charge, transaction, or detail view you currently have open.
+- Credit chains, payment applications, and remittance data in real time.
+
+**What Athelas AI can do:**
+
+- **Explain:** where a specific credit came from, why a balance exists, what a payment was applied to, why insurance paid what they paid.
+- **Act:** apply credits to outstanding PRs, move credits between dates of service, write off a balance, refund a payment.
+
+**Example prompts to try:**
+
+- *"Where did the $50 credit on 3/12 come from?"*
+- *"Why does this patient still have a balance after insurance paid?"*
+- *"Move the unused credit from the 2/1 visit to the 4/3 visit."*
+- *"Explain how this payment was applied across dates of service."*
+- *"Refund the $25 overpayment from last Tuesday."*
+
+<Warning>
+Action prompts (apply credits, move credits, refund, write off) make real changes to the patient's account. Athelas AI will always show you a preview of what it's about to do and ask for confirmation before executing.
+</Warning>
+
+### FAQ
+
+<Accordion title="How is 'Appt. (Suggested)' different from 'Final PR'?">
+**Appt. (Suggested)** is the pre-visit estimate, meaning what our rule engine predicted the patient would owe based on their plan, benefits, and the scheduled procedures, before they arrived. It's what front desk uses to collect at check-in.
+
+**Final PR** is what the patient actually owes after the payer adjudicates the claim and a remittance comes back. The two can differ: the estimate is a best guess, and the remittance is the truth. The Charges table shows both side-by-side so you can see where the estimate was accurate and where it wasn't.
+</Accordion>
+
+<Accordion title="Where did credit movements go? I used to see them in the transactions list.">
+Credit operations no longer appear in the Transactions table; only incoming payments do. This was an intentional change: mixing credit movements with real transactions was a frequent source of confusion, especially around what "refund" meant.
+
+You can still see every credit event in two places:
+
+- On the **Credits** tab, which lists credits for the patient and how they've moved.
+- On the **Activity feed** of the Transaction Details page for a specific payment, which shows the credit events tied to that payment (creations, applications, movements between DOS, refunds) in chronological order.
+</Accordion>
+
+<Accordion title="What's the difference between a refund and moving money to credits?">
+A **refund** is money leaving the system, returned to the patient's card, check, or account.
+
+**Moving to credits** keeps the money on the patient's account as an unapplied credit, available to be applied to a future charge. The funds don't leave; they just change from "applied to DOS A" to "available as credit."
+
+In the new UI these are labeled differently. Refunds are reflected on the originating payment's status and Transaction Details page; credit movements appear on the Credits tab and in the Activity feed of the source transaction.
+</Accordion>
+
+<Accordion title="Can I trace a credit back to its original payment?">
+Yes, from either direction.
+
+**From a charge:** open the Charge Details drawer and look for the credit application event in the PR Timeline. Each event links back to the payment that originally created the credit. If the credit was sourced from multiple payments (a split credit), a tooltip lists every source payment with its date, method, and amount, each clickable.
+
+**From a payment:** open the Transaction Details page and use the **Application breakdown by DOS** and **Activity feed**. Both show every charge and DOS that received money from this payment, including indirectly via credits.
+</Accordion>
+
+<Accordion title="A credit I expected isn't showing up — where do I look?">
+Start by clicking the patient's balance to get the AI summary; it will usually call out any credit movement and where it ended up. If you need to verify manually:
+
+1. Open the source payment in the Transactions table and go to Transaction Details.
+2. Check the **Total Credits** summary card, which shows credits still traceable to this payment.
+3. Scan the **Activity feed** for any `moved to credits`, `applied`, or `refunded` events that explain what happened to the credit.
+
+If the credit was moved to a different DOS, the activity feed will show the movement event with links to both the old and new DOS. You can also open the **Credits** tab for a patient-level view of every credit and its current state.
+</Accordion>
