@@ -1,0 +1,256 @@
+---
+title: "Outreach Flows"
+sidebarTitle: "Outreach Flows"
+toc: "true"
+---
+
+Outreach Flows let practices send automated and scheduled messages to patients — delivering communications, reminders, forms, and post-visit flows. Several filters and workflow types support: pre-visit messaging, post-visit messaging, appointment-based messaging, scheduled-date messaging, and recurring date-based messaging.
+
+## Outreach Flows general guide
+
+To access the Outreach Flows section, navigate to the **Outreach Flows** tab in the sidebar, under **Automation**.
+
+![Outreach Flows tab under Automation](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_1.webp)
+
+From here, you can select one of several suggested pre-built templates, or start with a blank template for custom workflows.
+
+![Suggested templates and blank template](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_2.webp)
+
+The basic structure of an Outreach Flow workflow includes the following sections:
+
+- **Timing or triggers** for sending
+- **Which patients** to message
+- **Content and type** of message to send
+- **Forms** to include in the message
+
+![Outreach Flow structure overview](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_3.webp)
+
+### Timing or triggers for sending
+
+There are two main types of timing: **Calendar-Based** and **Appointment-Based**.
+
+**Calendar-Based** messages send either on a recurring basis or on a specific date. Recurring messages can repeat daily, or weekly on set days of the week.
+
+![Calendar-Based recurring schedule](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_4.webp)
+
+![Calendar-Based day-of-week selection](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_5.webp)
+
+Messages set to send on a specific date will only send once.
+
+![Specific date option](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_6.webp)
+
+**Appointment-Based** messages only send to patients who have an appointment in Air matching the selected filters. They are sent on a time relative to the appointment, either before or after.
+
+![Appointment-Based timing](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_7.webp)
+
+You can also add additional **touchpoints** to the same workflow — either as follow-ups to the original message, or to send new information.
+
+![Multiple touchpoints in a workflow](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_8.webp)
+
+### Which patients to message
+
+Several filters determine which patients are sent the message. Some filters are only available for Appointment-Based messaging, since they refer to the underlying appointment.
+
+Available filters include:
+
+- **Patient** — send to (or exclude) one or more specific patients.
+
+  ![Patient filter](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_9.gif)
+
+- **Recipient Type** — send to (or exclude) categorized patients. Currently includes **Underscheduled Patients** and **Lead/Referral** (present in Lead Tracker).
+
+  ![Recipient Type filter](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_10.gif)
+
+- **Recipient Age** — send to patients within a specific age range, or above/below a certain age.
+
+  ![Recipient Age filter](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_11.gif)
+
+- **Upcoming Appointments** — send to patients with more or fewer than a certain number of upcoming appointments, or a range.
+
+  ![Upcoming Appointments filter](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_12.gif)
+
+- **Appointment Count** — send to patients with more or fewer than a certain number of appointments over a specific time period.
+
+  ![Appointment Count filter](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_13.gif)
+
+- **Facility** — send to (or exclude) patients who have ever had an appointment at a specific facility.
+- **Rendering Provider** — send to (or exclude) patients who have ever had an appointment with a specific rendering provider.
+- **Insurance** — send to (or exclude) patients with a specific insurance.
+- **Supervising Provider** _(Appointment-Based only)_ — send to (or exclude) patients whose appointment is tied to a specific supervising provider.
+- **Referring Provider** _(Appointment-Based only)_ — send to (or exclude) patients whose appointment is tied to a specific referring provider.
+- **Appointment Status** _(Appointment-Based only)_ — send to (or exclude) patients whose appointment has a specific status.
+
+  ![Appointment Status filter](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_14.gif)
+
+- **Appointment Type** _(Appointment-Based only)_ — send to (or exclude) patients whose appointment is a specific type.
+
+  ![Appointment Type filter](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_15.gif)
+
+- **Appointment Number** _(Appointment-Based only)_ — send to (or exclude) patients on a specific appointment number, either overall or within a case.
+
+### Content and type of message to send
+
+There are two forms of communication: **text** and **email**. Text messages only require a body; email messages also allow you to set the subject line.
+
+![Text vs email message type](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_16.webp)
+
+Within the message, you can insert **Variants** — dynamic fields based on the patient or appointment. Available Variants include:
+
+- **Appointment Start Date** (e.g., "Monday, February 16, 2026")
+- **Appointment Start Datetime** (e.g., "Monday, February 16, 2026 at 2:30 PM")
+- **Facility Address**
+- **Facility Name**
+- **Facility Phone Number**
+- **Link To Forms** (required if sending forms with the message)
+- **Patient Portal Link**
+- **Recipient Name**
+- **Referring Provider Name**
+- **Rendering Provider Name**
+- **Site Name**
+- **Supervising Provider Name**
+- **Under Scheduled Count** (e.g., "3 of 6" based on next calendar week's Plan of Care)
+
+### Forms to include in the message
+
+You can also send forms along with the message — such as intake forms prior to a visit, or post-visit forms like NPS Surveys.
+
+![Forms section in workflow](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_17.webp)
+
+Clicking **+ Add Form** opens a window with all existing templates. Select any desired forms and they will display in the workflow.
+
+![Add Form picker](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_18.webp)
+
+## Underscheduled Patients
+
+Underscheduled Patients is a pre-built workflow that targets patients who have fewer appointments scheduled in the following calendar week than prescribed by their active Plan of Care. They receive a text or email with a link to schedule additional appointments via the Patient Portal.
+
+### Defining underscheduled patients
+
+A patient is considered underscheduled when they have fewer appointments scheduled in the following calendar week than prescribed by their active POC.
+
+### Creating the workflow
+
+1. **Navigate to Outreach Flows** in the sidebar, under **Automation**.
+2. **Click + Create New Workflow** and select the **Follow-Up and Re-Engagement** suggested template.
+3. **Set desired configurations for the workflow:**
+   - **Workflow Name**
+   - **Filters to select desired patients:**
+     - **Patient** — specific patients by Name & DOB
+     - **Recipient Type** — `Under Scheduled`
+
+     ![Filters set for Underscheduled Patients](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_19.webp)
+
+   - **Timing to run workflow:**
+     - **Calendar-Based** — run on a recurring schedule or specific date.
+     - **Recurring** — select frequency (every 1, every 2, etc.) and unit of time (Day, Week). If Week is selected, choose days of the week.
+
+       ![Recurring weekly schedule](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_20.webp)
+
+     - **Specific Date** — run on a single date once.
+
+       ![Specific date schedule](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_21.webp)
+
+   - **Message content / format:**
+     - **Message Type** → Text or Email
+     - **Text Content** — insert variables unique to each patient, including:
+       - **Patient Portal Link** — specialized link to sign up for additional appointments
+       - **Recipient Name**
+       - **Site Name** — based on existing appointments in the POC
+       - **Under Scheduled Count** (e.g., "3 of 6 completed")
+
+     ![Message content with variables](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_22.webp)
+
+4. **View filtered patient recipient list.** Upon setting filters, the Contact List automatically updates with the recipients who will receive the message. Scroll to view the full list or filter for a specific patient to confirm inclusion.
+
+   ![Filtered contact list preview](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_23.webp)
+
+5. **Save and view the workflow.** You can also view scheduled upcoming messages and any previously sent messages — showing the method used to contact each patient, and whether it was successful.
+
+6. **Messages are sent.** After the workflow is created, messages go out as scheduled. Patients receive either text or email (or both) with the desired content and links.
+
+   ![Messages sent to patient](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_24.webp)
+
+## NPS Surveys
+
+The NPS Survey workflow collects patient feedback after a visit and automatically routes follow-up actions based on the response. An NPS survey form can be added to a post-visit Outreach Flow, prompting patients to submit feedback via text or email. Promoters can be directed to leave public reviews on sites like Google or Yelp, while detractor responses trigger automated email notifications to internal stakeholders for follow-up.
+
+### Creating an NPS Survey workflow
+
+To create an NPS survey workflow, navigate to the **Outreach Flows** tab under **Automation**. Use the existing **NPS survey** suggested template, or create your own. The suggested template is pre-populated with filters for:
+
+- **Appointment status** = `Completed`
+- **Send** = 2 days after appointment
+- **Text message** with pre-populated content
+
+![NPS suggested template](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_25.gif)
+
+If you want to create your own template, determine the appropriate filters, then include **NPS Survey** in the Forms section.
+
+![NPS blank template](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_26.gif)
+
+### NPS Survey functionality
+
+NPS surveys let recipients rate their experience after an appointment. They are prompted to rate "How likely are you to recommend {facility} to a friend or colleague?" from `0`–`10`, and a freeform text box to explain their score.
+
+- For patients who rate **0–6 (detractors)**, sites can add email addresses for key stakeholders to receive an email explaining they received a lower score.
+
+  <Note>
+    **Note:** To add or update your email recipients, please contact your Athelas representative.
+  </Note>
+
+  ![Detractor email alert configuration](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_27.webp)
+
+- For patients who rate **9–10 (promoters)**, sites can embed a review link to any desired review website — Google, Yelp, Zocdoc, etc. Patients are directed to leave an additional review on that site.
+
+  <Note>
+    **Note:** To add or update your email recipients, please contact your Athelas representative.
+  </Note>
+
+  ![Promoter review link flow](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_28.gif)
+
+### NPS reporting and review
+
+After patients complete NPS surveys, their rating and explanation are stored as a PDF in the patient's **Attachments**, alongside other form responses.
+
+![NPS survey PDF in Attachments](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_29.webp)
+
+Sites can view aggregated NPS data in **EHR Reporting**. NPS can be reported at the site level, or broken out by facility, provider, week, and several other categories.
+
+![NPS aggregated reporting](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_30.gif)
+
+## Example workflows
+
+**Send an NPS survey to all patients after their 10th completed appointment**
+
+This configuration sends an NPS survey to any patient who has completed their 10th appointment.
+
+- **Filters:**
+  - **Appointment Status** includes `Checked in` and `Completed` (to include patients whose visit notes are not yet signed/submitted)
+  - **Appointment Number** is `10th within Case` (to send an NPS to patients who have come to the practice before, but have a new case / chief complaint)
+- **Timing / Triggers:**
+  - Message is set to **Appointment-Based** to trigger off an appointment event
+  - First touchpoint is set to **1 day after appointment** to send the day after
+
+![Example workflow — 10th visit NPS](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_31.webp)
+
+### FAQ
+
+<Accordion title="What's the difference between Calendar-Based and Appointment-Based timing?">
+  **Calendar-Based** fires on a schedule independent of appointments — recurring weekly, or on a specific date. **Appointment-Based** fires relative to an appointment (e.g., "1 day before," "2 days after"). Use Appointment-Based for pre-visit reminders and post-visit surveys; Calendar-Based for ongoing campaigns like underscheduled reactivation.
+</Accordion>
+
+<Accordion title="Can a single workflow send multiple messages?">
+  Yes — add **touchpoints** within the same workflow. Each touchpoint can have its own timing and content, so you can follow up a pre-visit reminder with a day-of reminder without building separate workflows.
+</Accordion>
+
+<Accordion title="How do I target patients who are behind on their Plan of Care?">
+  Use the **Recipient Type** filter and select `Under Scheduled`. Combined with a Calendar-Based recurring schedule, this is the built-in reactivation workflow — patients who have fewer scheduled appointments next week than their POC prescribes will receive the message.
+</Accordion>
+
+<Accordion title="What happens if I insert Link To Forms without adding any forms?">
+  The variant won't resolve — the message will send with a broken form link. Always add forms in the **Forms** section first if you insert `Link To Forms` in the body.
+</Accordion>
+
+<Accordion title="Who gets notified when an NPS detractor submits a low score?">
+  Email recipients for detractor alerts are configured per practice. To add or update the recipient list, contact your Athelas representative — this isn't currently self-serve.
+</Accordion>

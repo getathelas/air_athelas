@@ -1,57 +1,81 @@
 ---
-title: "Communicate with your Patients & Colleagues"
+title: "Messages"
 sidebarTitle: "Messages"
+toc: "true"
 ---
 
-The Messages page lets you instantly chat with colleagues or groups (upto 10 people), share files, and even ask Athelas AI.
+Air maintains an internal and external messaging functionality that lets sites communicate with other site staff, and directly with patients through the Patient Portal.
 
-Click on the Messages tab within Utilities in the left navigation bar.
+## Messaging from Insights
 
-\*\*Note: \*\*Messages to Patients can only be sent if your practice has turned on the Patient Portal as well.
+Messages in Insights can be accessed by clicking the **Messages** tab under **Utilities**. From there, the **DM** tab lists all existing chats for the user. To create a new chat, click **+ New Chat** at the bottom of the pane.
 
-### <Icon icon="message-plus" iconType="duotone" color="#F9345F" size={23} />  Ask Athelas AI
+![Messages tab with DM list and New Chat button](/images/air_front_desk/communicate_with_patients/messages/messages_1.webp)
 
-<Card title=" ">
-  <Danger>
-    ✨**Smart Tip:** Ask questions to the **Athelas AI**. Conversations will automatically sync with the Athelas AI widget.
-  </Danger>
-  ![Ai Message Web](/images/air_front_desk/communicate_with_patients/messages/messages_1.webp)
-</Card>
+To add recipients, type their names in the box containing **Start a new message**:
 
-### <Icon icon="message-quote" iconType="duotone" color="#F9345F" size={23} />  Start a Conversation
+1. **External patients** are designated with `Patient: XXX`.
+2. **Internal staff** show just their name.
 
-<Card title=" ">
-  - Go to the **Messages** page.
-  - Click the **pencil icon** to start a new thread.
-  - Use the search bar to find and select colleagues.
-  - Type your message and/or add attachments.
+![Patient recipient with Patient label](/images/air_front_desk/communicate_with_patients/messages/messages_2.webp)
 
-  ![Send Message Pn](/images/air_front_desk/communicate_with_patients/messages/messages_2.png)
-</Card>
+![Internal staff recipient](/images/air_front_desk/communicate_with_patients/messages/messages_3.webp)
 
-### <Icon icon="bell" iconType="duotone" color="#F9345F" size={23} />  Notifications
+<Warning>
+  Multiple recipients can be added to a message to create a group text. **Any recipients of a group text can see all other recipients — including external patients.** This is <u>not</u> a private text blast feature.
+</Warning>
 
-<Card title=" ">
-  When you have new messages, notifications will appear in two places:
+![Group text with multiple recipients](/images/air_front_desk/communicate_with_patients/messages/messages_4.webp)
 
-  - A **red dot** <Icon icon="circle-dot" iconType="duotone" color="#ec0b0b" /> on the notification center (bell icon) in the header of any page.
-  - A **blue dot** <Icon icon="circle-dot" iconType="duotone" color="#1a5bee" /> on the **Messages** page itself.
+From here, pressing **Enter** or clicking out of the recipient menu generates a new message window where you can type and send your message. Messages also support attaching files — click **+ Add An Attachment** at the bottom of the pane.
 
-  <img
-    src="/images/air_front_desk/communicate_with_patients/messages/messages_2.png"
-    alt="Message Notification Pn"
-    title="Message Notification Pn"
-    style={{ width:"63%" }}
-  />
+![New message window with attachment button](/images/air_front_desk/communicate_with_patients/messages/messages_5.webp)
 
-  There are multiple types of notification alerts that can be configured by clicking on the gear icon on top. These include:
+![File attached in message](/images/air_front_desk/communicate_with_patients/messages/messages_6.webp)
 
-  - General Notifications
-  - New Messages
-  - New Pharmacy Requests or Medication Prescription Tasks
-  - Tasks
+## New messages
 
-  You can choose to get a text, email or InApp notification.
+New messages appear at the top of the messages list with an unread indicator. Clicking the message shows the full thread, where you can respond.
 
-  ![Manage Notifications Web](/images/air_front_desk/communicate_with_patients/messages/messages_1.webp)
-</Card>
+![Unread message at top of list](/images/air_front_desk/communicate_with_patients/messages/messages_7.webp)
+
+![Opened message with response field](/images/air_front_desk/communicate_with_patients/messages/messages_8.webp)
+
+## Messaging from the Athelas Patient Portal
+
+For patients, messages sent from Insights can be accessed in the Patient Portal. Patients are notified of new messages via text or email alerts.
+
+<Columns cols={2}>
+  <img src="/images/air_front_desk/communicate_with_patients/messages/messages_9.webp" alt="Text message notification to patient" title="SMS notification" />
+  <img src="/images/air_front_desk/communicate_with_patients/messages/messages_10.webp" alt="Email notification to patient" title="Email notification" />
+</Columns>
+
+After logging into the portal, patients access messages via the **Messages** tab in the sidebar.
+
+![Patient portal Messages tab](/images/air_front_desk/communicate_with_patients/messages/messages_11.webp)
+
+From here, patients can see existing conversations and send replies. At this time, patients **cannot create new conversations** from the portal — all conversations must be initiated by the provider or site staff.
+
+![Patient portal conversation view](/images/air_front_desk/communicate_with_patients/messages/messages_12.webp)
+
+### FAQ
+
+<Accordion title="Can patients start a new conversation from the portal?">
+  No. All conversations must be initiated from Insights by provider or site staff. Once a thread exists, the patient can reply freely from the portal.
+</Accordion>
+
+<Accordion title="How are patients notified of a new message?">
+  Patients receive either an SMS or email alert (or both, depending on contact info on file). The notification links directly into the portal, where they can log in and respond.
+</Accordion>
+
+<Accordion title="Can I send a message to multiple patients at once?">
+  Yes — add multiple recipients in the **Start a new message** box. **However**, all recipients (including patients) see each other's names in the thread. For private bulk outreach, use **Outreach Flows** or **Text Blast** instead.
+</Accordion>
+
+<Accordion title="Can I attach files in a message?">
+  Yes. Click **+ Add An Attachment** at the bottom of the message pane. Attachments are supported for both internal staff threads and external patient threads.
+</Accordion>
+
+<Accordion title="Where do I find the Messages page in Insights?">
+  Click **Messages** under **Utilities** in the sidebar. The **DM** tab shows all existing chats. The Notifications Center at the bottom of the sidebar also shows a count of unread messages and links directly to the thread.
+</Accordion>
