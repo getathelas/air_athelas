@@ -1,0 +1,151 @@
+---
+title: "Patient Portal"
+sidebarTitle: "Patient Portal"
+toc: "true"
+---
+
+The Athelas Patient Portal lets patients sign in securely to view appointments, exchange messages with the practice, manage payments and saved cards, complete forms, and access home exercise content.
+
+Patients can register for the portal after receiving patient-specific registration links (email and/or text). Patients must use a valid invitation link to create a portal account. Visiting the generic portal URL without a link will block patient registration.
+
+## Sending portal invitations
+
+You can invite patients to the portal from two places: **Outreach Flows** and the **Patient Responsibility** page.
+
+### <Icon icon="envelope" iconType="duotone" color="#F9345F" size={23} />  From Outreach Flows
+
+In **Outreach Flows**, insert the message variant `patient_portal_link` (labeled **Patient Portal Link** in the variant picker) into an email or SMS. Use it any time you want to send patients to the practice's portal entry — for example, reminders to book, pay, or message the clinic.
+
+![Patient Portal Link variant in Outreach Flows](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_1.webp)
+
+### <Icon icon="dollar-sign" iconType="duotone" color="#F9345F" size={23} />  From the Patient Responsibility page
+
+**To send a registration link to a specific patient from the billing / responsibility workflow:**
+
+1. Open the patient's profile from the **Patient Responsibility** work area (the patient detail view where demographics and actions are shown).
+2. In the row of patient actions, click the control whose tooltip reads **Patient Portal / Send a registration link to the patient to onboard them to the new patient portal** (send-to-mobile style icon).
+3. Confirm in the dialog.
+
+The patient receives:
+
+- An **email** at their address on file with a link to the portal (when an email is present).
+- A **text** at their phone on file with the link, or the same link as email when both exist (when a phone number is present).
+
+**Note:** There is a short cooldown between sends. If you try again too soon, the button explains how long to wait.
+
+![Send a registration link from the Patient Responsibility page](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_2.webp)
+
+## Patient registration and sign-in
+
+### Registration process
+
+Once patients have received an invite link, they complete the portal registration steps:
+
+1. **Create account and password**
+2. **Email verification**
+3. **Phone verification**
+4. **Complete registration**
+
+**Note:** If the patient leaves and returns with the same link, they resume at the first incomplete step.
+
+### Signing in
+
+Once registered, patients can access the portal from [portal.athelas.com](http://portal.athelas.com) directly, or from portal links sent by the practice through **Patient Workflows** or **Outreach Flows**.
+
+From the landing page, patients enter their email, then continue to log in with a password when an account already exists.
+
+![Patient portal sign-in landing page](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_3.webp)
+
+Patients can also click **Forgot password** to reset their password. They are directed to check their email, follow the link, and reset their password.
+
+![Forgot password flow](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_4.webp)
+
+## Portal functionality
+
+Once in the portal, patients can access several areas:
+
+### <Icon icon="house" iconType="duotone" color="#F9345F" size={23} />  Home
+
+The landing page. Patients see what the portal offers and can navigate to sub-pages from here.
+
+![Patient portal home page](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_5.webp)
+
+### <Icon icon="comments" iconType="duotone" color="#F9345F" size={23} />  Messages
+
+Secure messaging between the patient and users from the practice. Users can attach files or send messages.
+
+- Message threads can currently only be started from the practice. Patients cannot initiate a conversation with a user.
+
+### <Icon icon="credit-card" iconType="duotone" color="#F9345F" size={23} />  Payments
+
+Patients can view their balance, pay any charges, and see past transaction history.
+
+### <Icon icon="calendar-check" iconType="duotone" color="#F9345F" size={23} />  Appointments
+
+Patients can see upcoming and past visits, schedule, reschedule, or cancel appointments, and see waitlist status if enabled.
+
+### <Icon icon="clipboard" iconType="duotone" color="#F9345F" size={23} />  Forms
+
+Patients can view completed or pending forms, complete pending forms, and update insurance information in their patient profile.
+
+### <Icon icon="dumbbell" iconType="duotone" color="#F9345F" size={23} />  Home Exercises
+
+Patients can view their prescribed home exercise program by case.
+
+### <Icon icon="user" iconType="duotone" color="#F9345F" size={23} />  Profile
+
+Patients can edit their payment methods by clicking their name in the bottom left.
+
+![Patient portal profile / payment methods](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_6.webp)
+
+## Configurations and settings
+
+To access settings for the Patient Portal, navigate to **EHR Preferences** then the **Portal Configs** tab. From here, sites can configure several settings.
+
+### Schedule Notice
+
+Controls how far in advance patients can book through scheduling tied to the portal:
+
+- **Minimum Notice (in hours)** — required. Defines the booking window floor.
+- **Maximum Notice (in hours)** — optional. Enter `0` for unlimited. Cannot be less than the minimum.
+
+### Appointment Requests
+
+- **Require approval on appointment requests** — When on, requests from the portal appear as **Requested** on the calendar and can be approved from the **Requests** tab. When off, requests from the portal book directly to the calendar.
+
+### Online Patient Scheduling
+
+See [Online Scheduling](/air_front_desk/portal_and_online_scheduling/online_scheduling) for full configuration details.
+
+### General Permissions
+
+Configure what patients can change in the portal:
+
+- Add payment methods
+- Delete payment methods
+- Cancel appointments
+- Reschedule appointments
+
+![Portal Configs settings panel](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_7.webp)
+
+### FAQ
+
+<Accordion title="Can patients register for the portal without an invite link?">
+  No. Patients must use a valid invitation link to create a portal account. Visiting the generic portal URL without a link will block patient registration — this protects PHI by preventing anonymous sign-up.
+</Accordion>
+
+<Accordion title="What happens if a patient loses their registration link before finishing signup?">
+  Resend the link from either **Outreach Flows** (using the `patient_portal_link` variant) or the **Patient Responsibility** page. If the patient returns with the same link, they resume at the first incomplete step. **Note:** A short cooldown applies between sends from the Patient Responsibility page.
+</Accordion>
+
+<Accordion title="Can patients start a new conversation with the practice from the portal?">
+  Not at this time. Message threads must be initiated by the practice. Once a thread exists, patients can reply freely and attach files.
+</Accordion>
+
+<Accordion title="How do I stop patients from canceling or rescheduling on their own?">
+  Under **EHR Preferences → Portal Configs → General Permissions**, toggle off **Cancel appointments** and **Reschedule appointments**. Patients will still see their upcoming visits, but without cancel/reschedule controls.
+</Accordion>
+
+<Accordion title="What's the difference between portal invitations and the Online Scheduling link?">
+  A **portal invitation** creates a long-term authenticated account for an existing patient. The **Online Scheduling** link lets new or existing patients book a single appointment without a portal account (they verify via 2FA). See [Online Scheduling](/air_front_desk/portal_and_online_scheduling/online_scheduling) for details.
+</Accordion>

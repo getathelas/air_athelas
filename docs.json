@@ -41,7 +41,9 @@
             "group": "View your Calendar",
             "icon": "calendar",
             "pages": [
-              "air_front_desk/view_your_calendar/nav_calendar"
+              "air_front_desk/view_your_calendar/nav_calendar",
+              "air_front_desk/view_your_calendar/insights_notifications",
+              "air_front_desk/view_your_calendar/waitlist"
             ]
           },
           {
@@ -58,7 +60,17 @@
             "group": "Communicate with Patients",
             "icon": "envelope",
             "pages": [
+              "air_front_desk/communicate_with_patients/outreach_flows",
               "air_front_desk/communicate_with_patients/messages"
+            ]
+          },
+          {
+            "group": "Portal and Online Scheduling",
+            "icon": "calendar-plus",
+            "pages": [
+              "air_front_desk/portal_and_online_scheduling/patient_portal",
+              "air_front_desk/portal_and_online_scheduling/online_scheduling",
+              "air_front_desk/portal_and_online_scheduling/reserve_blocks"
             ]
           },
           {
