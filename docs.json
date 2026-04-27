@@ -208,6 +208,14 @@
             ]
           },
           {
+            "group": "Patient Profile",
+            "icon": "square-user",
+            "tag": "Biller",
+            "pages": [
+              "insights_biller/patient_profile/patient_profile_page"
+            ]
+          },
+          {
             "group": "Claim Details",
             "icon": "file-invoice",
             "tag": "Biller",
