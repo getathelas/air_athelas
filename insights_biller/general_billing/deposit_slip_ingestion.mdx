@@ -1,0 +1,150 @@
+---
+title: "Deposit Slip Ingestion"
+toc: "true"
+---
+
+## Overview
+
+The **Deposit Slip Ingestion** tool lets you upload a deposit slip — as a CSV or a PDF — and automatically reconcile each individual check on the slip against the corresponding **bank deposit** and **check** records already in Insights.
+
+This guide covers where to find the tool, the supported file formats, and what each screen does end-to-end.
+
+## Before you start
+
+- Have your deposit slip ready as either a `.csv` or a `.pdf`. PDFs are converted to CSV automatically by an LLM-based extractor, then queued for human review before they are finalized.
+- The corresponding **bank deposit** must already exist in Insights (it is typically pulled in via Plaid, BAI, or another upstream feed). Each slip is tied to exactly one bank deposit, and each bank deposit can have at most one slip.
+- File limits: **10 MB max**, up to **3,000 rows** per CSV, and up to **800 line items** per PDF (anything beyond that is truncated by the extractor).
+
+<Warning>
+  The total of the line items on the slip **must exactly match** the selected bank deposit's total amount, or the upload will be rejected.
+</Warning>
+
+## CSV format
+
+If you are uploading a CSV, the first row must use the header below — column names are matched verbatim:
+
+| **Sequence** | **Check Type**   | **Check Number** | **Amount ($)** | **Check Date** |
+| :----------- | :--------------- | :--------------- | :------------- | :------------- |
+| 1            | Business Check   | 12345            | 425.00         | 2026-04-15     |
+| 2            | Personal Check   | 9876             | 75.50          | 2026-04-14     |
+
+- **Sequence** — running `1, 2, 3 …`
+- **Check Type** — must be exactly `Business Check`, `Personal Check`, or `Cashier Check`.
+- **Check Number** — required for `Business Check` rows; leading zeros are normalized during matching.
+- **Amount ($)** — decimal dollars (e.g. `123.45`).
+- **Check Date** _(optional)_ — `YYYY-MM-DD`.
+
+<Tip>
+  ✨**Smart Tip:** Only **Business Check** lines are auto-matched against existing system checks. **Personal Check** and **Cashier Check** amounts are tracked separately as the bank deposit's non-insurance receipts.
+</Tip>
+
+## Step 1. Navigate to the Remittances tab
+
+The **Deposit Slip Ingestion** tool lives in the **Remittances** tab.
+
+<img src="/images/insights_biller/general_billing/deposit_slip_ingestion/deposit_slip_ingestion_1.webp" alt="The Remittances tab in the Insights navigation" />
+
+## Step 2. Upload your deposit slip
+
+Click **Upload Deposit Slip** and choose either a CSV or a PDF.
+
+- **CSV** — the file is parsed inline and the result is returned immediately.
+- **PDF** — the file is queued for asynchronous conversion. Behind the scenes it is sent through an LLM-based extractor that produces an editable CSV for you to review before the slip is finalized.
+
+<img src="/images/insights_biller/general_billing/deposit_slip_ingestion/deposit_slip_ingestion_2.webp" alt="The Upload Deposit Slip dialog with CSV and PDF options" />
+
+## Step 3. Select the bank deposit
+
+Enter the deposit amount and deposit date so Insights can find the corresponding bank deposit, then pick it from the search results.
+
+The search looks for bank deposits across all related sites (same Tax ID and NPI) where both the date and the amount match exactly. Each candidate shows:
+
+- The deposit date and total amount
+- The bank deposit number, when available
+- Whether a deposit slip is **already linked** to that bank deposit (each bank deposit can have only one slip, so anything marked as already linked is unavailable)
+
+**Note:** If no candidate appears, double-check the deposit date and amount in your banking feed before continuing — the bank deposit must exist in Insights first.
+
+<img src="/images/insights_biller/general_billing/deposit_slip_ingestion/deposit_slip_ingestion_3.webp" alt="The bank deposit selector showing matching candidates" />
+
+## Step 4. Review the parsed slip
+
+After upload, the slip enters a review state.
+
+- **CSV uploads** that parsed cleanly and reconcile against the bank deposit total move directly to `COMPLETED`, and the breakdown view shows the auto-match results.
+- **PDF uploads** land in `PENDING_REVIEW`. The LLM-generated CSV opens in an editable table — review each line, fix anything the extractor got wrong (especially check numbers, since 9-digit routing or account numbers are a common false positive), and re-upload the corrected CSV to finalize.
+- **CSV uploads with row-level errors** return a per-line error list so you can fix the source file and re-submit. Possible row-level error codes:
+
+| **Error code**            | **Meaning**                                                       |
+| :------------------------ | :---------------------------------------------------------------- |
+| `INVALID_LENGTH`          | Row has the wrong number of columns.                              |
+| `MISSING_CHECK_NUMBER`    | A `Business Check` row is missing its check number.               |
+| `INVALID_CHECK_NUMBER`    | The check number value cannot be parsed.                          |
+| `INVALID_AMOUNT`          | The amount cannot be parsed as decimal dollars.                   |
+| `DUPLICATE_CHECK_NUMBER`  | Two rows in the same file share the same check number.            |
+| `INVALID_CHECK_TYPE`      | The check type is not `Business Check`, `Personal Check`, or `Cashier Check`. |
+
+<img src="/images/insights_biller/general_billing/deposit_slip_ingestion/deposit_slip_ingestion_4.webp" alt="The slip review state showing the editable line items table" />
+
+## Step 5. Open a slip to see its breakdown
+
+Clicking a deposit slip opens a per-line breakdown that shows every check the slip contains, along with aggregate counts:
+
+- Total checks on the slip
+- Total dollar amount on the slip vs. the bank deposit amount
+- How many lines were successfully linked to a system check
+
+For each line you will see:
+
+- Whether the line is **matched** (its linked check belongs to the same bank deposit) and whether the **amount matches** the linked check
+- The linked check's number and amount, when present
+- Any line where the system could not find a match — these appear as **unlinked**
+
+<img src="/images/insights_biller/general_billing/deposit_slip_ingestion/deposit_slip_ingestion_5.webp" alt="The slip breakdown view with aggregate counts" />
+
+<img src="/images/insights_biller/general_billing/deposit_slip_ingestion/deposit_slip_ingestion_6.webp" alt="The per-line breakdown showing matched and unlinked checks" />
+
+## Step 6. Resolve unlinked checks
+
+Use a row's **Actions** menu to reconcile any unlinked Business Checks:
+
+- **Search & link** — search by check ID or check number across all related sites. The candidate must:
+  - Belong to a related site
+  - Match the line's amount exactly
+  - Not already be linked to a different bank deposit
+  - Not already be linked to another deposit slip line
+- **Edit** — for lines that have not been linked yet, you can correct the check number, type, amount, or date directly. After editing, the system re-attempts auto-link if the line is now a Business Check. Lines that are already linked are read-only — unlink them first if you need to make changes.
+
+<Tip>
+  ✨**Smart Tip:** Personal and Cashier checks do not need to be linked — they are tracked as the bank deposit's non-insurance receipts.
+</Tip>
+
+The **Actions** menu on an unlinked check row and the **Edit check** modal look like this:
+
+<img src="/images/insights_biller/general_billing/deposit_slip_ingestion/deposit_slip_ingestion_7.webp" alt="The Actions menu on an unlinked check row" />
+
+<img src="/images/insights_biller/general_billing/deposit_slip_ingestion/deposit_slip_ingestion_8.webp" alt="The Edit check modal" />
+
+### FAQ
+
+<Accordion title="Why was my upload rejected with 'Total of line items doesn't match bank deposit'?">
+  The sum of every line on the slip must equal the selected bank deposit's total to the cent. Edit the lines (or fix the source file) so they reconcile, then re-upload.
+</Accordion>
+
+<Accordion title="What does 'This check has already been matched' mean?">
+  The check you are trying to link or edit is already attached to a different deposit slip line or bank deposit. Unlink it from the other location first, then retry.
+</Accordion>
+
+<Accordion title="I uploaded the same file twice — why is it blocked with 'File already uploaded'?">
+  The file's content hash matches a previous successful upload. Use the existing slip, or modify the file (for example, fix a typo in a check number) before retrying.
+</Accordion>
+
+<Accordion title="What's the difference between uploading a CSV vs. a PDF?">
+  CSV uploads are parsed inline and the auto-match result is returned immediately. PDF uploads are sent through an LLM-based extractor that produces an editable CSV for human review — the slip lands in `PENDING_REVIEW` until you confirm the extracted data is correct.
+
+  **Note:** PDF extraction can occasionally misread check numbers (9-digit routing or account numbers are a common false positive), so always QA the generated CSV before finalizing.
+</Accordion>
+
+<Accordion title="Do I need to link Personal Check or Cashier Check rows?">
+  No. Only **Business Check** lines are auto-matched against existing system checks. Personal Check and Cashier Check amounts are tracked separately as the bank deposit's non-insurance receipts.
+</Accordion>
