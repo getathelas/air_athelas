@@ -26,34 +26,48 @@ Once submitted, a window appears above the patient's appointments showing they h
 
 ![Waitlist entry window in patient portal](/images/air_front_desk/view_your_calendar/waitlist/waitlist_4.webp)
 
+## External & Internal Appointment Types
+
+As part of using the Waitlist, practices can map multiple **internal appointment types** (visible to internal personnel) to a single **external appointment type** (visible to patients). When patients are added to the Waitlist, they're offered only the external appointment types — reducing confusion about which option to select.
+
+To edit the mappings:
+
+1. **Navigate to Calendar Preferences.**
+
+   ![EHR navigation with Preferences highlighted](/images/air_front_desk/view_your_calendar/waitlist/waitlist_5.webp)
+
+2. **Open the Appointment Types tab.**
+
+   ![Appointment Types tab showing internal and external appointment type tables](/images/air_front_desk/view_your_calendar/waitlist/waitlist_6.webp)
+
+3. **Create or edit external appointment types** — pick which internal appointment types map to each external one. You can also choose a **Default Internal Appointment Type**, which determines the internal type used when automatic scheduling is on. An internal appointment type can only be mapped to a single external appointment type, ensuring there's no confusion about what the patient sees.
+
+   ![Create External Appointment Type modal with mapped internal types](/images/air_front_desk/view_your_calendar/waitlist/waitlist_7.webp)
+
 ## Adding a patient to the waitlist from Insights
 
 If a patient does not have access to the Patient Portal, or the site wishes to add the patient themselves, a patient can be manually added to the waitlist from the Insights Calendar.
 
 1. **Navigate to the Requests tab** in the lower right corner of the Calendar view.
 
-   ![Requests tab in Calendar view](/images/air_front_desk/view_your_calendar/waitlist/waitlist_5.webp)
+   ![Requests tab in Calendar view](/images/air_front_desk/view_your_calendar/waitlist/waitlist_8.webp)
 
 2. **Click Add to Waitlist** at the bottom of the drawer. All current waitlist entries and approval requests appear here.
 
-   ![Add to Waitlist button](/images/air_front_desk/view_your_calendar/waitlist/waitlist_6.webp)
+   ![Add to Waitlist button](/images/air_front_desk/view_your_calendar/waitlist/waitlist_9.webp)
 
 3. **Edit the patient and their appointment preferences** — including provider, facility, appointment type, and preferred times.
 
-   ![Edit patient waitlist preferences](/images/air_front_desk/view_your_calendar/waitlist/waitlist_7.webp)
+   ![Edit patient waitlist preferences](/images/air_front_desk/view_your_calendar/waitlist/waitlist_10.webp)
 
 4. **Confirm.** The patient appears at the bottom of the existing waitlist entries.
 
-   ![Patient added at bottom of waitlist](/images/air_front_desk/view_your_calendar/waitlist/waitlist_8.webp)
+   ![Patient added at bottom of waitlist](/images/air_front_desk/view_your_calendar/waitlist/waitlist_11.webp)
 
 5. **Manage entries** — click **Edit** to update an existing waitlist entry, or click the **X** on the right to remove an entry.
 6. **Hover over the (i) icon** to see the details of the waitlist entry.
 
-   ![Hover icon reveals waitlist entry details](/images/air_front_desk/view_your_calendar/waitlist/waitlist_9.webp)
-
-## Adding Waitlist preferences from the Waitlist Intake Form
-
-Sites can also gather patient waitlist time preferences via the global intake form **Waitlist Preferences**. Patients who fill out and submit this form will automatically create a waitlist entry with these preferences. If they have access to the portal, the waitlist entry in their portal will be updated, and the site will also see their preferences from the **Requests** tab.
+   ![Hover icon reveals waitlist entry details](/images/air_front_desk/view_your_calendar/waitlist/waitlist_12.webp)
 
 ## Processing entries from the waitlist
 
@@ -62,34 +76,34 @@ When an appointment is cancelled, you are prompted with a popup informing you th
 1. **Send the waitlist offers** and start the waitlist processing, or
 2. **Skip Waitlist Offers** if you intend to fill that slot manually.
 
-![Cancellation popup with waitlist entries](/images/air_front_desk/view_your_calendar/waitlist/waitlist_10.webp)
+![Cancellation popup with waitlist entries](/images/air_front_desk/view_your_calendar/waitlist/waitlist_13.webp)
 
 If you choose to start the waitlist, one or multiple patients matching the timeslot, provider, and location are sent a text and email informing them they have been offered a waitlist slot.
 
 <Columns cols={2}>
-  <img src="/images/air_front_desk/view_your_calendar/waitlist/waitlist_11.webp" alt="Waitlist offer SMS" title="Waitlist offer — SMS" />
-  <img src="/images/air_front_desk/view_your_calendar/waitlist/waitlist_12.webp" alt="Waitlist offer email" title="Waitlist offer — email" />
+  <img src="/images/air_front_desk/view_your_calendar/waitlist/waitlist_14.webp" alt="Waitlist offer SMS" title="Waitlist offer — SMS" />
+  <img src="/images/air_front_desk/view_your_calendar/waitlist/waitlist_15.webp" alt="Waitlist offer email" title="Waitlist offer — email" />
 </Columns>
 
 When a patient clicks the link in their offer message, they are brought to a screen to confirm the appointment information and officially accept the offer. They can also reject the offer if that time no longer works.
 
-![Patient accept/reject offer screen](/images/air_front_desk/view_your_calendar/waitlist/waitlist_13.webp)
+![Patient accept/reject offer screen](/images/air_front_desk/view_your_calendar/waitlist/waitlist_16.webp)
 
 The patient has a set amount of time to respond before the offer expires and the next entry is offered the slot. The service continues moving down the list in configurable size batches until a patient accepts, or no further entries match the available slot.
 
 If the original patient attempts to access the offer link after it expires (or after another patient has accepted it), they are shown a message explaining the offer has expired.
 
-![Expired offer message](/images/air_front_desk/view_your_calendar/waitlist/waitlist_14.webp)
+![Expired offer message](/images/air_front_desk/view_your_calendar/waitlist/waitlist_17.webp)
 
 If the site requires approval for appointment requests, an accepted waitlist offer converts to an appointment request in the **Requests** tab. Otherwise, the waitlist offer automatically converts into a scheduled appointment.
 
-![Accepted offer converted to appointment](/images/air_front_desk/view_your_calendar/waitlist/waitlist_15.webp)
+![Accepted offer converted to appointment](/images/air_front_desk/view_your_calendar/waitlist/waitlist_18.webp)
 
 ## Waitlist settings and configurations
 
 Several settings allow sites to adjust waitlist behavior. These are accessible in the **EHR Preferences** page, in the **Calendar** tab.
 
-![Waitlist settings in Calendar preferences](/images/air_front_desk/view_your_calendar/waitlist/waitlist_16.webp)
+![Waitlist settings in Calendar preferences](/images/air_front_desk/view_your_calendar/waitlist/waitlist_19.webp)
 
 The available preferences include:
 
@@ -100,10 +114,10 @@ The available preferences include:
 - **Same-patient waitlist offer exclusion period** — how much time must pass between waitlist offers for a single patient, to avoid sending too many offers to the same patient when cancelling multiple appointments. For example, if set to 1 hour, and Jonathon receives a waitlist offer at 9:15 AM, he cannot receive another offer until 10:15 AM — even if he declines the first offer.
 - **Time to accept by patient** — how much time a batch of patients has to respond to their offer. If they do not accept in this time, the next batch of patients is sent the offer as well.
 - **Waitlist bucket size** — the number of patients sent an offer in each batch. If set to `1`, behavior is one-at-a-time (Patient A, then B, then C). If set to `>1`, behavior is a "blast" send (Patients 1–10, then 11–20, then 21–30).
-- **Retain waitlist requests for future** — when on, accepting a waitlist offer does **not** delete the waitlist entry. Instead, the patient moves to the back of the list. When off, accepting a waitlist offer deletes the entry, and the patient must add a new one to be considered for future offers. Combined with the Waitlist Preferences intake form, this functions as a standing waitlist preference.
+- **Retain waitlist requests for future** — when on, accepting a waitlist offer does **not** delete the waitlist entry. Instead, the patient moves to the back of the list. When off, accepting a waitlist offer deletes the entry, and the patient must add a new one to be considered for future offers.
 - **Expire previous waitlist offers** — when on, moving from one batch of patients to the next causes the previous batch's offers to expire. When off, offers don't expire until a patient accepts. For example, if time-to-accept is 5 minutes, bucket size is 10, and expiration is off: minutes 0–10 there are 10 active offers; 11–20 there are 20 active offers; 21–30 there are 30 active offers, and so on.
 
-![Waitlist bucket / expiration timeline example](/images/air_front_desk/view_your_calendar/waitlist/waitlist_17.webp)
+![Waitlist bucket / expiration timeline example](/images/air_front_desk/view_your_calendar/waitlist/waitlist_20.webp)
 
 ### FAQ
 
