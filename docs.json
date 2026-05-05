@@ -79,6 +79,7 @@
             "tag": "Provider",
             "pages": [
               "air_provider/check_in_a_patient/check_in",
+              "air_provider/check_in_a_patient/kiosk_user_guide",
               "air_provider/check_in_a_patient/edit_appt"
             ]
           },
