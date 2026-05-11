@@ -1,110 +1,129 @@
 ---
 title: "Flowsheets"
 sidebarTitle: "Flowsheets"
+toc: "true"
 ---
 
-Flowsheets v2 improves documentation efficiency and aligns PT documentation with billing practices. The system is **CPT-centric** — billing codes are set up first with interventions nested underneath, reducing clicks and making documentation cleaner and faster.
+Flowsheets v2 streamlines physical therapy documentation by aligning it with how visits are actually billed. The page is **CPT-centric**: you set up the billing codes for the visit first, then nest the interventions you performed underneath each code. The result is fewer clicks, less repeated data entry, and cleaner notes.
 
-The system auto-calculates units from minutes, supports manual adjustments, can carry forward interventions from previous visits, and lets you optionally mark exercises for Home Exercise Programs (HEP).
+Units are auto-calculated from minutes at the CPT block level, with manual overrides available. You can also carry interventions forward from previous visits, mark exercises as a Home Exercise Program (HEP), and send the patient a HEP PDF — all from the same screen.
 
-More details: [Flowsheets v2 User Guide](https://athelas-public.notion.site/Flowsheets-v2-User-Guide-357f92a633f280bc8767c1a40fb79503)
+![Flowsheets v2 overview](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_1.webp)
 
-![Flowsheets overview](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_1.webp)
+## Creating and managing flowsheets
 
-## Adding procedure codes
+### Adding procedure codes
 
-Creating CPT blocks in Flowsheets begins by adding a CPT code. The CPT-centric structure mirrors actual billing practices, making documentation faster and more aligned with provider workflows.
+Every flowsheet starts with a CPT block. The CPT-centric structure mirrors actual billing practices, so the codes that determine what you bill are the scaffolding for everything else on the page.
 
-1. **Click the "+ CPT" button** at the top of the flowsheet.
-2. **Search for a CPT code** by number (e.g., `97110`) or by description (e.g., "therapeutic exercise"). Select the code from the dropdown.
+**To add a procedure code:**
+
+1. **Click** **+ CPT** at the top of the flowsheet.
+2. **Search by CPT number** (e.g., `97110`) or **by description** (e.g., "therapeutic exercise"), then select the code from the dropdown.
 3. **Fill in the CPT block** — modifiers, minutes, provider, and status.
 
    ![CPT block fields after selecting a procedure code](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_2.webp)
 
-Minutes are entered **once per CPT block**, avoiding repetition for each intervention. Units are auto-calculated from the minutes at the CPT block level — manual adjustments can be made if needed.
+Minutes are entered **once per CPT block**, not per intervention. Units are auto-calculated from those minutes; you can override them manually if needed.
 
-## Tracking interventions
+<Tip>
+  ✨**Smart Tip:** Use multi-select to **bulk add CPT codes** for the whole visit in one shot before you add any interventions — then nest the exercises under each block as you document.
+</Tip>
 
-Once you have a CPT block, interventions can be added underneath it. Use either free text or the library, and both methods can be combined freely.
+### Tracking interventions
 
-### Free text
+With a CPT block in place, add the interventions you performed underneath it. You can use **free text**, the **exercise library**, or **intervention groups** — and you can mix all three on the same flowsheet.
 
-1. **Click "+ Add Intervention"** under the CPT block.
-2. **Type the intervention name directly** (e.g., "Hip abduction", "TheraBand rows").
-3. **Press Enter or Tab** to confirm.
+**Free text**
 
-Free text lets you add interventions without searching the library when you already know what you want to write.
+Use this when you already know what you want to write and don't need structured parameters.
 
-### Library search
+1. **Click** **+ Add Intervention** under the CPT block.
+2. **Type the intervention name** directly (e.g., "Hip abduction", "TheraBand rows").
+3. **Press Enter** or **Tab** to confirm.
 
-1. **Click "+ Add Intervention"** under the CPT block.
+**Library search**
+
+Use this to pull a structured intervention with pre-filled parameters (sets, reps, weight, etc.).
+
+1. **Click** **+ Add Intervention** under the CPT block.
 2. **Type `/`** to open the library search.
-3. **Search by exercise name** and select from the results to add a structured intervention with pre-filled parameters.
+3. **Search by exercise name** and select a result to insert the structured intervention.
 
-   ![Library search results under the intervention field](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_3.webp)
+   ![Library search opened with `/` under an intervention field](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_3.webp)
 
-### Intervention groups
+**Intervention groups**
 
-1. **Click "+ Add Intervention"** under the CPT block.
-2. **Switch to the "Intervention Groups" tab.**
-3. **Search by group name** and select to add a structured intervention with pre-filled parameters.
+Use this to add several related interventions at once.
 
-   ![Intervention Groups tab](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_4.webp)
+1. **Click** **+ Add Intervention** under the CPT block.
+2. **Switch to the Intervention Groups tab.**
+3. **Search by group name** and select a group to add its full set of structured interventions.
 
-## Managing interventions
+   ![Intervention Groups tab inside the Add Intervention picker](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_4.webp)
 
-### Marking interventions done
+### Managing interventions
 
-Click the checkmark on any individual intervention to mark it complete, or use the Summary Bar's **Mark All Done** button to complete the entire flowsheet in one click.
+**Marking interventions done**
+
+Click the checkmark on any individual intervention to mark it complete, or use **Mark All Done** in the Summary Bar to complete every intervention on the flowsheet at once.
 
 <Note>
-  **Mark All Done** does **not** trigger any billing actions. Marking interventions as done improves documentation and supports PDF generation after submission — it has no impact on what is billed. Billing is based on the procedure codes entered on the flowsheet, along with their associated minutes and units.
+  **Mark All Done does not trigger any billing actions.** Marking interventions as done is for documentation cleanliness and PDF generation — it has no impact on what is billed. Billing is driven entirely by the procedure codes on the flowsheet and their associated minutes and units. As long as a CPT code has minutes and units, it will be billed.
 </Note>
 
-### Reordering interventions
+**Reordering interventions**
 
-Interventions can be reordered within a CPT block by dragging and dropping. They can also be moved between CPT blocks if they need to be reassigned to different billing codes.
+Drag and drop to reorder interventions within a CPT block. You can also drag an intervention **between CPT blocks** if you need to reassign it to a different billing code.
 
-![Drag handle for reordering interventions](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_5.webp)
+![Drag handle for reordering an intervention](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_5.webp)
 
-### Concurrent interventions
+**Concurrent interventions**
 
-When two interventions are performed simultaneously — for example, an exercise done while receiving e-stim — use the concurrent interventions feature to accurately represent overlapping time.
+When two interventions are performed at the same time — for example, a therapeutic exercise during e-stim — mark them as concurrent so the overlapping time is represented accurately.
 
 ![Marking two interventions as concurrent](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_6.webp)
 
-### Deleting interventions or CPT blocks
+**Deleting interventions or CPT blocks**
 
-You can remove individual interventions or entire CPT blocks using the menu options. **Deleting a CPT block also removes every intervention nested under it.**
+Use the row menu to remove an individual intervention, or to delete an entire CPT block.
+
+<Warning>
+  Deleting a CPT block also removes every intervention nested under it. If you only want to reassign an intervention, drag it to another CPT block instead.
+</Warning>
 
 ![Menu option to delete a CPT block](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_7.webp)
 
-## Information carry-forward
+### Carrying interventions forward
 
-Have a patient who does roughly the same exercises each visit? Carry Forward pulls interventions from a previous visit into the current one, saving you from rebuilding the flowsheet from scratch every time.
+For patients who do roughly the same exercises each visit, **Carry Forward** pulls interventions from the previous visit into the current one so you aren't rebuilding the flowsheet every time. It runs automatically when the chart note loads.
 
-Carry forward happens automatically for flowsheets:
+| **Note type** | **Pulled from**     | **Gates and rules**                                                                       |
+| :------------ | :------------------ | :---------------------------------------------------------------------------------------- |
+| Initial eval  | N/A                 | No carry forward — this is the first note in the case.                                    |
+| Daily note    | Latest note in case | Pulls interventions, CPT codes, and details; the source must be a Flowsheets v2 visit note. |
+| Progress note | Latest note in case | Same rules as daily note.                                                                 |
 
-| Note type     | Pulled from         | Gates / rules                                                                       |
-| ------------- | ------------------- | ----------------------------------------------------------------------------------- |
-| Initial eval  | N/A                 | No carry forward (first note in case).                                              |
-| Daily note    | Latest note in case | Interventions, CPT codes, and details; must be from another Flowsheets v2 visit note. |
-| Progress note | Latest note in case | Same as daily.                                                                      |
+<Tip>
+  ✨**Smart Tip:** For routine patients, scan what carry-forward populated, then just update the minutes and tweak any exercises that changed for today's visit.
+</Tip>
 
 ## Creating and managing Home Exercise Programs (HEPs)
 
 ### Creating HEPs
 
-Toggle the **HEP** option to mark exercises the patient will perform at home. This option is optional and should only be used for exercises intended for home practice.
+Toggle the **HEP** option on any intervention to mark it as something the patient should perform at home. This is optional — only use it for exercises intended for home practice.
 
 ![HEP toggle on an intervention](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_8.webp)
 
 ### Sending the HEP email
 
-When you're done with the flowsheet, you can generate a PDF summary and send a Home Exercise Program email to the patient.
+When the flowsheet is complete, you can generate a PDF summary and send the patient their Home Exercise Program.
 
-1. **Click "Send HEP Email"** to email the patient their Home Exercise Program.
-2. **Only interventions marked as HEP** are included.
+**To send the HEP:**
+
+1. **Click** **Send HEP Email** in the flowsheet.
+2. Review the PDF — only interventions marked **HEP** are included.
 3. **Confirm the patient's email address or phone number** before sending.
 
 ![Send HEP Email dialog with patient contact confirmation](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_9.webp)
@@ -113,51 +132,92 @@ When you're done with the flowsheet, you can generate a PDF summary and send a H
 
 ### Summary bar
 
-The Summary Bar appears at the bottom (or top) of your flowsheet and gives a real-time overview of the entire visit:
+The **Summary Bar** sits at the top (or bottom) of the flowsheet and gives a real-time view of the entire visit:
 
-- **Total treatment time** — sum of all minutes across all CPT blocks.
-- **Total units** — sum of all auto-calculated units across all CPT blocks.
-- **Completion status** — how many interventions are marked done vs. total.
+- **Total treatment time** — sum of minutes across all CPT blocks.
+- **Total units** — sum of auto-calculated units across all CPT blocks.
+- **Completion status** — interventions marked done vs. total.
 
-The **Mark All Done** button in the Summary Bar marks every intervention across the entire flowsheet as complete in a single click — perfect for end-of-visit wrap-up. You can also toggle from automatic to manual unit calculation from the Summary Bar.
+The Summary Bar also exposes the **Mark All Done** button (one click closes out every intervention on the flowsheet) and a toggle to switch between **automatic** and **manual** unit calculation.
 
 ![Summary Bar with totals and Mark All Done](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_10.webp)
 
 ### Comments
 
-The Flowsheet Comments section lets you add rich text notes to the visit — clinical observations, patient feedback, session highlights, or anything else relevant that doesn't fit into structured fields.
+The **Comments** section is a rich-text area for anything that doesn't fit into structured fields — clinical observations, patient feedback, session highlights, or context for the next provider.
 
-- Click the **Comments** area to open the rich text editor.
-- Format text with bold, italic, bullet lists, and more.
+- **Click** the Comments area to open the editor.
+- Format with **bold**, _italic_, bullet lists, and more.
 - Comments are saved with the flowsheet and visible in the visit record.
 
 ![Flowsheet Comments rich text editor](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_11.webp)
 
 ### Time in clinic
 
-Track the patient's actual time in the clinic separately from treatment time using the **Time in Clinic** fields.
+Track the patient's actual time in the clinic separately from treatment time using the **Time in Clinic** fields:
 
 - **Time In** — when the patient arrived and treatment began.
 - **Time Out** — when the patient's visit ended.
 
-These fields auto-populate with the appointment start and end times, but can be manually adjusted.
+These fields auto-populate from the appointment's scheduled start and end times, but you can adjust them manually if the visit ran differently.
 
 ### Keyboard shortcuts
 
-- **Tab** — navigate between fields (move from minutes to modifier to provider, etc.).
-- **Shift + Tab** — navigate backwards between fields.
-- **`/` (forward slash)** — while in the intervention field, opens library search.
-- **Enter** — confirm a free text intervention or library selection, or "click".
+Most of the flowsheet can be filled out without ever leaving the keyboard.
+
+| **Shortcut**          | **What it does**                                                       |
+| :-------------------- | :--------------------------------------------------------------------- |
+| **Tab**               | Move forward through fields (minutes → modifier → provider, etc.).     |
+| **Shift + Tab**       | Move backward through fields.                                          |
+| **`/` (forward slash)** | While in the intervention field, open the library search.            |
+| **Enter**             | Confirm a free-text intervention, library selection, or active button. |
 
 ### Power user tips
 
-- Use multi-select CPT codes to **bulk Add CPT** to set up all your billing codes for the visit in one shot before adding any interventions.
-- **Tab through CPT block fields** quickly — you rarely need to click.
-- For routine patients, **review what carry forward populated**, then just update the minutes and any changed exercises.
-- **Only use `/` library search** when you need structured parameters or are building a HEP — otherwise just type the name directly.
-- Use the Summary Bar's **Mark All Done** at the end of the visit to quickly close out all interventions.
-- If using scribe, **speak in clinical shorthand** — the scribe understands codes, minutes, and exercise names.
+<Tip>
+  ✨**Smart Tip — work the flowsheet fast:**
+
+  - Use **multi-select CPT codes** to bulk add all your billing codes for the visit in one shot, then nest interventions under each block.
+  - **Tab through CPT block fields** — you rarely need to click.
+  - For routine patients, **review what carry-forward populated**, then just update minutes and any changed exercises.
+  - Only use **`/` library search** when you need structured parameters or are building a HEP — otherwise just type the name directly.
+  - End the visit with **Mark All Done** in the Summary Bar to close out every intervention in one click.
+  - If you're using the **AI Scribe**, speak in clinical shorthand — the scribe understands CPT codes, minutes, and exercise names.
+</Tip>
+
+### FAQ
+
+<Accordion title="Does Mark All Done affect what's billed?">
+  No. **Mark All Done** only updates documentation status and the visit PDF — it does not change billing.
+
+  Billing is driven entirely by the **procedure codes** on the flowsheet and their associated **minutes and units**. As long as a CPT code has minutes and units, it will be billed regardless of whether interventions are marked done.
+</Accordion>
+
+<Accordion title="What happens if I delete a CPT block that has interventions under it?">
+  The CPT block **and every intervention nested under it** are removed.
+
+  If you want to keep the interventions but move them to a different billing code, **drag and drop them into another CPT block** before deleting the original.
+</Accordion>
+
+<Accordion title="Can I mix free-text interventions with library interventions on the same flowsheet?">
+  Yes. You can use **free text**, **library search**, and **intervention groups** in any combination on a single flowsheet, even within the same CPT block. Use free text for quick entries you know by name; use the library or groups when you need structured parameters like sets, reps, and weight.
+</Accordion>
+
+<Accordion title="Why didn't carry-forward populate my flowsheet?">
+  Carry-forward only runs in specific scenarios:
+
+  - **Initial evals** never carry forward — they're the first note in the case.
+  - **Daily notes** and **progress notes** carry forward from the **latest note in the same case**, but only if that note is itself a Flowsheets v2 visit note.
+
+  If the most recent note in the case was created in the older Flowsheets system (or no prior note exists), carry-forward will skip the visit.
+</Accordion>
+
+<Accordion title="How are units calculated, and can I override them?">
+  Units are **auto-calculated from minutes at the CPT block level** — you enter minutes once per block, and the system computes units for you.
+
+  If you need a different value, switch from **automatic** to **manual** unit calculation from the Summary Bar and enter the units directly.
+</Accordion>
 
 <Info>
-  Questions or issues? Reach out to your clinic administrator or the Commure support team.
+  Questions or issues? Reach out to your clinic administrator or the Commure support team. The latest version of this guide is maintained at the [Flowsheets v2 User Guide](https://athelas-public.notion.site/Flowsheets-v2-User-Guide-357f92a633f280bc8767c1a40fb79503).
 </Info>
