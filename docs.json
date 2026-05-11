@@ -116,8 +116,7 @@
             "tag": "Front Desk",
             "pages": [
               "air_front_desk/manage_your_tasks/faxes",
-              "air_front_desk/manage_your_tasks/tasks",
-              "air_front_desk/manage_your_tasks/lead_tracker_use"
+              "air_front_desk/manage_your_tasks/tasks"
             ]
           },
           {
