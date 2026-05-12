@@ -4,11 +4,11 @@ sidebarTitle: "Flowsheets"
 toc: "true"
 ---
 
-Flowsheets v2 streamlines physical therapy documentation by aligning it with how visits are actually billed. The page is **CPT-centric**: you set up the billing codes for the visit first, then nest the interventions you performed underneath each code. The result is fewer clicks, less repeated data entry, and cleaner notes.
+Flowsheets streamlines physical therapy documentation by aligning it with how visits are actually billed. The page is **CPT-centric**: you set up the billing codes for the visit first, then nest the interventions you performed underneath each code. The result is fewer clicks, less repeated data entry, and cleaner notes.
 
 Units are auto-calculated from minutes at the CPT block level, with manual overrides available. You can also carry interventions forward from previous visits, mark exercises as a Home Exercise Program (HEP), and send the patient a HEP PDF — all from the same screen.
 
-![Flowsheets v2 overview](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_1.webp)
+![Flowsheets overview](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_1.webp)
 
 ## Creating and managing flowsheets
 
@@ -23,6 +23,10 @@ Every flowsheet starts with a CPT block. The CPT-centric structure mirrors actua
 3. **Fill in the CPT block** — modifiers, minutes, provider, and status.
 
    ![CPT block fields after selecting a procedure code](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_2.webp)
+
+<Note>
+  CPT codes in the **+ CPT** dropdown are sorted by **how often you've used them** — the codes you've added to chart notes most frequently show up at the top. The order is **per provider**, so each provider sees their own usage-based list. If the code you want isn't near the top yet, just type to search for it.
+</Note>
 
 Minutes are entered **once per CPT block**, not per intervention. Units are auto-calculated from those minutes; you can override them manually if needed.
 
@@ -101,7 +105,7 @@ For patients who do roughly the same exercises each visit, **Carry Forward** pul
 | **Note type** | **Pulled from**     | **Gates and rules**                                                                       |
 | :------------ | :------------------ | :---------------------------------------------------------------------------------------- |
 | Initial eval  | N/A                 | No carry forward — this is the first note in the case.                                    |
-| Daily note    | Latest note in case | Pulls interventions, CPT codes, and details; the source must be a Flowsheets v2 visit note. |
+| Daily note    | Latest note in case | Pulls interventions, CPT codes, and details; the source must be a Flowsheets visit note (not from the older flowsheet system). |
 | Progress note | Latest note in case | Same rules as daily note.                                                                 |
 
 <Tip>
@@ -207,9 +211,9 @@ Most of the flowsheet can be filled out without ever leaving the keyboard.
   Carry-forward only runs in specific scenarios:
 
   - **Initial evals** never carry forward — they're the first note in the case.
-  - **Daily notes** and **progress notes** carry forward from the **latest note in the same case**, but only if that note is itself a Flowsheets v2 visit note.
+  - **Daily notes** and **progress notes** carry forward from the **latest note in the same case**, but only if that note is itself a current Flowsheets visit note.
 
-  If the most recent note in the case was created in the older Flowsheets system (or no prior note exists), carry-forward will skip the visit.
+  If the most recent note in the case was created in the older flowsheet system (or no prior note exists), carry-forward will skip the visit.
 </Accordion>
 
 <Accordion title="How are units calculated, and can I override them?">
@@ -219,5 +223,5 @@ Most of the flowsheet can be filled out without ever leaving the keyboard.
 </Accordion>
 
 <Info>
-  Questions or issues? Reach out to your clinic administrator or the Commure support team. The latest version of this guide is maintained at the [Flowsheets v2 User Guide](https://athelas-public.notion.site/Flowsheets-v2-User-Guide-357f92a633f280bc8767c1a40fb79503).
+  Questions or issues? Reach out to your clinic administrator or the Commure support team. The latest version of this guide is maintained at the [Flowsheets User Guide](https://athelas-public.notion.site/Flowsheets-v2-User-Guide-357f92a633f280bc8767c1a40fb79503).
 </Info>
