@@ -1,0 +1,13 @@
+{
+  "mdxFilePath": "/workspace/air_admin/manage_your_practice/appointment_types.mdx",
+  "imagesFolder": "images/air_admin/manage_your_practice/appointment_types/",
+  "imageFiles": [
+    "appointment_types_1.webp",
+    "appointment_types_2.webp",
+    "appointment_types_3.webp"
+  ],
+  "navigationSection": "unchanged",
+  "pageTitle": "Appointment Types",
+  "summary": "Updated the Appointment Types documentation to explain External vs. Internal Appointment Types and how to map them for patient-facing online scheduling. Added an FAQ section covering the new mapping concepts and where patients see external appointment types.",
+  "type": "update"
+}
