@@ -19,6 +19,8 @@ Temporary Items
 
 # Scratch folder for experiments
 _scratch/
+!_scratch/
+!_scratch/pr-summary.json
 
 # Node modules (if using any build tools)
 node_modules/

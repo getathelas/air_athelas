@@ -1,0 +1,94 @@
+---
+title: "Functional Outcome Assessment"
+sidebarTitle: "Outcome Assessment"
+toc: "true"
+---
+
+Functional Outcome Assessment helps you document whether a patient has completed a functional outcome measure and (when needed) whether a **plan of care** was documented on time.
+
+Use this workflow inside the patient’s **Visit Note** to ensure the measure is counted correctly as **Performance Met**, **Performance Not Met**, or an **Exception**.
+
+## Complete the assessment in the visit note
+
+### <Icon icon="clipboard-check" iconType="duotone" color="#F9345F" size={23} /> Add Functional Outcome Assessment
+
+**To add the assessment:**
+
+1. Open the patient’s **Visit Note**.
+2. Go to **Assessment**.
+3. Add **Functional Outcome Assessment**.
+
+![Functional Outcome Assessment section in the visit note](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_1.webp)
+
+### <Icon icon="timer" iconType="duotone" color="#F9345F" size={23} /> Answer the “completed in the last 30 days” question
+
+When the assessment was completed for this patient within the past **30 days** of the appointment date, the first question will be **True** and you don’t need to repeat it.
+
+If the first question is **False**, you must add and complete a functional outcome form for this visit.
+
+### <Icon icon="clipboard" iconType="duotone" color="#F9345F" size={23} /> Add and complete a functional outcome form (if needed)
+
+**To add a form:**
+
+1. In the **Visit Note**, go to **Objective** → **Functional Outcomes**.
+2. Add any functional outcome form **except** **PHQ-9**.
+3. Have the patient complete the form.
+
+Once the form is completed, the second question in **Functional Outcome Assessment** becomes **True**.
+
+### <Icon icon="circle-dot" iconType="duotone" color="#F9345F" size={23} /> Mark whether a deficiency was identified
+
+After the form is completed, indicate whether a functional outcome deficiency was identified:
+
+- If **no deficiency** was identified, set **Functional Outcome deficiency identified** to **False**.
+- If a **deficiency** was identified, set **Functional Outcome deficiency identified** to **True**.
+
+![Functional Outcome deficiency identified question](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_2.webp)
+
+## If a deficiency is identified: document plan of care
+
+When you mark **Functional Outcome deficiency identified** as **True**, you must indicate whether a plan of care was documented within **2 days**.
+
+### <Icon icon="box-circle-check" iconType="duotone" color="#F9345F" size={23} /> Plan of care documented within 2 days (Performance Met)
+
+If the plan of care was documented within 2 days, mark the plan of care question as **True**. This counts as **Performance Met**.
+
+![Plan of care documented within 2 days set to True](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_3.webp)
+
+### <Icon icon="circle-exclamation" iconType="duotone" color="#F9345F" size={23} /> Patient not eligible for care plan (Exception)
+
+If the plan of care was **not** documented within 2 days and the patient is **not eligible** for a care plan, mark **Patient not eligible for care plan** as **True**. This counts as an **Exception**.
+
+![Patient not eligible for care plan exception](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_4.webp)
+
+### <Icon icon="xmark" iconType="duotone" color="#F9345F" size={23} /> If neither is selected (Performance Not Met)
+
+If the plan of care question is **False** and you don’t mark the patient as not eligible for a care plan, the measure counts as **Performance Not Met**.
+
+![Example of Performance Not Met state](/images/air_provider/fill_a_chart_note/functional_outcome_assessment/functional_outcome_assessment_5.webp)
+
+## Exceptions
+
+You may see exception scenarios in the Functional Outcome Assessment workflow:
+
+- **Patient not eligible to participate**: If a form wasn’t completed because the patient is not eligible to participate, mark **Patient not eligible to participate** as **True** (this is an **Exception**).
+- **Patient not eligible for care plan**: If a deficiency was identified but the patient is not eligible for a care plan, mark **Patient not eligible for care plan** as **True** (this is an **Exception**).
+
+### FAQ
+
+<Accordion title="When do I need to add a new functional outcome form?">
+  If the first question (completed in the past **30 days**) is **False**, you need to add and complete a functional outcome form for the visit so the second question can become **True**.
+</Accordion>
+
+<Accordion title="Which functional outcome forms can I use?">
+  You can use any functional outcome form available in **Objective** → **Functional Outcomes**, **except** **PHQ-9**.
+</Accordion>
+
+<Accordion title="What is the difference between the two exception options?">
+  - **Patient not eligible to participate**: used when the patient can’t complete the functional outcome form.
+  - **Patient not eligible for care plan**: used when a deficiency is identified but a care plan is not applicable.
+</Accordion>
+
+<Accordion title="What happens if I leave the care plan eligibility question blank when the plan of care was not documented within 2 days?">
+  If the plan of care question is **False** and you don’t mark the patient as not eligible for a care plan, the measure is counted as **Performance Not Met**.
+</Accordion>

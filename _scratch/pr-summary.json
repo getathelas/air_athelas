@@ -1,0 +1,14 @@
+{
+  "mdxFilePath": "air_provider/fill_a_chart_note/functional_outcome_assessment.mdx",
+  "imagesFolder": "images/air_provider/fill_a_chart_note/functional_outcome_assessment/",
+  "imageFiles": [
+    "functional_outcome_assessment_1.webp",
+    "functional_outcome_assessment_2.webp",
+    "functional_outcome_assessment_3.webp",
+    "functional_outcome_assessment_4.webp",
+    "functional_outcome_assessment_5.webp"
+  ],
+  "navigationSection": "docs.json → navigation.tabs[Air] → groups[Fill a Chart Note] (Provider)",
+  "pageTitle": "Functional Outcome Assessment",
+  "summary": "Explains how providers complete the Functional Outcome Assessment inside a visit note, including when a functional outcome form is required and how to mark deficiency outcomes. Covers how plan-of-care documentation affects Performance Met/Not Met status and when to use exception options for ineligible patients."
+}
