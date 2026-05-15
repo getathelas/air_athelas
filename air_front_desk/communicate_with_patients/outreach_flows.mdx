@@ -192,21 +192,32 @@ If you want to create your own template, determine the appropriate filters, then
 
 NPS surveys let recipients rate their experience after an appointment. They are prompted to rate "How likely are you to recommend {facility} to a friend or colleague?" from `0`–`10`, and a freeform text box to explain their score.
 
-- For patients who rate **0–6 (detractors)**, sites can add email addresses for key stakeholders to receive an email explaining they received a lower score.
-
-  <Note>
-    **Note:** To add or update your email recipients, please contact your Athelas representative.
-  </Note>
+- For patients who rate **0–6 (detractors)**, sites can add email addresses for key stakeholders to receive an email explaining the patient submitted a lower score.
 
   ![Detractor email alert configuration](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_27.webp)
 
 - For patients who rate **9–10 (promoters)**, sites can embed a review link to any desired review website — Google, Yelp, Zocdoc, etc. Patients are directed to leave an additional review on that site.
 
-  <Note>
-    **Note:** To add or update your email recipients, please contact your Athelas representative.
-  </Note>
-
   ![Promoter review link flow](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_28.gif)
+
+<Info>
+  Promoter review links and detractor notification emails are configured per facility in **EHR Preferences → Marketing**. See [Adding promoter review links and detractor notification emails](#adding-promoter-review-links-and-detractor-notification-emails) below.
+</Info>
+
+### Adding promoter review links and detractor notification emails
+
+To update the promoter review links and the email recipients for detractor notifications:
+
+1. **Navigate to EHR Preferences → Marketing.**
+2. **Select one or multiple facilities** from the facility picker.
+3. **Edit the desired review links and email addresses** for the selected facilities.
+4. **Click Save.**
+
+![Marketing settings under EHR Preferences for promoter review links and detractor emails](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_32.gif)
+
+<Tip>
+  ✨**Smart Tip:** You can save different review links and email recipients per facility — useful when each location uses its own Google Business Profile or routes detractor follow-up to a different manager.
+</Tip>
 
 ### NPS reporting and review
 
@@ -252,5 +263,9 @@ This configuration sends an NPS survey to any patient who has completed their 10
 </Accordion>
 
 <Accordion title="Who gets notified when an NPS detractor submits a low score?">
-  Email recipients for detractor alerts are configured per practice. To add or update the recipient list, contact your Athelas representative — this isn't currently self-serve.
+  Email recipients for detractor alerts are configured per facility in **EHR Preferences → Marketing**. Add or update the email addresses there, select the facilities you want the change applied to, and save — no Athelas representative needed.
+</Accordion>
+
+<Accordion title="How do I change the review site (Google, Yelp, etc.) that promoters are sent to?">
+  Update the promoter review link in **EHR Preferences → Marketing**. You can set a different link per facility, so each location can route promoters to its own Google Business Profile or alternate review platform.
 </Accordion>
