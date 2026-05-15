@@ -125,6 +125,7 @@
             "tag": "Admin",
             "pages": [
               "air_admin/manage_your_practice/practice_settings",
+              "air_admin/manage_your_practice/branding_engine",
               "air_admin/manage_your_practice/ehr_alert_rules",
               "air_admin/manage_your_practice/billing_addendums_and_retro_billing",
               "air_admin/manage_your_practice/custom_orders",
@@ -393,6 +394,7 @@
               "insights_front_desk/patient_responsibility/how_to_refund_a_payment",
               "insights_front_desk/patient_responsibility/how_to_request_via_text_or_email",
               "insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link",
+              "insights_front_desk/patient_responsibility/how_to_take_a_partial_or_split_payment",
               "insights_front_desk/patient_responsibility/how_to_set_up_miscellaneous_line_item_charges",
               "insights_front_desk/patient_responsibility/how_to_take_payment_for_families",
               "insights_front_desk/patient_responsibility/how_to_undo_a_write_off",
