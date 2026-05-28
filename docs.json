@@ -153,6 +153,14 @@
             ]
           },
           {
+            "group": "ONC Certification",
+            "icon": "certificate",
+            "pages": [
+              "air_developer/patient_information_export/patient_information_export",
+              "air_developer/onc_certification/mandatory_disclosure"
+            ]
+          },
+          {
             "group": "FHIR API",
             "icon": "code",
             "pages": [

@@ -1,0 +1,234 @@
+---
+title: "Patient Information Export"
+sidebarTitle: "Patient Info Export"
+description: "Export format documentation for ONC §170.315(b)(10) Electronic Health Information (EHI) Export — covers both single-patient and population-level exports produced by Air."
+toc: "true"
+---
+
+This page is the **Export Format Documentation** for Electronic Health Information (EHI) produced by Air, as required by **ONC §170.315(b)(10)**. It describes the file formats Air emits so that a recipient can read, parse, and computably consume the exported data without contacting Athelas.
+
+<Info>
+  **Stable public URL for this page** (embedded in every export):
+  `https://trainings.air.athelas.com/air_developer/patient_information_export/patient_information_export`
+
+  Air emits two file types per export:
+
+  - **`claims.csv`** — billing and encounter-level claim data (UTF-8 CSV)
+  - **`*.xml`** — clinical content as a HL7 Consolidated CDA R2.1 (C-CDA) Continuity of Care Document (UTF-8 XML)
+</Info>
+
+## How to export patient information
+
+Air supports **two self-service single-patient exports** from the application, plus a **site-wide export** available on request.
+
+### <Icon icon="file-csv" iconType="duotone" color="#F9345F" size={23} />  Export claims for a single patient (CSV)
+
+The Claims page export produces a `claims.csv` file containing every claim row visible after the filter is applied.
+
+**To export claims for one patient:**
+
+1. Open the **Claims** page from the left navigation.
+2. Click **Filter** at the top of the page.
+3. Filter by **Patient** and select the patient whose claims you want to export.
+4. Apply the filter — the table now shows only that patient's claims.
+5. Click **Export** to download `claims.csv`.
+
+**Note:** The exported CSV contains exactly the columns and rows that are currently visible after filtering. Apply any additional column or date filters before exporting if you need a narrower slice.
+
+### <Icon icon="file-code" iconType="duotone" color="#F9345F" size={23} />  Export the clinical record for a single patient (C-CDA XML)
+
+The C-CDA download produces a single `.xml` file conforming to the **HL7 Consolidated CDA R2.1 Continuity of Care Document (CCD)** standard — covering allergies, medications, problems, encounters, immunizations, lab results, vital signs, social history, procedures, and the other USCDI v1 sections.
+
+**To download a patient's C-CDA:**
+
+1. Open the **Inbox** tab from the left navigation.
+2. Select the **C-CDA** tab.
+3. Search by **patient name** in the search bar.
+4. Click into the matching patient.
+5. Click **Download** to save the C-CDA `.xml` file.
+
+### <Icon icon="globe" iconType="duotone" color="#F9345F" size={23} />  Site-wide / population export
+
+For an EHI export covering **all patients** in your practice (population-level export per §170.315(b)(10)(i)(B)), contact Athelas support:
+
+<Info>
+  **Email:** [support@athelas.com](mailto:support@athelas.com)
+
+  Include your practice name and the date range you need. Support will return the export as a bundle of `claims.csv` plus one C-CDA `.xml` per patient.
+</Info>
+
+## File format specifications
+
+### <Icon icon="table" iconType="duotone" color="#F9345F" size={23} />  Claims CSV (`claims.csv`)
+
+| **Property**     | **Value**                                                |
+| :--------------- | :------------------------------------------------------- |
+| **File extension** | `.csv`                                                 |
+| **MIME type**    | `text/csv`                                               |
+| **Encoding**     | UTF-8                                                    |
+| **Delimiter**    | Comma (`,`)                                              |
+| **Quote char**   | Double-quote (`"`) around values containing commas or quotes |
+| **Line ending**  | LF (`\n`)                                                |
+| **Header row**   | Yes — the first row is the column header                 |
+| **One row per**  | Claim                                                    |
+
+**Column reference (in order):**
+
+| **Column**          | **Type**           | **Description**                                                                                              |
+| :------------------ | :----------------- | :----------------------------------------------------------------------------------------------------------- |
+| **Claim ID**        | Integer            | Unique identifier for the claim within Air.                                                                  |
+| **Status**          | String             | Current claim status (e.g., `Self pay: Unpaid`, `Submitted`, `Paid`, `Denied`).                              |
+| **Stage**           | String             | Workflow stage of the claim (e.g., `Patient`, `Insurance`, `Closed`).                                        |
+| **Patient**         | String             | Patient full name as `First Last`.                                                                           |
+| **Provider**        | String             | Rendering provider full name.                                                                                |
+| **Facility**        | String             | Name of the facility / place of service.                                                                     |
+| **Facility ID**     | Integer            | Internal facility identifier.                                                                                |
+| **Date of Service** | Date (`MM/DD/YYYY`) | The date the service was rendered.                                                                          |
+| **Insurances**      | String             | Pipe-separated list of payers on the claim. `UNRECOGNIZED INSURANCE` indicates a self-pay or unmapped payer. |
+| **Charges**         | Decimal            | Total billed charges in USD.                                                                                 |
+| **Allowed Amount**  | Decimal            | Total allowed amount per the remittance.                                                                     |
+| **Ins. Paid**       | Decimal            | Total amount paid by insurance(s).                                                                           |
+| **PR Paid**         | Decimal            | Total patient responsibility paid.                                                                           |
+| **Total Adj.**      | Decimal            | Total adjustments (contractual write-offs, courtesy adjustments, etc.).                                      |
+| **Balance**         | Decimal            | Remaining outstanding balance on the claim.                                                                  |
+| **Tags**            | String             | Comma-separated list of tags. `-` denotes no tags.                                                           |
+| **Assignees**       | String             | Comma-separated list of users assigned to the claim.                                                         |
+
+**Example row:**
+
+```csv
+Claim ID,Status,Stage,Patient,Provider,Facility,Facility ID,Date of Service,Insurances,Charges,Allowed Amount,Ins. Paid,PR Paid,Total Adj.,Balance,Tags,Assignees
+5818970,Self pay: Unpaid,Patient,Jane Doe,Dr. Sample Provider,MAIN OFFICE,2349,06/04/2048,UNRECOGNIZED INSURANCE,0.0,0.0,0.0,0.0,0.0,0.0,-,Casey Admin
+```
+
+**Parsing notes:**
+
+- Decimal values use `.` as the decimal separator and never include a thousands separator or a currency symbol.
+- Dates are always in `MM/DD/YYYY` format in the local time zone of the practice.
+- Empty string fields appear as an empty value between two commas; `-` is used specifically for the **Tags** column when no tags are present.
+- The `Insurances` column can contain multiple payers separated by ` | ` (space-pipe-space).
+
+### <Icon icon="file-code" iconType="duotone" color="#F9345F" size={23} />  Clinical C-CDA XML
+
+The clinical export is a **HL7 Consolidated CDA R2.1 Continuity of Care Document (CCD)** — the same format used for B.1 (Transitions of Care) and B.6 (Data Export). It is a single XML file per patient.
+
+| **Property**     | **Value**                                                                                   |
+| :--------------- | :------------------------------------------------------------------------------------------ |
+| **File extension** | `.xml`                                                                                    |
+| **MIME type**    | `application/xml` (or `text/xml`)                                                           |
+| **Encoding**     | UTF-8                                                                                       |
+| **Standard**     | HL7 CDA Release 2                                                                           |
+| **Implementation guide** | C-CDA R2.1 (Consolidated CDA Release 2.1, 2015 Edition)                              |
+| **Document type** | Continuity of Care Document (CCD)                                                          |
+| **US Realm Header templateId** | `2.16.840.1.113883.10.20.22.1.1` (ext `2015-08-01`)                            |
+| **CCD templateId** | `2.16.840.1.113883.10.20.22.1.2` (ext `2015-08-01`)                                       |
+| **Document code** | LOINC `34133-9` — _Summarization of Episode Note_                                          |
+
+**Root element & namespaces:**
+
+```xml
+<ClinicalDocument
+    xmlns="urn:hl7-org:v3"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:voc="urn:hl7-org:v3/voc"
+    xmlns:sdtc="urn:hl7-org:sdtc">
+  ...
+</ClinicalDocument>
+```
+
+**Top-level header elements** (present in every export):
+
+- `recordTarget` — patient demographics (name, DOB, gender, race, ethnicity, address, telecom, language, marital status)
+- `author` — software/device that produced the document
+- `dataEnterer` — user who entered the data
+- `custodian` — organization responsible for the source document
+- `informationRecipient` — intended recipient
+- `legalAuthenticator` — provider attesting to the document
+- `authenticator` — additional attestation
+- `documentationOf` / `serviceEvent` — care team and effective time range
+- `componentOf` / `encompassingEncounter` — encounter context
+
+**Sections included in the structured body:**
+
+Each section is represented as a `<component><section>...</section></component>` block. Sections that are not applicable to the patient are emitted with `nullFlavor="NI"` ("No information") so recipients can still detect their presence.
+
+| **Section**                   | **LOINC code** | **Section templateId**                              |
+| :---------------------------- | :------------- | :-------------------------------------------------- |
+| **Allergies & Intolerances**  | `48765-2`      | `2.16.840.1.113883.10.20.22.2.6.1` (ext `2015-08-01`) |
+| **Medications**               | `10160-0`      | `2.16.840.1.113883.10.20.22.2.1.1` (ext `2014-06-09`) |
+| **Problem List**              | `11450-4`      | `2.16.840.1.113883.10.20.22.2.5.1` (ext `2015-08-01`) |
+| **Encounters**                | `46240-8`      | `2.16.840.1.113883.10.20.22.2.22.1` (ext `2015-08-01`) |
+| **Immunizations**             | `11369-6`      | `2.16.840.1.113883.10.20.22.2.2.1` (ext `2014-06-09`) |
+| **Results (Lab)**             | `30954-2`      | `2.16.840.1.113883.10.20.22.2.3.1` (ext `2015-08-01`) |
+| **Vital Signs**               | `8716-3`       | `2.16.840.1.113883.10.20.22.2.4.1` (ext `2015-08-01`) |
+| **Social History**            | `29762-2`      | `2.16.840.1.113883.10.20.22.2.17` (ext `2015-08-01`) |
+| **Procedures**                | `47519-4`      | `2.16.840.1.113883.10.20.22.2.7.1` (ext `2014-06-09`) |
+| **Functional Status**         | `47420-5`      | `2.16.840.1.113883.10.20.22.2.14` (ext `2014-06-09`) |
+| **Assessments**               | `51848-0`      | `2.16.840.1.113883.10.20.22.2.8`                    |
+| **Plan of Treatment**         | `18776-5`      | `2.16.840.1.113883.10.20.22.2.10` (ext `2014-06-09`) |
+| **Goals**                     | `61146-7`      | `2.16.840.1.113883.10.20.22.2.60`                   |
+| **Health Concerns**           | `75310-3`      | `2.16.840.1.113883.10.20.22.2.58` (ext `2015-08-01`) |
+| **Reason for Referral**       | `42349-1`      | `1.3.6.1.4.1.19376.1.5.3.1.3.1` (ext `2014-06-09`)  |
+| **Mental Status**             | `10190-7`      | `2.16.840.1.113883.10.20.22.2.56` (ext `2015-08-01`) |
+| **Medical Equipment**         | `46264-8`      | `2.16.840.1.113883.10.20.22.2.23` (ext `2014-06-09`) |
+
+**Vocabularies / code systems referenced:**
+
+| **Code system**              | **OID**                            | **Used in**                                       |
+| :--------------------------- | :--------------------------------- | :------------------------------------------------ |
+| **LOINC**                    | `2.16.840.1.113883.6.1`            | Section codes, lab observations, document type    |
+| **SNOMED CT**                | `2.16.840.1.113883.6.96`           | Problems, allergies, reactions, findings          |
+| **RxNorm**                   | `2.16.840.1.113883.6.88`           | Medication codes                                  |
+| **CPT-4**                    | `2.16.840.1.113883.6.12`           | Encounter and procedure codes                     |
+| **NUCC Provider Taxonomy**   | `2.16.840.1.113883.6.101`          | Provider specialty                                |
+| **CDC Race & Ethnicity**     | `2.16.840.1.113883.6.238`          | Patient race / ethnicity                          |
+| **HL7 ActCode**              | `2.16.840.1.113883.5.4`            | Severity, encounter codes, assertions             |
+| **HL7 ActClass / Concern**   | `2.16.840.1.113883.5.6`            | Concern act class                                 |
+| **NCI Thesaurus**            | `2.16.840.1.113883.3.26.1.1`       | Route of administration                           |
+
+**Section entry pattern (example — Allergy):**
+
+Each clinical entry follows the C-CDA "Concern Act → Observation → (optional) Reaction / Severity Observation" nesting:
+
+```xml
+<entry typeCode="DRIV">
+  <act classCode="ACT" moodCode="EVN">
+    <!-- Allergy Concern Act (V3) -->
+    <templateId root="2.16.840.1.113883.10.20.22.4.30" extension="2015-08-01"/>
+    <id root="86495477-d7d5-55a7-9812-f75bfcc4266b"/>
+    <code code="CONC" codeSystem="2.16.840.1.113883.5.6"/>
+    <statusCode code="active"/>
+    <effectiveTime><low value="19850620"/></effectiveTime>
+    <entryRelationship typeCode="SUBJ">
+      <observation classCode="OBS" moodCode="EVN">
+        <!-- Allergy observation (V2) -->
+        <templateId root="2.16.840.1.113883.10.20.22.4.7" extension="2014-06-09"/>
+        <value xsi:type="CD" code="414285001" displayName="Allergy to food"
+               codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"/>
+        <participant typeCode="CSM">
+          <participantRole classCode="MANU">
+            <playingEntity classCode="MMAT">
+              <code code="256349002" displayName="Peanut"
+                    codeSystem="2.16.840.1.113883.6.96"/>
+            </playingEntity>
+          </participantRole>
+        </participant>
+        <!-- nested reaction + severity observations omitted for brevity -->
+      </observation>
+    </entryRelationship>
+  </act>
+</entry>
+```
+
+**Parsing notes:**
+
+- Every entry is identified by a UUID in `<id root="...">`. UUIDs are stable across re-exports of the same record.
+- Dates use the HL7 v3 `TS` format: `YYYYMMDD` or `YYYYMMDDHHMMSS±ZZZZ`.
+- Coded values appear as `<value xsi:type="CD" code="..." codeSystem="..." displayName="..."/>`.
+- Narrative text in each section's `<text>` element is the human-readable rendering and references the structured entries via `<reference value="#id"/>`.
+- Sections with `nullFlavor="NI"` contain no structured entries — only a `<text>` placeholder such as `"No Lab Test required. No Lab results."`. Treat these as "data not available" rather than "data absent."
+
+**Recommended validation tools:**
+
+- [HL7 C-CDA R2.1 IG](http://www.hl7.org/implement/standards/product_brief.cfm?product_id=492)
+- [ONC C-CDA Scorecard](https://site.healthit.gov/scorecard/) — validates structure, templates, and vocabulary bindings
