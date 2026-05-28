@@ -1,0 +1,591 @@
+---
+title: "Commure EHR FHIR API"
+sidebarTitle: "FHIR API"
+description: "ONC (g)(10) certified, US Core 6.1.0 compliant FHIR R4B API for third-party app integrations with Air."
+toc: "true"
+---
+
+The **Commure EHR FHIR API** is a FHIR R4B server that exposes patient health data from Air to authorized third-party applications. It is compliant with **US Core 6.1.0** profiles and the **ONC (g)(10) Standardized API** certification criteria (§170.315(g)(10)). All responses are returned in `application/fhir+json` format.
+
+<Info>
+  **Service Base URL:** `https://onc.api.staging-ehr.athelas.com`
+
+  **FHIR Version:** R4B (`4.0.1`) &nbsp;·&nbsp; **US Core Version:** 6.1.0 &nbsp;·&nbsp; **Content Type:** `application/fhir+json`
+</Info>
+
+## SMART on FHIR Configuration
+
+The server publishes its SMART configuration discovery document at:
+
+```
+GET https://onc.api.staging-ehr.athelas.com/.well-known/smart-configuration
+```
+
+This returns the discovery document with all authorization and token endpoint URLs, supported scopes, and capabilities.
+
+The FHIR `CapabilityStatement`, which lists every supported resource and interaction, is available at:
+
+```
+GET https://onc.api.staging-ehr.athelas.com/metadata
+```
+
+### <Icon icon="link" iconType="duotone" color="#F9345F" size={23} />  SMART Endpoint Reference
+
+| **Endpoint**    | **URL**                                                                                       |
+| :-------------- | :-------------------------------------------------------------------------------------------- |
+| **Authorization** | `https://onc.api.staging-ehr.athelas.com/authorize`                                         |
+| **Token**         | `https://onc.api.staging-ehr.athelas.com/token`                                             |
+| **Introspection** | `https://onc.api.staging-ehr.athelas.com/introspect`                                        |
+| **Revocation**    | `https://onc.api.staging-ehr.athelas.com/revoke`                                            |
+| **JWKS URI**      | `https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579/.well-known/jwks.json`     |
+| **Issuer**        | `https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579`                           |
+| **SMART Style**   | `https://onc.api.staging-ehr.athelas.com/smart-style.json`                                  |
+
+## App Registration
+
+Client applications must be registered in **AWS Cognito** before they can obtain tokens. Registration provides the application with a `client_id` and (for confidential clients) a `client_secret`.
+
+<Info>
+  Self-serve registration is planned for a future release. To register a new application today, **contact the Commure EHR team**.
+</Info>
+
+**When registering, provide:**
+
+- Organization name and contact
+- Description of the application and which FHIR resources / scopes are needed
+- Whether the app is patient-facing or provider-facing
+- **Client type:** _public_ (no secret, uses PKCE) or _confidential_ (has secret)
+- Redirect URI
+- SMART Launch URI (if applicable)
+
+**Upon approval, you will receive:**
+
+- `client_id` — used in all OAuth flows
+- `client_secret` — for confidential clients only
+
+## Authorization
+
+The server implements **SMART on FHIR v2** (§170.215(a)(3)) using AWS Cognito as the identity provider.
+
+### <Icon icon="key" iconType="duotone" color="#F9345F" size={23} />  Supported Grant Types
+
+- **`authorization_code`** — Standalone and EHR launch (patient and provider apps)
+- **`client_credentials`** — Backend Services Authorization (bulk data, system-level access)
+- **`refresh_token`** — Token refresh for offline access
+
+### <Icon icon="lock" iconType="duotone" color="#F9345F" size={23} />  Token Authentication Methods
+
+| **Method**             | **Use for**                                                  |
+| :--------------------- | :----------------------------------------------------------- |
+| **`none`**             | Public apps (PKCE required)                                  |
+| **`client_secret_post`** | Confidential apps, secret in `POST` body                   |
+| **`client_secret_basic`** | Confidential apps, secret in `Authorization` header       |
+| **`private_key_jwt`**  | Asymmetric client auth for Backend Services                  |
+
+### <Icon icon="arrow-right-from-bracket" iconType="duotone" color="#F9345F" size={23} />  SMART Standalone Launch Flow
+
+1. App redirects the user to `GET /authorize` with `response_type=code`, `client_id`, `redirect_uri`, `scope`, `state`, `aud`, and PKCE `code_challenge`.
+2. The server presents a **consent page** where the user selects which scopes to grant.
+3. After consent, the server redirects to the app's `redirect_uri` with an authorization `code`.
+4. App exchanges the code via `POST /token` to receive `access_token`, `id_token`, and optionally `refresh_token`.
+5. App includes the access token as `Authorization: Bearer <token>` on all FHIR API requests.
+
+### <Icon icon="hospital-user" iconType="duotone" color="#F9345F" size={23} />  EHR Launch Flow
+
+1. EHR initiates launch via `GET /launch/{patient_id}?app_launch_url=<url>` (optionally with `encounter_id`). This redirects to the app's launch URL with a `launch` parameter.
+2. App redirects to `GET /authorize` including the `launch` parameter in addition to the standard OAuth params.
+3. The rest of the flow follows the standalone flow. The resulting token includes `patient` and optionally `encounter` launch context claims.
+
+### <Icon icon="server" iconType="duotone" color="#F9345F" size={23} />  Backend Services Authorization (Bulk Data)
+
+For system-level access (e.g., bulk export):
+
+1. App generates a signed JWT (`client_assertion`) using its **private key** registered with Cognito.
+2. App calls `POST /token` with:
+   - `grant_type=client_credentials`
+   - `client_assertion=<signed_jwt>`
+   - `client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer`
+   - `scope=system/*.*`
+3. The server returns a bearer access token valid for system-level operations.
+
+### <Icon icon="magnifying-glass" iconType="duotone" color="#F9345F" size={23} />  Token Introspection
+
+```
+POST /introspect
+```
+
+Validates an access token and returns its claims.
+
+**Request body (form-encoded):** `token=<access_token>`
+
+### <Icon icon="ban" iconType="duotone" color="#F9345F" size={23} />  Token Revocation
+
+```
+POST /revoke
+```
+
+Revokes an access or refresh token.
+
+**Request body (form-encoded):** `token=<token>`, `client_id=<client_id>`, optionally `client_secret`, `token_type_hint`.
+
+### <Icon icon="arrows-rotate" iconType="duotone" color="#F9345F" size={23} />  Token Refresh
+
+Include `grant_type=refresh_token` and `refresh_token=<token>` in the `POST /token` body.
+
+**Note:** Refresh tokens are issued only when the `offline_access` scope is granted. Tokens issued to confidential clients are valid for a minimum of **3 months**.
+
+## Scopes
+
+The server supports **SMART v2 granular scopes**. All resource scopes use the `.rs` (read-search) action.
+
+### Context Scopes
+
+| **Scope**           | **Purpose**                                          |
+| :------------------ | :--------------------------------------------------- |
+| **`openid`**        | OpenID Connect                                       |
+| **`profile`**       | User profile                                         |
+| **`fhirUser`**      | Resolves the current user as a FHIR resource         |
+| **`offline_access`** | Issue a refresh token                                |
+| **`launch`**        | EHR launch context                                   |
+
+### Patient-Level Resource Scopes
+
+| **Scope**                              | **Resource Access Granted**                                  |
+| :------------------------------------- | :----------------------------------------------------------- |
+| **`patient/AllergyIntolerance.rs`**    | Allergy and intolerance records                              |
+| **`patient/CarePlan.rs`**              | Care plans                                                   |
+| **`patient/CareTeam.rs`**              | Care team members                                            |
+| **`patient/Condition.rs`**             | All conditions (problems, diagnoses, health concerns)        |
+| **`patient/Coverage.rs`**              | Insurance coverage                                           |
+| **`patient/Device.rs`**                | Implantable devices                                          |
+| **`patient/DiagnosticReport.rs`**      | Diagnostic reports (lab, notes)                              |
+| **`patient/DocumentReference.rs`**     | Clinical documents and chart notes                           |
+| **`patient/Encounter.rs`**             | Encounters and visits                                        |
+| **`patient/Goal.rs`**                  | Health goals                                                 |
+| **`patient/Immunization.rs`**          | Immunization records                                         |
+| **`patient/Location.rs`**              | Practice locations                                           |
+| **`patient/MedicationDispense.rs`**    | Medication dispense records                                  |
+| **`patient/MedicationRequest.rs`**     | Medication requests and prescriptions                        |
+| **`patient/Observation.rs`**           | All observations (vitals, labs, surveys, SDOH)               |
+| **`patient/Organization.rs`**          | Organizations                                                |
+| **`patient/Patient.rs`**               | Patient demographics                                         |
+| **`patient/Practitioner.rs`**          | Practitioners                                                |
+| **`patient/PractitionerRole.rs`**      | Practitioner roles                                           |
+| **`patient/Procedure.rs`**             | Procedures                                                   |
+| **`patient/Provenance.rs`**            | Provenance records                                           |
+| **`patient/RelatedPerson.rs`**         | Related persons (family, guardians)                          |
+| **`patient/ServiceRequest.rs`**        | Service and referral requests                                |
+| **`patient/Specimen.rs`**              | Specimens                                                    |
+
+### Granular Scopes
+
+For **Condition** and **Observation**, category-level granular scopes are supported:
+
+```
+patient/Condition.rs?category=http://terminology.hl7.org/CodeSystem/condition-category|encounter-diagnosis
+patient/Condition.rs?category=http://terminology.hl7.org/CodeSystem/condition-category|problem-list-item
+patient/Condition.rs?category=http://hl7.org/fhir/us/core/CodeSystem/condition-category|health-concern
+
+patient/Observation.rs?category=http://terminology.hl7.org/CodeSystem/observation-category|vital-signs
+patient/Observation.rs?category=http://terminology.hl7.org/CodeSystem/observation-category|laboratory
+patient/Observation.rs?category=http://terminology.hl7.org/CodeSystem/observation-category|social-history
+patient/Observation.rs?category=http://terminology.hl7.org/CodeSystem/observation-category|survey
+patient/Observation.rs?category=http://hl7.org/fhir/us/core/CodeSystem/us-core-category|sdoh
+```
+
+<Warning>
+  If a granular scope is granted, the server **restricts search results to only that category**. For example, a token with `patient/Condition.rs?category=encounter-diagnosis` cannot read problem-list or health-concern conditions.
+</Warning>
+
+## USCDI v1 → FHIR Resource Mapping
+
+| **USCDI Data Element**                                  | **US Core Profile**                                                          | **FHIR Resource**                       |
+| :------------------------------------------------------ | :--------------------------------------------------------------------------- | :-------------------------------------- |
+| **Patient Demographics**                                | US Core Patient Profile                                                      | Patient                                 |
+| **Assessment and Plan of Treatment**                    | US Core CarePlan Profile                                                     | CarePlan                                |
+| **Care Team Members**                                   | US Core CareTeam Profile                                                     | CareTeam                                |
+| **Clinical Notes** (Consultation, Discharge, Progress) | US Core DocumentReference Profile                                            | DocumentReference                       |
+| **Goals: Patient Goals**                                | US Core Goal Profile                                                         | Goal                                    |
+| **Health Concerns**                                     | US Core Condition Profile                                                    | Condition                               |
+| **Immunizations**                                       | US Core Immunization Profile                                                 | Immunization                            |
+| **Lab Tests and Results**                               | US Core Lab Result Observation Profile, US Core DiagnosticReport for Lab     | Observation, DiagnosticReport           |
+| **Medications**                                         | US Core MedicationRequest Profile                                            | MedicationRequest, MedicationDispense   |
+| **Medication Allergies**                                | US Core AllergyIntolerance Profile                                           | AllergyIntolerance                      |
+| **Problems**                                            | US Core Condition Profile                                                    | Condition                               |
+| **Procedures**                                          | US Core Procedure Profile                                                    | Procedure                               |
+| **Provenance**                                          | US Core Provenance Profile                                                   | Provenance                              |
+| **Smoking Status**                                      | US Core Smoking Status Observation Profile                                   | Observation                             |
+| **Unique Device Identifiers** (Implantable)             | US Core Implantable Device Profile                                           | Device                                  |
+| **Vital Signs**                                         | FHIR Core Vital Signs Profiles, US Core Pulse Oximetry                       | Observation                             |
+| **Encounters**                                          | US Core Encounter Profile                                                    | Encounter                               |
+| **Insurance Coverage**                                  | US Core Coverage Profile                                                     | Coverage                                |
+| **Service Requests / Referrals**                        | US Core ServiceRequest Profile                                               | ServiceRequest                          |
+| **Specimens**                                           | US Core Specimen Profile                                                     | Specimen                                |
+| **Related Persons**                                     | US Core RelatedPerson Profile                                                | RelatedPerson                           |
+
+## Resource Endpoints
+
+All resource endpoints require a valid Bearer token with the appropriate scope. Searches return a FHIR `Bundle` of type `searchset`; single-resource reads return the resource directly.
+
+<Info>
+  **Date parameters** support FHIR comparator prefixes: `eq`, `ne`, `gt`, `lt`, `ge`, `le`.
+
+  **All search endpoints** support both `GET` (query parameters) and `POST /_search` (form-encoded body) forms.
+</Info>
+
+### <Icon icon="square-user" iconType="duotone" color="#F9345F" size={23} />  Patient
+
+**Required scope:** `patient/Patient.rs`
+
+| **Interaction**   | **Endpoint**              |
+| :---------------- | :------------------------ |
+| Read              | `GET /Patient/{id}`       |
+| Search (GET)      | `GET /Patient`            |
+| Search (POST)     | `POST /Patient/_search`   |
+
+**Search Parameters:** `_id`, `identifier`, `name`, `birthdate`, `gender`, `_count` (default 50, max 200), `_revinclude`
+
+**Supported combination searches:** `birthdate + name`, `gender + name`
+
+### <Icon icon="triangle-exclamation" iconType="duotone" color="#F9345F" size={23} />  AllergyIntolerance
+
+**Required scope:** `patient/AllergyIntolerance.rs`
+
+| **Interaction**   | **Endpoint**                          |
+| :---------------- | :------------------------------------ |
+| Read              | `GET /AllergyIntolerance/{id}`        |
+| Search (GET)      | `GET /AllergyIntolerance`             |
+| Search (POST)     | `POST /AllergyIntolerance/_search`    |
+
+**Search Parameters:** `_id`, `patient`, `clinical-status`, `_count`, `_revinclude`
+
+### <Icon icon="clipboard-list" iconType="duotone" color="#F9345F" size={23} />  CarePlan
+
+**Required scope:** `patient/CarePlan.rs`
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /CarePlan/{id}`          |
+| Search (GET)      | `GET /CarePlan`               |
+| Search (POST)     | `POST /CarePlan/_search`      |
+
+**Search Parameters:** `_id`, `patient`, `category`, `identifier`, `_count`, `_revinclude`
+
+### <Icon icon="users" iconType="duotone" color="#F9345F" size={23} />  CareTeam
+
+**Required scope:** `patient/CareTeam.rs`
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /CareTeam/{id}`          |
+| Search (GET)      | `GET /CareTeam`               |
+| Search (POST)     | `POST /CareTeam/_search`      |
+
+**Search Parameters:** `patient`, `status`, `_include`, `_revinclude`
+
+### <Icon icon="stethoscope" iconType="duotone" color="#F9345F" size={23} />  Condition
+
+**Required scope:** `patient/Condition.rs` (or a granular category scope)
+
+<Warning>
+  **Granular scopes are enforced.** If the token only has `patient/Condition.rs?category=encounter-diagnosis`, results are restricted to that category.
+</Warning>
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /Condition/{id}`         |
+| Search (GET)      | `GET /Condition`              |
+| Search (POST)     | `POST /Condition/_search`     |
+
+**Search Parameters:** `_id`, `patient`, `category`, `clinical-status`, `code`, `identifier`, `_count`, `_revinclude`
+
+### <Icon icon="shield-halved" iconType="duotone" color="#F9345F" size={23} />  Coverage
+
+**Required scope:** `patient/Coverage.rs`
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /Coverage/{id}`          |
+| Search (GET)      | `GET /Coverage`               |
+| Search (POST)     | `POST /Coverage/_search`      |
+
+**Search Parameters:** `_id`, `patient`, `identifier`, `_count`, `_revinclude`
+
+### <Icon icon="microchip" iconType="duotone" color="#F9345F" size={23} />  Device
+
+**Required scope:** `patient/Device.rs`
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /Device/{id}`            |
+| Search (GET)      | `GET /Device`                 |
+| Search (POST)     | `POST /Device/_search`        |
+
+**Search Parameters:** `_id`, `patient`, `type`, `_count`, `_revinclude`
+
+### <Icon icon="vial" iconType="duotone" color="#F9345F" size={23} />  DiagnosticReport
+
+**Required scope:** `patient/DiagnosticReport.rs`
+
+| **Interaction**   | **Endpoint**                              |
+| :---------------- | :---------------------------------------- |
+| Read              | `GET /DiagnosticReport/{id}`              |
+| Search (GET)      | `GET /DiagnosticReport`                   |
+| Search (POST)     | `POST /DiagnosticReport/_search`          |
+
+**Search Parameters:** `_id`, `patient`, `category`, `type`, `code`, `status`, `date`, `_count`, `_revinclude`
+
+### <Icon icon="file-lines" iconType="duotone" color="#F9345F" size={23} />  DocumentReference
+
+**Required scope:** `patient/DocumentReference.rs`
+
+Covers clinical documents and chart notes (consultation notes, progress notes, discharge summaries, etc.).
+
+| **Interaction**   | **Endpoint**                              |
+| :---------------- | :---------------------------------------- |
+| Read              | `GET /DocumentReference/{id}`             |
+| Search (GET)      | `GET /DocumentReference`                  |
+| Search (POST)     | `POST /DocumentReference/_search`         |
+
+**Search Parameters:** `_id`, `patient`, `category`, `type`, `status`, `date`, `_count`, `_revinclude`
+
+### <Icon icon="calendar-check" iconType="duotone" color="#F9345F" size={23} />  Encounter
+
+**Required scope:** `patient/Encounter.rs`
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /Encounter/{id}`         |
+| Search (GET)      | `GET /Encounter`              |
+| Search (POST)     | `POST /Encounter/_search`     |
+
+**Search Parameters:** `_id`, `patient`, `date`, `identifier`, `_count`, `_revinclude`
+
+### <Icon icon="bullseye" iconType="duotone" color="#F9345F" size={23} />  Goal
+
+**Required scope:** `patient/Goal.rs`
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /Goal/{id}`              |
+| Search (GET)      | `GET /Goal`                   |
+| Search (POST)     | `POST /Goal/_search`          |
+
+**Search Parameters:** `_id`, `patient`, `lifecycle-status`, `target-date`, `_count`, `_revinclude`
+
+### <Icon icon="syringe" iconType="duotone" color="#F9345F" size={23} />  Immunization
+
+**Required scope:** `patient/Immunization.rs`
+
+| **Interaction**   | **Endpoint**                          |
+| :---------------- | :------------------------------------ |
+| Read              | `GET /Immunization/{id}`              |
+| Search (GET)      | `GET /Immunization`                   |
+| Search (POST)     | `POST /Immunization/_search`          |
+
+**Search Parameters:** `_id`, `patient`, `date`, `status`, `vaccine-code`, `lot-number`, `manufacturer`, `identifier`, `_count`, `_revinclude`
+
+### <Icon icon="location-dot" iconType="duotone" color="#F9345F" size={23} />  Location
+
+**Required scope:** `patient/Location.rs`
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Search (GET)      | `GET /Location`               |
+
+### <Icon icon="prescription-bottle" iconType="duotone" color="#F9345F" size={23} />  MedicationDispense
+
+**Required scope:** `patient/MedicationDispense.rs`
+
+| **Interaction**   | **Endpoint**                                  |
+| :---------------- | :-------------------------------------------- |
+| Read              | `GET /MedicationDispense/{id}`                |
+| Search (GET)      | `GET /MedicationDispense`                     |
+| Search (POST)     | `POST /MedicationDispense/_search`            |
+
+**Search Parameters:** `_id`, `patient`, `whenhandedover`, `status`, `medication`, `identifier`, `_count`, `_revinclude`
+
+### <Icon icon="prescription" iconType="duotone" color="#F9345F" size={23} />  MedicationRequest
+
+**Required scope:** `patient/MedicationRequest.rs`
+
+| **Interaction**   | **Endpoint**                                  |
+| :---------------- | :-------------------------------------------- |
+| Read              | `GET /MedicationRequest/{id}`                 |
+| Search (GET)      | `GET /MedicationRequest`                      |
+| Search (POST)     | `POST /MedicationRequest/_search`             |
+
+**Search Parameters:** `_id`, `patient`, `authoredon`, `status`, `intent`, `encounter`, `medication`, `identifier`, `_count`, `_revinclude`
+
+### <Icon icon="heart-pulse" iconType="duotone" color="#F9345F" size={23} />  Observation
+
+**Required scope:** `patient/Observation.rs` (or a granular category scope)
+
+<Warning>
+  **Granular scopes are enforced.** If the token only has `patient/Observation.rs?category=vital-signs`, results are filtered to vital-signs observations only.
+</Warning>
+
+| **Interaction**   | **Endpoint**                          |
+| :---------------- | :------------------------------------ |
+| Read              | `GET /Observation/{id}`               |
+| Search (GET)      | `GET /Observation`                    |
+| Search (POST)     | `POST /Observation/_search`           |
+
+**Search Parameters:** `_id`, `patient`, `category`, `code`, `date`, `_count`, `_revinclude`
+
+**Supported category values:**
+
+```
+http://terminology.hl7.org/CodeSystem/observation-category|vital-signs
+http://terminology.hl7.org/CodeSystem/observation-category|laboratory
+http://terminology.hl7.org/CodeSystem/observation-category|social-history
+http://terminology.hl7.org/CodeSystem/observation-category|survey
+http://hl7.org/fhir/us/core/CodeSystem/us-core-category|sdoh
+```
+
+### <Icon icon="building" iconType="duotone" color="#F9345F" size={23} />  Organization
+
+**Required scope:** `patient/Organization.rs`
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /Organization/{id}`      |
+| Search (GET)      | `GET /Organization`           |
+
+### <Icon icon="user-doctor" iconType="duotone" color="#F9345F" size={23} />  Practitioner
+
+**Required scope:** `patient/Practitioner.rs`
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /Practitioner/{id}`      |
+| Search (GET)      | `GET /Practitioner`           |
+
+**Search Parameters:** `_id`, `name`, `family`, `given`, `telecom`, `address`, `address-city`, `address-state`, `address-postalcode`, `identifier`, `_count`
+
+### <Icon icon="scalpel" iconType="duotone" color="#F9345F" size={23} />  Procedure
+
+**Required scope:** `patient/Procedure.rs`
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /Procedure/{id}`         |
+| Search (GET)      | `GET /Procedure`              |
+| Search (POST)     | `POST /Procedure/_search`     |
+
+**Search Parameters:** `_id`, `patient`, `date`, `code`, `status`, `category`, `performer`, `identifier`, `_count`, `_revinclude`
+
+### <Icon icon="signature" iconType="duotone" color="#F9345F" size={23} />  Provenance
+
+**Required scope:** valid Bearer token (JWT)
+
+Provenance resources are returned inline via `_revinclude=Provenance:target` on any resource search. They can also be read directly by ID.
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /Provenance/{id}`        |
+
+**Note:** To include Provenance in a search response, add `_revinclude=Provenance:target` to any resource search. Provenance entries appear in the Bundle with `search.mode = include`.
+
+### <Icon icon="people-roof" iconType="duotone" color="#F9345F" size={23} />  RelatedPerson
+
+**Required scope:** `patient/RelatedPerson.rs`
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /RelatedPerson/{id}`     |
+| Search (GET)      | `GET /RelatedPerson`          |
+
+**Search Parameters:** `_id`, `patient`
+
+### <Icon icon="share-from-square" iconType="duotone" color="#F9345F" size={23} />  ServiceRequest
+
+**Required scope:** `patient/ServiceRequest.rs`
+
+| **Interaction**   | **Endpoint**                              |
+| :---------------- | :---------------------------------------- |
+| Read              | `GET /ServiceRequest/{id}`                |
+| Search (GET)      | `GET /ServiceRequest`                     |
+| Search (POST)     | `POST /ServiceRequest/_search`            |
+
+**Search Parameters:** `_id`, `patient`, `category`, `code`, `authored`, `status`, `intent`, `identifier`, `_count`, `_revinclude`
+
+### <Icon icon="flask" iconType="duotone" color="#F9345F" size={23} />  Specimen
+
+**Required scope:** `patient/Specimen.rs`
+
+| **Interaction**   | **Endpoint**                  |
+| :---------------- | :---------------------------- |
+| Read              | `GET /Specimen/{id}`          |
+| Search (GET)      | `GET /Specimen`               |
+
+## Bulk Data API
+
+The server implements the **HL7 FHIR Bulk Data Access (Flat FHIR) v2.0** specification.
+
+### <Icon icon="cloud-arrow-down" iconType="duotone" color="#F9345F" size={23} />  Export Endpoints
+
+| **Export Type** | **Endpoint**                       | **Description**                                                |
+| :-------------- | :--------------------------------- | :------------------------------------------------------------- |
+| **Group Export** | `GET /Group/{group_id}/$export`   | Export data for all patients in a specific group               |
+| **Patient Export** | `GET /Patient/$export`          | Export data for all patients the client has access to          |
+| **System Export** | `GET /$export`                   | System-level export of all resources                           |
+
+<Info>
+  All export requests require the **`Prefer: respond-async`** header and a valid Bearer token. The server returns `202 Accepted` with a `Content-Location` header pointing to the status endpoint.
+</Info>
+
+**Optional query parameters:** `_outputFormat`, `_since`
+
+### <Icon icon="list-check" iconType="duotone" color="#F9345F" size={23} />  Export Job Management
+
+| **Operation**     | **Endpoint**                   | **Description**                                                                          |
+| :---------------- | :----------------------------- | :--------------------------------------------------------------------------------------- |
+| **Check Status**  | `GET /bulk-status/{job_id}`    | Poll job status; returns `202` while in progress, `200` with manifest when complete      |
+| **Cancel Job**    | `DELETE /bulk-status/{job_id}` | Cancel an in-progress export job                                                         |
+| **Download File** | `GET /bulk_files/{filename}`   | Download an exported NDJSON file                                                         |
+
+**Status responses:**
+
+- **`202 Accepted`** with `X-Progress` header — job in progress
+- **`200 OK`** with JSON manifest — job complete; manifest includes `output[]` URLs for each resource type
+- **`500`** with `OperationOutcome` — job failed
+
+Exported files are in `application/fhir+ndjson` format, one resource per line.
+
+### <Icon icon="layer-group" iconType="duotone" color="#F9345F" size={23} />  Group Management
+
+| **Operation**    | **Endpoint**          |
+| :--------------- | :-------------------- |
+| **List Groups**  | `GET /Group`          |
+| **Read Group**   | `GET /Group/{id}`     |
+
+## Responses and Error Handling
+
+### Successful Responses
+
+| **Status**         | **Meaning**                                                |
+| :----------------- | :--------------------------------------------------------- |
+| **`200 OK`**       | Request succeeded; body contains FHIR resource or Bundle   |
+| **`202 Accepted`** | Bulk export accepted; polling in progress                  |
+
+### Error Responses
+
+All error responses return a JSON body with a `detail` field (non-FHIR endpoints) or a FHIR `OperationOutcome` resource (bulk data endpoints).
+
+| **Status**                       | **Meaning**                                                          |
+| :------------------------------- | :------------------------------------------------------------------- |
+| **`400 Bad Request`**            | Invalid request parameters or malformed token                        |
+| **`401 Unauthorized`**           | Missing or invalid Bearer token                                      |
+| **`403 Forbidden`**              | Token valid but insufficient scope for the requested resource        |
+| **`404 Not Found`**              | Resource with the given ID does not exist                            |
+| **`500 Internal Server Error`**  | Unexpected server error                                              |
+
+## Additional Notes
+
+- **Read-only API:** All resource interactions are read (`search-type`, `read`) only. **Write operations are not supported.**
+- **Provenance via `_revinclude`:** To retrieve Provenance alongside any resource, append `_revinclude=Provenance:target` to any search query.
+- **FHIR Version:** FHIR R4B (`4.0.1`)
+- **US Core Version:** 6.1.0
+- **Content Type:** All responses use `application/fhir+json`
+- **Connections:** **TLS 1.2 or higher required**; connections below 1.2 are rejected.

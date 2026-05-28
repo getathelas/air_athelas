@@ -151,6 +151,13 @@
               "air_admin/analyze_your_reports/ehr_reports",
               "air_admin/analyze_your_reports/all_reports"
             ]
+          },
+          {
+            "group": "FHIR API",
+            "icon": "code",
+            "pages": [
+              "air_developer/fhir_api/commure_ehr_fhir_api"
+            ]
           }
         ]
       },
