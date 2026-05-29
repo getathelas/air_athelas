@@ -46,7 +46,7 @@ GET https://onc.api.staging-ehr.athelas.com/metadata
 Client applications must be registered in **AWS Cognito** before they can obtain tokens. Registration provides the application with a `client_id` and (for confidential clients) a `client_secret`.
 
 <Info>
-  Self-serve registration is planned for a future release. To register a new application today, **contact the Commure EHR team**.
+  Self-serve registration is planned for a future release. To register a new application today, **contact Commure (d/b/a Athelas)**.
 </Info>
 
 **When registering, provide:**
@@ -589,3 +589,9 @@ All error responses return a JSON body with a `detail` field (non-FHIR endpoints
 - **US Core Version:** 6.1.0
 - **Content Type:** All responses use `application/fhir+json`
 - **Connections:** **TLS 1.2 or higher required**; connections below 1.2 are rejected.
+
+## Service Base URL
+
+The published Service Base URL directory (FHIR Endpoint Bundle) for the Commure EHR FHIR API is available at:
+
+[**https://onc.api.staging-ehr.athelas.com/onc/base.json**](https://onc.api.staging-ehr.athelas.com/onc/base.json)
