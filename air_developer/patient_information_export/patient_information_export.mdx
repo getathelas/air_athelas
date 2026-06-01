@@ -1,11 +1,16 @@
 ---
 title: "Patient Information Export"
 sidebarTitle: "Patient Info Export"
-description: "Export format documentation for ONC §170.315(b)(10) Electronic Health Information (EHI) Export — covers both single-patient and population-level exports produced by Air."
+description: "EHI Export feature and export format documentation for ONC §170.315(b)(10) Electronic Health Information (EHI) Export — covers single-patient and patient-population exports produced by Air, their contents, data dictionary, permissions, and implementation considerations."
 toc: "true"
 ---
 
-This page is the **Export Format Documentation** for Electronic Health Information (EHI) produced by Air, as required by **ONC §170.315(b)(10)**. It describes the file formats Air emits so that a recipient can read, parse, and computably consume the exported data without contacting Commure (d/b/a Athelas).
+Air provides a dedicated **Electronic Health Information (EHI) Export** feature that lets a practice export a patient's electronic health information in a computable, standards-based format, as required by **ONC §170.315(b)(10)**. This page is both the **user guide** for that feature and the **Export Format Documentation** a recipient needs to read, parse, and computably consume the exported data without contacting Commure (d/b/a Athelas).
+
+The feature supports two export modes defined by the criterion:
+
+- **Single-patient EHI export** — §170.315(b)(10)(i)(A): export the complete EHI for one patient.
+- **Patient-population EHI export** — §170.315(b)(10)(i)(B): export the EHI for all patients in the practice.
 
 <Info>
   **Stable public URL for this page** (embedded in every export):
@@ -17,9 +22,18 @@ This page is the **Export Format Documentation** for Electronic Health Informati
   - **`*.xml`** — clinical content as a HL7 Consolidated CDA R2.1 (C-CDA) Continuity of Care Document (UTF-8 XML)
 </Info>
 
-## How to export patient information
+## Permissions
 
-Air supports **two self-service single-patient exports** from the application, plus a **site-wide export** available on request.
+The EHI Export feature is restricted to **_Providers_ and _Admins_**:
+
+- **Single-patient export** _(providers and admins)_ — runs in-app and is available to any provider or admin with access to the patient whose record is being exported.
+- **Patient-population (site-wide) export** _(admins)_ — requested by an account **Admin** on behalf of the practice.
+
+Access is enforced by Air's role-based access controls (ONC §170.315(d)(1)). Every export action is recorded in the tamper-resistant audit log (§170.315(d)(2)). See the [**Mandatory Disclosure**](/air_developer/onc_certification/mandatory_disclosure) page for the full list of certified capabilities.
+
+## Single-patient EHI export
+
+Air offers **two self-service single-patient exports** from the application: a **claims CSV** (billing/encounter data) and a **clinical C-CDA XML** (USCDI clinical data). Together they make up the complete single-patient EHI export. The detailed schema for each file is documented under [Data structure documentation](#data-structure-documentation).
 
 ### <Icon icon="file-csv" iconType="duotone" color="#F9345F" size={23} />  Export claims for a single patient (CSV)
 
@@ -33,11 +47,15 @@ The Claims page export produces a `claims.csv` file containing every claim row v
 4. Apply the filter — the table now shows only that patient's claims.
 5. Click **Export** to download `claims.csv`.
 
+- **What's included:** every claim row for the selected patient — claim/encounter identifiers, status, provider, facility, date of service, payers, charges, payments, adjustments, and balances. See the [Claims CSV column reference](#claims-csv-claims-csv).
+- **Output format:** UTF-8 CSV (`claims.csv`).
+- **File location:** downloads through your browser to its default **Downloads** folder as `claims.csv`.
+
 **Note:** The exported CSV contains exactly the columns and rows that are currently visible after filtering. Apply any additional column or date filters before exporting if you need a narrower slice.
 
 ### <Icon icon="file-code" iconType="duotone" color="#F9345F" size={23} />  Export the clinical record for a single patient (C-CDA XML)
 
-The C-CDA download produces a single `.xml` file conforming to the **HL7 Consolidated CDA R2.1 Continuity of Care Document (CCD)** standard — covering allergies, medications, problems, encounters, immunizations, lab results, vital signs, social history, procedures, and the other USCDI v1 sections.
+The C-CDA download produces a single `.xml` file conforming to the **HL7 Consolidated CDA R2.1 Continuity of Care Document (CCD)** standard — covering allergies, medications, problems, encounters, immunizations, lab results, vital signs, social history, procedures, and the other USCDI v3 sections.
 
 **To download a patient's C-CDA:**
 
@@ -47,17 +65,78 @@ The C-CDA download produces a single `.xml` file conforming to the **HL7 Consoli
 4. Click into the matching patient.
 5. Click **Download** to save the C-CDA `.xml` file.
 
-### <Icon icon="globe" iconType="duotone" color="#F9345F" size={23} />  Site-wide / population export
+- **What's included:** the patient's USCDI clinical data — demographics plus the clinical sections listed in [Export contents](#export-contents-ehi-data-classes-supported-formats).
+- **Output format:** HL7 C-CDA R2.1 UTF-8 XML (one `.xml` file per patient).
+- **File location:** downloads through your browser to its default **Downloads** folder as a `.xml` file.
 
-For an EHI export covering **all patients** in your practice (population-level export per §170.315(b)(10)(i)(B)), contact Commure (d/b/a Athelas) support:
+**Note:** Clinical sections with no recorded data for the patient are still present in the file, emitted with `nullFlavor="NI"` so a recipient can detect their presence. See [Considerations & error conditions](#considerations-error-conditions).
+
+## Patient-population (site-wide) EHI export
+
+For an EHI export covering **all patients** in your practice (population-level export per §170.315(b)(10)(i)(B)), an account **Admin** requests the export from Commure (d/b/a Athelas) support.
+
+### <Icon icon="globe" iconType="duotone" color="#F9345F" size={23} />  How to request a population export
 
 <Info>
   **Email:** [support@athelas.com](mailto:support@athelas.com)
 
-  Include your practice name and the date range you need. Support will return the export as a bundle of `claims.csv` plus one C-CDA `.xml` per patient.
+  Include your **practice name** and the **date range** you need.
 </Info>
 
-## File format specifications
+**Processing details:**
+
+- Support compiles the export and delivers it as a single **encrypted ZIP archive** via a **secure, expiring download link** sent to the requesting Admin.
+- Typical turnaround is **within 5 business days** of the request.
+- The secure download link expires after a limited period; request a new link from support if it lapses before you download the archive.
+
+**Package structure:**
+
+The archive bundles the same file formats as the single-patient export — one C-CDA `.xml` per patient plus a practice-wide `claims.csv`. The archive is named `EHI_Export_YYYYMMDD.zip` (where `YYYYMMDD` is the export date), and each patient's C-CDA file is named by the patient's first and last name:
+
+```
+EHI_Export_YYYYMMDD.zip
+├── claims.csv              # all claims across the patient population (same schema as the single-patient CSV)
+├── Jane Doe.xml            # one C-CDA Continuity of Care Document per patient, named "First Last.xml"
+├── John Smith.xml
+└── ...
+```
+
+**Output formats:** identical to the single-patient export — UTF-8 `claims.csv` and HL7 C-CDA R2.1 UTF-8 XML. Both are fully specified under [Data structure documentation](#data-structure-documentation).
+
+## Export contents — EHI data classes & supported formats
+
+The export carries the EHI/USCDI data classes below. Each class is identified by where it appears in the export so a recipient can confirm coverage.
+
+| **EHI / USCDI data class**            | **Where it appears in the export**                         | **Format** |
+| :------------------------------------ | :--------------------------------------------------------- | :--------- |
+| **Patient demographics**              | C-CDA `recordTarget` header (name, DOB, sex, race, ethnicity, language, address, telecom, marital status) | C-CDA XML |
+| **Allergies & intolerances**          | C-CDA Allergies & Intolerances section                     | C-CDA XML |
+| **Medications**                       | C-CDA Medications section                                  | C-CDA XML |
+| **Problems**                          | C-CDA Problem List section                                 | C-CDA XML |
+| **Encounters**                        | C-CDA Encounters section + `claims.csv` (Date of Service)  | C-CDA XML + CSV |
+| **Immunizations**                     | C-CDA Immunizations section                                | C-CDA XML |
+| **Laboratory (results & tests)**      | C-CDA Results section                                      | C-CDA XML |
+| **Vital signs**                       | C-CDA Vital Signs section                                  | C-CDA XML |
+| **Smoking status / social history**   | C-CDA Social History section                               | C-CDA XML |
+| **Procedures**                        | C-CDA Procedures section + `claims.csv` (CPT)              | C-CDA XML + CSV |
+| **Goals**                             | C-CDA Goals section                                        | C-CDA XML |
+| **Health concerns**                   | C-CDA Health Concerns section                              | C-CDA XML |
+| **Assessment & plan of treatment**    | C-CDA Assessments + Plan of Treatment sections             | C-CDA XML |
+| **Care team members**                 | C-CDA `documentationOf` / `serviceEvent` + author/authenticator | C-CDA XML |
+| **Functional & mental status**        | C-CDA Functional Status + Mental Status sections           | C-CDA XML |
+| **Medical equipment / implantable device (UDI)** | C-CDA Medical Equipment section                 | C-CDA XML |
+| **Reason for referral**               | C-CDA Reason for Referral section                          | C-CDA XML |
+| **Provenance (author/custodian)**     | C-CDA header (`author`, `custodian`, `legalAuthenticator`) | C-CDA XML |
+| **Billing / claim & encounter data**  | `claims.csv` (charges, payments, adjustments, balance, payer) | CSV |
+
+**Supported file formats:**
+
+- **`claims.csv`** — UTF-8 comma-separated values.
+- **C-CDA `.xml`** — HL7 Consolidated CDA R2.1 Continuity of Care Document (UTF-8 XML), aligned to the **USCDI v3** data classes.
+
+## Data structure documentation
+
+This section is the **data dictionary and schema** for each exported file — sufficient for a recipient to interpret the data without further reference.
 
 ### <Icon icon="table" iconType="duotone" color="#F9345F" size={23} />  Claims CSV (`claims.csv`)
 
@@ -232,3 +311,41 @@ Each clinical entry follows the C-CDA "Concern Act → Observation → (optional
 
 - [HL7 C-CDA R2.1 IG](http://www.hl7.org/implement/standards/product_brief.cfm?product_id=492)
 - [ONC C-CDA Scorecard](https://site.healthit.gov/scorecard/) — validates structure, templates, and vocabulary bindings
+
+## Considerations & error conditions
+
+| **Condition**                          | **What to expect**                                                                                                                                  |
+| :------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Filtered CSV scope**                 | `claims.csv` contains exactly the columns and rows visible after filtering. Clear or adjust filters before exporting if you need a different slice.   |
+| **Self-pay / unmapped payers**         | Claims with no recognized payer show `UNRECOGNIZED INSURANCE` in the `Insurances` column.                                                            |
+| **Empty clinical sections**            | C-CDA sections with no data for the patient are present but carry `nullFlavor="NI"` — interpret as "data not available," not "section omitted."      |
+| **Empty export**                       | If no records match the current filter (single-patient) or date range (population), the export contains headers/structure but no data rows. Verify your filters and date range. |
+| **Browser download blocked**           | Single-patient downloads open through your browser. If nothing downloads, allow pop-ups/downloads for the Air domain and retry.                       |
+| **Population export turnaround**        | Population exports are not instantaneous — they are compiled by support and delivered via a secure link (see [Patient-population export](#patient-population-site-wide-ehi-export)). |
+| **Secure link expiry**                 | The population-export download link expires after a limited period. Request a fresh link from support if it lapses before you download.               |
+| **Large population exports**           | Very large practices may receive the export split into multiple batches; follow the instructions in the delivery email to assemble them.             |
+
+## FAQ
+
+<Accordion title="Who can run an EHI export?">
+  The EHI Export feature is limited to **_Providers_ and _Admins_**. Single-patient exports can be run in-app by any provider or admin with access to the patient. The patient-population (site-wide) export is requested by an account **Admin** through support. Every export is recorded in the audit log.
+</Accordion>
+
+<Accordion title="What's the difference between the claims.csv and the C-CDA .xml file?">
+  - **`claims.csv`** holds **billing and encounter-level** data — claim status, providers, facilities, dates of service, payers, charges, payments, adjustments, and balances.
+  - **C-CDA `.xml`** holds the **clinical record** — demographics plus allergies, medications, problems, encounters, immunizations, lab results, vital signs, social history, procedures, and the other USCDI v3 data classes.
+
+  Together they form the complete EHI export for a patient.
+</Accordion>
+
+<Accordion title="How do I export all of my patients at once?">
+  Population (site-wide) exports are requested by an **Admin** emailing [support@athelas.com](mailto:support@athelas.com) with your practice name and date range. Within **5 business days**, support returns an **encrypted ZIP** (`EHI_Export_YYYYMMDD.zip`) via a **secure download link**, containing a practice-wide `claims.csv` and one C-CDA `.xml` per patient (named `First Last.xml`). See [Patient-population (site-wide) EHI export](#patient-population-site-wide-ehi-export).
+</Accordion>
+
+<Accordion title="How do I validate the C-CDA file?">
+  Use the [ONC C-CDA Scorecard](https://site.healthit.gov/scorecard/) to validate structure, templates, and vocabulary bindings, and the [HL7 C-CDA R2.1 Implementation Guide](http://www.hl7.org/implement/standards/product_brief.cfm?product_id=492) as the authoritative reference. The file is a HL7 C-CDA R2.1 Continuity of Care Document encoded in UTF-8 XML.
+</Accordion>
+
+<Accordion title="Are the export files USCDI-compliant?">
+  Yes. The clinical C-CDA export is aligned to the **USCDI v3** data classes. The [Export contents](#export-contents-ehi-data-classes-supported-formats) table identifies each EHI/USCDI data class and where it appears in the export.
+</Accordion>
