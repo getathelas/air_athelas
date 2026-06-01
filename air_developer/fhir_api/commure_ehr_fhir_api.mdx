@@ -15,18 +15,65 @@ The **Commure EHR FHIR API** is a FHIR R4B server that exposes patient health da
 
 ## SMART on FHIR Configuration
 
-The server publishes its SMART configuration discovery document at:
+The server publishes its **SMART App Launch v2.0** discovery document at the well-known path below. This is an unauthenticated `GET` — no token required.
 
 ```
 GET https://onc.api.staging-ehr.athelas.com/.well-known/smart-configuration
 ```
 
-This returns the discovery document with all authorization and token endpoint URLs, supported scopes, and capabilities.
+The document advertises every authorization/token endpoint, the supported scopes, grant types, client-authentication methods, PKCE methods, and SMART capabilities.
 
-The FHIR `CapabilityStatement`, which lists every supported resource and interaction, is available at:
+#### Example `.well-known/smart-configuration` output
 
-```
-GET https://onc.api.staging-ehr.athelas.com/metadata
+```json
+{
+  "issuer": "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579",
+  "jwks_uri": "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579/.well-known/jwks.json",
+  "authorization_endpoint": "https://onc.api.staging-ehr.athelas.com/authorize",
+  "token_endpoint": "https://onc.api.staging-ehr.athelas.com/token",
+  "introspection_endpoint": "https://onc.api.staging-ehr.athelas.com/introspect",
+  "revocation_endpoint": "https://onc.api.staging-ehr.athelas.com/revoke",
+  "token_endpoint_auth_methods_supported": [
+    "none",
+    "client_secret_post",
+    "client_secret_basic",
+    "private_key_jwt"
+  ],
+  "token_endpoint_auth_signing_alg_values_supported": ["RS256", "ES256"],
+  "grant_types_supported": [
+    "authorization_code",
+    "client_credentials",
+    "refresh_token"
+  ],
+  "response_types_supported": ["code"],
+  "scopes_supported": [
+    "openid", "profile", "fhirUser", "launch", "launch/patient", "offline_access",
+    "patient/Patient.rs", "patient/AllergyIntolerance.rs", "patient/CarePlan.rs",
+    "patient/CareTeam.rs", "patient/Condition.rs", "patient/Coverage.rs",
+    "patient/Device.rs", "patient/DiagnosticReport.rs", "patient/DocumentReference.rs",
+    "patient/Encounter.rs", "patient/Goal.rs", "patient/Immunization.rs",
+    "patient/Location.rs", "patient/MedicationDispense.rs", "patient/MedicationRequest.rs",
+    "patient/Observation.rs", "patient/Organization.rs", "patient/Practitioner.rs",
+    "patient/PractitionerRole.rs", "patient/Procedure.rs", "patient/Provenance.rs",
+    "patient/RelatedPerson.rs", "patient/ServiceRequest.rs", "patient/Specimen.rs",
+    "system/*.rs"
+  ],
+  "code_challenge_methods_supported": ["S256"],
+  "capabilities": [
+    "launch-ehr",
+    "launch-standalone",
+    "client-public",
+    "client-confidential-symmetric",
+    "client-confidential-asymmetric",
+    "context-ehr-patient",
+    "context-standalone-patient",
+    "sso-openid-connect",
+    "permission-patient",
+    "permission-offline",
+    "permission-v2",
+    "authorize-post"
+  ]
+}
 ```
 
 ### <Icon icon="link" iconType="duotone" color="#F9345F" size={23} />  SMART Endpoint Reference
@@ -41,27 +88,125 @@ GET https://onc.api.staging-ehr.athelas.com/metadata
 | **Issuer**        | `https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579`                           |
 | **SMART Style**   | `https://onc.api.staging-ehr.athelas.com/smart-style.json`                                  |
 
-## App Registration
+## CapabilityStatement
 
-Client applications must be registered in **AWS Cognito** before they can obtain tokens. Registration provides the application with a `client_id` and (for confidential clients) a `client_secret`.
+The server's FHIR `CapabilityStatement` (the "conformance statement") lists every supported resource, interaction, search parameter, supported US Core profile, and the SMART security configuration. It is available as an unauthenticated `GET` and can be exported directly:
 
-<Info>
-  Self-serve registration is planned for a future release. To register a new application today, **contact Commure (d/b/a Athelas)**.
-</Info>
+```
+GET https://onc.api.staging-ehr.athelas.com/metadata
+Accept: application/fhir+json
+```
 
-**When registering, provide:**
+The statement declares `fhirVersion: 4.0.1`, the `application/fhir+json` format, the SMART OAuth URIs (via the `oauth-uris` security extension), and one `rest.resource` entry per supported resource with its `supportedProfile`, interactions, and `searchParam` list.
 
-- Organization name and contact
-- Description of the application and which FHIR resources / scopes are needed
-- Whether the app is patient-facing or provider-facing
-- **Client type:** _public_ (no secret, uses PKCE) or _confidential_ (has secret)
-- Redirect URI
-- SMART Launch URI (if applicable)
+#### Example `CapabilityStatement` (abridged)
 
-**Upon approval, you will receive:**
+```json
+{
+  "resourceType": "CapabilityStatement",
+  "status": "active",
+  "kind": "instance",
+  "fhirVersion": "4.0.1",
+  "format": ["application/fhir+json"],
+  "implementationGuide": [
+    "http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core|6.1.0"
+  ],
+  "rest": [
+    {
+      "mode": "server",
+      "security": {
+        "extension": [
+          {
+            "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris",
+            "extension": [
+              { "url": "authorize", "valueUri": "https://onc.api.staging-ehr.athelas.com/authorize" },
+              { "url": "token",     "valueUri": "https://onc.api.staging-ehr.athelas.com/token" },
+              { "url": "introspect","valueUri": "https://onc.api.staging-ehr.athelas.com/introspect" },
+              { "url": "revoke",    "valueUri": "https://onc.api.staging-ehr.athelas.com/revoke" }
+            ]
+          }
+        ],
+        "service": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/restful-security-service",
+                "code": "SMART-on-FHIR"
+              }
+            ]
+          }
+        ]
+      },
+      "resource": [
+        {
+          "type": "Patient",
+          "supportedProfile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+          ],
+          "interaction": [{ "code": "read" }, { "code": "search-type" }],
+          "searchParam": [
+            { "name": "_id",       "type": "token" },
+            { "name": "identifier","type": "token" },
+            { "name": "name",      "type": "string" },
+            { "name": "birthdate", "type": "date" },
+            { "name": "gender",    "type": "token" }
+          ]
+        }
+        /* ...one entry per supported resource (see Resource Endpoints below)... */
+      ]
+    }
+  ]
+}
+```
 
-- `client_id` — used in all OAuth flows
-- `client_secret` — for confidential clients only
+## Application Registration & Onboarding Guide
+
+Follow these steps to onboard a new application against the Commure EHR FHIR API.
+
+<Steps>
+  <Step title="Review the documentation and Terms of Use" stepNumber={1} titleSize="h3">
+    Read this reference and the [API Terms of Use](#api-terms-of-use). Confirm the FHIR resources and SMART scopes your application requires (see [Scopes](#scopes) and the [Resource-to-USCDI Mapping Matrix](#resource-to-uscdi-mapping-matrix)).
+  </Step>
+
+  <Step title="Request application registration" stepNumber={2} titleSize="h3">
+    Applications are registered in **AWS Cognito**. Self-serve registration is planned for a future release; today, **contact Commure (d/b/a Athelas)** to register.
+
+    **Provide the following:**
+
+    - Organization name and technical contact
+    - Description of the application and the FHIR resources / scopes needed
+    - Whether the app is patient-facing, provider-facing, or a backend service
+    - **Client type:** _public_ (no secret, uses PKCE), _confidential_ (has secret), or _backend service_ (`private_key_jwt`)
+    - Redirect URI(s)
+    - SMART Launch URI (for EHR launch apps)
+    - JWKS URL (for backend-service / asymmetric clients)
+  </Step>
+
+  <Step title="Receive your credentials" stepNumber={3} titleSize="h3">
+    Upon approval you will receive:
+
+    - `client_id` — used in all OAuth flows
+    - `client_secret` — for confidential clients only
+
+    Store secrets and private keys securely; never embed them in distributable public clients.
+  </Step>
+
+  <Step title="Configure SMART discovery" stepNumber={4} titleSize="h3">
+    Point your client at the [`.well-known/smart-configuration`](#smart-on-fhir-configuration) document to discover the authorization and token endpoints, then implement the [Authorization](#authorization) flow that matches your client type.
+  </Step>
+
+  <Step title="Test against the sandbox" stepNumber={5} titleSize="h3">
+    Use the staging **Service Base URL** (`https://onc.api.staging-ehr.athelas.com`) to exercise the authorization flows, scope enforcement, resource reads/searches, and bulk export. No registration, sandbox, or production fees apply.
+  </Step>
+
+  <Step title="Validate conformance" stepNumber={6} titleSize="h3">
+    Validate your integration with the [ONC Inferno (g)(10) Standardized API test kit](https://inferno.healthit.gov/) against the [US Core Conformance Statement](#us-core-conformance-statement) and SMART App Launch v2.0 / Bulk Data v2.0 suites.
+  </Step>
+
+  <Step title="Go live" stepNumber={7} titleSize="h3">
+    Once validated, request production access from Commure (d/b/a Athelas). Production access to the certified API capabilities is granted on non-discriminatory terms (see [API Terms of Use](#api-terms-of-use)).
+  </Step>
+</Steps>
 
 ## Authorization
 
@@ -197,31 +342,54 @@ patient/Observation.rs?category=http://hl7.org/fhir/us/core/CodeSystem/us-core-c
   If a granular scope is granted, the server **restricts search results to only that category**. For example, a token with `patient/Condition.rs?category=encounter-diagnosis` cannot read problem-list or health-concern conditions.
 </Warning>
 
-## USCDI v1 → FHIR Resource Mapping
+## US Core Conformance Statement
 
-| **USCDI Data Element**                                  | **US Core Profile**                                                          | **FHIR Resource**                       |
-| :------------------------------------------------------ | :--------------------------------------------------------------------------- | :-------------------------------------- |
-| **Patient Demographics**                                | US Core Patient Profile                                                      | Patient                                 |
-| **Assessment and Plan of Treatment**                    | US Core CarePlan Profile                                                     | CarePlan                                |
-| **Care Team Members**                                   | US Core CareTeam Profile                                                     | CareTeam                                |
-| **Clinical Notes** (Consultation, Discharge, Progress) | US Core DocumentReference Profile                                            | DocumentReference                       |
-| **Goals: Patient Goals**                                | US Core Goal Profile                                                         | Goal                                    |
-| **Health Concerns**                                     | US Core Condition Profile                                                    | Condition                               |
-| **Immunizations**                                       | US Core Immunization Profile                                                 | Immunization                            |
-| **Lab Tests and Results**                               | US Core Lab Result Observation Profile, US Core DiagnosticReport for Lab     | Observation, DiagnosticReport           |
-| **Medications**                                         | US Core MedicationRequest Profile                                            | MedicationRequest, MedicationDispense   |
-| **Medication Allergies**                                | US Core AllergyIntolerance Profile                                           | AllergyIntolerance                      |
-| **Problems**                                            | US Core Condition Profile                                                    | Condition                               |
-| **Procedures**                                          | US Core Procedure Profile                                                    | Procedure                               |
-| **Provenance**                                          | US Core Provenance Profile                                                   | Provenance                              |
-| **Smoking Status**                                      | US Core Smoking Status Observation Profile                                   | Observation                             |
-| **Unique Device Identifiers** (Implantable)             | US Core Implantable Device Profile                                           | Device                                  |
-| **Vital Signs**                                         | FHIR Core Vital Signs Profiles, US Core Pulse Oximetry                       | Observation                             |
-| **Encounters**                                          | US Core Encounter Profile                                                    | Encounter                               |
-| **Insurance Coverage**                                  | US Core Coverage Profile                                                     | Coverage                                |
-| **Service Requests / Referrals**                        | US Core ServiceRequest Profile                                               | ServiceRequest                          |
-| **Specimens**                                           | US Core Specimen Profile                                                     | Specimen                                |
-| **Related Persons**                                     | US Core RelatedPerson Profile                                                | RelatedPerson                           |
+The Commure EHR FHIR API conforms to the **HL7 US Core Implementation Guide STU 6.1.0** on **FHIR R4 (4.0.1)**, supporting the **USCDI v3** data set, as required by the ONC §170.315(g)(10) Standardized API certification criterion.
+
+| **Conformance area**          | **Statement**                                                                                                                                  |
+| :---------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Implementation Guide**      | [US Core 6.1.0](http://hl7.org/fhir/us/core/STU6.1/) — `http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core` (version `6.1.0`)     |
+| **FHIR version**              | R4B (`4.0.1`)                                                                                                                                   |
+| **Data set**                  | USCDI v3                                                                                                                                        |
+| **SMART App Launch**          | [SMART App Launch v2.0.0](http://hl7.org/fhir/smart-app-launch/STU2/) — `§170.215(b)`                                                           |
+| **Bulk Data Access**          | [HL7 FHIR Bulk Data Access (Flat FHIR) v2.0.0](https://hl7.org/fhir/uv/bulkdata/STU2/) — `§170.215(a)(4)`                                       |
+| **Supported profiles**        | All US Core 6.1.0 profiles listed in the [Resource-to-USCDI Mapping Matrix](#resource-to-uscdi-mapping-matrix); asserted in the [CapabilityStatement](#capabilitystatement) via `supportedProfile`. |
+| **Must Support**              | US Core "Must Support" elements are populated when present in the source record; absent data is represented per US Core (omission or a US Core data-absent reason). |
+| **Required search parameters**| The required US Core search parameters and combination searches are implemented per profile (see [Resource Endpoints](#resource-endpoints)).     |
+| **Provenance**                | US Core Provenance is supported and returned via `_revinclude=Provenance:target` on any resource search.                                         |
+| **Profile declaration**       | Each returned resource declares its US Core profile in `meta.profile`.                                                                          |
+
+**Terminology / vocabulary standards** used to satisfy US Core bindings: **LOINC**, **SNOMED CT**, **RxNorm**, **CVX** (immunizations), **ICD-10-CM**, **CPT/HCPCS**, **UCUM** (units), and **HL7 / FHIR** code systems.
+
+**How to verify conformance:** retrieve the live [`/metadata`](#capabilitystatement) CapabilityStatement, and run the [ONC Inferno (g)(10) test kit](https://inferno.healthit.gov/) against the Service Base URL.
+
+## Resource-to-USCDI Mapping Matrix
+
+This matrix shows where each **USCDI v3** data class (the data set supported by US Core 6.1.0) is available **through the API** — the conformant US Core profile, the FHIR resource, and the endpoint a client calls to retrieve it. See [Resource Endpoints](#resource-endpoints) for the full search parameters of each endpoint.
+
+| **USCDI v3 Data Class**                                 | **US Core 6.1.0 Profile**                                                    | **FHIR Resource**                       | **API Endpoint(s)**                                          |
+| :------------------------------------------------------ | :--------------------------------------------------------------------------- | :-------------------------------------- | :----------------------------------------------------------- |
+| **Patient Demographics**                                | US Core Patient Profile                                                      | Patient                                 | `GET /Patient` · `GET /Patient/{id}`                         |
+| **Assessment and Plan of Treatment**                    | US Core CarePlan Profile                                                     | CarePlan                                | `GET /CarePlan?category=assess-plan`                         |
+| **Care Team Members**                                   | US Core CareTeam Profile                                                     | CareTeam                                | `GET /CareTeam`                                              |
+| **Clinical Notes** (Consultation, Discharge, Progress) | US Core DocumentReference Profile                                            | DocumentReference                       | `GET /DocumentReference` · `GET /DiagnosticReport`           |
+| **Goals: Patient Goals**                                | US Core Goal Profile                                                         | Goal                                    | `GET /Goal`                                                  |
+| **Health Concerns**                                     | US Core Condition Profile                                                    | Condition                               | `GET /Condition?category=health-concern`                    |
+| **Immunizations**                                       | US Core Immunization Profile                                                 | Immunization                            | `GET /Immunization`                                          |
+| **Lab Tests and Results**                               | US Core Lab Result Observation Profile, US Core DiagnosticReport for Lab     | Observation, DiagnosticReport           | `GET /Observation?category=laboratory` · `GET /DiagnosticReport` |
+| **Medications**                                         | US Core MedicationRequest Profile                                            | MedicationRequest, MedicationDispense   | `GET /MedicationRequest` · `GET /MedicationDispense`         |
+| **Medication Allergies**                                | US Core AllergyIntolerance Profile                                           | AllergyIntolerance                      | `GET /AllergyIntolerance`                                    |
+| **Problems**                                            | US Core Condition Profile                                                    | Condition                               | `GET /Condition?category=problem-list-item`                 |
+| **Procedures**                                          | US Core Procedure Profile                                                    | Procedure                               | `GET /Procedure`                                             |
+| **Provenance**                                          | US Core Provenance Profile                                                   | Provenance                              | `_revinclude=Provenance:target` · `GET /Provenance/{id}`     |
+| **Smoking Status**                                      | US Core Smoking Status Observation Profile                                   | Observation                             | `GET /Observation?category=social-history`                  |
+| **Unique Device Identifiers** (Implantable)             | US Core Implantable Device Profile                                           | Device                                  | `GET /Device`                                                |
+| **Vital Signs**                                         | US Core Vital Signs Profiles, US Core Pulse Oximetry                         | Observation                             | `GET /Observation?category=vital-signs`                     |
+| **Encounters**                                          | US Core Encounter Profile                                                    | Encounter                               | `GET /Encounter`                                             |
+| **Insurance Coverage**                                  | US Core Coverage Profile                                                     | Coverage                                | `GET /Coverage`                                              |
+| **Service Requests / Referrals**                        | US Core ServiceRequest Profile                                               | ServiceRequest                          | `GET /ServiceRequest`                                        |
+| **Specimens**                                           | US Core Specimen Profile                                                     | Specimen                                | `GET /Specimen`                                              |
+| **Related Persons**                                     | US Core RelatedPerson Profile                                                | RelatedPerson                           | `GET /RelatedPerson`                                         |
 
 ## Resource Endpoints
 
@@ -590,8 +758,59 @@ All error responses return a JSON body with a `detail` field (non-FHIR endpoints
 - **Content Type:** All responses use `application/fhir+json`
 - **Connections:** **TLS 1.2 or higher required**; connections below 1.2 are rejected.
 
+## API Terms of Use
+
+These Terms of Use govern access to the Commure EHR FHIR API (the "API"). By registering for or accessing the API, the developer ("you") agrees to these terms. They are published in accordance with the ONC Health IT Certification Program API Conditions of Certification (45 CFR §170.404).
+
+### <Icon icon="circle-check" iconType="duotone" color="#F9345F" size={23} />  Permitted use
+
+- The API provides read-only access to electronic health information for authorized patients, their personal representatives, and authorized third-party applications, consistent with the scopes granted at authorization.
+- Access is limited to the data authorized by the patient (or the authorizing user) and the granted SMART scopes. You must not attempt to access data beyond your authorized scope.
+
+### <Icon icon="scale-balanced" iconType="duotone" color="#F9345F" size={23} />  Fees and non-discrimination
+
+- There are **no fees** for application registration, sandbox access, or production use of the certified API capabilities.
+- Access is provided on **non-discriminatory terms** consistent with §170.404. Fair-and-reasonable fees under §170.404(a)(4) may apply only to optional value-added services beyond the certified capabilities.
+
+### <Icon icon="shield-halved" iconType="duotone" color="#F9345F" size={23} />  Developer responsibilities
+
+- Comply with all applicable laws, including **HIPAA** and the **21st Century Cures Act** information-blocking provisions.
+- Protect `client_secret` values, private keys, and tokens. Do not embed secrets in distributable public clients; use **PKCE** for public clients.
+- Use **TLS 1.2 or higher** for all connections; connections below TLS 1.2 are rejected.
+- Honor the patient's authorization decisions and granted scopes, and provide a clear privacy notice describing how your application uses and discloses data.
+- Do not use the API to disrupt, overload, or circumvent the security of the service, and respect published rate limits and acceptable-use expectations.
+
+### <Icon icon="triangle-exclamation" iconType="duotone" color="#F9345F" size={23} />  Suspension and changes
+
+- Commure (d/b/a Athelas) may suspend or revoke access that poses a security risk, violates these terms, or harms patients or the service, consistent with §170.404 permitted exceptions.
+- These terms and the API may change over time; material changes will be reflected on this page. The API is provided "as is" without warranties except as required by law.
+
+For questions about these terms or API access, contact Commure (d/b/a Athelas) at [support@athelas.com](mailto:support@athelas.com).
+
 ## Service Base URL
 
 The published Service Base URL directory (FHIR Endpoint Bundle) for the Commure EHR FHIR API is available at:
 
 [**https://onc.api.staging-ehr.athelas.com/onc/base.json**](https://onc.api.staging-ehr.athelas.com/onc/base.json)
+
+## FAQ
+
+<Accordion title="Where do I find the CapabilityStatement and SMART configuration?">
+  Both are unauthenticated `GET` endpoints on the Service Base URL: the FHIR CapabilityStatement at [`/metadata`](#capabilitystatement) and the SMART discovery document at [`/.well-known/smart-configuration`](#smart-on-fhir-configuration). Examples of each output are included on this page.
+</Accordion>
+
+<Accordion title="How do I register an application?">
+  Self-serve registration is planned for a future release. Today, contact Commure (d/b/a Athelas) to register — see the [Application Registration & Onboarding Guide](#application-registration--onboarding-guide). There are no registration, sandbox, or production fees.
+</Accordion>
+
+<Accordion title="Which version of US Core and USCDI does the API support?">
+  The API conforms to **US Core 6.1.0** on **FHIR R4 (4.0.1)** and supports the **USCDI v3** data set. See the [US Core Conformance Statement](#us-core-conformance-statement) and the [Resource-to-USCDI Mapping Matrix](#resource-to-uscdi-mapping-matrix).
+</Accordion>
+
+<Accordion title="How do I validate my integration for ONC (g)(10)?">
+  Run the [ONC Inferno (g)(10) Standardized API test kit](https://inferno.healthit.gov/) against the Service Base URL. It exercises SMART App Launch v2.0, US Core 6.1.0, and Bulk Data v2.0 conformance.
+</Accordion>
+
+<Accordion title="Can I write data back through the API?">
+  No. The API is **read-only** — all interactions are `read` and `search-type`. Write operations are not supported.
+</Accordion>
