@@ -18,14 +18,13 @@ Every flowsheet starts with a CPT block. The CPT-centric structure mirrors actua
 
 **To add a procedure code:**
 
-1. **Click** **+ CPT** at the top of the flowsheet.
+1. **Click** **\+ CPT** at the top of the flowsheet.
 2. **Search by CPT number** (e.g., `97110`) or **by description** (e.g., "therapeutic exercise"), then select the code from the dropdown.
 3. **Fill in the CPT block** — modifiers, minutes, provider, and status.
-
    ![CPT block fields after selecting a procedure code](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_2.webp)
 
 <Note>
-  CPT codes in the **+ CPT** dropdown are sorted by **how often you've used them** — the codes you've added to chart notes most frequently show up at the top. The order is **per provider**, so each provider sees their own usage-based list. If the code you want isn't near the top yet, just type to search for it.
+  CPT codes in the **\+ CPT** dropdown are sorted by **how often you've used them** — the codes you've added to chart notes most frequently show up at the top. The order is **per provider**, so each provider sees their own usage-based list. If the code you want isn't near the top yet, just type to search for it.
 </Note>
 
 Minutes are entered **once per CPT block**, not per intervention. Units are auto-calculated from those minutes; you can override them manually if needed.
@@ -42,7 +41,7 @@ With a CPT block in place, add the interventions you performed underneath it. Yo
 
 Use this when you already know what you want to write and don't need structured parameters.
 
-1. **Click** **+ Add Intervention** under the CPT block.
+1. **Click** **\+ Add Intervention** under the CPT block.
 2. **Type the intervention name** directly (e.g., "Hip abduction", "TheraBand rows").
 3. **Press Enter** or **Tab** to confirm.
 
@@ -50,20 +49,18 @@ Use this when you already know what you want to write and don't need structured 
 
 Use this to pull a structured intervention with pre-filled parameters (sets, reps, weight, etc.).
 
-1. **Click** **+ Add Intervention** under the CPT block.
+1. **Click** **\+ Add Intervention** under the CPT block.
 2. **Type `/`** to open the library search.
 3. **Search by exercise name** and select a result to insert the structured intervention.
-
-   ![Library search opened with `/` under an intervention field](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_3.webp)
+   ![Library search opened with / under an intervention field](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_3.webp)
 
 **Intervention groups**
 
 Use this to add several related interventions at once.
 
-1. **Click** **+ Add Intervention** under the CPT block.
+1. **Click** **\+ Add Intervention** under the CPT block.
 2. **Switch to the Intervention Groups tab.**
 3. **Search by group name** and select a group to add its full set of structured interventions.
-
    ![Intervention Groups tab inside the Add Intervention picker](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_4.webp)
 
 ### Managing interventions
@@ -102,11 +99,11 @@ Use the row menu to remove an individual intervention, or to delete an entire CP
 
 For patients who do roughly the same exercises each visit, **Carry Forward** pulls interventions from the previous visit into the current one so you aren't rebuilding the flowsheet every time. It runs automatically when the chart note loads.
 
-| **Note type** | **Pulled from**     | **Gates and rules**                                                                       |
-| :------------ | :------------------ | :---------------------------------------------------------------------------------------- |
-| Initial eval  | N/A                 | No carry forward — this is the first note in the case.                                    |
-| Daily note    | Latest note in case | Pulls interventions, CPT codes, and details; the source must be a Flowsheets visit note (not from the older flowsheet system). |
-| Progress note | Latest note in case | Same rules as daily note.                                                                 |
+| **Note type** | **Pulled from** | **Gates and rules** |
+| :-- | :-- | :-- |
+| Initial eval | N/A | No carry forward — this is the first note in the case. |
+| Daily note | Latest note in case | Pulls interventions, CPT codes, and details; the source must be a Flowsheets visit note (not from the older flowsheet system). |
+| Progress note | Latest note in case | Same rules as daily note. |
 
 <Tip>
   ✨**Smart Tip:** For routine patients, scan what carry-forward populated, then just update the minutes and tweak any exercises that changed for today's visit.
@@ -129,8 +126,6 @@ When the flowsheet is complete, you can generate a PDF summary and send the pati
 1. **Click** **Send HEP Email** in the flowsheet.
 2. Review the PDF — only interventions marked **HEP** are included.
 3. **Confirm the patient's email address or phone number** before sending.
-
-![Send HEP Email dialog with patient contact confirmation](/images/air_provider/fill_a_chart_note/flowsheets/flowsheets_9.webp)
 
 ## Flowsheets add-ons
 
@@ -169,12 +164,12 @@ These fields auto-populate from the appointment's scheduled start and end times,
 
 Most of the flowsheet can be filled out without ever leaving the keyboard.
 
-| **Shortcut**          | **What it does**                                                       |
-| :-------------------- | :--------------------------------------------------------------------- |
-| **Tab**               | Move forward through fields (minutes → modifier → provider, etc.).     |
-| **Shift + Tab**       | Move backward through fields.                                          |
-| **`/` (forward slash)** | While in the intervention field, open the library search.            |
-| **Enter**             | Confirm a free-text intervention, library selection, or active button. |
+| **Shortcut** | **What it does** |
+| :-- | :-- |
+| **Tab** | Move forward through fields (minutes → modifier → provider, etc.). |
+| **Shift \+ Tab** | Move backward through fields. |
+| **`/` (forward slash)** | While in the intervention field, open the library search. |
+| **Enter** | Confirm a free-text intervention, library selection, or active button. |
 
 ### Power user tips
 
