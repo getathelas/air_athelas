@@ -4,7 +4,7 @@ title: "Remittances"
 
 #### Getting started with the Remittances Page
 
-The \*\*Remittances page \*\*is your command center for ensuring that every insurance payment makes it from the payer → into your RCM system → and all the way into your bank account. It’s designed to give you confidence that:
+The **Remittances page** is your command center for ensuring that every insurance payment makes it from the payer → into your RCM system → and all the way into your bank account. It’s designed to give you confidence that:
 
 - **Every dollar in Insights = every check reconciled = every bank deposit.**
 - If there are gaps, duplicates, or mismatches, you can quickly identify and fix them. In other words: it’s where you can **see, reconcile, and act** on your payment data.
@@ -38,12 +38,16 @@ A bank deposit is the _actual money_ hitting your bank account. This could be an
 A check represents the _payer’s promise to pay_. It contains a check number, payment amount, and payer details. Your job is to:
 
 - Ensure the payments from this check are posted across the correct claims.
-- Match the check to its associated deposit to confirm the payment actually arrived in your bank. **Remittances / Payments**
+- Match the check to its associated deposit to confirm the payment actually arrived in your bank.
+
+**Remittances / Payments**
 
 Every individual claim payment is tracked as a **remittance**. By default, remittances are auto-posted within 6 hours of creation. Exceptions:
 
 - **Manual review** → if our posting engine isn’t sure how to apply a payment.
-- **Archived** → if the engine detects duplicates or bad data. **Deposit Source**
+- **Archived** → if the engine detects duplicates or bad data.
+
+**Deposit Source**
 
 Deposit sources are _cleaned-up payer identities_. Because payer names can vary across checks and deposits, we normalize them into a single source (e.g., “Blue Cross Blue Shield” instead of “BCBS of TX,” “BlueCross TX,” etc.). This makes matching deposits and checks much easier.
 
@@ -71,10 +75,12 @@ The deposit table can be filtered by:
 - **Date range** (transaction date)
 - **Matching Status** (Matched, Unmatched, or Partially Matched)
 - Matched - the deposit is linked to at least one check and the sum of the check(s) payment amounts = the deposit amount.
-- Partially Matched - the deposit is linked to at least one check but the sum of the check(s) payment amounts \*\*does not equal \*\*the deposit amount.
+- Partially Matched - the deposit is linked to at least one check but the sum of the check(s) payment amounts **does not equal** the deposit amount.
 - Unmatched - the deposit is not linked to any checks.
 - **Inclusion Status** (Included or Excluded) - this is used as a way to mark certain deposits as non-insurance deposits
-- **Deposit Amount** (range filters) These filters let you focus quickly — for example, to find deposits in a certain week, to review only unmatched deposits, or to isolate very large deposits.
+- **Deposit Amount** (range filters)
+
+These filters let you focus quickly — for example, to find deposits in a certain week, to review only unmatched deposits, or to isolate very large deposits.
 
 ###### Deposit Table
 
@@ -143,7 +149,9 @@ The check list can be filtered by:
 - **Check Number**
 - **Amount** (range)
 - **Posting Status** (Posted, Partially Posted, Unposted)
-- **Matching Status** (Matched vs. Unmatched to a deposit) This makes it easy to zero in on unposted checks, unmatched checks, or checks within a certain dollar range.
+- **Matching Status** (Matched vs. Unmatched to a deposit)
+
+This makes it easy to zero in on unposted checks, unmatched checks, or checks within a certain dollar range.
 
 ###### Check Table
 
@@ -152,7 +160,7 @@ Each row in the table shows:
 - **Check ID / Check Number / Check Date**
 - **Check Amount** vs. **Amount Posted**
 - **Provider Adjustments Posted** (if any)
-- **Remaining Balance** (should be \$0 if fully posted)
+- **Remaining Balance** (should be $0 if fully posted)
 - **Deposit Source** (payer, normalized)
 - **Payment Method** (ACH, check, etc.)
 - **Matching Status** (Matched vs. Unmatched)
@@ -164,7 +172,7 @@ Each check has one or more remittances tied to it. Those remittances determine t
 
 - **Posted →** The sum of payments posted tied to this check = the total check payment amount.
 - **Partially Posted →** The sum of payments posted for this check ≠ the total check payment amount AND ≠ 0.
-- **Unposted →** The sum of payments posted for this check = 0. 👉 Your reconciliation goal is to have all checks **Matched** \+ **Fully Posted**.
+- **Unposted →** The sum of payments posted for this check = 0. 👉 Your reconciliation goal is to have all checks **Matched** + **Fully Posted**.
 
 ###### Clicking Into a Check
 
