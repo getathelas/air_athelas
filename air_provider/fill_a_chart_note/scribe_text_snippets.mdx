@@ -174,25 +174,3 @@ Choose a macro type based on what you want the snippet to do. You set this in th
 | Snippet not used during Scribe | No macro type set, or wrong site | Set a macro type; confirm you're on the correct site (snippets are site-specific). |
 | Replacement not replacing the phrase | Trigger doesn't match the transcription closely enough | Adjust the trigger to match what's said; review the transcription and semantic match. |
 | Context / Format has no effect | Macro type is set to Replacement, or guidance is vague | Set the type to **Context** or **Format**; make the value clear and actionable. |
-
-### FAQ
-
-<Accordion title="What's the benefit of enabling Text Snippets for Scribe vs. not enabling them?">
-  When enabled for Scribe, your snippets automatically shape the AI-generated note — standardizing phrasing, adding clinical context, and controlling formatting — so you spend less time editing after each visit. If a snippet is **not** enabled for Scribe (the **Use for EHR Scribe** toggle is off), it has no effect on AI note generation.
-</Accordion>
-
-<Accordion title="What's the difference between Replacement, Context, and Format macros?">
-  **Replacement** swaps a trigger phrase for exact expanded text directly in the transcription before the note is written. **Context** gives the AI extra clinical guidance to influence how the note reads, without changing the transcription. **Format** controls structure and conciseness (e.g., bullets, brief vs. detailed). Only Replacement modifies the transcription text.
-</Accordion>
-
-<Accordion title="Why isn't my snippet showing up in Scribe?">
-  Check that **Use for EHR Scribe** is enabled, a **Macro Type** is set, and the snippet's **Appointment Types** include the visit (or leave them empty to apply globally). Snippets are also **site-specific** — confirm you're working in the correct site.
-</Accordion>
-
-<Accordion title="Are snippets shared across sites?">
-  No. Snippets are scoped to a site, so you manage and apply them per site.
-</Accordion>
-
-<Accordion title="Can I restrict a snippet to certain appointment types?">
-  Yes. Use the **Appointment Types for Scribe** field to limit a snippet to specific appointment types. Leave it empty to make the snippet global (applies to all appointment types).
-</Accordion>
