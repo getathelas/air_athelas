@@ -1,0 +1,95 @@
+---
+title: "Viewing and Reconciling Incoming C-CDAs"
+sidebarTitle: "C-CDA Reconciliation"
+toc: "true"
+---
+
+When another clinic sends a patient's records to your practice, Air receives them as a **C-CDA** (Consolidated Clinical Document Architecture) document. From the **CCDA** inbox you can review the incoming document and **reconcile** its clinical data—medications, allergies, problems, and more—into the patient's chart in Air.
+
+## What is reconciliation?
+
+In the context of ONC Health IT certification, **clinical information reconciliation** is the process of comparing the data in a document received from an outside source against the data already in the patient's record, then deciding what to incorporate. Air's C-CDA reconciliation supports ONC criterion **§170.315(b)(2) Clinical Information Reconciliation and Incorporation**, which covers reconciling and incorporating **medications, medication allergies, and problems** (along with other USCDI data) from a received C-CDA into the patient record.
+
+## Open the CCDA inbox
+
+1. From the left navigation, open the **Inbox**.
+2. At the top of the inbox, select the **CCDA** tab. This shows the C-CDA documents for your whole site.
+
+![The CCDA tab in the Inbox showing the site-wide list and document view](/images/air_developer/onc_feature_guides/reconcile_incoming_ccda/reconcile_incoming_ccda_1.webp)
+
+<Info>
+  Unlike the Claims page, the CCDA view is **site-wide**—every clinician at your site sees the same list of documents.
+</Info>
+
+## Find and sort C-CDAs
+
+The list of documents appears on the left. Each entry shows the patient, the date, and a **From** field—the clinic or provider name the document was sent from.
+
+- Use the **search** box at the top to find a document by patient or site.
+- Use the **sort** button below the search box to change the order. By default, documents are sorted by date sent, so the most recently received document appears at the top.
+
+<img
+  src="/images/air_developer/onc_feature_guides/reconcile_incoming_ccda/reconcile_incoming_ccda_2.webp"
+  alt="The Sort dialog with date and patient sorting options"
+  title="Sort options"
+  style={{ width:"55%" }}
+/>
+
+The list is also split into tabs:
+
+| **Tab**             | **What it shows**                                                                                              |
+| :------------------ | :------------------------------------------------------------------------------------------------------------- |
+| **Awaiting Review** | Documents you still need to reconcile. This is where you'll spend most of your time.                            |
+| **Reconciled**      | Documents that have already been reconciled, including the name of the clinician who reconciled each one.        |
+| **Sent**            | C-CDAs your site has sent out to other clinics, with the recipient, author, sent time, and last updated time.   |
+
+## Review a C-CDA
+
+Select a document to open it in the main view.
+
+### <Icon icon="user-check" iconType="duotone" color="#F9345F" size={23} />  Match the document to a patient
+
+At the top of the document, use the **Match patient** bar to link the C-CDA to the correct patient in Air. Air automatically searches your database and surfaces likely matches first, in this order:
+
+1. Same name **and** same date of birth
+2. Same first and last name, different date of birth
+3. Same last name, different first name, same date of birth
+4. Same first name, different last name, same date of birth
+
+You can also type in any patient name to search manually, then click **Match**.
+
+**Note:** If the patient doesn't exist in Air yet, click the **+** button to the right of the match bar to add them.
+
+### <Icon icon="file-medical" iconType="duotone" color="#F9345F" size={23} />  Read the document
+
+The document opens as a **Continuity of Care Document**, showing the patient's name, date of birth, the sending site, and the date received. Its contents are organized into the standard C-CDA clinical sections—for example **Guardians & Related Persons**, **Allergies and Intolerances**, **Medications**, **Problems**, **Immunizations**, **Results**, and more.
+
+You also have two ways to keep the source data:
+
+- **Additional Files** — Files attached during the transition of care (for example, an X-ray report or urinalysis). Clicking a file downloads it so you can open it in your preferred viewer.
+- **Download XML** — Downloads the exact XML document that was sent to you.
+
+When you're ready to incorporate the data, click **Continue to Reconciliation** (or **Begin Reconcile**).
+
+![The Continuity of Care Document view with its clinical sections](/images/air_developer/onc_feature_guides/reconcile_incoming_ccda/reconcile_incoming_ccda_3.webp)
+
+### <Icon icon="table-columns" iconType="duotone" color="#F9345F" size={23} />  Customize your view
+
+To make long documents easier to read:
+
+- Every section is **collapsible**. Use **Collapse All** to collapse them at once. Your collapse preferences are remembered across all chart note viewing.
+- **Rearrange sections** by dragging them using the handles in the left sidebar.
+
+### FAQ
+
+<Accordion title="Who can see the CCDA inbox?">
+  The CCDA view is **site-wide**, so all clinicians at your site see the same list of incoming and reconciled documents. This is different from the Claims page, which is more narrowly scoped.
+</Accordion>
+
+<Accordion title="What if the patient on the document isn't in Air yet?">
+  Click the **+** button to the right of the **Match patient** bar to add the patient, then match the document to the new record.
+</Accordion>
+
+<Accordion title="Can I keep a copy of the original document?">
+  Yes. Use **Download XML** to save the exact document that was sent to you, and open any attachments from the **Additional Files** menu.
+</Accordion>

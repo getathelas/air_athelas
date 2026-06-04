@@ -165,7 +165,8 @@
             "icon": "book-medical",
             "pages": [
               "air_developer/onc_feature_guides/adding_family_health_history",
-              "air_developer/onc_feature_guides/adding_an_implantable_device"
+              "air_developer/onc_feature_guides/adding_an_implantable_device",
+              "air_developer/onc_feature_guides/reconcile_incoming_ccda"
             ]
           },
           {
