@@ -3,6 +3,127 @@ title: "Changelog"
 description: "Stay up to date with the latest product updates, bug fixes, and new features."
 ---
 
+<Update label="May 31, 2026" tags={["Insights"]}>
+
+  ### Appointments Page Available to All Users
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_05_31/appointments-page.webp" alt="The new Appointments page list view grouped by time, showing patient, provider, alerts, insurance, charges, and tags, with Athelas AI explaining a suggested charge" />
+
+  The rebuilt **Appointments** page is now available to all users. The fast list view brings patient demographics on hover, per-appointment rule-based alerts, eligibility run details and source, suggested collection amounts, and tags into a single worklist. Build **Custom Views** for your team's workflows, let **Athelas AI** explain every suggested charge, and rely on an eligibility parser that reads 100% of the benefits returned by the clearinghouse.
+
+  ### Claims Page Features Available to Everyone
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_05_31/claims-page.webp" alt="The Claims Page with the Athelas assistant panel open, showing patient information, provider, procedure, insurance, a financial summary, and claim status with next steps" />
+
+  The Claims Page features that were in beta last month have graduated and are rolling out to all customers.
+
+  - **Group-By on the claims table** is now releasing to all sites. Group claims by site, insurance, week, month, and more, with right-click context menus and column-level sorting.
+  - **Claim Context** is now in production. The side panel brings Payments, Submissions, and Remittances together, with procedure-level payment breakdowns and AI-powered submission comparison.
+  - **The comprehensive activity feed** is now rolling out to all customers, giving every claim a complete audit trail of submissions, remittances, reconciliations, ERAs, appeals, patient responsibility, and assignee changes.
+  - **Bulk Actions** continue to expand, with Athelas Assistant now helping you navigate more ambiguous bulk actions across large sets of claims.
+
+  ### More Claims Page Improvements
+
+  - **Clearinghouse status updates (277s):** See provisional claim status updates from clearinghouses directly on the Claims Page, available as both individual and bulk actions.
+  - **Provider-level adjustments in the posting tool:** Apply adjustments at the provider level while you post.
+  - **A more unified worklist:** Legacy billing pages are being folded into the Claims Page, so more of your work happens in one place.
+
+  ### Patient Profile Rollout
+
+  The new **Patient Profile** continues to roll out to more sites, giving billing teams one place to understand a patient's balance, charges, transactions, and credits, with **Athelas AI** on hand to explain patient responsibility.
+
+  ### Bug Fixes and Improvements
+
+  **Claims:**
+  - Group-by views, claim context, and the activity feed received polish as they expanded to more sites
+  - Continued reliability improvements so fewer claims get stuck on resolvable errors
+
+  **Posting & Remittances:**
+  - Provider-level adjustments and additional refinements to the posting workflow
+
+</Update>
+
+<Update label="April 27, 2026" tags={["Insights"]}>
+
+  ### New Appointments Page
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_04_27/eligibility-history.webp" alt="Historical eligibility runs compared side by side on the Appointments page, with Athelas AI summarizing the key differences between two eligibility checks" />
+
+  The **Appointments** page has been rebuilt as a rich, fast list view that puts everything front office staff need in one place. Hover any appointment to see patient demographics, view rule-based alerts inline, and see eligibility run details and source, suggested collection amounts, and tags at a glance.
+
+  You can build **Custom Views** tailored to your day-to-day workflows, so each team sees exactly the appointments they need to work. **Athelas AI** explains every suggested charge in a short, readable summary, with one click to dive into the full breakdown when you need it.
+
+  The page is powered by a revamped eligibility parser that now reads **100% of the benefits** returned by the clearinghouse, presented in a clean, readable layout. You can clearly see the benefits coming in, the rules applied on top of them, and the verified benefits used to suggest each charge. An appointment activity tracker shows the full history of an appointment, and you get complete visibility into every past eligibility run, with one-click Athelas AI comparison between runs. You can also rerun an eligibility check through any source Athelas integrates with and compare results side by side, and a step-by-step charge explanation screen walks you through the entire process, from fetching eligibility to applying rules and finalizing the charge.
+
+  ### Claims Page Available to All Users
+
+  The **Claims Page** is now available to all users as the single, authoritative interface for managing claims end to end, bringing months of foundational work together in one place.
+
+  - **AI Copilot for Claims:** Ask Copilot for a financial summary or procedure rollup, submit claims, run eligibility, and compare historical submissions, all from the Claims Page.
+  - **Eligibility Check in Claims:** Verify patient eligibility without leaving the claim. View and compare historical eligibility checks per payer, and modify the eligibility payload when needed.
+  - **EHR Import Status & Sync:** See when the last EHR import ran, when the next one is scheduled, and enable or disable sync per claim.
+  - **Charge Master integration:** Charges auto-populate when a procedure matches your fee schedule, with nearest-approximate suggestions when there isn't an exact match.
+  - **Rule-engine bypass:** Manually bypass validation errors (CCI, LCD/NCD, and dental) when appropriate, so a claim is never stuck.
+  - **UX polish:** Customizable columns, claim templates, enhanced "Go to…" links, keyboard shortcuts (`CMD` + `/`), and guided tours.
+
+  ### Charge Master Released to All Users
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_04_27/charge-master.webp" alt="Charge Master page listing charge items with billing type, CPT code, status, facility and non-facility charges, effective dates, and the option to create a new charge or import a CSV file" />
+
+  The **Charge Master** is now released to all users. Fee schedules are created and maintained entirely within Insights, driving accurate charge entry across both the Appointments and Claims pages and giving your practice a single source of truth for pricing.
+
+  ### New Patient Profile
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_04_27/patient-profile.webp" alt="The new Patient Profile showing a financial summary, charges and transactions, credits, and the Athelas AI assistant ready to explain the patient's balance" />
+
+  The new **Patient Profile** brings patient responsibility into one coherent workflow. Instead of jumping across charges, transactions, credits, and timelines to understand a balance, you get patient context, **Charges and Transactions**, detailed drill-downs, and **Athelas AI** in a single experience. Credit movements are now visible and traceable, so you can understand where credits came from, where money went, and how they affect the patient's balance. **PR Explainability** lets Athelas AI explain a patient's balance in plain language.
+
+  ### Remittances and Deposit Verification
+
+  The posting workflow received major improvements. A new remittances overview supports bulk CSV and EDI export, fuzzy deposit search, and bank account management. Posted payments now group dynamically, check-matching status filters make reconciliation faster, parent and child sites are fully supported, and ERA/EOB PDFs can be delivered directly by email.
+
+  ### Reporting Upgrades
+
+  - **Report History:** Get clear visibility into past report runs and quickly spot any that failed.
+  - **Revenue Activity Report:** Now generalized for all customers, with customer-facing documentation to help you get started.
+  - **Faster reports:** The Posting Log report is roughly **50× faster**, and the Claim Details Export has been optimized to run smoothly even for high-volume sites.
+
+  ### [Beta Users Only] Bulk Actions on Claims
+
+  Work entire sets of claims at once from the Claims Page. Bulk actions include assign, tag, comment, submit and resubmit, update insurance, update providers, update intent-to-bill and prior auth, write off, and push to next payer, all with undo support.
+
+  ### [Beta Users Only] More Claims Page Tools
+
+  Several additions make the Claims Page even more powerful for beta users:
+
+  - **Group-By views:** Group the claims table by site, insurance, week, month, and more, with right-click context menus and column-level sorting.
+  - **Create Claim:** Create claims directly on the Claims Page, from filters, from a previous claim, or using claim templates.
+  - **Claim Context panel:** A side panel that brings Payments, Submissions, and Remittances together, with procedure-level payment breakdowns and AI-powered submission comparison.
+  - **Comprehensive activity feed:** A complete audit trail for each claim, covering submissions, remittances, reconciliations, ERAs, appeals, patient responsibility, and assignee changes.
+
+  ### Bug Fixes and Improvements
+
+  **Claims:**
+  - Improved charge entry accuracy by validating procedures against the Charge Master before they are added to a claim
+  - Strengthened claim validation reliability so fewer claims get stuck on resolvable errors
+
+  **Posting & Remittances:**
+  - Added fuzzy deposit search and dynamic grouping of posted payments to speed up matching
+  - Improved support for parent and child sites throughout the posting workflow
+
+  **Eligibility:**
+  - The eligibility parser now captures 100% of clearinghouse benefits, replacing the previous selective parsing
+  - Verified benefits and the rules applied to them are now shown clearly alongside each suggested charge
+
+  **Patient Responsibility:**
+  - Credit movements are now traceable end to end, making patient balances easier to explain
+  - Payment reliability improvements reduce the risk of duplicate payments
+
+  **Reporting:**
+  - Significant performance improvements across the Posting Log report and Claim Details Export
+
+</Update>
+
 <Update label="March 9, 2026" tags={["Air"]}>
 
   ### HEP Library Upgrades
