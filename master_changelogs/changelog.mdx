@@ -9,7 +9,7 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
 
   <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_05_31/appointments-page.webp" alt="The new Appointments page list view grouped by time, showing patient, provider, alerts, insurance, charges, and tags, with Athelas AI explaining a suggested charge" />
 
-  The rebuilt **Appointments** page is now available to all users. The fast list view brings patient demographics on hover, per-appointment rule-based alerts, eligibility run details and source, suggested collection amounts, and tags into a single worklist. Build **Custom Views** for your team's workflows, let **Athelas AI** explain every suggested charge, and rely on an eligibility parser that reads 100% of the benefits returned by the clearinghouse.
+  The rebuilt Appointments page is now available to all users. The fast list view brings patient demographics on hover, per-appointment rule-based alerts, eligibility run details and source, suggested collection amounts, and tags into a single worklist. Build Custom Views for your team's workflows, let Athelas AI explain every suggested charge, and rely on an eligibility parser that reads 100% of the benefits returned by the clearinghouse.
 
   ### Claims Page Features Available to Everyone
 
@@ -17,20 +17,20 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
 
   The Claims Page features that were in beta last month have graduated and are rolling out to all customers.
 
-  - **Group-By on the claims table** is now releasing to all sites. Group claims by site, insurance, week, month, and more, with right-click context menus and column-level sorting.
-  - **Claim Context** is now in production. The side panel brings Payments, Submissions, and Remittances together, with procedure-level payment breakdowns and AI-powered submission comparison.
-  - **The comprehensive activity feed** is now rolling out to all customers, giving every claim a complete audit trail of submissions, remittances, reconciliations, ERAs, appeals, patient responsibility, and assignee changes.
-  - **Bulk Actions** continue to expand, with Athelas Assistant now helping you navigate more ambiguous bulk actions across large sets of claims.
+  - Group-By on the claims table is now releasing to all sites. Group claims by site, insurance, week, month, and more, with right-click context menus and column-level sorting.
+  - Claim Context is now in production. The side panel brings Payments, Submissions, and Remittances together, with procedure-level payment breakdowns and AI-powered submission comparison.
+  - The comprehensive activity feed is now rolling out to all customers, giving every claim a complete audit trail of submissions, remittances, reconciliations, ERAs, appeals, patient responsibility, and assignee changes.
+  - Bulk Actions continue to expand, with Athelas Assistant now helping you navigate more ambiguous bulk actions across large sets of claims.
 
   ### More Claims Page Improvements
 
-  - **Clearinghouse status updates (277s):** See provisional claim status updates from clearinghouses directly on the Claims Page, available as both individual and bulk actions.
-  - **Provider-level adjustments in the posting tool:** Apply adjustments at the provider level while you post.
-  - **A more unified worklist:** Legacy billing pages are being folded into the Claims Page, so more of your work happens in one place.
+  - Clearinghouse status updates (277s): See provisional claim status updates from clearinghouses directly on the Claims Page, available as both individual and bulk actions.
+  - Provider-level adjustments in the posting tool: Apply adjustments at the provider level while you post.
+  - A more unified worklist: Legacy billing pages are being folded into the Claims Page, so more of your work happens in one place.
 
   ### Patient Profile Rollout
 
-  The new **Patient Profile** continues to roll out to more sites, giving billing teams one place to understand a patient's balance, charges, transactions, and credits, with **Athelas AI** on hand to explain patient responsibility.
+  The new Patient Profile continues to roll out to more sites, giving billing teams one place to understand a patient's balance, charges, transactions, and credits, with Athelas AI on hand to explain patient responsibility.
 
   ### Bug Fixes and Improvements
 
@@ -43,40 +43,142 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
 
 </Update>
 
+<Update label="May 30, 2026" tags={["Air"]}>
+
+  ### [Beta Users Only] Flowsheets V2 Expands to More Clinics
+
+  Following its initial pilot, the rebuilt flowsheet experience is now rolling out to more clinics. This update adds customizable carry-forward behavior so each visit starts from the right baseline, support for credential modifiers such as KX and PTA/OTA so billing reflects who delivered care, and the ability for the AI Scribe to apply CPT codes directly to flowsheets, cutting down the manual work of coding each treatment.
+
+  ### Site and Facility Branding Available to All Users
+
+  White-label branding is now available to all practices. Your logos and facility- or site-specific preferred names appear across every patient-facing touchpoint, including branded email, text messages, and the patient portal, so patients always see your practice's brand instead of a generic one. Multi-location practices can tailor branding for each facility.
+
+  ### Online Scheduling Improvements
+
+  Online scheduling keeps getting better for patients and front-desk teams alike. Patients can now see available times for single-appointment booking, providers they have previously seen are tagged in the provider list to make rebooking easier, and practices can configure whether patients are allowed to book appointments or update their insurance directly from the portal.
+
+  ### Collections Alerts Now Live
+
+  Pop-ups now appear during scheduling and check-in when a patient has been sent to collections. Surfacing this at the moment staff are already working with the patient makes it easy to address an outstanding balance before the visit, instead of chasing it down with a separate follow-up.
+
+  ### Multi-Site Access from a Single Account
+
+  Staff and providers who work across more than one location no longer need a separate login for each site. A single account can now access multiple sites, so you can search for patients, view the schedule, open chart notes, and manage prior authorizations across all of your locations without logging in and out.
+
+  ### Prior Authorization Improvements
+
+  Managing prior authorizations is faster. The pre-certification dropdown now lets you filter by archived or active status so expired authorizations stay out of your way, and credential-group insurance search surfaces more results at once, making it quicker to find and attach the right authorization.
+
+  ### [Beta Users Only] Patient Portal Authorized Representative Access
+
+  Caregivers and authorized representatives can now access the patient portal on a patient's behalf, each with their own sign-in and notifications. This helps parents, guardians, and care partners stay on top of a patient's appointments, forms, and records, and supports ONC requirements for proxy access.
+
+  ### Bug Fixes and Improvements
+
+  **Chart Notes:**
+  - Institutional (UB-04) chart note submission unblocked for applicable sites
+  - Flowsheet carry-forward and credential-modifier fixes for more accurate documentation
+
+  **Scheduling & Front Desk:**
+  - Calendar eligibility status now refreshes correctly after a re-run
+  - Faxes can be split into multiple separate faxes, with custom coversheet support on the way
+
+</Update>
+
+<Update label="April 30, 2026" tags={["Air"]}>
+
+  ### [Beta Users Only] Clinical Document Exchange
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_04_30/ccda.webp" alt="The C-CDA Continuity of Care Document viewer showing problems, results, immunizations, and allergies sections alongside the document inbox" />
+
+  Air now supports exchanging C-CDA clinical documents with other providers, an important step for care coordination and interoperability. You can generate, send, and receive documents through Direct secure messaging, view them in a built-in viewer, reconcile incoming clinical data into the patient's chart, and match each document to the right patient. Patients can also view and download their own records from the portal.
+
+  ### [Beta Users Only] Flowsheets V2
+
+  We have rebuilt the flowsheet experience to make documenting treatment faster and more accurate. You can add, update, reorder, and remove interventions and CPT codes within a procedure, and use the "Mark All as Done" shortcut at the treatment header to close out a visit in one click. The AI Scribe can populate flowsheets for you from the visit, and you can import interventions from a previous visit, including across cases, so recurring treatment plans take seconds to carry forward.
+
+  ### Plan of Care Tracker Improvements
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_04_30/poc-tracker.webp" alt="Plan of Care certification tracking table showing patient, case, certification status, referring provider, payer, and certification dates, with status filters across the top" />
+
+  The Plan of Care Tracker is now much easier to work with day to day. Sortable columns and saved filters let you organize certifications the way your team thinks about them, an insurance-type filter helps you focus on the cases that matter most, a free-text notes field keeps important context right where you need it, and a new audit log tracks every change for compliance.
+
+  ### Configurable EHR Alerts
+
+  Practices can now build their own in-app alert rules with custom conditions. Matching alerts appear as banners directly inside the chart note, so clinicians get the right prompts, such as a missing piece of documentation or a care gap, at exactly the moment they are charting, without relying on outside checklists or reminders.
+
+  ### [Beta Users Only] Site and Facility Branding
+
+  A new branding engine lets practices white-label their patient-facing communications. Logos and facility- or site-specific preferred names now flow through email, text messages, and the patient portal, so patients consistently see your practice's brand rather than a generic one across every interaction.
+
+  ### Online Scheduling Improvements
+
+  Online scheduling now shares the same availability engine as the rest of the calendar, so the times patients see always match what is truly open. Practices also get provider and facility visibility settings to control exactly who appears for booking, and patients move through a rebuilt, simpler sign-up flow.
+
+  ### Collections Alerts at Scheduling and Check-In
+
+  When a patient has been sent to collections, a banner now surfaces during scheduling and check-in so staff can address the balance before the visit rather than after. Check-in will also prompt for a policyholder address when the patient's own address is missing, keeping records complete for billing.
+
+  ### Faxing Improvements
+
+  Faxing is more organized and reliable. You can assign a document type to fax attachments and filter the faxing page by it, reorder faxes within the create-fax drawer, and faxes sent from a chart note now carry the correct facility and provider attribution so the receiving office knows exactly where they came from.
+
+  ### Bug Fixes and Improvements
+
+  **Chart Notes:**
+  - Treatment justification and notes now appear in all chart note PDF exports
+  - Previous measurements now reference the prior Progress Note specifically
+  - Immunizations capture a structured vaccination group
+  - Dictation supports voice-triggered dynamic text snippets
+
+  **Scheduling & Front Desk:**
+  - Create a new case directly from the appointment drawer
+  - Fixed an error when discharging a patient and cancelling all future appointments
+  - Insurance cards can now be deleted from the attachments view
+
+  **Intake & Outreach:**
+  - Added a "Required" toggle to single-choice questions in patient intake templates
+  - Outreach reminders now use the facility's timezone, with NPS summary drill-downs and functional outcome forms available in outreach flows
+
+  **Patient Portal:**
+  - Facility addresses are hidden in the portal for telehealth-only practices
+
+</Update>
+
 <Update label="April 27, 2026" tags={["Insights"]}>
 
   ### New Appointments Page
 
   <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_04_27/eligibility-history.webp" alt="Historical eligibility runs compared side by side on the Appointments page, with Athelas AI summarizing the key differences between two eligibility checks" />
 
-  The **Appointments** page has been rebuilt as a rich, fast list view that puts everything front office staff need in one place. Hover any appointment to see patient demographics, view rule-based alerts inline, and see eligibility run details and source, suggested collection amounts, and tags at a glance.
+  The Appointments page has been rebuilt as a rich, fast list view that puts everything front office staff need in one place. Hover any appointment to see patient demographics, view rule-based alerts inline, and see eligibility run details and source, suggested collection amounts, and tags at a glance.
 
-  You can build **Custom Views** tailored to your day-to-day workflows, so each team sees exactly the appointments they need to work. **Athelas AI** explains every suggested charge in a short, readable summary, with one click to dive into the full breakdown when you need it.
+  You can build Custom Views tailored to your day-to-day workflows, so each team sees exactly the appointments they need to work. Athelas AI explains every suggested charge in a short, readable summary, with one click to dive into the full breakdown when you need it.
 
-  The page is powered by a revamped eligibility parser that now reads **100% of the benefits** returned by the clearinghouse, presented in a clean, readable layout. You can clearly see the benefits coming in, the rules applied on top of them, and the verified benefits used to suggest each charge. An appointment activity tracker shows the full history of an appointment, and you get complete visibility into every past eligibility run, with one-click Athelas AI comparison between runs. You can also rerun an eligibility check through any source Athelas integrates with and compare results side by side, and a step-by-step charge explanation screen walks you through the entire process, from fetching eligibility to applying rules and finalizing the charge.
+  The page is powered by a revamped eligibility parser that now reads 100% of the benefits returned by the clearinghouse, presented in a clean, readable layout. You can clearly see the benefits coming in, the rules applied on top of them, and the verified benefits used to suggest each charge. An appointment activity tracker shows the full history of an appointment, and you get complete visibility into every past eligibility run, with one-click Athelas AI comparison between runs. You can also rerun an eligibility check through any source Athelas integrates with and compare results side by side, and a step-by-step charge explanation screen walks you through the entire process, from fetching eligibility to applying rules and finalizing the charge.
 
   ### Claims Page Available to All Users
 
-  The **Claims Page** is now available to all users as the single, authoritative interface for managing claims end to end, bringing months of foundational work together in one place.
+  The Claims Page is now available to all users as the single, authoritative interface for managing claims end to end, bringing months of foundational work together in one place.
 
-  - **AI Copilot for Claims:** Ask Copilot for a financial summary or procedure rollup, submit claims, run eligibility, and compare historical submissions, all from the Claims Page.
-  - **Eligibility Check in Claims:** Verify patient eligibility without leaving the claim. View and compare historical eligibility checks per payer, and modify the eligibility payload when needed.
-  - **EHR Import Status & Sync:** See when the last EHR import ran, when the next one is scheduled, and enable or disable sync per claim.
-  - **Charge Master integration:** Charges auto-populate when a procedure matches your fee schedule, with nearest-approximate suggestions when there isn't an exact match.
-  - **Rule-engine bypass:** Manually bypass validation errors (CCI, LCD/NCD, and dental) when appropriate, so a claim is never stuck.
-  - **UX polish:** Customizable columns, claim templates, enhanced "Go to…" links, keyboard shortcuts (`CMD` + `/`), and guided tours.
+  - AI Copilot for Claims: Ask Copilot for a financial summary or procedure rollup, submit claims, run eligibility, and compare historical submissions, all from the Claims Page.
+  - Eligibility Check in Claims: Verify patient eligibility without leaving the claim. View and compare historical eligibility checks per payer, and modify the eligibility payload when needed.
+  - EHR Import Status & Sync: See when the last EHR import ran, when the next one is scheduled, and enable or disable sync per claim.
+  - Charge Master integration: Charges auto-populate when a procedure matches your fee schedule, with nearest-approximate suggestions when there isn't an exact match.
+  - Rule-engine bypass: Manually bypass validation errors (CCI, LCD/NCD, and dental) when appropriate, so a claim is never stuck.
+  - UX polish: Customizable columns, claim templates, enhanced "Go to…" links, keyboard shortcuts (`CMD` + `/`), and guided tours.
 
   ### Charge Master Released to All Users
 
   <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_04_27/charge-master.webp" alt="Charge Master page listing charge items with billing type, CPT code, status, facility and non-facility charges, effective dates, and the option to create a new charge or import a CSV file" />
 
-  The **Charge Master** is now released to all users. Fee schedules are created and maintained entirely within Insights, driving accurate charge entry across both the Appointments and Claims pages and giving your practice a single source of truth for pricing.
+  The Charge Master is now released to all users. Fee schedules are created and maintained entirely within Insights, driving accurate charge entry across both the Appointments and Claims pages and giving your practice a single source of truth for pricing.
 
   ### New Patient Profile
 
   <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_04_27/patient-profile.webp" alt="The new Patient Profile showing a financial summary, charges and transactions, credits, and the Athelas AI assistant ready to explain the patient's balance" />
 
-  The new **Patient Profile** brings patient responsibility into one coherent workflow. Instead of jumping across charges, transactions, credits, and timelines to understand a balance, you get patient context, **Charges and Transactions**, detailed drill-downs, and **Athelas AI** in a single experience. Credit movements are now visible and traceable, so you can understand where credits came from, where money went, and how they affect the patient's balance. **PR Explainability** lets Athelas AI explain a patient's balance in plain language.
+  The new Patient Profile brings patient responsibility into one coherent workflow. Instead of jumping across charges, transactions, credits, and timelines to understand a balance, you get patient context, Charges and Transactions, detailed drill-downs, and Athelas AI in a single experience. Credit movements are now visible and traceable, so you can understand where credits came from, where money went, and how they affect the patient's balance. PR Explainability lets Athelas AI explain a patient's balance in plain language.
 
   ### Remittances and Deposit Verification
 
@@ -84,9 +186,9 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
 
   ### Reporting Upgrades
 
-  - **Report History:** Get clear visibility into past report runs and quickly spot any that failed.
-  - **Revenue Activity Report:** Now generalized for all customers, with customer-facing documentation to help you get started.
-  - **Faster reports:** The Posting Log report is roughly **50× faster**, and the Claim Details Export has been optimized to run smoothly even for high-volume sites.
+  - Report History: Get clear visibility into past report runs and quickly spot any that failed.
+  - Revenue Activity Report: Now generalized for all customers, with customer-facing documentation to help you get started.
+  - Faster reports: The Posting Log report is roughly 50× faster, and the Claim Details Export has been optimized to run smoothly even for high-volume sites.
 
   ### [Beta Users Only] Bulk Actions on Claims
 
@@ -96,10 +198,10 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
 
   Several additions make the Claims Page even more powerful for beta users:
 
-  - **Group-By views:** Group the claims table by site, insurance, week, month, and more, with right-click context menus and column-level sorting.
-  - **Create Claim:** Create claims directly on the Claims Page, from filters, from a previous claim, or using claim templates.
-  - **Claim Context panel:** A side panel that brings Payments, Submissions, and Remittances together, with procedure-level payment breakdowns and AI-powered submission comparison.
-  - **Comprehensive activity feed:** A complete audit trail for each claim, covering submissions, remittances, reconciliations, ERAs, appeals, patient responsibility, and assignee changes.
+  - Group-By views: Group the claims table by site, insurance, week, month, and more, with right-click context menus and column-level sorting.
+  - Create Claim: Create claims directly on the Claims Page, from filters, from a previous claim, or using claim templates.
+  - Claim Context panel: A side panel that brings Payments, Submissions, and Remittances together, with procedure-level payment breakdowns and AI-powered submission comparison.
+  - Comprehensive activity feed: A complete audit trail for each claim, covering submissions, remittances, reconciliations, ERAs, appeals, patient responsibility, and assignee changes.
 
   ### Bug Fixes and Improvements
 
