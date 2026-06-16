@@ -1,0 +1,134 @@
+---
+title: "Progress Note Automatic Conversion"
+sidebarTitle: "Progress Note Auto-Conversion"
+toc: "true"
+---
+
+<Info>
+  This guide is for **providers** and **front desk staff**. It explains how progress note (PN) alerts and automatic conversion work, what you'll see in the product, and what to do when you see it.
+</Info>
+
+## What is progress note alerting and auto-conversion?
+
+Progress notes (PNs) are required at certain clinical and regulatory intervals during a patient's course of care. Missing them can affect reimbursement, compliance, and patient management.
+
+The goal is simple: **you should never be surprised that a progress note is due.** The system surfaces alerts before scheduling, during scheduling, and before documentation — and automatically converts qualifying appointments to a progress note type — without creating noise.
+
+## When is a progress note required?
+
+Progress note rules are configured per insurance type (Medicare, Medicaid, Commercial, Workers' Comp, Auto, and others) by your Athelas administrator, based on your preferences and state requirements. The system evaluates these rules automatically for every patient appointment. There are three core triggers.
+
+### Medicare regulatory cadence (default rule)
+
+A progress note is required at whichever comes first:
+
+- A configurable number of **visits** (for example, 10) since the last evaluative note (initial evaluation, re-evaluation, or progress note)
+- A configurable number of **calendar days** (for example, 30) since the last evaluative note
+
+Medicare outpatient therapy regulations require a progress report at least every 10 treatment days or 30 calendar days to demonstrate patient progress, continued medical necessity, and justification for ongoing therapy.
+
+<Note>
+  Example alert timing — visit 10 or day 30 — is illustrative. Actual thresholds are set by your site's configuration.
+</Note>
+
+### Plan of care (POC) expired
+
+A progress note is required when:
+
+- The POC end date is before the appointment date, **or**
+- The POC visit count is exhausted
+
+A progress note updates goal status, reassesses functional progress, and supports POC recertification by the physician/NPP.
+
+### Prior authorization nearing expiration
+
+A progress note is prompted when a configurable number of visits remain on the authorization. Payers frequently require updated functional measures, goal progress, and medical-necessity documentation before approving additional visits.
+
+## What you'll see and when
+
+### For front desk staff
+
+**While scheduling an appointment**
+
+If a patient is approaching or at a progress note threshold, an alert appears during scheduling, with a suggested appointment type. This helps ensure the correct appointment type is booked before the visit.
+
+**On the calendar**
+
+Two visually distinct icons tell you the difference between "a PN is coming" and "this appointment is already a PN":
+
+- 🔔 **PN Required** — appears on appointments where a progress note will be due at that visit.
+
+![Calendar appointment showing the Progress note required icon](/images/air_provider/fill_a_chart_note/progress_note_automatic_conversion/progress_note_automatic_conversion_1.png)
+
+- ✅ **Auto-converted to a PN** — appears on appointments that have already been auto-converted to a progress note type.
+
+![Calendar appointment showing the auto-converted to a progress note icon](/images/air_provider/fill_a_chart_note/progress_note_automatic_conversion/progress_note_automatic_conversion_2.png)
+
+**At check-in (after auto-conversion)**
+
+If an appointment was auto-converted to a progress note, a prompt appears at check-in asking you to confirm or select the correct PN appointment type for the site. Your selection is saved to the appointment record and the calendar.
+
+![Check-in prompt to confirm the progress note appointment type](/images/air_provider/fill_a_chart_note/progress_note_automatic_conversion/progress_note_automatic_conversion_3.png)
+
+### For providers
+
+**On the calendar (before the visit)**
+
+A badge appears on your calendar appointment when a progress note is required for that visit, based on the alert timing configured for your site. This solves the most common frustration: being surprised mid-documentation that a progress note was due.
+
+**Inside the note (during documentation)**
+
+An alert appears when you open documentation if a progress note is due and the visit is not already a progress note — for example, the patient's 10th treatment day, or 30+ days since the last progress note. You'll be prompted to complete a progress note before continuing with routine documentation.
+
+**Air Scribe app**
+
+You can view auto-converted progress notes in the Air Scribe mobile app. If the front office hasn't checked the patient in — for any reason — you can check the patient in directly from Air Scribe and start scribing.
+
+<Warning>
+  The Air Scribe app does not support selecting or changing the appointment type. If you check a patient in from the app, the appointment keeps its originally scheduled type.
+</Warning>
+
+![Auto-converted progress note in the Air Scribe app](/images/air_provider/fill_a_chart_note/progress_note_automatic_conversion/progress_note_automatic_conversion_4.png)
+
+## How auto-conversion works
+
+Auto-conversion is a background process that automatically changes a qualifying appointment to a progress note type — so the right visit type is already in the system before the patient arrives.
+
+### Conversion timeline
+
+1. **48 hours before the appointment** — the system checks whether the appointment meets PN criteria. If it does, the appointment is auto-converted to a progress note type.
+2. **24 hours before the appointment** — if it wasn't converted at the 48-hour check, the system runs a second check and converts it if the criteria are now met.
+
+### What gets converted
+
+Only appointments that match the PN rules configured for the patient's insurance type are converted. The following are **never** auto-converted:
+
+- Appointments already scheduled as a progress note type
+- Canceled or no-show appointments
+
+### What stays the same after conversion
+
+All original scheduling details are preserved — date, time, provider, patient, and location. Only the clinical note type changes.
+
+## Quick reference: alert summary
+
+| **Trigger**                                             | **Type**                            | **Who sees it**       | **When**                     |
+| :------------------------------------------------------ | :---------------------------------- | :-------------------- | :--------------------------- |
+| PN due (e.g., visit 10 or day 30, per your config)      | Alert (action required)             | Provider              | Calendar badge + inside note |
+| POC expiring before the appointment date                | Alert                               | Front desk + provider | Calendar                     |
+| Prior auth nearing limit (e.g., auth expires in 7 days) | Alert                               | Front desk + provider | Scheduling + calendar        |
+| 48h / 24h before a qualifying appointment               | Auto-conversion (no action needed)  | Background job        | Background job               |
+
+### FAQ
+
+<Accordion title="What if the appointment was already scheduled as a progress note?">
+  Nothing changes. Auto-conversion only applies to appointments that aren't already set as a progress note type.
+</Accordion>
+
+<Accordion title="Can the rules be customized per insurance or site?">
+  Yes. Progress note alert rules are configurable by insurance type and are managed by your Athelas administrator. The 24-hour and 48-hour auto-conversion checks, however, are **not** configurable per site.
+</Accordion>
+
+<Accordion title="What if I see an alert but a progress note isn't actually due?">
+  Alerts are driven by the configured rules — if the rule criteria are met, the alert fires. If the rules look incorrect for your site, review the progress note rule configuration with your administrator so they can be updated.
+</Accordion>

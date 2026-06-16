@@ -89,6 +89,8 @@
             "tag": "Provider",
             "pages": [
               "air_provider/fill_a_chart_note/nav_chart_note",
+              "air_provider/fill_a_chart_note/chart_note_clinical_types",
+              "air_provider/fill_a_chart_note/progress_note_automatic_conversion",
               "air_provider/fill_a_chart_note/other_sec_chart_note",
               "air_provider/fill_a_chart_note/flowsheets",
               "air_provider/fill_a_chart_note/functional_outcomes",
@@ -520,8 +522,6 @@
             "pages": [
               "insights_provider/chart_notes/ai_appt_summaries",
               "insights_provider/chart_notes/auto_apply_kx_modifier",
-              "insights_provider/chart_notes/chart_note_clinical_types",
-              "insights_provider/chart_notes/chart_note_features_not_supported",
               "insights_provider/chart_notes/download_chart_notes_as_pdfs",
               "insights_provider/chart_notes/getting_started_with_chart_notes",
               "insights_provider/chart_notes/how_to_add_measurements",
@@ -601,5 +601,19 @@
       "label": "Sign-in on Insights",
       "href": "https://insights.athelas.com"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/insights_provider/chart_notes/chart_note_clinical_types",
+      "destination": "/air_provider/fill_a_chart_note/chart_note_clinical_types"
+    },
+    {
+      "source": "/insights_provider/chart_notes/progress_note_automatic_conversion",
+      "destination": "/air_provider/fill_a_chart_note/progress_note_automatic_conversion"
+    },
+    {
+      "source": "/insights_provider/chart_notes/chart_note_features_not_supported",
+      "destination": "/insights_provider/chart_notes/getting_started_with_chart_notes"
+    }
+  ]
 }
