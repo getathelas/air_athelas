@@ -23,7 +23,7 @@ This guide covers where to find the tool, the supported file formats, and what e
 
 If you are uploading a CSV, the first row must use the header below — column names are matched verbatim:
 
-| **Sequence** | **Check Type**   | **Check Number** | **Amount ($)** | **Check Date** |
+| **Sequence** | **Check Type**   | **Check Number** | **Amount (\$)** | **Check Date** |
 | :----------- | :--------------- | :--------------- | :------------- | :------------- |
 | 1            | Business Check   | 12345            | 425.00         | 2026-04-15     |
 | 2            | Personal Check   | 9876             | 75.50          | 2026-04-14     |
@@ -31,7 +31,7 @@ If you are uploading a CSV, the first row must use the header below — column n
 - **Sequence** — running `1, 2, 3 …`
 - **Check Type** — must be exactly `Business Check`, `Personal Check`, or `Cashier Check`.
 - **Check Number** — required for `Business Check` rows; leading zeros are normalized during matching.
-- **Amount ($)** — decimal dollars (e.g. `123.45`).
+- **Amount (\$)** — decimal dollars (e.g. `123.45`).
 - **Check Date** _(optional)_ — `YYYY-MM-DD`.
 
 <Tip>
