@@ -164,6 +164,16 @@
             ]
           },
           {
+            "group": "ONC Feature Guides",
+            "icon": "book-medical",
+            "pages": [
+              "air_developer/onc_feature_guides/adding_family_health_history",
+              "air_developer/onc_feature_guides/adding_an_implantable_device",
+              "air_developer/onc_feature_guides/view_ccda",
+              "air_developer/onc_feature_guides/reconcile_incoming_ccda"
+            ]
+          },
+          {
             "group": "FHIR API",
             "icon": "code",
             "pages": [

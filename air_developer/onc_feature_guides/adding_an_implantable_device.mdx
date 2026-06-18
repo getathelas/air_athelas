@@ -1,0 +1,85 @@
+---
+title: "Adding an Implantable Device"
+sidebarTitle: "Implantable Devices"
+toc: "true"
+---
+
+Air lets you record, change, and access a patient's **implantable devices** from their **Problem List**. This supports ONC Health IT certification criterion **§170.315(a)(14) Implantable Device List**.
+
+You only need the device's **Unique Device Identifier (UDI)**. Air looks the UDI up through the **NLM AccessGUDID API** and automatically populates the remaining device details for you.
+
+## Navigate to Implantable Devices
+
+### <Icon icon="microchip" iconType="duotone" color="#F9345F" size={23} />  Open the patient's Problem List
+
+1. From the left navigation, open the **Patients** tab and search for the patient by name or MRN.
+2. On the patient's profile, open the **Problem List** tab.
+3. Scroll down past the **Problem List** table to the **Implantable Devices** section.
+
+![Problem List tab with the Implantable Devices section](/images/air_developer/onc_feature_guides/adding_an_implantable_device/adding_an_implantable_device_1.webp)
+
+## Add an Implantable Device
+
+### <Icon icon="barcode" iconType="duotone" color="#F9345F" size={23} />  Look up a device by its UDI
+
+1. In the **Implantable Devices** section, click the **+ Add Implantable Device** button.
+2. In the **Create Implantable Device** panel, paste or scan the device's UDI into the **UDI (Human Readable)** field, then run the lookup using the field's lookup icon.
+
+<img
+  src="/images/air_developer/onc_feature_guides/adding_an_implantable_device/adding_an_implantable_device_2.webp"
+  alt="Create Implantable Device panel with the UDI lookup field"
+  title="Create Implantable Device panel"
+  style={{ width:"70%" }}
+/>
+
+As long as you enter a valid UDI, Air looks it up through the **NLM AccessGUDID API** and automatically populates the rest of the device fields:
+
+| **Field**            | **Description**                                                                 |
+| :------------------- | :------------------------------------------------------------------------------ |
+| **UDI (Human Readable)** | The device's Unique Device Identifier. Paste or scan it to drive the lookup. |
+| **Device Identifier (DI)** | The portion of the UDI that identifies the device's make and model.       |
+| **Status**           | The device's current status (for example, **Active**).                          |
+| **Device Name**      | The device's brand or model name.                                               |
+| **Distinct Identifier** | An additional identifier for the specific device, when applicable.           |
+| **Serial Number**    | The device's serial number.                                                     |
+| **Lot Number**       | The device's lot or batch number.                                               |
+| **Manufacture Date** | The date the device was manufactured.                                           |
+| **Expiration Date**  | The date the device expires.                                                    |
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_developer/onc_feature_guides/adding_an_implantable_device/adding_an_implantable_device_3.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+3. Review the populated fields and click **Save**. The device now appears in the **Implantable Devices** table, with its **UDI**, **Device Identifier**, **Status**, **Serial Number**, **Lot Number**, **Manufacture Date**, and **Expiration Date**.
+
+![Implantable Devices table showing a saved device populated from the UDI lookup](/images/air_developer/onc_feature_guides/adding_an_implantable_device/adding_an_implantable_device_4.webp)
+
+<Tip>
+  ✨**Smart Tip:** Scanning the UDI barcode directly into the **UDI (Human Readable)** field is the fastest way to add a device—the AccessGUDID lookup fills in the make, model, and dates so you don't have to type them.
+</Tip>
+
+## Edit or Delete an Implantable Device
+
+### <Icon icon="pen-to-square" iconType="duotone" color="#F9345F" size={23} />  Update a saved device
+
+The action buttons sit at the far right of the **Implantable Devices** table.
+
+1. Drag the table's horizontal scroll bar to the right to reveal the **pencil** (edit) and **trash** (delete) icons on the device's row.
+2. Click the **pencil** icon to edit the device's details, or the **trash** icon to remove it.
+
+![Implantable Devices table scrolled right to show the edit and delete icons](/images/air_developer/onc_feature_guides/adding_an_implantable_device/adding_an_implantable_device_5.webp)
+
+### FAQ
+
+<Accordion title="Where are a patient's implantable devices stored?">
+  Implantable devices live on the patient's **Problem List** tab, in the **Implantable Devices** section below the problem list itself.
+</Accordion>
+
+<Accordion title="Do I have to type in all the device details manually?">
+  No. Enter the device's **UDI** in the **UDI (Human Readable)** field and run the lookup. Air queries the **NLM AccessGUDID API** and automatically populates the Device Identifier, Device Name, Status, Serial Number, Lot Number, Manufacture Date, and Expiration Date.
+</Accordion>
+
+<Accordion title="How do I edit or remove an implantable device?">
+  Scroll the **Implantable Devices** table to the right to reveal the action icons on the device's row. Click the **pencil** icon to edit, or the **trash** icon to delete.
+</Accordion>
