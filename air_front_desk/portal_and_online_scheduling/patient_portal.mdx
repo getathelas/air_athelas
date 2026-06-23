@@ -10,7 +10,7 @@ Patients can register for the portal either through patient-specific invitation 
 
 ## Sending portal invitations
 
-You can invite patients to the portal from two places: **Outreach Flows** and the **Patient Responsibility** page. Patients can also register themselves through a [self-service link](#self-service-registration-invitation).
+You can invite patients to the portal from two places: **Outreach Flows** and the **Patient Demographics** page. Patients can also register themselves through a [self-service link](#self-service-registration-invitation).
 
 ### <Icon icon="envelope" iconType="duotone" color="#F9345F" size={23} />  From Outreach Flows
 
@@ -18,21 +18,47 @@ In **Outreach Flows**, insert the message variant `patient_portal_link` (labeled
 
 ![Patient Portal Link variant in Outreach Flows](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_1.webp)
 
-### <Icon icon="dollar-sign" iconType="duotone" color="#F9345F" size={23} />  From the Patient Responsibility page
+### <Icon icon="address-card" iconType="duotone" color="#F9345F" size={23} />  From the Patient Demographics page
 
-**To send a registration link to a specific patient from the billing / responsibility workflow:**
+**To send a registration link to a specific patient manually:**
 
-1. Navigate to the patient's **RCM Profile** from the EHR Patient Profile.
-2. In the row of patient actions in the left pane, click the **phone icon** to send a new portal registration link.
+1. Navigate to the patient's **Demographics** page from the EHR Patient Profile.
+2. Next to the patient's email address, click the **phone icon** to send a new portal registration link.
 3. Confirm in the dialog.
 
 The patient receives:
 
 - An **email** at their address on file with a link to the portal (when an email is present).
 
+<Warning>
+  An email is required to send a portal invitation manually from the Patient Demographics page. Add an email to the patient first if you need to send one manually.
+</Warning>
+
 **Note:** There is a short cooldown between sends. If you try again too soon, the button explains how long to wait.
 
-![Send a registration link from the Patient Responsibility page](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_2.gif)
+![Sending a portal registration link from the Patient Demographics page](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_2.gif)
+
+You can also check a patient's portal registration status from this page:
+
+**Registration completed:**
+
+![Portal status: registration completed](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_3.webp)
+
+**Unsent / not yet invited:**
+
+![Portal status: not yet invited](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_4.webp)
+
+**Invitation cooldown in effect:**
+
+![Portal status: invitation cooldown in effect](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_5.webp)
+
+**Minor patient:**
+
+![Portal status: minor patient](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_6.webp)
+
+**Missing email address:**
+
+![Portal status: missing email address](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_7.webp)
 
 ### <Icon icon="user-plus" iconType="duotone" color="#F9345F" size={23} />  Setting up authorized user access
 
@@ -46,9 +72,9 @@ To set up an individual as an authorized user of a patient's portal — such as 
 
 The authorized representative then receives a link inviting them to create their own portal account to access the patient's information as an authorized representative.
 
-![Creating a Related Person as an authorized representative](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_3.gif)
+![Creating a Related Person as an authorized representative](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_8.gif)
 
-![Authorized representative on the patient's record](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_4.webp)
+![Authorized representative on the patient's record](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_9.webp)
 
 ## Self-service registration invitation
 
@@ -56,7 +82,7 @@ Patients can also generate their own registration link through a self-service li
 
 To create a self-service registration link, first create a **site slug** in the **Online Scheduling** section of the **Portal Configs** page.
 
-![Creating a site slug in Portal Configs](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_5.gif)
+![Creating a site slug in Portal Configs](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_10.gif)
 
 After creating a slug, direct patients to the link below:
 
@@ -66,7 +92,7 @@ After creating a slug, direct patients to the link below:
 
 From here, patients enter their name and date of birth. If the information matches an existing patient at the practice, a new registration link is sent to the email on file.
 
-![Self-service register-account flow](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_6.gif)
+![Self-service register-account flow](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_11.gif)
 
 ## Patient registration and sign-in
 
@@ -78,9 +104,9 @@ Once patients have received an invite link, they complete the portal registratio
 2. **Set and confirm a new password**
 3. **Complete registration**
 
-![Registration: verify name and date of birth](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_7.webp)
+![Registration: verify name and date of birth](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_12.webp)
 
-![Registration: set and confirm a password](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_8.webp)
+![Registration: set and confirm a password](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_13.webp)
 
 ### Linked patient accounts
 
@@ -88,7 +114,7 @@ If multiple patient records share the same email address on file — for instanc
 
 If preferred, the new patient can choose a different email, which then writes back to their patient profile in Athelas.
 
-![Linking accounts that share an email](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_9.gif)
+![Linking accounts that share an email](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_14.gif)
 
 ### Signing in
 
@@ -96,7 +122,7 @@ Once registered, patients can access the portal from [portal.athelas.com](http:/
 
 From the landing page, patients enter their email and password.
 
-![Patient portal sign-in landing page](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_10.webp)
+![Patient portal sign-in landing page](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_15.webp)
 
 ### Sign in with Google
 
@@ -110,13 +136,13 @@ Patients can also sign in with **Google**. From the sign-in page, selecting **Co
 
 When multiple patient accounts or authorized-representative accounts are associated with a single login (for example, a patient who visits multiple Athelas practices), the patient is greeted at sign-in with a selection screen to choose which site portal or patient to access. From there, they are taken into the portal.
 
-![Selection screen for multiple linked accounts](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_11.webp)
+![Selection screen for multiple linked accounts](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_16.webp)
 
 ### Reset password
 
 Patients can click **Reset password** to reset their password. They are directed to check their email, follow the link, and set a new password.
 
-![Reset password flow](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_12.webp)
+![Reset password flow](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_17.webp)
 
 ## Portal functionality
 
@@ -126,7 +152,7 @@ Once in the portal, patients can access several areas:
 
 The landing page. Patients see what the portal offers and can navigate to sub-pages from here.
 
-![Patient portal home page](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_13.webp)
+![Patient portal home page](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_18.webp)
 
 ### <Icon icon="comments" iconType="duotone" color="#F9345F" size={23} />  Messages
 
@@ -159,7 +185,7 @@ Patients can view their prescribed home exercise program by case.
 
 Patients can edit their payment methods by clicking their name in the bottom left.
 
-![Patient portal profile / payment methods](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_14.webp)
+![Patient portal profile / payment methods](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_19.webp)
 
 ## Configurations and settings
 
@@ -169,7 +195,7 @@ Patient Portal settings live under **EHR Preferences**. Available-slot display i
 
 There are two modes for showing available times in the portal: **Calendar Interval** and **Appointment Type**. Configure this under **EHR Preferences → Calendar** tab.
 
-![Configuring interval mode on the Calendar tab](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_15.gif)
+![Configuring interval mode on the Calendar tab](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_20.gif)
 
 The two modes display available timeslots differently:
 
@@ -201,7 +227,7 @@ Practices can configure whether patients can initiate messages from the portal. 
 - **Specific User Groups or Users**
 - **Anyone**
 
-![Messaging permission settings](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_16.gif)
+![Messaging permission settings](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_21.gif)
 
 ### General Permissions
 
@@ -215,4 +241,4 @@ Configure what patients can change in the portal:
 - Add insurance
 - Update insurance
 
-![Portal Configs settings panel](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_17.webp)
+![Portal Configs settings panel](/images/air_front_desk/portal_and_online_scheduling/patient_portal/patient_portal_22.webp)
