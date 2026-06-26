@@ -1,7 +1,7 @@
 ---
 title: "Patient Information Export"
 sidebarTitle: "Patient Info Export"
-description: "EHI Export feature and export format documentation for ONC §170.315(b)(10) Electronic Health Information (EHI) Export — covers single-patient and patient-population exports produced by Air, their contents, data dictionary, permissions, and implementation considerations."
+description: "EHI Export feature and export format documentation for ONC §170.315(b)(10) Electronic Health Information (EHI) Export — covers single-patient and patient-population exports produced by Air, their contents (including patient attachments), data dictionary, permissions, and implementation considerations."
 toc: "true"
 ---
 
@@ -16,10 +16,11 @@ The feature supports two export modes defined by the criterion:
   **Stable public URL for this page** (embedded in every export):
   `https://trainings.air.athelas.com/air_developer/patient_information_export/patient_information_export`
 
-  Air emits two file types per export:
+  Air emits the following across its exports:
 
   - **`claims.csv`** — billing and encounter-level claim data (UTF-8 CSV)
   - **`*.xml`** — clinical content as a HL7 Consolidated CDA R2.1 (C-CDA) Continuity of Care Document (UTF-8 XML)
+  - **`attachment/`** — the documents uploaded to a patient's chart (faxes, scans, PDFs, images, etc.), exported in their original file formats inside the export ZIP
 </Info>
 
 ## Permissions
@@ -33,7 +34,7 @@ Access is enforced by Air's role-based access controls (ONC §170.315(d)(1)). Ev
 
 ## Single-patient EHI export
 
-Air offers **two self-service single-patient exports** from the application: a **claims CSV** (billing/encounter data) and a **clinical C-CDA XML** (USCDI clinical data). Together they make up the complete single-patient EHI export. The detailed schema for each file is documented under [Data structure documentation](#data-structure-documentation).
+Air offers **two self-service single-patient exports** from the application: a **claims CSV** (billing/encounter data) and a **clinical C-CDA download** (USCDI clinical data). The C-CDA download is delivered as a **ZIP archive** containing the patient's C-CDA `.xml` plus an `attachment/` folder with the documents uploaded to their chart. Together these make up the complete single-patient EHI export. The detailed schema for each file is documented under [Data structure documentation](#data-structure-documentation).
 
 ### <Icon icon="file-csv" iconType="duotone" color="#F9345F" size={23} />  Export claims for a single patient (CSV)
 
@@ -53,9 +54,9 @@ The Claims page export produces a `claims.csv` file containing every claim row v
 
 **Note:** The exported CSV contains exactly the columns and rows that are currently visible after filtering. Apply any additional column or date filters before exporting if you need a narrower slice.
 
-### <Icon icon="file-code" iconType="duotone" color="#F9345F" size={23} />  Export the clinical record for a single patient (C-CDA XML)
+### <Icon icon="file-code" iconType="duotone" color="#F9345F" size={23} />  Export the clinical record for a single patient (C-CDA XML + attachments)
 
-The C-CDA download produces a single `.xml` file conforming to the **HL7 Consolidated CDA R2.1 Continuity of Care Document (CCD)** standard — covering allergies, medications, problems, encounters, immunizations, lab results, vital signs, social history, procedures, and the other USCDI v3 sections.
+The C-CDA download produces a **ZIP archive** containing a single `.xml` file conforming to the **HL7 Consolidated CDA R2.1 Continuity of Care Document (CCD)** standard — covering allergies, medications, problems, encounters, immunizations, lab results, vital signs, social history, procedures, and the other USCDI v3 sections — plus an `attachment/` folder holding the documents uploaded to the patient's chart in their original file formats.
 
 **To download a patient's C-CDA:**
 
@@ -63,13 +64,15 @@ The C-CDA download produces a single `.xml` file conforming to the **HL7 Consoli
 2. Select the **C-CDA** tab.
 3. Search by **patient name** in the search bar.
 4. Click into the matching patient.
-5. Click **Download** to save the C-CDA `.xml` file.
+5. Click **Download** to save the C-CDA ZIP — the C-CDA `.xml` plus the patient's `attachment/` folder.
 
-- **What's included:** the patient's USCDI clinical data — demographics plus the clinical sections listed in [Export contents](#export-contents-ehi-data-classes-supported-formats).
-- **Output format:** HL7 C-CDA R2.1 UTF-8 XML (one `.xml` file per patient).
-- **File location:** downloads through your browser to its default **Downloads** folder as a `.xml` file.
+- **What's included:** the patient's USCDI clinical data — demographics plus the clinical sections listed in [Export contents](#export-contents-ehi-data-classes-supported-formats) — and the documents uploaded to the patient's chart, exported as original-format files under `attachment/`.
+- **Output format:** a ZIP archive containing one HL7 C-CDA R2.1 UTF-8 XML file plus an `attachment/` folder of original-format attachments.
+- **File location:** downloads through your browser to its default **Downloads** folder as a `.zip` file.
 
 **Note:** Clinical sections with no recorded data for the patient are still present in the file, emitted with `nullFlavor="NI"` so a recipient can detect their presence. See [Considerations & error conditions](#considerations-error-conditions).
+
+**Note:** The `attachment/` folder holds the patient's uploaded documents (faxes, scans, PDFs, images, etc.) in their original file formats. If the patient has no attachments on file, the folder is empty or omitted. See [Patient attachments](#patient-attachments).
 
 ## Patient-population (site-wide) EHI export
 
@@ -91,17 +94,24 @@ For an EHI export covering **all patients** in your practice (population-level e
 
 **Package structure:**
 
-The archive bundles the same file formats as the single-patient export — one C-CDA `.xml` per patient plus a practice-wide `claims.csv`. The archive is named `EHI_Export_YYYYMMDD.zip` (where `YYYYMMDD` is the export date), and each patient's C-CDA file is named by the patient's first and last name:
+The archive bundles the same content as the single-patient export — one C-CDA `.xml` per patient, a practice-wide `claims.csv`, and an `attachment/` folder holding each patient's uploaded documents (one subfolder per patient). The archive is named `EHI_Export_YYYYMMDD.zip` (where `YYYYMMDD` is the export date); each patient's C-CDA file is named by the patient's first and last name, and each patient's attachment subfolder uses the same `First Last` naming:
 
 ```
 EHI_Export_YYYYMMDD.zip
 ├── claims.csv              # all claims across the patient population (same schema as the single-patient CSV)
 ├── Jane Doe.xml            # one C-CDA Continuity of Care Document per patient, named "First Last.xml"
 ├── John Smith.xml
-└── ...
+├── ...
+└── attachment/             # patient attachments, one subfolder per patient
+    ├── Jane Doe/           # documents uploaded to Jane Doe's chart, in their original formats
+    │   ├── referral.pdf
+    │   └── insurance_card.jpg
+    ├── John Smith/
+    │   └── intake_form.pdf
+    └── ...
 ```
 
-**Output formats:** identical to the single-patient export — UTF-8 `claims.csv` and HL7 C-CDA R2.1 UTF-8 XML. Both are fully specified under [Data structure documentation](#data-structure-documentation).
+**Output formats:** identical to the single-patient export — UTF-8 `claims.csv`, HL7 C-CDA R2.1 UTF-8 XML, and patient attachments in their original file formats. All are fully specified under [Data structure documentation](#data-structure-documentation).
 
 ## Export contents — EHI data classes & supported formats
 
@@ -128,11 +138,13 @@ The export carries the EHI/USCDI data classes below. Each class is identified by
 | **Reason for referral**               | C-CDA Reason for Referral section                          | C-CDA XML |
 | **Provenance (author/custodian)**     | C-CDA header (`author`, `custodian`, `legalAuthenticator`) | C-CDA XML |
 | **Billing / claim & encounter data**  | `claims.csv` (charges, payments, adjustments, balance, payer) | CSV |
+| **Patient attachments / documents**   | `attachment/` folder (per-patient subfolders in the population export) | Original file formats (PDF, image, etc.) |
 
 **Supported file formats:**
 
 - **`claims.csv`** — UTF-8 comma-separated values.
 - **C-CDA `.xml`** — HL7 Consolidated CDA R2.1 Continuity of Care Document (UTF-8 XML), aligned to the **USCDI v3** data classes.
+- **Patient attachments** — the patient's uploaded documents (e.g., PDF, JPEG, PNG, TIFF), stored unmodified in their original upload formats inside the `attachment/` folder.
 
 ## Data structure documentation
 
@@ -312,6 +324,46 @@ Each clinical entry follows the C-CDA "Concern Act → Observation → (optional
 - [HL7 C-CDA R2.1 IG](http://www.hl7.org/implement/standards/product_brief.cfm?product_id=492)
 - [ONC C-CDA Scorecard](https://site.healthit.gov/scorecard/) — validates structure, templates, and vocabulary bindings
 
+### <Icon icon="paperclip" iconType="duotone" color="#F9345F" size={23} />  Patient attachments
+
+Patient attachments are the documents uploaded to a patient's chart — scanned forms, faxes, referral letters, clinical PDFs, photos, and similar files. They are exported **in their original file formats, byte-for-byte unchanged**, inside an `attachment/` folder in the export ZIP.
+
+| **Property**     | **Value**                                                                                   |
+| :--------------- | :------------------------------------------------------------------------------------------ |
+| **Location**     | `attachment/` directory inside the export ZIP                                               |
+| **Organization** | **Population export:** one subfolder per patient, named `First Last` (matching the C-CDA file naming). **Single-patient C-CDA ZIP:** the patient's files sit directly under `attachment/`. |
+| **Filenames**    | Original uploaded filenames, preserved as-is                                                |
+| **Formats / MIME types** | Heterogeneous — whatever was uploaded (e.g., `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`). Determine each file's type from its extension or magic bytes. |
+| **Encoding**     | Binary — files are stored unmodified                                                        |
+
+**Folder layout — population export:**
+
+```
+attachment/
+├── Jane Doe/               # one subfolder per patient, named "First Last"
+│   ├── referral.pdf
+│   └── insurance_card.jpg
+├── John Smith/
+│   └── intake_form.pdf
+└── ...
+```
+
+**Folder layout — single-patient C-CDA download:**
+
+```
+<C-CDA export>.zip
+├── Jane Doe.xml
+└── attachment/             # the patient's uploaded documents, in their original formats
+    ├── referral.pdf
+    └── insurance_card.jpg
+```
+
+**Parsing notes:**
+
+- Files are exported unmodified; determine each file's type from its extension or magic bytes rather than from any assumed naming convention.
+- A patient with no attachments on file has **no subfolder** (population export) or an **empty/omitted** `attachment/` folder (single-patient C-CDA ZIP). Treat this as "no documents on file," not an error.
+- In the population export, attachments are grouped into per-patient subfolders named `First Last` — the same naming convention used for each patient's C-CDA `.xml` file.
+
 ## Considerations & error conditions
 
 | **Condition**                          | **What to expect**                                                                                                                                  |
@@ -319,6 +371,8 @@ Each clinical entry follows the C-CDA "Concern Act → Observation → (optional
 | **Filtered CSV scope**                 | `claims.csv` contains exactly the columns and rows visible after filtering. Clear or adjust filters before exporting if you need a different slice.   |
 | **Self-pay / unmapped payers**         | Claims with no recognized payer show `UNRECOGNIZED INSURANCE` in the `Insurances` column.                                                            |
 | **Empty clinical sections**            | C-CDA sections with no data for the patient are present but carry `nullFlavor="NI"` — interpret as "data not available," not "section omitted."      |
+| **No attachments on file**             | A patient with no uploaded documents has no subfolder under `attachment/` (population export) or an empty/omitted `attachment/` folder (single-patient C-CDA ZIP). Treat as "no documents on file."  |
+| **Attachment formats vary**            | Files under `attachment/` are exported in their original upload formats (PDF, image, etc.) and original filenames. Determine each file's type from its extension or magic bytes, not a fixed format. |
 | **Empty export**                       | If no records match the current filter (single-patient) or date range (population), the export contains headers/structure but no data rows. Verify your filters and date range. |
 | **Browser download blocked**           | Single-patient downloads open through your browser. If nothing downloads, allow pop-ups/downloads for the Air domain and retry.                       |
 | **Population export turnaround**        | Population exports are not instantaneous — they are compiled by support and delivered via a secure link (see [Patient-population export](#patient-population-site-wide-ehi-export)). |
@@ -331,15 +385,25 @@ Each clinical entry follows the C-CDA "Concern Act → Observation → (optional
   The EHI Export feature is limited to **_Providers_ and _Admins_**. Single-patient exports can be run in-app by any provider or admin with access to the patient. The patient-population (site-wide) export is requested by an account **Admin** through support. Every export is recorded in the audit log.
 </Accordion>
 
-<Accordion title="What's the difference between the claims.csv and the C-CDA .xml file?">
+<Accordion title="What's the difference between the claims.csv, the C-CDA .xml, and the attachments?">
   - **`claims.csv`** holds **billing and encounter-level** data — claim status, providers, facilities, dates of service, payers, charges, payments, adjustments, and balances.
   - **C-CDA `.xml`** holds the **clinical record** — demographics plus allergies, medications, problems, encounters, immunizations, lab results, vital signs, social history, procedures, and the other USCDI v3 data classes.
+  - **`attachment/`** holds the **documents uploaded to the patient's chart** — faxes, scans, referral letters, PDFs, and images — in their original file formats. In the single-patient export these are bundled in the C-CDA download ZIP alongside the `.xml`.
 
   Together they form the complete EHI export for a patient.
 </Accordion>
 
+<Accordion title="Are patient attachments (uploaded documents) included in the export?">
+  Yes. Documents uploaded to a patient's chart — faxes, scans, referral letters, PDFs, images — are exported in their **original file formats** inside an `attachment/` folder.
+
+  - In the **single-patient** export, the `attachment/` folder is bundled in the **C-CDA download ZIP** alongside the patient's `.xml`.
+  - In the **population (site-wide)** export, the `attachment/` folder sits inside `EHI_Export_YYYYMMDD.zip` with **one subfolder per patient**, named `First Last`.
+
+  If a patient has no attachments on file, their subfolder is omitted (population) or the `attachment/` folder is empty (single-patient). See [Patient attachments](#patient-attachments).
+</Accordion>
+
 <Accordion title="How do I export all of my patients at once?">
-  Population (site-wide) exports are requested by an **Admin** emailing [support@athelas.com](mailto:support@athelas.com) with your practice name and date range. Within **5 business days**, support returns an **encrypted ZIP** (`EHI_Export_YYYYMMDD.zip`) via a **secure download link**, containing a practice-wide `claims.csv` and one C-CDA `.xml` per patient (named `First Last.xml`). See [Patient-population (site-wide) EHI export](#patient-population-site-wide-ehi-export).
+  Population (site-wide) exports are requested by an **Admin** emailing [support@athelas.com](mailto:support@athelas.com) with your practice name and date range. Within **5 business days**, support returns an **encrypted ZIP** (`EHI_Export_YYYYMMDD.zip`) via a **secure download link**, containing a practice-wide `claims.csv`, one C-CDA `.xml` per patient (named `First Last.xml`), and an `attachment/` folder with each patient's uploaded documents (one subfolder per patient). See [Patient-population (site-wide) EHI export](#patient-population-site-wide-ehi-export).
 </Accordion>
 
 <Accordion title="How do I validate the C-CDA file?">
