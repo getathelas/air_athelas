@@ -1,13 +1,24 @@
 {
-  "mdxFilePath": "/workspace/air_admin/manage_your_practice/appointment_types.mdx",
-  "imagesFolder": "images/air_admin/manage_your_practice/appointment_types/",
+  "mdxFilePath": "air_provider/fill_a_chart_note/order_sets.mdx",
+  "imagesFolder": "images/air_provider/fill_a_chart_note/order_sets/",
   "imageFiles": [
-    "appointment_types_1.webp",
-    "appointment_types_2.webp",
-    "appointment_types_3.webp"
+    "order_sets_1.webp",
+    "order_sets_2.webp",
+    "order_sets_3.webp",
+    "order_sets_4.webp",
+    "order_sets_5.webp",
+    "order_sets_6.webp",
+    "order_sets_7.webp",
+    "order_sets_8.webp",
+    "order_sets_9.webp",
+    "order_sets_10.webp",
+    "order_sets_11.webp",
+    "order_sets_12.webp",
+    "order_sets_13.webp",
+    "order_sets_14.webp"
   ],
-  "navigationSection": "unchanged",
-  "pageTitle": "Appointment Types",
-  "summary": "Updated the Appointment Types documentation to explain External vs. Internal Appointment Types and how to map them for patient-facing online scheduling. Added an FAQ section covering the new mapping concepts and where patients see external appointment types.",
-  "type": "update"
+  "navigationSection": "docs.json → navigation.tabs[Air] → groups[Fill a Chart Note]",
+  "pageTitle": "Order Sets",
+  "summary": "Explains what Order Sets are in Air and how to create, manage, and apply them during a visit. Includes step-by-step instructions for building mixed order sets (medications, labs, imaging, DME, referrals), favoriting sets, and troubleshooting common issues.",
+  "type": "new"
 }
