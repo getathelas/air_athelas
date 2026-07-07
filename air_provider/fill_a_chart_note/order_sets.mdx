@@ -1,0 +1,253 @@
+---
+title: "Order Sets"
+sidebarTitle: "Order Sets"
+toc: "true"
+---
+
+Order Sets are reusable templates for common clinical orders. You can create an order set once, then apply it during a visit to quickly add multiple orders with pre-filled default values.
+
+<Info>
+  If you’re specifically building prescription templates, see [**Medication Order Set**](/air_provider/fill_a_chart_note/medication_order_set).
+</Info>
+
+## What are Order Sets?
+
+An order set lets you save a group of orders (for example, medications, labs, imaging, DME, or referrals) with default values. When you apply a set to a patient, Air inserts all orders from that template so you can review and adjust details before submitting.
+
+Order sets can include:
+
+- **Medications** — prescription medications with default SIG, duration, quantity, and refills
+- **Labs** — lab tests with priority and specimen details
+- **Imaging** — radiology orders (X-ray, MRI, CT, etc.) with priority and notes
+- **DME (Durable Medical Equipment)** — equipment orders with quantity and diagnosis linking
+- **Referrals** — specialist referrals with clinical reason and notes
+
+**Note:** Order sets are **site-specific**. They’re shared within your current clinic site and aren’t available across different sites.
+
+## Where to find Order Sets
+
+You can access order sets from two places:
+
+- **Manage order sets**: **Preferences** → **Order Sets**
+- **Use order sets during a visit**: Open a chart note → **Orders** → **Add Order** → **Order Sets**
+
+![The Order Sets page in Preferences](/images/air_provider/fill_a_chart_note/order_sets/order_sets_1.webp)
+
+## Create an order set
+
+### Step 1: Open the Order Sets page
+
+1. Open **Preferences** from the left sidebar.
+2. Click **Order Sets**.
+3. Click **Add Order Set**.
+
+### Step 2: Name the order set
+
+1. Click the pencil icon next to **Name your order set**.
+2. Enter a clear, descriptive name (for example, `Knee Pain - Full Workup`).
+
+**Note:** Order set names must be unique within your clinic site.
+
+### Step 3: Add an optional description
+
+Use **Description** to add context that helps other providers at your site understand when to use the set.
+
+### Step 4: Link optional diagnosis codes
+
+1. In **Diagnosis Code**, search ICD-10 codes or condition names.
+2. Select one or more codes from the dropdown.
+
+Linked diagnoses can help auto-fill diagnoses on orders when you apply the set.
+
+### Step 5: Add orders to the set
+
+Click the **+** button on an order type to add items. You can mix multiple order types (medications, labs, imaging, DME, and referrals) in one set.
+
+![The new order set editor with multiple order types](/images/air_provider/fill_a_chart_note/order_sets/order_sets_2.webp)
+
+#### Add medications
+
+![Medication fields inside an order set](/images/air_provider/fill_a_chart_note/order_sets/order_sets_3.webp)
+
+**To add a medication:**
+
+1. Select a medication by name and formulation.
+2. Fill in default fields such as **Prescription SIG**, **Duration**, **Quantity**, and **Refills**.
+3. (Optional) Select a default **Pharmacy**.
+
+#### Add labs
+
+![Lab fields inside an order set](/images/air_provider/fill_a_chart_note/order_sets/order_sets_4.webp)
+
+**To add a lab:**
+
+1. Search for a lab test by name or CPT code.
+2. Set defaults such as **Priority**, **Specimen Collected**, and **Notes**.
+
+**Note:** Lab orders created from order sets are not automatically integrated with external labs. If needed, they can be configured to be faxed to contacts.
+
+#### Add imaging
+
+![Imaging fields inside an order set](/images/air_provider/fill_a_chart_note/order_sets/order_sets_5.webp)
+
+**To add imaging:**
+
+1. Search for an imaging order (for example, X-ray or MRI).
+2. Set defaults such as **Priority** and **Notes**.
+
+#### Add DME
+
+![DME fields inside an order set](/images/air_provider/fill_a_chart_note/order_sets/order_sets_6.webp)
+
+**To add DME:**
+
+1. Search for a DME item.
+2. Set defaults such as **Quantity**, **Diagnosis Codes**, and **Notes/Justification**.
+
+#### Add referrals
+
+![Referral fields inside an order set](/images/air_provider/fill_a_chart_note/order_sets/order_sets_7.webp)
+
+**To add a referral:**
+
+1. Select the referral specialty.
+2. Add a clinical reason and (optional) linked diagnosis codes.
+
+### Step 6: Save
+
+Click **Create Order Set**.
+
+**Note:** You can create an order set with only a name and add items later. If you add any order row, that row must have a valid item selected before you can save.
+
+### Favorites
+
+You can toggle **Mark as my favorite** when creating or editing an order set. Favorites are **per user** (they only affect what you see).
+
+![The Mark as my favorite toggle](/images/air_provider/fill_a_chart_note/order_sets/order_sets_8.webp)
+
+## Manage order sets
+
+From **Preferences** → **Order Sets**, you can manage all order sets for your clinic site.
+
+### Active vs Archived
+
+- **Active**: available for use when ordering
+- **Archived**: hidden from standard search and ordering until restored
+
+### Common actions
+
+- **Edit**: update name, description, diagnosis codes, and items, then click **Update Order Set**
+- **Duplicate**: creates a copy (named `Original name (Copy)`) you can edit
+- **Archive**: moves the set to **Archived** after confirmation
+- **Restore**: returns an archived set to **Active**
+
+### Copy from another order set
+
+When creating or editing, use the right panel (**Search Order Sets...**) to find an existing set and click **Add** to copy its items into your current set.
+
+![Copying items from another order set](/images/air_provider/fill_a_chart_note/order_sets/order_sets_9.webp)
+
+## Use an order set during a visit
+
+### Step 1: Open the Orders section
+
+1. Open the patient’s chart note.
+2. Go to **Orders**.
+
+![The Orders section inside a chart note](/images/air_provider/fill_a_chart_note/order_sets/order_sets_10.webp)
+
+### Step 2: Insert an order set
+
+1. Click **Add Order**.
+2. Select **Order Sets**.
+3. Search and select the order set you want to apply.
+
+![Selecting an order set from the ordering modal](/images/air_provider/fill_a_chart_note/order_sets/order_sets_11.webp)
+
+### Step 3: Review and adjust
+
+After applying the set:
+
+- Review each inserted order and adjust details as needed for this patient.
+- Remove any individual order without affecting the rest of the set.
+- If the order set includes linked diagnosis codes, Air can auto-fill those diagnoses on the inserted orders.
+
+![Reviewing a pre-filled order after applying an order set](/images/air_provider/fill_a_chart_note/order_sets/order_sets_12.webp)
+
+### Step 4: Submit
+
+Once you’ve reviewed all orders:
+
+1. Submit orders individually or click **Submit All**.
+2. Follow any order-specific completion steps.
+
+![Submitting orders from the Orders section](/images/air_provider/fill_a_chart_note/order_sets/order_sets_13.webp)
+
+![Completing and sending an order](/images/air_provider/fill_a_chart_note/order_sets/order_sets_14.webp)
+
+**Note:** Changes you make while ordering only affect that patient’s orders. To change defaults for future use, edit the order set in **Preferences** → **Order Sets**.
+
+## Tips and best practices
+
+### Naming
+
+- Use descriptive names that include the condition and intent (for example, `Back Pain - Conservative Workup`).
+- Consider starting names with a condition or body region to make search easier.
+
+### When to use order sets
+
+- **Frequent conditions** you see regularly
+- **Multi-step protocols** that require multiple order types (labs + imaging + DME + referral)
+- **Standardized care** across providers at a site
+
+### Maintenance
+
+- Review active order sets periodically to ensure defaults stay current.
+- Archive sets you no longer use to keep search results clean.
+- Duplicate a set to create variations (for example, `Knee Pain - Conservative` vs `Knee Pain - Advanced`).
+
+## Troubleshooting
+
+### I can’t save my order set
+
+- Confirm the order set name is unique within your clinic site.
+- If you added a row, make sure an item is selected in that row (empty rows can block saving).
+- Check that any required fields for the order type are filled.
+
+### I can’t find my order set when ordering
+
+- Make sure the set is in **Active** (not **Archived**).
+- Confirm you’re in the correct clinic site.
+- If you’re filtering to **Favorites**, non-favorited sets won’t appear.
+
+### My order set didn’t pre-fill expected values
+
+- Edit the order set and confirm the defaults are set the way you expect.
+- Only fields you set in the template will auto-fill; optional fields left blank will remain blank.
+
+## Quick reference
+
+| **Task** | **Where** | **Action** |
+| :--- | :--- | :--- |
+| **Create / edit / archive / restore order sets** | **Preferences → Order Sets** | **Add Order Set**, **Edit**, **Duplicate**, **Archive**, **Restore** |
+| **Apply an order set to a visit** | **Chart note → Orders** | **Add Order** → **Order Sets** |
+| **Favorite an order set** | **Order set editor** | Toggle **Mark as my favorite** |
+
+### FAQ
+
+<Accordion title="Who can create or edit order sets?">
+  Order sets are managed from **Preferences → Order Sets**. In most practices, this is a provider workflow. If you can’t access the page, ask your site administrator to confirm your permissions.
+</Accordion>
+
+<Accordion title="Can I share an order set across multiple clinic sites?">
+  No. Order sets are **site-specific** and only available within the current clinic site.
+</Accordion>
+
+<Accordion title="If I apply an order set to a patient, does it change the template?">
+  No. Applying a set creates patient-specific orders. Any edits you make while ordering only affect that patient’s orders. To update defaults for future use, edit the order set in **Preferences → Order Sets**.
+</Accordion>
+
+<Accordion title="Can I combine different order types in one order set?">
+  Yes. You can include a mix of medications, labs, imaging, DME, and referrals in the same set so you can insert an entire protocol in one step.
+</Accordion>
+
