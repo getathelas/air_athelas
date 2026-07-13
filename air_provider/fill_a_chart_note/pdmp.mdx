@@ -1,0 +1,123 @@
+---
+title: "PDMP"
+sidebarTitle: "PDMP"
+toc: "true"
+---
+
+The **Prescription Drug Monitoring Program (PDMP)** is integrated directly into Athelas and connected to your state's prescription monitoring registry via **Bamboo Health**. When prescribing a controlled substance, providers are prompted to review the patient's controlled substance history, view risk scores, and confirm before finalizing the prescription — all from within the medications workflow, without logging in to a separate state registry portal.
+
+**Key benefits:**
+
+- No need to log in to a separate state registry portal
+- Controlled substance history pulled automatically for the patient
+- Risk scoring (including Morphine Milligram Equivalent thresholds) surfaced inline
+- ID verification through ID.me built into the flow
+
+<iframe src="https://www.loom.com/embed/8d1c7f30dd9a46e7b0873e3cf25b212d" title="Loom video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+
+## Step 1: Navigate to the patient's Medications tab
+
+From the Athelas EHR, open the patient record and click the **Medications** tab. You'll see a list of all previously prescribed medications, including their status (for example, *Discontinued*).
+
+![Patient Medications tab](/images/air_provider/fill_a_chart_note/pdmp/pdmp_1.webp)
+
+## Step 2: Create a new medication order
+
+Click **Create New** to open the medication creation dialog. From there you can:
+
+1. **Associate the order with an appointment** — the system defaults to the most recent appointment.
+2. **Select the preferred pharmacy** — defaults to the patient's preferred pharmacy on file.
+3. **Choose the medication** — select from the dropdown. For PDMP validation, select a **controlled substance** (for example, hydrocodone).
+4. **Set the prescription details** — duration, quantity, and refills.
+
+<Note>
+  The system flags medications classified as controlled substances and requires PDMP review before you can proceed.
+</Note>
+
+## Step 3: Proceed to review
+
+After filling out the medication details, click **Proceed to Review**. The **Review Medication** panel opens, showing the patient's identifying information (name, MRN, DOB, address), associated appointment details, pharmacy information, the prescribing practitioner and DEA number, and the prescription details (drug name, sig, date, duration).
+
+![Review Medication panel](/images/air_provider/fill_a_chart_note/pdmp/pdmp_2.webp)
+
+While the panel loads, you'll see a **Checking PDMP requirements…** indicator. Once PDMP requirements are checked, the **PDMP Review Required** section appears.
+
+![Checking PDMP requirements indicator](/images/air_provider/fill_a_chart_note/pdmp/pdmp_3.webp)
+
+## Step 4: Review the controlled substance history
+
+Click **View Full Report** in the **PDMP Review Required** section.
+
+![View Full Report in the PDMP Review Required section](/images/air_provider/fill_a_chart_note/pdmp/pdmp_4.webp)
+
+This opens the **Controlled Substance History (24 months)** report from Bamboo Health, which shows:
+
+- The patient record (linked to the state PMP registry)
+- Any **patient match warnings** (for example, if the report shows the closest but not an exact match)
+- **Clinical Risk Indicators**, including:
+  - Morphine Milligram Equivalent (MME) threshold alerts
+  - Unintentional overdose risk score model
+  - Key contributing factors (for example, MOUD use, high-risk dispensations)
+  - Narcotics score, stimulants score, and depressants score
+
+![Controlled Substance History report from Bamboo Health](/images/air_provider/fill_a_chart_note/pdmp/pdmp_5.webp)
+
+<Warning>
+  The report is intended to aid clinical decision-making, not replace it. It does not implicate patients; it provides supplemental information.
+</Warning>
+
+## Step 5: Validate and confirm the PDMP review
+
+After reviewing the report, return to the **Review Medication** panel. You'll see:
+
+- A **Reviewed** checkmark confirming the PDMP history was reviewed
+- A **Skip PDMP Reviewed** option (if it's clinically necessary to skip)
+- **State validation fields** — confirm the states queried and the patient information sent
+
+Once reviewed and confirmed, the system proceeds to ID verification.
+
+![Validate and confirm the PDMP review](/images/air_provider/fill_a_chart_note/pdmp/pdmp_6.webp)
+
+## Step 6: ID verification via ID.me
+
+The final step before prescribing the controlled substance is identity verification through **ID.me**. This confirms the provider's identity and authorization to prescribe. After ID.me verification, you're cleared to **finalize and send** the controlled substance prescription.
+
+<Tip>
+  You can skip the PDMP review for any reason if it's clinically necessary by clicking **Skip PDMP Reviewed**.
+</Tip>
+
+## Quick reference
+
+| Step | Action | Location |
+| --- | --- | --- |
+| 1 | Open patient record | EHR → Patients |
+| 2 | Go to Medications tab | Patient record → Medications |
+| 3 | Create New medication | Medications → Create New |
+| 4 | Select controlled substance | Create Medication dialog |
+| 5 | Proceed to Review | Medication form → Proceed to Review |
+| 6 | View PDMP report | Review Medication → View Full Report |
+| 7 | Confirm review | Review panel → Reviewed ✓ |
+| 8 | Complete ID.me verification | Review panel → Verify with ID.me |
+| 9 | Finalize prescription | Review panel → Send |
+
+### FAQ
+
+<Accordion title="What is PDMP?">
+  PDMP (Prescription Drug Monitoring Program) is a state-level electronic database that tracks controlled substance prescriptions. Athelas integrates with your state registry via Bamboo Health so you can access this data without leaving the EHR.
+</Accordion>
+
+<Accordion title="Do I always need to complete PDMP review before prescribing a controlled substance?">
+  PDMP review is required by default when prescribing a controlled substance. However, you can skip it if it's clinically necessary by clicking **Skip PDMP Reviewed** in the Review Medication panel.
+</Accordion>
+
+<Accordion title="What is the MME threshold?">
+  The Morphine Milligram Equivalent (MME) is a standardized measure of opioid dosage. The PDMP report flags patients who are at or above 120 active cumulative MME per day as a clinical risk indicator.
+</Accordion>
+
+<Accordion title="What does the Unintentional Overdose Risk Score show?">
+  This score model is pulled from the Bamboo Health report and shows contributing factors such as history of MOUD use, number of high-risk dispensations, gender, age, and the number of pharmacies where narcotics were filled. It's supplemental and does not replace clinical judgment.
+</Accordion>
+
+<Accordion title="What is ID.me verification for?">
+  ID.me is an identity verification step that confirms the prescribing provider's identity before a controlled substance prescription is finalized. This adds an extra layer of security and compliance to the prescribing workflow.
+</Accordion>
