@@ -96,6 +96,7 @@
               "air_provider/fill_a_chart_note/flowsheets",
               "air_provider/fill_a_chart_note/functional_outcomes",
               "air_provider/fill_a_chart_note/medications",
+              "air_provider/fill_a_chart_note/pdmp",
               "air_provider/fill_a_chart_note/medication_order_set",
               "air_provider/fill_a_chart_note/order_sets",
               "air_provider/fill_a_chart_note/prescriber_agents",
