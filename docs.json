@@ -128,6 +128,7 @@
             "tag": "Admin",
             "pages": [
               "air_admin/manage_your_practice/practice_settings",
+              "air_admin/manage_your_practice/user_management",
               "air_admin/manage_your_practice/branding_engine",
               "air_admin/manage_your_practice/ehr_alert_rules",
               "air_admin/manage_your_practice/billing_addendums_and_retro_billing",
