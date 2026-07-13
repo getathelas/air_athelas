@@ -138,6 +138,7 @@
               "air_admin/manage_your_practice/custom_orders",
               "air_admin/manage_your_practice/appointment_types",
               "air_admin/manage_your_practice/chart_note_templates",
+              "air_admin/manage_your_practice/conditional_forms",
               "air_admin/manage_your_practice/patient_workflows",
               "air_admin/manage_your_practice/provider_settings",
               "air_admin/manage_your_practice/provider_credentials",

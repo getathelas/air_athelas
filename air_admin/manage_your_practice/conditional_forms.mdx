@@ -1,0 +1,59 @@
+---
+title: "Conditional Forms"
+sidebarTitle: "Conditional Forms"
+toc: "true"
+---
+
+Conditional forms let practices dynamically show questions in intake and post-visit forms based on a patient's responses to other questions. This lets a single form serve multiple purposes, gather additional detail around specific areas, or gate information based on responses.
+
+## Accessing conditional forms
+
+Conditional forms are created in the **Templates** section under **Utilities**.
+
+![Templates section under Utilities](/images/air_admin/manage_your_practice/conditional_forms/conditional_forms_1.webp)
+
+Click **+ Create New Template** to create a new form with conditional questions.
+
+## Creating a conditional form
+
+Conditional questions can be added after any supported trigger question. Any question that follows a supported question type shows a **Conditional Question** checkbox. Once checked, select the trigger question and the trigger response that should reveal the conditional question.
+
+<Note>
+  Currently, only **Single-Choice** and **Yes/No** question types are supported to trigger a conditional question.
+</Note>
+
+![Marking a question as conditional and choosing its trigger](/images/air_admin/manage_your_practice/conditional_forms/conditional_forms_2.gif)
+
+Once a question is marked as conditional, it won't appear in the patient's form until the correct response is given to the trigger question.
+
+## Filling out conditional forms
+
+When patients receive a conditional form, they access it the same way as any other form. Conditional forms can be sent through **Outreach Flows**, **Patient Workflows**, or a specific appointment's intake forms.
+
+After authenticating into the form, patients fill it out normally. Once they select a conditional response to a trigger question, the new conditional questions appear automatically. Changing their response to a non-conditional response — or to a different conditional branch — updates which questions appear.
+
+![Conditional questions appearing as the patient answers](/images/air_admin/manage_your_practice/conditional_forms/conditional_forms_3.gif)
+
+## Reviewing conditional form responses
+
+Conditional form responses appear in the patient's **Attachments** section like any other form response. The PDF of the patient's responses includes all questions, but only shows responses to the questions that were surfaced to the patient.
+
+![Conditional form response PDF in the patient's Attachments section](/images/air_admin/manage_your_practice/conditional_forms/conditional_forms_4.webp)
+
+### FAQ
+
+<Accordion title="Which question types can trigger a conditional question?">
+  Only **Single-Choice** and **Yes/No** questions can act as trigger questions. A conditional question can be added after any question that follows one of these supported types.
+</Accordion>
+
+<Accordion title="How do I send a conditional form to patients?">
+  Conditional forms are sent the same way as any other form — through **Outreach Flows**, **Patient Workflows**, or a specific appointment's intake forms.
+</Accordion>
+
+<Accordion title="What happens if a patient changes their answer to a trigger question?">
+  The form updates as they answer. Selecting a non-conditional response, or a different conditional branch, changes which conditional questions appear.
+</Accordion>
+
+<Accordion title="Do skipped conditional questions appear in the response PDF?">
+  The PDF includes every question in the form, but only shows responses to the questions that were actually surfaced to the patient.
+</Accordion>
