@@ -520,7 +520,6 @@
             "icon": "robot",
             "tag": "Provider",
             "pages": [
-              "insights_provider/athelas_assistant/athelas_assistant_best_practices",
               "insights_provider/athelas_assistant/athelas_assistant_common_functionalities",
               "insights_provider/athelas_assistant/getting_started_with_athelas_assistant"
             ]
