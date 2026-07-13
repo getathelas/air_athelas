@@ -53,7 +53,8 @@
               "air_provider/review_patient_details/patient_info",
               "air_provider/review_patient_details/patient_demog",
               "air_provider/review_patient_details/patient_appts",
-              "air_provider/review_patient_details/patient_attachments"
+              "air_provider/review_patient_details/patient_attachments",
+              "air_provider/review_patient_details/faxing"
             ]
           },
           {
