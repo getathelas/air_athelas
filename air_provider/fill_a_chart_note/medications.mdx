@@ -1,6 +1,7 @@
 ---
 title: "Medications"
 sidebarTitle: "Medications"
+description: "Learn how to prescribe medications, review medication history, manage custom SIGs, and handle pharmacy requests in Air."
 ---
 
 <div style={{ position:"relative",paddingBottom:"calc(54.21768707482993% + 41px)",height:0,width:"100%" }}>
@@ -29,7 +30,8 @@ For reusable templates, see [**Medication Order Set**](/air_provider/fill_a_char
 
   **To Add a new Medication:**
 
-  - Click **Click New:** Select Pharmacy Order, Internal Record or Historic Record. Select the relevant appointment
+  - Click **New** and select **Pharmacy Order**, **Internal Record**, or **Historic Record**.
+  - Review the **Associated Appointment**. Air selects the most recent **Checked In** or **Completed** appointment by default. If neither is available, Air selects the most recent eligible appointment. You can select a different appointment when needed.
 
     <img
       src="/images/air_provider/fill_a_chart_note/medications/medications_1.webp"
@@ -117,3 +119,13 @@ For reusable templates, see [**Medication Order Set**](/air_provider/fill_a_char
 
      ![Request Pharma Approve Web](/images/air_provider/fill_a_chart_note/medications/medications_1.webp)
 </Card>
+
+### FAQ
+
+<Accordion title="Which appointment does Air associate with a new medication by default?">
+  Air selects the most recent **Checked In** or **Completed** appointment. If neither is available, Air selects the most recent eligible appointment.
+</Accordion>
+
+<Accordion title="Can I associate a new medication with a different appointment?">
+  Yes. Review the **Associated Appointment** and select a different eligible appointment before you continue.
+</Accordion>
