@@ -1,6 +1,7 @@
 ---
 title: "Waitlist"
 sidebarTitle: "Waitlist"
+description: "Configure and manage appointment waitlists, offers, and patient responses in Air."
 toc: "true"
 ---
 
@@ -52,7 +53,7 @@ If a patient does not have access to the Patient Portal, or the site wishes to a
 
    ![Requests tab in the Calendar header bar](/images/air_front_desk/view_your_calendar/waitlist/waitlist_8.webp)
 
-2. **Click Add to Waitlist** at the bottom of the drawer. All current waitlist entries and approval requests appear here.
+2. **Click Add to Waitlist** at the bottom of the drawer. All current waitlist entries and approval requests appear here. Expired requests are excluded from the current list.
 
    ![Add to Waitlist button](/images/air_front_desk/view_your_calendar/waitlist/waitlist_9.webp)
 
@@ -78,7 +79,7 @@ When an appointment is cancelled, you are prompted with a popup informing you th
 
 ![Cancellation popup with waitlist entries](/images/air_front_desk/view_your_calendar/waitlist/waitlist_13.webp)
 
-If you choose to start the waitlist, one or multiple patients matching the timeslot, provider, and location are sent a text and email informing them they have been offered a waitlist slot.
+If you choose to start the waitlist, one or multiple patients matching the timeslot, provider, and location are sent a text and email informing them they have been offered a waitlist slot. The message states how much time they have to accept the offer.
 
 <Columns cols={2}>
   <img src="/images/air_front_desk/view_your_calendar/waitlist/waitlist_14.webp" alt="Waitlist offer SMS" title="Waitlist offer — SMS" />
@@ -117,7 +118,7 @@ The available preferences include:
 - **Require approval on waitlist requests** — when on, all promotions from the waitlist to an appointment must be approved before being scheduled. This overrides the normal appointment-approval configuration.
 - **Cancel future appointment if waitlist slot has been scheduled** — when on, the system detects if a patient has a future appointment matching the waitlist offer. When they schedule a new appointment through their waitlist offer, the very next appointment is cancelled.
 - **Minimum time to fill a newly opened slot with a waitlist patient** — how far out a cancelled appointment must be to offer the slot to a waitlist entry. For example, if the minimum is 30 minutes, cancelling at 8:50 AM for a 9:00 AM appointment will not send any waitlist offer.
-- **Same-patient waitlist offer exclusion period** — how much time must pass between waitlist offers for a single patient, to avoid sending too many offers to the same patient when cancelling multiple appointments. For example, if set to 1 hour, and Jonathon receives a waitlist offer at 9:15 AM, he cannot receive another offer until 10:15 AM — even if he declines the first offer.
+- **Same-patient waitlist offer exclusion period** — how much time must pass between waitlist offers for a single patient, to avoid sending too many offers to the same patient when cancelling multiple appointments. For example, if set to 1 hour and a patient receives a waitlist offer at 9:15 AM, they cannot receive another offer until 10:15 AM — even if they decline the first offer.
 - **Time to accept by patient** — how much time a batch of patients has to respond to their offer. If they do not accept in this time, the next batch of patients is sent the offer as well.
 - **Waitlist bucket size** — the number of patients sent an offer in each batch. If set to `1`, behavior is one-at-a-time (Patient A, then B, then C). If set to `>1`, behavior is a "blast" send (Patients 1–10, then 11–20, then 21–30).
 - **Retain waitlist requests for future** — when on, accepting a waitlist offer does **not** delete the waitlist entry. Instead, the patient moves to the back of the list. When off, accepting a waitlist offer deletes the entry, and the patient must add a new one to be considered for future offers.
