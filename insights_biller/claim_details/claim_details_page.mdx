@@ -1,6 +1,7 @@
 ---
 title: "Getting Started with the Claims Page"
 sidebarTitle: "Getting Started with the Claims Page"
+description: "Learn how to organize, review, and submit claims from the Insights Claims page."
 ---
 
 ### **Getting Started with the Claims Page**
@@ -72,6 +73,24 @@ Right-click any existing saved view and select **Duplicate** to create a new vie
 **Custom views are personal by default**, meaning your saved views won't be seen by anyone else.
 </Note>
 
+### Display hidden claims
+
+The **Show Pre-Athelas Claims** option under **Display** is off by default. If this option hides every claim that matches your filters, the empty state shows how many claims are hidden by display options. Select **Show options** to open the Display panel and change the setting.
+
+### Use work queues
+
+Use the **Work Queue** column or filter to organize claims by their current processing step. Work queue labels include:
+
+- **Finalized**
+- **No Action Needed**
+- **Needs Initial Review**
+- **Status Classification Failed**
+- **Recon Rework**
+- **Payment Posting**
+- **Appeal Pending**
+- **Statement Generation Pending**
+- **Awaiting Patient Payment**
+
 ### **Assigning Claims to Your Team**
 
 ![Claims Page Interface](/images/insights_biller/claim_details/claim_details_page/claim_details_page_3.png)
@@ -114,6 +133,10 @@ The activity feed at the bottom of the claim shows all team member comments, and
 - Check the feed before working on a claim to see if someone already identified issues
 
 Comments persist across sessions, so your team maintains context even when claims change hands.
+
+### Review patient attachments in Claim Context
+
+Open **Patient Attachments** in Claim Context to review documents associated with the claim. Encounter medical records appear under **Medical File**, while submitted claim documents appear under **Claim**. Select a document to preview it without leaving the claim.
 
 ### **Using Athelas Assistant**
 
@@ -168,6 +191,8 @@ After billing rules are applied, you can make final adjustments to the submissio
 1. Click the **pencil icon** in the submission preview to edit specific fields
 2. These edits only affect this submission and don't change the underlying claim data
 
+In the **Procedures** section, use the add control to restore a procedure that a billing rule removed. The picker only shows eligible procedures that were already on the claim; you cannot create an unrelated procedure from this control.
+
 **Working with diagnosis code pointers:**
 
 You can drag and drop diagnosis code pointers within the Procedures table to reorder them quickly — no need to delete and re-add.
@@ -179,6 +204,8 @@ Once you’ve verified everything looks correct:
 1. Review patient, insurance, diagnosis, and procedure information one final time
 2. Click **Submit** when ready — if the claim has been submitted before, the button will say **Resubmit** instead
 3. The claim moves to “Submitted” status and appears in your submission history
+
+For claims with more than one payer, a secondary destination remains unavailable while the primary submission is queued or otherwise unavailable. The disabled option explains why you cannot submit yet.
 
 ### FAQ
 
@@ -226,4 +253,12 @@ Press `CMD/CTRL` + `C` to copy a direct link to the claim instead — useful for
 Open the filter panel (press `F` or click **Filter**) and select the **CARC** or **RARC** filter. Enter the specific denial reason code you want to focus on, and the table will update to show only claims with that code.
 
 This is especially useful for identifying denial patterns and prioritizing which denial types to work first.
+</Accordion>
+
+<Accordion title="Why are no claims showing even though my filters should match?">
+Open **Display** and check **Show Pre-Athelas Claims**. When display options are hiding matching claims, select **Show options** from the empty state to open the setting directly.
+</Accordion>
+
+<Accordion title="Can I add any procedure while editing a submission?">
+No. The **Procedures** add control only restores eligible procedures that were already on the claim and were removed by billing rules.
 </Accordion>

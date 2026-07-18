@@ -1,5 +1,6 @@
 ---
 title: "The Billing Rules Engine"
+description: "Review active billing rules, understand rule details, and inspect dry-run results."
 ---
 
 #### At a Glance
@@ -18,24 +19,24 @@ Early in the Athelas onboarding process for your organization, an account manage
 
 These rules, along with any added manually since then, comprise the list visible on the Billing Rules Engine page.
 
-<img src="/images/insights_biller/general_billing/the_billing_rules_engine/the_billing_rules_engine_1.png" alt="" />
+<img src="/images/insights_biller/general_billing/the_billing_rules_engine/the_billing_rules_engine_1.png" alt="Billing Rules Engine page with active and inactive rules" />
 
 You can filter this list to show only Active, Inactive, or All.
 
-<img src="/images/insights_biller/general_billing/the_billing_rules_engine/the_billing_rules_engine_2.png" alt="" />
+<img src="/images/insights_biller/general_billing/the_billing_rules_engine/the_billing_rules_engine_2.png" alt="Billing rule status filters" />
 
 ####
 
 #### Types of Rules
 
-- **Global Rules**Global rules are standardized, stock rules available to all organizations using Athelas Insights. These rules tackle the most common claim adjustments to minimize rejections and denials and maximize collections for your practice.
-- **Site Rules**These rules are specific to your site.
+- **Global Rules:** Standardized rules available to organizations using Athelas Insights. These rules address common claim adjustments.
+- **Site Rules:** Rules specific to your site.
 
-<img src="/images/insights_biller/general_billing/the_billing_rules_engine/the_billing_rules_engine_3.png" alt="" />
+<img src="/images/insights_biller/general_billing/the_billing_rules_engine/the_billing_rules_engine_3.png" alt="Global and site billing rule tabs" />
 
 The explanatory notes on these are editable. Click the ‘Edit’ button below the explanation to make changes.
 
-<img src="/images/insights_biller/general_billing/the_billing_rules_engine/the_billing_rules_engine_4.png" alt="" />
+<img src="/images/insights_biller/general_billing/the_billing_rules_engine/the_billing_rules_engine_4.png" alt="Editable explanatory notes for a billing rule" />
 
 ####
 
@@ -50,11 +51,15 @@ This is the first place to check if a site rule is failing in some way.
 
 To see which rules were applied to an individual claim, visit the [Claim Details page](https://insights.athelas.com/v3/claim_level_view). Click into a claim, then switch the the ‘Submissions’ tab. Choose a submission to expand and click ‘x rules applied.’
 
-View dry run results of billing rules engine on Encounter Details
+#### Review rule details
+
+Open a rule to review its conditions, actions, and properties. For rule types that support phased rollout, **Rollout Cap** shows the current limit with thousands separators. **Fully Released** means that the supported rule type has no enforced cap. Rule types that do not support phased rollout do not show this property.
+
+Select **Dry Run** to test a rule and review its results before relying on it. Results replace the details view and use one tab per tested entity. Conditions can show **Met**, **Not met**, or **Skipped**, and actions can show **Applied**. Close the results to return to the rule details.
 
 #### Features In Development
 
-- Be able to view diff or pre and post billing rules on the claim payload
+- Compare the before-and-after claim form produced by a dry run
 
 #### Features Not Supported
 
@@ -63,3 +68,13 @@ View dry run results of billing rules engine on Encounter Details
 #### Further Assistance
 
 We’re here to help! Please get in touch with [support@getathelas.com](mailto:support@getathelas.com) if you’d like some hands-on assistance.
+
+### FAQ
+
+<Accordion title="What does Fully Released mean?">
+For a rule type that supports phased rollout, **Fully Released** means the rule has no enforced rollout cap.
+</Accordion>
+
+<Accordion title="Can I edit billing rules myself?">
+No. Contact your account manager to request a rule change.
+</Accordion>
