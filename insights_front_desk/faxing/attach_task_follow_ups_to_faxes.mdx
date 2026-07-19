@@ -1,14 +1,9 @@
 ---
 title: "Attach Task Follow-ups to Faxes"
+description: "Create and manage follow-up tasks tied to a fax, assigned to a user or a group."
 ---
 
-Now you can attach task follow-ups directly to incoming or outgoing faxes. This makes it simple to keep track of next steps—right from your fax list
-
-#### What is it?
-
-A new **Manage Tasks** button appears on the right of each fax. Clicking it brings up a table of tasks associated with that fax.
-
-All task drawers are pre-filled with the fax number (and patient, when available) so you don’t have to re-enter context.
+You can attach follow-up tasks directly to incoming or outgoing faxes, making it simple to track next steps right from your fax list. Tasks created this way are pre-filled with the fax (and patient, when available) so you don't have to re-enter context.
 
 <iframe
   className="w-full aspect-video rounded-xl"
@@ -19,90 +14,37 @@ All task drawers are pre-filled with the fax number (and patient, when available
   allowFullScreen
 ></iframe>
 
-#### How to Use
+#### Open the Tasks for a Fax
 
-**1. Locate the Manage Tasks Button**
+On the **Faxing** page, each fax row has a **Manage Tasks** button:
 
-Navigate to the patient attachments page.
+- A **red** dot means the fax has incomplete tasks.
+- A **green** dot means its tasks are complete.
+- No dot means there are no associated tasks.
 
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_1.png" alt="" />
+Click **Manage Tasks** to open the **View Tasks for Fax** drawer. From here you can:
 
-Look for the **Manage Tasks** button to the right of your each row within the attachments table.
+- **View details** — expand a row to see the task type and description
+- **Edit** a task with the pencil icon
+- **Delete** a task with the trash icon
+- **Update status** — mark a task **Done**, **In Progress**, **Not Started**, or **Archived**
 
-- **If the attachment has incomplete tasks:**You’ll see a red notification icon on the button.
+#### Create a New Task
 
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_2.png" alt="" />
+Click **New Task** in the drawer. Give the task a title, then set its priority, due date, and type. For the assignee, choose whether to **Assign to an Individual User** (select an **Assignee**) or **Assign to a Group** (select an **Assignee Group**) — group-assigned tasks can be claimed by any member of the group.
 
-- **If the attachment has completed tasks:**You’ll see a green notification icon on the button.
+The task is automatically associated with the current fax. Click **Create** once the required fields are filled.
 
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_3.png" alt="" />
+#### View from the Tasks Page
 
-- **If the attachment has no associated tasks:**You’ll see the button without any notification icon.
-**2. Open the Tasks Drawer**
+Go to [the Tasks page](https://insights.athelas.com/tasks) and use the **My Tasks** tab to see tasks assigned to you, or **Assigned by me** to see tasks you assigned to others. A column shows the linked fax for each task; click it to open the fax document.
 
-Click on the **Manage Tasks** button to bring up a drawer with tasks for that fax.
+### FAQ
 
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_4.png" alt="" />
+<Accordion title="Can I link the same task to both a patient and a fax?">
+  Yes. If a fax is already tied to a patient, creating a task for it links the task to that patient automatically, so it also appears on the patient's task page. You can adjust this by adding or removing patients on the task form.
+</Accordion>
 
-**View details** of a task by clicking the down arrow on the leftmost column:
-
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_5.png" alt="" />
-
-The task type and description will be displayed under the current row:
-
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_6.png" alt="" />
-
-**Edit** a task by clicking its pencil icon:
-
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_7.png" alt="" />
-
-The **Edit Task** drawer appears over the table to edit a single task:
-
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_8.png" alt="" />
-
-**Delete** a task with the trash icon:
-
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_9.png" alt="" />
-
-**Update the status** of a task by clicking on the checklist icon:
-
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_10.png" alt="" />
-
-You can mark a task as Done, In Progress, Not Started, or Archived.
-
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_11.png" alt="" />
-
-**Add** a new task via the **New Task** button at the bottom left:
-
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_12.png" alt="" />
-
-**4. Create a New Task**
-
-Select the **New Task** icon at the bottom left of the drawer.
-
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_13.png" alt="" />
-
-Title your task, assign it to someone in your team, pick a priority, due date, task type, etc. You’ll see that this task is automatically associated with the current fax.
-
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_14.png" alt="" />
-
-Click **Create** once all required fields are completed.
-
-**5. View from the Main Tasks Page**
-
-Navigate to [https://insights.athelas.com/tasks](https://insights.athelas.com/tasks). Select the **My Tasks** tab to see tasks assigned to you, or **Assigned by me** to see tasks you have assigned to others.
-
-A new column to the right of the table will display the linked fax to each task, if any.
-
-Clicking on the link will bring up the fax document in a new window.
-
-<img src="/images/insights_front_desk/faxing/attach_task_follow_ups_to_faxes/attach_task_follow_ups_to_faxes_15.png" alt="" />
-
-#### FAQ's
-
-**Can I link the same task to both a patient and a fax?**
-
-- Yes, if a fax is already linked to a patient, creating a task for it links it to the patient automatically. That means you can access it the patient’s task page as well. You can modify this behavior by adding or removing patients from the Create Task form.
-**Can I add a fax to a task from the **[Tasks page](http://insights.athelas.com/tasks)**?**
-
-- No, currently we do not support adding a fax to a task from the Tasks page. You will have to create it from the Faxing page. You can, however, view and manage tasks linked to faxes from the Tasks page.
+<Accordion title="Can I add a fax to a task from the Tasks page?">
+  No — you create a fax-linked task from the **Faxing** page. From the Tasks page you can view and manage tasks that are already linked to faxes, but not attach a new fax to a task.
+</Accordion>

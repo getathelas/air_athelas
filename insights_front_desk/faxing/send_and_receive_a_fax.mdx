@@ -1,94 +1,49 @@
 ---
 title: "Send and Receive a Fax"
+description: "Send an outbound fax, process inbound faxes, and let AI auto-sort your fax inbox."
 ---
 
-#### How to send faxes (outbound)
+#### How to Send a Fax (Outbound)
 
-To send a fax, click on Send Document on the top right side of the page
+Click **Send Document** at the top of the Faxing page. A **Send Fax** panel opens with the following fields:
 
-<img src="/images/insights_front_desk/faxing/send_and_receive_a_fax/send_and_receive_a_fax_1.png" alt="" />
+- **Patient** *(optional)* — tie the fax to a patient
+- **Contact** *(optional)* — pick a saved contact to auto-fill the recipient
+- **Referring Provider** — selecting a provider can auto-fill their fax number
+- **Recipient Fax Number** — the number you're sending to
+- **Subject** — the title of the fax
+- **Send from** — which of your fax numbers to send from
+- **Facility** and **Provider** — which facility/provider the fax is coming from
+- **Add Patient Facesheet** — optionally attach the patient's facesheet (with a preview)
+- **Files** — choose one or more PDF files; you can reorder them and preview the merged document
+- **File Name** — a name for the fax
 
-A side panel will open up called Send Fax with the following fields to enter details into:
+Click **Send Document**. Your fax will then appear on the **Outbound** tab. If a coversheet is enabled for your site, you'll also see coversheet fields in the panel.
 
-- **Referring Provider**
+<Note>
+  If an outbound fax fails, use the **Resend Fax** action on its row in the **Outbound** tab to re-send it.
+</Note>
 
-- Select the referring provider to fax.
+#### How to Receive a Fax (Inbound)
 
-- **Recipient Fax Number**
+Open the **Inbound** tab. Use the **All**, **Unprocessed**, and **Processed** views to organize your inbox:
 
-- Enter the fax number you’d like to send the fax to
+- **Unprocessed** faxes haven't been categorized or associated with a patient/provider yet.
+- **Processed** faxes have been organized.
 
-- **Subject**
+Open a fax and click **View and Update Fax** (or **Edit Fax**) to set:
 
-- The title of the fax
+- **Subject** — name or rename the fax
+- **Facility** and **Provider** — select or override
+- **Patient** — the patient this fax should tie to
+- **Document Type** — the category of the received fax
+- **Tags** — free-form labels (type to create a new tag)
 
-- **Send From**
+Saving your edits moves the fax to the **Processed** view.
 
-- Select what fax number to send the documents from. A dropdown of all your fax numbers will be available here.
+#### AI Fax Sorting
 
-- **Facility [Optional]**
-
-- Specify which facility this fax is coming from
-
-- **Provider**
-
-- Specify which provider this fax is coming from
-
-- **Choose Files**
-
-- You can choose multiple files to fax, as long as they’re in PDF format
-
-<img src="/images/insights_front_desk/faxing/send_and_receive_a_fax/send_and_receive_a_fax_2.png" alt="" />
-
-Once you’ve hit Send Document, your fax will be available to be viewed in the Outbound section
-
-<img src="/images/insights_front_desk/faxing/send_and_receive_a_fax/send_and_receive_a_fax_3.png" alt="" />
-
-#### How to receive a fax (inbound)
-
-To see all your received faxes, click on the *Inbound* tab and ensure that your fax view is set to *All*. However, as you can see, there are two other views available: Unprocessed and Processed.
-
-<img src="/images/insights_front_desk/faxing/send_and_receive_a_fax/send_and_receive_a_fax_4.png" alt="" />
-
-##### View unprocessed and processed faxes:
-
-The unprocessed view shows you faxes that haven’t been organized yet. This means that it has yet to be categorized or associated with a patient/provider. It is a completely new fax.
-
-<img src="/images/insights_front_desk/faxing/send_and_receive_a_fax/send_and_receive_a_fax_5.png" alt="" />
-
-Clicking on View and Update Fax allows you to edit and specify the following information:
-
-- Subject
-
-- Name or re-name the fax
-
-- Facility
-
-- Select or override the facility on the fax
-
-- Provider
-
-- Select or override the provider on the fax
-
-- Patient
-
-- Specify the patient this fax should tie to
-
-- Document Type
-
-- Select the document category of the fax received
-
-<img src="/images/insights_front_desk/faxing/send_and_receive_a_fax/send_and_receive_a_fax_6.png" alt="" />
-
-<img src="/images/insights_front_desk/faxing/send_and_receive_a_fax/send_and_receive_a_fax_7.png" alt="" />
-
-Clicking on Save Edits will send the fax to the Processed view, since it is now organized appropriately
-
-<img src="/images/insights_front_desk/faxing/send_and_receive_a_fax/send_and_receive_a_fax_8.png" alt="" />
-
-##### AI Fax Sorting:
-
-**AI Fax Sorting** is built directly into your fax inbox to help you process incoming documents faster and with less manual effort. Instead of opening, reading, and routing every fax yourself, the system automatically does it for you — keeping your workflow moving and your inbox organized.
+**AI Fax Sorting** is built into your fax inbox to process incoming documents faster. Instead of opening, reading, and routing every fax yourself, the system does it for you.
 
 When a fax arrives, AI will:
 
@@ -98,31 +53,22 @@ When a fax arrives, AI will:
 - Add a **direct link to the patient profile**
 - Automatically move the fax from **Unprocessed → Processed**
 
-Faxes that meet all criteria are labeled **AI Sorted**, so you can immediately trust they've been handled. In the Inbound view, you'll see:
-
-- An **AI Sorted** label on completed faxes
-- Hyperlinked patient names for quick access to the patient profile
-- Clear separation between processed and unprocessed faxes
-- Faster turnaround on inbound documents
+Automatically handled faxes are labeled **AI Sorted** in the Inbound view; if someone later edits an AI-sorted fax, it's labeled **AI + Human Edited**.
 
 <Tip>
-  ✨**Smart Tip:** AI Fax Sorting only auto-processes a fax when the system is highly confident in the patient match (exact match only), the document type, and the provider identification. If anything is unclear, the fax stays in **Unprocessed** for your team to review — protecting against incorrect routing.
+  ✨**Smart Tip:** AI Fax Sorting only auto-processes a fax when the system is highly confident in the patient match (exact match only), the document type, and the provider. If anything is unclear, the fax stays in **Unprocessed** for your team to review — protecting against incorrect routing.
 </Tip>
 
 ### FAQ
 
 <Accordion title="How will I know which faxes were sorted by AI?">
-  Faxes that were processed automatically are labeled **AI Sorted** in the Inbound view. Open the fax to confirm the patient, provider, and document type that AI assigned.
+  Faxes processed automatically are labeled **AI Sorted** in the Inbound view. Open the fax to confirm the patient, provider, and document type that AI assigned.
 </Accordion>
 
 <Accordion title="What happens if AI can't confidently match the patient or provider?">
-  The fax stays in the **Unprocessed** view so your team can review and assign it manually. AI Fax Sorting only auto-processes faxes when the patient match is exact and the document type and provider are clearly identified — anything ambiguous is held back for human review.
+  The fax stays in the **Unprocessed** view so your team can review and assign it manually. AI Fax Sorting only auto-processes faxes when the patient match is exact and the document type and provider are clearly identified.
 </Accordion>
 
 <Accordion title="Can I edit a fax that was already AI Sorted?">
-  Yes. Click **View and Update Fax** on any fax — including AI Sorted ones — to edit the **Subject**, **Facility**, **Provider**, **Patient**, or **Document Type**, then click **Save Edits**.
-</Accordion>
-
-<Accordion title="Which document types can AI Fax Sorting handle?">
-  AI Fax Sorting recognizes common inbound document types including referrals, labs, prior authorizations, and other clinical documents. The system will continue to expand the supported categories over time.
+  Yes. Click **View and Update Fax** on any fax — including AI-sorted ones — to edit the **Subject**, **Facility**, **Provider**, **Patient**, **Document Type**, or **Tags**, then save. The fax will be labeled **AI + Human Edited**.
 </Accordion>

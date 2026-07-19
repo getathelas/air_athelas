@@ -352,12 +352,10 @@
             "icon": "fax",
             "tag": "Front Desk",
             "pages": [
-              "insights_front_desk/faxing/attach_task_follow_ups_to_faxes",
-              "insights_front_desk/faxing/faxing_features_not_supported",
               "insights_front_desk/faxing/getting_started_with_faxing",
               "insights_front_desk/faxing/send_and_receive_a_fax",
               "insights_front_desk/faxing/tying_faxes_to_patients",
-              "insights_front_desk/faxing/tying_inbound_faxes_to_outbound_faxes"
+              "insights_front_desk/faxing/attach_task_follow_ups_to_faxes"
             ]
           },
           {
