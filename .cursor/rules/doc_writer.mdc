@@ -26,19 +26,25 @@ air_athelas/
 ├── air_front_desk/            # Air front desk workflows
 │   ├── view_your_calendar/
 │   ├── communicate_with_patients/
+│   ├── portal_and_online_scheduling/
 │   ├── take_in_a_patient/
 │   └── manage_your_tasks/
 ├── air_admin/                 # Air admin management
 │   ├── manage_your_practice/
 │   └── analyze_your_reports/
+├── air_developer/             # Air developer & ONC certification content
+│   ├── patient_information_export/
+│   ├── onc_certification/
+│   ├── onc_feature_guides/
+│   └── fhir_api/
 ├── insights_onboard/          # Insights onboarding (files at root, no subfolders)
 ├── insights_biller/           # Insights biller workflows
 │   ├── analytics/
 │   ├── general_billing/
 │   ├── claim_details/
+│   ├── patient_profile/
 │   └── reports/
 ├── insights_front_desk/       # Insights front desk workflows (largest section)
-│   ├── agents_center/
 │   ├── appointments/
 │   ├── calendar/
 │   ├── encounter_details/
@@ -68,10 +74,6 @@ air_athelas/
 │   └── athelas_assistant/
 ├── master_blogs/              # Product release blog posts (flat, no subfolders)
 ├── master_changelogs/         # Changelog entries (flat, no subfolders)
-├── air_hidden/                # Hidden pages for beta/pre-launch features (Air)
-├── insights_hidden/           # Hidden pages for beta/pre-launch features (Insights)
-├── air_archive/               # Archived Air content
-├── insights_archive/          # Archived Insights content
 ├── _scratch/                  # Scratch/experiment folder (gitignored)
 └── images/                    # All image and video assets (mirrors content structure)
 ```
@@ -144,13 +146,32 @@ Image ref → MDX path:      {role}/{activity}/{filename}.mdx
 - **Appointments**: Walk-in scheduling, live eligibility checks, PR/balance display, copay/coinsurance/deductible collection, reminders, check-in tracking, download schedule PDF
 - **Patient Management**: Profiles (demographics, insurance, cases, appointments, charges, balance, statements), notes (universal, tagged), touchpoints tracking, attachments, portal registration, resubmit claims from profile
 - **Communication**: Internal messaging (staff threads up to 10, attachments, notifications), faxing (send/receive, contact list, link to patients/tasks/outbound faxes, bulk fax/download PDFs), AI Agents Center (inbound/outbound calls, scheduling, follow-ups, call analytics, patient triaging)
-- **AI & Automation**: Athelas AI assistant (claims questions, task execution, support tickets, RCM prompt library, share/copy/download responses), AI claim validation (zip codes, addresses, modifiers, diagnosis codes), AI posting automation, EOB AI transcription, KX modifier auto-application (Medicare therapy thresholds, PT/OT/SLP codes)
-- **Provider Features**: AI Scribe (ambient scribing, reapply/regenerate, multi-language, lock sections), chart notes, medications, patient profiles, Athelas AI assistant (context-aware)
+- **AI & Automation**: Athelas Assistant (claims questions, task execution, support tickets, RCM prompt library, share/copy/download responses), AI claim validation (zip codes, addresses, modifiers, diagnosis codes), AI posting automation, EOB AI transcription, KX modifier auto-application (Medicare therapy thresholds, PT/OT/SLP codes)
+- **Provider Features**: Air Scribe (ambient scribing, reapply/regenerate, multi-language, lock sections), chart notes, medications, patient profiles, Athelas Assistant (context-aware)
 - **Administration**: Practice/provider/facility management, provider credentialing (self-service, credentialing groups), calendar settings, PR/billing/statement/fax settings, billing rules engine
 
 ---
 
 ## 2. Naming conventions
+
+### Canonical product & feature terminology
+
+Use these names exactly. Product prose uses **"Insights"**; the *company* may still be called "Athelas" (keep existing Athelas brand terms).
+
+| Concept | Canonical name | Do **not** use |
+| :-- | :-- | :-- |
+| The RCM / billing product | **Insights** | "Athelas Insights", "Athelas RCM", "Athelas" (as the product) |
+| The EHR product | **Air** | "Athelas EHR", "Athelas Healthcare platform", "the EHR" (when the Air product is meant) |
+| AI assistant (RCM copilot) | **Athelas Assistant** | "Athelas AI", "RCM Assistant", "RCM AI", "Athelas Intelligence", "(AI) Copilot" |
+| Ambient scribe | **Air Scribe** | "AI Scribe", "EHR Scribe", bare "Scribe" |
+| In-person card reader | **Athelas card reader** | "Stripe card reader", "Athelas Card Reader" (casing) |
+| Automated statements product | **SmartPay** | "Smart Pay" |
+| Support email | **support@getathelas.com** | — |
+| Sign-in URL | **insights.athelas.com** | — |
+
+- "Athelas" as the *company* is fine ("your Athelas team", "the Athelas Recon Team"); "Athelas" as the *product* is not — use "Insights".
+- Keep "Athelas Academy" and `athelas.com` brand references as-is.
+- Verify literal on-screen button labels (e.g. an "Athelas AI" button) against the product before renaming them.
 
 ### Files and folders
 
@@ -256,7 +277,7 @@ The site navigation lives in `docs.json` at the repo root. There is no `mint.jso
   "theme": "palm",
   "name": "Athelas",
   "colors": { "primary": "#F9345F", "light": "#FA5478", "dark": "#FB8DA5" },
-  "favicon": "images/athelas_favicon_bkg.png",
+  "favicon": "images/air_archive/athelas_favicon_bkg.png",
   "logo": {
     "light": "/images/air_archive/athelas_light.svg",
     "dark": "/images/air_archive/athelas_light.svg"
@@ -385,7 +406,7 @@ Create a new object in the appropriate tab's `groups` array:
 
 ### FAQ section requirement
 
-**Every documentation page should include an FAQ section at the end** with the heading `### FAQ`. Use `<Accordion>` components for each FAQ item:
+**An FAQ section is the recommended standard for substantive pages** (guides and workflows), placed at the end. When a page has one, the heading must be exactly `### FAQ` (not `## FAQ`, `#### FAQ's`, `## Q&A`, etc.). Thin reference/stub pages may omit it. Use `<Accordion>` components for each FAQ item:
 
 ```mdx
 ### FAQ
@@ -813,6 +834,6 @@ Before committing new or modified content, verify:
 - [ ] Image references in the MDX use the correct full path
 - [ ] `docs.json` navigation is updated with the page path (no `.mdx` extension)
 - [ ] Frontmatter includes at least `title`
-- [ ] Page ends with a `### FAQ` section (2-5 accordion items)
+- [ ] If the page has an FAQ, the heading is exactly `### FAQ` (2-5 accordion items); substantive guides should include one
 - [ ] No orphaned image folders or duplicate files
 - [ ] All links and cross-references are valid
