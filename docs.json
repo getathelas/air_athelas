@@ -383,10 +383,9 @@
             "icon": "square-user",
             "tag": "Front Desk",
             "pages": [
+              "insights_front_desk/patient_demographics/getting_started_with_demographics",
               "insights_front_desk/patient_demographics/addedit_a_patients_insurance",
-              "insights_front_desk/patient_demographics/addedit_patient_cases",
-              "insights_front_desk/patient_demographics/addedit_patients_prior_authorization",
-              "insights_front_desk/patient_demographics/getting_started_with_demographics"
+              "insights_front_desk/patient_demographics/addedit_patients_prior_authorization"
             ]
           },
           {
