@@ -1,93 +1,45 @@
 ---
 title: "Text Blast Page"
+description: "Send one-off mass texts to patients with dynamic tags, translations, cost preview, and delivery tracking."
 ---
 
 #### At a Glance
 
-The [Text Blast page](https://insights.athelas.com/text-blast) allows you to create text templates and send one-off mass texts with dynamic information tags, so that individual patients in the text blast see information pertaining specifically to them.
+The [Text Blast page](https://insights.athelas.com/text-blast) lets you send one-off mass texts with dynamic information tags, so each patient sees details specific to them.
 
-#### Example Walkthrough
+#### Creating a Text Blast
 
-Upon viewing the Text Blast page, you will see a field that will be filled in with information about previous text blasts, if any exist. Otherwise, it will be blank.
+Click **Create New Text Blast**. You can start fresh, start **from a template**, or **reuse a previous blast**. Then configure:
 
-We’ll click `Create New Text Blast`.
+- **Name** — a descriptive name for the blast
+- **Single Day** or **Multiple Days** — with an **Appointment Date** (or start/end range) to target patients by appointment
+- **Filter by Patients**, **Filter by Providers**, and **Filter by Appointment Insurances** — leaving a filter blank includes everyone in that category
+- **Message Template** — the text to send
 
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_1.png" alt="" />
+For dynamic values, enclose each variable in `{brackets}` with underscores for spaces — for example, `Hi {patient_name}!`. Messages are limited to **320 characters**.
 
-A modal will appear. If any previously-configured text blasts exist, they will show up as modifiable options in the template dropdown menu, as shown here.
+#### Preview, Cost, and Translations
 
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_2.png" alt="" />
+Click **Preview Text Blast** to review before sending. The preview shows how many patients will receive the blast and the **projected cost** (\$0.01 per recipient). It also shows **translations** of your message: the number next to each language is how many patients will receive that translation based on their preferred language, and patients without a language preference receive English. When everything looks correct, click **Confirm**.
 
-For this demonstration, we’ll select `Create New Text Blast`
+#### Tracking Text Blasts
 
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_3.png" alt="" />
-
-Enter a descriptive name for your text blast.
-
-The information in each fillable field will populate based on information in your Athelas EHR. Leaving a field blank is considered to be the same as selecting all options in that field. This means that a blank Patients field indicates that you would like to send your text blast to all patients, for example.
-
-For this demonstration, we’ll enter the name ‘test blast’ and send it to one patient.
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_4.png" alt="" />
-
-Now, for the message itself!
-
-Type out the message you’d like to send. To see all the options for dynamic information you can add, hover your cursor over the message field, as shown below.
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_5.png" alt="" />
-
-**Note**: Each variable must be individually enclosed in
-
-`{`brackets`}`, and any spaces must be replaced by `_`underscores. For example, for the text to dynamically fill in the patient’s name, you would type ‘Hi {patient_name}!’
-
-We can now click `Preview Text Blast`to make sure everything looks good before sending. The preview will also display the number of recipients and projected cost of the text blast (\$0.01 per recipient).
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_6.png" alt="" />
-
-**The Preview also shows you translations of your text in an ever-increasing number of languages.**
-
-The number in parentheses next to each listed language indicates the number of patients that will receive that translation, based on the preferred language in their profile, as shown below. Any patients without a listed language preference will receive the text in English.
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_7.png" alt="" />
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_8.png" alt="" />
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_9.png" alt="" />
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_10.png" alt="" />
-
-Now is a good time to double check for errors and correct them prior to sending. Once the text is ready, click `Confirm`.
-
-Depending on the number of recipients, the text blast may take more or less time to confirm that it has sent. It will also take a couple of minutes to appear in the log on the main page, as shown below.
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_11.png" alt="" />
-
-#### Reviewing Text Blasts
-
-You can track delivered (successful), sent (in progress), and failed texts by clicking into each logged text blast.
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_12.png" alt="" />
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_13.png" alt="" />
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_14.png" alt="" />
-
-To find out more about failed texts, you can hover your cursor over the ‘Failure Reason.’ In the above example, the listed phone number is a landline, which cannot receive texts.
-
-Additionally, you can download a report for each text blast and view the data in a spreadsheet.
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_15.png" alt="" />
-
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_16.png" alt="" />
+Each sent blast is logged on the main page. Click into a blast to track **delivered** (successful), **sent** (in progress), and **failed** texts. Hover a **Failure Reason** to see why a text failed (for example, a landline can't receive texts). You can also **download a report** for the blast as a spreadsheet.
 
 #### What the Patient Sees
 
-In this example, the patient receiving your text blast sees their name and the facility they visit dynamically filled.
+Patients see the message with their dynamic values filled in. They can text **Stop** to opt out of future texts and **Unstop** to opt back in.
 
-They also have the option to text ‘Stop’ to opt out of future texts, and ‘Unstop’ to opt back in.
+### FAQ
 
-**Can patients reply to text blasts?**
+<Accordion title="Can patients reply to a text blast?">
+  No. Our texting features don't accept replies to blasts.
+</Accordion>
 
-No. None of our current texting features take responses directly.
+<Accordion title="How much does a text blast cost?">
+  The preview shows the projected cost at \$0.01 per recipient before you confirm.
+</Accordion>
 
-<img src="/images/insights_front_desk/patient_communications/text_blast_page/text_blast_page_17.png" alt="" />
+<Accordion title="What happens if I leave a filter blank?">
+  A blank filter includes everyone in that category. For example, leaving **Filter by Patients** blank sends the blast to all matching patients.
+</Accordion>

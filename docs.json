@@ -371,18 +371,11 @@
             "icon": "envelope",
             "tag": "Front Desk",
             "pages": [
-              "insights_front_desk/patient_communications/complete_intake_forms",
-              "insights_front_desk/patient_communications/functional_outcome_measurements",
-              "insights_front_desk/patient_communications/general_patient_flows_features",
-              "insights_front_desk/patient_communications/getting_started_with_patient_portal",
-              "insights_front_desk/patient_communications/insurance_intake_page",
-              "insights_front_desk/patient_communications/manage_patient_appointments",
-              "insights_front_desk/patient_communications/manage_payments_through_patient_portal",
               "insights_front_desk/patient_communications/navigating_patient_workflows",
+              "insights_front_desk/patient_communications/complete_intake_forms",
               "insights_front_desk/patient_communications/patient_intake_automation",
-              "insights_front_desk/patient_communications/text_blast_page",
-              "insights_front_desk/patient_communications/update_insurance_info",
-              "insights_front_desk/patient_communications/view_home_exercise_programs"
+              "insights_front_desk/patient_communications/insurance_intake_page",
+              "insights_front_desk/patient_communications/text_blast_page"
             ]
           },
           {
