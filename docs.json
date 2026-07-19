@@ -363,8 +363,6 @@
             "icon": "envelope",
             "tag": "Front Desk",
             "pages": [
-              "insights_front_desk/messaging/how_to_receive_messages",
-              "insights_front_desk/messaging/how_to_send_messages",
               "insights_front_desk/messaging/messages_page"
             ]
           },
