@@ -16,26 +16,28 @@ For a standard collections report, see this [guide](/insights_biller/reports/col
 
 #### Main Feature
 
-Use the ‘Group By’ menu to see the report grouped to your specifications.
+Use the ‘**Group By**’ menu to see the report grouped to your specifications. Options are **Facility**, **Provider**, **CPT Code**, **Patient**, **Encounter ID**, **Day**, and **Month**.
 
 <img src="/images/insights_biller/reports/custom_collections_report/custom_collections_report_2.png" alt="" />
 
-If no group selection is made, the report defaults to Provider, Facility, CPT Code, and Date Posted by Month.
+Two date controls determine how the report is built:
 
-❗ Charges will always be tied to Date of Service.
+- **Select Date Type** sets the date basis for your date range: **Date Posted** (default), **Check Date**, or **Date of Service**.
+- **Select Date Charge Type** sets how billed charges are dated: **First Date of Submission** (keeps billed charges static for consistent reporting) or **Latest Date of Submission** (dynamic, reflecting the most up-to-date billed amount).
 
 ####
 
 #### Filters Supported
 
-- Date Charge Type (Specifically the Insurance Charge)
-- Provider Source (options are rendering provider, resource provider, appointment provider)
-- Check Date
-- Date of Service
-- Date Posted
+- Select Date Type (Date Posted, Check Date, Date of Service)
+- Select Date Charge Type (First or Latest Date of Submission)
+- Group By (Facility, Provider, CPT Code, Patient, Encounter ID, Day, Month)
+- Provider Source (rendering provider, resource provider, appointment provider)
 - Patients
 - Providers
 - Payers
 - Facilities
 - CPT Codes
 - Place of Service Codes
+- Include Credit Transactions toggle
+- Report Format (CSV or XLSX)
