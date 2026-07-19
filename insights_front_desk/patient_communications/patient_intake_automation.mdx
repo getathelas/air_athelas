@@ -1,13 +1,29 @@
 ---
 title: "Patient Intake Automation"
+description: "Automatically fax completed patient intake forms to a designated number, configured per workflow."
 ---
 
 #### Patient Intake Automation
 
-You can now automatically fax completed patient intake forms to any number you choose, no manual downloads needed.
+You can automatically fax completed patient intake forms to a number you choose — no manual downloads needed. Once a patient completes the forms in a workflow, their completed forms are faxed to the number you've set.
 
-Once a patient completes a form that’s part of this workflow, we’ll wait 25 minutes and then fax all completed forms to the number you’ve set. This helps reduce paperwork and makes sure your team gets everything on time.
+#### How to Set It Up
 
-To turn this on, just ask our team and they will onboard you!
+Fax Automation is configured **per workflow**. In a [Patient Workflow](/insights_front_desk/patient_communications/navigating_patient_workflows)'s **Advanced Settings**:
 
-<img src="/images/insights_front_desk/patient_communications/patient_intake_automation/patient_intake_automation_1.png" alt="" />
+1. Turn on **Fax Automation** — *"Sends completed patient intake forms to designated fax when enabled."*
+2. Enter the **Fax Number** to send completed forms to.
+
+<Note>
+  Your site must have a valid fax number configured for template-response faxing before Fax Automation can be enabled. If the toggle is disabled and shows *"Fax automation is currently disabled,"* contact **support@getathelas.com** to get it set up for your site.
+</Note>
+
+### FAQ
+
+<Accordion title="Where do I turn on fax automation?">
+  It lives in the **Advanced Settings** section of an individual patient workflow, not on a separate page. Open the workflow, expand **Advanced Settings**, and enable **Fax Automation**.
+</Accordion>
+
+<Accordion title="Why is the Fax Automation toggle disabled?">
+  Your site needs a valid fax number configured for template-response faxing. Contact **support@getathelas.com** to enable it.
+</Accordion>

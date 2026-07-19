@@ -1,72 +1,34 @@
 ---
 title: "How to Send a Patient Payment Link"
+description: "Send a patient a secure payment link by text or email, or generate a pay link from Insights."
 ---
 
 ### At a Glance
 
-In addition to the many other payment collection methods offered in Insights, there is also a payment link option. The payment link shows patients all of their outstanding balance at once, with the option to view itemized cards with details of the encounters contributing to their balance.
+A payment link shows the patient their full outstanding balance, with itemized detail of the encounters contributing to it, and lets them pay online.
 
-### Here’s How to Do It
+### Send via Text or Email
 
-#### Via Email or Text Link
+1. On the [Appointments](https://insights.athelas.com/appointments) page, choose the patient encounter and click **Charge**.
+2. Enter the amount to charge. *(You can also [set up a payment plan](/insights_front_desk/patient_responsibility/setting_up_a_payment_plan) from here.)*
+3. Continue to the payment method and choose **Send Payment Link** → **Send via Text** or **Send via Email**, then confirm.
 
-First, navigate to the [Appointments page](https://insights.athelas.com/v3/appointments) and choose the patient encounter in question. Click `Charge`.
+The patient receives a message with a secure link to the payment portal.
 
-<img src="/images/insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link/how_to_send_a_patient_payment_link_1.png" alt="" />
+### Generate a Link Within Insights
 
-Enter the amount you would like to charge the patient.
+From the [Patient Responsibility page](/insights_front_desk/patient_responsibility/patient_responsibility_page), open the **Actions** menu and choose **Generate Patient Pay Link**. Paste the link into a new browser tab; the patient signs in (they receive an authentication code by text and email and can choose either).
 
-<img src="/images/insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link/how_to_send_a_patient_payment_link_2.png" alt="" />
+### At Checkout
 
-*Note that you can also *[***set up a payment plan***](/insights_front_desk/patient_responsibility/setting_up_a_payment_plan)* by checking the box in the lower left corner of the popup. This is an excellent way to collect at least some PR from any patients hesitant to pay and ensure your practice receives what is owed.*
+The patient can view all charges contributing to their balance, then click **Go to Checkout** to pay in full or in part (partial payments depend on your [PR Settings](/insights_front_desk/patient_responsibility/pr_settings)). They can use a saved card or add a new one, and a receipt is sent on completion.
 
-Click `Confirm & Continue`.
+<Note>
+  Generated pay links expire after one hour, after which the patient must re-authenticate via the emailed link.
+</Note>
 
-In the Confirm Payment window, choosing either `Request via Text` or `Request via Email` will send a payment link to the patient. For this example, we’ll select `Request via Email`, then click `Confirm`.
+### FAQ
 
-<img src="/images/insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link/how_to_send_a_patient_payment_link_3.png" alt="" />
-
-When the patient opens their email, they’ll see a message from your practice requesting payment with a link to do so.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link/how_to_send_a_patient_payment_link_4.png" alt="" />
-
-They can click the link provided to access the payment portal.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link/how_to_send_a_patient_payment_link_5.png" alt="" />
-
-#### Via Link Generation Within Insights
-
-From the [Patient Responsibility page](https://insights.athelas.com/v2/patient-responsibility), click the `Actions` menu and choose `Generate Patient Pay Link`.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link/how_to_send_a_patient_payment_link_6.png" alt="" />
-
-Paste the link into a new browser tab, and the portal login page will appear.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link/how_to_send_a_patient_payment_link_7.png" alt="" />
-
-Enter the patient’s information to sign in.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link/how_to_send_a_patient_payment_link_8.png" alt="" />
-
-The patient will receive an authentication code via both text and email, for their convenience, and they can choose their preferred method.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link/how_to_send_a_patient_payment_link_9.png" alt="" />
-
-###
-
-### After the Payment Link Is Accessed
-
-The payment link window will appear. Patients can view all charges contributing to their balance from here.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link/how_to_send_a_patient_payment_link_10.png" alt="" />
-
-Upon clicking `Go to Checkout`, patients can submit either partial or full payment (depending on whether you allow partial payments or not in the General tab of your [PR Settings](https://insights.athelas.com/v2/patient-responsibility-settings)). They also have the option to either use a saved card or enter a new one.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_send_a_patient_payment_link/how_to_send_a_patient_payment_link_11.png" alt="" />
-
-Clicking `Confirm Payment` finalizes the transaction and sends a receipt to the patient.
-
-**Important Notes**
-
-- You can configure whether to accept partial payments or not in the General tab of the [PR Settings page](https://insights.athelas.com/v2/patient-responsibility-settings)
-- Links expire after one hour, after which two-factor authentication (2FA) will kick in (again, if you generated a link in Insights) and the patient must re-authenticate using the email link
+<Accordion title="Can the patient pay only part of the balance?">
+  Yes, if partial payments are enabled in the **General** tab of your [PR Settings](/insights_front_desk/patient_responsibility/pr_settings). Otherwise they must pay the full balance.
+</Accordion>

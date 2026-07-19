@@ -1,59 +1,36 @@
 ---
 title: "Add/edit a Patient's Insurance"
+description: "Add or edit a patient's insurance, including workers' comp, self-pay, and missing-insurance cases."
 ---
 
-#### How to add insurance
+#### Adding Insurance
 
-If you’d like to add insurance, select an insurance company from the drop down menu after selecting "Create New Patient". Then input the following information:
+Add insurance while creating a patient or from the **Demographics** section of an existing patient's profile. Select the **Insurance Company**, which sets the **Plan Type**, then enter:
 
-<img src="/images/insights_front_desk/patient_demographics/addedit_a_patients_insurance/addedit_a_patients_insurance_1.png" alt="" />
+- **Policy Number** and **Group Number**
+- **Effective Date** and **Expiration Date**
+- **Guarantor** — the relationship to the policyholder (defaults to **Self**). If the relationship is not Self, open the guarantor fields and enter the policyholder's first name, last name, email, phone, date of birth, gender, and home address.
+- **Insurance Card** — optionally upload a photo of the card
+- **Require prior auth on submission** — toggle if this insurance requires a prior authorization
 
-- Policy Number
-- Group Number
-- Effective and expiration dates
-- Guarantor (relationship to policy holder)
+Click **Create** (or **Save**) when done.
 
-- If the relationship to policy holder is SELF, leave as is
-- If the relationship to policy holder is not SELF, click on the guarantor box. You will be prompted to select the relationship and input the policy holder’s information. Please fill out all of the following information:- First Name
-- Last Name
-- Email Address
-- Phone Number
-- Date of Birth
-- Gender
-- Home Address (Address Line(s), City, State, Postal and Country Code)
+#### Special Insurance Types
 
-<img src="/images/insights_front_desk/patient_demographics/addedit_a_patients_insurance/addedit_a_patients_insurance_2.png" alt="" />
+- **Workers' Compensation** — selecting a workers' comp insurance company automatically sets the plan type to Workers' Compensation (you can also set it manually). Extra fields appear, including **Claim Number**, **Accident Date**, and — depending on your site's settings — **Employer** details. For auto/accident claims, an **Accident State** is required.
+- **Self-Pay** — type **Self Pay** in the Insurance Company field and select it; the insurance detail fields are replaced with **Self-Pay (No Insurance)**.
+- **Missing Insurance** — if you don't have the patient's insurance yet, type **Missing Insurance** in the Insurance Company field and select it.
 
 #### Editing Insurance
 
-You can edit insurance information by navigating to the Demographics tab with the Patient Profile
+To edit insurance later, open the patient's profile, go to the **Demographics** section, and edit the insurance entry.
 
-<img src="/images/insights_front_desk/patient_demographics/addedit_a_patients_insurance/addedit_a_patients_insurance_3.png" alt="" />
+### FAQ
 
-#### Adding Worker's Compensation Information
+<Accordion title="What if the policyholder isn't the patient?">
+  Set the **Guarantor** relationship to something other than **Self**, then fill in the policyholder's name, contact details, date of birth, gender, and address.
+</Accordion>
 
-When a worker’s compensation insurance company is added, the payer type will automatically change to Worker’s Compensation. However, you are also able to override the payer type to Worker’s compensation
-
-The additional fields:
-
-- Accident Date
-- Claim Number
-Will also populate when the worker’s compensation insurance company is selected. Please fill out the fields with your patient’s information.
-
-<img src="/images/insights_front_desk/patient_demographics/addedit_a_patients_insurance/addedit_a_patients_insurance_4.png" alt="" />
-
-#### Adding Self-Pay
-
-To add Self-Pay as an insurance, type in “Self Pay” into the Insurance Company field. Upon selection, the insurance details will disappear and leave only “Self-Pay (No Insurance)”
-
-<img src="/images/insights_front_desk/patient_demographics/addedit_a_patients_insurance/addedit_a_patients_insurance_5.png" alt="" />
-
-#### What to do if you don't have the patient's insurance information?
-
-If you are missing the patient’s insurance information, type in “Missing Insurance” in the Insurance Company field. Upon selection, the insurance details will disappear and leave only “Missing Insurance”
-
-<img src="/images/insights_front_desk/patient_demographics/addedit_a_patients_insurance/addedit_a_patients_insurance_6.png" alt="" />
-
-Once you’ve entered in all the required and desired fields, click “Create” at the very bottom
-
-<img src="/images/insights_front_desk/patient_demographics/addedit_a_patients_insurance/addedit_a_patients_insurance_7.png" alt="" />
+<Accordion title="How do I record a self-pay patient?">
+  Type **Self Pay** into the Insurance Company field and select it. The insurance details collapse to **Self-Pay (No Insurance)**.
+</Accordion>

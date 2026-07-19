@@ -1,30 +1,29 @@
 ---
 title: "Insurance Intake Page"
+description: "Track and work the list of patients who need to update their insurance, and automate the outreach."
 ---
 
 ### At a Glance
 
-The [Insurance Intake page](https://insights.athelas.com/v2/patient-insurance) can automate insurance form collection. It can also auto-text patients after their visit for updated information if a remittance comes back showing inactive insurance.
+The [Insurance Intake page](https://insights.athelas.com/v2/patient-insurance) helps you collect updated insurance from patients. Athelas automatically texts flagged patients asking them to update their insurance in the patient portal, and this page gives your team a worklist to track the follow-up.
 
-<img src="/images/insights_front_desk/patient_communications/insurance_intake_page/insurance_intake_page_1.png" alt="" />
+#### Working the List
 
-#### Core Feature Walkthrough
+The Insurance Intake page is a worklist of patients who need an insurance update. You can:
 
-#### Insurance Intake Flow
+- **Filter** by **Patient Name** or **Task Status**.
+- Use the **Actions** menu on a row to **Mark as In Progress** or **Mark as Completed** as you update each patient's insurance.
 
-- A patient’s insurance receives a coverage-related denial.
-- That patient receives a post-visit text to update their insurance information in the patient portal.
-- They log in into their patient portal and get redirected to the Insurance Confirmation Form.
-- The Insurance Confirmation Form consists of three instances of the form below: one for each of primary, secondary, and tertiary insurance.
+<Note>
+  After a patient submits updated insurance, update their insurance in your EHR and mark the task **Completed** here so the list stays accurate.
+</Note>
 
-For each instance, there are three options that can be chosen:
+#### What the Patient Does
 
-- **Current Insurance**: Writes back the current appointment insurance into the form
-- **New Insurance**: A blank form, patient adds new insurance information to be updated in the appointment
-- **No Insurance**: Patient chooses to self-pay for the appointment
+A flagged patient receives a text asking them to update their insurance. They log in to the patient portal and complete an insurance confirmation form for their primary, secondary, and tertiary insurance. For each, they can keep their current insurance, add new insurance, or indicate they'll self-pay. An eligibility check is then run on the primary insurance.
 
-- Patient fills in their information and submits
-- Eligibility check is run on the primary insurance
-- Insurance Update flow concludes
+### FAQ
 
-<img src="/images/insights_front_desk/patient_communications/insurance_intake_page/insurance_intake_page_2.png" alt="" />
+<Accordion title="How do I mark a patient's insurance update as done?">
+  Open the **Actions** menu on that patient's row and select **Mark as Completed**. You can also mark a task **In Progress** while you're working it.
+</Accordion>

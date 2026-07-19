@@ -300,17 +300,10 @@
             "icon": "calendar",
             "tag": "Front Desk",
             "pages": [
-              "insights_front_desk/appointments/adding_prior_auth_and_alerting",
-              "insights_front_desk/appointments/alternate_methods_for_scheduling",
-              "insights_front_desk/appointments/appt_features_not_supported",
+              "insights_front_desk/appointments/the_insights_appointments_page",
               "insights_front_desk/appointments/how_to_add_a_walk_in_patient",
               "insights_front_desk/appointments/how_to_run_an_eligibility_check",
-              "insights_front_desk/appointments/how_to_schedule_an_appointment",
-              "insights_front_desk/appointments/how_to_take_payments",
-              "insights_front_desk/appointments/sending_out_reminders_and_forms",
-              "insights_front_desk/appointments/the_insights_appointments_page",
-              "insights_front_desk/appointments/understanding_appointment_details",
-              "insights_front_desk/appointments/updating_appointment_statuses"
+              "insights_front_desk/appointments/how_to_take_payments"
             ]
           },
           {
@@ -359,12 +352,10 @@
             "icon": "fax",
             "tag": "Front Desk",
             "pages": [
-              "insights_front_desk/faxing/attach_task_follow_ups_to_faxes",
-              "insights_front_desk/faxing/faxing_features_not_supported",
               "insights_front_desk/faxing/getting_started_with_faxing",
               "insights_front_desk/faxing/send_and_receive_a_fax",
               "insights_front_desk/faxing/tying_faxes_to_patients",
-              "insights_front_desk/faxing/tying_inbound_faxes_to_outbound_faxes"
+              "insights_front_desk/faxing/attach_task_follow_ups_to_faxes"
             ]
           },
           {
@@ -372,8 +363,6 @@
             "icon": "envelope",
             "tag": "Front Desk",
             "pages": [
-              "insights_front_desk/messaging/how_to_receive_messages",
-              "insights_front_desk/messaging/how_to_send_messages",
               "insights_front_desk/messaging/messages_page"
             ]
           },
@@ -382,18 +371,11 @@
             "icon": "envelope",
             "tag": "Front Desk",
             "pages": [
-              "insights_front_desk/patient_communications/complete_intake_forms",
-              "insights_front_desk/patient_communications/functional_outcome_measurements",
-              "insights_front_desk/patient_communications/general_patient_flows_features",
-              "insights_front_desk/patient_communications/getting_started_with_patient_portal",
-              "insights_front_desk/patient_communications/insurance_intake_page",
-              "insights_front_desk/patient_communications/manage_patient_appointments",
-              "insights_front_desk/patient_communications/manage_payments_through_patient_portal",
               "insights_front_desk/patient_communications/navigating_patient_workflows",
+              "insights_front_desk/patient_communications/complete_intake_forms",
               "insights_front_desk/patient_communications/patient_intake_automation",
-              "insights_front_desk/patient_communications/text_blast_page",
-              "insights_front_desk/patient_communications/update_insurance_info",
-              "insights_front_desk/patient_communications/view_home_exercise_programs"
+              "insights_front_desk/patient_communications/insurance_intake_page",
+              "insights_front_desk/patient_communications/text_blast_page"
             ]
           },
           {
@@ -401,10 +383,9 @@
             "icon": "square-user",
             "tag": "Front Desk",
             "pages": [
+              "insights_front_desk/patient_demographics/getting_started_with_demographics",
               "insights_front_desk/patient_demographics/addedit_a_patients_insurance",
-              "insights_front_desk/patient_demographics/addedit_patient_cases",
-              "insights_front_desk/patient_demographics/addedit_patients_prior_authorization",
-              "insights_front_desk/patient_demographics/getting_started_with_demographics"
+              "insights_front_desk/patient_demographics/addedit_patients_prior_authorization"
             ]
           },
           {
@@ -431,7 +412,6 @@
               "insights_front_desk/patient_responsibility/how_to_take_a_partial_or_split_payment",
               "insights_front_desk/patient_responsibility/how_to_set_up_miscellaneous_line_item_charges",
               "insights_front_desk/patient_responsibility/how_to_take_payment_for_families",
-              "insights_front_desk/patient_responsibility/how_to_undo_a_write_off",
               "insights_front_desk/patient_responsibility/how_to_write_off_pr",
               "insights_front_desk/patient_responsibility/manage_credit_cards",
               "insights_front_desk/patient_responsibility/patient_responsibility_page",
@@ -446,12 +426,12 @@
             "icon": "file-text",
             "tag": "Front Desk",
             "pages": [
-              "insights_front_desk/patient_statements/how_to_spread_pr_statement_emails",
               "insights_front_desk/patient_statements/manage_patient_statements",
-              "insights_front_desk/patient_statements/print_patient_statements",
+              "insights_front_desk/patient_statements/send_patient_statements_via_emailtext",
               "insights_front_desk/patient_statements/send_email_statements",
               "insights_front_desk/patient_statements/send_one_off_paper_statements",
-              "insights_front_desk/patient_statements/send_patient_statements_via_emailtext",
+              "insights_front_desk/patient_statements/print_patient_statements",
+              "insights_front_desk/patient_statements/how_to_spread_pr_statement_emails",
               "insights_front_desk/patient_statements/turn_off_patient_texts"
             ]
           },

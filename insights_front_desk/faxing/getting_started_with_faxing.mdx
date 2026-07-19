@@ -1,27 +1,51 @@
 ---
 title: "Getting Started with Faxing"
+description: "Navigate the Faxing page tabs, contact list, filters, and fax statuses."
 ---
 
-There is a dedicated faxing page within Air to send and receive faxes. To get to this page click on *Utilities* on the left hand menu, then select the *Faxing* section.
+Athelas has a dedicated **Faxing** page to send and receive faxes. Open it from **Faxing** in the left navigation.
 
-<img src="/images/insights_front_desk/faxing/getting_started_with_faxing/getting_started_with_faxing_1.png" alt="" />
+#### Tabs
 
-Within the section, you have several tabs:
+The Faxing page is organized into tabs:
 
-- To Be Sent - where you can store faxes ready to send
-- Outbound - faxes sent
-- Inbound - faxes received
-- Archived - archive any fax in queue, outbound or inbound status
-- Settings - where fax numbers are stored
+- **Outbound** — faxes you've sent
+- **Inbound** — faxes you've received
+- **Archived** — faxes you've archived from any queue
+- **Email** and **Text Message** — a tracker for email and text communications
+- **Settings** — where your fax numbers (and coversheet templates) are stored, if enabled for your site
 
-<img src="/images/insights_front_desk/faxing/getting_started_with_faxing/getting_started_with_faxing_2.png" alt="" />
+Within the **Inbound** tab, a secondary row lets you switch between **All**, **Unprocessed**, and **Processed** faxes.
 
-Create, edit, and tag contacts, link numbers to facilities and providers under "Contact List"
+#### Header Actions
 
-<img src="/images/insights_front_desk/faxing/getting_started_with_faxing/getting_started_with_faxing_3.png" alt="" />
+At the top of the page you'll find:
 
-<img src="/images/insights_front_desk/faxing/getting_started_with_faxing/getting_started_with_faxing_4.png" alt="" />
+- **Send Document** — open the Send Fax panel to send a new fax
+- **Filter** — open the filter drawer (a badge shows how many filters are active)
+- **Contact List** — create, edit, and tag contacts, and link fax numbers to facilities and providers. Use **Create Contact** to add one and **Manage Contacts** to review the list.
 
-And can filter faxes by Facility, Provider and Status
+#### Filters
 
-<img src="/images/insights_front_desk/faxing/getting_started_with_faxing/getting_started_with_faxing_5.png" alt="" />
+Open **Filter** to narrow the list by:
+
+- **Facilities**, **Providers**, and **Status** (Success, Failure, In Progress, Queued, Batching, Partial Success, Unknown)
+- **Patient**
+- **Content Types** (inbound faxes)
+- **Creator** (outbound faxes)
+- **From Date** / **To Date**
+- **Sender Fax Number** / **Recipient Fax Number**
+
+#### Resending a Fax
+
+If an outbound fax fails to send, a **Resend Fax** action appears on that fax's row so you can re-send it without recreating it.
+
+### FAQ
+
+<Accordion title="Where do I manage my fax numbers?">
+  Your ported fax numbers live on the **Settings** tab (when enabled for your site), where you can also manage coversheet templates.
+</Accordion>
+
+<Accordion title="How do I resend a fax that didn't go through?">
+  On the **Outbound** tab, find the failed fax and click **Resend Fax** on its row. You can adjust the recipient, sender number, subject, facility, and provider before re-sending.
+</Accordion>

@@ -1,45 +1,42 @@
 ---
 title: "Manage Credit Cards"
+description: "Set default card-saving, add or remove a patient's saved cards, and key in a card manually."
 ---
 
 #### At a Glance
 
-Customers can pay for all kinds of things via credit card in Insights. Saving cards will save hassle of entering information over and over. On the other hand, you’ll always need a way to remove cards that have expired or that customers have requested be removed.
+Saving a patient's card avoids re-entering it every time, and you'll always need a way to remove cards that have expired or that a patient asks you to delete. This guide covers setting the site default for saving cards, toggling it per payment, adding a card without charging, removing a saved card, and keying in a card manually.
 
-This guide explains how to set up Insights to save (or not save) credit cards by default, and how to manually toggle saved cards on or off on a case-by-case basis. It also covers how to add a card to a patient’s profile without charging them, how to remove a saved card, and how to manually enter card information without a card reader.
+#### Set the Site Default for Saving Cards
 
-Open your practice’s [PR Settings](https://insights.athelas.com/v2/patient-responsibility-settings).
+Open your practice's [PR Settings](/insights_front_desk/patient_responsibility/pr_settings). Under the **General** tab, find the **Card Fees** section and toggle **Auto-Save patient credit cards** on or off.
 
-<img src="/images/insights_front_desk/patient_responsibility/manage_credit_cards/manage_credit_cards_1.png" alt="" />
+#### Toggle Card Saving on an Individual Payment
 
-Under the ‘General’ tab, find the ‘Card Fees’ section. Here, you can set the default for your site by toggling `Auto-Save patient credit cards` on or off.
+From the [Appointments](https://insights.athelas.com/appointments) page, choose the patient to charge and open the payment flow. Select **Pay via Credit Card**. If no card is saved, you'll have the option to **Save this Credit Card** as you enter the details. If a card is already saved, you can select the saved card or enter a new one. You can view a patient's saved cards on their profile under **Cards on File**.
 
-<img src="/images/insights_front_desk/patient_responsibility/manage_credit_cards/manage_credit_cards_2.png" alt="" />
+#### Add a Card Without Charging
 
-- **Toggle Card Saving on Individual Payments**From the [Appointments](https://insights.athelas.com/v2/appointments) page, choose the patient you would like to charge. Then, click `Proceed`.
+Open the [patient's profile](/insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile), open the **Cards on File** menu, and click **Add New Card** to key in the card details without charging.
 
-<img src="/images/insights_front_desk/patient_responsibility/manage_credit_cards/manage_credit_cards_3.png" alt="" />
+#### Remove a Saved Card
 
-Select ‘Pay with Credit Card.’ If there are no saved cards on this account, you will have the option to ‘Save this Credit Card’ and then enter the card information.
+Open **Cards on File** on the [patient's profile](/insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile) and click **Remove Card** next to the card you want to delete.
 
-<img src="/images/insights_front_desk/patient_responsibility/manage_credit_cards/manage_credit_cards_4.png" alt="" />
+#### Manually Enter a Card
 
-If there is a card saved, you will have the option to either select a saved card or enter a new card.
+When a card won't swipe or the patient only has the numbers, every payment window (Miscellaneous Charge, Quick Purchase, Pay Balance) includes **Pay via Credit Card** — select it and key in the details for immediate processing.
 
-<img src="/images/insights_front_desk/patient_responsibility/manage_credit_cards/manage_credit_cards_5.png" alt="" />
+<Note>
+  **Pay via Credit Card** is for card payments **not** taken on the **Athelas Card Reader** (which is a separate option in every payment window).
+</Note>
 
-💡You can also view all saved cards associated with the patient on their profile.
+### FAQ
 
-<img src="/images/insights_front_desk/patient_responsibility/manage_credit_cards/manage_credit_cards_6.png" alt="" />
+<Accordion title="How do I stop cards from being saved automatically?">
+  In [PR Settings](/insights_front_desk/patient_responsibility/pr_settings) → **General** → **Card Fees**, turn off **Auto-Save patient credit cards**. You can still save a card on an individual payment.
+</Accordion>
 
-- **Add a Card Without Charging**If you would like to put a card on file without charging it, navigate to the [patient’s profile](/insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile) and click on the ‘Cards on File’ dropdown menu.Then, click `Add New Card`. You can manually enter the card details here.
-
-<img src="/images/insights_front_desk/patient_responsibility/manage_credit_cards/manage_credit_cards_7.png" alt="" />
-- **Remove a Saved Card**To remove a saved card, open the ‘Cards on File’ dropdown menu on the [patient’s profile](/insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile) and click the trash icon next to the card you want to remove.
-
-<img src="/images/insights_front_desk/patient_responsibility/manage_credit_cards/manage_credit_cards_8.png" alt="" />
-- **Manually Enter Card Details for Immediate Processing**Sometimes, a card just won’t swipe/tap/insert properly. Sometimes, patients don’t have their card on them but know its information.For moments like these, you can manually enter credit card information.Every payment window in Insights, from Miscellaneous Charge to Quick Purchase to Pay Balance, will include a `Pay via Credit Card` option. Select that option and then you can manually enter the patient’s card details for immediate processing.
-
-<img src="/images/insights_front_desk/patient_responsibility/manage_credit_cards/manage_credit_cards_9.png" alt="" />
-
-💡`*Pay via Credit Card` is for credit card payments that are not taken by the `Athelas Card Reader` (which is also an option in all payment windows).*
+<Accordion title="Can I store a card without charging the patient?">
+  Yes. On the patient's profile, open **Cards on File** and click **Add New Card**.
+</Accordion>

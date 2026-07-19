@@ -1,32 +1,32 @@
 ---
 title: "How to Resubmit Claim(s)"
+description: "Update and resubmit one or more of a patient's claims directly from their profile."
 ---
 
 ### At a Glance
 
-Insights offers multiple ways to modify and resubmit claims individually and in bulk. This guide shows a quick way to update and resubmit one or more claims for a single patient.
+Insights offers several ways to modify and resubmit claims. This guide covers resubmitting one or more of a single patient's claims from their profile.
 
-### Here’s How to Do It
+<Note>
+  Resubmitting claims from the patient profile may not be enabled for every site. If you don't see the **Resubmit** action, use the biller [resubmit a single claim](/insights_biller/claim_details/how_to_resubmit_a_single_claim) or [resubmit claims in bulk](/insights_biller/claim_details/how_to_resubmit_claims_in_bulk) flows instead.
+</Note>
 
-[Navigate to the patient’s profile](/insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile) and open the `Claims` tab.
+### Here's How to Do It
 
-You can then check the boxes for the claims you’d like to resubmit, then click `Resubmit`.
+[Open the patient's profile](/insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile) and go to the **Claims** tab.
 
-<img src="/images/insights_front_desk/patient_profiles/how_to_resubmit_claims/how_to_resubmit_claims_1.png" alt="" />
+Check the boxes for the claims you want to resubmit, then click **Resubmit**.
 
-In the popup, you can change the Insurance Priority (primary, secondary, tertiary) for Professional, Worker's Comp, Auto, Institutional as well as the Insurance information.
+In the popup, you can change the **Insurance Priority** (primary, secondary, tertiary) for Professional, Workers' Comp, Auto, or Institutional claims, and update the insurance information. You can also **Create New Insurance** here and select it from the dropdown.
 
-You can also `Create New Insurance` in this popup, then select that new insurance from the dropdown menu.
+<Note>
+  When you update insurance information in Insights, update it in your EHR too. Insights imports from your EHR nightly, so you can also update the EHR and wait a day for the new information to appear — reducing the chance of a manual error.
+</Note>
 
-<img src="/images/insights_front_desk/patient_profiles/how_to_resubmit_claims/how_to_resubmit_claims_2.png" alt="" />
+Click **Confirm Resubmission**. A confirmation popup notes that the selected encounters will be marked as **Resubmitted**.
 
-*When updating insurance information in Insights, note that you’ll need to manually update this information in your EHR as well. Insights does import information from your EHR every night, so you could also simply update your EHR and wait a day for the new information to appear, thus reducing the possibility of human error.*
+### FAQ
 
-Click `Confirm Resubmission`. A popup will appear asking for confirmation and noting that the selected encounters will be listed as ‘Resubmitted.’
-
-<img src="/images/insights_front_desk/patient_profiles/how_to_resubmit_claims/how_to_resubmit_claims_3.png" alt="" />
-
-**Features In Development:**
-
-- Modify and resubmit for dental
-- Clean billing type switching for modify and resubmit
+<Accordion title="Can I resubmit claims for more than one patient at once here?">
+  This flow resubmits claims for the single patient whose profile you're on. To work across patients, use the biller [bulk resubmit](/insights_biller/claim_details/how_to_resubmit_claims_in_bulk) flow.
+</Accordion>

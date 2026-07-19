@@ -1,28 +1,28 @@
 ---
 title: "Add/edit Patient's Prior Authorization"
+description: "Add and track a patient's prior authorizations, including auth number, dates, and visit limits."
 ---
 
-Within the Patient Demographics section, to add Prior Authorization, scroll down and click “+ New Prior Auth” under the Prior Authorization section
+#### Adding a Prior Authorization
 
-<img src="/images/insights_front_desk/patient_demographics/addedit_patients_prior_authorization/addedit_patients_prior_authorization_1.png" alt="" />
+From the patient's **Prior Authorization** section, add a new authorization (**+ New Prior Auth** / **Create Authorization**). Enter:
 
-When you click “+ New Prior Auth”, a small window will open up in the middle of your screen. Here you can enter the following fields:
+- **Authorization Number**
+- **Category** — **Pre-Certification** or **Referral**
+- **Insurance** — the insurance this authorization is tied to
+- **Effective Date** and **Expiration Date**
+- **Tracking** — the number of authorized **visits** (or units)
 
-- Auth Number
-- Effective Date
-- Expiration Date
-- Total Number of Visits
-- Insurance this Prior Auth is tied to:
+Save the authorization when done.
 
-<img src="/images/insights_front_desk/patient_demographics/addedit_patients_prior_authorization/addedit_patients_prior_authorization_2.png" alt="" />
+Prior authorizations are also surfaced on the patient's profile and in the **Prior Authorizations** working list, where you can filter, use saved views, and export.
 
-Click “+Create” once you have entered all the desired information
+### FAQ
 
-Also as Faxes come in, you can categorize the fax as a Prior Authorization or Referrals:
+<Accordion title="What's the difference between Pre-Certification and Referral?">
+  They're the two prior-authorization **categories** you can assign when creating an authorization. Choose the one that matches the payer's requirement for the service.
+</Accordion>
 
-<img src="/images/insights_front_desk/patient_demographics/addedit_patients_prior_authorization/addedit_patients_prior_authorization_3.png" alt="" />
-
-**Features In Development**
-
-- Prior authorization tracking by CPT codes and units, auto-update auth workflows, support unit-based authorizations in the working list, and integrate seamlessly into claim submission
-- Send outbound referrals
+<Accordion title="How are visit limits tracked?">
+  Enter the number of authorized visits (or units) when creating the authorization. Athelas tracks usage against that limit and surfaces alerts as it runs low.
+</Accordion>

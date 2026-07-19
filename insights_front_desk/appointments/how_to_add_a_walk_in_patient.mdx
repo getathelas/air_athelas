@@ -2,40 +2,51 @@
 title: "How to Add a Walk-In Patient"
 ---
 
+#### At a Glance
+
+When a patient arrives without a scheduled appointment, use the **Walk-In Patient** flow to create their appointment, run eligibility, and collect payment — all in one place.
+
 #### Here's How to Do It
 
-From the [Appointments](https://insights.athelas.com/v2/appointments) page, click Walk-In Patient.
+From the [Appointments](https://insights.athelas.com/appointments) page, click **Walk-In Patient**. A **Charge Walk-In Patient** window opens and walks you through two steps.
 
-<img src="/images/insights_front_desk/appointments/how_to_add_a_walk_in_patient/how_to_add_a_walk_in_patient_1.png" alt="" />
+##### 1. Select the Patient
 
-A popup will let you choose either Existing Patient or New Patient. If it’s an existing patient, simply select them from the drop-down menu and ensure their information is up to date.
+Choose the **Existing Patient** or **New Patient** tab.
 
-If it's a new patient, enter all their information. There’s a toggle at the bottom of the form to acknowledge accuracy and consistency with your EHR, so **be sure to update your EHR as well**.
+- **Existing Patient** — search for and select the patient, and confirm their information is up to date.
+- **New Patient** — enter the patient's details: **First Name**, Middle Name, **Last Name**, **Date of Birth**, **Gender**, **Phone Number**, and Email. Then choose one of the insurance options:
 
-<img src="/images/insights_front_desk/appointments/how_to_add_a_walk_in_patient/how_to_add_a_walk_in_patient_2.png" alt="" />
+  - **Patient has insurance** — enter the Primary Insurance Company and number (Secondary is optional)
+  - **Patient is self-pay**
+  - **Patient is missing insurance information**
 
-Click Next.
+  Before continuing, check the confirmation toggle that the **First Name, Last Name, and Date of Birth match exactly** to the patient's information in your EHR, so **be sure to update your EHR as well**. If a possible duplicate is detected, you'll be warned and can choose to ignore it and continue.
 
-The Create Appointment form will appear for you to fill. Select a Facility, Provider, and Appointment Date/Time.
+Click **Next**.
 
-<img src="/images/insights_front_desk/appointments/how_to_add_a_walk_in_patient/how_to_add_a_walk_in_patient_3.png" alt="" />
+##### 2. Create the Appointment
 
-Click Next.
+Fill in the appointment details: **Facility**, **Provider**, **Appointment Type** (you can add a new type here if needed), **Appointment Date**, and the start/end time. For an existing patient you can review their most recent insurance and change it if needed.
 
-An automatic eligibility check will run and display a result—Active, Inactive, or Inconclusive. In cases of Inactive or Inconclusive insurance, you can double check that the information entered is correct or move on to the payment page.
+Click **Next**. (If you pick a future date, you'll be asked to confirm.)
 
-<img src="/images/insights_front_desk/appointments/how_to_add_a_walk_in_patient/how_to_add_a_walk_in_patient_4.png" alt="" />
+##### 3. Eligibility & Payment
 
-Click Next.
+An **automatic eligibility check** runs and returns a result — **Active**, **Inactive**, or **Inconclusive**. (Self-pay or missing-insurance walk-ins return **Inconclusive**.) For inactive or inconclusive results, double-check that the entered information is correct, then continue.
 
-You’ll see a popup like the one below, with options for various methods of payment.
+The payment window opens so you can collect a payment. You can also choose to **request payment later** and simply view the new appointment in the [Appointments](https://insights.athelas.com/appointments) page.
 
-<img src="/images/insights_front_desk/appointments/how_to_add_a_walk_in_patient/how_to_add_a_walk_in_patient_5.png" alt="" />
+For quick access afterward, filter the list by **Patient** and start typing the patient's name.
 
-You can also choose to request payment later and simply view the new appointment in the [Appointments](https://insights.athelas.com/v2/appointments) page.
+You've added the walk-in patient to your appointments!
 
-For quick access, simply click Filter > Patient and start typing the patient’s name.
+### FAQ
 
-<img src="/images/insights_front_desk/appointments/how_to_add_a_walk_in_patient/how_to_add_a_walk_in_patient_6.png" alt="" />
+<Accordion title="What happens if the patient is self-pay or has no insurance?">
+  The automatic eligibility check returns **Inconclusive** because there's no coverage to verify. You can still proceed to collect a payment or add the appointment to your schedule.
+</Accordion>
 
-Congratulations, you’ve added the patient to your appointments!
+<Accordion title="Do I still need to add the patient to my EHR?">
+  Yes. The walk-in form asks you to confirm the patient's name and date of birth match your EHR. Always create or update the patient in your EHR so future records stay in sync.
+</Accordion>

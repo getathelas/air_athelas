@@ -4,97 +4,55 @@ title: "How to Run an Eligibility Check"
 
 #### At a Glance
 
-**Eligibility** is the determination of a patient's qualification for healthcare services based on several factors including insurance coverage, benefits and provider network.
+**Eligibility** is the determination of a patient's qualification for healthcare services based on factors such as insurance coverage, benefits, and provider network.
 
-Eligibility checks will come back as Active, Inactive, or Inconclusive.
+Eligibility checks return one of several results — most commonly **Active**, **Inactive**, or **Inconclusive**. You may also see **Not Covered**, **Pending**, **None**, **Self Pay**, or **Site Responsibility**.
 
-Our eligibility runs are service type based, and provide remit analysis and tailored recommendations for Copay, Deductible & Coinsurance
-
-You can have PCP (Primary Care Provider) visibility for select payers
-
-You can map appointments to relevant service types (e.g. office visits, physical therapy, mental health, etc.) by navigating to "PR Settings" —> "Appointment Rules"
-
-<img src="/images/insights_front_desk/appointments/how_to_run_an_eligibility_check/how_to_run_an_eligibility_check_1.png" alt="" />
-
-<img src="/images/insights_front_desk/appointments/how_to_run_an_eligibility_check/how_to_run_an_eligibility_check_2.png" alt="" />
+Checks are service-type based and provide tailored recommendations for copay, deductible, and coinsurance. You can map appointments to relevant service types (for example, office visits, physical therapy, or mental health) under **PR Settings → Appointment Rules**.
 
 #### Inconclusive Eligibility Checks: Possible Causes
 
-- **Not all payers are supported.** We do our best to address these issues by assigning our manual team to look up benefits. If you are still seeing inconclusive results, please flag it to us.
-- **Missing or malformed data.** We occasionally receive data in unrecognizable structures, which then serves incorrect results. Please flag issues so we can find and fix them. We’re continually improving our eligibility results, so flagged errors are very helpful for us to optimize our system.
-- **Rules may be misfiring or missing.** If a rule is too inclusive, it may trigger when it shouldn’t. The Athelas account management team can help assess the scope of your practice’s rules.
-- **Bad mapping.** Occasionally, mis-mappings will lead to inconclusive results. If you’re seeing repeated inconclusive results for a particular insurance, please contact your account manager.
+- **Not all payers are supported.** Our manual team looks up benefits where we can. If you keep seeing inconclusive results, please flag it to us.
+- **Missing or malformed data.** We occasionally receive data in unexpected structures. Flagging issues helps us find and fix them.
+- **Rules may be misfiring or missing.** An overly inclusive rule can trigger when it shouldn't. Your account management team can help assess your practice's rules.
+- **Bad mapping.** Mis-mappings can produce inconclusive results. If a particular insurance repeatedly returns inconclusive, contact your account manager.
 
-### Here’s How to Do It
+### Here's How to Do It
 
-#### For Patients With an Appointment
+#### Re-run Eligibility for an Existing Appointment
 
-Find the patient’s appointment and click the listed insurance you’d like to check.
+Open the appointment's detail page and go to **Eligibility Central**. Here you can review the current result and click **Re-run Eligibility** to run a fresh check, or **See More Details** to view the full benefits response.
 
-<img src="/images/insights_front_desk/appointments/how_to_run_an_eligibility_check/how_to_run_an_eligibility_check_3.png" alt="" />
+You can also click an insurance's eligibility badge directly in the **Insurances** column of the appointment list to open the response and re-run.
 
-A window will appear with eligibility details, as well as a note on the last update to this information in the upper right corner. Click `Re-run` to run another eligibility check.
+<Note>
+  Eligibility can only be run for appointments up to **14 days** in the future.
+</Note>
 
-<img src="/images/insights_front_desk/appointments/how_to_run_an_eligibility_check/how_to_run_an_eligibility_check_4.png" alt="" />
+If a check returns **Inactive**, contact the patient and update their information in your EHR — Insights will pick up the change automatically. If you need it sooner, update the information in your EHR **and** on the [Encounter Details page](https://insights.athelas.com/encounter-details).
 
-If an eligibility check returns a status of inactive, you can contact the patient and update their information in your EHR. Insights will update with the new information within 24 hours.
+#### Run a Check for a Patient Without an Appointment
 
-If you need it sooner, you can update their information BOTH in Insights on the [Encounter Details page](https://insights.athelas.com/encounter-details) AND in your EHR.
+From the [Appointments](https://insights.athelas.com/appointments) page, click **Live Eligibility Check**. A **Run Eligibility Check** drawer opens.
 
-#### For Patients Without an Appointment
+Fill in the patient information, **Insurance Name**, **Provider**, and **Date of Service**. Optionally, you can **Override Service Type** or choose a specific **Source** (clearinghouse) to check against. Then click **Check**.
 
-Navigate to the [Appointments page](https://insights.athelas.com/v3/appointments) and click on `Live Eligibility Check`.
-
-<img src="/images/insights_front_desk/appointments/how_to_run_an_eligibility_check/how_to_run_an_eligibility_check_5.png" alt="" />
-
-Fill in all required information, then click `Check`.
-
-<img src="/images/insights_front_desk/appointments/how_to_run_an_eligibility_check/how_to_run_an_eligibility_check_6.png" alt="" />
-
-Note that it may take up to 30 seconds to see results.
-
-<img src="/images/insights_front_desk/appointments/how_to_run_an_eligibility_check/how_to_run_an_eligibility_check_7.png" alt="" />
-
-In this example, we see an Inactive eligibility result. The next step would be to contact the patient for their latest insurance information and make updates accordingly in your EHR. Athelas will pull the new information from your EHR within 24 hours.
-
-If a result returns Inconclusive, refer to the top of this guide for possible reasons.
+Results open in an **Eligibility Response** drawer (this can take up to about 30 seconds). If the result is **Inactive**, contact the patient for their latest insurance information and update your EHR accordingly. If it's **Inconclusive**, refer to the causes at the top of this guide.
 
 #### ❓Eligibility FAQs
 
-- **Does Insights track visit limits?**Visit limits are not fully supported and not a standard offering of our eligibility check.
-We offer limited functionality with select payers. Please talk to our team to understand further.
+<Accordion title="Which clearinghouses does eligibility use?">
+  Athelas checks eligibility through multiple sources, including **Availity**, **Waystar**, **UHC**, **CHC**, **BCBS**, and **Infinx**. The available sources depend on the payer.
+</Accordion>
 
-- **Does Insights track benefit maximums?**There is a filter on the [Denials page](https://insights.athelas.com/v3/denials) for Denial Reason: Benefit Maximum, so you can view all such current cases. This information is not currently surfaced on individual patient profiles.Currently, Insights does not create a notification when a patient nears their benefit maximum.
+<Accordion title="Does Insights track visit limits?">
+  Visit limits are supported for select payers as part of the eligibility response, not as a standalone offering. Talk to our team to understand coverage for your payers.
+</Accordion>
 
-- **Is there a notification for patients approaching their visit limit, or if there’s an issue?**Yes, but it is currently only shown with the rest of the eligibility information. You’ll need to run an eligibility check to view those details.
+<Accordion title="Can I override the service type for a check?">
+  Yes. When running a live eligibility check, use **Override Service Type** to run the check against a specific service type instead of the default.
+</Accordion>
 
-- **Once a claim is denied due to maxed benefits, is the patient automatically flagged so that the front desk can warn them?**Not as of August 5, 2025.
-
-### Features Supported
-
-- Bulk submitting eligibility to Waystar for all appointments up to 4 days in the future
-- Running medicare checks only in specified medicare windows
-- UHC eligibility integration
-- Ability to run a live eligibility check from Insights
-- Ability to re-run eligibility for an appointment in appointment details
-- Ability for operations to reroute insurance eligibility runs for through payer mappings
-- Rerunning eligibility for appointments that have their insurance info change on the DOS
-- Weekly job for select sites that runs eligibility for patients with recent encounters
-- Auto re-running checks that fail at Waystar
-
-### Features In Development
-
-- Fully integrating availity into batch job
-
-### Features Not Supported
-
-- Live appointment integrations (cannot import appointments schedules &lt;24 hours from current date). Can do it only for AIR EHR
-- Prior Authorization requirements
-- Site responsibility on specifying payers which are Out of Network
-- Automated checks on payers not supported by Waystar or Availity
-
-### Integrations With
-
-- Waystar
-- Availity
-- UHC Payer Portal
+<Accordion title="Why can't I run eligibility for an appointment far in the future?">
+  Eligibility can only be run for appointments up to **14 days** ahead. For appointments further out, run the check closer to the date of service.
+</Accordion>
