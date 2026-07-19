@@ -426,12 +426,12 @@
             "icon": "file-text",
             "tag": "Front Desk",
             "pages": [
-              "insights_front_desk/patient_statements/how_to_spread_pr_statement_emails",
               "insights_front_desk/patient_statements/manage_patient_statements",
-              "insights_front_desk/patient_statements/print_patient_statements",
+              "insights_front_desk/patient_statements/send_patient_statements_via_emailtext",
               "insights_front_desk/patient_statements/send_email_statements",
               "insights_front_desk/patient_statements/send_one_off_paper_statements",
-              "insights_front_desk/patient_statements/send_patient_statements_via_emailtext",
+              "insights_front_desk/patient_statements/print_patient_statements",
+              "insights_front_desk/patient_statements/how_to_spread_pr_statement_emails",
               "insights_front_desk/patient_statements/turn_off_patient_texts"
             ]
           },
