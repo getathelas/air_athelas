@@ -1,51 +1,34 @@
 ---
 title: "How to Refund a Payment"
+description: "Refund a patient payment to credits, the original card, or as an external cash/check refund."
 ---
 
-#### Walkthrough
+#### How to Refund a Payment
 
-Navigate to the patient’s profile.
+1. Open the patient's profile. Find the payment on the **Charges** or **Transaction History** tab and click **View Details**.
+2. On the transaction details, find the transaction and click **Refund Payment**.
+3. Specify whether it's a full or partial refund, the refund method, the amount (if partial), and the reason.
+4. Click **Refund**.
 
-There are two ways you can view the payment: the Charges tab, or the Transaction History tab.
+##### Refund Methods
 
-The process is the same for both. For this example, we’ll use the Charges tab.
+- **Add Credit to Patient's Account** — the payment becomes credits, applied to future balances.
+- **Refund to Credit Card (via Stripe)** — for payments originally made on a Stripe card reader from Athelas.
+- **Record External Refund (Cash/CC)** — record a cash or credit-card refund taken outside the Athelas card reader.
+- **Record External Check Refund** — record that you refunded the patient by check.
 
-Look for the transaction in question and click `View Details`.
+A new row appears in the transaction table for the refund. If you refunded to credits, the credit appears on the patient's **Credits** tab.
 
-<img src="/images/insights_front_desk/patient_responsibility/how_to_refund_a_payment/how_to_refund_a_payment_1.png" alt="" />
+<Warning>
+  **Leftover PR:** Refunding a payment does **not** remove the patient responsibility tied to it. For example, a \$75 self-pay payment creates \$75 of PR; refunding the \$75 payment leaves the \$75 PR as a balance due. To remove both, [cancel the PR](/insights_front_desk/patient_responsibility/how_to_cancel_pr) on the Charges tab as well.
+</Warning>
 
-### Refund the Payment
+### FAQ
 
-On the Transaction Details table, find the specific transaction you want to refund and click the `Refund Payment` button.
+<Accordion title="How do I refund a card payment taken on the Athelas reader?">
+  Choose **Refund to Credit Card (via Stripe)** — this refunds the original card for payments made on the Athelas card reader.
+</Accordion>
 
-<img src="/images/insights_front_desk/patient_responsibility/how_to_refund_a_payment/how_to_refund_a_payment_2.png" alt="" />
-
-Specify whether this is a full or partial refund, the method of refund, amount (if partial), and reason for the refund in the popup.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_refund_a_payment/how_to_refund_a_payment_3.png" alt="" />
-
-When selecting the Refund Method, you have the following options:
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_refund_a_payment/how_to_refund_a_payment_4.png" alt="" />
-
-- **Add Credit to Patient’s Account**This payment will become credits on the patient’s account, and will be applied to future balances due.
-- **Refund to Credit Card (via Stripe)**If a patient originally paid with their credit card via the Stripe card reader provided by Athelas, this is the go-to option for straightforward refunds!
-- **Record External Refund (Cash/CC)**This is how you record a cash or credit card refund (if the card payment was taken outside of the Athelas card reader).
-- **Record External Check Refund**If you’re choosing to pay the patient back with a check, use this option to record that the refund has taken place.
-Once you’ve entered all the necessary information, click `Refund`.
-
-### Refund Complete!
-
-You should now see a new row in the transaction table showing the refund you just triggered.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_refund_a_payment/how_to_refund_a_payment_5.png" alt="" />
-
-If you refunded to credits, that new credit will appear in the  patient's ‘Credits’ tab.
-
-**Important Note: Leftover PR**
-
-When you refund a payment in Athelas Insights, that does not automatically remove any patient responsibility associated with the payment
-
-For example, when you collect a \$75 Self-Pay payment for an appointment, Athelas automatically creates a \$75 unit of PR linked to the payment. If you then refund the \$75 payment, that leaves behind the PR creating a balance due.
-
-To erase *both the payment and its implied PR*, you will need to go into the Charges tab and cancel the PR as well.
+<Accordion title="I refunded a self-pay payment but the patient still shows a balance. Why?">
+  Refunding doesn't remove the associated PR. Go to the **Charges** tab and [cancel the PR](/insights_front_desk/patient_responsibility/how_to_cancel_pr) to clear the balance.
+</Accordion>

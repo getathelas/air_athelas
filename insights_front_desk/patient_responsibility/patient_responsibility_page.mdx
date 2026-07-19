@@ -1,103 +1,53 @@
 ---
 title: "Patient Responsibility Page"
+description: "Tour the Patient Responsibility page: analysis metrics, patient/transaction views, and the Actions menu."
 ---
 
 ### At a Glance
 
-The [Patient Responsibility page](https://insights.athelas.com/v2/patient-responsibility) on Insights details all the information you need to assess, track down and collect outstanding PR balances.
+The [Patient Responsibility page](https://insights.athelas.com/v2/patient-responsibility) has everything you need to assess, track, and collect outstanding PR balances. This guide covers the basics; related guides are linked throughout.
 
-There’s a lot of information on this page, so this guide sticks to the basics. Relevant guides with more information are linked as appropriate.
+## Analysis
 
-## Overview
+At the top of the page, expand or collapse the **Analysis** window to see, at a glance:
 
-#### Analysis
+- **Total Patient Collections**
+- **Total Outstanding PR**
+- **Patients With Outstanding Balance**
+- **Paid from Last Batch Reminder**
 
-At the top of the Patient Responsibility page, you can click to expand or collapse the Analysis window.
+Two charts — **Age of Balance** and **Total Amount Owed** — can be toggled between dollar amount and number of patients, and exported with **Download CSV**.
 
-<img src="/images/insights_front_desk/patient_responsibility/patient_responsibility_page/patient_responsibility_page_1.png" alt="" />
+## Views
 
-Here you can view, at a glance, the total patient collections, total outstanding PR, the number of patients with outstanding balance, and the amount paid from the most recent statement batch reminder.
+- **Patient View** — a list of patients with their **Last Contacted** date, **Current Balance**, and **Credits**. Search by DOB, phone #, or name, sort by any column, and toggle filters like **Has Available Credits** and **Has Locked Credits**. Click a patient to open their profile, or use **Pay Balance** to collect.
+- **Locked Credits** — credits held against a specific date of service.
+- **Customer View** — completed transactions for non-patients or charges not tied to an appointment (for example, gift cards or retail product purchases). Download/print receipts or refund payments.
+- **Transaction View** — view and filter all transactions; download/print receipts, expand a transaction for detail, and export a transaction report as CSV.
+- **Gift Cards** — gift-card details (creation date, purchaser, redemption code, original/used/remaining amounts).
 
-The two bar graphs display Age of Balance and Patient Total Balance, respectively. They can be toggled to show either the dollar amount or the number of patients.
+<Note>
+  Refunding payments may be limited to Billing Managers and Administrators.
+</Note>
 
-You can also click ‘Download CSV’ on either of these graphs to analyze the data in a spreadsheet.
+## Actions Menu
 
-### Tabs Available
+From **Patient View**, the **Actions** menu (upper right) offers:
 
-### Patient View
+- **Generate Patient Pay Link** — copies a patient pay link to your clipboard to share.
+- **Miscellaneous Charge** — create a new [miscellaneous charge](/insights_front_desk/patient_responsibility/how_to_set_up_miscellaneous_line_item_charges) (this does not collect an existing balance or copay/coinsurance/deductible).
+- **Set Up Payment Plan** — create a [payment plan](/insights_front_desk/patient_responsibility/setting_up_a_payment_plan).
+- **Patient Balance Report** — download a CSV of balances for the current filters.
+- **PR Settings** — open your [PR Settings](/insights_front_desk/patient_responsibility/pr_settings).
 
-The Patient View tab shows a list of all patients, when they were last contacted, their current balance, and any unapplied credits they may have.
+When you select patients, a **Bulk Actions** menu lets you **Download Patient Statement**.
 
-<img src="/images/insights_front_desk/patient_responsibility/patient_responsibility_page/patient_responsibility_page_2.png" alt="" />
+### FAQ
 
-Click on any of these headings to sort the list in ascending or descending order of that heading.
+<Accordion title="Where do I collect an outstanding balance?">
+  Open the patient (via **Patient View** or their profile) and use **Pay Balance**. The **Miscellaneous Charge** action creates a new charge — it doesn't collect an existing balance.
+</Accordion>
 
-<img src="/images/insights_front_desk/patient_responsibility/patient_responsibility_page/patient_responsibility_page_3.png" alt="" />
-
-If you’d like to see those with outstanding balance only, outstanding credits only, and/or held PR only, you can toggle these options on or off under the ‘Filter’ section.
-
-<img src="/images/insights_front_desk/patient_responsibility/patient_responsibility_page/patient_responsibility_page_4.png" alt="" />
-
-Use the filters for Patient, DOB/Phone/Name, Age of Balance, or Patient Total Balance to aid your search. In this example, we’ll search by Patient.
-
-<img src="/images/insights_front_desk/patient_responsibility/patient_responsibility_page/patient_responsibility_page_5.png" alt="" />
-
-Now, we can see only this patient’s information in the list.
-
-From here, we can either have the patient pay their balance or click into their profile and see further details about their account, such as an itemized list of charges.
-
-<img src="/images/insights_front_desk/patient_responsibility/patient_responsibility_page/patient_responsibility_page_6.png" alt="" />
-
-Clicking into this patient opens their patient profile, where more details and actions are available.
-
-### Actions Menu
-
-Returning to the Patient View tab, you’ll see the ‘Actions’ menu in the upper right corner.
-
-Click to view the options at your disposal.
-
-<img src="/images/insights_front_desk/patient_responsibility/patient_responsibility_page/patient_responsibility_page_7.png" alt="" />
-
-- **Generate Patient Pay Link**
-
-- Click here and a patient pay link will be copied to your clipboard.
-- Paste it into a new browser tab. From here, patients can pay PR.
-
-<img src="/images/insights_front_desk/patient_responsibility/patient_responsibility_page/patient_responsibility_page_8.png" alt="" />
-
-- **Miscellaneous Charge**
-
-- Click here to create **new miscellaneous charges only** for a patient, to be collected now or added to their balance and collected later.
-- *Please note:* - *You **cannot collect outstanding balance** from this interface. Please use the 'Pay Balance' button on the Patient's profile.*
-- *You **cannot collect co-pay, coinsurance, or deductible** from this interface. Please use the 'Appointments' Tab. Any charges created here will **not** apply to any PR created from an adjudicated claim*
-- *Using this tool will create both a **payment** and a **corresponding charge**. It will not pay off the patient's existing balance.*
-
-- **Patient Balance Report**Set filters for the information you want to see and click ‘Patient Balance Report’ to download a CSV file that you can open in Excel or another spreadsheet viewer.This is useful for manually analyzing large amounts of data.
-- **PR** **Settings**This button is one of many ways to access your Patient Responsibility settings in Insights. This is an extremely important page on which you can configure default settings for handling credit cards, PR-related patient communications, Pre Visit suggestions, and much more.
-
-- **Quick Customer View**
-
-This tab shows all completed transactions involving people who are not patients of your practice, or charges otherwise unassociated with appointments. Gift cards or specialty health product purchases show up here, for example.
-
-- You have the options to download or print their receipt, or refund their payment.
-- *Note that the refunding payments feature may only be available to Billing Managers and Administrators.*
-
-- **Transaction View**View and filter through all transactions here. You can download or print receipts for specific transactions, and click to expand a transaction to see more details.Note that the Refund Payment function may be restricted to Billing Managers and Administrators only.
-You can also set filters and download a CSV of a transaction report to view and edit in a spreadsheet format.
-
-- **Gift Cards**See all details on gift cards here, including Date of Creation, Purchaser Name, Redemption Code, Original Amount, Amount Used, and Remaining Amount.
-
-#### Features Supported across Patient Charges:
-- Create a pre-visit charges based on eligibility suggestions
-- Accept a payment via card reader, punching in card information, cash/check
-- Add charges to the patient’s balance to be paid later
-- Create gift cards that can be redeemed later
-- Charge multiple family members at once
-- Add discounts and processing fees to patient payments
-- Charge walk-in patients
-- Send payment links via text and email
-- Set up payment plans and subscriptions
-- Manually audit remittance PR before sending to the patient
-- Partially or fully pay outstanding balances
-- Set up custom line items
-- Set up custom write-off reasons
+<Accordion title="Why can't I refund a payment?">
+  Refunding may be restricted to Billing Managers and Administrators. Ask an administrator if you need access.
+</Accordion>

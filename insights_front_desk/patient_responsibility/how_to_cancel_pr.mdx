@@ -1,49 +1,37 @@
 ---
 title: "How to Cancel PR"
+description: "Cancel patient responsibility that should never have existed, and understand which PR is cancelable."
 ---
 
-#### What PR is Cancelable?
+#### What PR Is Cancelable?
 
-Cancelling patient responsibility removes it entirely, as if it never existed. For this reason, some types of PR can be cancelled and others cannot.
+Cancelling PR removes it entirely, as if it never existed — so some PR can be cancelled and some can't.
 
-**Cancelable PR:** Any type of patient responsibility that was created by your team, or that did not originate from a remittance, can be cancelled. For example:
+**Cancelable** — PR created by your team, or not derived from a remittance:
 
-- Self-Pay PR Created when your team collects self-pay payments.
-- Custom Charges Any custom PR types that your team has created in Insights.
-- Placeholder PR When you collect up-front copay, coinsurance, or deductible, Athelas creates placeholder PR which will be replaced once a Remittance comes in.
-These can be cancelled, but will be replaced once a remittance arrives.
+- **Self-Pay PR** created when your team collects self-pay payments
+- **Custom charges** your team created in Insights
+- **Placeholder PR** created when you collect up-front copay, coinsurance, or deductible (this can be cancelled, but is replaced once a remittance arrives)
 
-**Non-Cancelable PR**: Once we get a remittance, the **PR derived from that remittance can no longer be cancelled**. However you can still update that PR in 2 ways:
+**Non-cancelable** — once a remittance arrives, the PR derived from it can no longer be cancelled. You can still:
 
-- **Write Off PR:** You have the option to reduce the amount of PR due. This is distinct from cancellation in that you are saying that the PR is still due, but your team has accepted that some/all of it will never be paid (vs. it should have never existed in the first place).
-- **Upload a New Remittance:** If the claim’s remittance information is incorrect or out of date leading to incorrect PR, you can upload a new EOB/Remittance. Once the new remit data is imported, the claim’s PR will automatically update overnight based on the newly imported data.
+- **[Write Off PR](/insights_front_desk/patient_responsibility/how_to_write_off_pr)** — reduce the amount due (the PR is still due, but you accept some/all won't be paid)
+- **Upload a new remittance** — if the remit data is wrong, upload a new EOB/remittance and the PR updates overnight
 
-### Here’s How to Do It
+#### How to Cancel PR
 
-Navigate to the patient’s profile.
+1. Open the patient's profile and, on the **Charges** tab, click **View Details** on the charge.
+2. Click **Cancel PR**.
+3. In the window, select any or all parts of the PR to cancel, then click **Confirm**.
 
-Under the Charges tab, find the row you want to cancel and click ‘View Details’.
+The cancelled PR no longer appears in the charges list.
 
-<img src="/images/insights_front_desk/patient_responsibility/how_to_cancel_pr/how_to_cancel_pr_1.png" alt="" />
+#### Troubleshooting
 
-Click the **‘Cancel PR’** button.
+If the **Cancel PR** button is disabled but you expect the PR to be cancelable, hover over it for a tooltip. Most often the PR has already been paid — [refund the payment](/insights_front_desk/patient_responsibility/how_to_refund_a_payment) first.
 
-<img src="/images/insights_front_desk/patient_responsibility/how_to_cancel_pr/how_to_cancel_pr_2.png" alt="" />
+### FAQ
 
-This will open the **cancel patient responsibility window.** Select any or all parts of the PR you wish to cancel. Then click the **‘Confirm’** button ****to finalize your cancellation.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_cancel_pr/how_to_cancel_pr_3.png" alt="" />
-
-### Cancellation Complete!
-
-You will now be returned to the Charges sub-tab, and the PR you cancelled should no longer appear in the list of charges. Nice work!
-
-## Troubleshooting
-
-**Help! It still won’t let me cancel PR!**
-
-If the PR you’re trying to cancel has a *disabled ‘*Cancel PR’ button but you know it should be cancelable, hover your mouse over the button to get a **tooltip** that will explain what the issue is.
-
-Most often the PR has already been paid, and the payment will need to be refunded before the PR can be cancelled. See guide on [How to refund a payment](https://www.notion.so/How-to-Refund-a-Payment-to-a-Patient-3518419fa52d41078e02d2cdccf8cc87?pvs=21).
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_cancel_pr/how_to_cancel_pr_4.png" alt="" />
+<Accordion title="What's the difference between cancelling and writing off PR?">
+  Cancelling erases PR that should never have existed; writing off keeps the PR on record but accepts it won't be collected. Remittance-derived PR can't be cancelled — write it off instead.
+</Accordion>

@@ -1,82 +1,39 @@
 ---
 title: "How to Request via Text or Email"
+description: "Manually send a single patient a payment request by text or email from their profile."
 ---
 
 ### At a Glance
 
-Your patients will automatically receive text message requests for payment on a regular basis, provided that your practice has **email and** **text messages enabled** in your [patient statement settings](https://insights.athelas.com/v2/pr-statements).
+Use this when you want to send **one patient** a payment request right now — for example, if they left without paying their copay, or want to pay by card immediately.
 
-If, however, a patient would like to pay with a credit card now, or if they left your office without paying their copay, you can manually send them a request for payment via text message or email.
+<Note>
+  This is different from **patient statements**. This page covers a **manual, per-patient** payment request from the patient's profile. Recurring, batch statement delivery is configured separately — see [Manage Patient Statements](/insights_front_desk/patient_statements/manage_patient_statements).
+</Note>
 
-Apple Pay is available if the patient would like to pay via text message.
+### How to Do It
 
-You can also send appointment reminders with options to pay co-pay, coinsurance, deductible, or outstanding balances in advance.
-
-### Here’s How to Do It
-
-Navigate to the patient’s profile.
-
-In the ‘Charges’ tab, click `Pay Balance`.
-
-**Note:** this button will be disabled if the patient does not currently have a balance.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_request_via_text_or_email/how_to_request_via_text_or_email_1.png" alt="" />
-
-Select the option to **“Request Payment via Text.”**
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_request_via_text_or_email/how_to_request_via_text_or_email_2.png" alt="" />
-
-Click `Confirm`. A request for payment will automatically be generated and sent via text or email within 5 minutes.
+1. Open the patient's profile and, on the **Charges** tab, click **Pay Balance**. (Disabled if the patient has no balance.)
+2. Choose **Request Payment via Text** (or email).
+3. Click **Confirm**. The request is sent within a few minutes.
 
 ### What the Patient Sees
 
-#### Payment Request via Text Message
+- **Text** — a payment request with options to pay by credit card or Apple Pay. Opening the link, the patient confirms, receives an authentication code (text and email), then reviews the summary, adjusts the amount if allowed, and checks out.
+- **Email** — options to pay online (payment link), by phone, or in person. The online link follows the same authenticate → review → checkout flow.
 
-The text message payment request provides options to pay with a credit card or Apple Pay.
+You can customize the request text in [PR Settings](/insights_front_desk/patient_responsibility/pr_settings) → **General** → **Text Message Customization**.
 
-<img src="/images/insights_front_desk/patient_responsibility/how_to_request_via_text_or_email/how_to_request_via_text_or_email_3.png" alt="" />
+<Tip>
+  ✨**Smart Tip:** At the end of each day, check for patients who didn't pay their copay and send a same-day request — patients are more likely to trust a text that arrives the day of their visit.
+</Tip>
 
-You can customize the text message your patients will receive. To do this, navigate to your [PR Settings](https://insights.athelas.com/v2/patient-responsibility-settings), select the General tab, and scroll down to the Text Message Customization section. If you’d like more details on this feature, please see [this guide](/insights_front_desk/patient_responsibility/pr_settings).
+### FAQ
 
-<img src="/images/insights_front_desk/patient_responsibility/how_to_request_via_text_or_email/how_to_request_via_text_or_email_4.png" alt="" />
+<Accordion title="How is this different from sending a statement?">
+  This sends an immediate, one-off payment request to a single patient from their profile. Statements are the automated, batched billing communications configured in [Patient Statements](/insights_front_desk/patient_statements/manage_patient_statements).
+</Accordion>
 
-Upon opening the link in the text, patients will tap `Confirm` to receive a confirmation code by text and email.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_request_via_text_or_email/how_to_request_via_text_or_email_5.png" alt="" />
-
-Once they input the code, they’ll see the payment summary. The amount to be paid will default to the total balance, but they have the option to adjust the amount they’d like to pay today.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_request_via_text_or_email/how_to_request_via_text_or_email_6.png" alt="" />
-
-After tapping `Go to Checkout`, they’ll choose their payment option and input their payment details, if applicable.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_request_via_text_or_email/how_to_request_via_text_or_email_7.png" alt="" />
-
-#### Payment Request via Email
-
-The email payment request offers three ways for the patient to pay: online, by phone, or in person.
-
-The online option includes a patient payment link.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_request_via_text_or_email/how_to_request_via_text_or_email_8.png" alt="" />
-
-Upon clicking the online payment link, patients will tap `Confirm` to receive a confirmation code by text and email.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_request_via_text_or_email/how_to_request_via_text_or_email_9.png" alt="" />
-
-Once they input the code, they’ll see their charge summary. Here, they can adjust the amount they’d like to pay today before clicking `Go to Checkout`.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_request_via_text_or_email/how_to_request_via_text_or_email_10.png" alt="" />
-
-The checkout screen allows them to select a card on file, if applicable, or to add a new card and pay with it.
-
-<img src="/images/insights_front_desk/patient_responsibility/how_to_request_via_text_or_email/how_to_request_via_text_or_email_11.png" alt="" />
-
-### In Conclusion
-
-At the end of the day, **check to see if any patients didn’t pay their copays**. If so, send them a text message request for payment to give them a belated opportunity to pay. This can catch a lot of lost revenue, and patients are more likely to trust the text message if it comes the same day as their appointment.
-
-**Features Supported:**
-
-- Send out communication to multiple patients at once
-- Filter patients that will receive communication by appointment date ranges, providers, patients and insurances
+<Accordion title="Can patients pay by Apple Pay?">
+  Yes — Apple Pay is available on the text-message payment request.
+</Accordion>
