@@ -300,17 +300,10 @@
             "icon": "calendar",
             "tag": "Front Desk",
             "pages": [
-              "insights_front_desk/appointments/adding_prior_auth_and_alerting",
-              "insights_front_desk/appointments/alternate_methods_for_scheduling",
-              "insights_front_desk/appointments/appt_features_not_supported",
+              "insights_front_desk/appointments/the_insights_appointments_page",
               "insights_front_desk/appointments/how_to_add_a_walk_in_patient",
               "insights_front_desk/appointments/how_to_run_an_eligibility_check",
-              "insights_front_desk/appointments/how_to_schedule_an_appointment",
-              "insights_front_desk/appointments/how_to_take_payments",
-              "insights_front_desk/appointments/sending_out_reminders_and_forms",
-              "insights_front_desk/appointments/the_insights_appointments_page",
-              "insights_front_desk/appointments/understanding_appointment_details",
-              "insights_front_desk/appointments/updating_appointment_statuses"
+              "insights_front_desk/appointments/how_to_take_payments"
             ]
           },
           {

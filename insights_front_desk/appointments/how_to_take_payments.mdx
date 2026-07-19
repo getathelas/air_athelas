@@ -4,99 +4,59 @@ title: "How to Take Payments"
 
 ### At a Glance
 
-Sometimes you’ll need to show patients (or non-patients) a breakdown of what they’ve paid, either for that day, or for a date of service two years ago because their lawyer requested it.
+Whether you're collecting a copay at check-in, taking payment toward an outstanding balance, or selling a product to a non-patient, payments in Insights all run through the same **payment flow**. This guide covers how to take a payment, distribute a receipt, and handle quick (non-patient) purchases.
 
-Here’s how to find receipts for those payments and the options at your disposal for receipt distribution in Insights.
+*You can manually download, print, and send receipts via text or email for any current or past transaction. Note that you cannot automatically send receipts for past transactions.*
 
-*Please note that while you can manually download, print, and send receipts via text or email on all current and past transactions, **you will not be able to automatically send receipts via text or email for past transactions**.*
+### Here's How to Do It
 
-### Here’s How to Do It
+#### Take a Payment and Create a Receipt
 
-#### Take Payment and Create a Receipt for a Patient
+You can collect a payment from several places — the **Charge** button on the [Appointments](https://insights.athelas.com/appointments) page, the [Patient Responsibility page](/insights_front_desk/patient_responsibility/patient_responsibility_page), or a patient's profile. The flow is the same in each case.
 
-You can access patient payment records in a number of ways on Insights. For the purposes of this tutorial, we’ll simply go through the [Patient Responsibility page](https://insights.athelas.com/v2/patient-responsibility), though the process is essentially the same from the Appointments page or the patient profile.
+Select the charge(s) to collect, then choose a **Payment Method**:
 
-First, choose a patient with an outstanding balance and click ‘Pay Balance.’
+- **Send Payment Link** — email or text the patient a secure link to pay
+- **Pay via Credit Card** — use a saved card or add a new one
+- **Athelas Card Reader** — charge an in-person Stripe card reader
+- **Record Payment** — log a payment taken outside Athelas: **By Cash**, **By Check**, a **Non-Athelas Card Reader**, or a **Custom** method
+- **Add to Patient's Balance** — leave the charge outstanding to collect later
+- **Pay with Credits** or **Pay with Gift Card** — when the patient has an available balance
 
-<img src="/images/insights_front_desk/appointments/how_to_take_payments/how_to_take_payments_1.png" alt="" />
+You can also **Add a Discount** or **Apply Credits**, and — if the account has a guarantor — choose who to bill using the **Pay As** selector.
 
-Next, fill out the amount the patient would like to pay towards their outstanding balance. You can apply credits if applicable, and if the patient wants to do so.
+<Warning>
+  If you take an external payment and don't record it in Athelas, future patient-responsibility collection will be inaccurate, because Athelas won't know what has already been paid. Always record external payments.
+</Warning>
 
-If the account has a guarantor, they will be listed in the 'Pay As' dropdown as well as the patient.
+Once payment is confirmed, you'll see a **Payment Successful** screen with the option to **Send Receipt** (by email or text), **Download Receipt**, or **Print Receipt**.
 
-Then, choose the method of payment. For this example, we’ll say the patient is paying \$20 in cash toward their overall balance. Click ‘Confirm.’
+#### Find Receipts for Previous Payments
 
-<img src="/images/insights_front_desk/appointments/how_to_take_payments/how_to_take_payments_2.png" alt="" />
+Go to the patient's profile and open the **Charges** tab. Find the date of service you need and click **View Details**, then **Download** or **Print** the receipt. You can filter by date of service, provider, or paid status to narrow your search.
 
-*Note that partial payments towards outstanding balance will be applied to the largest individual charge first.*
+#### Take a Quick Purchase (Non-Patient) Payment
 
-You now have the option to ‘Send,’ ‘Download,’ or ‘Print’ a receipt.
+For a sale to someone who isn't a patient — or a one-off product sale — click **Quick Purchase** on the [Appointments](https://insights.athelas.com/appointments) page.
 
-<img src="/images/insights_front_desk/appointments/how_to_take_payments/how_to_take_payments_3.png" alt="" />
+In the window that appears, check **Sell to non patient** and fill in the customer's information (or leave it unchecked to charge an existing patient). Add the line items, choose a payment method, and confirm. You'll be able to print or send a receipt.
 
-For this example, we’ll download the receipt. The PDF is shown below.
-
-<img src="/images/insights_front_desk/appointments/how_to_take_payments/how_to_take_payments_4.png" alt="" />
-
-####
-
-#### Receipts for Previous Patient Payments (from the Patient’s Profile)
-
-Go to the profile of the patient in question.
-
-Under the ‘Charges’ tab, find the row for the date of service for which you would like a receipt and click `View Details`.
-
-<img src="/images/insights_front_desk/appointments/how_to_take_payments/how_to_take_payments_5.png" alt="" />
-
-*You can filter by Date of Service and/or Provider to narrow down your search if necessary. You can also try searching only Paid charges.*
-
-Next, you’ll have the option to Download or Print the receipt.
-
-<img src="/images/insights_front_desk/appointments/how_to_take_payments/how_to_take_payments_6.png" alt="" />
-
-In this example, we’ll download the receipt. The PDF we get looks like this:
-
-<img src="/images/insights_front_desk/appointments/how_to_take_payments/how_to_take_payments_7.png" alt="" />
-
-Done! Now, you can email this receipt as an attachment to the patient, payer, or whoever needs it.
-
-#### Take a Payment and Find Receipts for Quick Purchase Customers (i.e. Non-Patient Payments)
-
-On the [Appointments page](https://insights.athelas.com/v3/appointments), select `+ Quick Purchase`.
-
-<img src="/images/insights_front_desk/appointments/how_to_take_payments/how_to_take_payments_8.png" alt="" />
-
-In the window that appears, select the `Sell to non patient` box and fill in the customer’s information. For this example, the customer will pay in cash.
-
-<img src="/images/insights_front_desk/appointments/how_to_take_payments/how_to_take_payments_9.png" alt="" />
-
-Once you `Confirm` the purchase, you will have the opportunity to print or send a receipt to the purchaser.
-
-The payment will show up in the `Quick Customer View` on the [Patient Responsibility page](https://insights.athelas.com/v2/patient-responsibility) with all the other non-patient transactions.
-
-In the Action column, you can Download Receipt, Print Receipt, or Refund Payment.
-
-<img src="/images/insights_front_desk/appointments/how_to_take_payments/how_to_take_payments_10.png" alt="" />
-
-Done!
+Non-patient payments appear in the **Quick Customer View** on the [Patient Responsibility page](/insights_front_desk/patient_responsibility/patient_responsibility_page) alongside other non-patient transactions, where you can download or print a receipt or refund the payment.
 
 ### FAQ
 
-- **Can I operate the Stripe card reader with different computers?**
+<Accordion title="Can I operate the Stripe card reader with different computers?">
+  Yes. You can move the Stripe card reader between computers in your office that meet the [minimum system requirements](https://docs.stripe.com/terminal/payments/setup-reader). The reader just needs internet access to work.
+</Accordion>
 
-- Yes, you can swap the Stripe card reader around with other computers in your office that meet the [minimum system requirements](https://docs.stripe.com/terminal/payments/setup-reader). The only condition is that the Stripe card reader must have Internet access to work properly.
+<Accordion title="How are partial payments applied?">
+  A partial payment toward an outstanding balance is applied to the largest individual charge first.
+</Accordion>
 
-#### Integrations With:
+<Accordion title="What if my card reader is down?">
+  You can still collect a card payment. Choose **Pay via Credit Card** and enter the patient's card details manually.
+</Accordion>
 
-- Stripe
-- Support for card reader terminals to process in-person payments
-- Ability to charge saved credit cards for faster checkout
+#### Integrations
 
-#### Features In Development
-
-- **Nationwide Collections Agency Integration** – Streamlined collections support across all 50 states
-
-#### Features Not Supported
-
-- Writing back payments to the EHR
-- Syncing payments from the EHR into Insights
+- **Stripe** — including support for in-person card reader terminals and charging saved cards for faster checkout
