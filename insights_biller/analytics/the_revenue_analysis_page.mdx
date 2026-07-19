@@ -26,13 +26,11 @@ Each section that follows has a ‘**Download CSV**’ button in the top right c
 
 <img src="/images/insights_biller/analytics/the_revenue_analysis_page/the_revenue_analysis_page_2.png" alt="" />
 
-This bar chart shows the combined amounts paid by insurers and patients each month. It will default to show results by date posted, though you can also show results by Check Date or Date of Service, as shown below.
+This bar chart shows the combined amounts paid by insurers and patients each month, split into **Insurance Paid** and **Patient Paid**. By default it shows results by date posted, though you can switch to **Check Date** or **Date of Service** using the selector in the top right.
 
 <img src="/images/insights_biller/analytics/the_revenue_analysis_page/the_revenue_analysis_page_3.png" alt="" />
 
-The benefit of showing results by Date of Service is that you can see how the total paid compares with the total projected amount your practice should be paid. Along with Insurance Paid and Patient Paid, these bars also show the total amount pending from patients as well as payers.
-
-If, for example, you notice that the gap between actual dollars paid and projections are steadily widening month to month, you can use that information to find the root cause. This may involve improving PR collection strategies at the front desk, or contacting payers that have fallen behind on reconciliations.
+Comparing months by Date of Service versus Date Posted can help you surface trends over time. For example, if you notice a widening gap between services rendered and payments posted month to month, you can use that information to find the root cause. This may involve improving PR collection strategies at the front desk, or contacting payers that have fallen behind on reconciliations.
 
 ###
 
@@ -40,7 +38,7 @@ If, for example, you notice that the gap between actual dollars paid and project
 
 <img src="/images/insights_biller/analytics/the_revenue_analysis_page/the_revenue_analysis_page_4.png" alt="" />
 
-The Payments by Segment tool allows you to analyze how much total revenue is generated over a period of time by individual payers, facilities, insurance providers, CPT codes, line items, and users.
+The Payments by Segment tool allows you to analyze how much total revenue is generated over a period of time by individual providers, facilities, insurance companies, CPT codes, line items, and users.
 
 Having these kinds of real-time metrics at your fingertips allows you to pinpoint, for example, which providers or new CPT codes are either underperforming or doing particularly well, so that you can highlight effective practices to your team and focus assistance where it is needed most.
 
@@ -65,7 +63,7 @@ Keep an eye on any unexpected dips in PR collection. This can signal a need for 
 
 Ideally, all PR would be collected at the front desk on the date of service, though it is common knowledge that this is not a realistic expectation.
 
-The Front Desk Collections section provides both the total percentage of PR collected and uncollected, as well as filters to show how specific facilities, providers, and users are performing.
+The Front Desk Collections section provides both the total percentage of PR collected and uncollected. The **Segments** view breaks performance down **By Facility** or **By Provider**, while the **Weekly** view can be filtered by facility, provider, and user.
 
 Again, you can use this information to highlight effective practices to your team and troubleshoot underperformance.
 
@@ -77,11 +75,11 @@ Again, you can use this information to highlight effective practices to your tea
 
 The claims waterfall section details how many encounters turn into paid claims at your practice, and the amount of attrition at each step of that process. From left to right, for each adjustable time period, you can see:
 
-- The total number of encounters
-- The number of claim submissions resulting from those encounters
-- How many of those claim submissions passed all technical checks by our clearinghouse
-- The number of claims reconciled, and finally
-- How many were paid in full.
+- The total number of encounters (**# Encounters**)
+- How many resulted in a claim submission (**# With A Submission**)
+- How many were reconciled (**# With A Reconciliation**)
+- How many received a payer decision (**# With A Decision**), and finally
+- How many resulted in an insurance payout (**# With An Insurance Payout**)
 Using this graph can show you which stage of the process results in the greatest claims drop-off, empowering you to zero in on root issues more quickly.
 
 ###
@@ -110,20 +108,15 @@ If you notice your first pass rate dips significantly, talk to your account mana
 
 <img src="/images/insights_biller/analytics/the_revenue_analysis_page/the_revenue_analysis_page_10.png" alt="" />
 
-Last but not least, this chart shows the percentage of claims with an insurance payout. Watching for dips in percentage here can alert you to some new rule or protocol by a payer that we need to address in the rules engine, for example.
+This chart shows the percentage of claims with an insurance payout. Watching for dips in percentage here can alert you to some new rule or protocol by a payer that we need to address in the rules engine, for example.
 
-#### We also provide General Support on:
+###
 
-**Features Supported**
+### Medicare Fees Rate
 
-- Ingestion of old biller’s data to set insurance collections benchmarks
-- Internal tracking that flags customers that are below expected benchmarks and presentation of findings to customers
-- Quarterly Business Reviews for customers worth \$150,000 monthly; Biannual Business Reviews for all other customers
-**Features In Development**
+This chart compares your insurance payout against the Medicare fee schedule, grouped by encounter date of service, giving you a rough benchmark of how your reimbursement rates compare with Medicare’s. Note that this ratio is an estimate, and the Medicare fees are not adjusted for your facility’s location.
 
-- Visibility of all Quarterly/Biannual Business Review metrics in Insights
-- Cohort analysis with customers of similar size, and in similar regions and industries
-- Best practice recommendations for revenue optimization based on cohort analysis
+*Availability: the Medicare Fees Rate chart is enabled for select accounts. If you’d like it turned on, reach out to your account manager.*
 
 ### Further Assistance
 
