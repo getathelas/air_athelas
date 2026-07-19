@@ -1,6 +1,7 @@
 ---
 title: "Getting Started with the Claims Page"
 sidebarTitle: "Getting Started with the Claims Page"
+description: "Manage claims, filters, assignments, validation, submission previews, and saved views in Insights."
 ---
 
 ### **Getting Started with the Claims Page**
@@ -47,7 +48,7 @@ When you first access the page, a guided tour will walk you through the key area
 
 ![Filter Bar](/images/insights_biller/claim_details/claim_details_page/claim_details_page_3.png)
 
-The filter bar at the top of the table lets you narrow your view by any combination of attributes: claim status, insurance provider, claim amount, age, assigned team member, provider, date range, Submission ID, Insurance Billing Type (Workers’ Comp, Auto, or Commercial), and CARC/RARC denial reason codes.
+The filter bar at the top of the table lets you narrow your view by any combination of attributes: claim status, insurance provider, primary, secondary, or tertiary Insurance Group, claim amount, age, assigned team member, provider, date range, Submission ID, Insurance Billing Type (Workers’ Comp, Auto, or Commercial), and CARC/RARC denial reason codes. Insurance Group options use distinct group names across the sites you can access.
 
 <Tip>
 Press `F` to open the filter panel instantly without reaching for your mouse.
@@ -168,6 +169,30 @@ After billing rules are applied, you can make final adjustments to the submissio
 1. Click the **pencil icon** in the submission preview to edit specific fields
 2. These edits only affect this submission and don't change the underlying claim data
 
+#### **Select a Medicare Secondary Payer type code**
+
+**Prerequisite:** The claim must have Medicare as a secondary or tertiary payer.
+
+When Medicare is not the primary payer, select the **MSP Type Code** that explains why another payer is responsible first. This field appears when you edit the insurance or submission, in the submission preview, and on the insurance information card.
+
+| **Code** | **Description** |
+| :--- | :--- |
+| **12** | Working Aged |
+| **13** | ESRD |
+| **14** | No-Fault |
+| **15** | Workers' Comp |
+| **41** | Black Lung |
+| **43** | Disability |
+| **47** | Liability |
+
+After you select a code and save, review the **MSP Type Code** in the submission preview before submitting the claim.
+
+#### **Enter anesthesia service times**
+
+**Prerequisite:** The service line must use an anesthesia CPT code from `00100` through `01999`.
+
+Anesthesia service lines include **Start Time** and **End Time** fields. For a single-day encounter, the date remains the encounter date and you select the times. For a multi-day encounter, select the start and end date and time within the encounter's date range. The end time cannot be earlier than the start time.
+
 **Working with diagnosis code pointers:**
 
 You can drag and drop diagnosis code pointers within the Procedures table to reorder them quickly — no need to delete and re-add.
@@ -211,7 +236,7 @@ Once a claim moves to "Submitted" status, you'll need to work with your billing 
 </Accordion>
 
 <Accordion title="How do I filter claims by multiple criteria at once?">
-Use the filter bar at the top of the table to apply multiple filters simultaneously. You can combine filters for claim status, insurance provider, claim amount, age, assigned team member, provider, date range, Submission ID, Insurance Billing Type, and CARC/RARC denial reason codes. Once you've set up your ideal filter combination, save it as a custom view for quick access later.
+Use the filter bar at the top of the table to apply multiple filters simultaneously. You can combine filters for claim status, insurance provider, primary, secondary, or tertiary Insurance Group, claim amount, age, assigned team member, provider, date range, Submission ID, Insurance Billing Type, and CARC/RARC denial reason codes. Once you've set up your ideal filter combination, save it as a custom view for quick access later.
 
 **Tip:** Press `F` to open the filter panel without using your mouse.
 </Accordion>

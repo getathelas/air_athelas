@@ -1,5 +1,6 @@
 ---
 title: "Appointment Types"
+description: "Configure appointment types, chart note sections, Scribe defaults, CPT codes, and patient-facing mappings."
 ---
 
 ### **Definitions: Chart Note Templates**
@@ -43,6 +44,7 @@ title: "Appointment Types"
   - Enter the **Name**, **Duration**, and **Color** for the appointment type.
   - Select the **sections** to include (and their order).
     - You can choose to make them available for the Scribe to write into.
+    - For **Flowsheet**, **Services**, or **Treatments**, turn on **Is Checked for Scribe** to preselect all available service codes when a provider reviews the completed Scribe. Leave it off to start with no service codes selected.
     - If you include **Measurements**, you can set default measurements to auto-populate whenever this Appointment Type is scheduled.
   - (Optional) Sync duration with in-clinic time (the time spent with the patient in-clinic will be reflected on the Calendar)
   - (Optional) Assign **CPT codes** that will auto-populate for this appointment type.
