@@ -1,0 +1,20 @@
+---
+title: "Therapist Revenue Summary"
+---
+
+#### Summary
+
+The **Therapist Revenue Summary** is compiled from existing Insights reports that span insurance and patient collections. Because those reports include facility and provider fields, you can combine them to calculate total collections by rendering provider and facility. This is useful for therapist compensation reviews and per-provider revenue tracking.
+
+#### Workflow
+
+1. **Download the [Collections Report](/insights_biller/reports/collections_report)** — the Total Insurance Collections sheet — for the desired date range.
+2. **Sum the total insurance collections posted** (the amount-paid column), referring to the Rendering Provider and Facility columns to group by provider and facility. This gives you insurance collections per provider and facility at the procedure level.
+3. **Download the [Site Transaction Report](/insights_biller/reports/site_transaction_report)** for the same date range.
+4. **Sum the Amount Paid**, referring to the Provider Name and Facility of Service columns. This gives you patient collections per provider and facility at the transaction level.
+
+Adding the insurance total (step 2) and the patient total (step 4) yields each therapist's total collections for the period.
+
+<Note>
+Column positions can vary as the source reports evolve — match on the column headers (Rendering Provider / Provider Name, Facility / Facility of Service, and the amount-paid column) rather than a fixed column letter.
+</Note>

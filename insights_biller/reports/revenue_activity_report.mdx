@@ -1,0 +1,210 @@
+---
+title: "Revenue Activity Report"
+---
+
+<Info>
+The Revenue Activity Report is your practice's complete picture of financial movement over any time period — from new charges posted, to insurance payments received, to adjustments applied, to outstanding balances remaining. It also includes an **Unapplied Payments** tab that tracks appointment-level patient charges and collections separately from the encounter billing cycle.
+</Info>
+
+## What Is the Revenue Activity Report?
+
+The **Revenue Activity Report** is a period-over-period financial report that captures all revenue-related activity that occurred between a selected **Start Date** and **End Date**. Rather than showing a static snapshot, it shows what *changed* — new charges added, payments posted, adjustments applied, and balances transferred between payers.
+
+The report answers questions like:
+
+- What new charges were posted this month, and to which payers?
+- How much did insurance pay vs. how much is still outstanding?
+- Which encounters have aging balances, and how old are they?
+- What contractual adjustments were taken during the period?
+
+<Tip>
+**How it works under the hood:** The report compares two snapshots of your A/R — one at the start of the selected period and one at the end — and surfaces the *delta*. Each row represents activity that occurred within the window, not just the current balance.
+</Tip>
+
+## The Three Tabs
+
+### 1. Detailed Activity
+
+The row-level transaction log. Every encounter procedure and every miscellaneous charge that had activity during the selected period appears here, with one row per **encounter × procedure × payer** combination. It includes all encounter-based activity (insurance claims, patient responsibility, adjustments), all miscellaneous charges, the charge posted plus any payments or adjustments applied during the period, and the resulting net receivable for each line.
+
+Two activity types appear in this tab:
+
+| Activity Type | Description | Example |
+| --- | --- | --- |
+| `ENCOUNTER` | Activity tied to a clinical encounter and CPT procedure code | Office visit billed to primary insurance |
+| `MISCELLANEOUS` | Standalone patient-pay charges not linked to an encounter, appointment, or claim | Wellness program fee, no-show charge |
+
+### 2. Aging AR Activity
+
+This tab aggregates all outstanding net receivables from the Detailed Activity tab into **age buckets** based on the date of service. Use it to understand the health of your A/R and identify overdue balances.
+
+| Bucket | Meaning |
+| --- | --- |
+| 0–30 Days | Service rendered within the last 30 days — typically still within payer processing time |
+| 31–60 Days | May warrant a first follow-up |
+| 61–90 Days | Follow-up recommended |
+| 91–120 Days | Escalated follow-up recommended |
+| 121–180 Days | Approaching timely-filing limits for many payers |
+| 181–365 Days | 6–12 months old — high priority for review |
+| 366+ Days | Over one year old — consider write-off review or escalation |
+
+**Grouped by:** Patient, Rendering Provider, Insurance (inputted and billed), and Facility.
+
+### 3. Unapplied Payments
+
+This tab tracks appointment-level patient charges and the payments collected against them — for example, copays and balances collected at the time of service before a claim is submitted and adjudicated. It shows patient charges billed at the appointment level that were created or resolved during the period, payments and refunds received against them, with one row per appointment charge that had activity.
+
+<Note>
+**How it relates to the other tabs:** Detailed Activity and Aging AR Activity cover encounter-side billing (insurance and applied patient payments). Unapplied Payments covers the *pre-encounter* side — patient collections pending the outcome of the insurance claim. A transaction will not appear in both tabs at the same time.
+</Note>
+
+## Column Reference
+
+### Encounter & Visit Identifiers
+
+| Column | Description | Notes |
+| --- | --- | --- |
+| `activity_type` | Whether this row is an `ENCOUNTER` or `MISCELLANEOUS` charge | MISCELLANEOUS rows have no encounter, provider, or CPT code |
+| `encounter_id` | Identifier of the clinical encounter | Blank for MISCELLANEOUS rows |
+| `date_of_service` | Date of the encounter, or the date the miscellaneous charge was created | Used for aging calculations in the Aging AR tab |
+| `cpt_code` | CPT procedure code billed on the latest claim submission | Blank for MISCELLANEOUS rows |
+| `line_item` | Description of the miscellaneous charge type | Only populated for MISCELLANEOUS rows |
+| `encounter_is_intended_to_bill` | Whether this encounter was flagged as intended to be billed to insurance | Useful for filtering out non-billable encounters |
+
+### Provider, Patient & Payer
+
+| Column | Description | Values |
+| --- | --- | --- |
+| `rendering_provider` | Full name of the provider who rendered the service | |
+| `facility` | Facility or department where the service was delivered | |
+| `patient_id` | Internal patient identifier | |
+| `payer_index` | Which payer in the billing sequence this row represents | 1 = Primary, 2 = Secondary, 3 = Tertiary, 4 = Self-Pay / Patient |
+| `inputted_insurance_name` | Insurance name as entered on the patient's profile at time of service | Shows `SELF-PAY` for patient responsibility rows |
+| `billed_insurance_name` | Insurance name from the actual claim submission | May differ from `inputted_insurance_name` if coverage was updated; shows `SELF-PAY` for patient rows |
+
+### Financial Columns
+
+<Info>
+All financial amounts are in US dollars. Payment, adjustment, and transfer columns are shown as **negative numbers** — reflecting the accounting convention that they reduce the outstanding balance. Net Receivable is the amount still owed after all credits.
+</Info>
+
+| Column | Description | Sign |
+| --- | --- | --- |
+| `billed_amount` | The full amount charged to this payer (gross charge) | Positive |
+| `transfer_in` | Amount carried over from a prior payer in the billing sequence | Positive |
+| `charge` | Net new charge for this payer = `billed_amount` − `transfer_in` | Positive |
+| `paid` | Amount paid by this payer or patient during the period | Negative (credit) |
+| `contractual_adj_amount` | Contractual write-offs taken during the period (e.g. fee-schedule discounts) | Negative (credit) |
+| `other_adj_amount` | All other adjustments combined (capitation, bad debt, sliding fee) | Negative (credit) |
+| `total_adjusted` | Total of all adjustments applied during the period = `contractual_adj_amount` + `other_adj_amount` | Negative (credit) |
+| `transfer_out` | Balance passed to the next payer in sequence during the period | Negative (credit) |
+| `expected_transfer_out` | The balance expected to transfer to the next payer based on current adjudication | Negative (credit) |
+| `net_receivable` | Remaining balance still owed after payments, adjustments, and transfers | Positive = still owed; 0 = balanced |
+
+### Unapplied Payments Columns
+
+| Column | Description | Notes |
+| --- | --- | --- |
+| `appointment_id` | Unique identifier of the appointment | Use `appointment_link` to navigate directly in Insights |
+| `date_of_service` | Date of the appointment | |
+| `patient_id` | Internal patient identifier | |
+| `patient_name` | Patient's full name | |
+| `rendering_provider` | Provider who performed the service | |
+| `facility` | Facility where the appointment took place | |
+| `line_item` | Upfront collection item billed (e.g. "Copay") | |
+| `date_of_charge` | Date the patient charge was created in the system | |
+| `charge_status` | Current status of the patient charge at the end of the reporting period | |
+| `charge_status_changed` | Date the charge transitioned to a terminal status within the period | Blank if no such transition occurred |
+| `last_payment_date` | Most recent date a payment or refund was applied to this charge within the period | Blank if no payment activity occurred |
+| `original_billed_amount` | Total amount originally billed to the patient for this charge | Positive |
+| `charge_activity` | Net dollar change from charges entering or leaving the patient's open balance | Positive = new charge; Negative = cancelled, applied to insurance, or removed |
+| `net_payment_activity` | Net amount paid by the patient during the period (payments positive; refunds reduce) | Positive or Negative |
+| `is_charge_open` | `True` if the charge is still outstanding at period end; `False` if resolved | |
+| `appointment_link` | Direct link to the appointment in Insights | |
+
+## How to Use the Report
+
+### Selecting your date range
+
+The **Start Date** and **End Date** define the activity window. Only encounters and charges where *something changed* (a payment was posted, an adjustment applied, a new charge created) during this window appear.
+
+<Tip>
+**Best practice:** Run the report **monthly** with a full calendar month (e.g., April 1–April 30) for clean period reconciliation. You can also run it weekly to track cash flow in near real-time.
+</Tip>
+
+### Common workflows
+
+- **Reconcile monthly collections.** In Detailed Activity, filter `activity_type = ENCOUNTER`, then sum the `paid` column for total insurance and patient cash collected, and `contractual_adj_amount` for total contractual write-offs.
+- **Find outstanding balances by payer.** Filter `net_receivable > 0`, then group by `billed_insurance_name`; use `payer_index` to distinguish primary, secondary, tertiary, and patient balances.
+- **Review A/R aging.** In Aging AR Activity, focus on the 91–120, 121–180, and 366+ day columns; use `rendering_provider` and `facility` to route follow-up, and sort by the oldest bucket to prioritize write-off reviews.
+- **Isolate self-pay (patient) aging.** Filter `inputted_insurance_name` (or `billed_insurance_name`) to `SELF-PAY` — equivalent to filtering `payer_index = 4`. Every patient-responsibility balance is labeled `SELF-PAY` in both insurance columns, so no custom grouping is required.
+- **Review appointment-level collections.** In Unapplied Payments, filter `is_charge_open = True` to see charges still awaiting payment, compare `original_billed_amount` to `net_payment_activity` to spot partial or missed collections, and use `appointment_link` to open a visit in Insights.
+
+## Calculation Examples
+
+The following examples use anonymized, illustrative data.
+
+**Example 1 — standard insurance encounter.** A patient with Blue Cross primary had an office visit; the claim adjudicated during the reporting period.
+
+| Column | Value | Explanation |
+| --- | --- | --- |
+| `billed_amount` | \$250.00 | Gross charge submitted to BCBS |
+| `transfer_in` | \$0.00 | No prior payer balance carried in |
+| `charge` | \$250.00 | = billed_amount − transfer_in |
+| `paid` | −\$180.00 | BCBS paid \$180 during the period |
+| `contractual_adj_amount` | −\$40.00 | Contractual write-off per fee schedule |
+| `transfer_out` | −\$30.00 | Remaining \$30 transferred to patient responsibility |
+| `net_receivable` | \$0.00 | \$250 − \$180 − \$40 − \$30 = fully resolved at primary |
+
+A corresponding row with `payer_index = 4` (Self-Pay) would show the \$30 patient balance.
+
+**Example 2 — multi-payer transfer.** A patient has Medicare primary and Medicaid secondary; primary paid and transferred the remaining balance to secondary during the period.
+
+| Column | Primary (payer_index=1) | Secondary (payer_index=2) |
+| --- | --- | --- |
+| `billed_amount` | \$300.00 | \$300.00 |
+| `transfer_in` | \$0.00 | \$300.00 (carried from primary) |
+| `charge` | \$300.00 | \$0.00 (no net new charge) |
+| `paid` | −\$240.00 | −\$45.00 |
+| `contractual_adj_amount` | −\$45.00 | −\$15.00 |
+| `transfer_out` | −\$15.00 | \$0.00 |
+| `net_receivable` | \$0.00 | \$0.00 (fully resolved) |
+
+<Tip>
+For multi-payer encounters, `transfer_out` on the primary row equals `transfer_in` on the secondary row — confirming the balance flowed correctly through the billing sequence.
+</Tip>
+
+**Example 3 — miscellaneous charge.** A \$50 no-show fee was added during the period; the patient paid \$50 online.
+
+| Column | Value |
+| --- | --- |
+| `activity_type` | MISCELLANEOUS |
+| `line_item` | No-Show Fee |
+| `billed_insurance_name` | SELF-PAY |
+| `billed_amount` | \$50.00 |
+| `paid` | −\$50.00 |
+| `net_receivable` | \$0.00 |
+
+<Note>
+**Historical reconciliation:** Daily A/R snapshots are captured live starting June 2026. For practices that went live before then, earlier snapshots were backfilled from transaction history — so periods before June 2026 are reliable for trend and aging analysis, but may not reconcile to the penny against the source report you used at the time. Periods on or after June 2026 are designed to reconcile with your other Insights reports.
+</Note>
+
+### FAQ
+
+<AccordionGroup>
+  <Accordion title="Why are there two rows for the same encounter?">
+    Each encounter can have separate rows per payer (primary, secondary, tertiary, patient). This is expected — it lets you see exactly how each payer's balance was handled. Filter by `payer_index` to focus on a specific payer tier.
+  </Accordion>
+  <Accordion title="What does a negative net_receivable mean?">
+    A negative net receivable indicates an overpayment or credit on that encounter — the payer or patient paid more than the balance owed. This may warrant a refund review.
+  </Accordion>
+  <Accordion title="Why does billed_insurance_name differ from inputted_insurance_name?">
+    `inputted_insurance_name` reflects what was on the patient's profile at the time of the encounter, while `billed_insurance_name` comes from the actual claim submission. If a patient's insurance was corrected after the initial visit, these may differ.
+  </Accordion>
+  <Accordion title="Can I use this report to track monthly collections?">
+    The Revenue Activity Report closes your books through posted and applied payments, so upfront payments made at the appointment are not included until they apply to the encounter (after the claim adjudicates). To track all payments — applied and unapplied — use the [Collections Report](/insights_biller/reports/collections_report).
+  </Accordion>
+  <Accordion title="How is this different from the A/R reports I've used before?">
+    Most existing A/R reports combine every charge and payment into a single view, including patient money collected at the appointment before a claim is submitted. The Revenue Activity Report separates the two: Detailed Activity and Aging AR Activity show only *applied* encounter activity, while Unapplied Payments covers appointment-level patient collections that are not yet tied to a finalized encounter. A given dollar lives in exactly one place at a time.
+  </Accordion>
+</AccordionGroup>

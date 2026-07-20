@@ -1,0 +1,33 @@
+---
+title: "Claim Clearinghouse Metrics"
+---
+
+<img src="/images/insights_biller/reports/claim_clearinghouse_metrics/claim_clearinghouse_metrics_1.png" alt="Claims by Payer view showing claim counts, charge amounts, and rejection rate per payer" />
+
+#### Summary
+
+The **Claim Clearinghouse Metrics** report (also called Claims by Payer) shows how many primary claims were submitted to each insurance payer over the last 30 days, and what fraction came back rejected. For every payer, the report surfaces the total number of latest primary claims submitted, the total billed amount, the number and dollar value of rejected claims, and the overall rejection rate.
+
+Each encounter is counted once, against its most recent primary submission, and the payer name reflects the insurance entered at the time of submission — so historical numbers stay stable even when payers are later renamed or remapped.
+
+#### Key Use Cases
+
+- **Identify the payers driving the most denial volume.** Sort by `claim_rejection_count` to see which insurance companies are responsible for the bulk of rejected claims.
+- **Quantify where the dollars are at risk.** Sort by `total_rejected_charge_amount` to size the financial exposure of each payer's rejections. A high-volume payer with a low rate can carry more dollars at risk than a high-rate, low-volume payer.
+- **Spot the worst-performing payers by rejection rate.** Use `payer_rejection_rate` to rank payers on a like-for-like basis regardless of volume.
+- **Track payer-level rejection trends over time.** Run on a weekly or monthly cadence and compare period-over-period; sustained increases often signal a payer policy change worth outreach.
+
+#### Data Dictionary
+
+| Column Name | Description |
+| --- | --- |
+| payer_name | The insurance company (payer) the claim was submitted to, as captured at the time of submission. |
+| claim_count | Number of primary claims sent to this payer in the last 30 days. One encounter contributes at most one claim (its most recent primary submission). |
+| claim_rejection_count | How many of those claims came back rejected by the clearinghouse/payer. |
+| total_charge_amount | Total dollar amount billed to this payer across all those claims. |
+| total_rejected_charge_amount | Total dollar amount billed across the rejected subset — the dollar volume that came back rejected. |
+| payer_rejection_rate | Percentage of this payer's claims that were rejected (0–100, 2 decimal places). |
+
+#### Filters Supported
+
+- The report is fixed to the **last 30 days**.

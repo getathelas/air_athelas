@@ -1,0 +1,50 @@
+---
+title: "Copay Metrics"
+---
+
+#### Summary
+
+The **Copay Metrics** report tracks patient-responsibility collection performance at the point of care, across all four charge types: **copay, coinsurance, deductible, and self-pay**. It operates at the appointment level (one row per appointment with any line-item signal) and shows, for each charge type, the suggested amount, the actual charge, net amount collected (payments minus refunds), the collection rate, and who collected it. This helps practice leadership identify per-type gaps in front-desk collection workflows and support staff accountability.
+
+#### Key Use Cases
+
+- Measure collection rates by charge type and facility.
+- Identify trends in missed or partial collections across copay, coinsurance, deductible, and self-pay.
+- Attribute collections to specific staff members or to patient self-pay.
+- Support month-end performance reviews.
+
+#### Notes
+
+- Suggested vs. actual charges are **never coalesced** — both columns are emitted so the variance is visible.
+- The **% Collected** denominator uses the actual charge if non-zero; otherwise it falls back to the suggested charge.
+- Refunds are only counted if they occurred on or before the appointment date (EOB-driven post-visit refunds are excluded).
+- A payment is labeled **"Patient"** in the collected-by column when the payer email matches a patient in the site; otherwise the staff user name is shown.
+
+#### Data Dictionary
+
+The report starts with appointment-level identifiers:
+
+| Column Name | Description |
+| --- | --- |
+| appointment_id | Unique identifier for the appointment. |
+| facility_id | Unique identifier for the facility. |
+| facility_name | Name of the facility where the appointment occurred. |
+| month | Calendar month of the appointment date (first day of month). |
+| quarter | Fiscal quarter and year of the appointment (e.g. "Q2 2026"). |
+| charge_date | Date of the appointment (date of service). |
+
+Then, for **each** of the four charge types — **copay, coinsurance, deductible, and self-pay** — the report includes the same five columns (shown here for copay):
+
+| Column Name | Description |
+| --- | --- |
+| suggested_copay_charge | Copay amount suggested before the visit, from the appointment's suggested charges (may differ from what was actually charged). |
+| actual_copay_charge | Total copay amount actually charged to the patient responsibility request linked to the appointment. |
+| copay_collected_net | Net copay collected: sum of payments minus sum of refunds, both on or before the appointment date. |
+| % Copay Collected | Collection rate for copay: 100 × net collected / actual charge (falls back to suggested charge if no actual charge). |
+| copay_collected_by | Comma-separated list of distinct staff names or "Patient" who collected the copay payment(s). |
+
+The identical five columns repeat for **coinsurance** (`suggested_coinsurance_charge`, `actual_coinsurance_charge`, `coinsurance_collected_net`, `% Coinsurance Collected`, `coinsurance_collected_by`), **deductible**, and **self-pay**.
+
+#### Filters Supported
+
+- Date Range — filter by appointment date of service

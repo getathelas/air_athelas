@@ -1,0 +1,47 @@
+---
+title: "Credit Aging Balance Report"
+---
+
+#### Summary
+
+The **Credit Aging Balance Report** identifies patients who have an unapplied credit balance on their account — meaning more money has been collected from them than is currently owed. For each patient, the report shows the actionable credit amount, any remaining outstanding balance, open-claim and upcoming-appointment signals, and whether the patient is eligible for a refund. Patient, address, and guarantor details are included to support mailing refund checks directly from the report.
+
+The **Amount in Credits** figure is driven by three kinds of credit:
+
+- **Flexible credits** — not tied to a specific date of service; always safe to consider for refund.
+- **Held credits** — tied to a date of service whose encounters are all finalized; safe to refund.
+- **Locked credits** — tied to a date of service that still has open encounters; excluded from Amount in Credits until adjudication completes.
+
+Only patients with a positive flexible + held credit balance appear. Patients whose entire balance is locked do not appear.
+
+<Note>
+**Refund eligibility:** A patient is marked **Refund Eligible = Yes** when all of their encounters have reached a finalized adjudication status AND they have no remaining outstanding patient responsibility. The upcoming-appointment flag is informational — it does not block eligibility, but signals that credits may be needed for a future visit.
+</Note>
+
+#### Key Use Cases
+
+- Identify patients who may be owed a refund and prioritize by credit amount.
+- Use the patient and guarantor address columns to prepare refund checks without a separate lookup.
+- Flag patients with upcoming appointments so staff can decide whether to hold or refund the credit.
+- Resolve credit balances before they age into compliance or patient-satisfaction issues.
+- Support month-end balance cleanup and refund processing.
+
+#### Data Dictionary
+
+| Column Name | Description |
+| --- | --- |
+| Patient ID | Internal patient identifier. |
+| Patient Name | Full name of the patient (hidden in the shared report view). |
+| Patient Profile Link | Direct deep-link to the patient's details page in Insights, pre-scoped to the site. |
+| Patient Address | Mailing address of the patient, formatted as a single line. Useful for mailing refund checks (hidden in the shared report view). |
+| Guarantor Name | Full name of the guarantor (responsible party) on the patient's insurance record. Blank if no guarantor is on file (hidden in the shared report view). |
+| Guarantor Address | Mailing address of the guarantor, formatted as a single line. Blank if no guarantor or address is on file (hidden in the shared report view). |
+| Amount in Credits | The actionable credit balance for this patient (\$) — sum of flexible credits (no date of service) and held credits (date of service finalized). Excludes locked credits. This is the amount that is safe to refund or apply. |
+| Outstanding Payment | Total outstanding patient responsibility still owed by this patient (\$). If non-zero, a refund would be premature. |
+| Claims Waiting for Adjudication | "Yes" if the patient has any encounters still being processed by a payer; "No" if all claims have cleared the payer. |
+| Upcoming Appointment (Next 30 Days) | "Yes" if the patient has a scheduled or confirmed appointment within the next 30 days. Informational only. |
+| Refund Eligible | "Yes" if the patient has no open encounters and no outstanding patient responsibility; "No" otherwise. Rows with Refund Eligible = Yes appear first, sorted by credit amount descending. |
+
+#### Filters Supported
+
+- No run-time filters. The report returns a current snapshot of all patients with an actionable credit balance.
