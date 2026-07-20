@@ -4,7 +4,7 @@ title: "How to Use the Posting Tool Page"
 
 #### Overview
 
-When it comes to remittances, the vast majority of posting can be handled by Athelas' automated posting systems. However, payers occasionally send malformed, duplicate, or conflicting data in their remittances. Athelas’ systems will flag these cases for manual review, either by our operations team or your practice’s staff. The Athelas Posting Tool is designed to give you more flexibility and control over remittances that are either marked for manual review or that you want to adjust manually.
+When it comes to remittances, the vast majority of posting can be handled by Insights' automated posting systems. However, payers occasionally send malformed, duplicate, or conflicting data in their remittances. Insights’ systems will flag these cases for manual review, either by our operations team or your practice’s staff. The Posting Tool is designed to give you more flexibility and control over remittances that are either marked for manual review or that you want to adjust manually.
 
 Here's a short demo:
 
@@ -19,7 +19,7 @@ Here's a short demo:
 
 #### How It Helps?
 
-The Athelas Posting Tool is designed to **simplify and streamline manual posting**, giving your team the tools to handle exceptions and adjustments quickly, accurately, and with full visibility. Here’s how it helps:
+The Posting Tool is designed to **simplify and streamline manual posting**, giving your team the tools to handle exceptions and adjustments quickly, accurately, and with full visibility. Here’s how it helps:
 
 - **Reduces Manual Errors:** Preview Mode lets you see the impact of every action before it’s posted, helping prevent mistakes.
 - **Centralizes Financial Activity:** Procedure-level and claim-level payments are displayed in one place, providing a complete view of an encounter’s financials.
@@ -35,7 +35,7 @@ By providing visibility, control, and safety checks, the Posting Tool helps your
 | **Encounter / Claim** | A single patient visit or claim that may include multiple procedures. The Posting Tool supports both procedure-level and encounter-level posting. |
 | **Procedure** | A specific service provided during an encounter (e.g., a lab test or office visit). Each procedure has its own financial details. |
 | **Payment Item** | A record of a posted payment, adjustment, or other financial activity applied to a procedure or encounter. |
-| **Unposted Remittance** | A payment or adjustment received from a payer but not yet applied to the ledger. These often posted automatically by our system, but sometimes require manual review. |
+| **Unposted Remittance** | A payment or adjustment received from a payer but not yet applied to the ledger. These are often posted automatically by our system, but sometimes require manual review. |
 | **Patient Responsibility (PR)** | The portion of a charge the patient is responsible for, including copays, coinsurance, or deductibles. |
 | **Denied Amount** | A portion of a charge that the payer will not cover. Denied amounts can be written off or pushed to patient responsibility. |
 | **Write Off** | A ledger action that removes a balance that is no longer collectible from the payer or patient. |
@@ -122,7 +122,7 @@ Key features of the Procedures Table:
 - **PR Paid** – Amount already collected from the patient.
 - **Balance** – Remaining amount owed, calculated as Charges – (Ins. Paid + Adjustments + PR Paid).
 
-- **Preview Mode:** Any posting actions you take will appear as a live preview in to let you see the impact on the encounter before confirming. (more on this later)
+- **Preview Mode:** Any posting actions you take will appear as a live preview to let you see the impact on the encounter before confirming. (more on this later)
 
 ###### Expanding a Procedure Row
 
@@ -226,11 +226,11 @@ The **Claim-Level Unposted Remittances Table** lists all remittances that have b
 
 **Key Features:**
 
-- **Key Features:**
-
 - **Rows:** Each row represents a distinct unposted remittance.
 - **Columns include:** **Charges**, **Paid**, Patient Responsibility Breakdown, Adjustments.
-- **Available Actions:**- **Post Remittance (Add to preview)** – Adds a preview item onto the claim payment ledger.
+- **Available Actions:**
+
+- **Post Remittance (Add to preview)** – Adds a preview item onto the claim payment ledger.
 - **Archive/Unarchive** – Classify remittances that are duplicates or incorrect without posting them.
 
 By surfacing encounter-level remittances in their own table, the Posting Tool ensures that claim-level payments are not overlooked and can be reconciled consistently alongside procedure-level items.
@@ -267,7 +267,7 @@ In the sections that follow, you’ll see detailed instructions for each type of
 
 #### Preview Mode
 
-Preview Mode is a core feature of the Posting Tool that lets you **see the impact of posting actions before they are permanently applied**. Whenever you take an action—such as a Posting a remittance, Negation, Write Off, Push to PR, or Custom Adjustment—the tool generates a **preview row** in the Payment Items Table.
+Preview Mode is a core feature of the Posting Tool that lets you **see the impact of posting actions before they are permanently applied**. Whenever you take an action—such as Posting a remittance, Negation, Write Off, Push to PR, or Custom Adjustment—the tool generates a **preview row** in the Payment Items Table.
 
 ###### Why Preview Mode Exists
 
@@ -339,7 +339,7 @@ Posting a remittance moves it into **preview mode** so that it can be applied to
 - The remittance will appear in the **Payment Items Table** as a **blue preview row**.
 
 <img src="/images/insights_front_desk/posting/how_to_use_the_posting_tool_page/how_to_use_the_posting_tool_page_25.png" alt="" />
-- Review the preview to see how the remittance affects the balance, PR, and adjustments. It will show crossed-out values alongside updated values, so you can clearly see how the negation impacts encounter-level and (if applicable) procedure-level amounts. Click the **undo** button (in the right-most column) to remove this preview remittance.
+- Review the preview to see how the remittance affects the balance, PR, and adjustments. It will show crossed-out values alongside updated values, so you can clearly see how the posted remittance impacts encounter-level and (if applicable) procedure-level amounts. Click the **undo** button (in the right-most column) to remove this preview remittance.
 
 <img src="/images/insights_front_desk/posting/how_to_use_the_posting_tool_page/how_to_use_the_posting_tool_page_26.png" alt="" />
 - To permanently add this remittance to the ledger, click **Post**.
@@ -348,7 +348,7 @@ Posting a remittance moves it into **preview mode** so that it can be applied to
 **Notes:**
 
 - If a remittance is applied incorrectly, it can be **negated** after posting.
-- Hovering over the **Posting Status** column can provide information about exceptions or insights on why the remittance wasn't auto posted if its in ‘Manual Review’.
+- Hovering over the **Posting Status** column can provide information about exceptions or insights on why the remittance wasn't auto posted if it's in ‘Manual Review’.
 
 #### Payment Item Actions
 
@@ -379,7 +379,7 @@ Negation reverses a previously posted payment or adjustment. Use this when a pay
 <img src="/images/insights_front_desk/posting/how_to_use_the_posting_tool_page/how_to_use_the_posting_tool_page_32.png" alt="" />
 **Notes:**
 
-- Negations can be applied to **insurance payments** and **adjustments,** they cannot be be applied to **patient payments** or **already negated payment items**.
+- Negations can be applied to **insurance payments** and **adjustments,** they cannot be applied to **patient payments** or **already negated payment items**.
 - After negation, the original entry remains in the table for auditing purposes. However, it cannot be negated again.
 - In the **preview row**, you can click directly on the **Value columns** or the **Note column** to edit amounts or text before posting.
 
@@ -418,7 +418,7 @@ A Write Off is a net-zero operation: it reclassifies an amount by moving it out 
 
 ###### Write Off PR (Procedure Only Action)
 
-**⚠️ Currently, Write Offs can only be applied to procedure-level Payment Items.**
+**⚠️ Currently, Write Off PR can only be applied to procedure-level Payment Items.**
 
 A **Patient Responsibility Write Off** removes a balance that was assigned to the patient but should no longer be collected. This is typically used when your organization decides not to bill the patient for a portion of their responsibility (copay, deductible, or coinsurance).
 
@@ -451,11 +451,11 @@ Like payer write offs, this is a **net-zero operation**: the amount is moved out
 
 ###### Push To PR (Procedure Only Action)
 
-**⚠️ Currently, Write Offs can only be applied to procedure-level Payment Items.**
+**⚠️ Currently, Push to PR can only be applied to procedure-level Payment Items.**
 
 A Push to PR reclassifies a denied balance so that it is collected from the patient instead of the payer. This is typically used when a payer denies and marks a service as the patient’s responsibility.
 
-Like write offs, this is a **net-zero operation**: the amount is moved out of the **denied** column and into the **Other Pr** column. This reduces the **payer balance** and increases the **patient balance** on the encounter by the same amount.
+Like write offs, this is a **net-zero operation**: the amount is moved out of the **denied** column and into the **Other PR** column. This reduces the **payer balance** and increases the **patient balance** on the encounter by the same amount.
 
 **How it works:**
 
@@ -515,5 +515,3 @@ Custom adjustments are flexible: you can specify amounts for any column, includi
 - **Charges** and **Billed** columns can only be edited by **super users**. Attempting to edit these columns will display a warning, as these fields generally should not be modified.
 - Custom adjustments let you specify adjustments to a**ny financial field** in the Payment Items Table.
 - After posting, the adjustment is recorded as a separate line item for auditing purposes.
-
-####

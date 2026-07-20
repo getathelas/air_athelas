@@ -19,8 +19,6 @@ This video goes through the full process of creating an encounter and submitting
   allowFullScreen
 ></iframe>
 
-####
-
 #### Encounter Details Page Header
 
 <img src="/images/insights_front_desk/encounter_details/encounter_details_page/encounter_details_page_1.png" alt="" />
@@ -57,8 +55,6 @@ Check out this quick video for a demonstration.
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowFullScreen
 ></iframe>
-
-####
 
 #### Walkthrough Encounter Creation and Section Information
 
@@ -114,7 +110,7 @@ In the encounter’s Insurance section, you can add or update **primary, seconda
 
 ***Notes on Insurances Listed in the Dropdown Menus***
 
-- *The options that pre-populate these lists come directly from information that Athelas has extracted from your EHR.*
+- *The options that pre-populate these lists come directly from information that Insights has extracted from your EHR.*
 - *The initial list only shows insurances previously **associated with this patient**.*
 - *If you click *`*Create Insurance*`* in one of the dropdown menus (primary, secondary, or tertiary), you can select from all known insurances associated with your practice. Fill in the new insurance information and click *`*Create Insurance*`*. This will now be a selectable option in the Insurance menus for this patient.*
 
@@ -137,7 +133,7 @@ In the example above, *UB* will receive a **UB-04** form, while *Blue Cross* wil
 
 #### Providers
 
-Input the **rendering**, **attending**, **referring**, and **supervising provider** if applicable (these provider fields may change depending on whether a CMS-1500 and/or UB-40 forms will be filed for this encounter).
+Input the **rendering**, **attending**, **referring**, and **supervising provider** if applicable (these provider fields may change depending on whether a CMS-1500 and/or UB-04 forms will be filed for this encounter).
 
 You can either visit the [My Practice page](https://insights.athelas.com/v2/my-practice) to create new providers, or you can simply type a provider’s NPI number into the search field and their information will populate, as shown below. Note that we source this information directly from the NPI registry, but you can update this information if necessary.
 
@@ -167,7 +163,7 @@ The claim charge amount is automatically calculated as a sum of all service line
 
 <img src="/images/insights_front_desk/encounter_details/encounter_details_page/encounter_details_page_15.png" alt="" />
 
-Encounters for which a UB-40 form is required will display the **Revenue Code** column in the table of service lines, as shown in the example above. Those codes come from directly from guidelines set by your practice or EHR.
+Encounters for which a UB-04 form is required will display the **Revenue Code** column in the table of service lines, as shown in the example above. Those codes come from directly from guidelines set by your practice or EHR.
 
 For example, if your practice is a FQHC, then Wraparound Claims are billed with revenue code 0519.
 
@@ -219,7 +215,7 @@ When one of the payers entered on the `Insurances` page has a preferred billin
 
 When you click `Add Service Line`, a window will appear.
 
-Fill in the details of the service line here, including procedure code, diagnosis code pointers, modifiers, and so forth (UB-40 encounters will also show a field for revenue code).
+Fill in the details of the service line here, including procedure code, diagnosis code pointers, modifiers, and so forth (UB-04 encounters will also show a field for revenue code).
 
 You can also check the box to indicate if the procedure was performed as an emergency (which will update section 24c on the CMS-1500 form).
 
@@ -234,7 +230,7 @@ Once everything looks correct, click `Create Service Line`.
 
 **Claim Information**
 
-You have the option to add data on occurrences (if an insurance requiring a UB-40 claim has been selected in the Insurances section), illness date, and any additional claim information in this section.
+You have the option to add data on occurrences (if an insurance requiring a UB-04 claim has been selected in the Insurances section), illness date, and any additional claim information in this section.
 
 <img src="/images/insights_front_desk/encounter_details/encounter_details_page/encounter_details_page_22.png" alt="" />
 
@@ -332,7 +328,7 @@ If you’ve reached a stopping point, you can choose to **save** your work in on
 
 - Someone is working on this encounter but has run into an obstacle that may require more time, or Athelas’ help. For example, perhaps the claim can’t be submitted because a prior authorization needs to be updated, or the provider’s notes are incomplete.
 
-- **Archived**
+- **Not Intended to Bill**
 
 - This encounter is not currently being prepared for submission.
 
@@ -342,8 +338,6 @@ Once everything looks good, click `Begin Review`.
 
 <img src="/images/insights_front_desk/encounter_details/encounter_details_page/encounter_details_page_35.png" alt="" />
 
-####
-
 #### Review / Submit
 
 After clicking `Begin Review` in the **Configurations** section, Insights will ensure that the encounter details are free of technical errors that could lead to claim rejection or denial.
@@ -352,7 +346,7 @@ After clicking `Begin Review` in the **Configurations** section, Insights will e
 
 If pre-submission errors or suggestions for edits are found, as shown in the example above, they will appear with explanations along with a link to `Jump to section` so that you can address the issue quickly.
 
-*The ‘**Suggested Edits**’ tab offers an additional layer of actionable direction for avoiding potential denials. The information provided here comes directly from CMS’ National Corrective Coding Initiative (NCCI). We can see in the example below that certain CPT codes cannot be billed together, and only one of the listed modifiers should be used on a given CPT code instead of multiple.*
+*The ‘**Suggested Edits**’ tab offers an additional layer of actionable direction for avoiding potential denials. The information provided here comes directly from CMS’ National Correct Coding Initiative (NCCI). We can see in the example below that certain CPT codes cannot be billed together, and only one of the listed modifiers should be used on a given CPT code instead of multiple.*
 
 <img src="/images/insights_front_desk/encounter_details/encounter_details_page/encounter_details_page_37.png" alt="" />
 
@@ -369,8 +363,6 @@ If it can be submitted successfully, click `Close & Submit Encounter`.
 This will set your encounter status to ‘Closed.’ Then, when you hover the status on the Encounter Details page, a tooltip will indicate when it will be submitted.
 
 <img src="/images/insights_front_desk/encounter_details/encounter_details_page/encounter_details_page_39.png" alt="" />
-
-####
 
 #### Mobile-Friendly Encounter Details Page
 

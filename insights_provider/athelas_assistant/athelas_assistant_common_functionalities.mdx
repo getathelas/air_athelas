@@ -2,7 +2,7 @@
 title: "Athelas Assistant Common Functionalities"
 ---
 
-#### Individual Tools Available to Assistant
+#### Individual Tools Available to Athelas Assistant
 
 **Patient Management:**
 
@@ -43,11 +43,11 @@ This workflow demonstrates how a clinical user (like a doctor or medical assista
 
 **User's Goal:** A provider is about to see a patient and needs to quickly check their patient in and then navigate to the chart note page so they can begin scribing.
 
-- **Request a Patient Summary**: The provider asks Assistant to prepare them for their next encounter.
+- **Request a Patient Summary**: The provider asks Athelas Assistant to prepare them for their next encounter.
 
 - *User says: "I'm ready for my next patient, John Appleseed. Can you check him in and navigate to his appointment page"*
 
-- **Copilot's Background Actions**: Copilot understands the multi-part request and gets to work:
+- **Athelas Assistant's Background Actions**: Athelas Assistant understands the multi-part request and gets to work:
 
 - It finds John Appleseed in the system and locates his appointment for the day.
 - It updates the appointment status to "Checked-In."
@@ -55,21 +55,21 @@ This workflow demonstrates how a clinical user (like a doctor or medical assista
 
 ##### Example Workflow 2: Scheduling a New Appointment in a Single Request
 
-This workflow shows how a user can book a new appointment with a single, detailed command, allowing Copilot to handle all the intermediate steps in the background.
+This workflow shows how a user can book a new appointment with a single, detailed command, allowing Athelas Assistant to handle all the intermediate steps in the background.
 
 **User's Goal:** A scheduler needs to book a new appointment and has all the necessary details.
 
-- **Make a Comprehensive Request**: The user issues a single, detailed command to Assistant.
+- **Make a Comprehensive Request**: The user issues a single, detailed command to Athelas Assistant.
 
 - *User says: "Book a new patient visit for Jane Doe, with Dr. Smith at our downtown clinic for this Friday at 2 PM. Use her primary Aetna insurance for the 'Knee Pain' case."*
 
-- **Copilot's Background Actions**: Assistant parses the entire request and performs a series of actions without further user input:
+- **Athelas Assistant's Background Actions**: Athelas Assistant parses the entire request and performs a series of actions without further user input:
 
 - It first identifies Jane Doe and verifies her identity using her date of birth.
 - It looks up Dr. Smith, the downtown clinic, the "New Patient Visit" appointment type, the patient's Aetna insurance, and the "Knee Pain" case, resolving all of them to their correct system IDs.
 - It checks Dr. Smith's schedule to ensure there are no conflicts at the requested time.
 - Assuming the time slot is free, it proceeds to book the appointment.
 
-- **Final Confirmation**: Assistant completes the workflow by confirming the action is done.
+- **Final Confirmation**: Athelas Assistant completes the workflow by confirming the action is done.
 
-- *Example Copilot response: "Done. I've scheduled Jane Doe for a new patient visit with Dr. Smith at the downtown clinic this Friday at 2 PM. The appointment is linked to her 'Knee Pain' case with her Aetna insurance."*
+- *Example Athelas Assistant response: "Done. I've scheduled Jane Doe for a new patient visit with Dr. Smith at the downtown clinic this Friday at 2 PM. The appointment is linked to her 'Knee Pain' case with her Aetna insurance."*

@@ -1,13 +1,13 @@
 ---
 title: "Target Allowed Amounts"
-description: "An optional threshold that lets Athelas auto-resolve encounters once a payer's payout is acceptable."
+description: "An optional threshold that lets Insights auto-resolve encounters once a payer's payout is acceptable."
 ---
 
-When balancing encounters and closing out A/R, Athelas automatically resolves denial adjustments we've confirmed aren't realistically workable. That works for common adjustments, but becomes less effective across the long tail of thousands of adjustment combinations. **Target Allowed Amounts** are a complementary strategy for that long tail.
+When balancing encounters and closing out A/R, Insights automatically resolves denial adjustments we've confirmed aren't realistically workable. That works for common adjustments, but becomes less effective across the long tail of thousands of adjustment combinations. **Target Allowed Amounts** are a complementary strategy for that long tail.
 
 #### What Is a Target Allowed Amount?
 
-A Target Allowed Amount (TAA) answers the question: *how much do you realistically expect to earn for this claim?* With a TAA set, Athelas can identify encounters where the payout is acceptable, write off the remaining balance, and finalize the encounter — reducing unnecessary inflation of your A/R metrics.
+A Target Allowed Amount (TAA) answers the question: *how much do you realistically expect to earn for this claim?* With a TAA set, Insights can identify encounters where the payout is acceptable, write off the remaining balance, and finalize the encounter — reducing unnecessary inflation of your A/R metrics.
 
 #### How Is a TAA Different from a Contracted Rate?
 
@@ -15,7 +15,7 @@ A **contracted rate** is what a payer is *supposed* to pay for a procedure; in p
 
 #### How Do TAAs Work?
 
-- Athelas identifies your most common **claim configurations** (a unique combination of procedures — CPT/modifier/units — plus payer and place of service).
+- Insights identifies your most common **claim configurations** (a unique combination of procedures — CPT/modifier/units — plus payer and place of service).
 - Your Athelas team reviews the **allowed amounts** received for each configuration, discusses them with your practice, and together you agree on an acceptable TAA.
 - When the **Adjustment Rules Engine System (ARES)** finds an encounter matching that configuration with an allowed amount above the TAA, it writes off the remaining non-PR balance and resolves the encounter.
 

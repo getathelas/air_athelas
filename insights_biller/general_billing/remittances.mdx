@@ -218,40 +218,56 @@ In your report, you can expect to view the following fields:
 - TIN
 - Bank Account
 
-#### Summary
+## Summary
 
-Question 1 - Did I Actually Get Paid What Insurance Said I Would?
+**Did I actually get paid what insurance said I would?**
 
-- **Earlier**, sites would have had to see the check amount, go download all their bank statements, and go and try and match one by one. This is massively laborious and painful.
-- **Now**, we do all the work and all sites have to do is click the check and see the deposits, remits, and even claims directly enclosed. Question 2 - Does my bank account match my billing books?
-- **Earlier,** at the end of every month, I go transaction by transaction and somehow try my best to find the matching check in my billing system. I do this all manually. It takes me days. **Now** I just click the deposits tab where Insights has automatically pulled all my bank transactions in. It's automatically matched every transaction to a set of checks, remits, and claims that I can audit.
+- **Earlier**, sites had to see the check amount, download all their bank statements, and match them one by one — massively laborious and painful.
+- **Now**, we do the work; sites just click the check and see the deposits, remits, and even claims directly enclosed.
 
-#### FAQ's
+**Does my bank account match my billing books?**
 
-This document is meant to provide guidance on how to navigate and understand what the Check Deposit Manager too is showing and addressing frequently asked questions.
+- **Earlier**, at the end of every month you'd go transaction by transaction to find the matching check in your billing system — all manual, taking days.
+- **Now**, click the **Deposits** tab, where Insights has automatically pulled in all your bank transactions and matched each one to a set of checks, remits, and claims you can audit.
 
-- What’s in scope and what is out of scope?
+### FAQ
 
-Our team matches remittances for ACH/EFT deposits for insurance payments we see via Plaid and VCC payments processed that are paid out via Stripe which are included with patient payments.
+This section explains how to navigate the Check Deposit Manager and answers common questions.
 
-The Bank Reconciliation is **not** matching bulk check deposits (paper checks). These are to be matched by the client on the Check Deposit Manager tool by linking unmatched checks to this deposit (link to instructions [here](https://www.notion.so/Check-Deposit-Manager-Remittances-2-0-271f92a633f280ea8e81f58d4c5eafdd?pvs=21))
+<Accordion title="What's in scope and what is out of scope?">
+  Our team matches remittances for ACH/EFT insurance-payment deposits we see via Plaid, and VCC payments processed via Stripe (included with patient payments).
 
-- If you are interested in Athelas also matching paper checks deposits, we are offering a lockbox solution. Please contact your account manager to set-up time to learn more on this offering. There are transactions that Athelas removes from scope that are not related to insurance payments. Examples including vendor payments, bank-to-bank transactions. We are actively working on removing these and if you see a transaction that is not in scope, you can exclude it by pressing the exclude button (screenshot 1)
+  Bank reconciliation does **not** match bulk check deposits (paper checks) — the client matches those in the Check Deposit Manager by linking unmatched checks to the deposit. If you'd like Insights to also match paper check deposits, we offer a lockbox solution; contact your account manager to learn more.
 
-![](/images/insights_biller/general_billing/remittances/remittances_9.png)
+  Insights removes out-of-scope transactions that aren't insurance payments (e.g., vendor payments, bank-to-bank transfers). We're actively working on removing these automatically; if you see one, exclude it with the **Exclude** button.
 
-How do I view excluded deposits?You can filter for inclusion status set to “Excluded” and view all excluded deposits. By click on any specific deposit, you will see an exclusion reason. If you believe that a transaction has been incorrectly marked as excluded, press “Include” to move the deposit back.
+  ![](/images/insights_biller/general_billing/remittances/remittances_9.png)
+</Accordion>
 
-![](/images/insights_biller/general_billing/remittances/remittances_10.png)
+<Accordion title="How do I view excluded deposits?">
+  Filter **Inclusion Status** to "Excluded" to view all excluded deposits. Click any deposit to see its exclusion reason. If a transaction was incorrectly excluded, press **Include** to move it back.
 
-- How do I know if my plaid connection is active? How do I refresh it?We will have alerting on the page to show you that your plaid is not active for any reason. Example of alert here.
+  ![](/images/insights_biller/general_billing/remittances/remittances_10.png)
+</Accordion>
 
-![](/images/insights_biller/general_billing/remittances/remittances_11.png)
+<Accordion title="How do I know if my Plaid connection is active, and how do I refresh it?">
+  The page shows an alert if your Plaid connection is inactive for any reason.
 
-Please press the refresh icon to refresh your plaid sync. Please do **not** delete the bank account and re-add it. Please write to Support and your Account Manager if the plaid re-sync fails and we will investigate the issue.
+  ![](/images/insights_biller/general_billing/remittances/remittances_11.png)
 
-![](/images/insights_biller/general_billing/remittances/remittances_12.png)
+  Press the refresh icon to refresh your Plaid sync. Do **not** delete the bank account and re-add it. If the Plaid re-sync fails, write to Support and your account manager and we'll investigate.
 
-- What are the common reasons something may not be matched? How can you help unblock/resolve this?We see the deposit in the bank but do not have the matched remittance advice. This means that the Athelas is working on hunting for the remittance tied to this deposit and posting the remittance. Once the remittance is posted, we will match it to the unmatched deposit.Common reasons transactions are not matching quickly is we are not receiving electronic remittances for this payer (or have not received them yet), we require a payer portal to pull the remittance advice for the full check to post the remittance. By ensuring we have as many payer portals as possible, our team will be able to pull the checks and reconcile/post these remits and link them to deposits.What are the common reasons for the posted to bank gap?
-- What are the common reasons for the posted to bank gap? How are the match rate gaps or posted to bank gaps addressed?A reason for the posted to bank gap are usually due to remittances that have been flagged for manual review. If posted, these would set the encounter balance in a negative state as either a payment, adjustment, or PR amount is already posted which would conflict with the incoming remittance.These gaps in matched rates versus posting amounts are addressed by creating automations which unblock these remittances so that they are posted. One can also manually intervene and post the payments to the ledger using the Posting Tool.
-- What are our SLAs regarding bank matching and posting remittances?Our team commits to at matching at least 98% of deposits in scope (ACH/EFT payments, virtual card payments) to remits posted for each month. The bank recon team is actively working
+  ![](/images/insights_biller/general_billing/remittances/remittances_12.png)
+</Accordion>
+
+<Accordion title="What are common reasons something isn't matched, and how do you resolve it?">
+  Often we see the deposit in the bank but don't yet have the matched remittance advice — our team hunts for the remittance tied to the deposit and posts it; once posted, we match it to the unmatched deposit. Common causes include not yet receiving electronic remittances for a payer, or needing a payer portal to pull the remittance advice. Providing as many payer portals as possible helps our team pull checks, post remits, and link them to deposits.
+</Accordion>
+
+<Accordion title="What causes the posted-to-bank gap, and how is it addressed?">
+  Posted-to-bank gaps are usually due to remittances flagged for manual review — posting them would put the encounter balance in a negative state, since a payment, adjustment, or PR amount is already posted and would conflict with the incoming remittance. These gaps are addressed with automations that unblock the remittances so they post; you can also post the payments manually using the Posting Tool.
+</Accordion>
+
+<Accordion title="What are your SLAs for bank matching and posting remittances?">
+  Our team commits to matching at least **98%** of in-scope deposits (ACH/EFT and virtual card payments) to posted remits each month. The bank reconciliation team continuously works to close any remaining gaps.
+</Accordion>
