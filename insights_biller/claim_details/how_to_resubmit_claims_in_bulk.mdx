@@ -1,29 +1,59 @@
 ---
 title: "How to Resubmit Claims in Bulk"
+sidebarTitle: "Resubmit Claims in Bulk"
+toc: "true"
 ---
 
-This feature can be accessed for claims in the [Submission Errors](https://insights.athelas.com/v2/presubmission-errors), [Rejections](https://insights.athelas.com/v2/rejections) or [Denials Worklist](https://insights.athelas.com/v3/denials) pages. You can also manually add claims directly through the [Bulk Resubmission](https://insights.athelas.com/v2/bulk-claim-resubmit) page.
+### At a Glance
 
-## Here’s how it’s done
+When the same problem affects many claims — an eligibility denial across a patient's visits, a batch of submission errors with the same cause — you don't have to fix them one at a time. The Claims Page lets you build a focused worklist, select a group of claims, and resubmit them all in a single action.
 
-First, check the boxes next to each of the claims you would like to resubmit in a batch. Then, open the Actions menu and choose Bulk Resubmit.
+<Tip>
+✨**Smart Tip:** Bulk actions turn what used to be many clicks into a few. An eligibility denial on five claims for one patient — update insurance, resubmit, and comment — drops from roughly 15 actions to about 3.
+</Tip>
 
-<img src="/images/insights_biller/claim_details/how_to_resubmit_claims_in_bulk/how_to_resubmit_claims_in_bulk_1.png" alt="" />
+### Step 1 — Build a Focused Worklist
 
-You’ll then decide whether to add these claims to an existing batch for resubmission, or create a new batch.
+Bulk resubmission works best when you first gather the claims that share a problem. Filter your list and **group by reason** so claims with the same denial, rejection, or submission-error reason land in one bucket. For the full set of tools, see [Organizing Your Claims Worklist](/insights_biller/claim_details/organizing_your_claims_worklist).
 
-<img src="/images/insights_biller/claim_details/how_to_resubmit_claims_in_bulk/how_to_resubmit_claims_in_bulk_2.png" alt="" />
+### Step 2 — Select the Claims
 
-Once you add the claims to your chosen batch, you’ll see a popup inviting you to the Batch page (the [Bulk Resubmission](https://insights.athelas.com/v2/bulk-claim-resubmit) page).
+Select the claims you want to resubmit using the checkboxes. To grab an entire bucket, **right-click the empty space in the group** and choose **Select all in the group**.
 
-<img src="/images/insights_biller/claim_details/how_to_resubmit_claims_in_bulk/how_to_resubmit_claims_in_bulk_3.png" alt="" />
+<Note>
+You can select up to **50 claims at a time**. To work a bigger bucket, scroll down to load more rows first, then select again — each selection captures everything currently loaded.
+</Note>
 
-The Bulk Resubmission page will show your latest batch, like this:
+### Step 3 — Resubmit with More Actions
 
-<img src="/images/insights_biller/claim_details/how_to_resubmit_claims_in_bulk/how_to_resubmit_claims_in_bulk_4.png" alt="" />
+With your claims selected, open **More Actions** at the bottom of the screen and choose **Resubmit** (or **Submit**). The action applies to every selected claim at once.
 
-Fill in the required settings, click Submit Batch. You’ll be able to track the progress of your resubmission in the Processing and Complete tabs on the Bulk Resubmission page.
+![Selecting a group of claims and opening More Actions to act on them in bulk](/images/insights_biller/claim_details/how_to_resubmit_claims_in_bulk/how_to_resubmit_claims_in_bulk_1.png)
 
-<img src="/images/insights_biller/claim_details/how_to_resubmit_claims_in_bulk/how_to_resubmit_claims_in_bulk_5.png" alt="" />
+From the same **More Actions** menu you can run other bulk operations on the selected claims — update primary insurance, leave a comment, push to patient responsibility, mark as intended to bill, or defer.
 
-Done!
+<Warning>
+Higher-risk actions like **push to PR**, **push to next payer**, and **adjust** stay UI-validated so you review them before they run.
+</Warning>
+
+<Tip>
+✨**Smart Tip:** For a niche change across a group — say, "add a KX modifier to all 99214s on these claims" — pass the selected claims to [Athelas Assistant](/insights_general/athelas_assistant/getting_started_with_your_rcm_assistant) and describe the edit. The Assistant works with your selection as context.
+</Tip>
+
+### FAQ
+
+<Accordion title="Where do I find bulk resubmission?">
+It's built into the Claims Page. Select claims from your worklist, then open **More Actions** at the bottom of the screen and choose **Resubmit**. There's no separate bulk-resubmission page to visit.
+</Accordion>
+
+<Accordion title="How many claims can I resubmit at once?">
+Up to **50 at a time**. To work a larger group, scroll to load more rows and select again — each selection grabs everything currently loaded, so you can scroll to the bottom of a group and select the whole bucket.
+</Accordion>
+
+<Accordion title="Can I bulk-update insurance before resubmitting?">
+Yes. **Update primary insurance** is one of the bulk actions in the **More Actions** menu — useful when an eligibility denial hits several claims. Update the insurance across the group, then resubmit them together.
+</Accordion>
+
+<Accordion title="What if I only need to fix one claim?">
+Resubmit it individually instead — see [How to Resubmit a Single Claim](/insights_biller/claim_details/how_to_resubmit_a_single_claim).
+</Accordion>
