@@ -1,0 +1,57 @@
+---
+title: "Bank Deposit Reconciliation Report"
+---
+
+#### Summary
+
+This report breaks down every bank deposit for the reporting period, **down to the individual claim**, and shows exactly where the money in each deposit came from and what state it is in. It answers the question: *"For each dollar that hit our bank account, do we know which check it came from, which claim it pays, and have we posted it in our system yet?"*
+
+Each deposit is represented by three kinds of rows:
+
+- **One line per claim on each check** — how much of that check was matched & posted vs. matched & unposted for that specific claim.
+- **A check-level summary line** (claim number blank) — leftover cash on the check that could not be tied to a specific claim line on the 835, plus any non-Athelas cash on the check.
+- **A deposit-level summary line** (check ID and claim number both blank) — cash on the deposit that is not tied to any specific check.
+
+#### The Four Buckets
+
+Every dollar of every deposit lands in exactly one of four buckets, so the buckets always add up to the bank deposit total:
+
+- **Matched & Posted** — insurance cash on a check that has been matched to the deposit *and* posted in the system, broken out per claim.
+- **Matched & Unposted** — insurance cash matched to the deposit but not yet posted. When the 835 identifies which claims the money is for, this is split per claim; any remainder shows on the check-level summary line.
+- **Unmatched** — cash that arrived in the deposit but is not tied to any specific check (shown once per deposit on the deposit-level summary line).
+- **Others** — non-insurance cash (patient payments, refunds, miscellaneous receipts, or money for claims submitted outside Athelas).
+
+#### Key Use Cases
+
+- Trace every dollar of a deposit back to the check and claim it pays.
+- Surface insurance cash that has been received but not yet posted.
+- Separate insurance cash from patient payments and other non-insurance receipts.
+- Support month-end bank reconciliation alongside the [Site Transaction Report](/insights_biller/reports/site_transaction_report).
+
+<Note>
+For the bank-linking workflow that feeds this report, see [Bank Deposit Verification](/insights_front_desk/utilities/bank_deposit_verification).
+</Note>
+
+#### Data Dictionary
+
+| Column Name | Description |
+| --- | --- |
+| bank_deposit_id | The ID of the bank deposit this row belongs to. Every row is tied to exactly one deposit. |
+| bank_deposit_link | A direct link to this deposit in Insights, so you can open it and see the underlying detail. |
+| bank_deposit_date | The date the deposit landed in the bank. Used to place the row in the right reporting period. |
+| check_number | The check number printed on the ERA check inside the deposit. Blank means the row is a deposit-level summary line. |
+| athelas_claim_number | The claim submission ID this row's matched cash pays. Blank on check-level and deposit-level summary lines. |
+| date_posted | The earliest date a payment item was posted for this claim on this check. Only populated on matched-posted rows. |
+| notes | Free-text notes captured on the bank deposit when it was reviewed. |
+| deposit_description | The original transaction description from the upstream source (virtual card, Plaid, Anatomy, or BAI). |
+| bank_account_last_4 | The last 4 digits of the bank account associated with the deposit. Blank for virtual card transactions. |
+| payment_type | The ERA payment method codes seen on the check (e.g. ACH, CHK). |
+| matched_posted_usd | Money on this check/claim that has been matched to a bank deposit *and* posted as an insurance payment item. |
+| matched_unposted_usd | Money matched to a bank deposit but not yet posted as insurance payment items. |
+| unmatched_usd | Insurance cash that arrived in the deposit but cannot be tied to any specific ERA check. Reported once per deposit on the deposit-level summary row. |
+| others_usd | Non-insurance cash captured on the deposit or check — patient payments and refunds (deposit-level), or money for claims submitted outside Athelas (check-level). |
+| total_cash_usd | The full amount of cash this row accounts for. Summing this column across all rows of a deposit equals the deposit's total bank amount. |
+
+#### Filters Supported
+
+- Date Range — filter by Bank Deposit Date
