@@ -261,7 +261,6 @@
               "insights_biller/claim_details/organizing_your_claims_worklist",
               "insights_biller/claim_details/working_a_claim",
               "insights_biller/claim_details/deferring_a_claim",
-              "insights_biller/claim_details/how_to_resubmit_a_single_claim",
               "insights_biller/claim_details/how_to_resubmit_claims_in_bulk",
               "insights_biller/claim_details/how_to_send_documentation",
               "insights_biller/claim_details/how_to_download_cms_1500_forms"
@@ -272,21 +271,15 @@
             "icon": "chart-column",
             "tag": "Biller",
             "pages": [
-              "insights_biller/reports/uds_table_9d_report",
+              "insights_biller/reports/building_and_running_reports",
               "insights_biller/reports/provider_line_item_report",
               "insights_biller/reports/aging_ar_report",
               "insights_biller/reports/revenue_activity_report",
               "insights_biller/reports/ar_reports",
-              "insights_biller/reports/building_and_running_reports",
-              "insights_biller/reports/adjustments_report",
               "insights_biller/reports/claim_adjustments_report",
-              "insights_biller/reports/claim_clearinghouse_metrics",
               "insights_biller/reports/collections_report",
               "insights_biller/reports/custom_collections_report",
-              "insights_biller/reports/copay_metrics",
-              "insights_biller/reports/credit_aging_balance_report",
               "insights_biller/reports/detailed_charges_report",
-              "insights_biller/reports/network_class_report",
               "insights_biller/reports/export_claim_details",
               "insights_biller/reports/generate_a_transaction_report",
               "insights_biller/reports/patient_balances_report",
@@ -299,7 +292,6 @@
               "insights_biller/reports/site_transaction_report_summary",
               "insights_biller/reports/bank_deposit_reconciliation_report",
               "insights_biller/reports/submitted_claims_report",
-              "insights_biller/reports/therapist_revenue_summary",
               "insights_biller/reports/upcoming_patient_statements_report"
             ]
           },
@@ -328,10 +320,10 @@
             "icon": "calendar",
             "tag": "Front Desk",
             "pages": [
+              "insights_front_desk/calendar/getting_started_with_the_calendar",
               "insights_front_desk/calendar/calendar_start_end_times",
               "insights_front_desk/calendar/features_not_supported",
               "insights_front_desk/calendar/filter_the_calendar_view",
-              "insights_front_desk/calendar/getting_started_with_the_calendar",
               "insights_front_desk/calendar/modify_calendar_views",
               "insights_front_desk/calendar/viewing_multiple_providers"
             ]
@@ -401,8 +393,7 @@
             "icon": "square-user",
             "tag": "Front Desk",
             "pages": [
-              "insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile",
-              "insights_front_desk/patient_profiles/how_to_resubmit_claims"
+              "insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile"
             ]
           },
           {
@@ -410,6 +401,7 @@
             "icon": "dollar-sign",
             "tag": "Front Desk",
             "pages": [
+              "insights_front_desk/patient_responsibility/patient_responsibility_page",
               "insights_front_desk/patient_responsibility/charge_saved_credit_cards",
               "insights_front_desk/patient_responsibility/how_to_cancel_pr",
               "insights_front_desk/patient_responsibility/how_to_push_to_pr",
@@ -422,7 +414,6 @@
               "insights_front_desk/patient_responsibility/how_to_take_payment_for_families",
               "insights_front_desk/patient_responsibility/how_to_write_off_pr",
               "insights_front_desk/patient_responsibility/manage_credit_cards",
-              "insights_front_desk/patient_responsibility/patient_responsibility_page",
               "insights_front_desk/patient_responsibility/pr_overpayment_refunds_and_estimated_vs_remittance_pr",
               "insights_front_desk/patient_responsibility/pr_settings",
               "insights_front_desk/patient_responsibility/pr_timeline",
@@ -448,10 +439,10 @@
             "icon": "upload",
             "tag": "Front Desk",
             "pages": [
+              "insights_front_desk/posting/how_to_use_the_posting_tool_page",
               "insights_front_desk/posting/how_to_handle_duplicate_remittances",
               "insights_front_desk/posting/how_to_handle_partial_denials",
               "insights_front_desk/posting/how_to_post_a_remittance_manually",
-              "insights_front_desk/posting/how_to_use_the_posting_tool_page",
               "insights_front_desk/posting/how_to_write_off_a_balance"
             ]
           },
@@ -512,8 +503,8 @@
             "icon": "robot",
             "tag": "Provider",
             "pages": [
-              "insights_provider/athelas_assistant/athelas_assistant_common_functionalities",
-              "insights_provider/athelas_assistant/getting_started_with_athelas_assistant"
+              "insights_provider/athelas_assistant/getting_started_with_athelas_assistant",
+              "insights_provider/athelas_assistant/athelas_assistant_common_functionalities"
             ]
           },
           {
@@ -521,10 +512,10 @@
             "icon": "notes-medical",
             "tag": "Provider",
             "pages": [
+              "insights_provider/chart_notes/getting_started_with_chart_notes",
               "insights_provider/chart_notes/ai_appt_summaries",
               "insights_provider/chart_notes/auto_apply_kx_modifier",
               "insights_provider/chart_notes/download_chart_notes_as_pdfs",
-              "insights_provider/chart_notes/getting_started_with_chart_notes",
               "insights_provider/chart_notes/how_to_add_measurements",
               "insights_provider/chart_notes/import_previous_medical_history",
               "insights_provider/chart_notes/navigating_flowsheets",
@@ -549,8 +540,8 @@
             "icon": "square-user",
             "tag": "Provider",
             "pages": [
-              "insights_provider/patient_profiles/add_attachments_to_patient_profile",
               "insights_provider/patient_profiles/getting_started_with_patient_profile",
+              "insights_provider/patient_profiles/add_attachments_to_patient_profile",
               "insights_provider/patient_profiles/navigating_labs",
               "insights_provider/patient_profiles/prescribe_medications",
               "insights_provider/patient_profiles/profile_features_not_supported",
@@ -619,6 +610,14 @@
     {
       "source": "/insights_provider/chart_notes/chart_note_features_not_supported",
       "destination": "/insights_provider/chart_notes/getting_started_with_chart_notes"
+    },
+    {
+      "source": "/insights_biller/claim_details/how_to_resubmit_a_single_claim",
+      "destination": "/insights_biller/claim_details/claim_details_page"
+    },
+    {
+      "source": "/insights_front_desk/patient_profiles/how_to_resubmit_claims",
+      "destination": "/insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile"
     }
   ]
 }
