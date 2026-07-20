@@ -21,7 +21,7 @@
     "light": "#FA5478",
     "dark": "#FB8DA5"
   },
-  "favicon": "images/athelas_favicon_bkg.png",
+  "favicon": "images/air_archive/athelas_favicon_bkg.png",
   "navigation": {
     "tabs": [
       {
@@ -488,7 +488,7 @@
             ]
           },
           {
-            "group": "AI Scribe & Tooling",
+            "group": "Air Scribe & Tooling",
             "icon": "wand-magic-sparkles",
             "tag": "Provider",
             "pages": [
@@ -496,8 +496,7 @@
               "insights_provider/ai_scribe_and_tooling/complete_a_visit_with_air_scribe",
               "insights_provider/ai_scribe_and_tooling/edit_with_commandk",
               "insights_provider/ai_scribe_and_tooling/how_to_apply_an_air_scribe",
-              "insights_provider/ai_scribe_and_tooling/how_to_set_up_ai_compliance",
-              "insights_provider/ai_scribe_and_tooling/setting_up_ai_compliance"
+              "insights_provider/ai_scribe_and_tooling/how_to_set_up_ai_compliance"
             ]
           },
           {
@@ -597,6 +596,10 @@
     }
   },
   "redirects": [
+    {
+      "source": "/insights_provider/ai_scribe_and_tooling/setting_up_ai_compliance",
+      "destination": "/insights_provider/ai_scribe_and_tooling/how_to_set_up_ai_compliance"
+    },
     {
       "source": "/insights_provider/chart_notes/chart_note_clinical_types",
       "destination": "/air_provider/fill_a_chart_note/chart_note_clinical_types"
