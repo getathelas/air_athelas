@@ -261,7 +261,6 @@
               "insights_biller/claim_details/organizing_your_claims_worklist",
               "insights_biller/claim_details/working_a_claim",
               "insights_biller/claim_details/deferring_a_claim",
-              "insights_biller/claim_details/how_to_resubmit_a_single_claim",
               "insights_biller/claim_details/how_to_resubmit_claims_in_bulk",
               "insights_biller/claim_details/how_to_send_documentation",
               "insights_biller/claim_details/how_to_download_cms_1500_forms"
@@ -272,21 +271,15 @@
             "icon": "chart-column",
             "tag": "Biller",
             "pages": [
-              "insights_biller/reports/uds_table_9d_report",
               "insights_biller/reports/provider_line_item_report",
               "insights_biller/reports/aging_ar_report",
               "insights_biller/reports/revenue_activity_report",
               "insights_biller/reports/ar_reports",
               "insights_biller/reports/building_and_running_reports",
-              "insights_biller/reports/adjustments_report",
               "insights_biller/reports/claim_adjustments_report",
-              "insights_biller/reports/claim_clearinghouse_metrics",
               "insights_biller/reports/collections_report",
               "insights_biller/reports/custom_collections_report",
-              "insights_biller/reports/copay_metrics",
-              "insights_biller/reports/credit_aging_balance_report",
               "insights_biller/reports/detailed_charges_report",
-              "insights_biller/reports/network_class_report",
               "insights_biller/reports/export_claim_details",
               "insights_biller/reports/generate_a_transaction_report",
               "insights_biller/reports/patient_balances_report",
@@ -299,7 +292,6 @@
               "insights_biller/reports/site_transaction_report_summary",
               "insights_biller/reports/bank_deposit_reconciliation_report",
               "insights_biller/reports/submitted_claims_report",
-              "insights_biller/reports/therapist_revenue_summary",
               "insights_biller/reports/upcoming_patient_statements_report"
             ]
           },
@@ -401,8 +393,7 @@
             "icon": "square-user",
             "tag": "Front Desk",
             "pages": [
-              "insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile",
-              "insights_front_desk/patient_profiles/how_to_resubmit_claims"
+              "insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile"
             ]
           },
           {
@@ -619,6 +610,14 @@
     {
       "source": "/insights_provider/chart_notes/chart_note_features_not_supported",
       "destination": "/insights_provider/chart_notes/getting_started_with_chart_notes"
+    },
+    {
+      "source": "/insights_biller/claim_details/how_to_resubmit_a_single_claim",
+      "destination": "/insights_biller/claim_details/claim_details_page"
+    },
+    {
+      "source": "/insights_front_desk/patient_profiles/how_to_resubmit_claims",
+      "destination": "/insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile"
     }
   ]
 }
