@@ -77,8 +77,8 @@ Claims that need attention appear in different places depending on **where** in 
 
 | **Stage** | **Origin** | **Where It Occurs** | **Has Claim Been Submitted?** |
 | :-------- | :--------- | :------------------- | :---------------------------- |
-| **Import Errors** | EHR → Athelas | Between systems | No |
-| **Submission Errors** | Athelas | Internal rules engine | No |
+| **Import Errors** | EHR → Insights | Between systems | No |
+| **Submission Errors** | Insights | Internal rules engine | No |
 | **Rejections** | Clearinghouse / Gateway | Post-submission | Yes (not adjudicated) |
 | **Denials** | Payer | Post-adjudication | Yes |
 
@@ -104,10 +104,10 @@ Timely and consistent management of More Information Required is critical for cl
 Import errors typically happen when:
 
 - **Missing key details** — A patient or encounter is missing essential information.
-- **New entities not yet added** — A new provider was added in your EHR but not yet in Athelas.
+- **New entities not yet added** — A new provider was added in your EHR but not yet in Insights.
 - **Missing insurance information** — A patient is missing their insurance member ID.
-- **Unrecognized codes** — An encounter uses a custom CPT code that Athelas does not recognize.
-- **Potential duplicates** — A patient appears to be a duplicate, and Athelas pauses import for investigation.
+- **Unrecognized codes** — An encounter uses a custom CPT code that Insights does not recognize.
+- **Potential duplicates** — A patient appears to be a duplicate, and Insights pauses import for investigation.
 
 ### How Import Errors Work
 
@@ -120,12 +120,12 @@ Import errors typically happen when:
 
 You can address import errors by:
 
-- **Updating your EHR** — Fix missing or incorrect data in your EHR so it can flow into Athelas.
+- **Updating your EHR** — Fix missing or incorrect data in your EHR so it can flow into Insights.
 - **Using the Import feature** — Click the blue **Import** button to open the encounter creation flow and correct data directly in Insights.
 - **Working with Athelas** — Contact your Athelas representative for new providers/facilities or to create import rules.
 
 <Tip>
-Review import errors weekly to catch issues early. Notify Athelas when adding new providers or facilities. Most errors are simple missing fields that can be fixed in your EHR; the corrected data will flow into Athelas during the next overnight import.
+Review import errors weekly to catch issues early. Notify Athelas when adding new providers or facilities. Most errors are simple missing fields that can be fixed in your EHR; the corrected data will flow into Insights during the next overnight import.
 </Tip>
 
 **Note:** The goal is to work toward zero outstanding import errors so all eligible encounters are captured for claim submission.
@@ -261,7 +261,7 @@ On the **Denials Worklist** (under **Action Items**), denied claims appear in th
 Within **Site Action Required**, you’ll see:
 
 - **Not Started** — New denials that need your attention; review and determine corrections.
-- **Awaiting EHR Updates** — Your staff has indicated corrections were made in the EHR but haven’t yet been marked "Updated in EHR" in Insights. Once Athelas imports the data, these will be resubmitted and drop off the denials dashboard.
+- **Awaiting EHR Updates** — Your staff has indicated corrections were made in the EHR but haven’t yet been marked "Updated in EHR" in Insights. Once Insights imports the data, these will be resubmitted and drop off the denials dashboard.
 - **Blocked** — Your team needs help from Athelas to resolve the denial. Use this when you’re stuck and cannot determine the solution.
 
 ![Denials Site Action Required sub-buckets: Not Started, Awaiting EHR Updates, Blocked](/images/insights_onboard/getting_started_as_biller_errors_rejections_and_denials/getting_started_as_biller_errors_rejections_and_denials_17.png)
@@ -273,7 +273,7 @@ Check the denials worklist daily, focus on **Site Action Required** first, and p
 ### FAQ
 
 <Accordion title="What's the difference between an error, a rejection, and a denial?">
-**Import and Submission Errors** happen before a claim is successfully sent to the payer: import errors between your EHR and Athelas, submission errors inside Athelas (validation or blocking rules). **Rejections** happen after you submit—the clearinghouse or gateway returns the claim for technical/format/eligibility reasons, so the payer never adjudicates it. **Denials** happen after the payer has received and adjudicated the claim and decided not to pay (in full or in part).
+**Import and Submission Errors** happen before a claim is successfully sent to the payer: import errors between your EHR and Insights, submission errors inside Insights (validation or blocking rules). **Rejections** happen after you submit—the clearinghouse or gateway returns the claim for technical/format/eligibility reasons, so the payer never adjudicates it. **Denials** happen after the payer has received and adjudicated the claim and decided not to pay (in full or in part).
 </Accordion>
 
 <Accordion title="What does More Information Required mean?">
