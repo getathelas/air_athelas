@@ -12,7 +12,7 @@ Getting a clear answer to #1 can be challenging enough, but some practices are f
 
 It’s important work, but it’s also a slog.
 
-That’s why Athelas has a [Remittances](https://insights.athelas.com/#/v2/payment/remittances) page, with built-in **deposit verification**.
+That’s why Insights has a [Remittances](https://insights.athelas.com/#/v2/payment/remittances) page, with built-in **deposit verification**.
 
 In this tab you’ll be able to view a list of every remittance a payer has sent you. Once you plug in your bank account via our secure [Plaid integration](https://plaid.com/) we’ll attempt to *automatically match those remittances up with deposits,* reducing the burden of deposit verification by as much as 80%.
 
@@ -20,13 +20,11 @@ Read on, and we’ll dig into the details.
 
 #### Best Practices
 
-**1.** While Athelas will be able to automatically match the majority of your remits/deposits, some portion will still need to be manually matched. For this reason it’s worth **reviewing your unmatched remittances/deposits at least every 2 weeks** to keep the volume of unmatched pairs manageable.
+**1.** While Insights will be able to automatically match the majority of your remits/deposits, some portion will still need to be manually matched. For this reason it’s worth **reviewing your unmatched remittances/deposits at least every 2 weeks** to keep the volume of unmatched pairs manageable.
 
 **2.** Often remittances will arrive a few days before payments hit the bank, so for any **remittances younger than 5 days old**, don't be too worried if there's no corresponding deposit in your bank account just yet.
 
 **3.** When you deposit multiple checks at once, your bank will usually sum them all up into a single deposit which makes it hard to match them against individual remittances. When you’re looking for **payments that correspond to orphaned remittances**, this is often a good place to start.
-
-We can reconcile paper check bulk deposits and virtual card transactions
 
 #### 🌐 Core Feature Walkthrough
 
@@ -51,17 +49,17 @@ There can be a lot of data in this view, so we’ve provided tools to help you z
 
 <img src="/images/insights_front_desk/utilities/bank_deposit_verification/bank_deposit_verification_2.png" alt="" />
 
-**Explore Remittance Details** — once you’ve found a remittance you want to examine, clicking on it will take you into a detail view for the remittance. Here you can see each Athelas claim that was a component of the remittance.
+**Explore Remittance Details** — once you’ve found a remittance you want to examine, clicking on it will take you into a detail view for the remittance. Here you can see each Insights claim that was a component of the remittance.
 
 <img src="/images/insights_front_desk/utilities/bank_deposit_verification/bank_deposit_verification_3.png" alt="" />
 
-**Quicklink to Athelas Claim** — and to close the loop, clicking any of the specific claims listed in the ERA will open up the Athelas Claim Detail view so you can see remittance info in the context of the rest of the claim details.
+**Quicklink to Insights Claim** — and to close the loop, clicking any of the specific claims listed in the ERA will open up the Insights Claim Details view so you can see remittance info in the context of the rest of the claim details.
 
 <img src="/images/insights_front_desk/utilities/bank_deposit_verification/bank_deposit_verification_4.png" alt="" />
 
 #### Connect Your Bank Account
 
-Once you’re ready to start automatically matching remittances and deposits we’ll need to connect to your bank account via the Athelas/Plaid integration. Here’s how to do it:
+Once you’re ready to start automatically matching remittances and deposits we’ll need to connect to your bank account via the Insights/Plaid integration. Here’s how to do it:
 
 From the main Remittances tab, click the `Connect Bank Accounts` button. This will take you to the linked accounts screen.
 
@@ -71,7 +69,7 @@ From the linked accounts screen you can view any currently associated bank accou
 
 <img src="/images/insights_front_desk/utilities/bank_deposit_verification/bank_deposit_verification_6.png" alt="" />
 
-This will launch the Plaid integration screen which will guide you through the process of authenticating with your bank. Once you’re done, read-only access will be delivered to Athelas for analysis.
+This will launch the Plaid integration screen which will guide you through the process of authenticating with your bank. Once you’re done, read-only access will be delivered to Insights for analysis.
 
 <img src="/images/insights_front_desk/utilities/bank_deposit_verification/bank_deposit_verification_7.png" alt="" />
 
@@ -85,18 +83,16 @@ To refresh or remove an account, simply click ‘Manage Bank Accounts’ on the 
 
 <img src="/images/insights_front_desk/utilities/bank_deposit_verification/bank_deposit_verification_8.png" alt="" />
 
-Now that your bank account is hooked up and Athelas has had time to run our algorithmic matching protocol, the fun really begins. You now have 5 different ways to segment your data, depending on your objective:
-
 #### Analyze Matches / Missing Deposits
 
-Now that your bank account is hooked up and Athelas has had time to run our algorithmic matching protocol, the fun really begins. You now have 5 different ways to segment your data, depending on your objective:
+Now that your bank account is hooked up and Insights has had time to run our algorithmic matching protocol, the fun really begins. You now have 5 different ways to segment your data, depending on your objective:
 
 <img src="/images/insights_front_desk/utilities/bank_deposit_verification/bank_deposit_verification_9.png" alt="" />
 
 - **View All** — in this view you’ll see a combination of both remittances and deposits. Any that have been matched will appear combined into a single line item, but you’ll also see rows for unmatched remittances and unmatched deposits.
-- **Missing ERAs** — here you’ll see any deposit for which Athelas couldn’t find a corresponding remittance to match it to.
+- **Missing ERAs** — here you’ll see any deposit for which Insights couldn’t find a corresponding remittance to match it to.
 - **Missing Payment** — on the flip side, this view shows remittances with no payments that could be directly matched to them
-- **Inconsistencies** — here Athelas was able to match a remittance to a deposit, but there’s some discrepancy between the two.
+- **Inconsistencies** — here Insights was able to match a remittance to a deposit, but there’s some discrepancy between the two.
 
 - Generally this a difference in payment amount (often only a few cents), but each row will specify that the inconsistency in the match is.
 
@@ -104,21 +100,19 @@ Now that your bank account is hooked up and Athelas has had time to run our algo
 
 #### In Conclusion
 
-With these tools in hand, the process of tracking down missing payments and missing remittances becomes a lot simpler. As Athelas continues to refine our matching algorithm there will be more and more matches generated automatically.
+With these tools in hand, the process of tracking down missing payments and missing remittances becomes a lot simpler. As we continue to refine our matching algorithm there will be more and more matches generated automatically.
 
-98%+ ACH deposits matched to a check
+### FAQ
 
-#### 💬 FAQs
-
-<blockquote>
-**What should I do if my bank doesn't integrate with Plaid?**
-</blockquote>
-Reach out to [support@getathelas.com](mailto:support@getathelas.com) and we'll see if we can manage an alternate method of importing your deposit list. Occasionally this isn't possible, but often we're able to find a suitable workaround.
+<Accordion title="What should I do if my bank doesn't integrate with Plaid?">
+  Reach out to [support@getathelas.com](mailto:support@getathelas.com) and we'll see if we can manage an alternate method of importing your deposit list. Occasionally this isn't possible, but often we're able to find a suitable workaround.
+</Accordion>
 
 **Features In Development**
 
 - Lockbox integrations
 - Enhanced deposit matching reporting in Insights
+
 **Features Not Supported**
 
 - Local regional banks not on Plaid

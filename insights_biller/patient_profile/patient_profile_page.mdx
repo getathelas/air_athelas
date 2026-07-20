@@ -1,12 +1,12 @@
 ---
 title: "Getting Started with the Patient Profile Page"
 sidebarTitle: "Getting Started with the Patient Profile Page"
-description: "Manage a patient's full financial picture — charges, transactions, credits, and balance — with the Athelas AI balance explainer."
+description: "Manage a patient's full financial picture — charges, transactions, credits, and balance — with the Athelas Assistant balance explainer."
 ---
 
 ### **Getting Started with the Patient Profile Page**
 
-The Patient Profile Page is where you manage everything about a patient's financial picture in Insights: their charges, payments, credits, and balance, all in a single view. Athelas AI sits alongside the page with full context, ready to explain any balance or trace any dollar back to where it came from.
+The Patient Profile Page is where you manage everything about a patient's financial picture in Insights: their charges, payments, credits, and balance, all in a single view. Athelas Assistant sits alongside the page with full context, ready to explain any balance or trace any dollar back to where it came from.
 
 ![Patient Profile Page Overview](/images/insights_biller/patient_profile/patient_profile_page/patient_profile_page_1.png)
 
@@ -24,12 +24,12 @@ The Patient Profile Page consolidates the entire financial history of a patient 
 
 **Key capabilities:**
 
-- **One-click AI balance summary:** click the patient's balance and Athelas AI will explain why they owe what they owe, with no prompting required.
+- **One-click AI balance summary:** click the patient's balance and Athelas Assistant will explain why they owe what they owe, with no prompting required.
 - **End-to-end transaction activity:** every credit is now traceable, linking back to the payment it originally came from, so "where did this money come from?" and "where did it go?" are always a couple of clicks away.
 - **Unified Charges table:** one row per DOS, showing the full lifecycle from estimate to finalized balance.
 - **Charge Details drawer:** per-CPT breakdown (Copay, Co-Insurance, Deductible, etc.) and the full PR timeline.
 - **Transactions table:** every incoming payment on the patient, with clear status and refund information inline.
-- **Athelas AI with screen context:** no need to re-type IDs. The assistant already knows the patient, charge, or transaction you're looking at, and can act on credits (apply, move, refund, write off).
+- **Athelas Assistant with screen context:** no need to re-type IDs. The assistant already knows the patient, charge, or transaction you're looking at, and can act on credits (apply, move, refund, write off).
 
 ## **Getting Started**
 
@@ -43,7 +43,7 @@ The page uses a three-panel design:
 
 - **Left:** patient summary, quick actions, and communication/status controls.
 - **Center:** the Charges and Transactions tables, with drill-down views for details.
-- **Right:** the Athelas AI side panel, available throughout.
+- **Right:** the Athelas Assistant side panel, available throughout.
 
 <Tip>
 Press **Ctrl-K** (Windows) or **Command-K** (Mac) anywhere in Insights to quickly search for a patient or jump to another page without losing your place.
@@ -55,7 +55,7 @@ The quick actions toolbar at the top of the patient summary is where you'll find
 
 ### **Communication & Status**
 
-The status controls let you manage how Athelas interacts with the patient: toggle automatic text messages on or off, set up a payment plan, or mark the account as **In Collections**. Changes take effect immediately and are logged in the patient's activity history.
+The status controls let you manage how Insights interacts with the patient: toggle automatic text messages on or off, set up a payment plan, or mark the account as **In Collections**. Changes take effect immediately and are logged in the patient's activity history.
 
 ## **The Charges Table**
 
@@ -99,7 +99,7 @@ The Transactions tab shows every incoming payment on the patient. Refunds don't 
 **Columns:**
 
 - **Date:** when the payment was created.
-- **Type:** the kind of transaction, covering the different payment sources Athelas supports (card, Smart Pay, cash, check, ACH, and more).
+- **Type:** the kind of transaction, covering the different payment sources Insights supports (card, SmartPay, cash, check, ACH, and more).
 - **Amount:** the dollar amount.
 - **Payment Method:** the specific method used for the transaction.
 - **Performed By:** the user or system that created the transaction.
@@ -130,7 +130,7 @@ The Transaction Details page is where the new credit infrastructure really shows
 - **Total Refunded:** how much has left the system as a refund back to the patient.
 - **Total Credits:** how much is still sitting as credits on the account, traceable to this payment.
 
-Together, these four numbers should always add up to the initial amount, so you can quickly see whether a payment is fully accounted for.
+Together, Total Applied + Total Refunded + Total Credits should equal the Initial Amount, so you can quickly see whether a payment is fully accounted for.
 
 **Application breakdown by DOS:** a table showing every date of service that received money from this payment, including money applied indirectly through credits. Every row links back to the specific charge it paid.
 
@@ -144,21 +144,21 @@ You can start from either end of the chain. From a charge, the credit applicatio
 When a credit-payment draws from more than one source payment (a split credit), each source produces its own credit record with its own chain. The activity feed surfaces both, so a \$150 credit-payment sourced from a \$100 payment and a \$50 payment shows two separate events, each traceable to its own origin.
 </Tip>
 
-## **Tracing Credits with Athelas AI**
+## **Tracing Credits with Athelas Assistant**
 
 ![Athelas AI Tracing Credits](/images/insights_biller/patient_profile/patient_profile_page/patient_profile_page_8.png)
 
-Athelas AI lives in the right-hand panel of the Patient Profile Page and has the patient's full context at all times, so you don't have to paste an ID or describe what you're looking at. Open it anytime from the **Athelas AI** button in the top navigation.
+Athelas Assistant lives in the right-hand panel of the Patient Profile Page and has the patient's full context at all times, so you don't have to paste an ID or describe what you're looking at. Open it anytime from the **Athelas AI** button in the top navigation.
 
-The fastest way to start is to click the patient's **balance** at the top of the profile. Athelas AI will read the full context on the page and produce a plain-English summary of how the current balance came to be, covering charge progression, insurance adjudication, payments applied, credits created or moved, and anything still outstanding. Use this as a first step when a patient calls with a balance question, then drill into the specific charge or transaction the summary references to verify the detail.
+The fastest way to start is to click the patient's **balance** at the top of the profile. Athelas Assistant will read the full context on the page and produce a plain-English summary of how the current balance came to be, covering charge progression, insurance adjudication, payments applied, credits created or moved, and anything still outstanding. Use this as a first step when a patient calls with a balance question, then drill into the specific charge or transaction the summary references to verify the detail.
 
-**What Athelas AI can see on the Patient Profile Page:**
+**What Athelas Assistant can see on the Patient Profile Page:**
 
 - The active patient and their full financial history.
 - The charge, transaction, or detail view you currently have open.
 - Credit chains, payment applications, and remittance data in real time.
 
-**What Athelas AI can do:**
+**What Athelas Assistant can do:**
 
 - **Explain:** where a specific credit came from, why a balance exists, what a payment was applied to, why insurance paid what they paid.
 - **Act:** apply credits to outstanding PRs, move credits between dates of service, write off a balance, refund a payment.
@@ -172,7 +172,7 @@ The fastest way to start is to click the patient's **balance** at the top of the
 - *"Refund the \$25 overpayment from last Tuesday."*
 
 <Warning>
-Action prompts (apply credits, move credits, refund, write off) make real changes to the patient's account. Athelas AI will always show you a preview of what it's about to do and ask for confirmation before executing.
+Action prompts (apply credits, move credits, refund, write off) make real changes to the patient's account. Athelas Assistant will always show you a preview of what it's about to do and ask for confirmation before executing.
 </Warning>
 
 ### FAQ

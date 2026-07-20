@@ -2,131 +2,93 @@
 title: "Text Snippets For Your Note"
 ---
 
-*A quick‑insert tool for boiler‑plate phrases in chart notes*
+*A quick-insert tool for boiler-plate phrases in chart notes.*
 
-#### What is it?
+## What is it?
 
-Text Snippets adds a lightweight “/” command palette to every **TextQuestion** field in the chart‑note form.
+Text Snippets adds a lightweight "/" command palette to every text-entry field in the chart-note form.
 
-Clinicians can drop pre‑saved phrases (e.g., “Shoulder: full ROM”) with a click or a single **Tab**—no more re‑typing the same assessment dozens of times per day.
+Clinicians can drop pre-saved phrases (e.g., "Shoulder: full ROM") with a click or a single **Tab** — no more re-typing the same assessment dozens of times per day.
 
-####
+## Using snippets inside a note
 
-#### Using snippets inside a note
+| **Action** | **Result** |
+| :-- | :-- |
+| Type `/` at the end of any sentence | Palette opens under the cursor |
+| Continue typing | Live-filter by **label / group** (`/hip`, `/exam:hip`) |
+| **↑ / ↓** | Navigate results |
+| **Enter / Tab / Click** | Insert highlighted snippet |
+| **Esc** | Close palette (press twice if filtering by group) |
+| **Backspace** just after `/` | Close palette |
+| Type **two spaces** | Quick close |
 
-{/* HTML preserved: <figure> */}{/* HTML preserved: <table> */}{/* HTML preserved: <tbody> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <th> */}Action
+**Example flow**
 
-{/* HTML preserved: </th> */}{/* HTML preserved: <th> */}Result
+- Type `Hip /`
+- Press **↓** to highlight *"Hip: tender to palpation"*
+- Press **Tab** → the phrase is inserted, the caret moves to the end, and the palette closes
 
-{/* HTML preserved: </th> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}Type `**/**` at the end of any sentence
+## Navigating the palette
 
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Palette opens under the cursor
+**Search bar**
 
-{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}Continue typing
-
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Live‑filter by **label / group** (`/hip`, `/exam:hip`)
-
-{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}**↑ / ↓**
-
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Navigate results
-
-{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}**Enter / Tab / Click**
-
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Insert highlighted snippet
-
-{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}**Esc**
-
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Close palette (press twice if filtering by group)
-
-{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}**Backspace** just after `/`
-
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Close palette
-
-{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}Type **two spaces**
-
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Quick close
-
-{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: </tbody> */}{/* HTML preserved: </table> */}{/* HTML preserved: </figure> */}{/* HTML preserved: <h5> */}Example flow{/* HTML preserved: </h5> */}- Type `Hip /`
-- Press **↓** to highlight *“Hip: tender to palpation”*
-- Press **Tab** → phrase is inserted, caret moves to the end, palette closes
-
-####
-
-#### Navigating the palette
-
-{/* HTML preserved: <h5> */}Search bar{/* HTML preserved: </h5> */}- Opens automatically after `/`
+- Opens automatically after `/`
 - Filters across **all labels and groups**
 - Prefix with `group:` to filter (e.g., `/MSK:`)
-{/* HTML preserved: <h5> */}Group → snippet drill‑down{/* HTML preserved: </h5> */}- Selecting a group tile shows only that group’s snippets
-- A chip in the header shows the active group; click **“×”** to clear
-{/* HTML preserved: <h5> */}Keyboard cheat‑sheet{/* HTML preserved: </h5> */}{/* HTML preserved: <figure> */}{/* HTML preserved: <table> */}{/* HTML preserved: <tbody> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <th> */}Key
 
-{/* HTML preserved: </th> */}{/* HTML preserved: <th> */}Palette open
+**Group → snippet drill-down**
 
-{/* HTML preserved: </th> */}{/* HTML preserved: <th> */}Search bar focused
+- Selecting a group tile shows only that group's snippets
+- A chip in the header shows the active group; click **"×"** to clear
 
-{/* HTML preserved: </th> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}`/`
+**Keyboard cheat-sheet**
 
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Re‑open palette
+| **Key** | **Palette open** | **Search bar focused** |
+| :-- | :-- | :-- |
+| `/` | Re-open palette | — |
+| **↑ / ↓** | Cycle suggestions | Cycle suggestions |
+| **Enter / Tab** | Insert snippet / open group | Insert / open |
+| **Esc** | Leave group → close search → close palette | Clear group → close palette |
+| **⌫** (Backspace) right after `/` | — | Close palette |
 
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}—
+## Managing snippets (Admin & power users)
 
-{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}↑ / ↓
+1. Navigate to **Profile → Preferences → Text Snippets**.
+2. Click **"Add Snippet"** or edit an existing one.
+3. Fill in:
+   - **Title** (required, no `:` or double-spaces)
+   - **Group** (optional, same restrictions)
+   - **Snippet text** (required)
+4. Click **Save**.
 
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Cycle suggestions
+**Note:** The drawer closes *only after* a successful save, and inline validation errors appear if any rules are broken. The *"Other"* group always displays last.
 
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Cycle suggestions
+## Tips & best practices
 
-{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}**Enter / Tab**
+- **Autosize inputs**: In *Minimal* design, single-line snippet fields auto-grow.
+- **Clipboard helper**: The trailing clipboard icon copies read-only field values.
+- **Mobile friendly**: The palette respects virtual keyboards.
+- **Accessibility**: The "/" icon is skipped in tab order; keyboard users rely on the slash.
 
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Insert snippet / open group
+## Troubleshooting
 
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Insert / open
+| **Symptom** | **Likely cause** | **Fix** |
+| :-- | :-- | :-- |
+| Typing `/` does nothing | Text Snippets not enabled for your practice | Contact your admin to enable Text Snippets |
+| Palette shows "No items match" | No snippets, or filter too narrow | Add snippets or clear the search / group |
+| Validation error: "Title cannot contain …" | Forbidden character in title/group | Edit the field |
+| Palette closes unexpectedly | Two spaces typed or `/` deleted | Re-type `/` |
 
-{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}**Esc**
+### FAQ
 
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Leave group → close search → close palette
+<Accordion title="Does it work in multiline fields?">
+  Yes — the palette anchors under the textarea.
+</Accordion>
 
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Clear group → close palette
+<Accordion title="Can sites have different snippet sets?">
+  Yes. The snippet list is scoped to the **site**.
+</Accordion>
 
-{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}**⌫** (Backspace) right after `/`
-
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}—
-
-{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Close palette
-
-{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: </tbody> */}{/* HTML preserved: </table> */}{/* HTML preserved: </figure> */}
-
-####
-
-#### Managing snippets (Admin & power users)
-
-- Navigate to **Profile → Preferences → Text Snippets**.
-- Click **“Add Snippet”** or edit an existing one.
-- Fill in:
-
-- **Title** (required, no `:` or double‑spaces)
-- **Group** (optional, same restrictions)
-- **Snippet text** (required)
-
-- Click **Save**.
-
-- Drawer closes *only after* a successful save.
-- Inline validation errors appear if rules are broken.
-
-*“Other”* group always displays last.
-
-{/* HTML preserved: <h2> */}
-{/* HTML preserved: </h2> */}{/* HTML preserved: <h2> */}Tips & best practices{/* HTML preserved: </h2> */}- **Autosize inputs**: In *Minimal* design, single‑line snippet fields auto‑grow.
-- **Clipboard helper**: Trailing clipboard icon copies read‑only field values.
-- **Mobile friendly**: Palette respects virtual keyboards.
-- **Accessibility**: “/” icon is skipped in tab order; keyboard users rely on slash.{/* HTML preserved: <h5> */}
-{/* HTML preserved: </h5> */}{/* HTML preserved: <h5> */}Troubleshooting{/* HTML preserved: </h5> */}{/* HTML preserved: <figure> */}{/* HTML preserved: <table> */}{/* HTML preserved: <tbody> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <th> */}Symptom{/* HTML preserved: </th> */}{/* HTML preserved: <th> */}Likely cause{/* HTML preserved: </th> */}{/* HTML preserved: <th> */}Fix{/* HTML preserved: </th> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}Typing `/` does nothing{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Feature flag disabled{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Enable `EHR_TEXT_SNIPPETS`{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}Palette shows “No items match”{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}No snippets or filter too narrow{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Add snippets or clear search / group{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}Validation error: “Title cannot contain …”{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Forbidden character in title/group{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Edit the field{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: <tr> */}{/* HTML preserved: <td> */}Palette closes unexpectedly{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Two spaces typed or `/` deleted{/* HTML preserved: </td> */}{/* HTML preserved: <td> */}Re‑type `/`{/* HTML preserved: </td> */}{/* HTML preserved: </tr> */}{/* HTML preserved: </tbody> */}{/* HTML preserved: </table> */}{/* HTML preserved: </figure> */}
-
-#### FAQ’s
-
-**Does it work in multiline fields?** — Yes, palette anchors under the textarea.
-
-**Can sites have different snippet sets?** — Yes. Data fetch is scoped to *site ID*.
-
-**Is any formatting inserted?** — Snippets are plain text plus a trailing space.
+<Accordion title="Is any formatting inserted?">
+  No — snippets are plain text plus a trailing space.
+</Accordion>
