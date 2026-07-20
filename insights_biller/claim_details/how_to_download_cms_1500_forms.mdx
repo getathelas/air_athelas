@@ -1,51 +1,65 @@
 ---
-title: "How to Download CMS-1500 Forms"
+title: "Download & Print Claim Forms (CMS-1500 / UB-04)"
+sidebarTitle: "Download Claim Forms"
+toc: "true"
 ---
 
 ### At a Glance
 
-This guide details how to download CMS-1500 forms, individually and in bulk.
+This guide shows how to download and print claim forms — individually or in bulk — from the Claims Page. Insights generates the right form automatically based on the payer: **CMS-1500** for professional claims and **UB-04** for institutional claims.
 
-**What is a CMS-1500 (or HCFA-1500) Form?**
+**What is a CMS-1500 form?** The CMS-1500 (formerly HCFA-1500) is the standard claim form used to bill professional services to Medicare, Medicaid, Tricare, and commercial payers. For more, visit [cms.gov](https://www.cms.gov/medicare/billing/electronicbillingeditrans/1500).
 
-The Healthcare Financing Administration (HCFA)-1500 claim form, also known as **Centers for Medicare & Medicaid Services (CMS)-1500**, enables medical physicians to submit health insurance claims for reimbursement from various government insurance plans including Medicare, Medicaid and Tricare. When a physician has a private practice but performs services at an institutional facility such as a hospital or outpatient facility, the CMS-1500 form would be used to bill for their services.
+### Download an Individual Form
 
-For more information, visit [cms.gov](https://www.cms.gov/medicare/billing/electronicbillingeditrans/1500).
+On the [Claims Page](https://insights.athelas.com), open the target claim.
 
-In Insights, we refer to these as CMS-1500 forms.
+<img
+  src="/images/insights_biller/claim_details/how_to_download_cms_1500_forms/how_to_download_cms_1500_forms_1.png"
+  alt="Opening a claim and its Submissions section on the Claims Page"
+  title="Open the claim"
+/>
 
-### Here’s How to Do It
+Open the **Submissions** section, find the submission you want, and click **View** in the Action column. A preview of the form opens (it may take 10–15 seconds to load). Use the icon buttons at the top of the preview to **Download** or **Print** the form.
 
-- **Download an Individual CMS-1500 Form** — From the [Claim Details page](https://insights.athelas.com/v3/claim_level_view), open the target claim.
+<img
+  src="/images/insights_biller/claim_details/how_to_download_cms_1500_forms/how_to_download_cms_1500_forms_2.png"
+  alt="Previewing a CMS-1500 form with Download and Print buttons"
+  title="Download or print the form"
+/>
 
-<img src="/images/insights_biller/claim_details/how_to_download_cms_1500_forms/how_to_download_cms_1500_forms_1.png" alt="" />
+<Tip>
+✨**Smart Tip:** Printing on pre-printed red claim paper? In the form preview, **remove the background** so only the data prints — this lines the fields up on RED-certified CMS-1500 paper. No feature flag is required.
+</Tip>
 
-Open the Submissions tab. Find the submission in question and click `View`, under the ‘Action’ column. You will then see a preview of the CMS-1500 form. Note that it may take 10-15 seconds to load. You then have the option to Download or Print the document with the icon buttons at the top of the new preview page.
+### Download Forms in Bulk
 
-<img src="/images/insights_biller/claim_details/how_to_download_cms_1500_forms/how_to_download_cms_1500_forms_2.png" alt="" />
+Use the **Download CMS Forms** button next to the filters at the top of the Claims Page.
 
-Done!
-- **Download CMS-1500 Forms in Bulk** — There is a `Download CMS Forms` button next to the filters at the top of the [Claim Details page](https://insights.athelas.com/v3/claim_level_view). We recommend using the filters to narrow your search, otherwise the download will probably take a very long time or fail.
-In this example, we’ll download CMS-1500 forms for this particular patient, but only for claims with an Encounter Status of ‘Approved.’
+<Warning>
+Narrow your list with filters first. Downloading forms for an unfiltered list can take a very long time or fail.
+</Warning>
 
-<img src="/images/insights_biller/claim_details/how_to_download_cms_1500_forms/how_to_download_cms_1500_forms_3.png" alt="" />
+In this example, forms are downloaded for a single patient, limited to claims with an **Approved** status.
 
-Note that these downloads may be large and take a few minutes.
+<img
+  src="/images/insights_biller/claim_details/how_to_download_cms_1500_forms/how_to_download_cms_1500_forms_3.png"
+  alt="Filtering claims and using the Download CMS Forms button for a bulk download"
+  title="Bulk download"
+/>
 
-#### Coding
+Large bulk downloads may take a few minutes to prepare.
 
-**Features Supported**
+### FAQ
 
-- A coding team is dedicated to ensuring accurate and compliant coding for electronic and paper claims.
-- We have coding quality reviews to ensure clean claims and reduce downstream denials
-- We provide coding review and support for coding related denied Claims
-- We provide recommendations and updates on coding guidelines and best practices
-- We code all encounters within 24-48 business hour SLA
-**Features In Development**
+<Accordion title="Will I get a CMS-1500 or a UB-04?">
+Insights picks the form automatically from the payer and claim type — **CMS-1500** for professional claims, **UB-04** for institutional claims. The submission preview shows the form type in its top corner so you can confirm at a glance.
+</Accordion>
 
-- Automated E/M coding using AI
-**Features Not Supported**
+<Accordion title="How do I print on pre-printed red claim paper?">
+In the form preview, remove the background so only the field data prints. That aligns the data with the boxes on RED-certified CMS-1500 paper. Then print as usual.
+</Accordion>
 
-- Write-backs into the sites EHR
-- Coding prior auth support for large-scale workflows.
-- Specialties: PT
+<Accordion title="My bulk download is taking forever — what happened?">
+The list was likely too broad. Apply filters (patient, status, date range) to narrow it before clicking **Download CMS Forms**. Even a well-filtered bulk download can take a few minutes to prepare.
+</Accordion>

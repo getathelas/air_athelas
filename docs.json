@@ -258,13 +258,13 @@
             "tag": "Biller",
             "pages": [
               "insights_biller/claim_details/claim_details_page",
-              "insights_biller/claim_details/encounter_timeline_for_claims",
-              "insights_biller/claim_details/how_to_download_cms_1500_forms",
+              "insights_biller/claim_details/organizing_your_claims_worklist",
+              "insights_biller/claim_details/working_a_claim",
+              "insights_biller/claim_details/deferring_a_claim",
               "insights_biller/claim_details/how_to_resubmit_a_single_claim",
               "insights_biller/claim_details/how_to_resubmit_claims_in_bulk",
               "insights_biller/claim_details/how_to_send_documentation",
-              "insights_biller/claim_details/other_submission_types_secondary_specialty_etc",
-              "insights_biller/claim_details/submissions_and_remits"
+              "insights_biller/claim_details/how_to_download_cms_1500_forms"
             ]
           },
           {
