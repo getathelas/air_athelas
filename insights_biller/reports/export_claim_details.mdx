@@ -1,5 +1,6 @@
 ---
 title: "Export Claim Details"
+description: "Download encounter, procedure, and insurance claim detail reports from Insights."
 ---
 
 <img src="/images/insights_biller/reports/export_claim_details/export_claim_details_1.png" alt="" />
@@ -16,6 +17,8 @@ A raw data sheet is also provided for validating the data specific to your pract
 
 - You cannot sum up patient payments and tie them to revenue graphs in this report. Miscellaneous patient payments are excluded. Only patient payments linked to PR (Patient Responsibility) generated from a remittance are included.
 - The total billed amount is based on the latest primary claim submission for each encounter.
+- The **Encounter Rollup** and **Procedure Rollup** exports include an `icd10_codes` column with the encounter's diagnosis codes.
+- For Air practices, both rollups also include `chart_note_closure_timestamp`. This is the practice-local time of the first active chart note signature and is blank when no signed chart note is linked to the encounter.
 **The filters available here differ from the filters on the Claim Details page**. Here, you’ll select the report’s **inclusive** date range, i.e. ‘Start Date’ and ‘End Date.’
 
 <img src="/images/insights_biller/reports/export_claim_details/export_claim_details_2.png" alt="" />
