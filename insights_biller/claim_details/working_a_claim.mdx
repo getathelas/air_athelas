@@ -1,6 +1,7 @@
 ---
 title: "Working a Claim: Context & Activity Feed"
 sidebarTitle: "Working a Claim"
+description: "Review claim status, submissions, remittances, payments, and activity in one workspace."
 toc: "true"
 ---
 
@@ -43,7 +44,7 @@ The **Claim Context** panel (expandable to full width) is where you diagnose a c
 
 - **Status Reason** — explains *why* a claim is in its current work queue. It shows the denial, rejection, or error code, a plain-language description, the aggregate dollar amount, and a per-procedure breakdown. It updates automatically as the claim's situation changes.
 - **Submissions** — the full history of every submission on the claim. Click into any one to see the payload, its metadata, the billing rules that were applied, and the CMS-1500 (or UB-04) PDF for that submission.
-- **Remittances** — remittance data with its source and deposit-verification status. You can download the raw **835 (ERA)** file or a PDF.
+- **Remittances** — remittance data with its source, deposit-verification status, and **Member ID** when available. You can download the raw **835 (ERA)** file or a PDF.
 - **Payments** — every payment on the claim. Group and sort by posted date, check number, submission ID, or procedure, and use **Display Settings** to control which columns appear (including a denied-reasons column). Click any payment for full detail.
 
 <Warning>
@@ -56,12 +57,17 @@ As a claim moves through its lifecycle, these are the events you'll encounter in
 
 | **Event** | **What it means** |
 | :-- | :-- |
-| **Claim Submission Created** | A submission was generated for the claim. |
-| **Claim Submission Sent** | The submission was sent to the clearinghouse for review before reaching the payer. |
+| **Drafted a claim submission** | A submission draft was generated for the claim. |
+| **Queued a claim for submission** | A claim, corrected claim, resubmission, or void was placed in the submission queue. |
+| **Submitted a claim** | A claim, corrected claim, resubmission, or void was sent to its destination. |
+| **Reviewed the claim** | Validation either passed or found issues that require review. |
+| **Failed to submit a claim** | The submission or resubmission failed. Expand the event to review the **Failure reason**. |
 | **Procedure Remittance** | The payer returned a decision (from an ERA or EOB). Approved remittances appear in green, denied in red; open the **Adjustments** dropdown for the reason and amount. |
 | **Claim Rejected** | The clearinghouse or payer rejected the claim before adjudication. Open the error message for the specific reason. |
 | **Claim Submission Error** | Validation failed on submission. Open the error message for details. |
 | **Claim Voided** | A claim with an error that needs special handling is voided entirely, and a new one is created and sent in its place. |
+
+When several field updates occur within the same minute, the feed shows one timestamp on the parent event. If the updates span different minutes, each field displays its own time.
 
 ## The Activity Feed
 
