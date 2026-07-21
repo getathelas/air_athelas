@@ -1,0 +1,285 @@
+---
+title: "Month-End Close with Insights Reports"
+sidebarTitle: "Month-End Close"
+toc: "true"
+---
+
+This guide is written for your **financial and accounting team**. It walks through how to use Insights reports to close each financial month — covering bank reconciliation, general ledger (GL) entries, exception handling, and month-to-month roll forward.
+
+Insights provides a set of reports designed to support a reliable, repeatable month-end close:
+
+- **[Revenue Activity Report](/insights_biller/reports/revenue_activity_report)** — revenue recognition, posted payments, adjustments, and A/R roll forward.
+- **[Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report)** — cash received, deposit matching status, and unposted/unmatched activity.
+
+<Tip>
+✨**Smart Tip:** Reports filtered by **Date Posted** are *static* — running one for a closed period today and re-running it months later returns the same numbers. Service-date reporting, by contrast, can shift as new activity posts against old dates of service, making a prior month's balances hard to reproduce. Closing on post-date activity keeps your numbers reproducible and auditable long after a period closes.
+</Tip>
+
+Together, these reports support A/R reconciliation and bank deposit reconciliation in a single integrated workflow.
+
+## Reports Used at Month End
+
+| **Report** | **Where to Access** | **Primary Use** |
+| :-- | :-- | :-- |
+| **[Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report)** | **Insights → My Reports → Bank Deposit Reconciliation** | Tie insurance deposits to the bank; surface unmatched/unposted items |
+| **[Revenue Activity Report](/insights_biller/reports/revenue_activity_report)** | **Insights → My Reports → Revenue Activity Report: Detailed Activities** | GL entries for revenue and posted payments; A/R roll forward |
+| **Provider Adjustments Report** | **Insights → My Reports → Provider Adjustments Report** | Surface provider-level adjustments (a subset of which are not included in the Revenue Activity Report) |
+| **[Site Transaction Report](/insights_biller/reports/site_transaction_report)** | **Insights → My Reports → Site Transaction Report: Processed Transactions** | Tie patient payments to the bank; includes facility of collection |
+
+## Step 1: Reconcile to Your Bank Account
+
+This step verifies that every dollar that hit your bank is accounted for in Insights — for both insurance payments and patient payments.
+
+### 1A — Insurance Payments: Bank Tie-Out
+
+**Report:** [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report)
+
+**Filters:**
+
+- **Date Type** = `Bank Deposit Date`
+- **Date Range** = close period (e.g., `06/01/2026 – 06/30/2026`)
+- **As-Of Date** = end of the close period (e.g., `06/30/2026`)
+
+<img
+  src="/images/insights_biller/reports/month_end_close/month_end_close_1.webp"
+  alt="Bank Deposit Reconciliation download dialog with Date Type set to Bank Deposit Date and a June 2026 date range"
+  title="Bank Deposit Reconciliation Report download settings"
+  style={{ width:"70%" }}
+/>
+
+Run the report and sum the **`total_cash_usd`** column. This total should match the sum of all deposits on your bank statement for the same period.
+
+The report classifies every dollar of each deposit into four core buckets, plus two conditional columns:
+
+| **Column** | **What it means** | **Action needed?** |
+| :-- | :-- | :-- |
+| `matched_posted_usd` | Matched to a remit check **and** posted to the ledger | ✅ None |
+| `matched_unposted_usd` | Matched to a remit check, but **not** yet posted | ⚠️ See **Step 3A** |
+| `unmatched_usd` | Deposit **not** matched to any check | ⚠️ See **Step 3B / 3C** |
+| `others_usd` | Deposits unrelated to Insights claims (e.g., non-insurance funds) and patient payments | Review for completeness |
+| `unmatched_posted` | Deposit not matched to any check but force-posted. Only available when the report is downloaded by `Date Posted`; a subset of `unmatched`. | — |
+| `provider_level_adjustment_usd` | Provider-level adjustments deposited in the bank. By **Bank Deposit Date**, shows only `matched_provider_level_adjustments_usd`; by **Date Posted**, shows `provider_level_adjustments_usd` (matched and unmatched). | — |
+
+**Reconciliation check:**
+
+`total_cash_usd = matched_posted + matched_unposted + unmatched + others + matched_provider_level_adjustments`
+
+This total should equal your bank statement deposits for the period. You can cross-verify against the **[Remittances](/insights_biller/general_billing/remittances)** page (**Daily Operations → Remittances → Deposits** tab):
+
+- `matched_posted + matched_unposted + others + matched_provider_level_adjustments_usd` should equal the **Matched** tile.
+- `unmatched_usd` should equal the **Unmatched** tile.
+- `matched_posted_usd + matched_provider_level_adjustment_usd` should equal the **Posted** tile.
+
+### 1B — Patient Payments: Bank Tie-Out
+
+**Report:** [Site Transaction Report](/insights_biller/reports/site_transaction_report)
+
+**Filters:**
+
+- **Date Type** = `Expected Deposit Date` or `Date Posted`
+- **Date Range** = close period
+
+**Note:** You do not need to include credit or failed transactions when reconciling patient payments to the bank.
+
+Patient payments do not flow through the insurance posting pipeline. They are collected separately via Stripe, cash, or check at the time of service, and must be reconciled independently. Choose your **Date Type** based on what you're tying out:
+
+- Use **`Expected Deposit Date`** to tie out **Stripe payouts** deposited in your bank during the period. This may include payments *posted* in a previous month but *deposited* in the current one — payouts occur ~2 days after the Stripe payment is processed.
+- Use **`Date Posted`** to tie out payments *collected* during the period. This is the recommended choice for non-Stripe payments — **cash** and **check**.
+
+<img
+  src="/images/insights_biller/reports/month_end_close/month_end_close_2.webp"
+  alt="Site Transaction Report download dialog with Date Type set to Expected Deposit Date"
+  title="Site Transaction Report — Expected Deposit Date"
+  style={{ width:"48%" }}
+/>
+<img
+  src="/images/insights_biller/reports/month_end_close/month_end_close_3.webp"
+  alt="Site Transaction Report download dialog with Date Type set to Date Posted"
+  title="Site Transaction Report — Date Posted"
+  style={{ width:"48%" }}
+/>
+
+**To reconcile cash and check payments:**
+
+1. Download the Site Transaction Report by **`Date Posted`** for the close period. (Date Posted is when the payment was marked as collected in the system.)
+2. Open the **Processed Transactions** sheet.
+3. Filter **`Payment Method`** to **exclude** `SMART_PAY` and `STRIPE_CARD_READER`. This leaves cash, check, and other non-Stripe methods.
+4. Pivot the report by **`Facility of Collection`**.
+5. Sum **`Amount Paid`** per facility of collection — this is your total patient collections for the period. (`Net Received` is net of Stripe fees and is not relevant for cash/check transactions.)
+
+**To reconcile Stripe transactions:**
+
+1. Download the Site Transaction Report by **`Expected Deposit Date`** for the close period. (Expected Deposit Date is Stripe's estimate of when the next batch of payments will be deposited in your bank.)
+2. Open the **Processed Transactions** sheet.
+3. Filter **`Payment Method`** to **only include** `SMART_PAY` and `STRIPE_CARD_READER`.
+4. Filter out **`Payment Type`** = `INSURANCE_VIRTUAL_CARD` — not relevant for patient collections.
+5. Sum **`Net Received`** — the total paid by patients, net of Stripe fees (which are not included in bank deposits).
+
+<Note>
+For step-by-step help producing this report, see [Generate a Transaction Report](/insights_biller/reports/generate_a_transaction_report).
+</Note>
+
+## Step 2: General Ledger Entries
+
+Once the bank reconciliation ties out, use the **[Revenue Activity Report](/insights_biller/reports/revenue_activity_report)** to drive your GL entries.
+
+**Report:** Revenue Activity Report — **Detailed Activities** tab
+
+**Filters:**
+
+- **Date Type** = `Date Posted`
+- **Date Range** = close period
+
+<img
+  src="/images/insights_biller/reports/month_end_close/month_end_close_4.webp"
+  alt="Revenue Activity Report configuration dialog with the Detailed Activities table selected and a June 2026 date range"
+  title="Revenue Activity Report download settings"
+  style={{ width:"70%" }}
+/>
+
+<Warning>
+This report is **static when run by Date Posted**. Running it for a given month today and re-running it months later returns the same numbers.
+</Warning>
+
+### Cash-Basis GL Entries
+
+| **GL Entry** | **Debit** | **Credit** | **Insights Source / Column** |
+| :-- | :-- | :-- | :-- |
+| Record cash received from bank | Cash | Unapplied Revenue | Bank statement / Bank Deposit Recon `total_cash_usd` |
+| Record payments | Unapplied Revenue | Revenue *(by dimension)* | Revenue Activity → `paid` column |
+| Record non-Insights (foreign-system) payments | Unapplied Revenue | Foreign System Revenue | Remittances and Checks page |
+| Record and reconcile miscellaneous revenue | Unapplied Revenue | Miscellaneous revenue account | Provider Adjustments Report |
+
+**For patient upfront collections not yet applied to a claim** (still in holding): these appear in the **Unapplied Payments** tab of the [Revenue Activity Report](/insights_biller/reports/revenue_activity_report). Record them to a clearing/liability account until the claim is adjudicated, at which point they move into Revenue Activity as `payer_index` 4.
+
+## Step 3: Handle Exceptions
+
+After running the bank reconciliation, review any amounts sitting in `matched_unposted_usd` or `unmatched_usd` to determine whether anything requires action before closing the month.
+
+### 3A — Matched Unposted: How to Get Something Posted
+
+**What this means:** Insights linked the remittance (check/ERA) to a bank deposit, but has not posted it to the ledger. This happens because the remittance was automatically placed into **Manual Review** — a guardrail that prevents the ledger from going out of balance.
+
+**To resolve:**
+
+1. In Insights, go to the **Claims** page → filter for **Unposted Remittances** → select status **Manual Review**.
+2. Click into the claim. The **Encounter Stage** shows "Unposted Remittances."
+3. In the **Posting Tool**, expand the procedure columns to find the specific remittance in Manual Review.
+4. **Option A — Post it:**
+   - Click the **⋯** (three dots) to the right of the payment item → **Negate** → enter a reason.
+   - Review the payment preview showing balance rollups.
+   - Click **Post** in the upper right. The remittance is now posted to the ledger.
+5. **Option B — Archive it** *(if the remittance should not hit the ledger)*:
+   - Click **Archive**. The line grays out and shows "Archived." Posting status updates to "Finalized" and the Unposted Remittances substage disappears from the encounter.
+
+**Common reasons a remittance lands in Manual Review:**
+
+- Conflicting PR decisions (e.g., a resubmission where two remits show different patient-responsibility amounts).
+- Data-integrity issues (the remittance doesn't balance to the charges on the ERA).
+- Future check date (Insights holds posting until the check date has passed and the deposit is confirmed).
+- The primary payer remit contains an `OA23` denial code (indicating a prior payer's adjudication impact).
+
+<Note>
+For detailed posting guidance, see [How to Use the Posting Tool Page](/insights_front_desk/posting/how_to_use_the_posting_tool_page) and [How to Handle Duplicate Remittances](/insights_front_desk/posting/how_to_handle_duplicate_remittances).
+</Note>
+
+### 3B — Unmatched: How to Get Something Matched
+
+**What this means:** Insights has a remittance (check/ERA) in the system, but it has not been linked to a corresponding deposit in your bank account.
+
+**To resolve:**
+
+1. Go to **Daily Operations → Remittances** in the left navigation.
+2. Click the **Checks** tab → apply filter **Matching Status = Unmatched** to see all unmatched checks.
+3. Click the unmatched check row.
+4. Click **Deposit → Search Deposits**. Locate the matching deposit by Deposit ID, Date, Amount, Bank Account, Deposit Method, or Matching Status.
+5. Once found, check the deposit and click **Link**. The check and deposit are now matched, and the amount moves from `unmatched_usd` to `matched_posted_usd` (or `matched_unposted_usd` if posting is still pending).
+
+**Common reasons a check may not auto-match:**
+
+- The ERA was received before the check hit the bank (timing lag).
+- A paper check was deposited after the remittance was received.
+- Multiple checks were bundled into one deposit.
+- Lockbox processing delay, or weekend/bank-holiday lag.
+- The payer batch was delayed.
+
+<Note>
+For the full bank-linking workflow, see [Bank Deposit Verification](/insights_front_desk/utilities/bank_deposit_verification).
+</Note>
+
+### 3C — Unmatched: If You Cannot Find the Deposit in Your Bank
+
+If you search in Insights and the deposit does not appear anywhere, **the bank deposit has not yet been ingested into Insights.** This most commonly happens with paper checks processed through a lockbox, or ACH deposits not yet captured in the BAI2 file feed.
+
+**Steps to take:**
+
+1. Confirm the deposit appears in your bank account. If it's not there yet, wait 1–2 business days — it may be a timing difference.
+2. If the deposit is confirmed in the bank but absent in Insights, contact your Athelas team to ingest the deposit manually. Provide the **bank account name**, **deposit date**, **deposit amount**, and the **bank reference / trace number**.
+3. **Do not hold the month open waiting for the match.** Best practice is to record the cash to a **clearing account** at period close, then resolve the match in the next cycle once the deposit is ingested.
+4. After the deposit is ingested into Insights, return to the **Remittances** page and manually link the check using the steps in **3B** above.
+
+## Step 4: Month-to-Month Roll Forward
+
+The roll forward confirms that your closing balances from the prior period are the correct opening balances for the next one. Use the **[Revenue Activity Report](/insights_biller/reports/revenue_activity_report)** — Detailed Activities tab, **Date Type** = `Date Posted`.
+
+### A/R Roll Forward Formula
+
+`Closing A/R = Opening A/R + Billed Amount − Payments − Adjustments − Transfer Out`
+
+| **Component** | **Insights Column** | **Notes** |
+| :-- | :-- | :-- |
+| Opening A/R | Prior period's `net_receivable` | Run last month's report to confirm the starting balance |
+| + Charges | `billed_amount` | Gross charges posted in the current period |
+| − Payments | `paid` (`payer_index` 1/2/3/4) | Shown as negative; includes all insurance and patient payments |
+| − Transfer Out | `transfer_out` | Payer responsibility transferred to the next payer |
+| − Adjustments | `total_adjusted` | Contractual, bad debt, write-offs |
+| = **Closing A/R** | `net_receivable` (end of period) | Becomes next month's opening balance |
+
+Because the Revenue Activity Report is static when filtered by **Date Posted**, your month-end snapshots are stable — you can re-run any prior month at any time and get the same result.
+
+## Month-End Close Checklist
+
+- [ ] **Bank Deposit Reconciliation Report** (Bank Deposit Date) run — `total_cash_usd` ties to the bank statement.
+- [ ] **Remittances** page verified — Matched and Unmatched tiles agree with Bank Deposit Reconciliation output.
+- [ ] **Bank Deposit Reconciliation Report** (Date Posted) run — `matched_posted_usd` ties to Revenue Activity `paid` (`payer_index` 1/2/3).
+- [ ] All `matched_unposted_usd` items reviewed — posted or archived via the Posting Tool.
+- [ ] All `unmatched_usd` items reviewed — manually matched, escalated to your Athelas team, or recorded to a clearing account.
+- [ ] **Site Transaction Report** run — Stripe payouts verified by expected deposit date; cash/check totals verified by Facility of Collection.
+- [ ] Patient collections by facility delivered to the controller (Site Transaction Report, pivoted by Facility of Collection).
+- [ ] GL entries posted (cash or accrual, per your practice's accounting method).
+- [ ] A/R roll forward completed — closing `net_receivable` from Revenue Activity agrees to next month's opening balance.
+
+## Reference: Posting & Reconciliation Runbooks
+
+| **Runbook** | **Description** |
+| :-- | :-- |
+| [How to Use the Posting Tool Page](/insights_front_desk/posting/how_to_use_the_posting_tool_page) | Resolve remittances in Manual Review via the Posting Tool — negate/post or archive |
+| [How to Handle Duplicate Remittances](/insights_front_desk/posting/how_to_handle_duplicate_remittances) | Resolve conflicting or duplicate remits |
+| [How to Make a Custom Adjustment](/insights_front_desk/posting/how_to_post_a_remittance_manually) | Manually enter adjustment amounts on a procedure or encounter |
+| [Bank Deposit Verification](/insights_front_desk/utilities/bank_deposit_verification) | Link an unmatched check to its bank deposit on the Remittances page |
+| [EOB Creation and Portal Checks](/insights_front_desk/utilities/eob_creation_and_portal_checks) | Create EOBs manually for paper remits |
+| [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report) | Report documentation and field definitions |
+| [Revenue Activity Report](/insights_biller/reports/revenue_activity_report) | Report documentation and field definitions |
+| [Site Transaction Report](/insights_biller/reports/site_transaction_report) | Report documentation and field definitions |
+
+### FAQ
+
+<Accordion title="Why do my numbers change when I re-run a report by service date but stay the same by date posted?">
+  Reports filtered by **Date Posted** are static: the activity that posted within a closed period never changes, so re-running the report months later returns identical numbers. Service-date reporting, by contrast, re-buckets activity as new payments and adjustments post against old dates of service — so historical balances can shift. For a reproducible, auditable close, run your reconciliation and roll-forward reports by **Date Posted**.
+</Accordion>
+
+<Accordion title="Which Date Type should I use for patient payments — Expected Deposit Date or Date Posted?">
+  Use **`Expected Deposit Date`** to tie out **Stripe payouts** that landed in your bank during the period (payouts occur ~2 days after the payment is processed, so this may include payments collected in a prior month). Use **`Date Posted`** to tie out payments *collected* during the period — the recommended choice for **cash** and **check**, which don't flow through Stripe.
+</Accordion>
+
+<Accordion title="A remittance is matched to a deposit but shows as unposted. Why isn't it on the ledger?">
+  It was automatically routed to **Manual Review** — a guardrail that prevents the ledger from going out of balance. Common causes include conflicting patient-responsibility decisions, a remittance that doesn't balance to the ERA charges, a future check date, or an `OA23` denial from the primary payer. Resolve it in the **Posting Tool** (post or archive) as described in **Step 3A**.
+</Accordion>
+
+<Accordion title="What do I do if a deposit is in my bank but I can't find it in Insights?">
+  The deposit likely hasn't been ingested yet (common with lockbox paper checks or ACH not yet in the BAI2 feed). Contact your Athelas team to ingest it manually, providing the bank account name, deposit date, amount, and bank reference/trace number. **Don't hold the month open** — record the cash to a clearing account and clear the match next cycle.
+</Accordion>
+
+<Accordion title="Do patient payments appear in the Bank Deposit Reconciliation Report?">
+  Patient payments show up only in the `others_usd` bucket of the Bank Deposit Reconciliation Report — they do not flow through the insurance posting pipeline. Reconcile them separately using the [Site Transaction Report](/insights_biller/reports/site_transaction_report), as described in **Step 1B**.
+</Accordion>
