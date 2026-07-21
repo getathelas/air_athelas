@@ -245,8 +245,7 @@
               "insights_biller/claim_details/working_a_claim",
               "insights_biller/claim_details/deferring_a_claim",
               "insights_biller/claim_details/how_to_resubmit_claims_in_bulk",
-              "insights_biller/claim_details/how_to_send_documentation",
-              "insights_biller/claim_details/how_to_download_cms_1500_forms"
+              "insights_biller/claim_details/how_to_send_documentation"
             ]
           },
           {
@@ -295,7 +294,8 @@
               "insights_front_desk/appointments/the_insights_appointments_page",
               "insights_front_desk/appointments/how_to_add_a_walk_in_patient",
               "insights_front_desk/appointments/how_to_run_an_eligibility_check",
-              "insights_front_desk/appointments/how_to_take_payments"
+              "insights_front_desk/appointments/how_to_take_payments",
+              "insights_front_desk/appointments/insights_prior_authorization"
             ]
           },
           {
@@ -308,17 +308,6 @@
               "insights_front_desk/calendar/filter_the_calendar_view",
               "insights_front_desk/calendar/modify_calendar_views",
               "insights_front_desk/calendar/viewing_multiple_providers"
-            ]
-          },
-          {
-            "group": "Encounter Details",
-            "icon": "notes-medical",
-            "tag": "Front Desk",
-            "pages": [
-              "insights_front_desk/encounter_details/encounter_details_page",
-              "insights_front_desk/encounter_details/encounter_stage_and_status",
-              "insights_front_desk/encounter_details/how_to_update_insurance",
-              "insights_front_desk/encounter_details/insights_prior_authorization"
             ]
           },
           {
@@ -597,6 +586,26 @@
     {
       "source": "/insights_biller/claim_details/how_to_resubmit_a_single_claim",
       "destination": "/insights_biller/claim_details/claim_details_page"
+    },
+    {
+      "source": "/insights_biller/claim_details/how_to_download_cms_1500_forms",
+      "destination": "/insights_biller/claim_details/claim_details_page"
+    },
+    {
+      "source": "/insights_front_desk/encounter_details/encounter_details_page",
+      "destination": "/insights_biller/claim_details/claim_details_page"
+    },
+    {
+      "source": "/insights_front_desk/encounter_details/encounter_stage_and_status",
+      "destination": "/insights_biller/claim_details/claim_details_page"
+    },
+    {
+      "source": "/insights_front_desk/encounter_details/how_to_update_insurance",
+      "destination": "/insights_biller/claim_details/claim_details_page"
+    },
+    {
+      "source": "/insights_front_desk/encounter_details/insights_prior_authorization",
+      "destination": "/insights_front_desk/appointments/insights_prior_authorization"
     },
     {
       "source": "/insights_front_desk/patient_profiles/how_to_resubmit_claims",
