@@ -263,6 +263,7 @@
             "tag": "Biller",
             "pages": [
               "insights_biller/reports/building_and_running_reports",
+              "insights_biller/reports/month_end_close",
               "insights_biller/reports/submitted_claims_report",
               "insights_biller/reports/detailed_charges_report",
               "insights_biller/reports/claim_adjustments_report",
