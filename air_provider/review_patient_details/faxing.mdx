@@ -114,7 +114,7 @@ Every fax can include a cover sheet. Air provides a system default, and admins c
 
 ![Filling in editable text box fields on a cover sheet](/images/air_provider/review_patient_details/faxing/faxing_3.gif)
 
-**Dynamic variables.** Beyond text boxes, templates automatically populate context from the fax — `{{patient.name}}`, `{{provider.npi}}`, `{{facility.fax}}`, `{{document.page_count}}`, and more. Staff don't have to fill these in; Air resolves them at send time.
+**Dynamic variables.** Beyond text boxes, templates automatically populate context from the fax — `{{patient.name}}`, `{{provider.npi}}`, `{{facility.fax}}`, and more. Staff don't have to fill these in; Air resolves them at send time.
 
 **Set a default cover sheet.** Admins can designate one template as the **site default**. Air attaches the default automatically whenever a fax is sent without a manual selection — most importantly when **auto-faxing fires** (e.g., a provider signs a chart note and Air automatically sends it to the referring provider).
 
@@ -135,7 +135,7 @@ Faxing is integrated throughout Air so you can send without leaving what you're 
 Open **Faxing → Settings** to configure fax behavior for your organization:
 
 - **Fax numbers** — Your organization's fax numbers are tied to specific facilities. Contact your Athelas account team to add, change, or deactivate a number.
-- **Cover sheets** — Build and manage custom cover sheet templates. Use rich text formatting, insert dynamic variables (patient, provider, facility, recipient, document metadata), add your organization's logo, and set a site-wide default template. Staff can choose or override the template at send time.
+- **Cover sheets** — Build and manage custom cover sheet templates. Use rich text formatting, insert dynamic variables (patient, provider, facility, recipient), add your organization's logo, and set a site-wide default template. Staff can choose or override the template at send time.
 - **Fax contacts** — View and search the address book. Admins can manage the contact list from this tab.
 
 Additional settings live under **EHR Preferences**:
