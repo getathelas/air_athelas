@@ -142,7 +142,6 @@
               "air_admin/manage_your_practice/patient_workflows",
               "air_admin/manage_your_practice/provider_settings",
               "air_admin/manage_your_practice/provider_credentials",
-              "insights_front_desk/utilities/self_service_credentialing",
               "air_admin/manage_your_practice/calendar_settings",
               "air_admin/manage_your_practice/register_providers_rx",
               "air_admin/manage_your_practice/fax_admin",
@@ -447,7 +446,7 @@
               "insights_front_desk/utilities/eob_creation_and_portal_checks",
               "insights_front_desk/utilities/patient_subscriptions",
               "insights_front_desk/utilities/process_virtual_cards",
-              "insights_front_desk/utilities/self_service_credentialing"
+              "air_admin/manage_your_practice/provider_credentials"
             ]
           },
           {
@@ -567,6 +566,10 @@
     }
   },
   "redirects": [
+    {
+      "source": "/insights_front_desk/utilities/self_service_credentialing",
+      "destination": "/air_admin/manage_your_practice/provider_credentials"
+    },
     {
       "source": "/insights_provider/ai_scribe_and_tooling/setting_up_ai_compliance",
       "destination": "/insights_provider/ai_scribe_and_tooling/how_to_set_up_ai_compliance"
