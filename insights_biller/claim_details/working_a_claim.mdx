@@ -1,6 +1,7 @@
 ---
 title: "Working a Claim: Context & Activity Feed"
 sidebarTitle: "Working a Claim"
+description: "Review claim context, submission history, payments, and Activity Feed events in Insights."
 toc: "true"
 ---
 
@@ -56,11 +57,13 @@ As a claim moves through its lifecycle, these are the events you'll encounter in
 
 | **Event** | **What it means** |
 | :-- | :-- |
-| **Claim Submission Created** | A submission was generated for the claim. |
-| **Claim Submission Sent** | The submission was sent to the clearinghouse for review before reaching the payer. |
+| **Drafted a claim submission** | A draft submission was created for the claim. |
+| **Queued a claim for submission** | The claim is waiting to be submitted to the listed insurance. The event may also show the billed amount. |
+| **Submitted a claim** | The claim was submitted to the listed insurance. The event identifies corrected, resubmitted, and voided claims and may show the billed amount. |
+| **Reviewed the claim** | A manual claim review finished. The event shows whether validation passed or found issues. |
+| **Failed to submit a claim** | The submission attempt failed. Expand the event to see the failure reason when one is available. |
 | **Procedure Remittance** | The payer returned a decision (from an ERA or EOB). Approved remittances appear in green, denied in red; open the **Adjustments** dropdown for the reason and amount. |
 | **Claim Rejected** | The clearinghouse or payer rejected the claim before adjudication. Open the error message for the specific reason. |
-| **Claim Submission Error** | Validation failed on submission. Open the error message for details. |
 | **Claim Voided** | A claim with an error that needs special handling is voided entirely, and a new one is created and sent in its place. |
 
 ## The Activity Feed
