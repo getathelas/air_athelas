@@ -1,5 +1,6 @@
 ---
 title: "Bank Deposit Reconciliation Report"
+sidebarTitle: "Bank Deposit Reconciliation"
 ---
 
 #### Summary
@@ -51,7 +52,14 @@ For the bank-linking workflow that feeds this report, see [Bank Deposit Verifica
 | unmatched_usd | Insurance cash that arrived in the deposit but cannot be tied to any specific ERA check. Reported once per deposit on the deposit-level summary row. |
 | others_usd | Non-insurance cash captured on the deposit or check — patient payments and refunds (deposit-level), or money for claims submitted outside Athelas (check-level). |
 | total_cash_usd | The full amount of cash this row accounts for. Summing this column across all rows of a deposit equals the deposit's total bank amount. |
+| unmatched_posted | Deposit not matched to any check but force-posted. Only populated when the report is downloaded by **Date Posted**; a subset of `unmatched_usd`. |
+| provider_level_adjustment_usd | Provider-level adjustments deposited in the bank — see the [Provider Adjustments Report](/insights_biller/reports/provider_adjustments_report) for the full breakdown. When downloaded by **Bank Deposit Date**, shows only matched provider-level adjustments; when downloaded by **Date Posted**, shows both matched and unmatched provider-level adjustments. |
+
+<Note>
+`total_cash_usd = matched_posted_usd + matched_unposted_usd + unmatched_usd + others_usd + provider_level_adjustment_usd`. See [Month-End Close](/insights_biller/reports/month_end_close) for how this ties out to your bank statement.
+</Note>
 
 #### Filters Supported
 
-- Date Range — filter by Bank Deposit Date
+- Date Range Type — Bank Deposit Date or Date Posted
+- As-Of Date — snapshot the match state as of a specific date (useful for reproducing a prior close)
