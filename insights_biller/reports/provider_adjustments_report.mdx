@@ -1,0 +1,40 @@
+---
+title: "Provider Adjustments Report"
+sidebarTitle: "Provider Adjustments"
+---
+
+<Note>
+Related: for GL entries covering encounter-based revenue and payments, see the [Revenue Activity Report](/insights_biller/reports/revenue_activity_report); for tying insurance deposits to the bank, see the [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report); this report is also used during [Month-End Close](/insights_biller/reports/month_end_close).
+</Note>
+
+#### Summary
+
+**Provider adjustments** are check-level adjustments a payer applies directly on a remittance (835 PLB segment) — for example an overpayment recovery, a payer takeback, or another correction that isn't tied to a specific claim line. Because most provider adjustments aren't linked to an encounter, they don't appear in encounter-based reports like the [Revenue Activity Report](/insights_biller/reports/revenue_activity_report) or [Detailed Charges Report](/insights_biller/reports/detailed_charges_report). The Provider Adjustments Report surfaces this activity separately so it can be reviewed and reconciled on its own.
+
+Each row groups all provider adjustments posted during the selected period by **payer** and **reason code**.
+
+#### Key Use Cases
+
+- Surface provider-level (check-level) adjustments that fall outside normal encounter-based revenue reporting.
+- Reconcile total provider adjustments against cash actually deposited — tie out against the [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report) for the same period.
+- Record and account for miscellaneous revenue during month-end close (see [Month-End Close](/insights_biller/reports/month_end_close)).
+- Distinguish adjustments that happened to be auto-matched to an encounter from true check-level-only adjustments with no encounter tie.
+
+#### Filters Supported
+
+- Date Range: Date Posted
+- Include Encounter-Linked Adjustments toggle — when off, only adjustments with no encounter link are included (this is the version that ties out to the Bank Deposit Reconciliation Report); when on, all provider adjustments in the period are included regardless of encounter link
+
+#### Data Dictionary
+
+| Column Name | Description |
+| --- | --- |
+| Payer | The insurance company on the remittance that posted the adjustment — this is the remittance's payer, not necessarily the insurance entered or billed on the encounter |
+| Reason Code | The payer's adjustment reason code from the remittance |
+| Reason Description | Plain-language label for the reason code (e.g. "Overpayment Recovery") |
+| Linked to an Encounter | Whether any adjustment in this Payer + Reason Code group is tied to a specific encounter. Most provider adjustments are not — that's why they're excluded from encounter-based reports |
+| Adjustment Count | Number of distinct provider adjustments included in this row |
+| Payment Item Count | Number of distinct posted payment records behind those adjustments (normally one per adjustment) |
+| Encounter-Linked Adjustments | Number of adjustments in this row that were matched to a specific encounter |
+| Non-Encounter Adjustments | Number of adjustments in this row with no encounter tie — the check-level-only adjustments |
+| Total Amount | Total dollar amount posted for this Payer + Reason Code combination during the selected period |

@@ -23,7 +23,7 @@ Together, these reports support A/R reconciliation and bank deposit reconciliati
 | :-- | :-- | :-- |
 | **[Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report)** | **Insights → My Reports → Bank Deposit Reconciliation** | Tie insurance deposits to the bank; surface unmatched/unposted items |
 | **[Revenue Activity Report](/insights_biller/reports/revenue_activity_report)** | **Insights → My Reports → Revenue Activity Report: Detailed Activities** | GL entries for revenue and posted payments; A/R roll forward |
-| **Provider Adjustments Report** | **Insights → My Reports → Provider Adjustments Report** | Surface provider-level adjustments (a subset of which are not included in the Revenue Activity Report) |
+| **[Provider Adjustments Report](/insights_biller/reports/provider_adjustments_report)** | **Insights → My Reports → Provider Adjustments Report** | Surface provider-level adjustments (a subset of which are not included in the Revenue Activity Report) |
 | **[Site Transaction Report](/insights_biller/reports/site_transaction_report)** | **Insights → My Reports → Site Transaction Report: Processed Transactions** | Tie patient payments to the bank; includes facility of collection |
 
 ## Step 1: Reconcile to Your Bank Account
@@ -148,7 +148,7 @@ This report is **static when run by Date Posted**. Running it for a given month 
 | Record cash received from bank | Cash | Unapplied Revenue | Bank statement / Bank Deposit Recon `total_cash_usd` |
 | Record payments | Unapplied Revenue | Revenue *(by dimension)* | Revenue Activity → `paid` column |
 | Record non-Insights (foreign-system) payments | Unapplied Revenue | Foreign System Revenue | Remittances and Checks page |
-| Record and reconcile miscellaneous revenue | Unapplied Revenue | Miscellaneous revenue account | Provider Adjustments Report |
+| Record and reconcile miscellaneous revenue | Unapplied Revenue | Miscellaneous revenue account | [Provider Adjustments Report](/insights_biller/reports/provider_adjustments_report) |
 
 **For patient upfront collections not yet applied to a claim** (still in holding): these appear in the **Unapplied Payments** tab of the [Revenue Activity Report](/insights_biller/reports/revenue_activity_report). Record them to a clearing/liability account until the claim is adjudicated, at which point they move into Revenue Activity as `payer_index` 4.
 

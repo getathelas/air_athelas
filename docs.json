@@ -268,6 +268,7 @@
               "insights_biller/reports/export_claim_details",
               "insights_biller/reports/patient_claims_one_pagers",
               "insights_biller/reports/revenue_activity_report",
+              "insights_biller/reports/provider_adjustments_report",
               "insights_biller/reports/aging_ar_report",
               "insights_biller/reports/ar_reports",
               "insights_biller/reports/posting_log_report",
