@@ -8,7 +8,7 @@ toc: "true"
 The **Commure EHR FHIR API** is a FHIR R4B server that exposes patient health data from Air to authorized third-party applications. It is compliant with **US Core 6.1.0** profiles and the **ONC (g)(10) Standardized API** certification criteria (§170.315(g)(10)). All responses are returned in `application/fhir+json` format.
 
 <Info>
-  **Service Base URL:** `https://onc.api.staging-ehr.athelas.com`
+  **Service Base URL:** `https://api.commure.com/fhir`
 
   **FHIR Version:** R4B (`4.0.1`) &nbsp;·&nbsp; **US Core Version:** 6.1.0 &nbsp;·&nbsp; **Content Type:** `application/fhir+json`
 </Info>
@@ -18,7 +18,7 @@ The **Commure EHR FHIR API** is a FHIR R4B server that exposes patient health da
 The server publishes its **SMART App Launch v2.0** discovery document at the well-known path below. This is an unauthenticated `GET` — no token required.
 
 ```
-GET https://onc.api.staging-ehr.athelas.com/.well-known/smart-configuration
+GET https://api.commure.com/fhir/.well-known/smart-configuration
 ```
 
 The document advertises every authorization/token endpoint, the supported scopes, grant types, client-authentication methods, PKCE methods, and SMART capabilities.
@@ -29,10 +29,10 @@ The document advertises every authorization/token endpoint, the supported scopes
 {
   "issuer": "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579",
   "jwks_uri": "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579/.well-known/jwks.json",
-  "authorization_endpoint": "https://onc.api.staging-ehr.athelas.com/authorize",
-  "token_endpoint": "https://onc.api.staging-ehr.athelas.com/token",
-  "introspection_endpoint": "https://onc.api.staging-ehr.athelas.com/introspect",
-  "revocation_endpoint": "https://onc.api.staging-ehr.athelas.com/revoke",
+  "authorization_endpoint": "https://api.commure.com/fhir/authorize",
+  "token_endpoint": "https://api.commure.com/fhir/token",
+  "introspection_endpoint": "https://api.commure.com/fhir/introspect",
+  "revocation_endpoint": "https://api.commure.com/fhir/revoke",
   "token_endpoint_auth_methods_supported": [
     "none",
     "client_secret_post",
@@ -78,22 +78,22 @@ The document advertises every authorization/token endpoint, the supported scopes
 
 ### <Icon icon="link" iconType="duotone" color="#F9345F" size={23} />  SMART Endpoint Reference
 
-| **Endpoint**    | **URL**                                                                                       |
-| :-------------- | :-------------------------------------------------------------------------------------------- |
-| **Authorization** | `https://onc.api.staging-ehr.athelas.com/authorize`                                         |
-| **Token**         | `https://onc.api.staging-ehr.athelas.com/token`                                             |
-| **Introspection** | `https://onc.api.staging-ehr.athelas.com/introspect`                                        |
-| **Revocation**    | `https://onc.api.staging-ehr.athelas.com/revoke`                                            |
-| **JWKS URI**      | `https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579/.well-known/jwks.json`     |
-| **Issuer**        | `https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579`                           |
-| **SMART Style**   | `https://onc.api.staging-ehr.athelas.com/smart-style.json`                                  |
+| **Endpoint**      | **URL**                                                                                  |
+| :---------------- | :---------------------------------------------------------------------------------------- |
+| **Authorization** | `https://api.commure.com/fhir/authorize`                                                  |
+| **Token**         | `https://api.commure.com/fhir/token`                                                      |
+| **Introspection** | `https://api.commure.com/fhir/introspect`                                                 |
+| **Revocation**    | `https://api.commure.com/fhir/revoke`                                                     |
+| **JWKS URI**      | `https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579/.well-known/jwks.json`   |
+| **Issuer**        | `https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579`                         |
+| **SMART Style**   | `https://api.commure.com/fhir/smart-style.json`                                           |
 
 ## CapabilityStatement
 
 The server's FHIR `CapabilityStatement` (the "conformance statement") lists every supported resource, interaction, search parameter, supported US Core profile, and the SMART security configuration. It is available as an unauthenticated `GET` and can be exported directly:
 
 ```
-GET https://onc.api.staging-ehr.athelas.com/metadata
+GET https://api.commure.com/fhir/metadata
 Accept: application/fhir+json
 ```
 
@@ -119,10 +119,10 @@ The statement declares `fhirVersion: 4.0.1`, the `application/fhir+json` format,
           {
             "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris",
             "extension": [
-              { "url": "authorize", "valueUri": "https://onc.api.staging-ehr.athelas.com/authorize" },
-              { "url": "token",     "valueUri": "https://onc.api.staging-ehr.athelas.com/token" },
-              { "url": "introspect","valueUri": "https://onc.api.staging-ehr.athelas.com/introspect" },
-              { "url": "revoke",    "valueUri": "https://onc.api.staging-ehr.athelas.com/revoke" }
+              { "url": "authorize", "valueUri": "https://api.commure.com/fhir/authorize" },
+              { "url": "token",     "valueUri": "https://api.commure.com/fhir/token" },
+              { "url": "introspect","valueUri": "https://api.commure.com/fhir/introspect" },
+              { "url": "revoke",    "valueUri": "https://api.commure.com/fhir/revoke" }
             ]
           }
         ],
@@ -195,8 +195,8 @@ Follow these steps to onboard a new application against the Commure EHR FHIR API
     Point your client at the [`.well-known/smart-configuration`](#smart-on-fhir-configuration) document to discover the authorization and token endpoints, then implement the [Authorization](#authorization) flow that matches your client type.
   </Step>
 
-  <Step title="Test against the sandbox" stepNumber={5} titleSize="h3">
-    Use the staging **Service Base URL** (`https://onc.api.staging-ehr.athelas.com`) to exercise the authorization flows, scope enforcement, resource reads/searches, and bulk export. No registration, sandbox, or production fees apply.
+  <Step title="Test your integration" stepNumber={5} titleSize="h3">
+    Use the production **Service Base URL** (`https://api.commure.com/fhir`) to exercise the authorization flows, scope enforcement, resource reads/searches, and bulk export. No separate sandbox environment is required — no registration or production fees apply.
   </Step>
 
   <Step title="Validate conformance" stepNumber={6} titleSize="h3">
@@ -791,7 +791,7 @@ For questions about these terms or API access, contact Commure (d/b/a Athelas) a
 
 The published Service Base URL directory (FHIR Endpoint Bundle) for the Commure EHR FHIR API is available at:
 
-[**https://onc.api.staging-ehr.athelas.com/onc/base.json**](https://onc.api.staging-ehr.athelas.com/onc/base.json)
+[**https://api.commure.com/fhir/onc/base.json**](https://api.commure.com/fhir/onc/base.json)
 
 ## FAQ
 
