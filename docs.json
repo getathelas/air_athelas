@@ -31,6 +31,7 @@
           {
             "group": "Getting Started with Air",
             "icon": "stars",
+            "public": true,
             "pages": [
               "air_onboard/getting_started_with_air/index",
               "air_onboard/getting_started_with_air/set_up",
@@ -40,6 +41,7 @@
           {
             "group": "View your Calendar",
             "icon": "calendar",
+            "public": true,
             "pages": [
               "air_front_desk/view_your_calendar/nav_calendar",
               "air_front_desk/view_your_calendar/insights_notifications",
@@ -49,6 +51,7 @@
           {
             "group": "Review Patient Details",
             "icon": "square-user",
+            "public": true,
             "pages": [
               "air_provider/review_patient_details/patient_info",
               "air_provider/review_patient_details/patient_demog",
@@ -60,6 +63,7 @@
           {
             "group": "Communicate with Patients",
             "icon": "envelope",
+            "public": true,
             "pages": [
               "air_front_desk/communicate_with_patients/outreach_flows",
               "air_front_desk/communicate_with_patients/messages"
@@ -68,6 +72,7 @@
           {
             "group": "Portal and Online Scheduling",
             "icon": "calendar-plus",
+            "public": true,
             "pages": [
               "air_front_desk/portal_and_online_scheduling/patient_portal",
               "air_front_desk/portal_and_online_scheduling/online_scheduling",
@@ -78,6 +83,7 @@
             "group": "Check-in a Patient",
             "icon": "user-doctor",
             "tag": "Provider",
+            "public": true,
             "pages": [
               "air_provider/check_in_a_patient/check_in",
               "air_provider/check_in_a_patient/kiosk_user_guide",
@@ -88,6 +94,7 @@
             "group": "Fill a Chart Note",
             "icon": "notes-medical",
             "tag": "Provider",
+            "public": true,
             "pages": [
               "air_provider/fill_a_chart_note/nav_chart_note",
               "air_provider/fill_a_chart_note/chart_note_clinical_types",
@@ -110,6 +117,7 @@
             "group": "Take in a Patient",
             "icon": "clipboard",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "air_front_desk/take_in_a_patient/new_appt",
               "air_front_desk/take_in_a_patient/prep_appt",
@@ -120,6 +128,7 @@
             "group": "Manage your Tasks",
             "icon": "list-check",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "air_front_desk/manage_your_tasks/faxes",
               "air_front_desk/manage_your_tasks/tasks"
@@ -129,6 +138,7 @@
             "group": "Manage your Practice",
             "icon": "gear",
             "tag": "Admin",
+            "public": true,
             "pages": [
               "air_admin/manage_your_practice/practice_settings",
               "air_admin/manage_your_practice/user_management",
@@ -153,6 +163,7 @@
             "group": "Analyze your Reports",
             "icon": "chart-column",
             "tag": "Admin",
+            "public": true,
             "pages": [
               "air_admin/analyze_your_reports/audit_dashboard",
               "air_admin/analyze_your_reports/kpi_dashboard",
@@ -163,6 +174,7 @@
           {
             "group": "ONC Certification",
             "icon": "certificate",
+            "public": true,
             "pages": [
               "air_developer/patient_information_export/patient_information_export",
               "air_developer/onc_certification/mandatory_disclosure"
@@ -171,6 +183,7 @@
           {
             "group": "ONC Feature Guides",
             "icon": "book-medical",
+            "public": true,
             "pages": [
               "air_developer/onc_feature_guides/adding_family_health_history",
               "air_developer/onc_feature_guides/adding_an_implantable_device",
@@ -181,6 +194,7 @@
           {
             "group": "FHIR API",
             "icon": "code",
+            "public": true,
             "pages": [
               "air_developer/fhir_api/commure_ehr_fhir_api"
             ]
@@ -194,6 +208,7 @@
           {
             "group": "Getting Started with Insights",
             "icon": "stars",
+            "public": true,
             "pages": [
               "insights_onboard/getting_started_as_a_biller",
               "insights_onboard/getting_started_as_a_healthcare_provider",
@@ -205,6 +220,7 @@
           {
             "group": "Athelas Assistant",
             "icon": "robot",
+            "public": true,
             "pages": [
               "insights_general/athelas_assistant/getting_started_with_athelas_assistant",
               "insights_general/athelas_assistant/athelas_assistant_prompt_library",
@@ -216,6 +232,7 @@
             "group": "Analytics",
             "icon": "chart-column",
             "tag": "Biller",
+            "public": true,
             "pages": [
               "insights_biller/analytics/the_denials_analysis_page",
               "insights_biller/analytics/the_revenue_analysis_page"
@@ -225,6 +242,7 @@
             "group": "General Billing",
             "icon": "file-invoice",
             "tag": "Biller",
+            "public": true,
             "pages": [
               "insights_biller/general_billing/how_to_set_block_pr_rules",
               "insights_biller/general_billing/getting_started_with_charge_master",
@@ -238,6 +256,7 @@
             "group": "Claim Details",
             "icon": "file-invoice",
             "tag": "Biller",
+            "public": true,
             "pages": [
               "insights_biller/claim_details/claim_details_page",
               "insights_biller/claim_details/organizing_your_claims_worklist",
@@ -251,6 +270,7 @@
             "group": "Patient Profile",
             "icon": "square-user",
             "tag": "Biller",
+            "public": true,
             "pages": [
               "insights_biller/patient_profile/patient_profile_page"
             ]
@@ -259,6 +279,7 @@
             "group": "Reports",
             "icon": "chart-column",
             "tag": "Biller",
+            "public": true,
             "pages": [
               "insights_biller/reports/building_and_running_reports",
               "insights_biller/reports/month_end_close",
@@ -290,6 +311,7 @@
             "group": "Appointments",
             "icon": "calendar",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/appointments/the_insights_appointments_page",
               "insights_front_desk/appointments/how_to_add_a_walk_in_patient",
@@ -314,6 +336,7 @@
             "group": "Patient Demographics",
             "icon": "square-user",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/patient_demographics/getting_started_with_demographics",
               "insights_front_desk/patient_demographics/addedit_a_patients_insurance",
@@ -324,6 +347,7 @@
             "group": "Patient Profiles",
             "icon": "square-user",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/patient_profiles/how_to_find_and_edit_a_patients_profile"
             ]
@@ -332,6 +356,7 @@
             "group": "Patient Communications",
             "icon": "envelope",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/patient_communications/navigating_patient_workflows",
               "insights_front_desk/patient_communications/complete_intake_forms",
@@ -344,6 +369,7 @@
             "group": "Patient Responsibility",
             "icon": "dollar-sign",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/patient_responsibility/patient_responsibility_page",
               "insights_front_desk/patient_responsibility/charge_saved_credit_cards",
@@ -368,6 +394,7 @@
             "group": "Front Office Payments",
             "icon": "credit-card",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/front_office_payments/automatic_service_charges",
               "insights_front_desk/front_office_payments/how_to_create_suggested_pr_rules",
@@ -379,6 +406,7 @@
             "group": "Patient Statements",
             "icon": "file-text",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/patient_statements/manage_patient_statements",
               "insights_front_desk/patient_statements/send_patient_statements_via_emailtext",
@@ -393,6 +421,7 @@
             "group": "Posting",
             "icon": "upload",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/posting/how_to_use_the_posting_tool_page",
               "insights_front_desk/posting/how_to_handle_duplicate_remittances",
@@ -405,6 +434,7 @@
             "group": "Faxing",
             "icon": "fax",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/faxing/getting_started_with_faxing",
               "insights_front_desk/faxing/send_and_receive_a_fax",
@@ -416,6 +446,7 @@
             "group": "Messaging",
             "icon": "envelope",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/messaging/messages_page"
             ]
@@ -424,6 +455,7 @@
             "group": "Tasking",
             "icon": "list-check",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/tasking/how_to_create_tasks",
               "insights_front_desk/tasking/sorting_archiving_bulk_actions"
@@ -433,6 +465,7 @@
             "group": "Daily Operations",
             "icon": "briefcase",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/daily_operations/how_to_reconcile_your_cash_drawer"
             ]
@@ -441,6 +474,7 @@
             "group": "Utilities",
             "icon": "wrench",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/utilities/bank_deposit_verification",
               "insights_front_desk/utilities/download_edis_in_bulk",
@@ -454,6 +488,7 @@
             "group": "My Practice",
             "icon": "gear",
             "tag": "Admin",
+            "public": true,
             "pages": [
               "insights_admin/my_practice/getting_started_with_your_practice",
               "insights_admin/my_practice/manage_staff_permissions",
@@ -465,6 +500,7 @@
             "group": "Reporting",
             "icon": "chart-column",
             "tag": "Admin",
+            "public": true,
             "pages": [
               "insights_admin/reporting/measuring_performance"
             ]
@@ -473,6 +509,7 @@
             "group": "Air Scribe & Tooling",
             "icon": "wand-magic-sparkles",
             "tag": "Provider",
+            "public": true,
             "pages": [
               "insights_provider/ai_scribe_and_tooling/how_to_apply_an_air_scribe",
               "insights_provider/ai_scribe_and_tooling/complete_a_visit_with_air_scribe",
@@ -485,6 +522,7 @@
             "group": "Chart Notes",
             "icon": "notes-medical",
             "tag": "Provider",
+            "public": true,
             "pages": [
               "insights_provider/chart_notes/getting_started_with_chart_notes",
               "insights_provider/chart_notes/ai_appt_summaries",
@@ -505,6 +543,7 @@
             "group": "Medications",
             "icon": "pills",
             "tag": "Provider",
+            "public": true,
             "pages": [
               "insights_provider/medications/designate_staff_as_provider_agents"
             ]
@@ -513,6 +552,7 @@
             "group": "Patient Profiles",
             "icon": "square-user",
             "tag": "Provider",
+            "public": true,
             "pages": [
               "insights_provider/patient_profiles/getting_started_with_patient_profile",
               "insights_provider/patient_profiles/add_attachments_to_patient_profile",
@@ -530,6 +570,7 @@
         "groups": [
           {
             "group": "Welcome to our Blogs",
+            "public": true,
             "pages": [
               "master_blogs/product_release",
               "master_blogs/customer_stories"
