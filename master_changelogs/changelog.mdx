@@ -4,6 +4,197 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
 public: true
 ---
 
+<Update label="July 31, 2026" tags={["Insights"]}>
+
+  ### [Beta Users Only] Unified Rules UI
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_07_31/unified-rules-ui-1.webp" alt="Unified Rules UI showing every billing, eligibility, and posting rule at a site organized by rule engine with plain-language summaries" />
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_07_31/unified-rules-ui-2.webp" alt="Unified Rules UI rule detail view showing the trigger, conditions, actions, and rollout cap for a billing rule" />
+
+  We've begun rolling out a single, plain-language home for the rules that drive Insights, replacing the billing, eligibility, and posting logic that previously lived in engine-specific code:
+
+  - Browse every rule at your practice in one place, organized by rule engine, with each rule summarized as a natural-language statement — AI-generated summaries even translate regex-heavy conditions into plain English — and the underlying conditions and actions one click deeper.
+  - No more internal IDs: payers, patients, providers, and facilities now resolve to human-readable names, and every rule carries a description plus a required "reason for the rule," so the intent behind a rule stays clear months later.
+  - Rules on a phased rollout display their rollout cap, so you can see exactly how much of your volume a rule currently touches.
+  - Read-only browsing is live for beta customers today. Create, edit, and clone flows are in beta testing now — including an AI assistant that builds rules from a plain-language description, a dry-run that previews a rule's impact against real claims (with a side-by-side claim-form comparison) before activation, and an approval step so nothing goes live unreviewed. Contact your account manager for access.
+
+  ### [Beta Users Only] Redesigned Remittance Overview
+
+  - Four KPI score-cards — Check Match %, Deposit Match %, Unmatched Checks \$, and Unmatched Deposits \$ — each with a trend sparkline and week-over-week comparison, viewable by day, week, month, or quarter.
+  - Click any card to drill into a **Match Breakdown** screen: verified-vs-unverified charts across Checks and Deposits tabs, plus a table with a Simplified mode (grouped by deposit source) and a Detailed check-level mode, both exportable to CSV.
+  - A **deposits and cashflow chart** tracks insurance deposits, check totals, and posted payments side by side for each period, also CSV-exportable.
+  - A new **notification strip** flags work the moment the page loads: unmatched check and deposit counts with a one-click jump into matching, bank-feed sync failures with a retry button, and an alert when a payer that regularly deposits suddenly goes quiet.
+
+  ### Claim Deferrals Now Available to All Customers
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_07_31/claim-deferrals.webp" alt="Claims page showing the Defer action from the Actions menu with a reason and expiration date" />
+
+  Claim deferrals have graduated from beta to general availability — every customer can now set aside claims that aren't ready to work right now, and use deferrals to track any action being handled outside of Athelas:
+
+  - Defer from the **Actions** menu with a reason and an expiration date, and the claim drops out of any view filtered to non-deferred claims — like **Workable Claims** — until the deferral expires.
+  - PR (patient responsibility) generation is automatically paused for the duration of a deferral, so patients aren't billed while a claim is intentionally on hold.
+  - Deferrals clear themselves when they're no longer needed: if the claim's status changes before the expiration date — say the remit you called the payer about arrives — the deferral is removed immediately instead of waiting out the clock.
+  - Defer and un-defer **in bulk** from the Claims page, and cancel or extend any deferral at any time.
+  - Deferral reasons are site-specific and customizable — create one inline while deferring and everyone at your practice can reuse it — and every deferral's date, reason, and duration is logged in the claim's **Activity Feed**.
+  - For claims that come from your EHR, a new **"Updated in EHR"** deferral reason replaces the old Mark as Updated in EHR flow. It's available when a claim has a linked EHR claim and an upcoming EHR import: the expiration date is automatically set to the **next EHR import** (you can still pick a different date), and confirming automatically re-enables EHR imports for that claim so the update actually comes through. If the refreshed claim resubmits cleanly, there's nothing more to do — if it hits a submission error, it's un-deferred immediately so it can be worked right away. Bulk is supported here too (~25 claims at a time), and the standalone **Enable EHR Import** button has been consolidated into this flow.
+
+  ### Bug Fixes and Improvements
+
+  **Claims Workflow:**
+  - Submissions now show who actually submitted the claim rather than who originally created the submission, so audit trails are accurate.
+  - Bulk actions gained a Cmd/Ctrl+Z undo, and the bulk submission limit increased to 500 claims.
+  - Cmd/Ctrl+K now supports searching by EHR patient ID and EHR appointment ID.
+
+  **Reporting Accuracy:**
+  - Fixed the End-of-Day report so payments display under the correct collector, which previously misattributed collections.
+  - Fixed a SmartPay discrepancy where the collected amount shown differed from the actual total.
+
+</Update>
+
+<Update label="July 30, 2026" tags={["Air"]}>
+
+  ### [Beta Users Only] Audit Log Export
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_07_30/audit-log-export.webp" alt="My Reports page showing the Audit Log Export report alongside other EHR Reports" />
+
+  Workspace Admins of clinics can now export patient-access and user-authentication audit logs — filtered by date range and patient — as an emailed CSV report from My Reports. Contact your account manager for access.
+
+  ### In-Line Ordering from the Visit Note
+
+  Clinicians can now place, edit, and submit orders directly from the visit note as they document — medications, order sets, and external orders alike — without jumping to a separate ordering screen. Orders in the visit note header now display the specific order name, so it's clear at a glance what's been placed.
+
+  ### Health Gorilla Labs Visibility Improvements
+
+  Lab orders placed through Health Gorilla are now far easier to track and review in Air:
+
+  - A new site-level **HealthGorilla Labs table** shows every lab order across the practice — with status chips (and a legend explaining them), a last-updated column, and a per-patient view.
+  - Results appear directly in the order drawer as structured values with reference ranges and an interpretation column, parsed straight from the lab feed.
+  - **Abnormal results are highlighted** and filterable, and the drawer calls out exactly which observation was flagged.
+  - Cancelled orders are labeled more clearly, with a toggle to show or hide cancelled results.
+
+  ### Medications Usability Improvements
+
+  A round of quality-of-life upgrades to medication workflows:
+
+  - **Multiple preferred pharmacies per patient** — add, remove, and reorder preferred pharmacies on the patient chart, with one marked as the default.
+  - **Smarter pharmacy search** — search by name, city, state, address, ZIP, phone, or fax, and combine filters (e.g. "CVS" + "Fremont, CA") to pinpoint the right location among large chains.
+  - **Bulk medication re-ordering** — select multiple medications from the med list and re-order them in one flow, adjusting SIG, quantity, and refills before submitting. Bulk re-orders also carry through to the visit note.
+
+  ### [Beta Users Only] New Treatments Section (Services v2)
+
+  We're rolling out a rebuilt Treatments experience in the chart note. Services now live in the billing section of the note with per-service ICD-10 linking and reordering, unit counts, and billing modifiers — plus one-click carry-forward from a previous note. The new section is integrated with Air Scribe, so treatments captured during the visit flow into the note automatically. Contact your account manager for beta access.
+
+  ### Bug Fixes and Improvements
+
+  **General:**
+  - End-date filters now include the selected end date, so records from the final day of a range are no longer omitted.
+
+  **Scheduling & Appointments:**
+  - Added an option to send patients a receipt after a kiosk payment.
+  - Patients can now set an expiration date on their waitlist entry through the patient portal.
+
+  **Other:**
+  - Fixed the patient-pay link to show the customer's marketing name rather than the legal site name.
+  - Fixed custom orders and letters PDFs that cut off content.
+  - Providers are now notified about new patient messages.
+
+</Update>
+
+<Update label="June 30, 2026" tags={["Insights"]}>
+
+  ### Facility Tracking on Collection
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_06_30/facility-tracking.webp" alt="Pay Balance screen showing the Collecting at Facility payment method dropdown" />
+
+  Multi-facility practices can now track which facility actually collected each in-office payment, so per-facility cash drawers close cleanly at month-end:
+
+  - A **"Collecting at Facility"** dropdown now appears on every payment screen. Single-facility customers auto-select it; multi-facility customers must pick before submitting, with the staff member's last-used facility pre-filled as the default.
+  - Every in-office payment method is tracked — cash, check, card reader, saved card, kiosk, staff-applied credits, and manually sent statements — and every refund method gets a matching **"Refunding at Facility"** picker.
+  - The data surfaces as a new **"Facility of Collection"** column in the Site Transaction Report (Processed Transactions), and the Reconciliation page gains side-by-side **Facility of Service** and **Facility of Collection** filters and columns.
+  - Turn it on in **My Practice → PR Settings → "Facility Tracking"** — it takes effect immediately. Data is captured from the day it's enabled; automated batch statement payments have no collecting staff, so they intentionally show blank.
+
+  ### Expanded Multi-Site Support for Parent & Child Organizations
+
+  We've added more capabilities for parent organizations working across their child sites from a single login, with parent/child relationships respected across claims, payments, and reporting:
+
+  - **Bank Deposit Recon** reports run from a parent site now include data from every child site, so deposits reconcile across the whole organization instead of one location at a time.
+  - The parent **appointments page** now shows child-site appointments, and **Cmd+K** finds child-site patients and appointments from the parent.
+  - Billers can now run **eligibility** on child-site claims, upload **attachments** to child-site claims, and process **refunds** — all directly from the parent site.
+  - Child-site **charge masters** are viewable from the parent with a site column to distinguish similar charges across locations, and payments collected at the parent route to the correct child site's payment account.
+
+  ### Bug Fixes and Improvements
+
+  **Claims & Submission:**
+  - Denied reasons now appear by default in the payment-item table
+  - Claims Page columns are now sortable, and all columns can be hidden or shown via Display Settings. You can toggle between views using the 1, 2, 3…0 hotkeys, and new filters have been added.
+
+  For some Air Billing EHR integrations, we now offer links directly to the claim in the external EHR to make navigation simpler. We will continue rolling this out to all web-based EHRs in the coming months.
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_06_30/claim-external-link.webp" alt="Claim page showing a direct link out to the claim in the external EHR" />
+
+  **Invoicing:**
+  - Fixed invoices that were only reaching the primary email, so statements now reach all intended recipients.
+  - Provider adjustments are now included in invoice "Total Collections" and in the Bank Deposit Recon report.
+
+  **Reporting Accuracy:**
+  - Corrected the year-to-date metric on the Revenue Analysis page.
+  - Added a dual-mode timezone banner to My Reports so report time boundaries are clear.
+
+  **Claims Resubmission:**
+  - Secondary claims now submit as soon as the primary remittance is balanced, instead of some being incorrectly blocked.
+
+</Update>
+
+<Update label="June 29, 2026" tags={["Air"]}>
+
+  ### Redesigned Patient Portal Sign-In & Registration
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_06_29/patient-portal-signin.webp" alt="Redesigned patient portal sign-in screen with email and password fields and a Sign in with Google option" />
+
+  We've rebuilt portal sign-in from the ground up, replacing the old invite-only flow with standard account access:
+
+  - Patients can now sign in with an email and password, or with one-click **Sign in with Google**.
+  - Registration no longer requires email or phone verification before access, and portal invites now send a personalized, coded sign-up link that opens a site-specific registration page pre-filled with the patient's information.
+  - Patients who lose access can recover or re-link their account directly from the sign-in page, without needing to contact clinic support.
+  - Patients linked to multiple profiles — such as a parent managing children, or a patient seen at multiple practices — get a **patient switcher** to move between profiles in a single session.
+  - **Authorized representative access**: parents, guardians, and caregivers can now be granted their own portal access on a patient's behalf.
+    - Staff designate an authorized representative from the **Related Persons** section of the patient chart and send them a portal invite directly from there.
+    - Representatives register and sign in with their own credentials — no shared logins — and can view and manage the patient's information on the patient's behalf.
+    - Someone who is both a patient and a representative, or who represents multiple patients, simply picks the right profile at sign-in via the patient switcher.
+
+  ### Redesigned Online Scheduling
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_06_29/online-scheduling.webp" alt="Redesigned online scheduling flow showing appointment type, location, and provider selection with available dates and times" />
+
+  Online scheduling in the portal has been rebuilt to show accurate availability and give patients more flexibility in finding a time:
+
+  - The booking form is now guided: patients pick an **appointment type first**, which drives every downstream option so they only see relevant providers, locations, and times. New field order: Appointment Type → Location → Provider → Primary Insurance → Secondary Insurance.
+  - Patients can search the whole practice at once — selecting multiple providers and locations, or choosing **"Any Provider" / "Any Facility"** — with open times displayed grouped by provider and location, sorted by most availability.
+  - Primary insurance is now required at booking so claims are filed correctly, and the waitlist flow was updated to handle the new multi-provider/facility selection.
+  - Admins control exactly what patients see: toggle individual providers and facilities in or out of portal scheduling, or hide the Location/Provider fields entirely (patients auto-default to "Any").
+
+  ### Order Sets for Medications, Labs, DME, Referrals, and Imaging
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_06_29/order-sets.webp" alt="Order Sets interface showing inline ordering for medications, labs, DME, and referrals within the chart note" />
+
+  We've overhauled ordering so clinicians can place and track orders without leaving the chart note:
+
+  - Place and submit orders inline in the chart note — individually or all at once — with an auto-attached signature that removes the separate signature step.
+  - Place external orders that don't map to a CPT code, such as referrals and DME, without entering a placeholder code.
+  - Order source now renders both on screen and on the printed PDF.
+
+  ### Bug Fixes and Improvements
+
+  **Chart Notes:**
+  - The Unsigned Notes report now includes a "signed, not submitted" status, so staff can find notes stuck between signing and submission.
+
+  **Scheduling & Admin:**
+  - Front-desk staff and clinicians can now save preferred calendar filters as defaults instead of reapplying them on each visit.
+  - Administrators now gained oversight of staff task queues.
+
+</Update>
+
 <Update label="May 31, 2026" tags={["Insights"]}>
 
   ### Appointments Page Available to All Users
