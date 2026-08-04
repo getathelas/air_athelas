@@ -64,13 +64,23 @@ public: true
 
   Clinicians can now place, edit, and submit orders directly from the visit note as they document — medications, order sets, and external orders alike — without jumping to a separate ordering screen. Orders in the visit note header now display the specific order name, so it's clear at a glance what's been placed.
 
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_07_30/inline-ordering-1.webp" alt="Visit note Orders section showing placed lab and referral orders alongside an Order Sets panel for adding new orders inline" />
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_07_30/inline-ordering-2.webp" alt="Outbound referral order expanded inline in the visit note, showing specialty, recipients, procedure codes, and reason for referral fields" />
+
   ### Health Gorilla Labs Visibility Improvements
 
   Lab orders placed through Health Gorilla are now far easier to track and review in Air:
 
   - A new site-level **HealthGorilla Labs table** shows every lab order across the practice — with status chips (and a legend explaining them), a last-updated column, and a per-patient view.
+
+    <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_07_30/health-gorilla-labs-1.webp" alt="Site-level HealthGorilla Labs table listing every lab order with status, priority, ordering provider, and last-updated columns" />
+
   - Results appear directly in the order drawer as structured values with reference ranges and an interpretation column, parsed straight from the lab feed.
   - **Abnormal results are highlighted** and filterable, and the drawer calls out exactly which observation was flagged.
+
+    <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_07_30/health-gorilla-labs-2.webp" alt="HealthGorilla Labs results drawer showing structured lab values with reference ranges and abnormal results highlighted" />
+
   - Cancelled orders are labeled more clearly, with a toggle to show or hide cancelled results.
 
   ### Medications Usability Improvements
@@ -78,12 +88,22 @@ public: true
   A round of quality-of-life upgrades to medication workflows:
 
   - **Multiple preferred pharmacies per patient** — add, remove, and reorder preferred pharmacies on the patient chart, with one marked as the default.
+
+    <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_07_30/preferred-pharmacies.webp" alt="Pharmacy search results alongside a Preferred Pharmacies list showing ordered, removable pharmacies on the patient chart" />
+
   - **Smarter pharmacy search** — search by name, city, state, address, ZIP, phone, or fax, and combine filters (e.g. "CVS" + "Fremont, CA") to pinpoint the right location among large chains.
+
+    <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_07_30/pharmacy-search.webp" alt="Expanded pharmacy search options showing name, postal code, radius, state, address, city, phone, and fax filters" />
+
   - **Bulk medication re-ordering** — select multiple medications from the med list and re-order them in one flow, adjusting SIG, quantity, and refills before submitting. Bulk re-orders also carry through to the visit note.
+
+    <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_07_30/medication-bulk-reorder.webp" alt="Medications list with two prescriptions selected and a bulk Re-Order action available at the bottom of the screen" />
 
   ### [Beta Users Only] New Treatments Section (Services v2)
 
   We're rolling out a rebuilt Treatments experience in the chart note. Services now live in the billing section of the note with per-service ICD-10 linking and reordering, unit counts, and billing modifiers — plus one-click carry-forward from a previous note. The new section is integrated with Air Scribe, so treatments captured during the visit flow into the note automatically. Contact your account manager for beta access.
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_07_30/treatments-services-v2.webp" alt="Rebuilt Treatments section in the chart note showing services grouped by category with per-service ICD-10 codes and units" />
 
   ### Bug Fixes and Improvements
 
