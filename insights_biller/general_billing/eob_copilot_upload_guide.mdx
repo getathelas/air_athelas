@@ -1,0 +1,67 @@
+---
+title: "EOB Copilot Upload Guide"
+description: "Best practices and example uploads for EOB Copilot on the Remittances page."
+---
+
+Use this guide when uploading EOBs with **EOB Copilot** on the [Remittances → EOBs](https://insights.athelas.com/v2/eob-posting) page. Following these practices improves check creation, claim matching, and transcription quality.
+
+<Note>
+Example PDFs and screenshots below are **placeholders**. PHI-redacted sample files will be added in a follow-up PR. Drop assets into `images/insights_biller/general_billing/eob_copilot_upload_examples/` using the filenames listed in each section.
+</Note>
+
+## Quick rules
+
+- Upload **one check at a time**, or multiple PDFs that share the **same EOB format**.
+- Do **not** use EOB Copilot for **correspondence**, portal letters, or other non-EOB documents.
+- Avoid bulk uploads that **mix formats**, include correspondence, or lack **procedure-level** payment detail.
+
+<Warning>
+Bulk uploads that mix document types or formats may miss claims, skip transcription, or produce incomplete checks.
+</Warning>
+
+## Good uploads
+
+These uploads work well with EOB Copilot:
+
+- A single remittance advice PDF for **one check** (one payer payment).
+- Consistent layout across files when uploading multiple PDFs in one batch (same payer/format).
+- Clear **procedure-level** lines (CPT/HCPCS, paid amounts, adjustments) per claim.
+
+### Example: single-check remittance (placeholder)
+
+**PDF (add when ready):** `images/insights_biller/general_billing/eob_copilot_upload_examples/good_single_check_eob.pdf`
+
+**Preview image (add when ready):** `images/insights_biller/general_billing/eob_copilot_upload_examples/good_single_check_eob.png`
+
+<!--
+![](/images/insights_biller/general_billing/eob_copilot_upload_examples/good_single_check_eob.png)
+-->
+
+<Tip>
+After assets are added, uncomment the screenshot above and link this page from the Create EOB drawer in Insights.
+</Tip>
+
+## Uploads to avoid
+
+Do **not** upload these through EOB Copilot:
+
+- Payer **correspondence** (denial letters, requests for records, general mail).
+- Bundles that combine **multiple unrelated checks** or **multiple EOB formats**.
+- EOBs with **no procedure-level breakdown** (summary-only pages without line-item detail).
+
+### Example: correspondence-only document (placeholder)
+
+**PDF (add when ready):** `images/insights_biller/general_billing/eob_copilot_upload_examples/bad_correspondence_only.pdf`
+
+**Preview image (add when ready):** `images/insights_biller/general_billing/eob_copilot_upload_examples/bad_correspondence_only.png`
+
+### Example: mixed-format bulk upload (placeholder)
+
+**PDF (add when ready):** `images/insights_biller/general_billing/eob_copilot_upload_examples/bad_mixed_format_bulk.pdf`
+
+**Preview image (add when ready):** `images/insights_biller/general_billing/eob_copilot_upload_examples/bad_mixed_format_bulk.png`
+
+## Related documentation
+
+- [Remittances](/insights_biller/general_billing/remittances) — Check Deposit Manager overview
+- [EOB Creation and Portal Checks](/insights_front_desk/utilities/eob_creation_and_portal_checks) — Manual EOB posting workflows
