@@ -1,0 +1,42 @@
+---
+title: "My Reports"
+sidebarTitle: "My Reports"
+---
+
+**My Reports** is the central place to download operational and clinical exports from Insights. Open it from the left navigation (**Reports**) or go directly to [insights.athelas.com/v2/my-report](https://insights.athelas.com/v2/my-report).
+
+Reports are grouped into tabs. Which tabs and cards you see depends on your role and site configuration.
+
+| Tab | Examples |
+| :-- | :------- |
+| **Claims** | Claim Details, A/R, Submitted Claims, Detailed Charges |
+| **Revenue** | Posting Log, Collections, Site Transaction, Revenue Activity |
+| **EHR Reports** | Daily Stat, Open Cases, Provider Productivity, Audit Log Export *(when enabled)* |
+| **Miscellaneous** | Patient Balances, Patient Charges, Patient Eligibility |
+| **Performance Management** | Payroll Bonus |
+
+<Note>
+This is not the same as **[EHR Reports](/air_admin/analyze_your_reports/ehr_reports)** (the custom report builder at `/ehr/reports`). My Reports uses pre-built report cards with download dialogs.
+</Note>
+
+## Download a report
+
+1. Find the report card and click the **download** icon.
+2. Set filters in the dialog (date range, facility, provider, etc. — varies by report).
+3. Click **Download**.
+
+Most reports download immediately as CSV or Excel. Some exports (including **Audit Log Export**) run in the background and email you when the file is ready.
+
+Click the **?** icon on a report card for report-specific help. Individual billing reports are also documented under [Building and Running Reports](/insights_biller/reports/building_and_running_reports).
+
+## Report history
+
+When enabled for your site, a **Report History** section below the report cards lists past runs — including status, who requested them, and filters used. Use it to re-download completed reports or spot failures.
+
+Download links expire after **24 hours**. Re-run the report or use Report History to generate a fresh link.
+
+## Audit Log Export
+
+*(Beta — contact your account manager for access.)*
+
+Workspace admins can export **patient access**, **user access**, or **both** audit logs from **EHR Reports → Audit Log Export**. Choose an export type, optional date range, and (for patient-access exports) an optional patient filter. The CSV is delivered by email when processing finishes.
