@@ -35,17 +35,8 @@
             "pages": [
               "air_onboard/getting_started_with_air/index",
               "air_onboard/getting_started_with_air/set_up",
-              "air_onboard/getting_started_with_air/faqs"
-            ]
-          },
-          {
-            "group": "View your Calendar",
-            "icon": "calendar",
-            "public": true,
-            "pages": [
-              "air_front_desk/view_your_calendar/nav_calendar",
               "air_front_desk/view_your_calendar/insights_notifications",
-              "air_front_desk/view_your_calendar/waitlist"
+              "air_onboard/getting_started_with_air/faqs"
             ]
           },
           {
@@ -57,81 +48,84 @@
               "air_provider/review_patient_details/patient_demog",
               "air_provider/review_patient_details/patient_appts",
               "air_provider/review_patient_details/patient_attachments",
-              "air_provider/review_patient_details/faxing"
+              "air_front_desk/portal_and_online_scheduling/patient_portal"
             ]
           },
           {
-            "group": "Communicate with Patients",
+            "group": "Admin Tools",
+            "icon": "calendar",
+            "public": true,
+            "pages": [
+              "air_admin/manage_your_practice/patient_workflows",
+              "air_front_desk/communicate_with_patients/messages",
+              "air_provider/review_patient_details/faxing",
+              "air_front_desk/communicate_with_patients/outreach_flows",
+              "air_admin/manage_your_practice/register_providers_rx",
+              "air_front_desk/manage_your_tasks/tasks",
+              "air_admin/manage_your_practice/plan_of_care_tracking"
+            ]
+          },
+          {
+            "group": "Patient Journey",
             "icon": "envelope",
             "public": true,
             "pages": [
-              "air_front_desk/communicate_with_patients/outreach_flows",
-              "air_front_desk/communicate_with_patients/messages"
+              {
+                "group": "Schedule",
+                "pages": [
+                  "air_front_desk/view_your_calendar/nav_calendar",
+                  "air_front_desk/take_in_a_patient/new_appt",
+                  "air_front_desk/portal_and_online_scheduling/online_scheduling",
+                  "air_front_desk/view_your_calendar/waitlist",
+                  "air_front_desk/portal_and_online_scheduling/reserve_blocks"
+                ]
+              },
+              {
+                "group": "Prepare",
+                "pages": [
+                  "air_front_desk/take_in_a_patient/prep_appt",
+                  "air_provider/check_in_a_patient/edit_appt",
+                  "air_front_desk/take_in_a_patient/schedule_and_reschedule_patient_appointments"
+                ]
+              },
+              {
+                "group": "Check-in",
+                "pages": [
+                  "air_provider/check_in_a_patient/check_in",
+                  "air_provider/check_in_a_patient/kiosk_user_guide"
+                ]
+              },
+              {
+                "group": "Visit",
+                "pages": [
+                  "air_provider/fill_a_chart_note/chart_note_clinical_types",
+                  "untitled-page",
+                  "untitled-page-2",
+                  "air_provider/fill_a_chart_note/scribe_text_snippets",
+                  "air_provider/fill_a_chart_note/scribe_faq",
+                  "air_provider/fill_a_chart_note/other_sec_chart_note",
+                  "air_provider/fill_a_chart_note/flowsheets",
+                  "air_provider/fill_a_chart_note/progress_note_automatic_conversion",
+                  "air_admin/manage_your_practice/billing_addendums_and_retro_billing"
+                ]
+              }
             ]
           },
           {
-            "group": "Portal and Online Scheduling",
-            "icon": "calendar-plus",
-            "public": true,
-            "pages": [
-              "air_front_desk/portal_and_online_scheduling/patient_portal",
-              "air_front_desk/portal_and_online_scheduling/online_scheduling",
-              "air_front_desk/portal_and_online_scheduling/reserve_blocks"
-            ]
-          },
-          {
-            "group": "Check-in a Patient",
-            "icon": "user-doctor",
-            "tag": "Provider",
-            "public": true,
-            "pages": [
-              "air_provider/check_in_a_patient/check_in",
-              "air_provider/check_in_a_patient/kiosk_user_guide",
-              "air_provider/check_in_a_patient/edit_appt"
-            ]
-          },
-          {
-            "group": "Fill a Chart Note",
+            "group": "Clinical Tools",
             "icon": "notes-medical",
             "tag": "Provider",
             "public": true,
             "pages": [
-              "air_provider/fill_a_chart_note/nav_chart_note",
-              "air_provider/fill_a_chart_note/chart_note_clinical_types",
-              "air_provider/fill_a_chart_note/progress_note_automatic_conversion",
-              "air_provider/fill_a_chart_note/other_sec_chart_note",
-              "air_provider/fill_a_chart_note/flowsheets",
+              "air_provider/fill_a_chart_note/nav_inbox",
               "air_provider/fill_a_chart_note/functional_outcomes",
-              "air_provider/fill_a_chart_note/medications",
               "air_provider/fill_a_chart_note/pdmp",
+              "air_provider/fill_a_chart_note/medications",
+              "air_provider/fill_a_chart_note/prescriber_agents",
               "air_provider/fill_a_chart_note/medication_order_set",
               "air_provider/fill_a_chart_note/order_sets",
-              "air_provider/fill_a_chart_note/prescriber_agents",
               "air_provider/fill_a_chart_note/orders",
-              "air_provider/fill_a_chart_note/scribe_faq",
-              "air_provider/fill_a_chart_note/scribe_text_snippets",
-              "air_provider/fill_a_chart_note/nav_inbox"
-            ]
-          },
-          {
-            "group": "Take in a Patient",
-            "icon": "clipboard",
-            "tag": "Front Desk",
-            "public": true,
-            "pages": [
-              "air_front_desk/take_in_a_patient/new_appt",
-              "air_front_desk/take_in_a_patient/prep_appt",
-              "air_front_desk/take_in_a_patient/schedule_and_reschedule_patient_appointments"
-            ]
-          },
-          {
-            "group": "Manage your Tasks",
-            "icon": "list-check",
-            "tag": "Front Desk",
-            "public": true,
-            "pages": [
-              "air_front_desk/manage_your_tasks/faxes",
-              "air_front_desk/manage_your_tasks/tasks"
+              "air_admin/manage_your_practice/custom_orders"
             ]
           },
           {
@@ -144,18 +138,13 @@
               "air_admin/manage_your_practice/user_management",
               "air_admin/manage_your_practice/branding_engine",
               "air_admin/manage_your_practice/ehr_alert_rules",
-              "air_admin/manage_your_practice/billing_addendums_and_retro_billing",
-              "air_admin/manage_your_practice/custom_orders",
+              "air_admin/manage_your_practice/calendar_settings",
               "air_admin/manage_your_practice/appointment_types",
               "air_admin/manage_your_practice/chart_note_templates",
               "air_admin/manage_your_practice/conditional_forms",
-              "air_admin/manage_your_practice/patient_workflows",
               "air_admin/manage_your_practice/provider_settings",
               "air_admin/manage_your_practice/provider_credentials",
-              "air_admin/manage_your_practice/calendar_settings",
-              "air_admin/manage_your_practice/register_providers_rx",
               "air_admin/manage_your_practice/fax_admin",
-              "air_admin/manage_your_practice/plan_of_care_tracking",
               "air_admin/manage_your_practice/scribe_retention_policy"
             ]
           },

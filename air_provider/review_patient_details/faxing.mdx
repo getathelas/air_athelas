@@ -6,24 +6,44 @@ toc: "true"
 
 Air's faxing module gives your front desk a single place to receive, process, send, and track every fax — no external fax portal needed. This guide covers everything from managing your inbound queue to sending documents straight from a patient's chart.
 
-**Note:** For the quick, task-focused version of this workflow, see [Send & Receive Faxes](/air_front_desk/manage_your_tasks/faxes).
-
 ## Navigating to faxes
 
 There are two ways to open the Faxing page:
 
 - Click **Utilities → Faxing** in the left sidebar.
-- Press **⌘K** (Mac) or **Ctrl+K** (Windows), type _Faxes_, and press **Enter**.
+- Press **⌘K** (Mac) or **Ctrl\+K** (Windows), type _Faxes_, and press **Enter**.
+
+<Frame>
+  ![Image](/images/image-3.png "Image")
+</Frame>
+
+The Faxing page has three main sections:
+
+- **Outbound** – view and manage faxes you’ve sent.
+- **Inbound** – view received faxes (with filters for **All**, **Unprocessed**, and **Processed**).
+- **Tasks** – attach follow-ups and track progress directly from any fax.
 
 ## Outbound faxes
 
 The **Outbound** tab shows every fax your organization has sent, along with its current delivery status. Faxes sent from chart notes and from the Attachments tab both appear here, correctly attributed to the sending facility and provider.
 
 | **Status** | **What it means** |
-| :--- | :--- |
+| :-- | :-- |
 | ✅ **Delivered** | Fax was received successfully. |
 | ⏳ **Pending** | Fax is in transit. |
 | ❌ **Failed** | Delivery failed — action required. |
+
+### Sending an Outbound Fax
+
+- Click **Send Document** in the top-right corner.
+- Fill out the **Send Fax** side panel:
+  - **Recipient Fax Number** – enter the number you’re faxing to.
+  - **Subject** – title of the fax.
+  - **Send From** – choose a fax line from your organization’s dropdown.
+  - **Facility / Provider \[Optional\]** – assign context.
+  - **Choose Files** – upload one or more PDFs.
+- Click **Send Document**.
+- The fax will now appear in your **Outbound** list. You can track the status of the fax.
 
 Use the filter panel to narrow by **Patient**, **Facility**, **Created By**, or **Document Type**.
 
@@ -147,7 +167,7 @@ Additional settings live under **EHR Preferences**:
 ## Troubleshooting
 
 | **Issue** | **What to try** |
-| :--- | :--- |
+| :-- | :-- |
 | Fax shows **Delivered** but recipient didn't receive it | Confirm the fax number is correct. Ask the recipient to check that their machine was online and had paper. Contact Athelas support with the fax ID. |
 | Fax stuck in **Pending** | If still pending after 30 minutes, use **Resend**. Check that the recipient's line is active. |
 | Failed fax — **Resend** option not visible | You may not have the required permission. Ask your admin. |

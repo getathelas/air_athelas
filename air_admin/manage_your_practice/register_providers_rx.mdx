@@ -1,6 +1,6 @@
 ---
 title: "Register Providers for Medications"
-sidebarTitle: "Provider Prescriber Settings"
+sidebarTitle: "Medications Registration"
 ---
 
 ### Registration for Uncontrolled Meds
@@ -10,8 +10,7 @@ sidebarTitle: "Provider Prescriber Settings"
   - Go to Preferences Tab → **Medications**
   - **Nominate Provider** (Note: Only an admin/provider from the site can initiate this process; self-nomination is not permitted)
   - Select Provider \+ Facility Combo → Nominate
-  - The provider \+ facility combo will appear in the table in dropdown. The **Approved** check under the Uncontrolled Substances column indicates the provider can now prescribe uncontrolled meds via Air.
-    ![Controlled Meds2 Web](/images/air_admin/manage_your_practice/register_providers_rx/register_providers_rx_1.webp)
+  - The provider \+ facility combo will appear in the table in dropdown. The **Approved** check under the Uncontrolled Substances column indicates the provider can now prescribe uncontrolled meds via Air.<br /> <img src="/images/air_admin/manage_your_practice/register_providers_rx/register_providers_rx_1.webp" alt="Controlled Meds2 Web" />
 </Card>
 
 ### Registration for Controlled Meds
@@ -34,3 +33,34 @@ sidebarTitle: "Provider Prescriber Settings"
 <Card>
   Navigate to Preference → Medications → \+ icon → Register for pharmacy requests
 </Card>
+
+### Pre-requisite for Provider Agents
+
+**Providers can designate staff members as prescriber agents, granting them the ability to:**
+
+- Draft prescriptions (for controlled medications)
+- Prescribe medications (for non-controlled medications)
+
+Providers can assign prescriber agents by facility and set permissions for whether they can only create draft prescriptions or also prescribe medications.
+
+- Provider should be assigned to the relevant facilities they want to prescribe for (update within **Preferences Tab \> Provider Section \> Edit Provider Details**)
+  ![44 Rx Nominate Prov Gi](/images/air_provider/fill_a_chart_note/prescriber_agents/prescriber_agents_1.gif)
+- Provider should be nominated to prescribe for the relevant facilities they want to prescribe for (update within **Preferences Tab \> Medications Section \> Nominate Provider**)
+  ![Nominate Provider Web](/images/air_provider/fill_a_chart_note/prescriber_agents/prescriber_agents_1.webp)
+
+### Add Prescriber Agents to a Provider
+
+- Go to the **Preferences Tab \> Medications \> Prescriber Agents**
+- Click **\+Add Prescriber Agent**.
+  ![Add Rx Agent Web](/images/air_provider/fill_a_chart_note/prescriber_agents/prescriber_agents_1.webp)
+- You will see yourself listed as the provider by default. This cannot be changed, since prescriber agents must be set up by the provider or admin.
+- Select one or more agents, then add the facilities where you want them to create draft medications.
+- **Can prescribe** → allows the prescriber agent to prescribe **uncontrolled substances** directly. If **Can prescribe** is checked, the agent can still create drafts, but will also have the option to prescribe.
+- Click **Submit** when done. This creates the prescriber agent for the selected site and facilities.
+
+<img
+  src="/images/air_provider/fill_a_chart_note/prescriber_agents/prescriber_agents_1.webp"
+  alt="Add Agent 2 Web"
+  title="Add Agent 2 Web"
+  style={{ width:"68%" }}
+/>
