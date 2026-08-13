@@ -1,0 +1,106 @@
+---
+title: "Retention Engine"
+sidebarTitle: "Retention Engine"
+toc: "true"
+---
+
+The **Retention Engine** helps you understand patient experience, outcomes completion, discharge quality, lost-patient risk, plan-of-care adherence, and operational follow-up needs. Select it from the **Report Categories** dropdown in [**EHR Reports**](/air_admin/analyze_your_reports/ehr_reports).
+
+It is built for executives, clinic managers, outcomes leaders, and operations teams who need to identify patient drop-off, missing functional outcomes, self-discharge patterns, and patients who require authorization, plan-of-care, or script follow-up.
+
+The engine contains three reports, each selected from the **Key Metrics** dropdown:
+
+- **Patient Experience**: NPS survey metrics and kiosk check-in adoption.
+- **Outcomes**: functional outcome coverage at evaluation, progress note, and discharge, plus score-change and MCID metrics when grouped by **Measure**.
+- **Retention**: discharge quality, lost-patient detection, and authorization, plan-of-care, and script tracking against active plans of care.
+
+## Patient Experience
+
+NPS metrics are anchored to the survey response creation date. Only valid numeric NPS scores from 0 through 10 are included.
+
+| **Metric**                  | **Definition**                                                                                                                                                             |
+| :-------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Total Responses**         | Number of valid NPS survey responses created within the selected date range. Blank, invalid, deleted, and draft responses are excluded.                                      |
+| **Avg Rating**              | Average NPS rating across valid survey responses.                                                                                                                          |
+| **Promoters**               | Number of valid NPS responses with a score of 9 or 10.                                                                                                                      |
+| **Passives**                | Number of valid NPS responses with a score of 7 or 8.                                                                                                                       |
+| **Detractors**              | Number of valid NPS responses with a score from 0 through 6.                                                                                                                |
+| **Promoters Rate**          | Percentage of valid NPS responses that were promoters. **Formula: 100 × Promoters ÷ Total valid responses**.                                                                 |
+| **Passives Rate**           | Percentage of valid NPS responses that were passives.                                                                                                                      |
+| **Detractors Rate**         | Percentage of valid NPS responses that were detractors.                                                                                                                    |
+| **NPS Score**               | Net Promoter Score for valid responses. Positive scores mean promoters outnumber detractors. **Formula: 100 × (Promoters − Detractors) ÷ Total valid responses**.             |
+| **Kiosk Completion Rate**   | Of Checked In appointments with a recorded check-in actor, the percentage that were checked in by a kiosk user account. **Formula: 100 × Kiosk check-ins ÷ Checked In appointments with a recorded check-in actor**. |
+
+## Outcomes
+
+The standard **Outcomes** view includes cases with at least one Checked In or Completed appointment in the selected date range. Coverage checks, such as whether a case has an evaluation functional outcome (FO) or a discharge FO, may look across the case's full functional outcome history, not just the selected range.
+
+| **Metric**                                | **Definition**                                                                                                                                                                          |
+| :---------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **FO Completion Rate**                    | Of cases with a discharge note visit in the range, the percentage with both an initial evaluation FO and a discharge FO recorded anywhere in the case's history. **Formula: 100 × Cases with both eval FO and discharge FO ÷ Cases with discharge note visits in range**. |
+| **FO at Initial Eval Rate**               | Of cases with an initial evaluation visit in the range, the percentage with an FO recorded at an initial evaluation in the range.                                                          |
+| **FO at Discharge Rate**                  | Of cases discharged in the range, the percentage with an FO recorded on a discharge note.                                                                                                 |
+| **FO at Progress Note Rate**              | Of cases with at least one progress note visit in the range, the percentage where every in-range progress note had an FO recorded.                                                        |
+| **Cases Missing Discharge FO**            | Number of discharged cases without an FO recorded on a discharge note.                                                                                                                    |
+| **FO Episodes**                           | Number of cases with at least one FO visit.                                                                                                                                              |
+| **Avg Scored Visits per Case**            | Average number of FO-scored visits per case, among cases with at least one scored visit.                                                                                                  |
+| **Avg Case Duration Days**                | Average calendar days between the first and last FO visit, for cases with at least two FO visits.                                                                                          |
+| **Avg Case Visits**                       | Average number of Checked In or Completed visits per included case across the case's full history, not limited to the selected date range. The case is included if it has any Checked In or Completed visit in range, but the count itself is lifetime. |
+| **Discharge Type Completed Rate**         | Of discharged cases, the percentage with a signed discharge note.                                                                                                                        |
+| **Discharge Type Self Discharged Rate**   | Of discharged cases, the percentage without a signed discharge note.                                                                                                                      |
+| **Discharge Type Non Participation Rate** | Of discharged cases, the percentage without a signed discharge note and with one or fewer FO visits.                                                                                       |
+
+## Outcomes grouped by Measure
+
+When you group the **Outcomes** report by **Measure**, it switches to score-change and MCID (Minimal Clinically Important Difference) metrics per functional outcome measure. Cases that have FO visits but no computed score rows for a given measure are excluded from this view.
+
+| **Metric**                              | **Definition**                                                                                                                                                                    |
+| :-------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Avg Score Change Complete**           | Average cumulative score change at discharge, for discharged cases with a discharge score change available.                                                                          |
+| **Avg Score Change In Progress**        | Average latest cumulative score change for cases with at least two scored visits. Not limited to discharged cases.                                                                  |
+| **Score Improvement Rate**              | Percentage of evaluable case-measure pairs whose latest score change moved in the clinically favorable direction. The favorable direction depends on the measure: for some, higher is better; for others, lower is better. |
+| **Score Decline Rate**                  | Percentage of evaluable case-measure pairs whose latest score change moved in the clinically unfavorable direction.                                                                  |
+| **Score No Change Rate**                | Percentage of evaluable case-measure pairs whose latest score change was exactly zero.                                                                                              |
+| **MCID Achievement In Progress Rate**   | Of MCID-evaluable, non-discharged case-measure pairs, the percentage whose latest score achieved MCID.                                                                               |
+| **MCID Achievement Completed Rate**     | Of MCID-evaluable, discharged case-measure pairs, the percentage whose latest score achieved MCID.                                                                                   |
+| **MCID Achievement at Discharge Rate**  | Of discharged case-measure pairs with both evaluation and discharge scores, the percentage that achieved MCID.                                                                        |
+| **Avg Visits to MCID**                  | Average visit sequence number at which MCID was first achieved, among case-measure pairs that achieved MCID.                                                                          |
+
+## Retention
+
+| **Metric**                     | **Definition**                                                                                                                                                                                                                                                                                            |
+| :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Completed Rate**             | Of cases discharged in the range, the percentage with a signed discharge note. **Formula: 100 × Completed discharges ÷ Discharged cases**.                                                                                                                                                                  |
+| **Self Discharge Rate**        | Of cases discharged in the range, the percentage without a signed discharge note.                                                                                                                                                                                                                          |
+| **Lost Patients**              | Number of distinct active-plan-of-care patients considered lost. **Past range:** the patient is lost if there is no future Scheduled or Confirmed appointment on the same case after the range ends. **Current or future range:** the patient is lost if there is a 21-day gap without a qualifying appointment overlapping the range. Patients with no qualifying appointments are counted as lost. |
+| **Auth Tracking**              | Number of distinct patients requiring authorization attention. **Past range:** patients on cases with at least one authorization on file, with a Checked In or Completed visit in the range where no active authorization covered the visit date, or where the authorization had two or fewer visits remaining. Cases with zero authorizations on file are not counted. **Current or future range:** patients on open cases with an authorization expiring within the range or with two or fewer visits remaining. |
+| **POC Tracking**               | Number of distinct patients requiring plan-of-care attention. **Past range:** patients with Checked In or Completed visits in the range where no active plan of care covered the visit date. **Current or future range:** patients with an open, non-deleted plan of care ending within the selected range.    |
+| **Script Tracking**            | Number of distinct patients requiring referral-script attention. **Past range:** patients with Checked In or Completed visits in the range where the referral script did not cover the visit date. **Current or future range:** patients on open cases whose referral script expires within the range.         |
+| **Underscheduled Patients**    | Number of distinct active-plan-of-care patients whose visit count is below the expected visits from their prescribed frequency. **Past range** uses Checked In and Completed visits; **current or future range** uses Scheduled and Confirmed appointments.                                                    |
+| **POC Visit Adherence Rate**   | Percentage of expected plan-of-care visits represented by actual or scheduled visits, summed across overlapping plan-of-care records. **Formula: 100 × Σ(visit count) ÷ Σ(expected visits)**. Expected visits per plan of care are calculated as `prescribed visits per week × max(1, ⌊(POC days in range) / 7⌋)`. **Past range** uses Checked In and Completed visits; **current or future range** uses Scheduled and Confirmed appointments. |
+
+## Available groupings
+
+- **Facility**: breaks results down by individual clinic or facility.
+- **Provider**: breaks results down by individual provider.
+- **Measure**: available on the **Outcomes** report. Switches it to score-change and MCID metrics per functional outcome measure.
+
+## Example use cases
+
+- An outcomes leader tracking NPS and kiosk check-in adoption across all clinics to identify patient experience gaps.
+- A clinic manager finding cases missing functional outcomes at initial evaluation, progress notes, or discharge to drive documentation compliance.
+- An executive comparing completed-discharge versus self-discharge patterns by facility to monitor discharge quality.
+- An operations team identifying lost, underscheduled, or plan-of-care-adherence-risk patients for outreach.
+- A front-office team tracking patients who need authorization, plan-of-care, or script follow-up before their next visit.
+
+## Behavior notes
+
+<Warning>
+  **Six metrics change their logic based on your date range.** **Lost Patients**, **Auth Tracking**, **POC Tracking**, **Script Tracking**, **Underscheduled Patients**, and **POC Visit Adherence Rate** intentionally use different rules depending on whether the selected range is fully historical or includes today and future dates. Historical ranges look at what was already uncovered; current and future ranges look at what is about to expire. Comparing the same metric across a past range and a forward-looking range is not comparing like with like.
+</Warning>
+
+- **Patient Experience** NPS metrics use the survey response date, while **Kiosk Completion Rate** uses the appointment date.
+- **The standard Outcomes view is case-based.** Cases must have at least one Checked In or Completed appointment in the range, but coverage checks (evaluation FO, discharge FO) and **Avg Case Visits** look across the case's full history, not just the selected range.
+- **Grouping Outcomes by Measure changes the columns.** It returns score-change and MCID columns instead of the standard coverage and discharge-type columns. Cases without computed score rows for a given measure are excluded.
+- **Auth Tracking's past-range path requires an authorization on file.** Cases with no authorizations are not flagged as needing attention, even when their visits are uncovered.
+- **Lost Patients' past-range path considers only appointments on or after the range start** when looking for future activity. A patient with appointments before the range start but none from the range start onward is counted as lost.

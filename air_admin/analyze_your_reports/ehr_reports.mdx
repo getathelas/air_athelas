@@ -4,167 +4,75 @@ sidebarTitle: "EHR Reports"
 toc: "true"
 ---
 
-Use **EHR Reports** in **Insights** to create custom reports across your organization's visits, referrals, scheduling, documentation, and patient experience data.
+![The EHR Reports Report Builder, showing report results as a data table on the left and the configuration panel with Timeframe, Report Categories, Key Metrics, Data Grouping, and filter controls on the right](/images/air_admin/analyze_your_reports/ehr_reports/ehr_reports_1.webp)
 
-## Report categories
+**EHR Reports** is the reporting and analytics workspace for your **Air** data, reached from the **Insights** section of the sidebar. It lets executives, clinic managers, growth teams, billing teams, outcomes leaders, and operational staff monitor performance, spot problems, and act on them across every facility.
 
-Each report starts by selecting a **Category** and one or more **Key Metrics** within it. The table below shows every available category and the report types it contains.
+## What you can do
 
-| **Category**                 | **Key Metrics**                                                                    |
-| :--------------------------- | :--------------------------------------------------------------------------------- |
-| **Executive Org Overview**   | Visits Summary, Visits Per FTE Per Day                                             |
-| **Clinic Provider**          | Chart Note Time to Completion, Scribe Notes                                        |
-| **Referral Management**      | Referrals Over Time, Referral Scheduled Rate, Referrals By Source, Leads By Stage  |
-| **Scheduling & Forecasting** | Capacity, Scheduling Metrics                                                       |
-| **Patient Experiences & NPS**| NPS Summary                                                                        |
+- Track performance across patient acquisition, retention, outcomes, productivity, billing quality, and operational efficiency.
+- Drill down from a high-level summary into facility, provider, patient, case, referral, lead, appointment, chart note, and encounter-level records to investigate a specific number.
+- Filter and group by provider, facility, time period, credential, measure, referral source, payer, and other available dimensions.
+- Save frequently-used report configurations for quick access.
+- Export any report or drill-down as a CSV for offline analysis, patient follow-up, or executive review.
 
-## Report controls
+## The three report engines
 
-### <Icon icon="layer-group" iconType="duotone" color="#F9345F" size={23} />  Data Grouping
+EHR Reports is organized into three engines. Each engine focuses on a different operational objective and carries its own metrics, groupings, filters, and date behavior. You select an engine from the **Report Categories** dropdown.
 
-**Data Grouping** (Group by) breaks your report results into rows by dimension. Choose **Facility** to see one row per facility, or **Provider** to compare performance across providers.
+| **Engine**                                                                     | **What it covers**                                                                                                                     |
+| :----------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
+| **[Growth Engine](/air_admin/analyze_your_reports/growth_engine)**             | Patient acquisition, patient flow, referrals, leads, schedule fill, and caseload growth.                                               |
+| **[Retention Engine](/air_admin/analyze_your_reports/retention_engine)**       | Patient experience, functional outcomes, discharge quality, lost-patient risk, plan-of-care adherence, and authorization follow-up.     |
+| **[Efficiency Engine](/air_admin/analyze_your_reports/efficiency_engine)**     | Provider productivity, schedule utilization, billing quality, code mix, documentation completion, and scribe adoption.                  |
 
-The available options depend on your selected **Key Metric**. When multiple metrics are selected, only grouping options supported by all of them appear.
+To learn how to configure and run a report, see [**Building a Report**](/air_admin/analyze_your_reports/building_a_report).
 
-### <Icon icon="calendar" iconType="duotone" color="#F9345F" size={23} />  Timeframe
+**Note:** The metrics available to you may vary based on your organization's configuration and enabled features.
 
-- **Date range** — Set a start and end date. Every metric is calculated using only data within this range.
-- **Time slice** — Controls how dates are bucketed when viewing a time series. Options include **Daily**, **Weekly**, **Monthly**, **Quarterly**, **Yearly**, and rolling windows (**Trailing 7 / 30 / 90**) when supported.
-- **Time comparison** — Some reports support **Week over Week (WoW)** or **Month over Month (MoM)** comparison, showing the prior period alongside the current one.
+## Accessing EHR Reports
 
-Available time slice options depend on the selected Key Metric.
+**To open EHR Reports:**
 
-### <Icon icon="filter" iconType="duotone" color="#F9345F" size={23} />  Filters
+1. Sign in to **Insights**.
+2. In the left sidebar, expand the **Insights** section.
+3. Click **EHR Reports**.
 
-Filters restrict which data is included. Only records that match **all** selected filter values appear in results.
+The page opens on the **Report Builder** tab, which is the primary workspace for creating and running reports.
 
-| **Filter**              | **What it does**                                                              |
-| :---------------------- | :---------------------------------------------------------------------------- |
-| **Facility**            | Include only data for the selected facility or facilities.                    |
-| **Provider**            | Include only data for the selected provider(s).                               |
-| **Appointment status**  | Limit to specific statuses (Completed, Cancelled, No-show, Scheduled, etc.). |
-| **Appointment type**    | Limit to specific types (Initial Evaluation, Follow-up, etc.).               |
+## Understanding the interface
 
-Which filters appear depends on the selected Key Metric. EHR Reports only shows filters that apply to your current report type.
+The **Report Builder** tab is divided into two areas:
 
-## Key metrics
+- **The report results area** on the left, which is empty until you run a report. Once a report runs, results appear here as a data table with **CSV** and **Save** actions in the top-right corner.
+- **The configuration panel** on the right, where you set up your report parameters. The panel has a **Controls** tab holding the report parameters and a **Definitions** tab describing the metrics you have selected. Each control has a **?** icon that explains what it does.
 
-### <Icon icon="clipboard-check" iconType="duotone" color="#F9345F" size={23} />  Visits Summary
+A **Saved Reports** tab sits alongside **Report Builder** and lists the report configurations you have saved.
 
-Provides a high-level view of visit volume and patient counts for your selected date range.
+Reports do not update as you change controls. Nothing is calculated until you click **Run Report**.
 
-- **Total visits** — Appointments with a status of **Checked in**, **Completed**, or **Ongoing** whose start and end dates fall within the range.
-- **Active patients** — Distinct patients with at least one qualifying visit. Each patient is counted once.
-- **New patients** — Patients whose first countable visit falls within the range (no prior non-cancelled, non-archived, non-no-show appointments before the range start).
-- **Discharged patients** — Patients who had visits in the range but currently have no open case at the site.
+## Key terminology
 
-Grouping by **Facility** or **Provider** breaks these totals into one row per dimension. **Appointment status** and **Appointment type** filters further restrict which appointments count.
+| **Term**                          | **Definition**                                                                                                                                                                                     |
+| :-------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Report Category**               | A reporting area focused on a specific operational objective, selected in the **Report Categories** dropdown. EHR Reports currently supports Growth Engine, Retention Engine, and Efficiency Engine. |
+| **Key Metric**                    | A focused report within a category, selected in the **Key Metrics** dropdown (for example Scorecard, Outcomes, or Billing Quality). Each one adds its full set of columns to the results table.      |
+| **Data Grouping**                 | Determines how rows are organized. Grouping by **Facility** creates one row per facility; grouping by **Provider** creates one row per provider. Some reports support additional groupings such as Measure, Referring Provider, Referral Source Type, or Insurance. |
+| **Time Slice**                    | Groups data by time interval: day, week, biweekly, month, quarter, or year, where supported. Selecting **Week**, for example, shows one row per week.                                              |
+| **Timeframe**                     | The overall date range for the report. Most metrics include only data within this range, but some look outside it for context, such as the first appointment on a case, future appointment checks, or a case's full outcome history. |
+| **Arrived appointment**           | An appointment treated as attended. Depending on the report this usually includes **Checked In** and **Completed**; Growth and Efficiency visit counts may also include **Ongoing**.                |
+| **Case**                          | A clinical episode of care for a patient. Cases remain open until archived or discharged.                                                                                                           |
+| **Discharged case**               | A case that has been closed or archived. Reporting uses the first timestamp at which the case was marked discharged.                                                                                |
+| **First appointment on a case**   | The earliest non-Cancelled, non-No-show, non-Archived, non-Deleted appointment on a case. Used by Growth Engine new-patient metrics.                                                                 |
+| **Functional Outcome (FO)**       | A non-deleted functional outcome measurement response attached to an appointment. Used by Retention Engine Outcomes metrics.                                                                         |
+| **MCID**                          | Minimal Clinically Important Difference. Indicates whether a functional outcome score changed enough to be clinically meaningful.                                                                            |
+| **Clinical hours**                | Provider working hours in the selected date range after subtracting regular schedule blocks. Used by Efficiency Engine productivity and utilization metrics, and by Growth Engine Schedule Fill Rate. |
+| **Booked hours**                  | Appointment-duration hours for booked appointments, excluding statuses such as Archived, Cancelled, and No-show.                                                                                     |
+| **FTE**                           | Full Time Equivalent. In the Efficiency Engine, **Visits / FTE** normalizes visit volume using an 8-hour FTE day.                                                                                    |
+| **Drill-down**                    | Clicking an aggregated value to see the underlying raw data records.                                                                                                                                 |
+| **Breadcrumb**                    | The navigation path shown above a report (for example **Growth Engine / Scorecard / New Patients (NP)**) that lets you return to a parent view.                                                      |
+| **CSV export**                    | A downloadable spreadsheet file containing the current report or drill-down data.                                                                                                                    |
 
-### <Icon icon="gauge-high" iconType="duotone" color="#F9345F" size={23} />  Visits Per FTE Per Day
-
-Measures visit volume relative to provider capacity.
-
-- **Visits per FTE per day** — Total qualifying appointments divided by **(FTE × number of days in the period)**. FTE defaults to 1.0 per provider if not configured.
-
-When grouped by **Provider**, each row uses that provider's FTE and appointments. When grouped by **Facility**, FTEs and appointments are aggregated at the facility level.
-
-### <Icon icon="chart-line" iconType="duotone" color="#F9345F" size={23} />  Referrals Over Time
-
-Shows referral volume as a time series based on referral creation date.
-
-- **Total referrals** — All referrals created in each time bucket.
-- **Refused referrals** — Referrals marked as refused therapy.
-- **Accepted referrals** — Referrals not refused.
-
-### <Icon icon="calendar-check" iconType="duotone" color="#F9345F" size={23} />  Referral Scheduled Rate
-
-Tracks how many referrals convert to scheduled appointments.
-
-- **Scheduled referrals** — Referrals that have an appointment created for them.
-- **Schedule rate** — (Scheduled referrals ÷ Total referrals) × 100%.
-
-### <Icon icon="arrow-right-to-bracket" iconType="duotone" color="#F9345F" size={23} />  Referrals By Source
-
-Breaks down referral counts by **source type**, **referring provider**, and/or **insurance company**.
-
-- **Referral count** — Total referrals in each group.
-- **Scheduled count** — Referrals with an appointment created.
-- **Refused count** — Referrals marked as refused therapy.
-
-### <Icon icon="bars-staggered" iconType="duotone" color="#F9345F" size={23} />  Leads By Stage
-
-Breaks down leads and referrals by **lead status** (stage).
-
-- **Lead count** — Number of leads in each stage.
-- **Scheduled count** — Leads with an appointment created.
-- **Patient-created count** — Leads linked to a new patient record.
-- **Refused count** — Leads marked as refused therapy.
-- **Scheduling rate** — (Scheduled count ÷ Lead count) × 100%.
-
-### <Icon icon="battery-three-quarters" iconType="duotone" color="#F9345F" size={23} />  Capacity
-
-Compares booked appointment time to available working time.
-
-- **Available working time** — Derived from provider schedules (configured working hours per weekday × number of weekdays in the range).
-- **Booked time** — Sum of appointment durations in the range.
-- **Filled capacity** — Booked hours ÷ Available working hours. A value of 0.80 means 80% of available time was filled.
-
-You can view this by **Provider** or **Facility**.
-
-### <Icon icon="list-check" iconType="duotone" color="#F9345F" size={23} />  Scheduling Metrics
-
-Shows appointment counts by status for the selected date range. Only appointments whose start and end dates both fall within the range are included.
-
-- **Total appointments**, **Scheduled**, **Cancelled**, **No-show**, **Completed**, **In progress**
-
-Each value is a simple count of appointments matching that status. Filters and data grouping apply as expected.
-
-### <Icon icon="notes-medical" iconType="duotone" color="#F9345F" size={23} />  Chart Note Time to Completion
-
-Measures the time from **appointment start** to **chart note signed** (in hours). Only non-documentation-only, signed chart notes are included.
-
-- **Average time to completion** — Average hours across all qualifying chart notes.
-- **Minimum / Maximum** — Shortest and longest completion times.
-- **Total chart notes** — Count of notes that met the criteria.
-
-You can break down by **Provider** and **Facility** to compare documentation speed.
-
-### <Icon icon="wand-magic-sparkles" iconType="duotone" color="#F9345F" size={23} />  Scribe Notes
-
-Tracks AI scribe adoption across your practice.
-
-- **Total chart notes** — Non-documentation-only chart notes in the date range.
-- **Total scribe notes** — Chart notes created with scribe-assisted documentation.
-- **Scribe adoption rate** — (Total scribe notes ÷ Total chart notes) × 100%.
-
-You can break down by **Provider** and **Facility**.
-
-### <Icon icon="face-smile" iconType="duotone" color="#F9345F" size={23} />  NPS Summary
-
-Based on NPS survey responses submitted within the date range. Only valid numeric responses (scores 0–10) are included.
-
-- **Promoters** — Responses scoring 9 or 10.
-- **Detractors** — Responses scoring 0–6.
-- **Passives** — Responses scoring 7 or 8.
-- **NPS score** — ((Promoters − Detractors) ÷ Total valid responses) × 100.
-- **Average rating** — Average numeric score across all valid responses.
-
-You can group by **Facility** or **Provider**.
-
-### FAQ
-
-<Accordion title="What counts as a visit in EHR Reports?">
-  A visit is any appointment with a status of **Checked in**, **Completed**, or **Ongoing** (in progress) whose start and end dates both fall within the selected date range. Cancelled, Archived, and No-show appointments are not counted as visits.
-</Accordion>
-
-<Accordion title="Which filters apply to which reports?">
-  **Facility** and **Provider** filters are available for most report types. **Appointment status** and **Appointment type** filters only appear for appointment-based reports (such as **Visits Summary** and **Scheduling Metrics**). EHR Reports automatically shows only the filters that apply to your current selection.
-</Accordion>
-
-<Accordion title="How is NPS calculated?">
-  NPS is calculated as ((Promoters − Detractors) ÷ Total valid responses) × 100. Promoters are scores of 9–10, detractors are scores of 0–6, and passives (scores 7–8) are excluded from the formula but included in the total. The result ranges from −100 to +100.
-</Accordion>
-
-<Accordion title="Why do some grouping options disappear when I select multiple metrics?">
-  When you select multiple **Key Metrics**, only grouping and time slice options supported by **all** selected metrics are shown. If an option disappears, one of your selected metrics does not support it. Try selecting metrics individually to see the full range of grouping options.
-</Accordion>
+<Note>
+  Some EHR Reports metrics share a name with a card on the **Performance Analysis** KPI dashboard, such as **Arrival Rate**, **Scheduled Patients**, and **Underscheduled Patients**. They are separate surfaces with their own calculations. The definitions in this section describe EHR Reports metrics only; see [**Review your KPI Dashboard**](/air_admin/analyze_your_reports/kpi_dashboard) for the dashboard's versions.
+</Note>

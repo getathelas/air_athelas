@@ -1,0 +1,113 @@
+---
+title: "Efficiency Engine"
+sidebarTitle: "Efficiency Engine"
+toc: "true"
+---
+
+The **Efficiency Engine** helps you evaluate how effectively providers, schedules, documentation workflows, and billing processes are being used. Select it from the **Report Categories** dropdown in [**EHR Reports**](/air_admin/analyze_your_reports/ehr_reports).
+
+It is built for executives, clinic managers, billing teams, and operations leaders who need to assess productivity, schedule utilization, code mix, documentation speed, scribe adoption, and overall provider performance.
+
+The engine contains three reports, each selected from the **Key Metrics** dropdown:
+
+- **Productivity**: provider working hours, visit counts, visits per hour, schedule utilization, and FTE-normalized productivity.
+- **Billing Quality**: procedure unit mix, evaluation complexity mix, non-billable leakage, and average codes and units per visit and per encounter.
+- **Performance**: composite provider performance combining patient experience, productivity, arrival, documentation, and discharged episode metrics.
+
+## Productivity
+
+Productivity metrics combine provider working calendars, regular schedule blocks, booked appointment hours, and arrived visit counts.
+
+| **Metric**                 | **Definition**                                                                                                                                                                                                       |
+| :------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Clinical Hours**         | Total provider working hours in the selected date range, minus the calendar overlap of regular schedule blocks with the date range. **Formula: Working hours − regular block hours**.                                    |
+| **Visits**                 | Number of appointments starting in the selected date range with an arrived status: Checked In, Completed, or Ongoing.                                                                                                   |
+| **Visits / Hour**          | Number of arrived visits per clinical hour. **Formula: Visits ÷ Clinical Hours**.                                                                                                                                       |
+| **Volume Evals**           | Number of arrived visits whose chart note type is Initial Evaluation.                                                                                                                                                  |
+| **Volume Follow Ups**      | Number of arrived visits whose chart note type is Daily Note.                                                                                                                                                          |
+| **Volume Discharges**      | Number of arrived visits whose chart note type is Discharge Note.                                                                                                                                                      |
+| **Volume Re Evals**        | Number of arrived visits whose chart note type is Re-Certification Note.                                                                                                                                               |
+| **Schedule Utilization %** | Percentage of clinical hours booked by non-excluded appointments that start and end inside the selected date range. Archived, Cancelled, and No-show appointments are excluded from booked hours. **Formula: 100 × Booked hours ÷ Clinical hours**. |
+| **Clinical %**             | Percentage of total configured working hours that remained clinical after subtracting regular schedule blocks. **Formula: 100 × Clinical hours ÷ Total working hours**.                                                  |
+| **Visits / FTE**           | Visit volume normalized to an 8-hour FTE day. **Formula: Visits ÷ (Clinical hours ÷ 8)**.                                                                                                                              |
+
+### <Icon icon="calculator" iconType="duotone" color="#F9345F" size={23} />  How Visits / FTE is calculated
+
+**Visits / FTE = Total Visits ÷ (Clinical Hours ÷ 8)**
+
+Where:
+
+- **Total Visits**: count of appointments starting in the selected date range with a status of Checked In, Completed, or Ongoing.
+- **Clinical Hours**: provider working hours in the date range, minus the calendar overlap of regular schedule blocks (such as a recurring lunch or admin block) with the date range.
+- **÷ 8**: normalizes clinical hours to an 8-hour FTE day. A provider with 40 clinical hours in a week has 5 FTE-days.
+
+**Worked example:**
+
+- Total visits in the period: 460
+- Clinical hours in the period: 184
+- FTE-days: 184 ÷ 8 = 23
+
+**Visits / FTE = 460 ÷ 23 ≈ 20.0**, so each FTE-day saw about 20 arrived visits in that period.
+
+## Billing Quality
+
+Billing Quality metrics are calculated from arrived appointments in the selected date range that are linked to encounters with included procedure lines. Procedure lines marked as excluded from claims are not counted, so per-visit denominators include only arrived appointments with at least one included procedure line.
+
+| **Metric**                        | **Definition**                                                                                                                                                                                                        |
+| :-------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **High Value Codes per Visit**    | Average high-value procedure units per arrived appointment with included procedure lines. High-value codes include timed therapeutic codes, evaluation and re-evaluation codes, speech therapy codes, orthotic and prosthetic management codes, and physical performance testing. |
+| **Total Procedures**              | Total number of included procedure line items.                                                                                                                                                                         |
+| **Total Procedures per Visit**    | Average included procedure units per arrived appointment with included procedure lines. Despite the name, the numerator is procedure units, not line-item count. **Formula: Procedure units ÷ Arrived appointments with included procedure lines**. |
+| **Non Billable Leakage**          | Percentage of included procedure units that did not appear as billable units on the latest claim submission for the encounter. Billable units are counted only when the billed amount is greater than zero. **Formula: 100 × (Procedure units − Billable units) ÷ Procedure units**. |
+| **Timed / Untimed Ratio**         | Percentage of included procedure units that are timed CPT code units. **Formula: 100 × Timed units ÷ Procedure units**.                                                                                                  |
+| **Therapeutic Exercise %**        | Share of the core active-code mix represented by CPT 97110 units. The core mix denominator is 97110, 97112, 97140, and 97530 units.                                                                                      |
+| **Neuromuscular Reeducation %**   | Share of the core active-code mix represented by CPT 97112 units.                                                                                                                                                       |
+| **Manual Therapy %**              | Share of the core active-code mix represented by CPT 97140 units.                                                                                                                                                       |
+| **Therapeutic Activities %**      | Share of the core active-code mix represented by CPT 97530 units.                                                                                                                                                       |
+| **Active Code %**                 | Percentage of the core active-code mix represented by Therapeutic Exercise and Neuromuscular Reeducation units. **Formula: 100 × (97110 + 97112 units) ÷ (97110 + 97112 + 97140 + 97530 units)**.                        |
+| **Avg Codes per Visit**           | Average number of included CPT line items per arrived appointment with included procedure lines.                                                                                                                         |
+| **PT Eval Low / Mod / High %**    | Percentage of PT evaluation units that were low-complexity (97161), moderate-complexity (97162), or high-complexity (97163) evaluation units.                                                                            |
+| **OT Eval Low / Mod / High %**    | Percentage of OT evaluation units that were low-complexity (97165), moderate-complexity (97166), or high-complexity (97167) evaluation units.                                                                            |
+| **Avg Units per Encounter**       | Average included procedure units per distinct encounter.                                                                                                                                                                |
+
+## Performance
+
+**Performance** combines patient experience, productivity, arrival outcomes, documentation, scribe adoption, and discharged episode visit counts into a single per-provider view.
+
+| **Metric**                   | **Definition**                                                                                                                                                                                                          |
+| :--------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **NPS Score**                | Net Promoter Score from valid NPS survey responses created in the selected date range. **Formula: 100 × (Promoters − Detractors) ÷ Valid NPS responses**. When grouped by provider or facility, this is averaged across group rows rather than recomputed across pooled responses. |
+| **Productivity**             | Arrived visits per clinical hour, using the same visit and clinical-hour definitions as the **Productivity** report. **Formula: Visits ÷ Clinical Hours**. Performance Productivity does not apply credential filters, so it can differ from a credential-filtered Productivity number for the same provider. |
+| **Arrival Rate**             | Of appointments with an attendance outcome, the percentage that arrived. Scheduled, Confirmed, and Archived appointments are excluded. **Formula: 100 × Arrived ÷ (Arrived + Cancelled + No-show)**.                       |
+| **Days to Note Completion**  | Average days from appointment start time to chart note signature time. Signatures before appointment start time and deleted signatures are excluded. Averaged across group rows when grouped.                              |
+| **Incomplete Notes**         | Number of chart notes for Checked In or Completed appointments where the rendering provider has not signed the note. Ongoing appointments are not counted.                                                                 |
+| **Scribe Adoption %**        | Percentage of eligible, non-documentation-only notes on Checked In or Completed appointments that have an **Air Scribe** record. **Formula: 100 × Notes with scribe ÷ Eligible notes**. Averaged across group rows when grouped. |
+| **Avg Visits per Episode**   | Average number of arrived visits in the selected date range per case discharged in the selected date range. The discharge boundary is the case's first archive timestamp; cases archived and later un-archived within the range are still counted once. |
+
+## Available groupings
+
+- **Facility**: breaks results down by individual clinic or facility.
+- **Provider**: breaks results down by individual provider.
+
+## Example use cases
+
+- A regional manager comparing visits per hour and schedule utilization across providers and facilities to assess productivity.
+- A clinic manager reviewing visit mix across evaluations, follow-ups, discharges, and re-evaluations.
+- A billing lead monitoring code mix and non-billable leakage to identify documentation or coding issues.
+- A clinic manager tracking note completion time, incomplete notes, and scribe adoption to speed up billing.
+- An executive evaluating high-level provider performance using productivity, NPS, arrival rate, and episode visit metrics on the **Performance** report.
+
+## Behavior notes
+
+<Warning>
+  **Booked hours are not deduplicated, so Schedule Utilization % can exceed 100%.** Overlapping appointments on the same provider are summed at face value: two appointments that overlap by 15 minutes each contribute their full duration. A double-booked schedule will report utilization above 100%.
+</Warning>
+
+- **Productivity Visits** count appointments whose start time is in range, but **Schedule Utilization %** booked hours require appointments to start *and* end in range.
+- **Clinical Hours subtracts the full calendar overlap of regular schedule blocks** with the date range, regardless of whether the block falls inside the provider's working hours. A 7am block on a non-working day still reduces Clinical Hours.
+- **Billing Quality per-visit denominators** include only arrived appointments that have at least one included procedure line connected to an encounter.
+- **High Value Codes per Visit** uses a code list covering the categories named in the table plus additional codes within those categories, such as 97164, 97168, 97113, and 97116. Contact [**support@getathelas.com**](mailto:support@getathelas.com) if you need the full list.
+- **Non Billable Leakage** compares included procedure units to billable units on the latest claim submission for the encounter. It is not payer-cap-specific.
+- **Performance NPS** does not require the survey response to be linked to an appointment. Standalone NPS responses created in the range are included, matching the **Patient Experience** report.
+- **Performance rolled-up metrics** (NPS Score, Days to Note Completion, Scribe Adoption %, and Avg Visits per Episode) are averaged across grouped rows rather than recomputed across pooled data. Pooled and averaged values can differ when group sizes are uneven.
+- **Performance rows may appear for provider and facility combinations known to the site** even when a specific metric has no activity in the selected date range. Those cells will be empty or zero.

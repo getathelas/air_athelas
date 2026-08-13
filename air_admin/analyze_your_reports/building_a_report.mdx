@@ -1,0 +1,143 @@
+---
+title: "Building a Report"
+sidebarTitle: "Building a Report"
+toc: "true"
+---
+
+Every report in [**EHR Reports**](/air_admin/analyze_your_reports/ehr_reports) is built the same way: pick a report category, choose the metrics you want as columns, decide how rows are grouped, narrow the data with filters, set a date range, and run it. This page covers that workflow, plus saving, drilling down, and exporting.
+
+## Build and run a report
+
+**To configure and run a report:**
+
+1. **Select a report category.** In the configuration panel on the right, open the **Report Categories** dropdown and choose **Growth Engine**, **Retention Engine**, or **Efficiency Engine**.
+2. **Choose your key metrics.** The **Key Metrics** dropdown stays disabled and reads **Select categories first** until a category is selected. Once it is active, open it and check one or more metrics. You can type in the search box to find a metric by name.
+3. **Set data grouping.** Optional. Use **Group By** to choose how rows are organized, such as one row per facility or one row per provider.
+4. **Apply filters.** Optional. Narrow the results using **Facility**, **Provider**, **Appointment Type**, and any other filters your selected metrics support. By default, reports include all available data.
+5. **Set the time slice.** Optional. Use **Time Slice** to break results into day, week, biweekly, month, quarter, or year intervals.
+6. **Set the timeframe.** Use the quick-select buttons (**D**, **W**, **Bi**, **M**, **Q**, **Y**) for common ranges, or click **Custom** to enter specific **Start** and **End** dates.
+7. **Click Run Report.** Results appear in the main area on the left as a data table.
+
+<img
+  src="/images/air_admin/analyze_your_reports/building_a_report/building_a_report_1.webp"
+  alt="The Report Builder configuration panel with Growth Engine chosen in Report Categories, Scorecard chosen in Key Metrics, Facility set as the grouping, and the Run Report button at the bottom"
+  title="The Report Builder configuration panel"
+  style={{ width:"34%" }}
+/>
+
+<Tip>
+  ✨**Smart Tip:** Nothing is calculated while you change controls. If your results look stale after adjusting a filter or date range, click **Run Report** again.
+</Tip>
+
+## Report controls
+
+The controls below appear in the **Controls** tab of the configuration panel, in the order listed here. Each one has a **?** icon in the product that links to its section on this page. Which controls appear depends on the metrics you have selected. EHR Reports only shows the controls that apply to your current report.
+
+### Timeframe
+
+Sets the overall date range for the report. Use the quick-select buttons (**D**, **W**, **Bi**, **M**, **Q**, **Y**) for common ranges, or click **Custom** and enter **Start** and **End** dates.
+
+Most metrics count only data inside this range, but some deliberately look outside it for context, such as the first appointment on a case, checks for future appointments, or a case's full functional outcome history.
+
+Some metrics also behave differently depending on whether the range is historical, current, or future-looking. Growth Engine new-patient metrics combine past arrived first appointments with future **Scheduled** first appointments, and Retention Engine lost-patient logic changes depending on whether the range is fully historical or includes today. Each engine page calls these out under **Behavior notes**.
+
+### Time Slice
+
+Groups results into time intervals (**day**, **week**, **biweekly**, **month**, **quarter**, or **year**), which is useful for trends such as week-over-week visit counts or month-over-month referral volume.
+
+If you leave **Time Slice** unset, data is aggregated across the entire timeframe. Not every report supports time slicing; some are designed as range-wide operational summaries.
+
+### Report Categories
+
+Selects the reporting engine, and therefore which metrics are available:
+
+- [**Growth Engine**](/air_admin/analyze_your_reports/growth_engine): patient acquisition, patient flow, referrals, leads, schedule fill, and caseload growth.
+- [**Retention Engine**](/air_admin/analyze_your_reports/retention_engine): patient experience, outcomes, discharge quality, lost-patient risk, and plan-of-care adherence.
+- [**Efficiency Engine**](/air_admin/analyze_your_reports/efficiency_engine): productivity, schedule utilization, billing quality, code mix, and documentation.
+
+You must select a category before **Key Metrics** becomes available.
+
+### Key Metrics
+
+Selects the specific report within your chosen category, such as **Scorecard**, **Outcomes**, or **Billing Quality**. Each selection adds its full set of columns to the results table, and you can select more than one.
+
+Type in the search box to filter the list by name. The available options depend on the category you selected. See the engine pages linked above for the complete metric list and definitions.
+
+**Note:** When you select multiple key metrics, only the grouping and time slice options supported by **all** of them are shown. If an option disappears, one of your selections does not support it.
+
+### Data Grouping
+
+**Group By** determines how results are broken into rows. Grouping by **Facility** shows one row per facility; grouping by **Provider** shows one row per provider. You can select multiple groupings where supported.
+
+Some reports offer additional groupings: **Measure** on the Retention Engine Outcomes report, and **Referring Provider**, **Referral Source Type**, or **Insurance** on the Growth Engine Referrals report.
+
+If you select no grouping, the report returns a single aggregated row for your timeframe and filters.
+
+**Note:** Grouping the Outcomes report by **Measure** changes which columns you get, switching it to score-change and MCID metrics. See [**Retention Engine**](/air_admin/analyze_your_reports/retention_engine) for details.
+
+### Facility
+
+Restricts the report to the selected clinics or facilities. It defaults to **All facility**, meaning no facility restriction. Use **Select All** to add every facility at once, or **Remove All** to clear your selections.
+
+### Provider
+
+Restricts the report to the selected providers. It defaults to **All provider**, meaning no provider restriction. Use **Select All** to add every provider at once.
+
+### Appointment Type
+
+Restricts the report to specific appointment types, such as initial evaluations or follow-ups. This filter appears for appointment-based reports.
+
+Depending on the metrics you select, additional filters for credential, measure, and appointment status may also appear.
+
+## Saving a report
+
+After running a report you can save the configuration (category, metrics, filters, groupings, time slice, and timeframe) and re-run it later.
+
+**To save a report:**
+
+1. Click **Save** (the star icon) in the top-right corner of the report results area.
+2. In the **Save Report** dialog, enter a descriptive **Saved Report Name**, such as "Weekly Growth Scorecard by Facility".
+3. Click **Save Report**.
+
+![The Save Report dialog with a Saved Report Name field and Cancel and Save Report buttons](/images/air_admin/analyze_your_reports/building_a_report/building_a_report_2.webp)
+
+## Accessing saved reports
+
+**To re-run a report you saved earlier:**
+
+1. Navigate to **EHR Reports**.
+2. Click the **Saved Reports** tab at the top of the page.
+3. Find your report in the **Saved Report Queries** list. Each card shows the date it was created, its name, its description, the **Categories** it uses, and when it was last updated.
+4. Click the arrow icon on the card to load and run it.
+
+![The Saved Reports tab showing a saved report card with its name, Categories tag, last updated date, and run arrow](/images/air_admin/analyze_your_reports/building_a_report/building_a_report_3.webp)
+
+## Drilling down into a metric
+
+A drill-down shows the raw records behind an aggregated value, taking you from a high-level summary to patient, appointment, case, lead, referral, chart note, or encounter-level detail.
+
+**To drill down:**
+
+1. Run a report with at least one metric and, where useful, a grouping such as **Facility** or **Provider**.
+2. In the results table, click a clickable value. These are underlined when you hover over them. For example, click the **New Patients (NP)** value for a specific facility.
+3. The drill-down opens, listing the individual records that make up that number.
+
+![A drill-down table listing individual appointment records, with columns for Patient Id, Appointment Id, and appointment date range](/images/air_admin/analyze_your_reports/building_a_report/building_a_report_4.webp)
+
+Depending on the metric, drill-down columns may include patient and appointment identifiers, case details, lead or referral details, appointment dates, provider, facility, and status.
+
+**Navigating back.** A breadcrumb appears above the report showing your path as **Report Category / Key Metric / Column**, such as **Growth Engine / Scorecard / New Patients (NP)**. Click an earlier segment to return to that level.
+
+**Sorting.** Click any column header to sort by that column. Click it again to reverse the direction.
+
+## Downloading a report as CSV
+
+Any report can be downloaded as a CSV for analysis in Excel or another spreadsheet tool. This works for both summary tables and drill-downs, which makes it a practical way to hand staff an action list: no-shows to call, stalled referrals to chase, lost patients to re-engage, missing plans of care, or incomplete notes.
+
+**To download a report:**
+
+1. Run the report, or open the drill-down you want to export.
+2. Click **CSV** (the download icon) in the top-right corner of the report results area.
+3. The file downloads to your computer as a `.csv` file.
+
+![The CSV and Save actions in the top-right corner of a report, next to the report title and date range](/images/air_admin/analyze_your_reports/building_a_report/building_a_report_5.webp)

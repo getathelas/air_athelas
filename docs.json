@@ -168,8 +168,20 @@
               "air_admin/analyze_your_reports/my_reports",
               "air_admin/analyze_your_reports/audit_dashboard",
               "air_admin/analyze_your_reports/kpi_dashboard",
-              "air_admin/analyze_your_reports/ehr_reports",
               "air_admin/analyze_your_reports/all_reports"
+            ]
+          },
+          {
+            "group": "EHR Reports",
+            "icon": "chart-column",
+            "tag": "Admin",
+            "public": true,
+            "pages": [
+              "air_admin/analyze_your_reports/ehr_reports",
+              "air_admin/analyze_your_reports/building_a_report",
+              "air_admin/analyze_your_reports/growth_engine",
+              "air_admin/analyze_your_reports/retention_engine",
+              "air_admin/analyze_your_reports/efficiency_engine"
             ]
           },
           {
