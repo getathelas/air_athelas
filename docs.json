@@ -165,6 +165,7 @@
             "tag": "Admin",
             "public": true,
             "pages": [
+              "air_admin/analyze_your_reports/my_reports",
               "air_admin/analyze_your_reports/audit_dashboard",
               "air_admin/analyze_your_reports/kpi_dashboard",
               "air_admin/analyze_your_reports/all_reports"
@@ -293,6 +294,7 @@
             "tag": "Biller",
             "public": true,
             "pages": [
+              "air_admin/analyze_your_reports/my_reports",
               "insights_biller/reports/building_and_running_reports",
               "insights_biller/reports/month_end_close",
               "insights_biller/reports/submitted_claims_report",
@@ -505,7 +507,8 @@
               "insights_admin/my_practice/getting_started_with_your_practice",
               "insights_admin/my_practice/manage_staff_permissions",
               "insights_admin/my_practice/update_practice_information",
-              "insights_admin/my_practice/your_athelas_invoice"
+              "insights_admin/my_practice/your_athelas_invoice",
+              "insights_admin/my_practice/eligibility_setup_guide"
             ]
           },
           {
