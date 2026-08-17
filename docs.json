@@ -101,6 +101,7 @@
               "air_provider/fill_a_chart_note/progress_note_automatic_conversion",
               "air_provider/fill_a_chart_note/other_sec_chart_note",
               "air_provider/fill_a_chart_note/flowsheets",
+              "air_provider/fill_a_chart_note/services",
               "air_provider/fill_a_chart_note/functional_outcomes",
               "air_provider/fill_a_chart_note/medications",
               "air_provider/fill_a_chart_note/pdmp",
