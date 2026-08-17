@@ -18,13 +18,15 @@ toc: "true"
 
 ## The three report engines
 
-EHR Reports is organized into three engines. Each engine focuses on a different operational objective and carries its own metrics, groupings, filters, and date behavior. You select an engine from the **Report Categories** dropdown.
+Most reporting is organized into three engines. Each engine focuses on a different operational objective and carries its own metrics, groupings, filters, and date behavior. You select an engine from the **Report Categories** dropdown.
 
 | **Engine**                                                                     | **What it covers**                                                                                                                     |
 | :----------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
-| **[Growth Engine](/air_admin/analyze_your_reports/growth_engine)**             | Patient acquisition, patient flow, referrals, leads, schedule fill, and caseload growth.                                               |
+| **[Growth Engine](/air_admin/analyze_your_reports/growth_engine)**             | Patient acquisition, patient flow, referrals, leads, schedule fill, caseload growth, and employer services.                            |
 | **[Retention Engine](/air_admin/analyze_your_reports/retention_engine)**       | Patient experience, functional outcomes, discharge quality, lost-patient risk, plan-of-care adherence, and authorization follow-up.     |
 | **[Efficiency Engine](/air_admin/analyze_your_reports/efficiency_engine)**     | Provider productivity, schedule utilization, billing quality, code mix, documentation completion, and scribe adoption.                  |
+
+The **Report Categories** dropdown also offers five further categories alongside the engines: **Executive Org Overview**, **Clinic Provider**, **Referral Management**, **Scheduling Forecasting**, and **Patient Experiences NPS**. They are documented on [**Report Categories**](/air_admin/analyze_your_reports/report_categories), which also lists every category in one table.
 
 To learn how to configure and run a report, see [**Building a Report**](/air_admin/analyze_your_reports/building_a_report).
 
@@ -45,11 +47,111 @@ The page opens on the **Report Builder** tab, which is the primary workspace for
 The **Report Builder** tab is divided into two areas:
 
 - **The report results area** on the left, which is empty until you run a report. Once a report runs, results appear here as a data table with **CSV** and **Save** actions in the top-right corner.
-- **The configuration panel** on the right, where you set up your report parameters. The panel has a **Controls** tab holding the report parameters and a **Definitions** tab describing the metrics you have selected. Each control has a **?** icon that explains what it does.
+- **The configuration panel** on the right, where you set up your report parameters. The panel has a **Controls** tab holding the report parameters and a **Definitions** tab describing your report's columns. Each control has a **?** icon that links to the documentation for that control.
+
+The **Definitions** tab stays disabled until you click **Run Report**, and it describes the columns your report actually returned rather than everything you could select. To read a metric's definition before you run anything, use [**All reports**](#all-reports) below or the engine pages. The tab is always empty for the five categories on [**Report Categories**](/air_admin/analyze_your_reports/report_categories), which do not supply definitions.
 
 A **Saved Reports** tab sits alongside **Report Builder** and lists the report configurations you have saved.
 
 Reports do not update as you change controls. Nothing is calculated until you click **Run Report**.
+
+## All reports
+
+Every report you can pick in **Key Metrics**, grouped by the category that contains it. Follow a link for that report's full column list and definitions. The **?** icon next to **Key Metrics** in the product brings you to this list.
+
+{/* Each heading below is the report's exact Key Metrics label, which is also the anchor the product's "?" icon links to. Renaming a heading, or adding an icon to one, breaks that link. When a new report type is added to the product, add a matching heading here. */}
+
+### Scorecard
+
+High-level patient acquisition and caseload movement. See [**Growth Engine**](/air_admin/analyze_your_reports/growth_engine#scorecard).
+
+### Patient Flow
+
+Evaluation timeliness, new-patient arrival outcomes, schedule fill, and lost-patient risk. See [**Growth Engine**](/air_admin/analyze_your_reports/growth_engine#patient-flow).
+
+### Referral Volume Conversion
+
+The referral pipeline for leads that have a referring provider. See [**Growth Engine**](/air_admin/analyze_your_reports/growth_engine#referral-volume-conversion).
+
+### Leads
+
+All leads, both referred and self-generated. See [**Growth Engine**](/air_admin/analyze_your_reports/growth_engine#leads).
+
+### Employer Services
+
+Workers' compensation and direct-to-employer patients and visits. See [**Growth Engine**](/air_admin/analyze_your_reports/growth_engine#employer-services).
+
+### Patient Experience
+
+NPS survey results and kiosk check-in adoption. See [**Retention Engine**](/air_admin/analyze_your_reports/retention_engine#patient-experience).
+
+### Outcomes
+
+Functional outcome coverage at evaluation, progress note, and discharge, plus score change and MCID when grouped by measure. See [**Retention Engine**](/air_admin/analyze_your_reports/retention_engine#outcomes).
+
+### Retention
+
+Discharge quality, lost patients, and authorization, plan-of-care, and script follow-up. See [**Retention Engine**](/air_admin/analyze_your_reports/retention_engine#retention).
+
+### Productivity
+
+Clinical hours, visit counts, visits per hour, schedule utilization, and FTE-normalized productivity. See [**Efficiency Engine**](/air_admin/analyze_your_reports/efficiency_engine#productivity).
+
+### Billing Quality
+
+Procedure unit mix, evaluation complexity, non-billable leakage, and codes per visit. See [**Efficiency Engine**](/air_admin/analyze_your_reports/efficiency_engine#billing-quality).
+
+### Performance Pdo
+
+Composite per-provider performance across experience, productivity, arrival, and documentation. See [**Efficiency Engine**](/air_admin/analyze_your_reports/efficiency_engine#performance-pdo).
+
+### Visits Summary
+
+Total visits, active patients, new patients, and discharged patients. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories#visits-summary).
+
+### Visits Per Fte Per Day
+
+Visit volume against provider FTE and calendar days. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories#visits-per-fte-per-day).
+
+### Chart Note Time To Completion
+
+Average, minimum, and maximum hours from appointment start to a signed chart note. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories#chart-note-time-to-completion).
+
+### Scribe Notes
+
+Total notes, scribe-assisted notes, and the resulting adoption rate. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories#scribe-notes).
+
+### Referrals Over Time
+
+Total, refused, and accepted referrals as a time series. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories#referrals-over-time).
+
+### Referral Scheduled Rate
+
+How many referrals convert into scheduled appointments. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories#referral-scheduled-rate).
+
+### Referrals By Source
+
+Referral counts by source type, referring provider, or insurance company. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories#referrals-by-source).
+
+### Leads By Stage
+
+Leads broken out one row per configured lead stage. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories#leads-by-stage).
+
+### Capacity
+
+Booked time against available working time, as a filled-capacity ratio. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories#capacity).
+
+### Scheduling Metrics
+
+Raw appointment counts by status. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories#scheduling-metrics).
+
+### NPS Summary
+
+Promoters, passives, detractors, NPS score, and average rating. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories#nps-summary).
+
+### NPS Response Rate
+
+What share of completed visits produced a survey response. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories#nps-response-rate).
 
 ## Key terminology
 

@@ -10,7 +10,7 @@ Every report in [**EHR Reports**](/air_admin/analyze_your_reports/ehr_reports) i
 
 **To configure and run a report:**
 
-1. **Select a report category.** In the configuration panel on the right, open the **Report Categories** dropdown and choose **Growth Engine**, **Retention Engine**, or **Efficiency Engine**.
+1. **Select a report category.** In the configuration panel on the right, open the **Report Categories** dropdown and choose a category, such as **Growth Engine**, **Retention Engine**, or **Efficiency Engine**.
 2. **Choose your key metrics.** The **Key Metrics** dropdown stays disabled and reads **Select categories first** until a category is selected. Once it is active, open it and check one or more metrics. You can type in the search box to find a metric by name.
 3. **Set data grouping.** Optional. Use **Group By** to choose how rows are organized, such as one row per facility or one row per provider.
 4. **Apply filters.** Optional. Narrow the results using **Facility**, **Provider**, **Appointment Type**, and any other filters your selected metrics support. By default, reports include all available data.
@@ -55,6 +55,8 @@ Selects the reporting engine, and therefore which metrics are available:
 - [**Retention Engine**](/air_admin/analyze_your_reports/retention_engine): patient experience, outcomes, discharge quality, lost-patient risk, and plan-of-care adherence.
 - [**Efficiency Engine**](/air_admin/analyze_your_reports/efficiency_engine): productivity, schedule utilization, billing quality, code mix, and documentation.
 
+Five further categories sit alongside the engines: **Executive Org Overview**, **Clinic Provider**, **Referral Management**, **Scheduling Forecasting**, and **Patient Experiences NPS**. See [**Report Categories**](/air_admin/analyze_your_reports/report_categories) for every category and the reports each one contains.
+
 You must select a category before **Key Metrics** becomes available.
 
 ### Key Metrics
@@ -69,7 +71,7 @@ Type in the search box to filter the list by name. The available options depend 
 
 **Group By** determines how results are broken into rows. Grouping by **Facility** shows one row per facility; grouping by **Provider** shows one row per provider. You can select multiple groupings where supported.
 
-Some reports offer additional groupings: **Measure** on the Retention Engine Outcomes report, and **Referring Provider**, **Referral Source Type**, or **Insurance** on the Growth Engine Referrals report.
+Some reports offer additional groupings: **Measure** on the Retention Engine Outcomes report, **Referring Provider**, **Referral Source Type**, or **Insurance** on the Growth Engine Referral Volume Conversion report, and **Employer** or **Employer Service Type** on Growth Engine Employer Services.
 
 If you select no grouping, the report returns a single aggregated row for your timeframe and filters.
 
@@ -87,7 +89,35 @@ Restricts the report to the selected providers. It defaults to **All provider**,
 
 Restricts the report to specific appointment types, such as initial evaluations or follow-ups. This filter appears for appointment-based reports.
 
-Depending on the metrics you select, additional filters for credential, measure, and appointment status may also appear.
+### Facility Group
+
+Restricts the report to the selected facility groups. Selecting a group includes every facility beneath it, so you do not have to pick the facilities individually. This filter appears only where your site has facility groups enabled.
+
+### Appointment Status
+
+Restricts the report to specific appointment statuses, such as **Completed**, **Cancelled**, **No-show**, or **Scheduled**. This filter appears for appointment-based reports.
+
+**Note:** Many metrics already restrict themselves by status as part of their definition. **Visits**, for example, counts only arrived appointments whatever you set here. Use this filter to narrow an already-broad count rather than to change how a rate is calculated.
+
+### Credential
+
+Restricts the report to providers holding the selected credentials, such as PT, OT, or SLP. This filter appears for provider-based reports.
+
+### Insurance Type
+
+Restricts the report to appointments under the selected insurance types, such as Medicaid, Medicare, or Commercial. This filters on the type of plan rather than on individual insurance companies. To break results out by named company, use the **Insurance** grouping instead.
+
+### Measure
+
+Restricts the report to the selected functional outcome measures. This filter appears on the Retention Engine **Outcomes** report.
+
+### Employer
+
+Restricts the report to the selected employers. This filter appears on the Growth Engine **Employer Services** report.
+
+### Employer Service Type
+
+Restricts the report to **Workers Comp** or **Direct to Employer** appointments. This filter appears on the Growth Engine **Employer Services** report.
 
 ## Saving a report
 

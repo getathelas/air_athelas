@@ -1,0 +1,185 @@
+---
+title: "Report Categories"
+sidebarTitle: "Report Categories"
+toc: "true"
+---
+
+Every report in [**EHR Reports**](/air_admin/analyze_your_reports/ehr_reports) starts with a **Report Category**. The category you pick decides which reports appear in the **Key Metrics** dropdown, and therefore which columns you can put in your results table.
+
+There are eight categories. Three of them are the report engines, which have their own pages. The other five are documented in full below.
+
+| **Category**                  | **Reports it contains**                                                                                     |
+| :---------------------------- | :----------------------------------------------------------------------------------------------------------- |
+| **[Growth Engine](/air_admin/analyze_your_reports/growth_engine)**         | Scorecard, Patient Flow, Referral Volume Conversion, Leads, Employer Services                                  |
+| **[Retention Engine](/air_admin/analyze_your_reports/retention_engine)**   | Patient Experience, Outcomes, Retention                                                                        |
+| **[Efficiency Engine](/air_admin/analyze_your_reports/efficiency_engine)** | Productivity, Billing Quality, Performance Pdo                                                                 |
+| **Executive Org Overview**    | Visits Summary, Visits Per Fte Per Day                                                                        |
+| **Clinic Provider**           | Chart Note Time To Completion, Scribe Notes                                                                   |
+| **Referral Management**       | Referrals Over Time, Referral Scheduled Rate, Referrals By Source, Leads By Stage                             |
+| **Scheduling Forecasting**    | Capacity, Scheduling Metrics                                                                                  |
+| **Patient Experiences NPS**   | NPS Summary, NPS Response Rate                                                                                |
+
+All eight are available to every site. The category names above are exactly as they appear in the dropdown.
+
+<Note>
+  The five categories on this page do not supply metric definitions. The **Definitions** tab in the configuration panel stays empty for their reports and reads "No definitions available for the current report columns." Use this page as their reference instead. The three engines do supply definitions, which you can read on their pages or in the **Definitions** tab after running a report.
+</Note>
+
+## Executive Org Overview
+
+High-level visit volume and provider capacity for the organization.
+
+### Visits Summary
+
+A high-level view of visit volume and patient counts for your selected date range.
+
+- **Total visits**: appointments with a status of **Checked in**, **Completed**, or **Ongoing** whose start and end dates both fall within the range.
+- **Active patients**: distinct patients with at least one qualifying visit. Each patient is counted once.
+- **New patients**: patients whose first countable visit falls within the range, meaning no prior non-cancelled, non-archived, non-no-show appointment before the range start.
+- **Discharged patients**: patients who had visits in the range but currently have no open case at the site.
+
+Grouping by **Facility** or **Provider** breaks these totals into one row per dimension. The **Appointment Status** and **Appointment Type** filters further restrict which appointments count.
+
+For a case-based view of the same territory, with new-patient and discharge metrics that account for future scheduled appointments, see [**Growth Engine → Scorecard**](/air_admin/analyze_your_reports/growth_engine#scorecard).
+
+### Visits Per Fte Per Day
+
+Visit volume relative to provider capacity. Shown in the dropdown as **Visits Per Fte Per Day**.
+
+- **Visits per FTE per day**: total qualifying appointments divided by **(FTE × number of days in the period)**. FTE defaults to 1.0 per provider if not configured.
+
+When grouped by **Provider**, each row uses that provider's FTE and appointments. When grouped by **Facility**, FTEs and appointments are aggregated at the facility level.
+
+**Note:** This is not the same calculation as **Visits / FTE** on [**Efficiency Engine → Productivity**](/air_admin/analyze_your_reports/efficiency_engine#productivity), which normalizes against clinical hours on an 8-hour FTE day rather than against calendar days. The two columns will not match.
+
+## Clinic Provider
+
+Documentation speed and scribe adoption across your providers.
+
+### Chart Note Time To Completion
+
+The time from **appointment start** to **chart note signed**, in hours. Only non-documentation-only, signed chart notes are included.
+
+- **Average time to completion**: average hours across all qualifying chart notes.
+- **Minimum / Maximum**: shortest and longest completion times.
+- **Total chart notes**: count of notes that met the criteria.
+
+Break down by **Provider** and **Facility** to compare documentation speed.
+
+### Scribe Notes
+
+Air Scribe adoption across your practice.
+
+- **Total chart notes**: non-documentation-only chart notes in the date range.
+- **Total scribe notes**: chart notes created with scribe-assisted documentation.
+- **Scribe adoption rate**: (Total scribe notes ÷ Total chart notes) × 100%.
+
+Break down by **Provider** and **Facility**.
+
+**Note:** [**Efficiency Engine → Performance Pdo**](/air_admin/analyze_your_reports/efficiency_engine#performance-pdo) reports **Scribe Adoption %** and **Days to Note Completion** as single columns alongside other provider metrics. Use **Chart Note Time To Completion** and **Scribe Notes** when you want the underlying counts and the minimum and maximum, which the engine reports do not return.
+
+## Referral Management
+
+The referral and lead pipeline, anchored to when each referral or lead was created.
+
+### Referrals Over Time
+
+Referral volume as a time series based on referral creation date.
+
+- **Total referrals**: all referrals created in each time bucket.
+- **Refused referrals**: referrals marked as refused therapy.
+- **Accepted referrals**: referrals not refused.
+
+Use **Time Slice** to set the bucket size.
+
+### Referral Scheduled Rate
+
+How many referrals convert to scheduled appointments.
+
+- **Scheduled referrals**: referrals that have an appointment created for them.
+- **Schedule rate**: (Scheduled referrals ÷ Total referrals) × 100%.
+
+### Referrals By Source
+
+Referral counts broken down by **source type**, **referring provider**, and/or **insurance company**.
+
+- **Referral count**: total referrals in each group.
+- **Scheduled count**: referrals with an appointment created.
+- **Refused count**: referrals marked as refused therapy.
+
+### Leads By Stage
+
+Leads and referrals broken down by **lead status** (stage).
+
+- **Lead count**: number of leads in each stage.
+- **Scheduled count**: leads with an appointment created.
+- **Patient-created count**: leads linked to a new patient record.
+- **Refused count**: leads marked as refused therapy.
+- **Scheduling rate**: (Scheduled count ÷ Lead count) × 100%.
+
+**Note:** [**Growth Engine → Referral Volume Conversion**](/air_admin/analyze_your_reports/growth_engine#referral-volume-conversion) and [**Leads**](/air_admin/analyze_your_reports/growth_engine#leads) cover the same pipeline with conversion, refusal, and in-progress rates plus average days to schedule. **Leads By Stage** remains the only report that breaks results out one row per configured lead stage.
+
+## Scheduling Forecasting
+
+Capacity and appointment status counts. Shown in the dropdown as **Scheduling Forecasting**.
+
+### Capacity
+
+Booked appointment time compared to available working time.
+
+- **Available working time**: derived from provider schedules, as configured working hours per weekday × number of weekdays in the range.
+- **Booked time**: sum of appointment durations in the range.
+- **Filled capacity**: Booked hours ÷ Available working hours. A value of 0.80 means 80% of available time was filled.
+
+View this by **Provider** or **Facility**.
+
+**Note:** **Filled capacity** is reported as a ratio between 0 and 1, while **Schedule Utilization %** on [**Efficiency Engine → Productivity**](/air_admin/analyze_your_reports/efficiency_engine#productivity) is a percentage and subtracts regular schedule blocks from the denominator. Expect different numbers.
+
+### Scheduling Metrics
+
+Appointment counts by status for the selected date range. Only appointments whose start and end dates both fall within the range are included.
+
+- **Total appointments**, **Scheduled**, **Cancelled**, **No-show**, **Completed**, **In progress**
+
+Each value is a simple count of appointments matching that status. Filters and data grouping apply as expected. This is the only report that returns raw per-status appointment counts; the engines express the same information as rates.
+
+## Patient Experiences NPS
+
+Net Promoter Score results from patient surveys. Shown in the dropdown as **Patient Experiences NPS**.
+
+### NPS Summary
+
+Based on NPS survey responses submitted within the date range. Only valid numeric responses, scores 0 through 10, are included.
+
+- **Promoters**: responses scoring 9 or 10.
+- **Detractors**: responses scoring 0 through 6.
+- **Passives**: responses scoring 7 or 8.
+- **NPS score**: ((Promoters − Detractors) ÷ Total valid responses) × 100. The result ranges from −100 to +100. Passives are excluded from the formula but counted in the total.
+- **Average rating**: average numeric score across all valid responses.
+
+Group by **Facility** or **Provider**.
+
+[**Retention Engine → Patient Experience**](/air_admin/analyze_your_reports/retention_engine#patient-experience) returns the same measures plus promoter, passive, and detractor rates and kiosk check-in adoption.
+
+### NPS Response Rate
+
+What share of visits produced an NPS survey response. This is a site-level report.
+
+- **NPS responses**: valid NPS survey responses in the period.
+- **Completed visits**: appointments in the period with a status of **Completed**. **Checked in** and **Ongoing** appointments are excluded, because surveys go out after a visit ends.
+- **Response rate**: (NPS responses ÷ Completed visits) × 100.
+
+<Warning>
+  **Read the response rate as an opt-in rate, not a satisfaction signal.** The denominator counts completed visits, which is a proxy: the true denominator would be patients who were actually sent a survey, and that is not currently tracked. Rates below 5% are normal and reflect how many patients choose to respond.
+</Warning>
+
+**Note:** This report does not support **Data Grouping**. The completed-visits denominator is calculated once across the whole site, so grouping by facility or provider would repeat that same total on every row and make each group's rate look artificially low.
+
+## Report controls
+
+These categories use the same controls as every other report. See [**Building a Report**](/air_admin/analyze_your_reports/building_a_report) for the full reference on **Timeframe**, **Time Slice**, **Data Grouping**, and each filter.
+
+Two points specific to the reports on this page:
+
+- **What counts as a visit.** A visit is an appointment with a status of **Checked in**, **Completed**, or **Ongoing** whose start and end dates both fall within the selected date range. Cancelled, Archived, and No-show appointments are not counted as visits. **NPS Response Rate** is the exception and counts only **Completed** appointments.
+- **Which filters appear.** **Facility** and **Provider** are available for most of these reports. **Appointment Status** and **Appointment Type** appear only for appointment-based reports such as **Visits Summary** and **Scheduling Metrics**. EHR Reports only shows the filters that apply to your current selection, so the list changes as you change **Key Metrics**.
