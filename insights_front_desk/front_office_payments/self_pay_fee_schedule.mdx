@@ -9,11 +9,11 @@ Adding or updating your Self-Pay Fee items will allow Insights to automatically 
 
 A self-pay fee schedule will free up considerable time for your administrative staff, as they will no longer need to manually look up CPT codes and rates.
 
-**What you can do on your own** — Add or edit items in your schedule line by line.
+**What you can do on your own** — Add or edit items in your schedule line by line, or upload a schedule with multiple items at once using **Bulk Submit CSV**.
 
-**What you can do with help from an account manager** — Upload a fee schedule with multiple items. We can review and upload it for you. This is to ensure nothing gets broken in transition.
+**What you can do with help from an account manager** — If you would rather have a large or unfamiliar schedule reviewed before it goes live, your account manager can check the file and upload it for you.
 
-You can select whether you want post-visit PR generated for self-pay patients, based on your fee schedule. You can also choose the earliest date of service to which the fee schedule would apply, as well as a maximum self-pay charge per encounter. Generated self-pay PR then appears on the patient's [Patient Responsibility](/insights_front_desk/patient_responsibility/patient_responsibility_page) account alongside other PR.
+You can select whether you want post-visit PR generated for self-pay patients, based on your fee schedule. **Update PR Post-Visit Based on Self-Pay Fee Schedule** controls this: select **No** and no post-visit PR is assigned to the patient, or select **Yes** and any excess calculated during reconciliation is charged as PR — if the pre-appointment collection exceeds the charge from the fee schedule, the difference is assigned as credits instead. You can also choose the earliest date of service to which the fee schedule would apply, as well as a maximum self-pay charge per encounter. **Only reconcile self-pay collections after** limits reconciliation to collections on or after the date you pick, so historical encounters are left untouched. Generated self-pay PR then appears on the patient's [Patient Responsibility](/insights_front_desk/patient_responsibility/patient_responsibility_page) account alongside other PR.
 
 <Note>
   If a CPT code's self-pay fee is **$0**, the Encounter and Claims pages suggest the corresponding professional fee schedule amount. Review the suggested charge before you save it.
@@ -33,7 +33,12 @@ From here, you can either use the Search function to find a CPT if you already h
 
 <img src="/images/insights_front_desk/front_office_payments/self_pay_fee_schedule/self_pay_fee_schedule_3.png" alt="Self-Pay Fee Schedule tab with the Add Single Fee action" />
 
-Fill in the CPT Code, any modifiers, and the amount to charge in USD cents.
+In the **Add Row** dialog, fill in:
+
+- **CPT code** and any **Modifiers**.
+- **Facilities (optional)** — leave this empty to apply the fee across all facilities, or select specific facilities when the price differs by location.
+- **Fee in cents** — the amount to charge in USD cents.
+- **Start date of service** and, if the fee is time-limited, **End date of service**.
 
 CPT modifiers (also referred to as Level I modifiers) are **used to supplement the information or adjust care descriptions to provide extra details concerning a procedure or service provided by a physician**. Code modifiers help further describe a procedure code without changing its definition. They are typically formatted as two characters, separated from other modifiers by a comma (For example: AB, CD)
 
@@ -48,6 +53,19 @@ Now you can view your new item in the fee schedule.
 Click the pencil icon to modify the charge amount of the item, and the trash can to delete the item entirely.
 
 ❗ **You will only be able to edit the charge amount of each item**. If you would like to edit either the CPT code or modifiers, simply delete the item and add a new one.
+
+#### Bulk Upload with a CSV
+
+If your site prices a large number of CPT codes, upload the whole schedule at once instead of adding rows individually.
+
+1. In the fee schedule table, click `Bulk Submit CSV`.
+2. In the **Upload Self-pay Fee Schedule** dialog, click the **here** link to download a correctly formatted example CSV, then build your file to match it — the same columns shown in the fee schedule table.
+3. Drag and drop your CSV into the upload area, or click **Choose** to browse for it.
+4. Click **Upload**.
+
+<Tip>
+  ✨**Smart Tip:** Check your work — after uploading, review the rows in the fee schedule table and search by CPT to confirm a specific code priced correctly. Use `Download Fee Schedule` to export the current schedule when you need to audit it or use it as the starting point for your next update.
+</Tip>
 
 #### Duplicate CPT Codes and Modifiers
 
@@ -75,4 +93,8 @@ We’re here to help! Please get in touch with [support@getathelas.com](mailto:s
 
 <Accordion title="Can I change a CPT code or modifier on an existing fee item?">
   No. Delete the existing item and add a new one with the correct CPT code or modifiers. You can edit only the charge amount on an existing item.
+</Accordion>
+
+<Accordion title="Can I upload my whole fee schedule at once instead of adding codes one by one?">
+  Yes. In the fee schedule table, click `Bulk Submit CSV`, download the example CSV from the **here** link in the upload dialog, build your file to match those columns, then drag it in or browse for it and click **Upload**.
 </Accordion>
