@@ -99,8 +99,8 @@
                 "group": "Visit",
                 "pages": [
                   "air_provider/fill_a_chart_note/chart_note_clinical_types",
-                  "untitled-page",
-                  "untitled-page-2",
+                  "air_provider/fill_a_chart_note/navigate_chart_note",
+                  "air_provider/fill_a_chart_note/ai_scribe_chart_notes",
                   "air_provider/fill_a_chart_note/scribe_text_snippets",
                   "air_provider/fill_a_chart_note/scribe_faq",
                   "air_provider/fill_a_chart_note/other_sec_chart_note",
@@ -711,6 +711,14 @@
     {
       "source": "/insights_provider/patient_profiles/navigating_labs",
       "destination": "/insights_provider/patient_profiles/getting_started_with_patient_profile"
+    },
+    {
+      "source": "/air_provider/fill_a_chart_note/nav_chart_note",
+      "destination": "/air_provider/fill_a_chart_note/navigate_chart_note"
+    },
+    {
+      "source": "/air_front_desk/manage_your_tasks/faxes",
+      "destination": "/air_provider/review_patient_details/faxing"
     }
   ]
 }
