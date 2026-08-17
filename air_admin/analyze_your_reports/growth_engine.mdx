@@ -1,0 +1,140 @@
+---
+title: "Growth Engine"
+sidebarTitle: "Growth Engine"
+toc: "true"
+---
+
+The **Growth Engine** helps you understand demand generation, referral performance, new patient acquisition, patient flow, caseload growth, and employer services volume. Select it from the **Report Categories** dropdown in [**EHR Reports**](/air_admin/analyze_your_reports/ehr_reports).
+
+It is built for executives, growth teams, referral coordinators, front-office leaders, and clinic managers who need to know where patients are coming from, how quickly they get scheduled, and whether new patients are replacing discharged cases.
+
+The engine contains five reports, each selected from the **Key Metrics** dropdown:
+
+- **Scorecard**: high-level acquisition and caseload movement.
+- **Patient Flow**: evaluation timeliness, new-patient outcomes, schedule fill, and lost-patient risk.
+- **Referral Volume Conversion**: referral pipeline metrics for leads with a referring provider.
+- **Leads**: all leads, both referred and self-generated.
+- **Employer Services**: workers' compensation and direct-to-employer volume.
+
+## Scorecard
+
+| **Metric**                   | **Definition**                                                                                                                                                                                                                                                                                                                          |
+| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Scheduled Patients**       | Number of distinct patients with at least one appointment whose start date falls inside the selected date range, excluding Cancelled, No-show, Archived, or Deleted appointments. This is a patient count, not an appointment count.                                                                                                       |
+| **Appointments Scheduled**   | Count of non-archived appointments that fall entirely within the selected date range. Includes both past appointments (Completed, Checked In, Ongoing, Cancelled, No-show) and future appointments (Scheduled, Confirmed).                                                                                                                |
+| **Visits**                   | Count of appointments that fall entirely within the selected date range, are on or before today, and have a status of Checked In, Completed, or Ongoing. Future appointments are not counted.                                                                                                                                              |
+| **Arrival Rate**             | Of past appointments with a final outcome, the percentage that arrived. Scheduled, Confirmed, and Archived appointments are excluded. **Formula: 100 × Arrived ÷ (Arrived + Cancelled + No-show)**.                                                                                                                                        |
+| **New Patients (NP)**        | Count of first appointments on a case in the selected date range. Past first appointments must be Checked In, Completed, or Ongoing. Future first appointments must be Scheduled. Future Confirmed first appointments are not counted as NP. The first appointment on a case is the earliest non-Cancelled, non-No-show, non-Archived, non-Deleted appointment on the case. |
+| **New Patient Volume**       | Of arrived appointments whose start date is in the past portion of the range, the percentage that were a patient's first appointment on a case. **Formula: 100 × Arrived first-on-case appointments ÷ All arrived appointments**. This uses appointment start in range, not the fully-contained rule used by the **Visits** column, so edge appointments may differ between the two. |
+| **Active Cases**             | Number of open, non-archived cases with at least one Checked In, Completed, or Ongoing appointment in the selected date range.                                                                                                                                                                                                            |
+| **Discharged Cases**         | Number of distinct cases closed during the selected date range. Discharge date is the first time the case was marked discharged, in the site's local timezone. Re-opening and re-archiving a case later does not double-count it.                                                                                                          |
+| **Net Patient Flow**         | Difference between new patients acquired and cases discharged during the date range. Positive values indicate caseload growth; negative values indicate contraction. **Formula: New Patients (NP) − Discharged Cases**.                                                                                                                    |
+| **Replacement Rate**         | How fully new patients are replacing discharged cases. Empty when there are no discharges. **Formula: 100 × New Patients (NP) ÷ Discharged Cases**.                                                                                                                                                                                       |
+
+## Patient Flow
+
+| **Metric**                              | **Definition**                                                                                                                                                                                                                                                                                     |
+| :-------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Timely Evals**                        | Of cases created within the date range that have at least one appointment, the percentage whose first qualifying appointment (any non-Cancelled, non-No-show, non-Archived, non-Deleted appointment) occurred within 2 calendar days of case creation. **Formula: 100 × Cases seen ≤ 2 days from creation ÷ Cases created with any appointment on the case**. |
+| **Delayed Evals**                       | Same denominator as **Timely Evals**. The percentage whose first qualifying appointment occurred more than 2 calendar days after case creation.                                                                                                                                                       |
+| **Delayed Eval Count**                  | Raw count behind **Delayed Evals**: distinct cases created in the range, present in the metric's denominator, with a delayed first qualifying appointment.                                                                                                                                           |
+| **Eval Not Scheduled**                  | Same denominator as **Timely Evals**. The percentage with **no** qualifying appointment on the case, meaning every appointment on it is Cancelled, No-show, Archived, or Deleted. Cases created in the range with no appointment rows at all are not part of this denominator.                          |
+| **Eval Not Scheduled Count**            | Raw count behind **Eval Not Scheduled**.                                                                                                                                                                                                                                                             |
+| **Avg Days to Eval**                    | Average calendar days from case creation to the first qualifying appointment. Cases without a qualifying appointment are excluded.                                                                                                                                                                    |
+| **NP Arrival Rate**                     | Of first-on-case appointment slots in the past portion of the range with a final outcome, the percentage that arrived. **Formula: 100 × Arrived NP ÷ (Arrived NP + Cancelled NP + No-show NP)**.                                                                                                       |
+| **NP Cancel Rate**                      | Of the same new-patient denominator, the percentage that were Cancelled.                                                                                                                                                                                                                             |
+| **NP No-show Rate**                     | Of the same new-patient denominator, the percentage that were No-shows.                                                                                                                                                                                                                               |
+| **Arrival Rate**                        | All-visit arrival rate across the past portion of the date range. Same definition as **Scorecard → Arrival Rate**.                                                                                                                                                                                     |
+| **Cancel Rate**                         | Of past appointments with a final outcome, the percentage that were Cancelled.                                                                                                                                                                                                                       |
+| **No-show Rate**                        | Of past appointments with a final outcome, the percentage that were No-shows.                                                                                                                                                                                                                         |
+| **Direct Access Rate**                  | Of first-on-case visits in the range with a linked clinical encounter, the percentage where no referring provider is recorded on the encounter. Eligible appointments exclude Cancelled, No-show, Archived, and Deleted statuses. **Formula: 100 × First-on-case visits with no referring provider ÷ First-on-case visits with a linked encounter**. |
+| **Schedule Fill Rate**                  | Share of clinical hours that have been booked. **Formula: 100 × Booked hours ÷ Clinical hours**. Clinical hours are provider working hours minus regular schedule blocks; booked hours are appointment time booked within the clinical schedule, excluding Cancelled, No-show, and Archived appointments. |
+| **Lead-to-Appointment Conversion Rate** | Of leads created in the date range, the percentage whose initial appointment was Completed or Checked In. **Formula: 100 × Leads with arrived initial appointment ÷ Leads created**.                                                                                                                   |
+| **Lost Patients**                       | Number of distinct active-plan-of-care patients considered lost. **Past range:** the patient is lost if there is no future Scheduled or Confirmed appointment on the same case after the range ends. **Current or future range:** the patient is lost if there is a 21-day gap without a qualifying appointment that overlaps the selected range. Patients with no qualifying appointments at all are also counted as lost. |
+
+## Referral Volume Conversion
+
+Listed in **Key Metrics** as **Referral Volume Conversion**, and referred to as the Referrals report throughout this documentation.
+
+Referral metrics include only leads that have a referring provider attached. Self-generated and internal leads are excluded from all numerators and denominators. Leads are anchored to their created date.
+
+| **Metric**                                        | **Definition**                                                                                                                                                                            |
+| :------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Total Referrals**                               | Count of leads created in the selected date range with a referring provider on file.                                                                                                       |
+| **Referral-to-NP Appointment Conversion Rate**    | Of all referrals created in the range, the percentage whose initial appointment was Completed or Checked In. **Formula: 100 × Referrals with arrived initial appointment ÷ Total referrals**. |
+| **Referral Schedule Rate**                        | Of all referrals created in the range, the percentage with any initial appointment booked, regardless of status. **Formula: 100 × Referrals with initial appointment booked ÷ Total referrals**. |
+| **Scheduled Referrals**                           | Raw count of referrals with an initial appointment booked.                                                                                                                                 |
+| **Refused Rate**                                  | Of all referrals created in the range, the percentage explicitly marked as Refused Therapy.                                                                                                |
+| **Refused Referrals**                             | Raw count of referrals explicitly marked as Refused Therapy.                                                                                                                              |
+| **In-Progress Rate**                              | Of all referrals created in the range, the percentage with no initial appointment booked and not explicitly marked as Refused Therapy. Referrals where the Refused Therapy flag is unset count as in-progress. |
+| **In-Progress Referrals**                         | Raw count of in-progress referrals.                                                                                                                                                       |
+| **Avg Days to Schedule**                          | Average calendar days from referral creation to the initial appointment start date. Unscheduled referrals are excluded.                                                                     |
+| **New Patients Created**                          | Count of referrals linked to a patient record, regardless of whether the patient has arrived for an appointment yet.                                                                        |
+
+## Leads
+
+Lead metrics include all leads created in the selected date range, both referred and self-generated. Lead status categorization comes from the configured Lead Tracker statuses on the site.
+
+| **Metric**                              | **Definition**                                                                                                                                                                     |
+| :-------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Total Leads**                         | Count of all leads created within the selected date range.                                                                                                                          |
+| **Lead-to-Appointment Conversion Rate** | Of all leads created in the range, the percentage whose initial appointment was Completed or Checked In.                                                                             |
+| **Lead Response Days**                  | Average calendar days from lead creation to the initial contact date. Same-day contact counts as 0. Contact dates before lead creation are excluded as data-entry artifacts.          |
+| **Leads in Progress**                   | Count of leads whose current status maps to the In Progress reporting category in the site's Lead Tracker configuration.                                                             |
+| **Leads Converted**                     | Count of leads whose current status maps to the Converted reporting category. This is status-based and may differ from **Lead-to-Appointment Conversion Rate**, which is appointment-based. |
+| **Leads Refused**                       | Count of leads marked as Refused Therapy.                                                                                                                                           |
+
+## Employer Services
+
+Volume from employer-funded care. An appointment counts as an employer-services appointment when the patient's **primary** insurance is a workers' compensation or employer group plan. Everything else is excluded, so this report is a clean view of that book of business on its own.
+
+The two service types are **Workers Comp** (workers' compensation plans) and **Direct to Employer** (employer group plans).
+
+| **Metric**                          | **Definition**                                                                                                                                                          |
+| :---------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Employer Services New Patients**  | Number of distinct patients whose first-ever employer-services appointment (Workers Comp or Direct-to-Employer insurance) at the site falls within the date range.        |
+| **Employer Services Visits**        | Number of employer-services appointments within the date range with an arrived status (Checked In, Completed, or Ongoing).                                               |
+
+**Available groupings.** **Facility**, **Provider**, **Employer**, **Insurance**, **Appointment Type**, and **Employer Service Type**. **Employer** uses the employer name recorded on the workers' compensation details, falling back to the insurance company name, and showing **Not Specified** when neither is set.
+
+**Available filters.** **Employer** and **Employer Service Type**, in addition to the usual **Facility** and **Provider**.
+
+**Note:** This report does not support **Time Slice**. It returns range-wide totals rather than a time series.
+
+<Warning>
+  **New Patients and Visits count different appointments.** **Employer Services Visits** counts only arrived appointments, but **Employer Services New Patients** does not filter the in-range appointment by status. A patient whose only employer-services appointment in the range was cancelled still counts as a new patient. This is intentional, so do not read the two columns as though they describe the same set of appointments.
+</Warning>
+
+## Available groupings
+
+- **Facility**: breaks results down by individual clinic or facility (all reports).
+- **Provider**: breaks results down by individual provider (all reports).
+- **Referring Provider**: breaks **Referral Volume Conversion** down by the referring provider on the lead.
+- **Referral Source Type**: breaks **Referral Volume Conversion** down by source type configured in Lead Tracker.
+- **Insurance**: breaks **Referral Volume Conversion** and **Employer Services** down by insurance.
+- **Appointment Type**: breaks **Employer Services** down by appointment type.
+- **Employer**: breaks **Employer Services** down by employer.
+- **Employer Service Type**: breaks **Employer Services** into Workers Comp and Direct to Employer.
+- **Facility Group**: breaks results down by facility group, where your site has facility groups enabled.
+
+Available groupings depend on which Growth Engine report you selected.
+
+## Example use cases
+
+- A growth lead monitoring whether new patient volume is replacing discharged cases at each facility.
+- An operations manager identifying facilities with low arrival rates or high new-patient cancellation and no-show rates.
+- A referral coordinator comparing referral schedule rate and conversion by source or referring provider.
+- A front-office manager finding leads still in progress that need follow-up to convert into attended appointments.
+- A business development lead tracking workers' compensation and direct-to-employer volume by employer to see which contracts are producing patients.
+
+## Behavior notes
+
+<Warning>
+  **Date-range containment differs by metric.** **Visits**, **Appointments Scheduled**, and **Arrival Rate** use *fully-contained* appointments, where both start and end fall inside the range. **Scheduled Patients**, **New Patients (NP)**, and **New Patient Volume** use *appointment start in range* only. An appointment that starts inside the range but ends after it may be counted by some of these metrics and not others, so two columns that both look like visit counts can legitimately disagree.
+</Warning>
+
+- **New-patient rates are appointment-grain, not case-grain.** **NP Arrival Rate**, **NP Cancel Rate**, and **NP No-show Rate** count first-on-case appointment *slots*. If a case's earliest slot was Cancelled and a later slot becomes the next non-excluded appointment, both can satisfy the first-on-case condition and contribute to the denominator, so a single case can appear more than once.
+- **Case-timing denominators require an appointment row.** For **Timely Evals**, **Delayed Evals**, and **Eval Not Scheduled**, a case is included only if it has at least one appointment row of any status. Cases created in the range with zero appointment rows are dropped from the denominator entirely.
+- **New Patients (NP)** combines past arrivals (Checked In, Completed, Ongoing) with future first-on-case appointments still in **Scheduled** status. Future **Confirmed** first appointments are intentionally excluded so the metric stays a conservative pipeline view.
+- **Visits**, **Arrival Rate**, **Cancel Rate**, and **No-show Rate** look only at the past portion of the date range. A fully future range returns empty values for these metrics.
+- **Lost Patients** uses two different rules depending on whether the range is fully historical or current and future. The past-range query also looks for future appointments only on cases that have appointments on or after the range start, so a patient with no activity from the range start onward is counted as lost.
