@@ -1,0 +1,168 @@
+---
+title: "Scheduling Templates"
+sidebarTitle: "Scheduling Templates"
+toc: "true"
+---
+
+Scheduling Templates let you build a provider's whole week once — the hours they work, and what can be booked in each part of the day — save it under a name, and apply it to one or many providers across a date range. Instead of placing blocks on the calendar one at a time, a scheduling manager lays out the week in a visual editor and stamps it onto the calendar in a single step.
+
+## Key concepts
+
+Four pieces make up the feature:
+
+| **Term**                 | **What it is**                                                                                                                                                                                    |
+| :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Scheduling Template**  | A reusable weekly pattern. It holds a title and optional description, the facilities it applies to, an optional list of providers, and a set of slots.                                             |
+| **My Availability**      | The provider's working hours for each day of the week, per facility. This is the outer boundary of the schedule — every slot must sit inside it.                                                   |
+| **Slots**                | The individual blocks inside the week. A **bookable** slot renders on the calendar as an open slot and defines which appointment types can be booked in it. A **non-bookable** slot renders as a block and holds time for non-appointments such as lunch, admin time, or meetings. |
+| **Template Application** | The step that turns a template into a real calendar. You pick the template, the providers, and a date range, and the system stamps that schedule onto the calendar.                                |
+
+## Accessing Scheduling Templates
+
+There are two entry points.
+
+**Preferences → Calendar.** Open **Preferences** from the left navigation pane, select **Calendar**, and scroll to the **Scheduling Templates** section. This is the full management view — create, edit, duplicate, delete, and apply templates from here.
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_admin/manage_your_practice/scheduling_templates/scheduling_templates_1.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+**The calendar toolbar.** Click the **Scheduling Templates** icon in the top-right of the calendar to open the drawer, where you can see what is currently in effect and apply a template without leaving the calendar.
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_admin/manage_your_practice/scheduling_templates/scheduling_templates_2.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+## Creating a template
+
+1. From **Preferences → Calendar → Scheduling Templates**, click **+ Provider Schedule**. The template editor opens with a Sunday–Saturday week grid and a configuration panel on the right.
+2. Enter a **title** in place of **Add Title**, and optionally a description. Give it a name your team will recognize later — for example "Main Office - Summer Schedule," "PTA Standard Week," or "Holiday Coverage."
+3. Under **Facility(s)**, choose **Single** or **Multiple** and select the facilities this template applies to.
+4. Optionally set **Specific Provider(s)**. Providers named here are prefilled automatically when you apply the template.
+5. Set **My Availability** by checking each day the provider works and entering start and end times. Grid intervals follow your site and facility calendar settings once availability is entered — see [**Calendar Settings**](/air_admin/manage_your_practice/calendar_settings) to change them.
+6. Add slots by dragging on the week grid, then click any slot to configure it in the side panel:
+   - **Slot Title**
+   - **Bookable?** — **Yes** or **Not Bookable**
+   - **Appt Length** — the slot's start and end time
+   - **Days** — repeat the slot across other days of the week
+   - **Expire if vacant?** — **Yes** releases the slot's restrictions a set number of hours before the appointment time, so an unfilled protected slot can still be used. **Don't Expire** keeps the restrictions in place.
+   - **Required Appointment Types** — which appointment types can be booked in this slot
+7. Refine the week with drag-and-drop, resize, and copy/paste. To delete a slot, select it and click **Remove Block**.
+8. Click **Save** in the top-right. Use the back arrow next to the template title to return to the list.
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_admin/manage_your_practice/scheduling_templates/scheduling_templates_3.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<Tip>
+  ✨**Smart Tip:** Click **Copy From An Existing Schedule** in the configuration panel to start from a template you have already built instead of an empty week.
+</Tip>
+
+<Warning>
+  Every slot must sit inside the availability you configured. If **Save** does not respond, check whether a slot falls outside **My Availability**.
+</Warning>
+
+## Building a template with the AI Builder
+
+Rather than placing every slot by hand, you can describe the schedule in plain language and let the assistant build it.
+
+1. In the template editor, switch the right panel from the **Manual** tab to the **AI Builder** tab.
+2. Describe the schedule you want in the **Ask Athelas** box. For example: "Create a Monday–Friday schedule 9AM–5PM with a 30-minute lunch break and 40-minute appointment slots."
+3. The assistant asks clarifying questions if it needs more detail, then proposes a set of changes and overlays a preview on the week grid.
+4. Review the proposed changes. Accept or reject each one individually, or use **Accept All** or **Reject All**. Accepted changes are merged into your unsaved draft.
+5. Click **Save** to persist the template.
+
+The assistant can also start from an existing template — for example, "Start with the Summer Schedule but begin at 9AM" — and can build common patterns such as alternating single- and double-book cycles, or payer-differentiated slot lengths.
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_admin/manage_your_practice/scheduling_templates/scheduling_templates_4.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<Note>
+  **Note:** AI proposals only edit your unsaved draft. Nothing takes effect until you save the template and then apply it.
+</Note>
+
+## Applying a template to a provider's calendar
+
+Saving a template does not change anyone's calendar. Only applying it updates what a provider sees.
+
+1. Open the **Scheduling Templates** drawer from the calendar toolbar, or find the template in **Preferences → Calendar**.
+2. Select the template and click **Apply**. The **Apply Schedule Template** modal opens.
+3. Confirm the **Provider(s)**. Any providers set on the template are prefilled; add or remove them here.
+4. Set the **Start Date**. To bound the schedule, turn on **Have schedule expire on specific date** and set an **End Date**. Leave it off for an open-ended schedule.
+5. Review the preview of impacted slots, then click **Apply Schedule**.
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_admin/manage_your_practice/scheduling_templates/scheduling_templates_5.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<Warning>
+  Only one template can be in effect per provider on a given day. Applying a new template over a date range replaces whatever was there before.
+</Warning>
+
+## Managing templates
+
+From **Preferences → Calendar → Scheduling Templates** you can:
+
+- **Search and filter** the template list by provider and by facility.
+- **Duplicate** a template as the starting point for a variation.
+- **Edit** a template. Changes affect future applies only, not schedules that have already been applied.
+- **Delete** a template using the trash icon in its row.
+
+<Note>
+  **Note:** Deleting a template does not remove blocks that have already been placed on a calendar.
+</Note>
+
+## The Scheduling Templates drawer
+
+Once a template is applied, it drives what the calendar shows. Open the drawer from the **Scheduling Templates** icon in the top-right of the calendar toolbar. It contains:
+
+- **Visible on Calendar** — a toggle at the top that shows or hides template shading and blocks. Your preference is remembered.
+- **Active** — templates currently in effect, grouped by template with the covered providers listed beneath. Shows **No templates active** when there are none.
+- **Upcoming** — templates scheduled to start in the future, each with a **Sched. MM/DD/YY** badge. Hidden when empty.
+- **All Templates** — a collapsible, searchable list of every template at the site.
+
+## Booking appointments on available slots
+
+To book into a bookable slot, click the **+** in the center of the slot.
+
+1. The **New Appointment** modal opens with the **Appointment Type** dropdown suggesting the types the slot allows.
+2. The appointment duration defaults to the appointment type's configured duration, not the full length of the slot. If the appointment runs into the next slot and that slot permits the same type, the next slot is consumed as well. Otherwise the remaining time stays open and bookable.
+
+## Overlapping appointment logic
+
+Each appointment type has an **allow overlapping bookings** setting, configured in the appointment type form — see [**Appointment Types**](/air_admin/manage_your_practice/appointment_types). When it is disabled, that appointment type cannot be booked more than once at the same time for a provider, even if multiple slots are open in that window.
+
+Use this together with slot layout: side-by-side slots create the capacity, and the appointment type setting decides whether a given type is allowed to consume more than one of them.
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_admin/manage_your_practice/scheduling_templates/scheduling_templates_6.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+### FAQ
+
+<Accordion title="Does saving a template change any calendars?">
+  No. A saved template is only configuration. Nothing appears on a calendar until you apply it to specific providers and dates.
+</Accordion>
+
+<Accordion title="What happens to a template I edit after it has been applied?">
+  The edit affects future applies only. Schedules already generated from the earlier version stay as they are. To push the change out, re-apply the template to the relevant providers and date range.
+</Accordion>
+
+<Accordion title="Can a provider have two templates running at once?">
+  No. One template is in effect per provider at any point in time. A newly applied template replaces the coverage for the range you select.
+</Accordion>
+
+<Accordion title="Can I still create one-off blocks manually?">
+  Yes. Individual slots can still be created and edited directly on the calendar, and a single occurrence of a recurring slot can be changed or removed without affecting the rest of the series.
+</Accordion>
+
+<Accordion title="What happens if the feature is turned off for my site?">
+  The Scheduling Templates interface is hidden and the calendar returns to legacy [**Reserve Blocks**](/air_front_desk/portal_and_online_scheduling/reserve_blocks) and schedule blocks, with provider hours managed again from [**Provider Settings**](/air_admin/manage_your_practice/provider_settings).
+</Accordion>
