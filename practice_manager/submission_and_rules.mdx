@@ -9,6 +9,26 @@ on their own. Rules are yours to author, test, and roll back.
 
 ## The rules engine
 
+<div style={{ position:"relative",paddingBottom:"calc(56.25% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://demo.arcade.software/D2sLoLgN2CxEK011tzVp?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+    title="Manage Submission Blocking Rules for Claims"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write; autoplay"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: manage submission blocking rules for claims.
+  </p>
+</div>
+
 | Capability | What it does | Included in | Docs |
 | :-- | :-- | :-- | :-- |
 | **Billing rules** | View, note, toggle, and prioritize rules, and author modifier and coding logic as rule actions. | PM | [The Billing Rules Engine](/insights_biller/general_billing/the_billing_rules_engine) |
@@ -18,11 +38,8 @@ on their own. Rules are yours to author, test, and roll back.
 | **Impact preview** | See the claims and appointments a rule would touch before you launch it. | Beta | [Create a Rule](/insights_biller/automations/create_a_rule) |
 | **Rule audit trail & rollback** | Every version is kept, with one-click restore. | PM | [The Rules Tab](/insights_biller/automations/the_rules_tab) |
 | **Plain-language rule view** | A human-readable summary sits next to each rule. AI explains even regex-heavy conditions, and internal IDs resolve to real payer, provider, and patient names. | PM | [The Rules Tab](/insights_biller/automations/the_rules_tab) |
-| **Claim activity timeline** | Who or what changed the claim, and when. | PM | [Working a Claim: Context & Activity Feed](/insights_biller/claim_details/working_a_claim) |
 | **Full dry-run (historical replay)** | A before-and-after diff of a rule against past claims. Supports one rule at a time. | Beta |  |
 | **Phased rollout cap** | An automatic platform safeguard: new rules apply to a limited sample of claims first, then expand once performance is confirmed. Applies to billing rules and auto write-off rules alike, and rollout state is visible in product. | PM |  |
-| **Per-encounter block override** | Override a block on a single encounter, with documented justification. | PM |  |
-| **AI Filters** | Describe the view you want and let AI sort, group, and filter the claims list for you. | Beta |  |
 
 ## Getting claims out the door
 
@@ -45,3 +62,6 @@ on their own. Rules are yours to author, test, and roll back.
 | **Payer claim status** | Payer-reported status on the claim and its timeline. | PM |  |
 | **Claim voids** | Void a claim in product, with proper payer void coding. | Beta |  |
 | **One-click eligibility from the claim** | Run eligibility against any insurance on the claim so it routes to the right payer. | PM |  |
+| **Claim activity timeline** | Who or what changed the claim, and when. | PM | [Working a Claim: Context & Activity Feed](/insights_biller/claim_details/working_a_claim) |
+| **Per-encounter block override** | Override a block on a single encounter, with documented justification. | PM |  |
+| **AI Filters** | Describe the view you want and let AI sort, group, and filter the claims list for you. | Beta |  |

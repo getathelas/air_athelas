@@ -14,7 +14,7 @@ matching section for the full description, including a link to its guide where o
 | **Staff & permission management (RBAC)** | Roles with page- and action-level permission gates, scoped by site or facility. |
 | **Practice settings** | Locations, hours, and facilities. |
 | **Provider credentialing** | Payer enrollment and credentialing status per provider, in one place. |
-| **Provider settings & e-Rx registration** | Provider configuration and Surescripts enrollment. |
+| **Provider settings** | Provider configuration, credentials, schedules, and prescriber nomination. |
 | **Appointment type & calendar setup** | Appointment types, templates, and provider hours. |
 | **Athelas Assistant** | AI copilot that answers plain-English questions about your live billing data. |
 | **EDI & ERA enrollments** | Every provider registered with every payer, handled by Athelas at onboarding. |
@@ -34,20 +34,19 @@ matching section for the full description, including a link to its guide where o
 | **Text blasts** | Send batched texts to patients. |
 | **Patient eligibility report** | Coverage-status roster with CSV export. |
 | **Prior-auth tracking** | Worklist for authorizations, referrals, and their statuses. |
-| **Patient portal** | Patients view their records, complete intake, and pay a balance. |
 | **Workers' comp & self-pay handling** | First-class registration paths for workers' comp, self-pay, and missing insurance. |
 | **AI insurance-card capture** | A photo of the card pre-fills payer, member ID, and group. |
+| **Digital check-in** | Patients complete intake and update insurance before they arrive. |
 | **Check-in & copay collection** | Counter preflight checks, plus collection on every payment rail. |
 | **Athelas card reader** | In-person card reader at the front desk. |
 | **Saved cards on file** | Charge a stored card at the counter. |
-| **Digital check-in & kiosk** | Patients complete intake and update insurance before they arrive. |
 
 ## Charge Master
 
 | Capability | What it is |
 | :-- | :-- |
 | **Charge Master editor** | Full fee-schedule control with bulk edits and live preview. |
-| **Facility-specific pricing** | Facility rates win over site defaults. |
+| **Facility and non-facility rates** | Both rates on the same code, each adjustable without disturbing the other. |
 | **Payer mapping** | Payer-specific rows, with every name variant mapped to one canonical payer. |
 | **Future-dated changes** | Prices flip live on schedule, with no overlaps. |
 | **Multi-facility transfer** | Copy charges across facilities, as-is or scaled. |
@@ -66,11 +65,8 @@ matching section for the full description, including a link to its guide where o
 | **Impact preview** | See which claims and appointments a rule would touch before launch. |
 | **Rule audit trail & rollback** | Every version kept, with one-click restore. |
 | **Plain-language rule view** | A human-readable summary next to each rule, with internal IDs resolved. |
-| **Claim activity timeline** | Who or what changed the claim, and when. |
 | **Full dry-run (historical replay)** | Before-and-after diff of a rule against past claims. |
 | **Phased rollout cap** | New rules apply to a sample of claims first, then expand. |
-| **Per-encounter block override** | Override a block on one encounter, with documented justification. |
-| **AI Filters** | Describe the view you want and let AI sort, group, and filter. |
 | **Claim pre-flight review** | Build and validate a claim without sending it. |
 | **Electronic claim submission** | Validated, verified, then transmitted on the right route per payer. |
 | **Claims workspace** | One unified worklist for rejections, denials, and claim details. |
@@ -88,6 +84,9 @@ matching section for the full description, including a link to its guide where o
 | **Payer claim status** | Payer-reported status on the claim and its timeline. |
 | **Claim voids** | Void a claim in product, with proper payer void coding. |
 | **One-click eligibility from the claim** | Run eligibility against any insurance on the claim. |
+| **Claim activity timeline** | Who or what changed the claim, and when. |
+| **Per-encounter block override** | Override a block on one encounter, with documented justification. |
+| **AI Filters** | Describe the view you want and let AI sort, group, and filter. |
 
 ## A/R & Denials
 
@@ -140,6 +139,6 @@ matching section for the full description, including a link to its guide where o
 | **Patient refunds** | Refund on any rail, with item-level re-allocation and permission gating. |
 | **Month-end close** | Month-end summary, A/R aging, reconciliation exports, and cash-drawer recon. |
 | **Card-rail ledger integrity** | Charges, refunds, disputes, and payouts all write the ledger as they happen. |
-| **Lockbox & sweep setup** | Lockbox accounts configured with you. Optional, costs pass through. |
+| **Lockbox & sweep setup** | Lockbox accounts configured with you, as an optional add-on. |
 | **Payer clawback handling** | Payer takebacks handled automatically, as reversals that preserve history. |
 | **Secondary / tertiary forwarding** | Automatic COB forwarding after the primary pays. |

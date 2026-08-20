@@ -16,18 +16,35 @@ costs less and scales with you rather than with us.
 This section is the catalog of what you get. Where a capability has a guide, it is linked in the Docs
 column; we are still writing up the newer ones.
 
-## What makes it different
+## How the platform is built
 
-- **Eligibility runs on every encounter**, not just initial evaluations, so coverage changes surface
-  before they turn into denials.
-- **Patient responsibility is calculated for you** from live benefits, ready at check-in rather than
-  guessed at the counter.
-- **Payment plans charge themselves** once configured, instead of needing someone to chase each
-  installment.
-- **EDI and ERA enrollment with every payer**, so claims go out electronically and remittances come
-  back the same way.
-- **True remit-to-claim bank matching**, so deposits reconcile against the claims they actually paid
-  rather than against a bank statement.
+Practice Manager is not a pile of features. It is three primitives, and everything in the catalog below
+is one of them.
+
+<Columns cols={3}>
+  <Card title="Automations" icon="wand-magic-sparkles" iconType="duotone" color="#F9345F">
+    Where you take control of the rules and data constants that eliminate rote work.
+
+    Eligibility runs on every encounter rather than just initial evaluations. Patient responsibility is
+    calculated from live benefits before the patient arrives. Payment plans charge themselves once
+    configured. Deposits match themselves to the claims they actually paid.
+  </Card>
+  <Card title="Workspaces" icon="table-columns" iconType="duotone" color="#F9345F">
+    Where your team does the work that needs human judgement.
+
+    Claims, denials, remittances, appointments, and patients, each with deep filters, saved views per
+    user, and bulk actions that let one person act on hundreds of claims at once.
+  </Card>
+  <Card title="Analytics" icon="chart-column" iconType="duotone" color="#F9345F">
+    Where you see whether any of it is working.
+
+    The throughput of your automations and your billing team, and the financial outcome of every month
+    of service. Every number opens to the claims behind it.
+  </Card>
+</Columns>
+
+**Collaboration runs across all three.** Tasks, messages, and an assistant that reads your live billing
+data and can act on a single claim or every claim you have selected.
 
 ## Who configures what
 
@@ -72,10 +89,10 @@ Automation covers the standard path. These are the places your team picks it up:
     Roles and permissions, practice and provider settings, credentialing, appointment types.
   </Card>
   <Card title="Pre-Visit & Check-In" icon="calendar-check" iconType="duotone" color="#F9345F" href="/practice_manager/pre_visit_and_check_in">
-    Reminders, eligibility, prior auth, the patient portal, and collecting at the counter.
+    Reminders, eligibility, prior auth, digital intake, and collecting at the counter.
   </Card>
   <Card title="Charge Master" icon="tags" iconType="duotone" color="#F9345F" href="/practice_manager/charge_master">
-    Fee schedules, payer mapping, facility pricing, and self-pay rates.
+    Fee schedules, payer mapping, facility and non-facility rates, and self-pay pricing.
   </Card>
   <Card title="Rules & Submission" icon="paper-plane" iconType="duotone" color="#F9345F" href="/practice_manager/submission_and_rules">
     The rules engine, pre-flight validation, and the unified claims workspace.
