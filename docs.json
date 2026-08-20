@@ -211,6 +211,22 @@
         "icon": "money-check-dollar",
         "groups": [
           {
+            "group": "Practice Manager",
+            "icon": "layer-group",
+            "public": true,
+            "pages": [
+              "practice_manager/overview",
+              "practice_manager/capabilities",
+              "practice_manager/setup_and_admin",
+              "practice_manager/pre_visit_and_check_in",
+              "practice_manager/charge_master",
+              "practice_manager/submission_and_rules",
+              "practice_manager/ar_and_denials",
+              "practice_manager/patient_billing",
+              "practice_manager/reconcile_and_refund"
+            ]
+          },
+          {
             "group": "Getting Started with Insights",
             "icon": "stars",
             "public": true,

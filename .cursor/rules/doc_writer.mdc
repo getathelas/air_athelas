@@ -72,6 +72,7 @@ air_athelas/
 │   └── reporting/
 ├── insights_general/          # Insights cross-role content
 │   └── athelas_assistant/
+├── practice_manager/          # Practice Manager capability catalog (flat, no subfolders)
 ├── master_blogs/              # Product release blog posts (flat, no subfolders)
 ├── master_changelogs/         # Changelog entries (flat, no subfolders)
 ├── _scratch/                  # Scratch/experiment folder (gitignored)
@@ -91,7 +92,7 @@ Examples:
 - `insights_front_desk/appointments/how_to_schedule_an_appointment.mdx`
 - `insights_biller/reports/aging_ar_report.mdx`
 
-Exceptions: `insights_onboard/`, `master_blogs/`, and `master_changelogs/` hold MDX files directly at their root with no activity subfolders.
+Exceptions: `insights_onboard/`, `practice_manager/`, `master_blogs/`, and `master_changelogs/` hold MDX files directly at their root with no activity subfolders.
 
 ### Image folder structure
 
@@ -787,6 +788,28 @@ When renaming a file, update **5 things** in this order:
 ---
 
 ## 8. Content quality standards
+
+### What must not be published
+
+`docs.athelas.com` is the customer-facing source of truth and is referenced from signed customer
+agreements. Treat every page as contract-adjacent. Never publish:
+
+- **Unreleased or flag-gated features.** If it is not live for customers, it does not get a page. Beta
+  features that customers can actually be enabled for are fine — label them `Beta`.
+- **Dated roadmap commitments.** No "coming September 2026", no "lands Dec 2026". A date on a page the
+  agreements point to reads as a promise. The changelog announces features when they ship.
+- **Pricing.** Per-provider rates, SKU prices, and per-unit fees live on `athelas.com`, not here.
+- **Internal commercial taxonomy.** Sales phrasing (`Sell as …`), service-vs-software ownership
+  columns, deal-desk notes, and named internal owners are Notion-only.
+- **Sales-enablement asides.** Lines like "position accordingly", "good talking point", or customer
+  counts ("~5 clinics live today") must be stripped when porting content in from internal docs.
+
+### Internal links
+
+Use root-relative paths (`/insights_biller/reports/month_end_close`), never the full domain.
+`mint broken-links` treats `https://docs.athelas.com/...` as an external URL and reports it green even
+when the target page no longer exists, so full-domain self-links silently rot. Grep for
+`docs.athelas.com` before opening a PR.
 
 ### Writing style summary
 
