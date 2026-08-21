@@ -1,0 +1,86 @@
+---
+title: "Rules & Submission"
+toc: "true"
+---
+
+This is the engine room. The rules engine encodes your billing logic once so it applies to every claim
+automatically, and the claims workspace is where your team works everything the rules could not finish
+on their own. Rules are yours to author, test, and roll back.
+
+## The rules engine
+
+<div style={{ position:"relative",paddingBottom:"calc(56.25% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://demo.arcade.software/D2sLoLgN2CxEK011tzVp?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+    title="Manage Submission Blocking Rules for Claims"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write; autoplay"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: authoring and gating the rules that then run on every claim automatically.
+  </p>
+</div>
+
+| Capability | What it does | Included in | Docs |
+| :-- | :-- | :-- | :-- |
+| **Claim transformation & blocking rules** | Scrub, split, hold, or block claims. View, note, toggle, and prioritize the rules that do it, and author modifier and coding logic as rule actions. | PM | [The Rules Tab](/insights_biller/automations/the_rules_tab), [The Billing Rules Engine](/insights_biller/general_billing/the_billing_rules_engine) |
+| **Draft → promote workflow** | New rules stay inactive until you deliberately activate them, and drafts go from creation to live end to end in product. | PM | [Create a Rule](/insights_biller/automations/create_a_rule) |
+| **AI rule generation** | Describe what you want in plain language and get a drafted rule, including complex billing and claim-transformation logic. | Beta | [Create a Rule](/insights_biller/automations/create_a_rule) |
+| **Impact preview** | See the claims and appointments a rule would touch before you launch it. | Beta | [Create a Rule](/insights_biller/automations/create_a_rule) |
+| **Rule audit trail & rollback** | Every version is kept, with one-click restore. | PM | [The Rules Tab](/insights_biller/automations/the_rules_tab) |
+| **Plain-language rule view** | A human-readable summary sits next to each rule. AI explains even regex-heavy conditions, and internal IDs resolve to real payer, provider, and patient names. | PM | [The Rules Tab](/insights_biller/automations/the_rules_tab) |
+| **Full dry-run (historical replay)** | A before-and-after diff of a rule against past claims. Supports one rule at a time. | Beta |  |
+| **Phased rollout cap** | An automatic platform safeguard: new rules apply to a limited sample of claims first, then expand once performance is confirmed. Applies to billing rules and auto write-off rules alike, and rollout state is visible in product. | PM |  |
+
+## Getting claims out the door
+
+<div style={{ position:"relative",paddingBottom:"calc(56.25% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://demo.arcade.software/GIsOfya938qJZr37kJMh?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+    title="Handbook - Claims"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write; autoplay"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: working claims in the unified workspace, from filters and saved views to acting on hundreds at once.
+  </p>
+</div>
+
+| Capability | What it does | Included in | Docs |
+| :-- | :-- | :-- | :-- |
+| **Claim pre-flight review** | Build and validate a claim without sending it. See which rules would fire, which pre-submission blocks apply, and any field-level clearinghouse errors, then fix them in product. | PM | [The Review Charges Page](/insights_biller/general_billing/the_review_charges_page) |
+| **Electronic claim submission** | Verified, then transmitted: rule validation plus clearinghouse verification, with the route auto-selected per payer. Failures come back in plain language and auto-open a fix-it task in the Rejections worklist, so every submission error surfaces in one place. | PM | [Getting Started with the Claims Page](/insights_biller/claim_details/claim_details_page) |
+| **Claims workspace** | One unified worklist for every claim, with rejections, denials, and claim details in one place. Advanced filters and saved views per user, optional columns, hotkeys, simplified statuses, time-in-status sorting, group-by-reason, a unified assignee view, and CSV export. | PM | [Getting Started with the Claims Page](/insights_biller/claim_details/claim_details_page) |
+| **Bulk actions** | Multi-select claims and act at scale with 20+ bulk actions: assign owners, tag, add notes, defer, correct and resubmit. | PM | [Organizing Your Claims Worklist](/insights_biller/claim_details/organizing_your_claims_worklist) |
+| **Defer claims** | Defer a claim with a reason to capture actions taken outside Insights. Powers auto-deferral of recently submitted claims and pauses previously generated patient responsibility on resubmission. | PM | [Deferring a Claim](/insights_biller/claim_details/deferring_a_claim) |
+| **Corrected-claim resubmission** | Proper correction coding, in bulk, duplicate-guarded. | PM | [How to Resubmit Claims in Bulk](/insights_biller/claim_details/how_to_resubmit_claims_in_bulk) |
+| **Claim notes** | Comments on claims, single or bulk. | PM | [Working a Claim: Context & Activity Feed](/insights_biller/claim_details/working_a_claim) |
+| **Records & attachments with claims** | Send supporting records by fax, email, or mail, and electronically on supported routes. | PM | [How to Send Documentation](/insights_biller/claim_details/how_to_send_documentation) |
+| **Athelas Assistant across a claim selection** | Ask anything and take action across a single claim or every claim you have selected. | PM | [Athelas Assistant Common Functionalities](/insights_general/athelas_assistant/athelas_assistant_common_functionalities) |
+| **Unified claim context** | Submissions, remittances, payments, attachments, and the claim's status reason side by side on one screen: the full picture needed to make a call, without hunting across pages. Actions sit in the same place on every claim, so the hundredth works like the first. | PM | [Working a Claim: Context & Activity Feed](/insights_biller/claim_details/working_a_claim) |
+| **Drug code (NDC) auto-resolution** | On drug claims, the correct National Drug Code, units, and drug details are filled in automatically from your preferred products. Billers can override through a searchable autocomplete. | PM |  |
+| **Managed EHR extraction** | Pulls appointments, encounters, charges, medical records, and patient files from your existing EHR on a schedule, with payer-specific fixes applied for modifiers, NDC, CLIA, and value codes. 50+ supported EHRs. Set up by Athelas at onboarding. | PM |  |
+| **Eligibility-enriched submission** | Claims are enriched with fresh eligibility before they go out, applied automatically as part of the submission pipeline. | PM |  |
+| **Create a claim manually** | Build a claim from scratch on the Claims page, with the same rules gate and validation as every other claim and far fewer clicks. | PM |  |
+| **Payer claim status** | Payer-reported status on the claim and its timeline. | PM |  |
+| **Claim voids** | Void a claim in product, with proper payer void coding. | Beta |  |
+| **One-click eligibility from the claim** | Run eligibility against any insurance on the claim so it routes to the right payer. | PM |  |
+| **Claim activity timeline** | Who or what changed the claim, and when. | PM | [Working a Claim: Context & Activity Feed](/insights_biller/claim_details/working_a_claim) |
+| **Per-encounter block override** | Override a block on a single encounter, with documented justification. | PM |  |
+| **AI Filters** | Describe the view you want and let AI sort, group, and filter the claims list for you. | Beta |  |
