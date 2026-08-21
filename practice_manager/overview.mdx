@@ -21,27 +21,42 @@ column; we are still writing up the newer ones.
 Practice Manager is not a pile of features. It is three primitives, and everything in the catalog below
 is one of them.
 
-<Columns cols={3}>
-  <Card title="Automations" icon="wand-magic-sparkles" iconType="duotone" color="#F9345F">
-    Where you take control of the rules and data constants that eliminate rote work.
+### <Icon icon="wand-magic-sparkles" iconType="duotone" color="#F9345F" size={23} /> Automations
 
-    Eligibility runs on every encounter rather than just initial evaluations. Patient responsibility is
-    calculated from live benefits before the patient arrives. Payment plans charge themselves once
-    configured. Deposits match themselves to the claims they actually paid.
-  </Card>
-  <Card title="Workspaces" icon="table-columns" iconType="duotone" color="#F9345F">
-    Where your team does the work that needs human judgement.
+Where you take control of the rules and data constants that eliminate rote work.
 
-    Claims, denials, remittances, appointments, and patients, each with deep filters, saved views per
-    user, and bulk actions that let one person act on hundreds of claims at once.
-  </Card>
-  <Card title="Analytics" icon="chart-column" iconType="duotone" color="#F9345F">
-    Where you see whether any of it is working.
+Eligibility runs on every encounter rather than just initial evaluations. Patient responsibility is
+calculated from live benefits before the patient arrives. Payment plans charge themselves once
+configured. Deposits match themselves to the claims they actually paid.
 
-    The throughput of your automations and your billing team, and the financial outcome of every month
-    of service. Every number opens to the claims behind it.
-  </Card>
-</Columns>
+Rules are grouped by what they act on, from building and modifying claims before submission through
+posting remittances and taking adjustments. New ones stay as drafts until you review and promote them.
+
+![The Automations page, with rules grouped by type and drafts waiting for review](/images/practice_manager/overview/overview_1.webp)
+
+### <Icon icon="table-columns" iconType="duotone" color="#F9345F" size={23} /> Workspaces
+
+Where your team does the work that needs human judgement.
+
+Claims, denials, remittances, appointments, and patients, each with deep filters, saved views per
+user, and bulk actions that let one person act on hundreds of claims at once.
+
+Every claim carries its status, stage, and owner on the same row, so a biller can tell what a claim is
+waiting on without opening it.
+
+![The Claims page, showing claim status, stage, and assignee across saved views](/images/practice_manager/overview/overview_2.webp)
+
+### <Icon icon="chart-column" iconType="duotone" color="#F9345F" size={23} /> Analytics
+
+Where you see whether any of it is working.
+
+The throughput of your automations and your billing team, and the financial outcome of every month
+of service. Every number opens to the claims behind it.
+
+First-pass rate, collection rate, time to decision, and denial rate all sit on one screen, each
+compared against the prior period so a trend is visible without building a report.
+
+![The Practice Insights dashboard, with first-pass rate, collection rate, denial rate, and historical payments](/images/practice_manager/overview/overview_3.webp)
 
 **Collaboration runs across all three.** Tasks, messages, and an assistant that reads your live billing
 data and can act on a single claim or every claim you have selected.
