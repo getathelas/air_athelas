@@ -26,11 +26,11 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Air",
+        "tab": "Air Clinical",
         "icon": "laptop-medical",
         "groups": [
           {
-            "group": "Getting Started with Air",
+            "group": "Getting Started with Air Clinical",
             "icon": "stars",
             "public": true,
             "pages": [
@@ -212,7 +212,7 @@
         ]
       },
       {
-        "tab": "Insights",
+        "tab": "Air Billing",
         "icon": "money-check-dollar",
         "groups": [
           {
@@ -231,7 +231,7 @@
             ]
           },
           {
-            "group": "Getting Started with Insights",
+            "group": "Getting Started with Air Billing",
             "icon": "stars",
             "public": true,
             "pages": [
@@ -641,7 +641,7 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Sign-in on Insights",
+      "label": "Sign-in on Air Billing",
       "href": "https://insights.athelas.com"
     }
   },
