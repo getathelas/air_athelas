@@ -2,6 +2,7 @@
   "$schema": "https://mintlify.com/docs.schema.json",
   "theme": "palm",
   "name": "Athelas",
+  "public": false,
   "logo": {
     "light": "/images/air_archive/athelas_light.svg",
     "dark": "/images/air_archive/athelas_light.svg"
@@ -72,6 +73,7 @@
             "pages": [
               {
                 "group": "Schedule",
+                "public": true,
                 "pages": [
                   "air_front_desk/view_your_calendar/nav_calendar",
                   "air_front_desk/take_in_a_patient/new_appt",
@@ -82,6 +84,7 @@
               },
               {
                 "group": "Prepare",
+                "public": true,
                 "pages": [
                   "air_front_desk/take_in_a_patient/prep_appt",
                   "air_provider/check_in_a_patient/edit_appt",
@@ -90,6 +93,7 @@
               },
               {
                 "group": "Check-in",
+                "public": true,
                 "pages": [
                   "air_provider/check_in_a_patient/check_in",
                   "air_provider/check_in_a_patient/kiosk_user_guide"
@@ -97,6 +101,7 @@
               },
               {
                 "group": "Visit",
+                "public": true,
                 "pages": [
                   "air_provider/fill_a_chart_note/chart_note_clinical_types",
                   "air_provider/fill_a_chart_note/navigate_chart_note",
@@ -213,7 +218,6 @@
           {
             "group": "Practice Manager",
             "icon": "layer-group",
-            "public": true,
             "pages": [
               "practice_manager/overview",
               "practice_manager/capabilities",
@@ -356,6 +360,7 @@
             "group": "Calendar",
             "icon": "calendar",
             "tag": "Front Desk",
+            "public": true,
             "pages": [
               "insights_front_desk/calendar/getting_started_with_the_calendar",
               "insights_front_desk/calendar/calendar_start_end_times",
