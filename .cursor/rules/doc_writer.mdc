@@ -812,12 +812,29 @@ agreements. Treat every page as contract-adjacent. Never publish:
 Two sales reviews of the Practice Manager catalog landed on the same complaint independently, so these
 are hard rules, not preferences.
 
+- **A capability name is a noun phrase, not a task.** Build it as **object + faculty**: the billing
+  object (claim, rule, denial, remittance, charge, statement, deposit) plus the faculty you have over
+  it (engine, worklist, editor, audit trail, preview, delivery, ledger, dashboard). Sentence case,
+  2-5 words, `&` rather than "and". Two tests, both of which must pass:
+  - *Inclusion* — "Practice Manager includes ___." Reads right for *A/R aging*, wrong for
+    *copy charges to another facility*.
+  - *RFP* — "Does it have ___?" `Does it have A/R aging?` works. `Does it have copy charges to
+    another facility?` does not, because the real question is "Can I copy charges…?" — a task
+    question, and task questions belong in guides.
+
+  A task is *how* a capability is used, so it goes in the description, not the name:
+  `Bulk rate copy & rescale`, not `Copy charges to another facility`; `Unified claim view`, not
+  `The whole claim on one screen`; `Manual claim entry`, not `Create a claim manually`. Declarative
+  slogans fail for the same reason (`Automatic remittance posting`, not `Remittances that post
+  themselves`) - they sell the benefit instead of naming the thing you get.
 - **No internal codenames, engineering vocabulary, or EDI transaction numbers in a capability name.**
   Banned in customer-facing titles and row names: internal service codenames (`ARES`, `Triron`,
   `Gladriel`, `Normandy`), engineering acronyms (`RBAC`), deployment vocabulary (`promote`, `dry-run`,
   `phased rollout`, `pipeline`, `commit`), data vocabulary (`enriched`, `extraction`, `explainability`,
   `rail`), and bare X12 transaction numbers (`271`). Name the outcome instead: `Test a rule against
-  past claims`, not `Full dry-run (historical replay)`.
+  past claims`, not `Full dry-run (historical replay)`. That contrast is about **vocabulary**;
+  the noun-phrase rule above governs grammar. This particular name keeps its imperative form as a
+  settled exception — do not read it as license to name new capabilities as tasks.
 - **Real billing vocabulary stays.** The reader is a billing manager. `denials`, `A/R aging`, `EDI`,
   `ERA`, `835`, `EOB`, `VOB`, `NDC`, `charge master`, `guarantor`, `corrected claim`, `void`,
   `self-pay`, `workers' comp`, and `COB forwarding` are words they use daily — plain-Englishing those
@@ -825,6 +842,9 @@ are hard rules, not preferences.
   word?"*, not *"is it long?"*
 - **Watch for name collisions with payer documents.** `Summary of Benefits` was renamed to
   `Benefits summary PDF` because it read as the payer's own Summary of Benefits & Coverage.
+- **A rename has two homes.** `practice_manager/capabilities.mdx` must stay in exact name parity with
+  the seven lifecycle pages. Rename in both, then diff the bolded first cell of every table row
+  across all eight files before opening a PR — the catalog has silently lost rows this way before.
 
 ### Framing responsibility
 
