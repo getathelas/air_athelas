@@ -10,45 +10,88 @@ Change a billing rule. Reprice a fee schedule. Work a denial. Close your month. 
 you can do all of it directly.
 
 It is the same platform and the same claims engine behind our fully-managed revenue cycle service,
-with your team at the controls instead of ours. Because your team does the work, Practice Manager
-costs less and scales with you rather than with us.
+with your team at the controls instead of ours. It is built for practices that already have a billing
+team and would rather keep billing in their own hands.
 
-This section is the catalog of what you get. Where a capability has a guide, it is linked in the Docs
-column; we are still writing up the newer ones.
+The two sections below are the ones most people want first: what Athelas sets up, and what your team
+runs. Everything after that is the catalog of what you get, labeled so you can tell what is generally
+available from what is still in beta.
+
+## Who configures what
+
+Athelas pre-configures the billing rules that apply globally, plus the plumbing every practice needs.
+You configure everything specific to your practice.
+
+<Columns cols={2}>
+  <Card title="Athelas pre-configures" icon="sliders" iconType="duotone" color="#F9345F">
+    - Billing rules that apply globally, as the foundation you build on
+    - EDI and ERA enrollments with every payer
+    - Your Stripe account, and the card readers you order
+    - The integration into your existing EHR
+    - Automatic claim creation, so your rules build the claim once the note is signed
+  </Card>
+  <Card title="You configure" icon="user-gear" iconType="duotone" color="#F9345F">
+    - Your own site-specific billing rules
+    - Submission rules and timing
+    - Your patient statement cadence
+    - Practice, provider, and staff setup
+    - Reviewing, correcting, and resubmitting claims
+  </Card>
+</Columns>
+
+Your Athelas team runs one-time onboarding and training during launch, so none of this starts from a
+blank page.
+
+## What your team owns
+
+Automation covers the standard path. These are the places your team stays in control:
+
+- **Payers that only accept paper.** Some payers still require a mailed claim. You build it in
+  Practice Manager the same way as any other, and your team mails it. If you would rather Athelas
+  handle the mailing, that is a pass-through arrangement to set up with your Athelas team.
+- **Eligibility runs through the clearinghouse.** When a payer is not reachable there, your team
+  handles the call into the payer directly.
+- **Prior authorization.** Eligibility tells you what is covered, not whether an authorization is
+  required. Your team confirms that with the payer.
+- **Workers' comp.** Registration and follow-up stay with your team, with first-class fields for them
+  in the product rather than workarounds.
+- **Anything outside automation is yours to work.** There is no Athelas back-office picking up the
+  remainder, which is the point: nobody touches your claims but your team.
+- **Patient billing questions come to you.** All inbound patient billing calls route to your team.
 
 ## How the platform is built
 
-Practice Manager is not a pile of features. It is three primitives, and everything in the catalog below
+Practice Manager is not a pile of features. It is three pillars, and everything in the catalog below
 is one of them.
 
 ### <Icon icon="wand-magic-sparkles" iconType="duotone" color="#F9345F" size={23} /> Automations
 
-Where you take control of the rules and data constants that eliminate rote work.
+**Work less.** Your rules do the rote work, so your team doesn't.
 
 Eligibility runs on every encounter rather than just initial evaluations. Patient responsibility is
 calculated from live benefits before the patient arrives. Payment plans charge themselves once
 configured. Deposits match themselves to the claims they actually paid.
 
-Rules are grouped by what they act on, from building and modifying claims before submission through
-posting remittances and taking adjustments. New ones stay as drafts until you review and promote them.
+Rules are grouped by what they act on, from building and modifying claims before submission to
+posting remittances and taking adjustments. New ones stay as drafts until you review and turn them on.
 
 ![The Automations page, with rules grouped by type and drafts waiting for review](/images/practice_manager/overview/overview_1.webp)
 
 ### <Icon icon="table-columns" iconType="duotone" color="#F9345F" size={23} /> Workspaces
 
-Where your team does the work that needs human judgement.
+**Work fast.** One person acts on hundreds of claims at once.
 
 Claims, denials, remittances, appointments, and patients, each with deep filters, saved views per
-user, and bulk actions that let one person act on hundreds of claims at once.
+user, and bulk actions.
 
 Every claim carries its status, stage, and owner on the same row, so a biller can tell what a claim is
-waiting on without opening it.
+waiting on without opening it. Assign and group claims by owner, and each biller works their own list.
 
 ![The Claims page, showing claim status, stage, and assignee across saved views](/images/practice_manager/overview/overview_2.webp)
 
 ### <Icon icon="chart-column" iconType="duotone" color="#F9345F" size={23} /> Analytics
 
-Where you see whether any of it is working.
+**Work smart.** See what's working and where you can improve.
 
 The throughput of your automations and your billing team, and the financial outcome of every month
 of service. Every number opens to the claims behind it.
@@ -58,46 +101,9 @@ compared against the prior period so a trend is visible without building a repor
 
 ![The Practice Insights dashboard, with first-pass rate, collection rate, denial rate, and historical payments](/images/practice_manager/overview/overview_3.webp)
 
-**Collaboration runs across all three.** Tasks, messages, and an assistant that reads your live billing
-data and can act on a single claim or every claim you have selected.
-
-## Who configures what
-
-Athelas pre-configures anything that applies globally. You configure anything specific to your
-practice.
-
-<Columns cols={2}>
-  <Card title="Athelas pre-configures" icon="sliders" iconType="duotone" color="#F9345F">
-    - Global billing rules, as the foundation you build on
-    - EDI and ERA enrollments with every payer
-    - Your Stripe account and card readers
-    - The integration into your existing EHR
-    - Automatic claim creation, so your rules build the claim once the note is signed
-  </Card>
-  <Card title="You configure" icon="user-gear" iconType="duotone" color="#F9345F">
-    - Anything specific to your practice
-    - Submission rules and timing
-    - Your own site-specific billing rules
-    - Reviewing, correcting, and resubmitting claims
-  </Card>
-</Columns>
-
-That is the trade: you take on the work, and you keep the margin. Your Athelas team still runs
-one-time onboarding and training during launch.
-
-## What you'll still do manually
-
-Automation covers the standard path. These are the places your team picks it up:
-
-- **Eligibility runs through the clearinghouse.** If a payer is not reachable there, someone on your
-  team calls them directly.
-- **Eligibility does not tell you whether prior authorization is required.** Confirm that with the
-  payer.
-- **Workers' comp registration and follow-up is manual.**
-- **Anything outside automation is yours to work.** There is no Athelas back-office picking up the
-  remainder.
-- **Patient billing questions come to you.** There is no two-way patient messaging in Insights, and
-  an Athelas inbound patient phone line is part of the managed service rather than Practice Manager.
+**Billing work is shared across all three.** Claims can be assigned to a specific biller, and the
+Athelas Assistant reads your live billing data and acts on a single claim or every claim you have
+selected.
 
 ## Browse the catalog
 
@@ -112,7 +118,7 @@ Automation covers the standard path. These are the places your team picks it up:
     Fee schedules, payer mapping, facility and non-facility rates, and self-pay pricing.
   </Card>
   <Card title="Rules & Submission" icon="paper-plane" iconType="duotone" color="#F9345F" href="/practice_manager/submission_and_rules">
-    The rules engine, pre-flight validation, and the unified claims workspace.
+    The rules engine, claim scrubbing before submission, and the claims workspace.
   </Card>
   <Card title="A/R & Denials" icon="chart-column" iconType="duotone" color="#F9345F" href="/practice_manager/ar_and_denials">
     Remittance intake, posting, working denials, and the reports leadership asks for.

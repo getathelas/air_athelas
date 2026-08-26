@@ -807,6 +807,32 @@ agreements. Treat every page as contract-adjacent. Never publish:
 - **Sales-enablement asides.** Lines like "position accordingly", "good talking point", or customer
   counts ("~5 clinics live today") must be stripped when porting content in from internal docs.
 
+### Naming capabilities
+
+Two sales reviews of the Practice Manager catalog landed on the same complaint independently, so these
+are hard rules, not preferences.
+
+- **No internal codenames, engineering vocabulary, or EDI transaction numbers in a capability name.**
+  Banned in customer-facing titles and row names: internal service codenames (`ARES`, `Triron`,
+  `Gladriel`, `Normandy`), engineering acronyms (`RBAC`), deployment vocabulary (`promote`, `dry-run`,
+  `phased rollout`, `pipeline`, `commit`), data vocabulary (`enriched`, `extraction`, `explainability`,
+  `rail`), and bare X12 transaction numbers (`271`). Name the outcome instead: `Test a rule against
+  past claims`, not `Full dry-run (historical replay)`.
+- **Real billing vocabulary stays.** The reader is a billing manager. `denials`, `A/R aging`, `EDI`,
+  `ERA`, `835`, `EOB`, `VOB`, `NDC`, `charge master`, `guarantor`, `corrected claim`, `void`,
+  `self-pay`, `workers' comp`, and `COB forwarding` are words they use daily — plain-Englishing those
+  reads as naive and costs the page credibility. The test is *"did Athelas or engineering invent this
+  word?"*, not *"is it long?"*
+- **Watch for name collisions with payer documents.** `Summary of Benefits` was renamed to
+  `Benefits summary PDF` because it read as the payer's own Summary of Benefits & Coverage.
+
+### Framing responsibility
+
+Pages that tell a customer what their own team has to do use **ownership voice, not deficit voice**.
+`What your team owns`, never `What you'll still do manually` — "manually" carries a negative
+connotation, and a prospect who gets excited reading a page and then hits a list of chores gets scared
+off. Pair every responsibility with the tool the product gives them for it.
+
 ### Internal links
 
 Use root-relative paths (`/insights_biller/reports/month_end_close`), never the full domain.
