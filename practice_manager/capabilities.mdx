@@ -11,14 +11,14 @@ matching section for the full description, including a link to its guide where o
 
 | Capability | What it is |
 | :-- | :-- |
-| **Staff & permission management (RBAC)** | Roles with page- and action-level permission gates, scoped by site or facility. |
+| **Staff & permission management** | Roles with page- and action-level permission gates, scoped by site or facility. |
 | **Practice settings** | Locations, hours, and facilities. |
 | **Provider credentialing** | Payer enrollment and credentialing status per provider, in one place. |
 | **Provider settings** | Provider configuration, credentials, schedules, and prescriber nomination. |
 | **Appointment type & calendar setup** | Appointment types, templates, and provider hours. |
 | **Athelas Assistant** | AI copilot that answers plain-English questions about your live billing data. |
 | **EDI & ERA enrollments** | Every provider registered with every payer, handled by Athelas at onboarding. |
-| **Stripe account & POS setup** | Athelas sets up your Stripe account and gets card readers live. |
+| **Stripe account & POS setup** | Athelas sets up your Stripe account and gets your card readers live. Reader hardware is purchased by your practice. |
 | **Coaching & training** | One-time onboarding and training during launch. |
 
 ## Pre-Visit & Check-In
@@ -28,17 +28,16 @@ matching section for the full description, including a link to its guide where o
 | **Appointment reminders** | Automated text and email reminders at your chosen offsets, with intake links. |
 | **Scheduled eligibility (VOB)** | Batch pre-visit verification across primary, secondary, and tertiary coverage. |
 | **Real-time eligibility check** | On-demand check that returns parsed benefits in seconds. |
-| **Coverage display from the 271** | What the payer returns, in plain English. |
+| **What the payer covers** | What the payer returns, in plain English. |
 | **Suggested Charges** | Expected copay, coinsurance, and deductible per appointment, with the math shown. |
 | **Pre-visit payment rules** | Request deposits, prior balances, or copays up front. |
 | **Text blasts** | Send batched texts to patients. |
 | **Patient eligibility report** | Coverage-status roster with CSV export. |
 | **Prior-auth tracking** | Worklist for authorizations, referrals, and their statuses. |
 | **Workers' comp & self-pay handling** | First-class registration paths for workers' comp, self-pay, and missing insurance. |
-| **AI insurance-card capture** | A photo of the card pre-fills payer, member ID, and group. |
 | **Digital check-in** | Patients complete intake and update insurance before they arrive. |
 | **Check-in & copay collection** | Counter preflight checks, plus collection on every payment rail. |
-| **Athelas card reader** | In-person card reader at the front desk. |
+| **Athelas card reader** | In-person card reader at the front desk. The hardware is purchased by your practice. |
 | **Saved cards on file** | Charge a stored card at the counter. |
 
 ## Charge Master
@@ -49,42 +48,43 @@ matching section for the full description, including a link to its guide where o
 | **Facility and non-facility rates** | Both rates on the same code, each adjustable without disturbing the other. |
 | **Payer mapping** | Payer-specific rows, with every name variant mapped to one canonical payer. |
 | **Future-dated changes** | Prices flip live on schedule, with no overlaps. |
-| **Multi-facility transfer** | Copy charges across facilities, as-is or scaled. |
+| **Copy charges to another facility** | As-is, or scaled to a different rate. |
 | **Charge audit history** | Every change, with before and after values, who made it, and when. |
 | **Self-pay fee schedule** | A separate cash-pay price list alongside your insurance rates. |
-| **Summary of Benefits** | Auto-built PDF summarizing a patient's verified benefits. |
+| **Benefits summary PDF** | Auto-built summary of a patient's verified benefits. |
 
 ## Rules & Submission
 
 | Capability | What it is |
 | :-- | :-- |
-| **Claim transformation & blocking rules** | Scrub, split, hold, or block claims, and view, toggle, and prioritize the rules that do it. |
-| **Draft → promote workflow** | New rules stay inactive until you deliberately activate them. |
+| **Rules that fix or hold a claim** | Scrub, split, hold, or block claims, and view, toggle, and prioritize the rules that do it. |
+| **Review a rule before it goes live** | New rules stay inactive until you deliberately activate them. |
 | **AI rule generation** | Describe a rule in plain language and get a working draft. |
-| **Impact preview** | See which claims and appointments a rule would touch before launch. |
+| **See which claims a rule would touch** | The claims and appointments a rule would affect, before you launch it. |
 | **Rule audit trail & rollback** | Every version kept, with one-click restore. |
 | **Plain-language rule view** | A human-readable summary next to each rule, with internal IDs resolved. |
-| **Full dry-run (historical replay)** | Before-and-after diff of a rule against past claims. |
-| **Phased rollout cap** | New rules apply to a sample of claims first, then expand. |
-| **Claim pre-flight review** | Build and validate a claim without sending it. |
+| **Test a rule against past claims** | A before-and-after comparison of what the rule would have changed. |
+| **Gradual rollout for new rules** | New rules apply to a sample of claims first, then expand. |
+| **Claim scrubbing before submission** | Build and validate a claim without sending it. |
 | **Electronic claim submission** | Validated, verified, then transmitted on the right route per payer. |
 | **Claims workspace** | One unified worklist for rejections, denials, and claim details. |
+| **Claim assignment & grouping** | Assign claims to individual billers and group a worklist by owner, so each person works their own list. |
 | **Bulk actions** | Multi-select claims and act at scale with 20+ bulk actions. |
 | **Defer claims** | Defer with a reason, to capture work done outside Insights. |
 | **Corrected-claim resubmission** | Proper correction coding, in bulk, duplicate-guarded. |
 | **Claim notes** | Comments on claims, single or bulk. |
-| **Records & attachments with claims** | Send supporting records by fax, email, mail, or electronically. |
-| **Athelas Assistant across a claim selection** | Ask anything and act across one claim or every claim you selected. |
-| **Unified claim context** | Submissions, remittances, payments, and attachments side by side. |
-| **Drug code (NDC) auto-resolution** | Correct NDC, units, and drug details filled in automatically on drug claims. |
-| **Managed EHR extraction** | Scheduled pull of appointments, encounters, charges, and records from your existing EHR. |
-| **Eligibility-enriched submission** | Claims enriched with fresh eligibility before they go out. |
-| **Create a claim manually** | Build a claim from scratch, with the same rules gate as any other. |
+| **Send records with a claim** | Send supporting records by fax, email, mail, or electronically. |
+| **Ask the Assistant about many claims at once** | Ask anything and act across one claim or every claim you selected. |
+| **The whole claim on one screen** | Submissions, remittances, payments, and attachments side by side. |
+| **NDC drug codes filled in automatically** | Correct NDC, units, and drug details filled in automatically on drug claims. |
+| **Automatic data pull from your EHR** | Scheduled pull of appointments, encounters, charges, and records from your existing EHR. |
+| **Fresh eligibility on every claim** | Eligibility is refreshed and attached to the claim before it goes out. |
+| **Create a claim manually** | Build a claim from scratch, with the same rules and validation as any other. |
 | **Payer claim status** | Payer-reported status on the claim and its timeline. |
 | **Claim voids** | Void a claim in product, with proper payer void coding. |
 | **One-click eligibility from the claim** | Run eligibility against any insurance on the claim. |
 | **Claim activity timeline** | Who or what changed the claim, and when. |
-| **Per-encounter block override** | Override a block on one encounter, with documented justification. |
+| **Override a block on one encounter** | Release a single encounter past a submission block, with documented justification. |
 | **AI Filters** | Describe the view you want and let AI sort, group, and filter. |
 
 ## A/R & Denials
@@ -93,7 +93,7 @@ matching section for the full description, including a link to its guide where o
 | :-- | :-- |
 | **Automatic 835 intake** | Remittances pull from every clearinghouse, with codes translated to plain English. |
 | **AI EOB transcription** | Scanned EOBs extracted line by line and confirmed against the image. |
-| **Posting review tool** | Dry-run any posting action, then commit. |
+| **Posting review tool** | Preview any posting action before it takes effect. |
 | **Adjustment code management** | Standard adjustment codes, viewable and mappable per site. |
 | **Working denials** | Denials grouped by reason, payer, and type, with dollars at risk per bucket. |
 | **Denial categorization** | Plain-English CARC and RARC views, with worked and recovered-revenue KPIs. |
@@ -101,8 +101,8 @@ matching section for the full description, including a link to its guide where o
 | **Appeal supporting docs** | Attach records to any claim, any time. |
 | **EOB creation & payer-portal checks** | Manual remittance intake for anything that never arrives as an 835. |
 | **Bulk EDI (835) download** | Download raw 835 files in bulk for external accounting or posting systems. |
-| **Zero-touch posting** | Balanced remittances post with no manual touch; only exceptions are held. |
-| **Contractual adjustments (ARES)** | Automatic write-offs, tagged regrettable or expected. |
+| **Remittances that post themselves** | Balanced remittances post with no manual touch; only exceptions are held. |
+| **Contractual adjustments** | Automatic write-offs, tagged regrettable or expected. |
 | **Appeals** | AI-drafted appeal letters, packet assembled and filed on the payer's channel. |
 | **Appeal status & history** | Per-claim appeal status, interleaved with full submission history. |
 | **A/R aging** | Bucket to payer to patient to claim, exportable as CSV or PDF. |
@@ -116,15 +116,15 @@ matching section for the full description, including a link to its guide where o
 
 | Capability | What it is |
 | :-- | :-- |
-| **Patient responsibility (PR) generation** | Auto-calculates what the patient owes and creates the charge. |
+| **Patient responsibility, calculated automatically** | Works out what the patient owes, then creates the charge. |
 | **Recurring patient statements** | Statements on your cadence across text, email, and mail, each with a pay link. |
 | **Send a single statement** | One-off statement to one patient, on any channel. |
-| **SmartPay hosted payments** | One-tap pay page supporting every payment method, posting instantly. |
+| **SmartPay pay-by-link** | One-tap pay page supporting every payment method, posting instantly. |
 | **Payment plans & patient subscriptions** | Auto-charged plans, plus recurring memberships and wellness plans. |
 | **PR breakdown** | Per-visit detail of billed, paid, adjusted, credits, refunds, and remaining. |
 | **Manage contact info** | Address, phone, and email in one place, auto-validated and tracked. |
-| **Failed-plan-charge detection** | Failed payment-plan charges are detected and recorded. |
-| **PR Explainability** | Charge-level explanation of exactly why a patient owes what they owe. |
+| **Failed payment-plan charges are flagged** | Detected and recorded the moment a scheduled charge fails, so nothing goes quietly unpaid. |
+| **Why a patient owes what they owe** | A line-by-line breakdown of the balance, charge by charge. |
 | **Manage financial guarantor** | Responsible-party setup with duplicate detection, reusable across patients. |
 | **Gift cards** | Pre-funded credits with a unique code and tracked running balance. |
 
@@ -136,7 +136,7 @@ matching section for the full description, including a link to its guide where o
 | **Reconciliation reports** | Deposits, ERAs, and postings, with match review and export. |
 | **Patient refunds** | Refund on any rail, with item-level re-allocation and permission gating. |
 | **Month-end close** | Month-end summary, A/R aging, reconciliation exports, and cash-drawer recon. |
-| **Card-rail ledger integrity** | Charges, refunds, disputes, and payouts all write the ledger as they happen. |
+| **Every card event hits your ledger** | Charges, refunds, disputes, and payouts, all written as they happen. |
 | **Lockbox & sweep setup** | Lockbox accounts configured with you, as an optional add-on. |
 | **Payer clawback handling** | Payer takebacks handled automatically, as reversals that preserve history. |
 | **Secondary / tertiary forwarding** | Automatic COB forwarding after the primary pays. |
