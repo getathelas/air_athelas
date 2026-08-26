@@ -4,33 +4,24 @@ sidebarTitle: "Overview"
 mode: "wide"
 ---
 
-**Everything that used to take a back-and-forth with support, you can now do yourself.**
+**The engine behind our managed RCM service. Your team at the controls.**
 
-Change a billing rule. Reprice a fee schedule. Work a denial. Close your month. In Practice Manager,
-you can do all of it directly.
-
-It is the same platform and the same claims engine behind our fully-managed revenue cycle service,
-with your team at the controls instead of ours. It is built for practices that already have a billing
-team and would rather keep billing in their own hands.
-
-The two sections below are the ones most people want first: what Athelas sets up, and what your team
-runs. Everything after that is the catalog of what you get, labeled so you can tell what is generally
-available from what is still in beta.
+Practice Manager is the same platform and the same engine behind our fully-managed revenue cycle service, with your team at the controls. It is built for practices that already have a billing team and run it on a smoother, more customized platform.
 
 ## Who configures what
 
-Athelas pre-configures the billing rules that apply globally, plus the plumbing every practice needs.
-You configure everything specific to your practice.
+Athelas pre-configures the billing rules that apply globally, plus the plumbing every practice needs. You configure everything specific to your practice.
 
 <Columns cols={2}>
-  <Card title="Athelas pre-configures" icon="sliders" iconType="duotone" color="#F9345F">
+  <Card title="Athelas pre-configures" color="#F9345F" icon="sliders" iconType="duotone">
     - Billing rules that apply globally, as the foundation you build on
     - EDI and ERA enrollments with every payer
     - Your Stripe account, and the card readers you order
     - The integration into your existing EHR
     - Automatic claim creation, so your rules build the claim once the note is signed
   </Card>
-  <Card title="You configure" icon="user-gear" iconType="duotone" color="#F9345F">
+
+  <Card title="You configure" color="#F9345F" icon="user-gear" iconType="duotone">
     - Your own site-specific billing rules
     - Submission rules and timing
     - Your patient statement cadence
@@ -39,105 +30,91 @@ You configure everything specific to your practice.
   </Card>
 </Columns>
 
-Your Athelas team runs one-time onboarding and training during launch, so none of this starts from a
-blank page.
+Note that our Athelas team runs one-time onboarding and training during launch, so none of this starts from a blank page.
 
-## What your team owns
+## What stays with your team
 
-Automation covers the standard path. These are the places your team stays in control:
+Nobody outside your practice touches a claim, the queue is yours end to end, which includes:
 
-- **Payers that only accept paper.** Some payers still require a mailed claim. You build it in
-  Practice Manager the same way as any other, and your team mails it. If you would rather Athelas
-  handle the mailing, that is a pass-through arrangement to set up with your Athelas team.
-- **Eligibility runs through the clearinghouse.** When a payer is not reachable there, your team
-  handles the call into the payer directly.
-- **Prior authorization.** Eligibility tells you what is covered, not whether an authorization is
-  required. Your team confirms that with the payer.
-- **Workers' comp.** Registration and follow-up stay with your team, with first-class fields for them
-  in the product rather than workarounds.
-- **Anything outside automation is yours to work.** There is no Athelas back-office picking up the
-  remainder, which is the point: nobody touches your claims but your team.
-- **Patient billing questions come to you.** All inbound patient billing calls route to your team.
+- **Patients talk to you.** Every inbound billing call routes to your team, so the person answering knows the practice and the patient.
+- **Prior authorization is your call.** Eligibility tells you what's covered; whether an authorization is required is a conversation with the payer, and your team owns it.
+- **Workers' comp stays in-house.** Registration and follow-up are yours, with first-class fields in the product rather than workarounds.
+- **Paper payers work like any other.** A few payers still require a mailed claim. You build it in Practice Manager exactly as you would an electronic one, and your team drops it in the mail. 
+- **Eligibility gaps route to you.** Eligibility runs through the clearinghouse. When a payer isn't reachable there, your team makes the call directly.
 
 ## How the platform is built
 
-Practice Manager is not a pile of features. It is three pillars, and everything in the catalog below
-is one of them.
+Practice Manager rests on three pillars. Every capability we offer belongs to one of them.
 
 ### <Icon icon="wand-magic-sparkles" iconType="duotone" color="#F9345F" size={23} /> Automations
 
-**Work less.** Your rules do the rote work, so your team doesn't.
-
-Eligibility runs on every encounter rather than just initial evaluations. Patient responsibility is
-calculated from live benefits before the patient arrives. Payment plans charge themselves once
-configured. Deposits match themselves to the claims they actually paid.
-
-Rules are grouped by what they act on, from building and modifying claims before submission to
-posting remittances and taking adjustments. New ones stay as drafts until you review and turn them on.
-
 ![The Automations page, with rules grouped by type and drafts waiting for review](/images/practice_manager/overview/overview_1.webp)
+
+**Work less.** Your rules do the rote work, so your team can focus on what's more important.
+
+Eligibility runs on every encounter rather than just initial evaluations. Patient responsibility is calculated from live benefits before the patient arrives. Payment plans charge themselves once configured. Deposits match themselves to the claims they actually paid.
+
+Rules are grouped by what they act on, from building and modifying claims before submission to posting remittances and taking adjustments. New ones stay as drafts until you review and turn them on.
 
 ### <Icon icon="table-columns" iconType="duotone" color="#F9345F" size={23} /> Workspaces
 
-**Work fast.** One person acts on hundreds of claims at once.
-
-Claims, denials, remittances, appointments, and patients, each with deep filters, saved views per
-user, and bulk actions.
-
-Every claim carries its status, stage, and owner on the same row, so a biller can tell what a claim is
-waiting on without opening it. Assign and group claims by owner, and each biller works their own list.
-
 ![The Claims page, showing claim status, stage, and assignee across saved views](/images/practice_manager/overview/overview_2.webp)
+
+**Work fast.** One person can now acts on hundreds of claims at once.
+
+Claims, denials, remittances, appointments, and patients, each with deep filters, saved views per user, and bulk actions.
+
+Every claim carries its status, stage, and owner on the same row, so a biller can tell what a claim is waiting on without opening it. Assign and group claims by owner, and each biller works their own list.
 
 ### <Icon icon="chart-column" iconType="duotone" color="#F9345F" size={23} /> Analytics
 
-**Work smart.** See what's working and where you can improve.
-
-The throughput of your automations and your billing team, and the financial outcome of every month
-of service. Every number opens to the claims behind it.
-
-First-pass rate, collection rate, time to decision, and denial rate all sit on one screen, each
-compared against the prior period so a trend is visible without building a report.
-
 ![The Practice Insights dashboard, with first-pass rate, collection rate, denial rate, and historical payments](/images/practice_manager/overview/overview_3.webp)
 
-**Billing work is shared across all three.** Claims can be assigned to a specific biller, and the
-Athelas Assistant reads your live billing data and acts on a single claim or every claim you have
-selected.
+**Work smart.** See what's working and where you can improve.
+
+The throughput of your automations and your billing team, and the financial outcome of every month of service. Every number opens to the claims behind it.
+
+First-pass rate, collection rate, time to decision, and denial rate all sit on one screen, each compared against the prior period so a trend is visible without building a report.
 
 ## Browse the catalog
 
 <Columns cols={2}>
-  <Card title="Setup & Admin" icon="gear" iconType="duotone" color="#F9345F" href="/practice_manager/setup_and_admin">
+  <Card title="Setup & Admin" color="#F9345F" icon="gear" iconType="duotone" href="/practice_manager/setup_and_admin">
     Roles and permissions, practice and provider settings, credentialing, appointment types.
   </Card>
-  <Card title="Pre-Visit & Check-In" icon="calendar-check" iconType="duotone" color="#F9345F" href="/practice_manager/pre_visit_and_check_in">
+
+  <Card title="Pre-Visit & Check-In" color="#F9345F" icon="calendar-check" iconType="duotone" href="/practice_manager/pre_visit_and_check_in">
     Reminders, eligibility, prior auth, digital intake, and collecting at the counter.
   </Card>
-  <Card title="Charge Master" icon="tags" iconType="duotone" color="#F9345F" href="/practice_manager/charge_master">
+
+  <Card title="Charge Master" color="#F9345F" icon="tags" iconType="duotone" href="/practice_manager/charge_master">
     Fee schedules, payer mapping, facility and non-facility rates, and self-pay pricing.
   </Card>
-  <Card title="Rules & Submission" icon="paper-plane" iconType="duotone" color="#F9345F" href="/practice_manager/submission_and_rules">
+
+  <Card title="Rules & Submission" color="#F9345F" icon="paper-plane" iconType="duotone" href="/practice_manager/submission_and_rules">
     The rules engine, claim scrubbing before submission, and the claims workspace.
   </Card>
-  <Card title="A/R & Denials" icon="chart-column" iconType="duotone" color="#F9345F" href="/practice_manager/ar_and_denials">
+
+  <Card title="A/R & Denials" color="#F9345F" icon="chart-column" iconType="duotone" href="/practice_manager/ar_and_denials">
     Remittance intake, posting, working denials, and the reports leadership asks for.
   </Card>
-  <Card title="Patient Billing" icon="file-invoice-dollar" iconType="duotone" color="#F9345F" href="/practice_manager/patient_billing">
+
+  <Card title="Patient Billing" color="#F9345F" icon="file-invoice-dollar" iconType="duotone" href="/practice_manager/patient_billing">
     Patient responsibility, statements, SmartPay, and payment plans.
   </Card>
-  <Card title="Reconcile & Refund" icon="scale-balanced" iconType="duotone" color="#F9345F" href="/practice_manager/reconcile_and_refund">
+
+  <Card title="Reconcile & Refund" color="#F9345F" icon="scale-balanced" iconType="duotone" href="/practice_manager/reconcile_and_refund">
     Deposit verification, reconciliation reports, refunds, and month-end close.
   </Card>
-  <Card title="Full capability list" icon="list" iconType="duotone" color="#F9345F" href="/practice_manager/capabilities">
+
+  <Card title="Full capability list" color="#F9345F" icon="list" iconType="duotone" href="/practice_manager/capabilities">
     Every capability on one page, if you would rather scan than browse.
   </Card>
 </Columns>
 
 ## How to read the tables
 
-Each capability lists what it does, whether it is generally available or in beta, and a link to its
-guide.
+Each capability lists what it does, whether it is generally available or in beta, and a link to its guide.
 
 | Label | Meaning |
 | :-- | :-- |
