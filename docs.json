@@ -64,7 +64,7 @@
               "air_admin/manage_your_practice/register_providers_rx",
               "air_front_desk/manage_your_tasks/tasks",
               "air_admin/manage_your_practice/plan_of_care_tracking",
-              "untitled-page"
+              "air_admin/manage_your_practice/pdmp_registration"
             ]
           },
           {
@@ -742,6 +742,10 @@
     {
       "source": "/air_front_desk/manage_your_tasks/faxes",
       "destination": "/air_provider/review_patient_details/faxing"
+    },
+    {
+      "source": "/untitled-page",
+      "destination": "/air_admin/manage_your_practice/pdmp_registration"
     }
   ]
 }

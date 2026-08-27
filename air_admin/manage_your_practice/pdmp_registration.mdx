@@ -1,0 +1,127 @@
+---
+title: "PDMP Registration"
+sidebarTitle: "PDMP Registration"
+toc: "true"
+---
+
+Prescription Drug Monitoring Program (PDMP) access lets your prescribers pull a patient's controlled-substance dispensing history from the state registry. Access is granted by each state's PDMP administrator through **Bamboo Health Customer Connect**, so you register on Bamboo Health's site rather than in Air Clinical. Once the state approves your organization, Bamboo Health issues the credentials that connect the PDMP to Air Clinical.
+
+<Warning>
+  State approval takes an estimated **2–4 weeks**. Start this registration well before you need PDMP access to be live.
+</Warning>
+
+## Before You Start
+
+Gather the following before you open the order form:
+
+- Every **state** where your organization has facility locations. Multi-state organizations register for all of their states in a single application.
+- The number of hospitals, pharmacies, provider offices, pharmacists, and qualified prescribers **your organization owns** — not the number you work with.
+- Your organization's corporate address and website.
+- Your software vendor name: **Commure Inc DBA Athelas**.
+
+## Create a Customer Connect Account
+
+**To create your account:**
+
+1. Visit [**connect.bamboohealth.com**](https://connect.bamboohealth.com).
+2. Click **Create an Account** in the top right.
+3. Follow the prompts to set your login credentials.
+
+## Complete the Order Form
+
+The order form is an eight-step wizard: **Profile → Organization → Vendor → Product Options → Billing → Review → Agreements → Complete**. You can save your progress and return later, and required documents (such as the PMP Gateway Licensee Profile and the EULA) appear inside the workflow as you reach them.
+
+### Profile
+
+Enter the contact details for the person managing this registration. Your entries here do not change your Customer Connect login information.
+
+![Profile Information step of the Bamboo Health Customer Connect order form](/images/air_admin/manage_your_practice/pdmp_registration/pdmp_registration_1.png)
+
+### Organization
+
+Enter your organization's name, type, corporate address, and website.
+
+Under **General Information**, enter the number of hospitals, pharmacies, provider offices, pharmacists, and qualified prescribers **your organization owns**. Bamboo Health passes these counts to the state PDMP administrator as an estimate of how many people will use the PDMP.
+
+![Organization Information step showing the General Information counts](/images/air_admin/manage_your_practice/pdmp_registration/pdmp_registration_2.png)
+
+In **Facility Locations**, select every state in which your organization has facilities. Customer Connect uses this list to decide which products, pricing, and state-specific questions to show you on the next steps.
+
+![Facility Locations multi-select with several states added](/images/air_admin/manage_your_practice/pdmp_registration/pdmp_registration_3.png)
+
+### Vendor
+
+Set **Primary Software Vendor** to **Commure Inc DBA Athelas**. Leave **Primary Software Version** blank, and answer **Do you wish to integrate with multiple vendors?** based on whether you use another prescribing system alongside Air Clinical.
+
+![Software Vendor step with Commure Inc DBA Athelas selected](/images/air_admin/manage_your_practice/pdmp_registration/pdmp_registration_4.png)
+
+### Product Options
+
+Customer Connect lists the products and pricing available for each state you selected, then asks the state-specific questions those PDMPs require — for example, whether your organization participates in a state health information exchange. Choose how many prescriber and pharmacy licenses you want in each state.
+
+<video controls className="w-full aspect-video rounded-xl">
+  <source src="/images/air_admin/manage_your_practice/pdmp_registration/pdmp_registration_5.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+**Note:** Product options and pricing differ by state, and access is still subject to approval on a per-state basis.
+
+### Billing and Review
+
+Check the order summary before you submit. States that fund their PDMP program cover the licensing fees, so those lines show a cost of **\$0.00**; non-funded states bill the per-prescriber fees to your practice.
+
+![Review Order step showing the order summary and total](/images/air_admin/manage_your_practice/pdmp_registration/pdmp_registration_6.png)
+
+## Non-Funded States
+
+You can purchase PDMP services for non-funded states during registration unless a custom onboarding process prohibits it. In these states, providers pay the licensing fees.
+
+| **State**            | **Funding status**                                                             |
+| :------------------- | :----------------------------------------------------------------------------- |
+| **California (CA)**  | Non-funded — providers pay                                                      |
+| **Colorado (CO)**    | Non-funded — providers pay                                                      |
+| **Hawaii (HI)**      | Non-funded — providers pay                                                      |
+| **Kentucky (KY)**    | Non-funded — providers pay                                                      |
+| **Maryland (MD)**    | Non-funded — providers pay                                                      |
+| **Mississippi (MS)** | Non-funded — providers pay                                                      |
+| **Pennsylvania (PA)**| Non-funded — providers pay                                                      |
+| **Rhode Island (RI)**| Non-funded — providers pay                                                      |
+| **South Dakota (SD)**| Non-funded — providers pay                                                      |
+| **Texas (TX)**       | Historically non-funded, but state-funded access may now exist — confirm with Bamboo Health |
+| **Utah (UT)**        | Non-funded or limited — providers pay for PMP data                              |
+| **Washington (WA)**  | Non-funded — providers pay                                                      |
+| **Wyoming (WY)**     | Non-funded — providers pay                                                      |
+
+**Note:** This list reflects funding as of 2026. Customer Connect shows the funding and products actually available for each state as you complete the order form, so treat the form as the source of truth.
+
+## Credential Issuance
+
+After you submit the order form, Bamboo Health sends a PDMP query request to each state's PDMP administrator. Your account stays **pending** until the state finishes its approval.
+
+Once approved — an estimated 2–4 weeks — credentials are issued to your EHR integration partner (Air Clinical) or to the designated health-entity contact for your organization. Which one receives them depends on the integration agreements already in place.
+
+### FAQ
+
+<Accordion title="How long does PDMP approval take?">
+  Plan for **2–4 weeks** from submission. Approval is handled by each state's PDMP administrator, not by Bamboo Health or Athelas, so the timeline is outside Athelas's control. Submit the order form as early as you can.
+</Accordion>
+
+<Accordion title="We operate in several states. Do we submit a separate application for each one?">
+  No. Select every state on the **Facility Locations** field of the **Organization** step, and Customer Connect builds one application covering all of them. Each state still approves your organization separately, so states may go live at different times.
+</Accordion>
+
+<Accordion title="What do we enter for the software vendor?">
+  Enter **Commure Inc DBA Athelas** as the **Primary Software Vendor**. You can leave **Primary Software Version** blank.
+</Accordion>
+
+<Accordion title="Will we be charged for PDMP access?">
+  It depends on the state. Most states fund their PDMP program and cover the licensing fees, which show as **\$0.00** on the order summary. In non-funded states, providers pay the per-prescriber fee. Customer Connect shows the exact cost for each state before you submit.
+</Accordion>
+
+<Accordion title="Do the General Information counts include the practices we work with?">
+  No. Enter only the hospitals, pharmacies, provider offices, pharmacists, and qualified prescribers **your organization owns**. Do not count organizations you refer to or partner with.
+</Accordion>
+
+<Accordion title="Can we save the application and finish it later?">
+  Yes. Customer Connect saves your progress, so you can leave the order form and return to it. Nothing is sent to the state PDMP administrator until you submit.
+</Accordion>
