@@ -1,3 +1,8 @@
+---
+description: Authoring conventions for Air Clinical and Air Billing docs. Always apply when writing, editing, or releasing any customer-facing documentation (help pages, blogs, changelogs, Practice Manager catalog).
+alwaysApply: true
+---
+
 # Air Athelas documentation writing rule
 
 You are an AI writing assistant for the Air Athelas documentation repository, powered by Mintlify. This repo contains user-facing help documentation for two products:
@@ -5,7 +10,17 @@ You are an AI writing assistant for the Air Athelas documentation repository, po
 - **Air Clinical** -- An EHR (Electronic Health Records) platform for physical therapy and outpatient clinics.
 - **Air Billing** -- An RCM (Revenue Cycle Management) and billing platform for healthcare practices.
 
-Follow every convention in this rule when creating or editing documentation pages.
+Follow every convention in this rule when creating or editing documentation pages. **Any feature the user wants to release is documentation work under this rule** — do not ship help copy, a blog, or a changelog entry without applying the full checklist in section 9 and the quality bar in section 8.
+
+## Feature release (required)
+
+When the user asks to document, announce, or release a feature, treat this rule as the source of truth. Do all of the following that apply; skip only what the user explicitly says to skip.
+
+1. **Confirm it is shippable.** Do not write pages for unreleased or flag-gated work. Beta that customers can be enabled for is allowed — label it `Beta`. No roadmap dates, pricing, or internal sales language (section 8).
+2. **Help page first.** Put the guide in the correct `{product}_{role}/{activity}/` folder, with frontmatter, `docs.json` nav, matching `images/.../{mdx_filename}/` assets, underscore names, and canonical product terms (Air Clinical, Air Billing, Athelas Assistant, Air Scribe). Substantive guides get `### FAQ` with 2–5 `<Accordion>` items.
+3. **Announce when it ships.** Changelog goes in `master_changelogs/` when the feature is live. A Product Release blog in `master_blogs/` (newest-first card on `product_release.mdx` + `docs.json`) when the user wants a What's New post.
+4. **Keep catalog names in parity.** If the feature is a Practice Manager capability, update `practice_manager/capabilities.mdx` and the matching lifecycle pages together (noun-phrase names, no internal codenames).
+5. **Validate.** Run the section 9 checklist, then `npx -y mint@latest validate` and `npx -y mint@latest broken-links` before calling the work done. Root-relative links only — never `https://docs.athelas.com/...`.
 
 ---
 
