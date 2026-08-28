@@ -1,0 +1,206 @@
+---
+title: "Inbound Lead / Referral Tracker"
+---
+
+## Overview
+
+The Lead Tracker provides a structured approach to handling leads by breaking down the process into various stages and sub-stages. This allows for a clear visualization of where each lead stands in the pipeline and what actions are needed to move them forward. The system is highly customizable, enabling users to tailor the stages, statuses, and referral types to fit their specific workflow and business needs.
+
+<aside>
+  🆕 **What's new (recent improvements)**
+</aside>
+
+- **Filtering upgrades:** filter leads by sub-stage, responsible staff, and referring provider (plus stage and patient search).
+- **Landing page revamp:** refreshed hero/header layout, plus a full thank-you page after a patient submits.
+- **Richer lead records:** leads now capture patient address and insurance information.
+- **Outreach write-back:** outbound calls tied to a lead write their outcome back automatically.
+- **Automatic patient linking:** lead-to-patient linking applies across all appointment-creation flows.
+
+## How it helps?
+
+1. **Improved Organization**: By categorizing leads into stages and sub-stages, the Lead Tracker helps maintain an organized and systematic approach to lead management. This organization reduces the risk of leads falling through the cracks and ensures that each lead is handled efficiently.
+2. **Full Customization**: The Lead Tracker is fully customizable, allowing users to configure the system to match their unique requirements. This includes setting up custom stages, defining specific referral types, and adjusting the interface to align with user preferences and organizational goals.
+3. **Increased Efficiency**: The ability to move leads through stages and update their information in real-time enhances the overall efficiency of the lead management process. Users can quickly adapt to changes and ensure that leads are progressing as expected.
+4. **Data-Driven Insights**: By tracking leads and their outcomes, the Lead Tracker provides valuable data that can be analyzed to improve strategies and processes. This data-driven approach helps in identifying trends, understanding lead sources, and optimizing the conversion process.
+
+## Key concepts
+
+| **Term** | **Meaning** |
+| --- | --- |
+| Stage | Stages represent the different phases a lead goes through in the tracking process. |
+| Sub-stage | Sub stages are specific steps within a stage that provide more granular tracking of a lead's progress. |
+| Referral type | Referral types categorize the source or reason for a lead's entry into the system, helping to understand lead's origin and tailoring the approach accordingly. (e.g. Friend/Family, TV ad, County Fair) |
+| Lead | An entry that contains the potential patient’s information along with crucial metadata, such as the referral type and the stage they are on at that moment. |
+| Reporting category | A classification used to group leads for reporting purposes, allowing for better analysis and insights. |
+| Treatment Declined | A feature to mark leads that have declined treatment, useful for tracking and reporting. |
+
+---
+
+## Configuring the Lead tracker
+
+### Lead stages
+
+Open **Lead Tracker settings** to manage stages and sub-stages. Add a stage with the `+` button; drag to reorder, rename inline, or delete.
+
+Click a stage to configure its:
+
+- **Visible columns** — show/hide and reorder the columns shown for that stage.
+- **Sub-stages** — add multiple per stage, each with its own name and color; reorder as needed.
+- **Reporting category** — defaults to `No Category`; set it to feed the KPI metrics (see Reporting).
+
+Click **Save Changes** to apply — edits aren't saved until you do.
+
+<aside>
+  📷 *\[Screenshot: stage settings with sub-stages, columns, and reporting category]*
+</aside>
+
+### Lead Referral types
+
+In **Lead Tracker settings → Referral Types**, use **\+ Add New** to create a type, the pencil icon to rename, and the delete icon to remove one. Click **Save Changes** to apply.
+
+<aside>
+  📷 *\[Screenshot: Referral Types tab in settings]*
+</aside>
+
+---
+
+## Leads
+
+<aside>
+  ℹ️ **Beyond the basics:** leads also capture patient address and insurance. When a patient or appointment is created during an outbound call tied to a lead, the result is written back automatically, and patient linking works across all appointment-creation flows.
+</aside>
+
+### Creating a lead
+
+Click **\+ New** to open the lead drawer, fill in the fields below, then click **Save**. The new lead appears in the table.
+
+- **Patient info** — name, phone, DOB (plus address & insurance).
+- **Referral type & facility** — pick from your configured types and the site's facilities.
+- **Stage & sub-stage** — sub-stage options depend on the selected stage.
+- **Optional** — referring provider, initial/last contact dates, and the responsible staff member.
+
+<aside>
+  📷 *\[Screenshot: New lead drawer]*
+</aside>
+
+### Modifying a lead
+
+Click the **pencil** icon on a row to edit its referral details and progress, then click **Save**.
+
+Note: changing the **stage** clears the sub-stage, so reselect a sub-stage before saving.
+
+<aside>
+  📷 *\[Screenshot: Edit lead drawer]*
+</aside>
+
+### Linking a lead to a new patient
+
+Edit the lead (**pencil** icon), click **Create Patient**, confirm, then **Save**. A linked-patient link appears on the row and opens the patient's demographics in a new tab.
+
+<aside>
+  📷 *\[Screenshot: Create/link patient confirmation]*
+</aside>
+
+### Linking a lead to an existing patient
+
+Edit the lead, click **Link Patient**, search by name, select the patient, then **Save**.
+
+<aside>
+  📷 *\[Screenshot: Link existing patient search]*
+</aside>
+
+### Marking a lead as `Treatment Declined`
+
+Edit the lead, click **Treatment Declined** (bottom-right of the drawer), choose a reason (plus optional details), and **Submit**. Declined leads move to the **Declined Treatment** bucket. This can be undone.
+
+<aside>
+  📷 *\[Screenshot: Treatment Declined modal]*
+</aside>
+
+### Filtering & searching leads
+
+Use the filter and search controls at the top of the tracker to narrow the list to the leads you care about. You can filter by:
+
+- **Stage** — show only leads currently in a selected stage.
+- **Sub-stage** — drill down to a specific sub-stage for finer granularity (e.g. see how many leads sit at each step within a stage).
+- **Responsible staff member** — see the leads assigned to a particular team member.
+- **Referring provider** — filter by the provider who referred the lead.
+- **Patient name search** — type a name to quickly locate a specific lead.
+
+<aside>
+  📷 *\[Screenshot placeholder: filter bar showing stage / sub-stage / staff / provider filters applied]*
+</aside>
+
+---
+
+## Lead Tracker Reporting
+
+You can observe useful KPI metrics by assigning categories to lead tracker stages.
+
+### Configuring reporting category for a stage
+
+In **Lead Tracker settings**, open a stage and set its **Reporting category** — `Converted`, `In Progress`, or `No Category` (default). Click **Save Changes**.
+
+### KPI metrics and downloading the report
+
+Go to **Performance Analysis → Lead Tracker**, set the date range (defaults to the last 7 days), and click the **Overall Conversion** card for the detailed breakdown. Metrics can be exported as **CSV**.
+
+Metrics shown (overall and per-facility):
+
+- Total leads created, and converted (stages tagged `Converted`) with conversion %.
+- Therapy Refused count & % (leads marked Treatment Declined).
+- In Progress count & % (stages tagged `In Progress` or `No Category`).
+
+<aside>
+  📷 *\[Screenshot: KPI metrics dialog]*
+</aside>
+
+---
+
+## Custom landing page
+
+You have the ability to also build a custom landing page to add on your site. Forms filled by the potential patients directly feed in to the lead tracker.
+
+### Configuration
+
+Open **Lead Tracker → Tracker Settings → Landing Page** tab. Toggle **Landing Page Active Status** on, configure the required fields (default stage, referral type, logo, heading/sub-heading), and click **Save Changes**.
+
+<aside>
+  🔗 The public form's link is available via the **Preview** button.
+</aside>
+
+<aside>
+  📷 *\[Screenshot: Landing Page settings tab]*
+</aside>
+
+### External website
+
+The public form (hosted on the Athelas Leads site) shows your custom **logo, header, and sub-header**. Patients fill in name, phone, email, DOB, and pick a preferred facility (with an optional message), then **Submit**.
+
+A lead is created automatically with the default stage and referral type set during configuration.
+
+<aside>
+  📷 *\[Screenshot: Public landing-page form]*
+</aside>
+
+### Submission success / thank-you page
+
+After submitting, patients now see a full thank-you page (instead of just a toast with the form still visible), which also improves conversion tracking on the “Request an Appointment” flow.
+
+<aside>
+  🎬 *\[GIF: form submit → full thank-you page]*
+</aside>
+
+---
+
+## Intelligent inbound fax parsing (auto-create leads)
+
+When enabled for a site (`enable_auto_fax_lead_generation` setting), inbound faxes are AI-classified; if a fax is identified as a referral, a lead is created automatically and linked back to the originating fax.
+
+- **Inbound faxing:** the fax is received and classified by the AI pipeline.
+- **Validation:** referral faxes are matched to a patient by name \+ DOB (ambiguous/multi-match cases are skipped for manual review).
+- **Lead creation:** a new lead is generated with the parsed details and the source fax attached.
+
+<aside>
+  📷 *\[GIF/screenshot: fax → auto-created lead]*
+</aside>
