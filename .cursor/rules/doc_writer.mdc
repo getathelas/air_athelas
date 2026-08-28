@@ -394,7 +394,7 @@ python3 scripts/proofread.py            # files changed vs main
 python3 scripts/proofread.py --pronouns practice_manager/overview.mdx
 ```
 
-It checks doubled words, modals followed by an inflected verb, `-ly` hyphens, spacing, and `a`/`an`, and exits non-zero on a hit. A clean run is not a proofread; it only clears the errors a regex can see. Then read the page for the rest:
+It checks doubled words, modals followed by an inflected verb, `-ly` hyphens, spacing, `a`/`an`, and full-domain self-links, and exits non-zero on a hit. A clean run is not a proofread; it only clears the errors a regex can see. Then read the page for the rest:
 
 - **Every pronoun has exactly one possible antecedent, and it is the intended one.** `it`, `this`, `they`, and `them` attach to the nearest matching noun, not to the noun you had in mind. "practices that already have a billing team and want to run it on a smoother platform" says the practice runs *the team* on a platform. Name the thing instead: "want to run their own billing." `--pronouns` lists every one of them for you.
 - **Every sentence has a subject and a finite verb.** Feature copy drifts into fragments: "Claims, denials, remittances, and patients, each with deep filters and bulk actions." Give it a verb.
@@ -879,8 +879,9 @@ off. Pair every responsibility with the tool the product gives them for it.
 
 Use root-relative paths (`/insights_biller/reports/month_end_close`), never the full domain.
 `mint broken-links` treats `https://docs.athelas.com/...` as an external URL and reports it green even
-when the target page no longer exists, so full-domain self-links silently rot. Grep for
-`docs.athelas.com` before opening a PR.
+when the target page no longer exists, so full-domain self-links silently rot. `scripts/proofread.py`
+now flags them (`self-domain-link`); it skips URLs inside backticks, which are shown as text rather
+than linked.
 
 ### Writing style summary
 

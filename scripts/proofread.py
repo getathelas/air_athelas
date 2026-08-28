@@ -62,6 +62,9 @@ CHECKS = [
     ("trailing-space",
      re.compile(r"[ \t]+$"),
      "trailing whitespace"),
+    ("self-domain-link",
+     re.compile(r"https?://(?:docs|trainings\.air)\.athelas\.com\S*"),
+     "link to this site's own domain; use a relative path so broken-links can see it"),
     ("a-an",
      re.compile(r"\ba\s+(?=[aeio])(?!(?:one|once|eu)\w*\b)[a-z]+\b"),
      "'a' before a vowel sound (use 'an')"),
@@ -122,6 +125,11 @@ def scan(path, pronoun_mode):
                 m = pat.search(raw)
                 if m:
                     hits.append((i, name, msg, "%d space(s)" % len(m.group(0))))
+                continue
+            if name == "self-domain-link":
+                # A URL inside backticks is displayed as text, not linked.
+                for m in pat.finditer(re.sub(r"`[^`]*`", NUL, raw)):
+                    hits.append((i, name, msg, m.group(0)))
                 continue
             if is_markup(raw):
                 continue
