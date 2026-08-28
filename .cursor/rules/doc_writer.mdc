@@ -383,6 +383,28 @@ Create a new object in the appropriate tab's `groups` array:
 - Keep sentences concise while providing necessary context.
 - Use parallel structure in lists, headings, and procedures.
 
+### Copyedit pass
+
+Every page gets one reading pass for grammar before it goes up for review. A reviewer who is catching subject-verb errors has stopped reading for accuracy, and accuracy is the expensive thing to miss.
+
+Start with the script:
+
+```bash
+python3 scripts/proofread.py            # files changed vs main
+python3 scripts/proofread.py --pronouns practice_manager/overview.mdx
+```
+
+It checks doubled words, modals followed by an inflected verb, `-ly` hyphens, spacing, `a`/`an`, and full-domain self-links, and exits non-zero on a hit. A clean run is not a proofread; it only clears the errors a regex can see. Then read the page for the rest:
+
+- **Every pronoun has exactly one possible antecedent, and it is the intended one.** `it`, `this`, `they`, and `them` attach to the nearest matching noun, not to the noun you had in mind. "practices that already have a billing team and want to run it on a smoother platform" says the practice runs *the team* on a platform. Name the thing instead: "want to run their own billing." `--pronouns` lists every one of them for you.
+- **Every sentence has a subject and a finite verb.** Feature copy drifts into fragments: "Claims, denials, remittances, and patients, each with deep filters and bulk actions." Give it a verb.
+- **Verbs agree with their subjects, and modals take the bare infinitive.** "One person can now acts on hundreds of claims."
+- **Two independent clauses are not joined by a comma.** Use a semicolon, a period, or a conjunction.
+- **Modifiers sit next to what they modify**, and a two-item list takes no comma before `and`.
+- **Nothing is said twice.** A lede that restates the tagline verbatim is a paragraph the reader skips.
+
+Read the page out loud. Errors that survive silent reading rarely survive being said.
+
 ### Content organization
 
 - Lead with the most important information (inverted pyramid structure).
@@ -857,8 +879,9 @@ off. Pair every responsibility with the tool the product gives them for it.
 
 Use root-relative paths (`/insights_biller/reports/month_end_close`), never the full domain.
 `mint broken-links` treats `https://docs.athelas.com/...` as an external URL and reports it green even
-when the target page no longer exists, so full-domain self-links silently rot. Grep for
-`docs.athelas.com` before opening a PR.
+when the target page no longer exists, so full-domain self-links silently rot. `scripts/proofread.py`
+now flags them (`self-domain-link`); it skips URLs inside backticks, which are shown as text rather
+than linked.
 
 ### Writing style summary
 
@@ -905,6 +928,8 @@ Before committing new or modified content, verify:
 - [ ] Image files follow `{mdx_filename}_{N}.{ext}` naming
 - [ ] Image references in the MDX use the correct full path
 - [ ] `docs.json` navigation is updated with the page path (no `.mdx` extension)
+- [ ] `python3 scripts/proofread.py` reports no issues on the changed files
+- [ ] The page has had the copyedit pass from section 5: every pronoun resolves to one noun, every sentence has a finite verb, no comma splices
 - [ ] Frontmatter includes at least `title`
 - [ ] If the page has an FAQ, the heading is exactly `### FAQ` (2-5 accordion items); substantive guides should include one
 - [ ] No orphaned image folders or duplicate files
