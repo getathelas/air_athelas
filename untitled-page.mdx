@@ -145,13 +145,11 @@ The public form (hosted on the Athelas Leads site) shows your custom **logo, hea
 
 After submitting, patients now see a full thank-you page (instead of just a toast with the form still visible), which also improves conversion tracking on the “Request an Appointment” flow.
 
-<video src="/videos/landing-page-lead-creation.mp4" controls />
-
 <video src="/videos/landing-page-lead-creation-1.mp4" controls />
 
 ## Intelligent inbound fax parsing (auto-create leads)
 
-When enabled for a site (`enable_auto_fax_lead_generation` setting), inbound faxes are AI-classified; if a fax is identified as a referral, a lead is created automatically and linked back to the originating fax.
+When enabled for a site, inbound faxes are AI-classified; if a fax is identified as a referral, a lead is created automatically and linked back to the originating fax.
 
 - **Inbound faxing:** the fax is received and classified by the AI pipeline.
 - **Validation:** referral faxes are matched to a patient by name \+ DOB (ambiguous/multi-match cases are skipped for manual review).
