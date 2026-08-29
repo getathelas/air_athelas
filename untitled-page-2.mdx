@@ -1,1 +1,66 @@
+---
+title: "Automatic Lead Creation from Faxes User Guide"
+---
 
+## Overview
+
+Automatic lead creation turns inbound referral faxes into Lead Tracker leads automatically — no manual data entry required. When a referral fax comes in, Air scans it, pulls out the patient's details (like name, date of birth, and contact info), and creates a lead linked back to the original fax.
+
+## Getting started
+
+Automatic lead creation is controlled per site from your faxing preferences.
+
+1. Go to **Preferences \> Faxing**.
+2. Turn on the option to **create leads automatically from inbound faxes**.
+3. Choose the **default referral type** you'd like applied to leads created this way (e.g. "Fax Referral").
+
+Save your changes.
+
+![1](/images/1.png "1")
+
+Once enabled, no further action is needed — new referral faxes will start generating leads automatically.
+
+<aside>
+  ❗
+
+  Don't see the Faxing preferences on your site? Reach out to your Commure account team and they can get it turned on for you.
+</aside>
+
+## Lead generation logic
+
+To generate a lead, our automated system follows these steps:
+
+1. **Initial scan** - every inbound fax is automatically scanned to determine what kind of document it is.
+2. **Referral identification** - If the fax contains a referral section, Air extracts the patient's **first name**, **last name**, and **date of birth** — plus **phone number** when it's available.
+3. **Lead Creation** - If the required fields (first name, last name, and date of birth) are all found, Air creates a new lead in Lead Tracker with:
+   - Referral type set to desired setting
+   - The lead placed in your first referral stage, ready for review
+   - A note indicating it was automatically imported from an inbound fax
+   - A link back to the original fax, so you can always trace a lead to its source document
+4. **Duplicate protection** - If a patient matches the name and date of birth of a referral and already has an open case, or if an existing lead was recently created from another fax, Air skips creating another lead — saving your staff from dealing with duplicates.
+
+Because the information comes from an AI reading a scanned document, we recommend a quick review before reaching out to a new lead.
+
+## Creating a lead manually from a fax
+
+If the system misses a lead, or if you don’t want to turn on the automation, you can still create or link leads yourself:
+
+1. Open the fax from your **Faxing** tab.
+2. Use the **Create Lead** action.
+3. Choose to create a brand-new lead, or link the fax to an existing lead already in Lead Tracker.
+
+!image.png
+
+!image.png
+
+!image.png
+
+## FAQ
+
+**Will this create leads from every fax we receive?** No. Only faxes that Air identifies as referrals, with at least a first name, last name, and date of birth, will generate a lead.
+
+**What if the AI gets a detail wrong?** Open the lead in Lead Tracker and edit it — the same as any manually created lead. We recommend a quick glance at new fax-generated leads before contacting the patient.
+
+**Can we turn this off?** Yes. Go to **Preferences \> Faxing** and turn off automatic lead creation at any time.
+
+**What happens to the original fax?** Nothing changes about how faxes are stored or displayed — this feature only adds a lead and a link between that lead and the fax it came from.
