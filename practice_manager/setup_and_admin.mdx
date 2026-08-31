@@ -4,8 +4,11 @@ toc: "true"
 ---
 
 Everything you configure once, before the first claim goes out: who can do what, where you practice,
-which providers are credentialed with which payers, and how your calendar is structured. Get this
+which providers are credentialed with which payers, how your calendar is structured, and what you
+bill. Get this
 right and the rest of the revenue cycle behaves predictably.
+
+## Practice, providers, and access
 
 <div style={{ position:"relative",paddingBottom:"calc(56.25% + 41px)",height:0,width:"100%" }}>
   <iframe
@@ -32,3 +35,34 @@ right and the rest of the revenue cycle behaves predictably.
 | **EDI & ERA enrollments** | Every provider registered with every payer across our clearinghouses, tracked per payer, NPI, and TIN, and auto-confirmed the moment your first live claim or remittance flows. Handled by Athelas at onboarding. | PM |  |
 | **Stripe account & card reader setup** | Athelas sets up your Stripe account for cards, ACH, and Affirm, then gets your card readers ordered, registered, and live at the front desk. The reader hardware itself is purchased by your practice. | PM |  |
 | **Coaching & training** | One-time onboarding and training run with your Athelas team during launch. | PM |  |
+
+## Charge Master
+
+Your fee schedule is the single source of truth for what you bill. The Charge Master gives you direct
+control over it per payer, per facility, and on a schedule, with a full audit trail behind every
+change.
+
+<div style={{ position:"relative",paddingBottom:"calc(56.25% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://demo.arcade.software/sVxpA4VzBymf2rxUNJXz?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+    title="Review or Edit a Physical Therapy Charge Entry"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write; autoplay"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+| Capability | What it does | Included in | Docs |
+| :-- | :-- | :-- | :-- |
+| **Charge Master editor** | Full fee-schedule control with bulk edits and live preview. | PM | [Getting Started with Charge Master](/insights_biller/general_billing/getting_started_with_charge_master) |
+| **Facility & non-facility rates** | Facility and non-facility rates sit side by side on the same code, and you can adjust either one without disturbing the other. | PM | [Getting Started with Charge Master](/insights_biller/general_billing/getting_started_with_charge_master) |
+| **Payer-specific rates** | Payer-specific rows with the best match picked at claim time, and every messy payer-name variant mapped to one canonical payer. | PM | [Getting Started with Charge Master](/insights_biller/general_billing/getting_started_with_charge_master) |
+| **Scheduled rate changes** | Prices flip live on schedule, with no overlaps. | PM | [Getting Started with Charge Master](/insights_biller/general_billing/getting_started_with_charge_master) |
+| **Bulk rate copy & rescale** | Stand up a new facility's fee schedule from an existing one, as-is or scaled to a different rate. | PM | [Getting Started with Charge Master](/insights_biller/general_billing/getting_started_with_charge_master) |
+| **Charge audit history** | Every change, with before and after values, who made it, and when. | PM | [Getting Started with Charge Master](/insights_biller/general_billing/getting_started_with_charge_master) |
+| **Self-pay fee schedule** | A separate cash-pay price list alongside your insurance rates, so uninsured and self-pay patients are quoted the right number at the counter without touching payer pricing. | PM | [Self-pay Fee Schedule](/insights_front_desk/front_office_payments/self_pay_fee_schedule) |
+| **Benefits summary PDF** | An auto-built summary of a patient's verified benefits: copay, coinsurance, deductible, and out-of-pocket maximum. | PM |  |
