@@ -45,6 +45,11 @@ LY_ADJECTIVES = ("timely|early|only|likely|friendly|lonely|lively|costly|orderly
 MODAL_OK = {"sometimes", "always", "perhaps", "otherwise", "likewise", "its",
             "this", "yes", "status", "analysis", "basis"}
 
+# Product names reverted on 2026-08-31 (see doc_writer.mdc section 2). "Air Clinical"
+# and "Air Billing" shipped on 2026-08-21 and appear nowhere on athelas.com; externally
+# the EHR is "Air" and the billing platform is "Insights".
+BANNED_NAME = re.compile(r"\bAir[ \t]+(?:Clinical|Billing)\b")
+
 CHECKS = [
     ("doubled-word",
      re.compile(r"\b(?!that\b|had\b)(\w+)\s+\1\b", re.I),
@@ -65,6 +70,9 @@ CHECKS = [
     ("self-domain-link",
      re.compile(r"https?://(?:docs|trainings\.air)\.athelas\.com\S*"),
      "link to this site's own domain; use a relative path so broken-links can see it"),
+    ("banned-product-name",
+     BANNED_NAME,
+     "reverted product name; the EHR is \"Air\" and the billing platform is \"Insights\""),
     ("a-an",
      re.compile(r"\ba\s+(?=[aeio])(?!(?:one|once|eu)\w*\b)[a-z]+\b"),
      "'a' before a vowel sound (use 'an')"),
@@ -100,6 +108,16 @@ def scan(path, pronoun_mode):
                 start = i + 1
                 break
 
+    # Banned product names are scanned over the whole file, frontmatter included: most
+    # of the 2026-08 rename lived in `title:` and `description:` fields, which the main
+    # loop skips.
+    if not pronoun_mode:
+        for i, raw in enumerate(lines, 1):
+            for m in BANNED_NAME.finditer(raw):
+                hits.append((i, "banned-product-name",
+                             "reverted product name; use \"Air\" (EHR) or \"Insights\" (billing)",
+                             m.group(0)))
+
     for i, raw in enumerate(lines[start - 1:], start):
         if FENCE.match(raw):
             in_fence = not in_fence
@@ -126,6 +144,8 @@ def scan(path, pronoun_mode):
                 if m:
                     hits.append((i, name, msg, "%d space(s)" % len(m.group(0))))
                 continue
+            if name == "banned-product-name":
+                continue            # already handled in the whole-file pre-pass
             if name == "self-domain-link":
                 # A URL inside backticks is displayed as text, not linked.
                 for m in pat.finditer(re.sub(r"`[^`]*`", NUL, raw)):

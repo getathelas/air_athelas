@@ -7,10 +7,10 @@ toc: "true"
 **Athelas Insights** verifies patient eligibility prior to appointments and calculates estimated patient responsibility (copays, deductibles, coinsurance, and self-pay). This guide explains how eligibility data flows into Insights, how to read the results, and how to configure the rules that power your Patient Responsibility (PR) recommendations.
 
 - **Automated Checks** — Automated checks run **7 days before** the scheduled appointment for insurances supported through the Waystar, Availity, and UHC clearinghouses.
-- **EHR Data Flow (AIR-Billing Only)** — Insights uses a **one-way extraction** to pull appointments, patient demographics, and insurance data from your EHR.
+- **EHR Data Flow (Insights Only)** — Insights uses a **one-way extraction** to pull appointments, patient demographics, and insurance data from your EHR.
 
 <Warning>
-  Changes made in AIR-Billing will **not** update your EHR. All demographic and insurance updates must be entered directly in your EHR system.
+  Changes made in Insights will **not** update your EHR. All demographic and insurance updates must be entered directly in your EHR system.
 </Warning>
 
 - **Live Checks** — For patients without a scheduled appointment, use the **Live Eligibility Check** button to verify coverage in real time.
