@@ -50,6 +50,17 @@ MODAL_OK = {"sometimes", "always", "perhaps", "otherwise", "likewise", "its",
 # the EHR is "Air" and the billing platform is "Insights".
 BANNED_NAME = re.compile(r"\bAir[ \t]+(?:Clinical|Billing)\b")
 
+# Prices a practice pays us or a vendor do not belong on the public docs (Hersh,
+# 2026-08-29). Deliberately narrow: a figure bound to a per-unit phrase. The
+# domain vocabulary this product is full of -- fee schedules, copays, allowed
+# amounts, no-show fees, Medicare therapy thresholds -- is what patients and
+# payers pay, and must not trip. A figure inside backticks is exempt, since STRIP
+# removes it; use that for workflow thresholds.
+OUR_PRICING = re.compile(
+    r"\\?\$[\d,.]+\s*(?:per|/)\s*"
+    r"(?:statement|recipient|transaction|provider|seat|user|month|encounter)\b"
+    r"|\d+(?:\.\d+)?%\s*\+\s*\\?\$[\d.]+")
+
 CHECKS = [
     ("doubled-word",
      re.compile(r"\b(?!that\b|had\b)(\w+)\s+\1\b", re.I),
@@ -70,6 +81,9 @@ CHECKS = [
     ("self-domain-link",
      re.compile(r"https?://(?:docs|trainings\.air)\.athelas\.com\S*"),
      "link to this site's own domain; use a relative path so broken-links can see it"),
+    ("our-pricing",
+     OUR_PRICING,
+     "a price the practice pays us or a vendor; state the duty, not the number"),
     ("banned-product-name",
      BANNED_NAME,
      "reverted product name; the EHR is \"Air\" and the billing platform is \"Insights\""),

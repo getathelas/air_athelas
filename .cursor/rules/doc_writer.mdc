@@ -843,7 +843,17 @@ agreements. Treat every page as contract-adjacent. Never publish:
   features that customers can actually be enabled for are fine — label them `Beta`.
 - **Dated roadmap commitments.** No "coming September 2026", no "lands Dec 2026". A date on a page the
   agreements point to reads as a promise. The changelog announces features when they ship.
-- **Pricing.** Per-provider rates, SKU prices, and per-unit fees live on `athelas.com`, not here.
+- **Pricing.** Per-provider rates, SKU prices, per-unit fees and pass-through costs live on
+  `athelas.com` and in the sales Notion, not here. **State the duty, not the number:** "the reader
+  hardware is purchased by your practice" is fine, "\$1 per paper statement" is not. This rule was
+  already written on 2026-08-29 when Hersh asked for a sweep, and the sweep still found eleven
+  published figures -- paper statements, text blasts, a Stripe rate, PDMP order lines -- so
+  `scripts/proofread.py` now enforces it with the `our-pricing` check rather than trusting the prose.
+  Two carve-outs. The ONC pages under `air_developer/onc_certification/` are a compelled disclosure
+  under 45 CFR 170.523(k)(1) and must keep their fee language. And the domain vocabulary this product
+  runs on -- fee schedules, copays, allowed amounts, no-show fees, Medicare therapy thresholds -- is
+  what patients and payers pay, not what the practice pays us; the check is scoped so it does not
+  trip on those, and a figure inside backticks is exempt for workflow thresholds.
 - **Internal commercial taxonomy.** Sales phrasing (`Sell as …`), service-vs-software ownership
   columns, deal-desk notes, and named internal owners are Notion-only.
 - **Sales-enablement asides.** Lines like "position accordingly", "good talking point", or customer
