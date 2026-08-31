@@ -883,7 +883,7 @@ are hard rules, not preferences.
   Banned in customer-facing titles and row names: internal service codenames (`ARES`, `Triron`,
   `Gladriel`, `Normandy`), engineering acronyms (`RBAC`), deployment vocabulary (`promote`, `dry-run`,
   `phased rollout`, `pipeline`, `commit`), data vocabulary (`enriched`, `extraction`, `explainability`,
-  `rail`), and bare X12 transaction numbers (`271`). Name the outcome instead: `Test a rule against
+  `rail`), and bare X12 transaction numbers (`271`, `277`). Name the outcome instead: `Test a rule against
   past claims`, not `Full dry-run (historical replay)`. That contrast is about **vocabulary**;
   the noun-phrase rule above governs grammar. This particular name keeps its imperative form as a
   settled exception — do not read it as license to name new capabilities as tasks.

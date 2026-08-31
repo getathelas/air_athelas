@@ -61,6 +61,11 @@ OUR_PRICING = re.compile(
     r"(?:statement|recipient|transaction|provider|seat|user|month|encounter)\b"
     r"|\d+(?:\.\d+)?%\s*\+\s*\\?\$[\d.]+")
 
+# Internal service codenames, banned by doc_writer.mdc section 8. Matt Kearns
+# raised these on 2026-08-25 having raised them before, and ARES was still live on
+# a customer-facing page, so the ban is a check now rather than a paragraph.
+CODENAME = re.compile(r"\b(?:ARES|Triron|Gladriel|Galadriel|Normandy)\b")
+
 CHECKS = [
     ("doubled-word",
      re.compile(r"\b(?!that\b|had\b)(\w+)\s+\1\b", re.I),
@@ -81,6 +86,9 @@ CHECKS = [
     ("self-domain-link",
      re.compile(r"https?://(?:docs|trainings\.air)\.athelas\.com\S*"),
      "link to this site's own domain; use a relative path so broken-links can see it"),
+    ("internal-codename",
+     CODENAME,
+     "internal service codename; name the outcome instead"),
     ("our-pricing",
      OUR_PRICING,
      "a price the practice pays us or a vendor; state the duty, not the number"),
@@ -122,14 +130,18 @@ def scan(path, pronoun_mode):
                 start = i + 1
                 break
 
-    # Banned product names are scanned over the whole file, frontmatter included: most
-    # of the 2026-08 rename lived in `title:` and `description:` fields, which the main
-    # loop skips.
+    # These two are scanned over the whole raw file rather than through the prose
+    # filter: most of the 2026-08 rename lived in `title:` and `description:`, and
+    # codenames turn up in component title= attrs. The main loop skips both.
     if not pronoun_mode:
         for i, raw in enumerate(lines, 1):
             for m in BANNED_NAME.finditer(raw):
                 hits.append((i, "banned-product-name",
                              "reverted product name; use \"Air\" (EHR) or \"Insights\" (billing)",
+                             m.group(0)))
+            for m in CODENAME.finditer(raw):
+                hits.append((i, "internal-codename",
+                             "internal service codename; name the outcome instead",
                              m.group(0)))
 
     for i, raw in enumerate(lines[start - 1:], start):
@@ -158,7 +170,7 @@ def scan(path, pronoun_mode):
                 if m:
                     hits.append((i, name, msg, "%d space(s)" % len(m.group(0))))
                 continue
-            if name == "banned-product-name":
+            if name in ("banned-product-name", "internal-codename"):
                 continue            # already handled in the whole-file pre-pass
             if name == "self-domain-link":
                 # A URL inside backticks is displayed as text, not linked.
