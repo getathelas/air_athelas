@@ -64,7 +64,9 @@
               "air_admin/manage_your_practice/register_providers_rx",
               "air_front_desk/manage_your_tasks/tasks",
               "air_admin/manage_your_practice/plan_of_care_tracking",
-              "air_admin/manage_your_practice/pdmp_registration"
+              "air_admin/manage_your_practice/pdmp_registration",
+              "air_admin/manage_your_practice/lead_tracker",
+              "air_admin/manage_your_practice/automatic_lead_creation_from_faxes"
             ]
           },
           {
