@@ -1,6 +1,8 @@
 # AGENTS.md
 
-This repository is the **Mintlify documentation site** for Air Clinical & Air Billing (deployed to docs.athelas.com). It is content-only: MDX pages, images/videos, and `docs.json` navigation. Authoring conventions live in `.cursor/rules/doc_writer.mdc`.
+This repository is the **Mintlify documentation site** for Air Clinical & Air Billing (deployed to docs.athelas.com). It is content-only: MDX pages, images/videos, and `docs.json` navigation.
+
+**Always follow `.cursor/rules/doc_writer.mdc`** (always-on Cursor rule) for every page, image, nav change, blog, changelog, and feature release. Do not document or announce a feature without that rule's feature-release steps, quality bar, and validation checklist.
 
 ## Cursor Cloud specific instructions
 
