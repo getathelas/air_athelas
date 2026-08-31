@@ -18,6 +18,8 @@ Practice Manager runs the billing side. Where your clinical records live is a se
 - **You run Air, our EHR.** Charges reach billing the moment a note is signed, with no integration in between.
 - **You are migrating onto Air.** Billing runs on Practice Manager throughout the move, so collections keep going while the clinical cutover happens on its own timeline.
 
+A handful of capabilities in this handbook only apply if you run Air, scheduling and check-in mainly. Those rows carry a marker, so you can tell at a glance what applies to you.
+
 ## Who configures what
 
 Athelas pre-configures the billing rules that apply globally, plus the plumbing every practice needs. You configure everything specific to your practice.
@@ -125,9 +127,9 @@ The catalog follows the shape of a biller's day: one section per stage of the re
 
 ## How to read the tables
 
-Each row lists what the capability does, whether it is generally available or in beta, and links to its guide.
+Every capability in the catalog is included in Practice Manager. Each row describes the capability and links to its guide. Two markers flag the exceptions:
 
-| Label | Meaning |
+| Marker | Meaning |
 | :-- | :-- |
-| **PM** | Generally available to every Practice Manager site. |
-| **Beta** | In product and working, but still being refined or not yet fully self-serve for every site. Ask your Athelas team about turning the capability on. |
+| <Icon icon="flask" iconType="duotone" color="#F9345F" size={16} /> **Beta** | In product and working, but still being refined or not yet fully self-serve for every site. Ask your Athelas team about turning the capability on. |
+| <Icon icon="laptop-medical" iconType="duotone" color="#F9345F" size={16} /> **Needs Air** | Only applies if you run Air, our EHR. |

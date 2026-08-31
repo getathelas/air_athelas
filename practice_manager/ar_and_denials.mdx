@@ -7,34 +7,36 @@ Money comes back as remittances, and some of it comes back denied. This phase co
 remittances in and posted, working denials by the reasons that actually cost you money, and the
 reporting your leadership will ask for.
 
+<Icon icon="flask" iconType="duotone" color="#F9345F" size={16} /> **Beta** &mdash; in product and working, but ask your Athelas team to turn it on.
+
 ## Posting & denials
 
-| Capability | What it does | Included in | Docs |
-| :-- | :-- | :-- | :-- |
-| **Automatic 835 intake** | Remittances pull from every connected clearinghouse, with each adjustment and remark code translated to plain English from official CMS references. | PM | [Remittances](/insights_biller/general_billing/remittances) |
-| **AI EOB transcription** | Scanned EOBs extracted line by line and confirmed against the image. | PM | [EOB Creation and Portal Checks](/insights_front_desk/utilities/eob_creation_and_portal_checks) |
-| **Posting preview** | Preview any action before it takes effect, then bulk-finalize once you are satisfied. | PM | [How to Use the Posting Tool Page](/insights_front_desk/posting/how_to_use_the_posting_tool_page) |
-| **Adjustment code management** | Standard adjustment codes, viewable and mappable per site. | Beta | [How to Make a Custom Adjustment](/insights_front_desk/posting/how_to_post_a_remittance_manually) |
-| **Working denials** | Grouped by reason code, payer, and type on the unified Claims page, with dollars at risk or claim count totalled per bucket and sorted descending, plus deep filters and toggles to hide the noise. | PM | [Organizing Your Claims Worklist](/insights_biller/claim_details/organizing_your_claims_worklist) |
-| **Denial categorization** | Plain-English CARC and RARC descriptions, by-payer and by-reason views, and worked-percentage and recovered-revenue KPIs. | PM | [The Denials Analysis Page](/insights_biller/analytics/the_denials_analysis_page) |
-| **Bulk denial actions** | Assign, tag, defer, and correct-and-resubmit at scale, using the same bulk-action engine as the Claims page. | PM | [How to Resubmit Claims in Bulk](/insights_biller/claim_details/how_to_resubmit_claims_in_bulk) |
-| **Appeal supporting docs** | Attach records to any claim, any time. | PM | [How to Send Documentation](/insights_biller/claim_details/how_to_send_documentation) |
-| **EOB creation & payer-portal checks** | Manual remittance intake for everything that never arrives as an 835: scanned EOBs, payer-portal checks, and the outcome of payer phone calls. | PM | [EOB Creation and Portal Checks](/insights_front_desk/utilities/eob_creation_and_portal_checks) |
-| **Bulk EDI (835) download** | Download raw 835 remittance files in bulk for external accounting or posting systems. | PM | [Download EDI's in Bulk](/insights_front_desk/utilities/download_edis_in_bulk) |
-| **Automatic remittance posting** | When a remittance balances (billed equals paid plus adjustments plus patient responsibility), it posts with no manual touch. Opt-in per site, and only true exceptions are held. | PM |  |
-| **Contractual adjustments** | Automatic write-offs, each tagged as regrettable (true lost revenue) or expected (contractual math). | PM |  |
-| **Appeals** | One-click appeal request: we draft the letter from payer-specific templates, assemble the packet, and file on the payer's required channel. Duplicates are impossible by design. | Beta |  |
-| **Appeal status & history** | Per-claim appeal status, with the timeline interleaved with full submission history and past appeals. | PM |  |
+| Capability | What it does | Docs |
+| :-- | :-- | :-- |
+| **Automatic 835 intake** | Remittances pull from every connected clearinghouse, with each adjustment and remark code translated to plain English from official CMS references. | [Remittances](/insights_biller/general_billing/remittances) |
+| **AI EOB transcription** | Scanned EOBs extracted line by line and confirmed against the image. | [EOB Creation and Portal Checks](/insights_front_desk/utilities/eob_creation_and_portal_checks) |
+| **Posting preview** | Preview any action before it takes effect, then bulk-finalize once you are satisfied. | [How to Use the Posting Tool Page](/insights_front_desk/posting/how_to_use_the_posting_tool_page) |
+| **Adjustment code management** <Icon icon="flask" iconType="duotone" color="#F9345F" size={16} /> | Standard adjustment codes, viewable and mappable per site. | [How to Make a Custom Adjustment](/insights_front_desk/posting/how_to_post_a_remittance_manually) |
+| **Working denials** | Grouped by reason code, payer, and type on the unified Claims page, with dollars at risk or claim count totalled per bucket and sorted descending, plus deep filters and toggles to hide the noise. | [Organizing Your Claims Worklist](/insights_biller/claim_details/organizing_your_claims_worklist) |
+| **Denial categorization** | Plain-English CARC and RARC descriptions, by-payer and by-reason views, and worked-percentage and recovered-revenue KPIs. | [The Denials Analysis Page](/insights_biller/analytics/the_denials_analysis_page) |
+| **Bulk denial actions** | Assign, tag, defer, and correct-and-resubmit at scale, using the same bulk-action engine as the Claims page. | [How to Resubmit Claims in Bulk](/insights_biller/claim_details/how_to_resubmit_claims_in_bulk) |
+| **Appeal supporting docs** | Attach records to any claim, any time. | [How to Send Documentation](/insights_biller/claim_details/how_to_send_documentation) |
+| **EOB creation & payer-portal checks** | Manual remittance intake for everything that never arrives as an 835: scanned EOBs, payer-portal checks, and the outcome of payer phone calls. | [EOB Creation and Portal Checks](/insights_front_desk/utilities/eob_creation_and_portal_checks) |
+| **Bulk EDI (835) download** | Download raw 835 remittance files in bulk for external accounting or posting systems. | [Download EDI's in Bulk](/insights_front_desk/utilities/download_edis_in_bulk) |
+| **Automatic remittance posting** | When a remittance balances (billed equals paid plus adjustments plus patient responsibility), it posts with no manual touch. Opt-in per site, and only true exceptions are held. | |
+| **Contractual adjustments** | Automatic write-offs, each tagged as regrettable (true lost revenue) or expected (contractual math). | |
+| **Appeals** <Icon icon="flask" iconType="duotone" color="#F9345F" size={16} /> | One-click appeal request: we draft the letter from payer-specific templates, assemble the packet, and file on the payer's required channel. Duplicates are impossible by design. | |
+| **Appeal status & history** | Per-claim appeal status, with the timeline interleaved with full submission history and past appeals. | |
 
 ## Reporting for leadership
 
 ![Saved report presets in the Report Builder](/images/practice_manager/ar_and_denials/ar_and_denials_1.webp)
 
-| Capability | What it does | Included in | Docs |
-| :-- | :-- | :-- | :-- |
-| **A/R aging** | Bucket to payer to patient to claim, exportable as CSV or PDF. | PM | [Aging AR Report](/insights_biller/reports/aging_ar_report) |
-| **KPI dashboards** | First-pass rate, collection rate, days to paid, arrival, no-show and cancellation rates, and provider productivity. | PM | [Measuring Performance](/insights_admin/reporting/measuring_performance) |
-| **Metric drill-down** | Every number opens to the claims behind it. | PM | [The Revenue Analysis Page](/insights_biller/analytics/the_revenue_analysis_page) |
-| **Payer mix & performance** | Your whole book of business, broken down by payer. | PM | [The Revenue Analysis Page](/insights_biller/analytics/the_revenue_analysis_page) |
-| **Report templates** | Roughly 20 configurable templates plus saved views. | PM | [Building and Running Reports](/insights_biller/reports/building_and_running_reports) |
-| **AI report builder** | Ask a plain-English question and get a live report you can save as a template. | Beta | [Building and Running Reports](/insights_biller/reports/building_and_running_reports) |
+| Capability | What it does | Docs |
+| :-- | :-- | :-- |
+| **A/R aging** | Bucket to payer to patient to claim, exportable as CSV or PDF. | [Aging AR Report](/insights_biller/reports/aging_ar_report) |
+| **KPI dashboards** | First-pass rate, collection rate, days to paid, arrival, no-show and cancellation rates, and provider productivity. | [Measuring Performance](/insights_admin/reporting/measuring_performance) |
+| **Metric drill-down** | Every number opens to the claims behind it. | [The Revenue Analysis Page](/insights_biller/analytics/the_revenue_analysis_page) |
+| **Payer mix & performance** | Your whole book of business, broken down by payer. | [The Revenue Analysis Page](/insights_biller/analytics/the_revenue_analysis_page) |
+| **Report templates** | Roughly 20 configurable templates plus saved views. | [Building and Running Reports](/insights_biller/reports/building_and_running_reports) |
+| **AI report builder** <Icon icon="flask" iconType="duotone" color="#F9345F" size={16} /> | Ask a plain-English question and get a live report you can save as a template. | [Building and Running Reports](/insights_biller/reports/building_and_running_reports) |

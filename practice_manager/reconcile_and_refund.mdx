@@ -6,13 +6,13 @@ toc: "true"
 The last mile: proving the money that was supposed to arrive actually landed in your bank account,
 returning what was overcollected, and closing the month cleanly.
 
-| Capability | What it does | Included in | Docs |
-| :-- | :-- | :-- | :-- |
-| **Bank deposit verification** | BAI2 and Plaid auto-ingest, rules-matched to ERAs and payments by amount and date, check number, or ERA amount. Deposits are de-duplicated and matched on arrival, with self-serve deposit-slip upload, match review, and CSV or EDI export. | PM | [Bank Deposit Verification](/insights_front_desk/utilities/bank_deposit_verification) |
-| **Reconciliation reports** | Deposits, ERAs, and postings, with match review and export. | PM | [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report) |
-| **Patient refunds** | Refund on any rail (original card, cash, check, reader, or convert to credit), with item-level re-allocation, dispute guards, and permission gating. | PM | [How to Refund a Payment](/insights_front_desk/patient_responsibility/how_to_refund_a_payment) |
-| **Month-end close** | Month-end summary, A/R aging, and reconciliation exports, plus cash-drawer reconciliation for front-desk cash. | PM | [Month-End Close with Insights Reports](/insights_biller/reports/month_end_close) |
-| **Card transaction ledger** | Charges, refunds including those issued from Stripe directly, disputes and chargebacks as tracked records with admin alerts, and payouts, all written as they happen. | PM |  |
-| **Lockbox & sweep setup** | Lockbox accounts configured together with you. Optional. | PM |  |
-| **Payer clawbacks & reversals** | Payer takebacks are handled automatically by the posting engine: reversing remittances reopen the balance and preserve history as reversals rather than deletions. | PM |  |
-| **Secondary & tertiary COB forwarding** | Automatic coordination-of-benefits forwarding after the primary pays, with reconciliation tasks on mismatch and bulk forward-to-secondary. | PM |  |
+| Capability | What it does | Docs |
+| :-- | :-- | :-- |
+| **Bank deposit verification** | BAI2 and Plaid auto-ingest, rules-matched to ERAs and payments by amount and date, check number, or ERA amount. Deposits are de-duplicated and matched on arrival, with self-serve deposit-slip upload, match review, and CSV or EDI export. | [Bank Deposit Verification](/insights_front_desk/utilities/bank_deposit_verification) |
+| **Reconciliation reports** | Deposits, ERAs, and postings, with match review and export. | [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report) |
+| **Patient refunds** | Refund on any rail (original card, cash, check, reader, or convert to credit), with item-level re-allocation, dispute guards, and permission gating. | [How to Refund a Payment](/insights_front_desk/patient_responsibility/how_to_refund_a_payment) |
+| **Month-end close** | Month-end summary, A/R aging, and reconciliation exports, plus cash-drawer reconciliation for front-desk cash. | [Month-End Close with Insights Reports](/insights_biller/reports/month_end_close) |
+| **Card transaction ledger** | Charges, refunds including those issued from Stripe directly, disputes and chargebacks as tracked records with admin alerts, and payouts, all written as they happen. | |
+| **Lockbox & sweep setup** | Lockbox accounts configured together with you. Optional. | |
+| **Payer clawbacks & reversals** | Payer takebacks are handled automatically by the posting engine: reversing remittances reopen the balance and preserve history as reversals rather than deletions. | |
+| **Secondary & tertiary COB forwarding** | Automatic coordination-of-benefits forwarding after the primary pays, with reconciliation tasks on mismatch and bulk forward-to-secondary. | |
