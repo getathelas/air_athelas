@@ -33,7 +33,7 @@ function parseDocRequest(description) {
     out.type = /new\s+page/i.test(typeMatch[1]) ? 'new' : 'update';
   }
 
-  // Placement: "Placement: Air Clinical tab → ..."
+  // Placement: "Placement: Air (EHR) tab → ..."
   const placementMatch = text.match(/Placement:\s*([^\n]+?)(?=\n\w|\n\n|$)/s);
   if (placementMatch) {
     out.placement = placementMatch[1].replace(/\s+/g, ' ').trim();
@@ -89,7 +89,7 @@ async function triggerCursorAgent(ticket, docRequest) {
 
   const task = isNewPage
     ? `
-You are writing external user-facing documentation for the Air Clinical/Air Billing help site. This is a **NEW page** request.
+You are writing external user-facing documentation for the Air / Insights help site. This is a **NEW page** request.
 
 ## FIRST THING: Read the rules file
 The documentation rules file is located at the repo root: \`doc_writer.mdc\`
@@ -132,7 +132,7 @@ Document source: ${documentUrl}
 Branch: ${branchName}
 `
     : `
-You are updating external user-facing documentation for the Air Clinical/Air Billing help site. This is an **UPDATE to an existing page** (not a new page).
+You are updating external user-facing documentation for the Air / Insights help site. This is an **UPDATE to an existing page** (not a new page).
 
 ## FIRST THING: Read the rules file
 The documentation rules file is located at the repo root: \`doc_writer.mdc\`

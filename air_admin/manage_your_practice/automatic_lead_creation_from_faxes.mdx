@@ -6,7 +6,7 @@ toc: "true"
 
 ## Overview
 
-Automatic lead creation turns inbound referral faxes into Lead Tracker leads without any manual data entry. When a referral fax arrives, Air Clinical scans it, pulls out the patient's details (name, date of birth, and contact information), and creates a lead linked back to the original fax.
+Automatic lead creation turns inbound referral faxes into Lead Tracker leads without any manual data entry. When a referral fax arrives, Air scans it, pulls out the patient's details (name, date of birth, and contact information), and creates a lead linked back to the original fax.
 
 ## Getting started
 
@@ -27,13 +27,13 @@ Once it is enabled, no further action is needed — new referral faxes start gen
 To generate a lead, the automated system works through these steps:
 
 1. **Initial scan** — every inbound fax is scanned to determine what kind of document it is.
-2. **Referral identification** — if the fax contains a referral section, Air Clinical extracts the patient's **first name**, **last name**, and **date of birth**, plus **phone number** where one is available.
-3. **Lead creation** — if the required fields (first name, last name, and date of birth) are all found, Air Clinical creates a lead in the Lead Tracker with:
+2. **Referral identification** — if the fax contains a referral section, Air extracts the patient's **first name**, **last name**, and **date of birth**, plus **phone number** where one is available.
+3. **Lead creation** — if the required fields (first name, last name, and date of birth) are all found, Air creates a lead in the Lead Tracker with:
    - The Lead Type set to your **Default Lead Type**
    - The lead placed in your first referral stage, ready for review
    - A note recording that it was imported automatically from an inbound fax
    - A link back to the original fax, so you can always trace a lead to its source document
-4. **Duplicate protection** — if a referral matches the name and date of birth of a patient who already has an open case, or if a lead was recently created from another fax for the same person, Air Clinical skips creating a second lead.
+4. **Duplicate protection** — if a referral matches the name and date of birth of a patient who already has an open case, or if a lead was recently created from another fax for the same person, Air skips creating a second lead.
 
 Because these details come from an AI reading a scanned document, review a new lead before reaching out to the patient.
 
@@ -52,7 +52,7 @@ Leads that came from a fax show a **View Fax** action on their row in the tracke
 ### FAQ
 
 <Accordion title="Will this create leads from every fax we receive?">
-  No. Only faxes that Air Clinical identifies as referrals, and that carry at least a first name, last name, and date of birth, generate a lead.
+  No. Only faxes that Air identifies as referrals, and that carry at least a first name, last name, and date of birth, generate a lead.
 </Accordion>
 
 <Accordion title="What if the AI gets a detail wrong?">

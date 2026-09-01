@@ -2,8 +2,8 @@
 
 You are an AI writing assistant for the Air Athelas documentation repository, powered by Mintlify. This repo contains user-facing help documentation for two products:
 
-- **Air Clinical** -- An EHR (Electronic Health Records) platform for physical therapy and outpatient clinics.
-- **Air Billing** -- An RCM (Revenue Cycle Management) and billing platform for healthcare practices.
+- **Air** -- An EHR (Electronic Health Records) platform for physical therapy and outpatient clinics.
+- **Insights** -- An RCM (Revenue Cycle Management) and billing platform for healthcare practices.
 
 Follow every convention in this rule when creating or editing documentation pages.
 
@@ -119,7 +119,7 @@ Image ref → MDX path:      {role}/{activity}/{filename}.mdx
 
 ### Product features and functionalities
 
-#### Air Clinical (EHR)
+#### Air (EHR)
 
 - **AI-Powered Features**: Ambient Scribing (multi-language, lock sections, local save on internet loss), Athelas AI Assistant (voice/chat, context-aware with current chart note), AI Compliance Checks (score out of 100, custom checkmarks), AI Agents Center (inbound/outbound calls, call triaging, 24/7 scheduling)
 - **Patient Management**: Demographics, cases (active/discharged/restored), insurance (primary/secondary/tertiary, workers' comp, self-pay), history (AI-generated visit summaries, medications, allergies, immunizations, vitals, labs), attachments (upload, filter, tag, send via email/text/fax)
@@ -133,7 +133,7 @@ Image ref → MDX path:      {role}/{activity}/{filename}.mdx
 - **Reporting**: KPI Dashboard (active patients, no-show rate, arrival rate, cancellation rate, provider efficiency, average units per encounter, etc.), comprehensive CSV reports, drill-down tables, Athelas AI for quick statistics
 - **Practice Administration**: Team members & roles (granular feature/page permissions, user groups), practice/provider/calendar settings, provider credentialing matrix (group/individual, cosigner tracking), treatments with service type codes, taxonomy management
 
-#### Air Billing (RCM)
+#### Insights (RCM)
 
 - **Claims Management**: Claims page (unified view, filtering, saved views, bulk assignment, AI validation), encounter details (create/edit, insurance, service lines with CPT/modifiers/revenue codes, diagnosis codes, prior auths, templates, tags, working status), claim submission/resubmission (CMS-1500, UB-04, ADA), AI validation (error flags, suggested edits per CMS NCCI guidelines), billing rules engine (global + site-specific)
 - **Posting & Remittances**: Posting tool (manual posting, preview mode, procedure/claim-level, custom adjustments), auto-posting (within 6 hours), remittance management, deposit/check matching, EOB creation (upload, AI transcription via EOB copilot), EDI bulk downloads (835 files), Plaid bank integration (deposit verification, matching)
@@ -157,12 +157,22 @@ Image ref → MDX path:      {role}/{activity}/{filename}.mdx
 
 ### Canonical product & feature terminology
 
-Use these names exactly. The two products are **"Air Clinical"** (the EHR) and **"Air Billing"** (the RCM/billing platform); the *company* may still be called "Athelas" (keep existing Athelas brand terms).
+Use these names exactly. **[athelas.com](https://www.athelas.com/) is the source of
+truth for product names** — if the site and this table ever disagree, the site wins and
+this table gets updated. The two products are **"Air"** (the EHR/EMR) and **"Insights"**
+(the billing platform, which athelas.com describes as "Your Billing & Clinical home").
+The *company* is still "Athelas" (keep existing Athelas brand terms).
+
+> **Do not reintroduce "Air Clinical" / "Air Billing".** Those names shipped on 2026-08-21
+> and were reverted on 2026-08-31 on Hersh's call: externally Air is the EMR, and neither
+> name appears anywhere on athelas.com. `scripts/proofread.py` fails the build on them.
 
 | Concept | Canonical name | Do **not** use |
 | :-- | :-- | :-- |
-| The RCM / billing product | **Air Billing** | "Insights", "Athelas Insights", "Athelas RCM", "Athelas" (as the product) |
-| The EHR product | **Air Clinical** | bare "Air" (except in "Air Scribe"), "Athelas Air", "Athelas EHR", "Athelas Healthcare platform", "the EHR" (when the Air Clinical product is meant) |
+| The EHR / EMR product | **Air** | "Air Clinical", "Athelas Air", "Athelas EHR", "Athelas Healthcare platform", "the EHR" (when the Air product is meant) |
+| The billing platform | **Insights** | "Air Billing", "Athelas Insights", "Athelas RCM", "Athelas" (as the product) |
+| Fully managed billing service | **RCM Managed Services** | "managed RCM", "our RCM service" (as a proper name) |
+| Billing the site runs itself | **Practice Manager** | "PM" on first use, "Practice Management", "AI Practice Management Suite" (that is the athelas.com marketing name, not the docs name) |
 | AI assistant (RCM copilot) | **Athelas Assistant** | "Athelas AI", "RCM Assistant", "RCM AI", "Athelas Intelligence", "(AI) Copilot" |
 | Ambient scribe | **Air Scribe** | "AI Scribe", "EHR Scribe", bare "Scribe" |
 | In-person card reader | **Athelas card reader** | "Stripe card reader", "Athelas Card Reader" (casing) |
@@ -170,10 +180,20 @@ Use these names exactly. The two products are **"Air Clinical"** (the EHR) and *
 | Support email | **support@getathelas.com** | — |
 | Sign-in URL | **insights.athelas.com** | — |
 
-- "Athelas" as the *company* is fine ("your Athelas team", "the Athelas Recon Team"); "Athelas" as the *product* is not — use "Air Billing" or "Air Clinical".
+- **The tab labels are not the product names.** `docs.json` labels the two tabs
+  **`Air (EHR)`** and **`Insights (Billing)`**; the parentheticals are nav
+  disambiguators only, because "Insights" alone gives a reader no signal that the tab
+  is about billing. In prose, headings and titles, write bare **Air** and **Insights** —
+  never "Air (EHR)".
+- "Athelas" as the *company* is fine ("your Athelas team", "the Athelas Recon Team");
+  "Athelas" as the *product* is not — use "Air" or "Insights".
 - Keep "Athelas Academy" and `athelas.com` brand references as-is.
-- Verify literal on-screen button labels (e.g. an "Athelas AI" button) against the product before renaming them. In-app left-nav paths ("**Insights → Utilities → Faxing**") are literal on-screen labels — leave them until the app itself renames.
-- The sign-in URL (**insights.athelas.com**) and the `insights_*` / `air_*` content directories and page paths deliberately keep the old names. Never rename a URL or a page path to match the product names.
+- Verify literal on-screen button labels (e.g. an "Athelas AI" button) against the product
+  before renaming them. In-app left-nav paths ("**Insights → Utilities → Faxing**") are
+  literal on-screen labels — leave them until the app itself renames.
+- The sign-in URL (**insights.athelas.com**) and the `insights_*` / `air_*` content
+  directories and page paths are live URLs. Never rename a URL or a page path to match a
+  product name.
 
 ### Files and folders
 
@@ -304,12 +324,12 @@ navigation.tabs[]                  # Top-level tabs
 
 | Tab          | Icon                  | Content                                        |
 | :----------- | :-------------------- | :--------------------------------------------- |
-| Air Clinical | `laptop-medical`      | `air_*` pages grouped by role + activity        |
-| Air Billing  | `money-check-dollar`  | `insights_*` pages grouped by role + activity   |
+| Air (EHR)          | `laptop-medical`      | `air_*` pages grouped by role + activity        |
+| Insights (Billing) | `money-check-dollar`  | `insights_*` pages grouped by role + activity   |
 | What's New   | `stars`               | `master_blogs/` (Product Release, Customer Stories) |
 | Changelog    | `bullhorn`            | `master_changelogs/changelog`                   |
 
-The tab labels and the folder prefixes deliberately no longer match: the **Air Clinical** tab is backed by `air_*` folders and **Air Billing** by `insights_*` folders. That is not a bug to fix — the paths are live URLs. Tab membership is also already crossed in places (Air Scribe pages live under `insights_provider/`, and the Air Billing tab links into `air_admin/`), so pick a folder by the page's existing neighbours, not by the tab name.
+The tab labels carry a parenthetical the product names do not: the tab is **`Insights (Billing)`** but the product is **Insights** (see §2). The **`Insights (Billing)`** tab is backed by `insights_*` folders and **`Air (EHR)`** by `air_*` folders, so labels and folder prefixes agree again — but the paths are live URLs either way, so never rename a folder to chase a label. Tab membership is also already crossed in places (Air Scribe pages live under `insights_provider/`, and the Insights tab links into `air_admin/`), so pick a folder by the page's existing neighbours, not by the tab name.
 
 ### How to add a page to navigation
 
@@ -823,7 +843,17 @@ agreements. Treat every page as contract-adjacent. Never publish:
   features that customers can actually be enabled for are fine — label them `Beta`.
 - **Dated roadmap commitments.** No "coming September 2026", no "lands Dec 2026". A date on a page the
   agreements point to reads as a promise. The changelog announces features when they ship.
-- **Pricing.** Per-provider rates, SKU prices, and per-unit fees live on `athelas.com`, not here.
+- **Pricing.** Per-provider rates, SKU prices, per-unit fees and pass-through costs live on
+  `athelas.com` and in the sales Notion, not here. **State the duty, not the number:** "the reader
+  hardware is purchased by your practice" is fine, "\$1 per paper statement" is not. This rule was
+  already written on 2026-08-29 when Hersh asked for a sweep, and the sweep still found eleven
+  published figures -- paper statements, text blasts, a Stripe rate, PDMP order lines -- so
+  `scripts/proofread.py` now enforces it with the `our-pricing` check rather than trusting the prose.
+  Two carve-outs. The ONC pages under `air_developer/onc_certification/` are a compelled disclosure
+  under 45 CFR 170.523(k)(1) and must keep their fee language. And the domain vocabulary this product
+  runs on -- fee schedules, copays, allowed amounts, no-show fees, Medicare therapy thresholds -- is
+  what patients and payers pay, not what the practice pays us; the check is scoped so it does not
+  trip on those, and a figure inside backticks is exempt for workflow thresholds.
 - **Internal commercial taxonomy.** Sales phrasing (`Sell as …`), service-vs-software ownership
   columns, deal-desk notes, and named internal owners are Notion-only.
 - **Sales-enablement asides.** Lines like "position accordingly", "good talking point", or customer
@@ -853,7 +883,7 @@ are hard rules, not preferences.
   Banned in customer-facing titles and row names: internal service codenames (`ARES`, `Triron`,
   `Gladriel`, `Normandy`), engineering acronyms (`RBAC`), deployment vocabulary (`promote`, `dry-run`,
   `phased rollout`, `pipeline`, `commit`), data vocabulary (`enriched`, `extraction`, `explainability`,
-  `rail`), and bare X12 transaction numbers (`271`). Name the outcome instead: `Test a rule against
+  `rail`), and bare X12 transaction numbers (`271`, `277`). Name the outcome instead: `Test a rule against
   past claims`, not `Full dry-run (historical replay)`. That contrast is about **vocabulary**;
   the noun-phrase rule above governs grammar. This particular name keeps its imperative form as a
   settled exception — do not read it as license to name new capabilities as tasks.

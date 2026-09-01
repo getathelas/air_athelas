@@ -4,9 +4,19 @@ sidebarTitle: "Overview"
 mode: "wide"
 ---
 
-**The engine behind our managed RCM service. Your team at the controls.**
+Practice Manager is for practices that already have a billing team and want to keep it. Your billers work the whole revenue cycle themselves, from building claims through posting and patient statements, and every number you see opens to the claims behind it.
 
-Practice Manager is the same platform our fully managed revenue cycle service runs on, with your team at the controls instead of ours. It is built for practices that already have a billing team and want to run their own billing on a smoother, more customized platform.
+You get the flagship product our RCM Managed Services customers use, with your team at the controls.
+
+## How Practice Manager fits your EHR
+
+Practice Manager handles billing, not clinical records. Your EHR, ours or someone else's, only changes how charges reach billing:
+
+- **If you stay on your current EHR:** Practice Manager syncs appointments, encounters, charges, and patient files from it on a schedule. 50+ EHRs are supported.
+- **If you are on Air:** billing and the chart live in one system, so a signed note becomes a billable charge with nothing to sync.
+- **If you are migrating to Air:** billing keeps running throughout, so collections never pause for the cutover.
+
+A few capabilities only apply on Air, mainly scheduling and check-in. Those rows are marked.
 
 ## Who configures what
 
@@ -17,8 +27,8 @@ Athelas pre-configures the billing rules that apply globally, plus the plumbing 
     - Billing rules that apply globally, as the foundation you build on
     - EDI and ERA enrollments with every payer
     - Your Stripe account and the card readers you order
-    - The integration into your existing EHR
-    - Automatic claim creation, so your rules build the claim once the note is signed
+    - The connection to wherever your clinical records live
+    - Automatic claim creation, so your rules build the claim as soon as the charge arrives
   </Card>
 
   <Card title="You configure" color="#F9345F" icon="user-gear" iconType="duotone">
@@ -32,15 +42,25 @@ Athelas pre-configures the billing rules that apply globally, plus the plumbing 
 
 Athelas runs one-time onboarding and training during launch, so none of this starts from a blank page.
 
-## What stays with your team
+## What your team owns
 
-Nobody outside your practice touches a claim; the queue is yours end to end, which means:
+Nobody outside your practice touches a claim. The queue is yours end to end.
 
-- **Patients talk to you.** Every inbound billing call routes to your team, so the person answering knows the practice and the patient.
-- **Prior authorization is your call.** Eligibility tells you what's covered. Confirming whether a service needs prior authorization takes a conversation with the payer, and that conversation is yours.
-- **Workers' comp stays in-house.** Registration and follow-up are yours, with first-class fields in the product rather than workarounds.
-- **Paper payers work like any other.** A few payers still require a mailed claim. You build it in Practice Manager exactly as you would an electronic one, and your team drops it in the mail.
-- **Eligibility gaps route to you.** Eligibility runs through the clearinghouse. When a payer isn't reachable there, your team makes the call directly.
+Your team runs the day to day:
+
+- **Claim review.** Correct and resubmit whatever the rules could not finish.
+- **Denials and appeals.** Grouped by reason, payer, and dollars at risk.
+- **Posting.** Remittances, adjustments, and patient payments.
+- **Patient statements.** Your cadence, your branding.
+- **Patient billing calls.** Every inbound billing call reaches your team.
+- **Claim assignment.** Group the worklist by owner so each biller has their own list.
+
+Four things need a person on a payer line, and that person is yours:
+
+- **Prior authorization.** Eligibility shows coverage. Confirming whether a service needs authorization takes a call.
+- **Workers' comp.** Registration and follow-up, with real fields for it rather than workarounds.
+- **Paper payers.** You build the claim as usual and your team mails it.
+- **Eligibility gaps.** When a payer is not reachable through the clearinghouse, your team calls directly.
 
 ## How the platform is built
 
@@ -78,20 +98,18 @@ First-pass rate, collection rate, time to decision, and denial rate all sit on o
 
 ## Browse the catalog
 
+The catalog follows the shape of a biller's day: one section per stage of the revenue cycle, in the order the work happens. Setup comes first because it is what you configure once, before the first claim goes out, and that is where the charge master lives.
+
 <Columns cols={2}>
   <Card title="Setup & Admin" color="#F9345F" icon="gear" iconType="duotone" href="/practice_manager/setup_and_admin">
-    Roles and permissions, practice and provider settings, credentialing, appointment types.
+    Roles and permissions, practice and provider settings, credentialing, and the charge master.
   </Card>
 
   <Card title="Pre-Visit & Check-In" color="#F9345F" icon="calendar-check" iconType="duotone" href="/practice_manager/pre_visit_and_check_in">
     Reminders, eligibility, prior auth, digital intake, kiosk check-in, and collecting at the counter.
   </Card>
 
-  <Card title="Charge Master" color="#F9345F" icon="tags" iconType="duotone" href="/practice_manager/charge_master">
-    Fee schedules, payer mapping, facility and non-facility rates, and self-pay pricing.
-  </Card>
-
-  <Card title="Rules & Submission" color="#F9345F" icon="paper-plane" iconType="duotone" href="/practice_manager/submission_and_rules">
+  <Card title="Rules & Submission" color="#F9345F" icon="paper-plane" iconType="duotone" href="/practice_manager/rules_and_submission">
     The rules engine, claim scrubbing before submission, and the claims workspace.
   </Card>
 
@@ -114,9 +132,9 @@ First-pass rate, collection rate, time to decision, and denial rate all sit on o
 
 ## How to read the tables
 
-Each row lists what the capability does, whether it is generally available or in beta, and links to its guide.
+Every capability in the catalog is included in Practice Manager. Each row describes the capability and links to its guide. Two markers flag the exceptions:
 
-| Label | Meaning |
+| Marker | Meaning |
 | :-- | :-- |
-| **PM** | Generally available to every Practice Manager site. |
-| **Beta** | In product and working, but still being refined or not yet fully self-serve for every site. Ask your Athelas team about turning the capability on. |
+| <Icon icon="flask" iconType="duotone" color="#F9345F" size={16} /> **Beta** | In product and working, but still being refined or not yet fully self-serve for every site. Ask your Athelas team about turning the capability on. |
+| <Icon icon="laptop-medical" iconType="duotone" color="#F9345F" size={16} /> **Needs Air** | Only for practices running Air as their EHR. |

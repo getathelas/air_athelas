@@ -7,6 +7,9 @@ Most revenue is won or lost before the patient sits down. This phase covers ever
 between booking and the front desk: reminders that reduce no-shows, eligibility that tells you what
 the payer will actually cover, and a check-in flow that collects the right amount the first time.
 
+<Icon icon="flask" iconType="duotone" color="#F9345F" size={16} /> **Beta.** In product and working, but ask your Athelas team to turn it on.<br />
+<Icon icon="laptop-medical" iconType="duotone" color="#F9345F" size={16} /> **Needs Air.** Only for practices running Air as their EHR.
+
 <div style={{ position:"relative",paddingBottom:"calc(56.25% + 41px)",height:0,width:"100%" }}>
   <iframe
     src="https://demo.arcade.software/o0ja9yVI5QX0BZZ32cMA?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
@@ -23,25 +26,25 @@ the payer will actually cover, and a check-in flow that collects the right amoun
 
 ## Before the visit
 
-| Capability | What it does | Included in | Docs |
-| :-- | :-- | :-- | :-- |
-| **Appointment reminders** | Set-and-forget text and email reminders at your chosen offsets, with intake links attached. Configure it once and it runs itself. | PM | [Navigating Patient Workflows](/insights_front_desk/patient_communications/navigating_patient_workflows) |
-| **Scheduled eligibility (VOB)** | Pre-visit batch verification across primary, secondary, and tertiary coverage, refreshed close to the visit date. | PM | [Eligibility Self-Service Setup Guide](/insights_admin/my_practice/eligibility_setup_guide) |
-| **Real-time eligibility check** | On-demand check that returns parsed benefits in seconds. | PM | [How to Run an Eligibility Check](/insights_front_desk/appointments/how_to_run_an_eligibility_check) |
-| **Plain-English coverage detail** | What the payer returns on an eligibility check, in plain English. | PM | [How to Run an Eligibility Check](/insights_front_desk/appointments/how_to_run_an_eligibility_check) |
-| **Suggested Charges** | Expected copay, coinsurance, and deductible per appointment, calculated from live eligibility plus your own collection rules, with the math shown. | PM | [How to Create Suggested PR Rules](/insights_front_desk/front_office_payments/how_to_create_suggested_pr_rules) |
-| **Pre-visit payment rules** | Request deposits, prior balances, or copays up front. | PM | [How to Set Block PR Rules](/insights_biller/general_billing/how_to_set_block_pr_rules) |
-| **Text blasts** | Send batched texts to patients. | PM | [Text Blast Page](/insights_front_desk/patient_communications/text_blast_page) |
-| **Patient eligibility report** | Coverage-status roster with CSV export. | Beta | [Patient Eligibility Report](/insights_biller/reports/patient_eligibility_report) |
-| **Prior-auth tracking** | Self-serve worklist for authorizations, referrals, and their statuses. | Beta | [Insights Prior Authorization](/insights_front_desk/appointments/insights_prior_authorization) |
-| **Workers' comp & self-pay registration** | First-class registration paths for the non-standard cases. Workers' comp auto-sets the plan type and opens Claim Number, Accident Date, Accident State, and employer fields; Self-Pay and Missing Insurance are real selections rather than workarounds. | PM | [Add/edit a Patient's Insurance](/insights_front_desk/patient_demographics/addedit_a_patients_insurance) |
-| **Digital intake** | Patients complete intake before arrival: update insurance including a card photo, confirm demographics, and set insurance priority. | PM | [Patient Intake Automation](/insights_front_desk/patient_communications/patient_intake_automation) |
+| Capability | What it does | Docs |
+| :-- | :-- | :-- |
+| **Appointment reminders** | Set-and-forget text and email reminders at your chosen offsets, with intake links attached. Configure it once and it runs itself. | [Navigating Patient Workflows](/insights_front_desk/patient_communications/navigating_patient_workflows) |
+| **Scheduled eligibility (VOB)** | Pre-visit batch verification across primary, secondary, and tertiary coverage, refreshed close to the visit date. | [Eligibility Self-Service Setup Guide](/insights_admin/my_practice/eligibility_setup_guide) |
+| **Real-time eligibility check** | On-demand check that returns parsed benefits in seconds. | [How to Run an Eligibility Check](/insights_front_desk/appointments/how_to_run_an_eligibility_check) |
+| **Plain-English coverage detail** | What the payer returns on an eligibility check, in plain English. | [How to Run an Eligibility Check](/insights_front_desk/appointments/how_to_run_an_eligibility_check) |
+| **Suggested Charges** | Expected copay, coinsurance, and deductible per appointment, calculated from live eligibility plus your own collection rules, with the math shown. | [How to Create Suggested PR Rules](/insights_front_desk/front_office_payments/how_to_create_suggested_pr_rules) |
+| **Pre-visit payment rules** | Request deposits, prior balances, or copays up front. | [How to Set Block PR Rules](/insights_biller/general_billing/how_to_set_block_pr_rules) |
+| **Text blasts** | Send batched texts to patients. | [Text Blast Page](/insights_front_desk/patient_communications/text_blast_page) |
+| **Patient eligibility report** <Icon icon="flask" iconType="duotone" color="#F9345F" size={16} /> | Coverage-status roster with CSV export. | [Patient Eligibility Report](/insights_biller/reports/patient_eligibility_report) |
+| **Prior-auth tracking** <Icon icon="flask" iconType="duotone" color="#F9345F" size={16} /> | Self-serve worklist for authorizations, referrals, and their statuses. | [Insights Prior Authorization](/insights_front_desk/appointments/insights_prior_authorization) |
+| **Workers' comp & self-pay registration** | First-class registration paths for the non-standard cases. Workers' comp auto-sets the plan type and opens Claim Number, Accident Date, Accident State, and employer fields; Self-Pay and Missing Insurance are real selections rather than workarounds. | [Add/edit a Patient's Insurance](/insights_front_desk/patient_demographics/addedit_a_patients_insurance) |
+| **Digital intake** | Patients complete intake before arrival: update insurance including a card photo, confirm demographics, and set insurance priority. | [Patient Intake Automation](/insights_front_desk/patient_communications/patient_intake_automation) |
 
 ## At the counter
 
-| Capability | What it does | Included in | Docs |
-| :-- | :-- | :-- | :-- |
-| **Check-in & copay collection** | Preflight flags missing insurance, subscriber address, and appointment type at the counter, then collects the pre-computed amount on every rail: cash, check, card, reader, saved card, gift card, credit, or send-to-pay. | PM | [The Insights Appointments Page](/insights_front_desk/appointments/the_insights_appointments_page) |
-| **Kiosk check-in** | Patients check themselves in on a tablet in your lobby: confirm demographics and insurance, run a live eligibility check, and pay today's charge and any outstanding balance on the kiosk card reader. A lighter Forms mode surfaces only outstanding intake forms, for a paperless waiting room without a full check-in. | Beta | [Check-in Patient with Kiosk](/air_provider/check_in_a_patient/kiosk_user_guide) |
-| **Athelas card reader** | In-person card reader at the front desk. Athelas sets up your account and gets the reader live at onboarding; the hardware is purchased by your practice. | PM | [How to Take Payments](/insights_front_desk/appointments/how_to_take_payments) |
-| **Cards on file** | Charge a stored card at the counter. | PM | [Charge Saved Credit Cards](/insights_front_desk/patient_responsibility/charge_saved_credit_cards) |
+| Capability | What it does | Docs |
+| :-- | :-- | :-- |
+| **Check-in & copay collection** | Preflight flags missing insurance, subscriber address, and appointment type at the counter, then collects the pre-computed amount on every rail: cash, check, card, reader, saved card, gift card, credit, or send-to-pay. | [The Insights Appointments Page](/insights_front_desk/appointments/the_insights_appointments_page) |
+| **Kiosk check-in** <Icon icon="flask" iconType="duotone" color="#F9345F" size={16} /> <Icon icon="laptop-medical" iconType="duotone" color="#F9345F" size={16} /> | Patients check themselves in on a tablet in your lobby: confirm demographics and insurance, run a live eligibility check, and pay today's charge and any outstanding balance on the kiosk card reader. A lighter Forms mode surfaces only outstanding intake forms, for a paperless waiting room without a full check-in. | [Check-in Patient with Kiosk](/air_provider/check_in_a_patient/kiosk_user_guide) |
+| **Athelas card reader** | In-person card reader at the front desk. Athelas sets up your account and gets the reader live at onboarding; the hardware is purchased by your practice. | [How to Take Payments](/insights_front_desk/appointments/how_to_take_payments) |
+| **Cards on file** | Charge a stored card at the counter. | [Charge Saved Credit Cards](/insights_front_desk/patient_responsibility/charge_saved_credit_cards) |

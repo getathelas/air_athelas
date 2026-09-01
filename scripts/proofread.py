@@ -45,6 +45,27 @@ LY_ADJECTIVES = ("timely|early|only|likely|friendly|lonely|lively|costly|orderly
 MODAL_OK = {"sometimes", "always", "perhaps", "otherwise", "likewise", "its",
             "this", "yes", "status", "analysis", "basis"}
 
+# Product names reverted on 2026-08-31 (see doc_writer.mdc section 2). "Air Clinical"
+# and "Air Billing" shipped on 2026-08-21 and appear nowhere on athelas.com; externally
+# the EHR is "Air" and the billing platform is "Insights".
+BANNED_NAME = re.compile(r"\bAir[ \t]+(?:Clinical|Billing)\b")
+
+# Prices a practice pays us or a vendor do not belong on the public docs (Hersh,
+# 2026-08-29). Deliberately narrow: a figure bound to a per-unit phrase. The
+# domain vocabulary this product is full of -- fee schedules, copays, allowed
+# amounts, no-show fees, Medicare therapy thresholds -- is what patients and
+# payers pay, and must not trip. A figure inside backticks is exempt, since STRIP
+# removes it; use that for workflow thresholds.
+OUR_PRICING = re.compile(
+    r"\\?\$[\d,.]+\s*(?:per|/)\s*"
+    r"(?:statement|recipient|transaction|provider|seat|user|month|encounter)\b"
+    r"|\d+(?:\.\d+)?%\s*\+\s*\\?\$[\d.]+")
+
+# Internal service codenames, banned by doc_writer.mdc section 8. Matt Kearns
+# raised these on 2026-08-25 having raised them before, and ARES was still live on
+# a customer-facing page, so the ban is a check now rather than a paragraph.
+CODENAME = re.compile(r"\b(?:ARES|Triron|Gladriel|Galadriel|Normandy)\b")
+
 CHECKS = [
     ("doubled-word",
      re.compile(r"\b(?!that\b|had\b)(\w+)\s+\1\b", re.I),
@@ -65,6 +86,15 @@ CHECKS = [
     ("self-domain-link",
      re.compile(r"https?://(?:docs|trainings\.air)\.athelas\.com\S*"),
      "link to this site's own domain; use a relative path so broken-links can see it"),
+    ("internal-codename",
+     CODENAME,
+     "internal service codename; name the outcome instead"),
+    ("our-pricing",
+     OUR_PRICING,
+     "a price the practice pays us or a vendor; state the duty, not the number"),
+    ("banned-product-name",
+     BANNED_NAME,
+     "reverted product name; the EHR is \"Air\" and the billing platform is \"Insights\""),
     ("a-an",
      re.compile(r"\ba\s+(?=[aeio])(?!(?:one|once|eu)\w*\b)[a-z]+\b"),
      "'a' before a vowel sound (use 'an')"),
@@ -100,6 +130,20 @@ def scan(path, pronoun_mode):
                 start = i + 1
                 break
 
+    # These two are scanned over the whole raw file rather than through the prose
+    # filter: most of the 2026-08 rename lived in `title:` and `description:`, and
+    # codenames turn up in component title= attrs. The main loop skips both.
+    if not pronoun_mode:
+        for i, raw in enumerate(lines, 1):
+            for m in BANNED_NAME.finditer(raw):
+                hits.append((i, "banned-product-name",
+                             "reverted product name; use \"Air\" (EHR) or \"Insights\" (billing)",
+                             m.group(0)))
+            for m in CODENAME.finditer(raw):
+                hits.append((i, "internal-codename",
+                             "internal service codename; name the outcome instead",
+                             m.group(0)))
+
     for i, raw in enumerate(lines[start - 1:], start):
         if FENCE.match(raw):
             in_fence = not in_fence
@@ -126,6 +170,8 @@ def scan(path, pronoun_mode):
                 if m:
                     hits.append((i, name, msg, "%d space(s)" % len(m.group(0))))
                 continue
+            if name in ("banned-product-name", "internal-codename"):
+                continue            # already handled in the whole-file pre-pass
             if name == "self-domain-link":
                 # A URL inside backticks is displayed as text, not linked.
                 for m in pat.finditer(re.sub(r"`[^`]*`", NUL, raw)):

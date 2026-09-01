@@ -26,11 +26,11 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Air Clinical",
+        "tab": "Air (EHR)",
         "icon": "laptop-medical",
         "groups": [
           {
-            "group": "Getting Started with Air Clinical",
+            "group": "Getting Started with Air",
             "icon": "stars",
             "public": true,
             "pages": [
@@ -215,7 +215,7 @@
         ]
       },
       {
-        "tab": "Air Billing",
+        "tab": "Insights (Billing)",
         "icon": "money-check-dollar",
         "groups": [
           {
@@ -226,15 +226,14 @@
               "practice_manager/capabilities",
               "practice_manager/setup_and_admin",
               "practice_manager/pre_visit_and_check_in",
-              "practice_manager/charge_master",
-              "practice_manager/submission_and_rules",
+              "practice_manager/rules_and_submission",
               "practice_manager/ar_and_denials",
               "practice_manager/patient_billing",
               "practice_manager/reconcile_and_refund"
             ]
           },
           {
-            "group": "Getting Started with Air Billing",
+            "group": "Getting Started with Insights",
             "icon": "stars",
             "public": true,
             "pages": [
@@ -644,7 +643,7 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Sign-in on Air Billing",
+      "label": "Sign-in on Insights",
       "href": "https://insights.athelas.com"
     }
   },
@@ -748,6 +747,14 @@
     {
       "source": "/untitled-page",
       "destination": "/air_admin/manage_your_practice/pdmp_registration"
+    },
+    {
+      "source": "/practice_manager/charge_master",
+      "destination": "/practice_manager/setup_and_admin"
+    },
+    {
+      "source": "/practice_manager/submission_and_rules",
+      "destination": "/practice_manager/rules_and_submission"
     }
   ]
 }
