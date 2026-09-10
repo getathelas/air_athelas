@@ -27,54 +27,97 @@ The document advertises every authorization/token endpoint, the supported scopes
 
 ```json
 {
-  "issuer": "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579",
-  "jwks_uri": "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579/.well-known/jwks.json",
   "authorization_endpoint": "https://api.commure.com/fhir/authorize",
   "token_endpoint": "https://api.commure.com/fhir/token",
   "introspection_endpoint": "https://api.commure.com/fhir/introspect",
   "revocation_endpoint": "https://api.commure.com/fhir/revoke",
+  "issuer": "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_F9FdU4NGh",
+  "jwks_uri": "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_F9FdU4NGh/.well-known/jwks.json",
+  "grant_types_supported": [
+    "authorization_code",
+    "implicit",
+    "client_credentials",
+    "refresh_token"
+  ],
+  "scopes_supported": [
+    "openid",
+    "profile",
+    "email",
+    "fhirUser",
+    "launch",
+    "offline_access",
+    "patient/Medication.rs",
+    "patient/AllergyIntolerance.rs",
+    "patient/CarePlan.rs",
+    "patient/CareTeam.rs",
+    "patient/Condition.rs",
+    "patient/Device.rs",
+    "patient/DiagnosticReport.rs",
+    "patient/DocumentReference.rs",
+    "patient/Encounter.rs",
+    "patient/Goal.rs",
+    "patient/Immunization.rs",
+    "patient/Location.rs",
+    "patient/MedicationRequest.rs",
+    "patient/Observation.rs",
+    "patient/Organization.rs",
+    "patient/Patient.rs",
+    "patient/Practitioner.rs",
+    "patient/Procedure.rs",
+    "patient/Provenance.rs",
+    "patient/PractitionerRole.rs",
+    "patient/ServiceRequest.rs",
+    "patient/Coverage.rs",
+    "patient/Specimen.rs",
+    "patient/MedicationDispense.rs",
+    "patient/RelatedPerson.rs"
+  ],
+  "capabilities": [
+    "launch-standalone",
+    "launch-ehr",
+    "client-confidential-symmetric",
+    "permission-patient",
+    "permission-user",
+    "permission-offline",
+    "sso-openid-connect",
+    "context-passthrough",
+    "context-banner",
+    "context-style",
+    "context-ehr-patient",
+    "context-ehr-encounter",
+    "client-public",
+    "client-confidential-asymmetric",
+    "context-standalone-patient",
+    "authorize-post",
+    "permission-v2",
+    "permission-v1"
+  ],
+  "response_types_supported": [
+    "code"
+  ],
   "token_endpoint_auth_methods_supported": [
     "none",
     "client_secret_post",
     "client_secret_basic",
     "private_key_jwt"
   ],
-  "token_endpoint_auth_signing_alg_values_supported": ["RS256", "ES256"],
-  "grant_types_supported": [
-    "authorization_code",
-    "client_credentials",
-    "refresh_token"
+  "introspection_endpoint_auth_methods_supported": [
+    "client_secret_post",
+    "client_secret_basic"
   ],
-  "response_types_supported": ["code"],
-  "scopes_supported": [
-    "openid", "profile", "fhirUser", "launch", "launch/patient", "offline_access",
-    "patient/Patient.rs", "patient/AllergyIntolerance.rs", "patient/CarePlan.rs",
-    "patient/CareTeam.rs", "patient/Condition.rs", "patient/Coverage.rs",
-    "patient/Device.rs", "patient/DiagnosticReport.rs", "patient/DocumentReference.rs",
-    "patient/Encounter.rs", "patient/Goal.rs", "patient/Immunization.rs",
-    "patient/Location.rs", "patient/MedicationDispense.rs", "patient/MedicationRequest.rs",
-    "patient/Observation.rs", "patient/Organization.rs", "patient/Practitioner.rs",
-    "patient/PractitionerRole.rs", "patient/Procedure.rs", "patient/Provenance.rs",
-    "patient/RelatedPerson.rs", "patient/ServiceRequest.rs", "patient/Specimen.rs",
-    "system/*.rs"
+  "revocation_endpoint_auth_methods_supported": [
+    "client_secret_post",
+    "client_secret_basic"
   ],
-  "code_challenge_methods_supported": ["S256"],
-  "capabilities": [
-    "launch-ehr",
-    "launch-standalone",
-    "client-public",
-    "client-confidential-symmetric",
-    "client-confidential-asymmetric",
-    "context-ehr-patient",
-    "context-standalone-patient",
-    "sso-openid-connect",
-    "permission-patient",
-    "permission-offline",
-    "permission-v2",
-    "authorize-post"
+  "code_challenge_methods_supported": [
+    "S256"
   ]
 }
 ```
+
+<Note>
+  The `implicit` entry in `grant_types_supported` is advertised for legacy compatibility only. SMART App Launch v2.0 clients should use `authorization_code` (with PKCE) or `client_credentials` — see [Supported Grant Types](#authorization).
+</Note>
 
 ### <Icon icon="link" iconType="duotone" color="#F9345F" size={23} />  SMART Endpoint Reference
 
@@ -84,8 +127,8 @@ The document advertises every authorization/token endpoint, the supported scopes
 | **Token**         | `https://api.commure.com/fhir/token`                                                      |
 | **Introspection** | `https://api.commure.com/fhir/introspect`                                                 |
 | **Revocation**    | `https://api.commure.com/fhir/revoke`                                                     |
-| **JWKS URI**      | `https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579/.well-known/jwks.json`   |
-| **Issuer**        | `https://cognito-idp.us-east-2.amazonaws.com/us-east-2_KudjXF579`                         |
+| **JWKS URI**      | `https://cognito-idp.us-east-2.amazonaws.com/us-east-2_F9FdU4NGh/.well-known/jwks.json`   |
+| **Issuer**        | `https://cognito-idp.us-east-2.amazonaws.com/us-east-2_F9FdU4NGh`                         |
 | **SMART Style**   | `https://api.commure.com/fhir/smart-style.json`                                           |
 
 ## CapabilityStatement
@@ -289,6 +332,7 @@ The server supports **SMART v2 granular scopes**. All resource scopes use the `.
 | :------------------ | :--------------------------------------------------- |
 | **`openid`**        | OpenID Connect                                       |
 | **`profile`**       | User profile                                         |
+| **`email`**         | User email address                                   |
 | **`fhirUser`**      | Resolves the current user as a FHIR resource         |
 | **`offline_access`** | Issue a refresh token                                |
 | **`launch`**        | EHR launch context                                   |
