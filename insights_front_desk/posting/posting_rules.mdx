@@ -1,0 +1,100 @@
+---
+title: "Posting Rules"
+toc: "true"
+---
+
+### At a Glance
+
+When a payer reports an adjustment on a remittance, something has to decide what happens to that balance: write it off, hold it for someone to look at, or move it to the patient. **Posting rules** are that decision, made once per scenario instead of per claim.
+
+Athelas configures your rules with you before go-live, starting from a recommended set and adjusting where your practice works differently. This page explains what the rules act on, so the configuration conversation is a review rather than an introduction.
+
+For the posting screen itself — reading a remittance, posting a payment, writing off a balance — see [How to Use the Posting Tool Page](/insights_front_desk/posting/how_to_use_the_posting_tool_page).
+
+## What a CARC Tells You
+
+A **CARC (Claim Adjustment Reason Code)** explains why a payer paid something other than what you billed. Its prefix is the part that matters for posting, because the prefix decides who can be asked for the money.
+
+| **Prefix** | **Meaning** | **Can it go to the patient?** |
+| :-- | :-- | :-- |
+| **PR** | Patient Responsibility | **Yes** — copays, coinsurance, and deductibles belong here. |
+| **CO** | Contractual Obligation | No. |
+| **OA** | Other Adjustment | No. |
+| **PI** | Payer Initiated | No. |
+
+<Warning>
+Only **PR** adjustments can reach a patient statement. **CO**, **OA**, and **PI** adjustments cannot be billed to the patient under any circumstances, and your posting rules are built to enforce that. If an adjustment with one of those prefixes ever appears as patient responsibility, treat it as a configuration problem and raise it.
+</Warning>
+
+## How an Adjustment Gets Handled
+
+Every scenario in your configuration falls into one of four categories:
+
+| **Category** | **What happens** |
+| :-- | :-- |
+| **Adjust automatically while posting** | The adjustment is written off as the remittance posts, with no review. |
+| **Adjust conditionally** | Written off only when a condition holds — for example, when the line is not a full denial. |
+| **PR block or non-payable service** | A required write-off. QMB, Medicaid, and Workers' Compensation scenarios sit here. |
+| **Send to the patient** | The balance is appropriate for patient billing and flows to patient responsibility. |
+
+Anything that does not fit a category is routed for review rather than adjusted silently, so an unfamiliar code becomes a worklist item instead of a write-off nobody saw.
+
+## Common Scenarios
+
+These come up at almost every practice, and each one is a decision you can make differently.
+
+| **Code** | **What it means** | **How it is usually handled** |
+| :-- | :-- | :-- |
+| **CARC 45** — fee schedule exceeded | The payer paid less than you billed, up to their allowed amount. | Flagged as a potential underpayment. With your contract rates loaded, rules can identify specifically where a payer is not meeting the contracted amount. |
+| **CARC 24** — bundled services | The service is covered under a capitation or managed-care arrangement. | Without capitation agreements, routed for review by your denials team. With them, written off automatically, or by per-payer rule if you prefer. |
+| **CARC 59** — multiple procedure reduction | A reduction applied when several procedures are billed together. | For Medicare this is always a required write-off, under the Multiple Procedure Payment Reduction (MPPR) policy. |
+| **CARC P12 and P13** — Workers' Compensation | A Workers' Compensation adjustment. | Your Workers' Compensation fee schedule can be loaded so the balance is adjusted only once the contracted floor is met. |
+| **CARC 131, 132, 147** | Payer-specific adjustments with no single right answer. | Configured to match how your team handles them today. |
+| **CPT 97010** — hot and cold packs | Typically not covered by insurance. | Denials can route to self-pay, or be handled another way if you would rather. |
+
+## What Shapes Your Configuration
+
+The more of the following Athelas has, the more of your posting can be automated rather than reviewed.
+
+| **Input** | **What it makes possible** |
+| :-- | :-- |
+| **Contract rates and allowed amounts** | Detecting underpayments automatically, and adjusting off surplus balances once the contracted rate is met. Without them, an underpayment looks like any other short payment. |
+| **Capitation agreements** | Handling lump-sum arrangements for a series of visits, and writing off bundled-service adjustments with confidence. |
+| **Workers' Compensation fee schedule** | Adjusting only after the contracted floor is met, instead of on receipt. |
+| **Non-reimbursed CPT codes** | Codes you bill without expecting payment can route straight to their intended destination rather than into a denial worklist. |
+| **Your reconciliation practice** | Whether you reconcile remittances against bank deposits before posting, and whether you see HSA and FSA cards or third-party repricers such as Zelis, changes how the rules are sequenced. |
+
+Two preferences are worth deciding before setup:
+
+- **When primary and secondary payers disagree on patient responsibility,** which one do you follow? The usual recommendation is to side with the primary payer.
+- **Should small balances clear themselves?** Automatically adjusting off `$0.01` balances while patient responsibility is pending stops rounding differences from generating statements.
+
+## Changing Rules After Go-Live
+
+Your go-live configuration is a starting point, not a commitment. Rules can be refined as you learn which scenarios your team actually wants to see, so a category that generates more review than it saves is worth raising rather than working around.
+
+### FAQ
+
+<Accordion title="A CO adjustment showed up as patient responsibility. What now?">
+  That should not happen — **CO**, **OA**, and **PI** adjustments cannot be billed to a patient. Treat that as a rule misconfiguration and contact your account team rather than writing the balance off case by case.
+</Accordion>
+
+<Accordion title="Do I have to give Athelas our contract rates?">
+  No, but the rules are much weaker without them. Underpayment detection depends on knowing what the payer agreed to pay. With no contracted amount to compare against, a payer paying below contract looks the same as a payer paying correctly.
+</Accordion>
+
+<Accordion title="Will anything be written off without someone reviewing it?">
+  Only what you agreed to put in the automatic category. Conditional adjustments need their condition met, and anything outside the configured categories is routed for review instead of adjusted.
+</Accordion>
+
+<Accordion title="Can rules differ per payer?">
+  Yes. Several of the common scenarios, CARC 24 among them, are commonly configured per payer rather than once across the board.
+</Accordion>
+
+<Accordion title="Where do I see what a rule actually did to a claim?">
+  On the claim. The remittance, its CARC and RARC codes, and the resulting adjustments all live in **Claim Context** — see [Working a Claim](/insights_biller/claim_details/working_a_claim).
+</Accordion>
+
+<Info>
+Questions about a posting rule, or want one changed? Reach out to your account team or [support@getathelas.com](mailto:support@getathelas.com).
+</Info>
