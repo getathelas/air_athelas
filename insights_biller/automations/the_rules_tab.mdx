@@ -26,11 +26,11 @@ Rules are grouped and run by a **rule engine**, the system that evaluates each r
 | :-- | :-- |
 | **Billing** | Changes applied to a claim as it is built for a payer, such as routing, modifiers, and code substitutions. |
 | **Submission blocking** | Checks that hold a claim back from submission until someone reviews it. |
-| **Encounter modifying** | Changes applied to an encounter before it becomes a claim. |
+| **Encounter modifying** | Changes applied to an encounter before it becomes a claim. See [Encounter Rules](/insights_biller/automations/encounter_rules). |
 | **Adjustments** | Changes applied to a procedure's balance after a payment posts. |
 | **Appointments** | Logic that runs against appointments and scheduling data. |
 
-Every rule ID carries a prefix for the engine that owns it, so an ID alone tells you where a rule lives: `CLM-1716` is a Billing rule, `PCL-561439` is a Submission blocking rule, `ADJ-434765` is an Adjustments rule, and `APT-219096` is an Appointments rule.
+Every rule ID carries a prefix for the engine that owns it, so an ID alone tells you where a rule lives: `CLM-1716` is a Billing rule, `PCL-561439` is a Submission blocking rule, `ADJ-434765` is an Adjustments rule, `ENM-818753` is an Encounter modifying rule, and `APT-219096` is an Appointments rule.
 
 <Note>
 Rules are a subset of automations. An automation is an end-to-end pipeline (a trigger, then steps, then an outcome). A rule is one self-contained decision inside that pipeline.
