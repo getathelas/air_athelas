@@ -467,6 +467,7 @@
             "public": true,
             "pages": [
               "insights_front_desk/posting/how_to_use_the_posting_tool_page",
+              "insights_front_desk/posting/posting_rules",
               "insights_front_desk/posting/how_to_handle_duplicate_remittances",
               "insights_front_desk/posting/how_to_handle_partial_denials",
               "insights_front_desk/posting/how_to_post_a_remittance_manually",
