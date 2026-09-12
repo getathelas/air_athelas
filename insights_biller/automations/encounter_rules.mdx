@@ -1,0 +1,100 @@
+---
+title: "Encounter Rules"
+toc: "true"
+---
+
+### At a Glance
+
+**Encounter rules** run while encounters are being imported, before any of them becomes a claim. They handle the corrections and exclusions your practice would otherwise make by hand on every visit: setting a place of service from an appointment type, filling in a rendering provider, or keeping a scheduling placeholder out of your billing data entirely.
+
+They apply to encounters imported from a third-party EHR and to encounters created in Air, so one rule covers both paths into your billing data.
+
+Find them under **Automations → Rules**. Their rule IDs carry the `ENM-` prefix, so an ID alone tells you the rule is an encounter rule.
+
+## Two Kinds of Encounter Rule
+
+| **Kind** | **What it does** | **Engine** |
+| :-- | :-- | :-- |
+| **Modifying** | Updates a field on the encounter when your conditions are met. | **Encounter Modifying** |
+| **Blocking** | Keeps a matching encounter out of your billing data, so it never generates a claim. | **Encounter Blocking** |
+
+### Modifying rules
+
+A modifying rule corrects data on the way in, once, instead of leaving the same fix to whoever works the claim later.
+
+**Example.** Your practice books at-home telehealth visits under an appointment type called **Telehealth Home**. A modifying rule sets the place of service code whenever it sees that appointment type, so nobody has to remember to change it per visit.
+
+Practices most often use modifying rules to:
+
+- Set a place of service code from the appointment type.
+- Fill in rendering provider details for a known scenario.
+- Apply a default modifier to certain CPT codes.
+- Correct a data inconsistency their EHR produces every time.
+
+### Blocking rules
+
+A blocking rule keeps encounters that should never be billed from reaching your claims work at all, which is cheaper than filtering them out downstream.
+
+**Example.** Your practice holds provider calendar time with a placeholder patient named **Schedule Block**. Those appointments are never real visits, so a blocking rule stops any encounter for that patient from being imported.
+
+Practices most often use blocking rules to:
+
+- Exclude scheduling placeholder patients.
+- Exclude no-shows that were never cancelled.
+- Filter out administrative appointment types.
+- Keep duplicate encounters out.
+
+## Creating an Encounter Rule
+
+Encounter rules are built in the same rule builder as every other engine, so the mechanics are covered once elsewhere:
+
+- **[Create a Rule](/insights_biller/automations/create_a_rule)** — the three routes into the builder (describe it in plain language, clone an existing rule, or build it field by field), what every rule contains, and the dry run and approval steps a rule clears before it goes live.
+- **[The Rules Tab](/insights_biller/automations/the_rules_tab)** — reading the rules table, what **Priority**, **Type**, **State**, and **Status** each mean, and how to search and edit what you already have.
+
+Two things are worth knowing before you start:
+
+- **The engine you start from fixes the rule's type.** Open the **Encounter Modifying** or **Encounter Blocking** engine first, because **Rule Type** cannot be changed once the builder opens.
+- **Saving does not activate.** A new rule saves as a **Draft** and goes through an approval step, so you can write one without affecting live data.
+
+<Tip>
+  ✨**Smart Tip:** Describe the rule the way you would explain the problem to a colleague — "block all encounters for patient Schedule Block", or "set place of service to telehealth when the appointment type is Telehealth Home". A description that names the trigger and the outcome gives the assistant everything it needs to draft the conditions.
+</Tip>
+
+## Global and Local Rules
+
+The rules list mixes two kinds of ownership:
+
+- **Global** rules are maintained by Athelas across every site and handle common scenarios. You cannot edit them.
+- **Local** rules belong to a single site. Your practice creates them and controls them.
+
+<Warning>
+  Set a **Priority** on every rule you create for your own site. A rule saved without one can end up outside your control, and the fix is not something you can apply yourself — contact your account team if that happens.
+</Warning>
+
+## Things to know
+
+- **Rules apply going forward.** An encounter rule affects encounters imported after the rule goes live, not the ones already in your data. Ask your account team about options for existing encounters.
+- **Clone before you rebuild.** If a rule is close to what you need, select it in the list and use **Clone** rather than starting over, so the conditions you already trust carry across.
+- **Blocking is not deleting.** A blocked encounter never enters your billing data. The encounter still exists in your EHR, which remains the source of truth.
+
+### FAQ
+
+<Accordion title="How do I know my rule is working?">
+  Dry run it before it goes live — that replays the rule against real records and shows exactly which encounters match and what would change, without touching anything. After it is live, watch the encounters that meet your conditions. See [Dry Running a Rule](/insights_biller/automations/the_rules_tab#dry-running-a-rule-before-it-goes-live).
+</Accordion>
+
+<Accordion title="Can I turn a rule off without losing it?">
+  Yes. A rule's **Status** is separate from whether it exists, so a rule can sit **Inactive** and be switched back on later. See [The Rules Tab](/insights_biller/automations/the_rules_tab).
+</Accordion>
+
+<Accordion title="What happens when two encounter rules match the same encounter?">
+  **Priority** decides the order rules run in. [The Rules Tab](/insights_biller/automations/the_rules_tab) explains how the ordering reads, which is worth checking before you set a priority by guess.
+</Accordion>
+
+<Accordion title="Why would I block an encounter instead of just not billing it?">
+  A blocking rule keeps the encounter out of your billing data in the first place, so it never reaches a worklist and nobody spends time deciding what to do with it. Declining to bill an encounter that was already imported is a decision somebody has to make every time it appears.
+</Accordion>
+
+<Info>
+  Questions about an encounter rule, or want one reviewed before it goes live? Reach out to your account team or [support@getathelas.com](mailto:support@getathelas.com).
+</Info>
