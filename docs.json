@@ -535,7 +535,8 @@
               "insights_admin/my_practice/manage_staff_permissions",
               "insights_admin/my_practice/update_practice_information",
               "insights_admin/my_practice/your_athelas_invoice",
-              "insights_admin/my_practice/eligibility_setup_guide"
+              "insights_admin/my_practice/eligibility_setup_guide",
+              "insights_admin/my_practice/ehr_data_sync"
             ]
           },
           {

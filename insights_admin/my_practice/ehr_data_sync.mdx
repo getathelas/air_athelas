@@ -1,0 +1,123 @@
+---
+title: "EHR Data Sync"
+toc: "true"
+---
+
+### At a Glance
+
+Insights pulls patient, appointment, and encounter data out of your existing EHR on a daily schedule and builds claims from it. Once the sync is configured you do not trigger it, schedule it, or hand over files — it runs on its own, which is what lets a day's claims reach the clearinghouse without anyone re-typing a demographic or a CPT code.
+
+The flow is **your EHR → the daily pull → Insights**, and it moves in one direction only.
+
+<Warning>
+  Changes you make in Insights do **not** write back to your EHR. Demographic and insurance corrections have to be made in your EHR, where the next day's sync will pick them up. See [Eligibility Setup Guide](/insights_admin/my_practice/eligibility_setup_guide).
+</Warning>
+
+## What the Sync Pulls
+
+Three categories of data have to reach Insights before a claim can be built.
+
+### Patient demographics and insurance
+
+Who the patient is and what covers them:
+
+| **Group** | **Fields** |
+| :-- | :-- |
+| **Patient identification** | First and last name, date of birth, sex, address, phone number, email. |
+| **Primary insurance** | Insurance name, subscriber name, subscriber ID (member number). |
+| **Secondary and tertiary insurance** | Insurance name, subscriber information, and the patient's relationship to the subscriber. Pulled when present. |
+
+### Appointment information
+
+What drives eligibility checks and scheduling:
+
+- The date the patient is scheduled.
+- **Appointment status** — scheduled, completed, cancelled, or no-show.
+- **Appointment type**, which eligibility verification reads.
+
+Demographics and insurance come across linked from the patient record rather than re-entered per appointment.
+
+### Encounter information
+
+The clinical and billing detail a claim is built from:
+
+| **Group** | **Fields** |
+| :-- | :-- |
+| **Providers** | Rendering provider, and referring provider when there is one. |
+| **Clinical codes** | ICD-10 diagnosis codes, CPT procedure codes, diagnostic pointers linking diagnoses to procedures, and modifiers. |
+| **Service details** | Dates of service, place of service (POS) codes, service units, and pre-authorization numbers when they apply. |
+
+## The Sync Reflects Your EHR Exactly
+
+<Warning>
+  If a field is empty in your EHR, it arrives empty in Insights. If a field is wrong in your EHR, it arrives wrong. Nothing is inferred or filled in on the way across.
+</Warning>
+
+Three consequences follow:
+
+- **Incomplete records block claims.** A patient missing demographics or insurance cannot produce a submittable claim.
+- **Bad data becomes a rejection.** An incorrect subscriber ID reaches the payer as an incorrect subscriber ID.
+- **Consistency matters as much as completeness.** The same information has to go in the same field on every record, because that is the field the sync reads.
+
+## Getting Set Up
+
+Your onboarding team configures the sync with you before go-live. There are three parts to it.
+
+**Field mapping.** Every required data point is documented against the exact place it lives in your EHR — demographics, subscriber details, appointment types and statuses, clinical codes and modifiers, provider assignments, and service dates and locations. Your EHR's layout is specific to you, so ask your onboarding team for the field mapping documented for your system.
+
+**Data entry standards.** Your staff need to know which fields feed the sync, so agree on where each piece of information goes and document that for your team. Small inconsistencies in where a value is typed are the most common cause of missing data later.
+
+**Testing.** Test pulls run before go-live to confirm the required data comes across, arrives in the expected format, and produces claims that can actually be generated.
+
+## Common Data Quality Issues
+
+Most sync problems trace back to one of these:
+
+| **Area** | **What goes wrong** |
+| :-- | :-- |
+| **Insurance** | Incomplete subscriber IDs, a missing subscriber name or relationship, insurance effective dates left blank. |
+| **Encounters** | CPT codes not documented, ICD-10 codes missing or invalid, service dates not recorded, no rendering provider assigned. |
+| **Consistency** | Provider names entered differently across records, insurance names typed with variations, appointment types not standardized. |
+
+## Keeping Data Clean
+
+**Every day:**
+
+- Confirm patient demographics at check-in.
+- Update insurance whenever a patient reports a change.
+- Finish encounter documentation before the end of the day.
+- Work the errors the system reports.
+
+**Every week:**
+
+- Look for patients with missing or incomplete insurance.
+- Review encounters flagged with data issues.
+- Confirm new providers are set up correctly, including their credentials. See [Provider Credentials](/air_admin/manage_your_practice/provider_credentials).
+
+**When something looks wrong**, start in your EHR: open the specific patient or encounter, confirm the required fields are populated, and correct them there. If the data is complete in your EHR and still not arriving, contact support.
+
+### FAQ
+
+<Accordion title="When does the sync run?">
+  Daily, and typically overnight, so the day's data is ready to process each morning. Your onboarding team confirms the exact schedule for your practice during setup.
+</Accordion>
+
+<Accordion title="I fixed a record in our EHR. When does Insights see it?">
+  On the next daily pull. If a correction cannot wait for that, contact support.
+</Accordion>
+
+<Accordion title="Can historical encounters be brought across?">
+  Yes. Historical encounter data can be pulled during onboarding when you need it for claim submission or reporting — raise the request with your onboarding team while the mapping is being set up.
+</Accordion>
+
+<Accordion title="How would we know the sync failed?">
+  Errors are flagged and reported to your team, and you can check sync status yourself rather than waiting to be told. The import and submission error worklists are covered in [Errors, Rejections & Denials](/insights_onboard/getting_started_as_biller_errors_rejections_and_denials).
+</Accordion>
+
+<Accordion title="We are upgrading our EHR, or moving to a different one. Does that affect the sync?">
+  Yes, and this is worth flagging early. Field mappings are built against your current system, so an upgrade or a migration can move the fields the sync reads. Tell your account team before the change, not after.
+</Accordion>
+
+<Info>
+  Questions about the data reaching Insights, or a record that is not arriving? Reach out to your account team or [support@getathelas.com](mailto:support@getathelas.com).
+</Info>
