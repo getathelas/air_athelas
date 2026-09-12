@@ -6,8 +6,6 @@ toc: "true"
 
 **Text Snippets & Macros for EHR Scribe** let you create reusable phrases (dot phrases) that shape how **AI Scribe** writes your Chart Notes. Instead of editing the same wording after every visit, you define a snippet once and Scribe applies it automatically while generating the note.
 
-The same snippets can also be typed straight into a note by hand, with a trigger character and inline dropdowns. See [Using snippets while you type](#using-snippets-while-you-type).
-
 ## Why enable Text Snippets for Scribe
 
 When a snippet is enabled for Scribe, the AI uses it as it turns your transcription into a finished note. This helps you:
@@ -155,64 +153,6 @@ Choose a macro type based on what you want the snippet to do. You set this in th
 
 1. **Enabled for Scribe** — only snippets with **Use for EHR Scribe** turned on.
 2. **Appointment type matching** — snippets tied to the appointment type, plus global snippets (no appointment types selected).
-
-## Using snippets while you type
-
-<Note>
-  **Beta.** The settings in this section are rolling out to selected sites. If you do not see them in **Preferences** yet, contact your account manager for access.
-</Note>
-
-Snippets are not only for Scribe. You can insert one into any text field on a chart note as you write, which is useful for the phrasing you would otherwise re-type between visits.
-
-### Set your trigger character
-
-The trigger character opens the snippet menu while you are typing.
-
-**To choose it:**
-
-1. Open **Preferences** and go to **General**.
-2. Search for **Text Snippet Trigger Character**.
-3. Choose `/`, `.`, or `+`.
-
-### Insert a snippet
-
-There are two ways to reach your snippets from inside a text field:
-
-| **Method** | **How it works** |
-| :-- | :-- |
-| **Trigger character** | Type your trigger character and a menu opens under the cursor. Keep typing to search, or use the arrow keys, then press **Enter** or click to insert. |
-| **Snippet button** | **Click** the snippet icon at the end of the text field to open the same menu. |
-
-Snippets that belong to a **Group** appear grouped in the menu, so a well-organized list stays quick to scan even as it grows.
-
-### Scope a snippet to providers or sections
-
-Two optional fields in the snippet editor control where a snippet shows up:
-
-| **Field** | **What it does** |
-| :-- | :-- |
-| **User Access** | Limits the snippet to the providers you select. Leave it empty and the snippet is available to everyone on the site. |
-| **Chart Note Sections** | Limits the snippet to sections such as **SUBJECTIVE**, **OBJECTIVE**, **ASSESSMENT**, or **PLAN**. Leave it empty and the snippet is available in every section. |
-
-<Tip>
-  ✨**Smart Tip:** Scoping snippets by section is the cheapest way to keep the menu short. An exam phrase that only ever belongs under **OBJECTIVE** does not need to appear while you are typing the plan.
-</Tip>
-
-### Alternate word dropdowns
-
-A snippet can carry an inline dropdown instead of fixed wording, for a phrase where you pick from a short list every time — "Patient is \[improving/stable/worsening]", for example.
-
-Build one by adding the alternate words in the rich text toolbar when you create or edit the snippet. When you insert that snippet into a note, the dropdown appears inline; **click** it, choose an option, and your choice replaces the dropdown in the note.
-
-<Note>
-  Dictation trigger phrases are case-sensitive, so dictate a trigger exactly as you typed it into the snippet's **Title**.
-</Note>
-
-### What carries forward
-
-Snippet text behaves like anything else you type, so it carries forward into a new chart note along with the rest of your note, and its formatting is preserved. For a snippet with an alternate word dropdown, the **selected value** carries forward rather than the dropdown, so the next note starts from the wording you chose and not from the list.
-
-Snippet content also renders as written in exported PDFs.
 
 ## Best practices
 
