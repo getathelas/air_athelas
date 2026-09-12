@@ -1,0 +1,85 @@
+---
+title: "Provider Records"
+toc: "true"
+---
+
+A **provider record** is the billing identity behind a clinician: their own NPI, tax ID, state license, and Medicare PTAN. Claims are built against that record, so every clinician who renders billable care needs one before their charges go out.
+
+Provider records live on the **Providers** tab of **My Practice**, listed under **Active** and **Inactive**.
+
+![The Providers tab of My Practice, with a search box, Active and Inactive tabs, and the Add New Provider button](/images/insights_admin/my_practice/provider_records/provider_records_1.webp)
+
+## A provider record is not a login
+
+A provider record and a team member are two different things, and adding one does not create the other:
+
+| | **What it is** | **Where you manage it** |
+| :-- | :-- | :-- |
+| **Provider record** | The clinician's billing identity — NPI, tax ID, license, PTAN. | **Settings → My Practice → Providers** |
+| **Team member** | A user account that signs in, with roles and facility access. | **Settings → My Practice → Team Members** |
+
+A clinician who both signs in and bills needs both. You can create the pair in either order:
+
+- Add the provider record first, then link it when you invite the team member — the **Provider Credentials** step of the **New Member** form offers **Link to existing provider**.
+- Or create both at once from that same step, with **Create new provider**.
+
+See [User Management](/air_admin/manage_your_practice/user_management) for team members, roles, and facility access.
+
+## Add a provider
+
+**To add a provider record:**
+
+1. Go to **Settings → My Practice** and open the **Providers** tab.
+2. On the **Active** tab, **click** **\+ Add New Provider** in the top right.
+3. Fill out the **Add Provider** form. Every field carries a red asterisk except **PTAN**.
+   ![The Add Provider form with fields for name, date of birth, phone, NPI, TIN or SSN, license number, email, and PTAN](/images/insights_admin/my_practice/provider_records/provider_records_2.webp)
+4. **Click** **Confirm**.
+
+### What each field is for
+
+| **Field** | **What to enter** |
+| :-- | :-- |
+| **First Name**, **Last Name** | The clinician's legal name, as it should appear on a claim. |
+| **Date of Birth** | The clinician's date of birth. |
+| **Phone**, **Email** | Contact details for the provider record. |
+| **Individual NPI Number** | The clinician's own 10-digit NPI, not your organization's group NPI. |
+| **TIN/SSN** | The tax identification number the clinician bills under. |
+| **License Number** | The state license number. |
+| **PTAN** | The Medicare Provider Transaction Access Number. Optional — leave it blank if the clinician does not have one. |
+
+<Warning>
+  Check the **Individual NPI Number** and **TIN/SSN** before you confirm. Both travel onto every claim for this clinician, so a typo here turns into payer rejections later rather than an error on this form.
+</Warning>
+
+## Find a provider
+
+Use **Search Keyword** above the list to find a provider by name. The **Active** and **Inactive** tabs split the list, so a provider you cannot find under **Active** is worth checking under **Inactive** before you add a second record for the same clinician.
+
+## Things to know
+
+- **One record per clinician.** A duplicate record splits that clinician's claims and reporting across two identities.
+- **Credentialing is separate.** The record holds the identifiers; payer enrollment and credentialing status are tracked in [Provider Credentials](/air_admin/manage_your_practice/provider_credentials).
+- **Calendar and signature settings are separate too.** Availability, scheduling, and signature preferences live in [Provider Settings](/air_admin/manage_your_practice/provider_settings).
+- **Controlled substances need one more step.** Prescribing them requires the registration covered in [Register Providers for Rx](/air_admin/manage_your_practice/register_providers_rx).
+
+### FAQ
+
+<Accordion title="Does adding a provider give them a login?">
+  No. A provider record is a billing identity, not a user account. To let that clinician sign in, invite them as a team member and link the record at the **Provider Credentials** step. See [User Management](/air_admin/manage_your_practice/user_management).
+</Accordion>
+
+<Accordion title="Which NPI goes in the Individual NPI Number field?">
+  The clinician's own individual NPI. Your organization's group NPI belongs on the practice record, not here.
+</Accordion>
+
+<Accordion title="What if the clinician has no PTAN?">
+  Leave **PTAN** blank. It is the only field on the form that is not required.
+</Accordion>
+
+<Accordion title="I cannot find a provider I know we added. Where else should I look?">
+  Check the **Inactive** tab. Adding a second record for the same clinician splits their claims history, so confirm the record is genuinely missing first.
+</Accordion>
+
+<Info>
+  Questions about a provider record? Reach out to your account team or [support@getathelas.com](mailto:support@getathelas.com).
+</Info>
