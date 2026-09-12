@@ -1,0 +1,92 @@
+---
+title: "Dynamic Text Snippets (Beta)"
+sidebarTitle: "Dynamic Text Snippets"
+tag: "Beta"
+toc: "true"
+---
+
+### At a Glance
+
+**Dynamic text snippets** extend your saved phrases with three things a plain snippet cannot do: a trigger character you choose, limits on who sees a snippet and where it appears, and inline dropdowns for the phrases where you pick from a short list every time.
+
+For the basics — opening the snippet menu, searching it, and managing your list — see [Text Snippets For Your Note](/insights_provider/chart_notes/text_snippets_for_your_note).
+
+<Note>
+Dynamic snippets are in beta and are not yet live for every practice. If you do not see the settings below in **Preferences** yet, contact your account manager for access.
+</Note>
+
+## Set Your Trigger Character
+
+The trigger character is what opens the snippet menu while you are typing.
+
+**To choose it:**
+
+1. Go to **Profile → Preferences → General**.
+2. Search for **Text Snippet Trigger Character**.
+3. Choose `/`, `.`, or `+`.
+
+The character you pick applies wherever snippets work, so choose one your team does not type often in clinical prose.
+
+## Insert a Snippet
+
+There are two ways to reach your snippets from inside a text field:
+
+| **Method** | **How it works** |
+| :-- | :-- |
+| **Trigger character** | Type your trigger character and a menu opens under the cursor. Keep typing to search, or use the arrow keys, then press **Enter** or click to insert. |
+| **Snippet button** | **Click** the snippet icon at the end of the text field to open the same menu. |
+
+Snippets that belong to a **Group** appear grouped in the menu, so a well-organized list stays quick to scan even as it grows.
+
+## Scope a Snippet to Providers or Sections
+
+Two optional fields in the snippet editor control where a snippet shows up. Both are in **Profile → Preferences → Text Snippets**, on the snippet you are editing.
+
+| **Field** | **What it does** |
+| :-- | :-- |
+| **User Access** | Limits the snippet to the providers you select. Leave it empty and the snippet is available to everyone on the site. |
+| **Chart Note Sections** | Limits the snippet to sections such as **SUBJECTIVE**, **OBJECTIVE**, **ASSESSMENT**, or **PLAN**. Leave it empty and the snippet is available in every section. |
+
+<Tip>
+✨**Smart Tip:** Scoping by section is the cheapest way to keep the menu short. An exam phrase that only ever belongs under **OBJECTIVE** does not need to appear while you are typing the plan.
+</Tip>
+
+## Alternate Word Dropdowns
+
+A snippet can carry an inline dropdown instead of fixed wording, for a phrase where the wording changes but the options do not — "Patient is \[improving/stable/worsening]", for example.
+
+Build one by adding the alternate words in the rich text toolbar as you create or edit the snippet. When you insert that snippet into a note, the dropdown appears inline; **click** it, choose an option, and your choice replaces the dropdown in the note.
+
+<Note>
+Dictation trigger phrases are case-sensitive, so dictate a trigger exactly as you typed it into the snippet's **Title**.
+</Note>
+
+## What Carries Forward
+
+Snippet text behaves like anything else you type, so it carries forward into a new chart note along with the rest of your note, and its formatting is preserved.
+
+For a snippet with an alternate word dropdown, the **selected value** carries forward rather than the dropdown. The next note starts from the wording you chose, not from the list — so a carried-forward note does not ask you to pick again.
+
+Snippet content also renders as written in exported PDFs.
+
+### FAQ
+
+<Accordion title="Can different providers have different snippets?">
+  Yes. Set **User Access** on a snippet to limit it to specific providers. A snippet with **User Access** left empty is available to everyone on the site.
+</Accordion>
+
+<Accordion title="Why does a snippet not appear when I type my trigger character?">
+  Check the snippet's **Chart Note Sections** and **User Access** first — a snippet scoped to **OBJECTIVE** does not appear while you are typing in **PLAN**, and one scoped to other providers does not appear for you at all. If it appears in no section for anyone, confirm your trigger character in **Profile → Preferences → General**.
+</Accordion>
+
+<Accordion title="Does a dropdown stay a dropdown in the next note?">
+  No. Carry forward keeps the option you selected, not the dropdown, so you do not have to re-pick a value you have already chosen.
+</Accordion>
+
+<Accordion title="Do snippets survive being exported to PDF?">
+  Yes, including the wording chosen from an alternate word dropdown. The exported note reads as the note on screen reads.
+</Accordion>
+
+<Info>
+Questions or issues? Reach out to your clinic administrator or [support@getathelas.com](mailto:support@getathelas.com).
+</Info>
