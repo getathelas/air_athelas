@@ -1,0 +1,127 @@
+---
+title: "Claim Status, Stage & Payer Status"
+sidebarTitle: "Status & Stages"
+toc: "true"
+---
+
+### At a Glance
+
+Three fields describe where a claim is and what it needs. Read them in order:
+
+- **Status** — what needs to happen next on the claim, and whether it needs action.
+- **Stage** — which party holds the balance right now: a payer or the patient.
+- **Payer status** — where the claim stands with one specific payer, either what that payer has said so far or that the payer has not responded yet.
+
+This page defines every value the three fields can take. For the page they appear on, see [Getting Started with the Claims Page](/insights_biller/claim_details/claim_details_page); to filter and group by them, see [Organizing Your Claims Worklist](/insights_biller/claim_details/organizing_your_claims_worklist).
+
+## Status
+
+Status shows what is currently happening on a claim. It is a single line that tells you whether that claim needs action.
+
+A status is **workable** when you or your Athelas team can act on the claim right now. The statuses that are not workable are waiting on a payer or the patient, moving forward on their own, or already complete.
+
+The built-in **Workable Claims** view combines all three conditions: the claim is your site's responsibility, its status is one of the workable ones below, and it is not deferred.
+
+| **Status** | **What it means** | **Workable?** |
+| :-- | :-- | :-- |
+| **Import Errors** | The visit could not be fully imported from the EHR. The source data needs fixing before a claim can be built. | Yes |
+| **Needs Initial Review** | Waiting on a human first pass before the initial claim goes out to the primary payer. This applies to initial submissions only, not to secondary, tertiary, or resubmitted claims. | Yes |
+| **Unsubmitted** | Ready to be worked toward submission. Nothing has gone out to a payer yet. | Yes |
+| **Submission Errors** | The claim was blocked before it reached the payer. It failed a pre-submission check or rule, clearinghouse verification, or transmission. | Yes |
+| **Rejections** | The clearinghouse or the payer's front-end edits rejected the claim before adjudication, so no payment decision was made. | Yes |
+| **Decision Pending** | Submitted and waiting on the payer's decision. Nothing has come back yet. | Yes |
+| **Decision Inconclusive** | The payer responded, but the response does not settle the claim — a duplicate-claim denial, a claim forwarded to another payer, a placeholder denial with no usable reason code, or every remittance archived. | Yes |
+| **Payment Posting** | A remittance has arrived and is being posted to the claim, or the claim was posted for more than the payer allowed and needs correcting. | Yes |
+| **Full Denials** | The payer allowed nothing on the claim. | Yes |
+| **Partial Denials** | The payer paid some lines and denied others. | Yes |
+| **Unresolved Balances** | The payer allowed and paid every line, yet a balance is still left on the claim, so the claim has not moved on to the next payer or to the patient. Unlike **Partial Denials**, no line was denied; the leftover is unexplained or was never transferred. | Yes |
+| **Packet Pending** | An appeal or medical record packet needs to be generated and submitted. A claim lands here when someone requests an appeal, or when Athelas automation reads the denial codes and decides the claim should be appealed or needs records. | Yes |
+| **Statement Generation Pending** | The balance is now the patient's, and Athelas is generating the statement to send to the patient. Nothing for you to do. | No |
+| **Awaiting Patient Payment** | A statement has gone out and the patient still owes. Athelas is waiting on the patient to pay. | No |
+| **No Action Needed** | Nothing for you or Athelas to do right now — the payer has the claim and Athelas is waiting on the payer, the claim is queued and will submit automatically, the visit was marked not billable or predates go-live, or the patient has paid in full. | No |
+| **Finalized** | Every balance on the claim has been accounted for. Payers and the patient have paid, or the remainder was adjusted or written off. Nothing is owed by anyone. | No |
+| **Status Classification Failed** | The system could not determine a status. Athelas is alerted automatically and will correct the status. Nothing for you to do. | No |
+
+<Note>
+**Deferred is not a status.** Deferring a claim pauses it for up to 90 days without changing its status — the claim drops out of workable views until the deferral expires or its status changes. Claims that enter **Decision Pending** are deferred automatically for 30 days. See [Deferring a Claim](/insights_biller/claim_details/deferring_a_claim).
+</Note>
+
+## Stage
+
+Stage identifies which party holds the remaining balance on a claim: a payer, the patient, or no one once the claim is complete.
+
+| **Stage** | **What it means** |
+| :-- | :-- |
+| **Payer 1** | The primary payer is responsible for adjudicating the remaining balance. You are awaiting or working a remittance from that payer. |
+| **Payer 2** | The secondary payer owns the remaining balance, after Payer 1 has made its decision. |
+| **Payer 3** | The tertiary payer owns the remaining balance, after both Payer 1 and Payer 2 have made their decisions. |
+| **Patient** | Every payer has decided, or the visit is self-pay, and what is left is [patient responsibility](/insights_front_desk/patient_responsibility/patient_responsibility_page). The patient is expected to pay the outstanding amount. |
+| **Finalization Pending** | Every balance is settled, but pending or manual-review remittances are still attached to the claim. The claim moves to **Finalized** once those are posted or archived. |
+| **Finalized** | Every balance has been accounted for and nothing remains. Payers or the patient have paid, or the rest was adjusted or written off. |
+
+## Payer Status
+
+Payer status records where a claim stands with one specific payer. A claim carries one payer status per payer rather than a single overall one. Hover a claim's **Stage** to see the payer status for each payer on the claim.
+
+Read Status first, then Stage. A status of **Full Denials** tells you the claim was denied; a stage of **Payer 2** with a payer status of **Denied** identifies Payer 2 as the payer that denied the claim. On a multi-payer claim, that distinction tells you which payer to work.
+
+### Before the Claim Goes Out
+
+These payer statuses are listed in the order a claim moves through them.
+
+| **Payer status** | **What it means** |
+| :-- | :-- |
+| **Imported** | The encounter just landed from the EHR and has not been evaluated yet. This clears on the next status refresh. |
+| **Initial Review Required** | Marked billable, but not yet marked ready to submit, so someone needs to review the claim first. Primary payer only. |
+| **Missing Procedures** | No procedures on the encounter, so there is nothing to bill. Primary payer only. |
+| **Missing ICD-10** | No diagnosis codes at all, principal or secondary. Primary payer only. |
+| **No Patient Insurance** | No insurance is recorded at this payer position. |
+| **Missing Policy Number** | Insurance is recorded at this position but has no policy number. |
+| **Duplicate Policy Number** | The policy number here is identical to one already used at an earlier payer position. |
+| **Insurance Not Mapped** | The patient's insurance record is not linked to a known payer, so the claim cannot be routed. See [Payer Mapping](/insights_biller/general_billing/payer_mapping). |
+| **Unrecognized Insurance** | The insurance is mapped to the catch-all "unrecognized" payer rather than to a real one. See [Payer Mapping](/insights_biller/general_billing/payer_mapping). |
+| **Unsupported by CHC** | The clearinghouse cannot transmit to this payer, so the claim cannot be sent electronically. |
+| **Self Pay** | This position is self-pay: there is no payer to bill, only the patient. |
+| **Pre Launch** | The date of service predates your site's go-live or backfill date, so Athelas does not bill the claim. Primary payer only. |
+| **Inherited AR** | A balance carried over from before Athelas took over billing at your site. Primary payer only. |
+| **Not Intended To Bill** | Flagged as not billable, which pulls the claim out of the error and rejection queues. Primary payer only. |
+| **Unsubmitted** | A claim exists at this payer but was never queued to go out — a manual or preview claim, or one still in flight before hand-off. |
+| **Submission Pending** | Everything passed pre-submission checks and the claim is queued to be filed. |
+
+### After the Claim Goes Out
+
+| **Payer status** | **What it means** |
+| :-- | :-- |
+| **Submission Success** | The claim transmitted successfully through the clearinghouse. The claim can still be rejected before adjudication, and the payer has not responded yet. |
+| **Submission Error** | The claim was blocked before it reached the payer. It failed a pre-submission check or rule, clearinghouse verification, or transmission. |
+| **Rejected** | The clearinghouse or the payer rejected the claim before adjudication. A claim stays **Rejected** while any claim at this payer has a finalized rejection, even if a newer one has been filed. |
+| **Voided** | A void was submitted for this claim and the payer accepted the void. |
+
+### After Money Posts
+
+| **Payer status** | **What it means** |
+| :-- | :-- |
+| **Approved** | The payer allowed something. The allowed amount is paid plus copay plus coinsurance plus deductible, and that total is greater than zero. |
+| **Denied** | The payer allowed nothing. |
+
+### FAQ
+
+<Accordion title="What makes a claim workable?">
+Three things at once: the claim is your site's responsibility, its **Status** is one of the workable ones in the table above, and it is not deferred. The built-in **Workable Claims** view applies exactly those three conditions, so everything in that view is something you can act on now. See [Organizing Your Claims Worklist](/insights_biller/claim_details/organizing_your_claims_worklist).
+</Accordion>
+
+<Accordion title="A claim's status says Full Denials but its stage says Payer 2 — which payer denied it?">
+Payer 2. **Status** tells you what happened to the claim; **Stage** tells you who holds the balance now. Hover the **Stage** to see the payer status for each payer on the claim, and work the one showing **Denied**.
+</Accordion>
+
+<Accordion title="What is the difference between Partial Denials and Unresolved Balances?">
+**Partial Denials** means the payer denied at least one line and paid others. **Unresolved Balances** means the payer allowed and paid every line and a balance is still sitting on the claim — nothing was denied, so the leftover is either unexplained or was never transferred to the next payer or the patient.
+</Accordion>
+
+<Accordion title="What is the difference between Status and Status Reason?">
+**Status** is what needs to happen next. **Status Reason** is why the claim is there: the denial, rejection, or error code, a plain-language description, the dollar amount, and a per-procedure breakdown. Read the status to triage a claim and the status reason to fix it. See [Working a Claim](/insights_biller/claim_details/working_a_claim).
+</Accordion>
+
+<Accordion title="Why does a claim show Decision Inconclusive instead of a denial?">
+Because the payer responded but the response does not settle the claim. This happens with a duplicate-claim denial, a claim the payer forwarded to another payer, a placeholder denial carrying no usable reason code, or a claim whose remittances have all been archived. The claim needs a real decision before it can move on.
+</Accordion>
