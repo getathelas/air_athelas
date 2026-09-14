@@ -304,7 +304,8 @@
               "insights_biller/claim_details/working_a_claim",
               "insights_biller/claim_details/deferring_a_claim",
               "insights_biller/claim_details/how_to_resubmit_claims_in_bulk",
-              "insights_biller/claim_details/how_to_send_documentation"
+              "insights_biller/claim_details/how_to_send_documentation",
+              "insights_biller/claim_details/status_and_stages"
             ]
           },
           {
@@ -688,7 +689,7 @@
     },
     {
       "source": "/insights_front_desk/encounter_details/encounter_stage_and_status",
-      "destination": "/insights_biller/claim_details/claim_details_page"
+      "destination": "/insights_biller/claim_details/status_and_stages"
     },
     {
       "source": "/insights_front_desk/encounter_details/how_to_update_insurance",
