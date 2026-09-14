@@ -55,16 +55,26 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
   | **Due Soon** | POCs unsigned for 20–30 days (approaching deadline) |
   | **Overdue** | POCs exceeding 30 days without a signature |
   | **Certified** | POCs successfully signed by the physician |
+  | **Upcoming Recertifications** | Certified POCs whose next recertification is due within 15 days or already overdue. The POC itself stays **Certified**. See the **Upcoming Recertifications** section below. |
+
+  Each tab shows its row count in parentheses. Use the **Phase:** toggle above the tabs to switch between the **Certification** phase (initial evaluations) and the **Recertification** phase.
 
   **Filter Options**
 
-  - **Patient Filter:** Search for a specific patient's POC.
-  - **Phase Filter:** Toggle between **Initial Eval Certification** and **Recertification** phases.
-  - **Custom Filters:** Filter by referring provider, facility, payer, or patient.
+  Click **Filter** (or press **f**) to add a filter. You can combine:
+
+  - **Patient**
+  - **Referring Provider**
+  - **Payer**
+  - **Insurance Type**
+  - **Facility**
+  - **Case Status** — **All Cases**, **Open**, or **Closed**
+
+  Save a filter combination you use often as a view. See the **Saved Views** section below.
 
   **Table Columns**
 
-  Patient Name, Case, Status, Referring Provider, Payer, Exempt, Start Date, End Date, Frequency & Duration.
+  A selection checkbox, Patient Name, Case, Status, Upcoming Recertifications, Referring Provider, Payer, Exempt (Certification phase only), Start Date, End Date, Frequency & Duration.
 
   Hover the contact icon next to a **Referring Provider** name to see that physician's phone and fax number without opening the case.
 
@@ -92,6 +102,45 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
     title="Archived Case Indicator"
     style={{ width:"48%" }}
   />
+</Card>
+
+### **Saved Views**
+
+<Card>
+  A saved view stores a filter combination under a name so you can return to that combination with one click. Views appear as chips at the top-left of the dashboard, next to the **Phase:** toggle. The built-in **All** view is always first, followed by the views you have saved.
+
+  <img
+    src="/images/air_admin/manage_your_practice/plan_of_care_tracking/plan_of_care_tracking_10.webp"
+    alt="POC dashboard header showing the All view chip followed by saved view chips, with the Phase toggle to the right"
+    title="Saved View Chips"
+    style={{ width:"70%" }}
+  />
+
+  **To save a view:**
+
+  1. Add the filters you want, for example **Insurance Type** set to Medicare.
+  2. Click **Save** on the right of the filter row. The **Reset** button next to **Save** discards your changes instead.
+  3. Type a name of at least 3 characters in the **Name your view...** field.
+  4. Click **Save View**.
+
+  The new view becomes the selected chip.
+
+  <img
+    src="/images/air_admin/manage_your_practice/plan_of_care_tracking/plan_of_care_tracking_11.webp"
+    alt="Filter row with an Insurance Type filter applied and the Name your view field open above it, with Cancel and Save View buttons"
+    title="Saving a View"
+    style={{ width:"70%" }}
+  />
+
+  **To update a view:** with a saved view selected, adjust the filters and click **Save**. Choose **Save to this view** to overwrite the selected view or **Create new view** to keep both.
+
+  **To rename, duplicate, or delete a view:** right-click its chip and choose **Edit**, **Duplicate**, or **Delete**. Deleting is immediate and has no confirmation step. Hover a chip to preview the filters it contains.
+
+  **Note:** A view stores filters only. The status tab and the **Phase:** toggle are not part of a view. Views are private to you: teammates cannot see the views you create, and there is no shared or default view for the practice.
+
+  <Tip>
+    ✨**Smart Tip:** Create one view per payer group your team reviews on a schedule, such as **Medicare Only**, **Workers' Comp**, or **Self Pay**, so the daily check is a single click.
+  </Tip>
 </Card>
 
 ### **POC Tracking Preferences**
@@ -134,8 +183,9 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
 
   **Recertification Process**
 
-  1. **Automatic trigger:** The system triggers a recertification when the recertification window approaches (near 90 days from the initial eval date of service or last evaluative note), or when a new evaluative note is submitted.
-  2. **Follow standard signature process:** The same workflow as initial certification applies. The status changes to **Due Soon** at 75 days and **Overdue** at 90 days.
+  1. **Upcoming recertification alert:** Once a POC is certified, the system counts toward the 90-day recertification deadline from the Plan of Care start date. From day 76 the case appears in the **Upcoming Recertifications** tab and column as **Due Soon**, and from day 91 as **Overdue**. The POC's own status stays **Certified** throughout.
+  2. **New recertification note:** When the provider submits a Re-Certification Note or Progress Note for the case, the system creates a new POC entry in the **Recertification** phase and clears the alert from the previous entry.
+  3. **Follow standard signature process:** The new entry follows the same send-and-sign workflow as the initial certification. Its status changes to **Due Soon** at 76 days and **Overdue** at 91 days from its start date.
 
   **Note:** The Initial Script Exemption does **not** apply to recertifications. A signed POC is always required.
 
@@ -155,7 +205,47 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
   | **Awaiting Signature** | POC sent, waiting to be signed | Monitor; follow up if approaching 20 days | Low |
   | **Due Soon** | Unsigned for 20–30 days | Follow up with physician, confirm receipt, request expedited signature | Moderate |
   | **Overdue** | Not signed within 30 days | Priority follow-up, document all attempts, consider escalation | High — claim denial risk |
-  | **Certified** | Signed by physician, compliant | None — system alerts when recertification approaches | None |
+  | **Certified** | Signed by physician, compliant | None for this POC. Watch the **Upcoming Recertifications** column for the next deadline | None |
+</Card>
+
+### **Upcoming Recertifications**
+
+<Card>
+  A certified POC never changes back to **Due Soon** or **Overdue**. The approaching recertification deadline is tracked separately, so you can see both facts at once: the current POC is certified, and a new one is due.
+
+  **Where it appears**
+
+  - **Upcoming Recertifications column:** Sits right after **Status** in every tab and phase. The column shows an orange **N days to recertify** badge from day 76 after the Plan of Care start date and a red **N days overdue** badge from day 91. The column is blank when nothing is due.
+  - **Upcoming Recertifications tab:** The last tab in both the **Certification** and **Recertification** phases. The tab lists only the certified POCs that currently carry a badge, and the tab label shows the count.
+
+  <img
+    src="/images/air_admin/manage_your_practice/plan_of_care_tracking/plan_of_care_tracking_12.webp"
+    alt="Certified POC rows with the Upcoming Recertifications column showing a days to recertify badge and a days overdue badge"
+    title="Upcoming Recertifications Column"
+    style={{ width:"70%" }}
+  />
+
+  **When a POC appears here**
+
+  All of the following must be true:
+
+  - The POC is certified. In the **Certification** phase that means signed, marked **Script Exempt**, or certified by an attached document. In the **Recertification** phase a signed POC or attached document is required.
+  - No newer POC has been created for the case yet.
+  - The case is still open.
+  - At least 76 days have passed since the Plan of Care start date on the chart note.
+
+  **When a POC leaves the list**
+
+  The badge clears and the row drops from the tab as soon as a Re-Certification Note or Progress Note is submitted for the case, or the case is discharged.
+
+  <img
+    src="/images/air_admin/manage_your_practice/plan_of_care_tracking/plan_of_care_tracking_13.webp"
+    alt="Upcoming Recertifications tab selected, showing its count and the list of certified POCs with recertification badges"
+    title="Upcoming Recertifications Tab"
+    style={{ width:"70%" }}
+  />
+
+  **Note:** Switching the **Phase:** toggle returns you to the **All** tab.
 </Card>
 
 ### **Initial Script Exemption**
@@ -211,6 +301,47 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
   **Viewing POC Details**
 
   Click the **edit** (pencil) icon at the end of any row — next to the Notes and History icons — to view the full POC record, including referring provider details, case and appointment information, faxing status and history, the ability to attach proof of signature, and the option to resend the fax.
+
+  ---
+
+  **Fax Tracking in the POC Drawer**
+
+  The **POC Status** section of the drawer shows what happened to the most recent fax, so you can trace a missing signature without leaving the tracker.
+
+  Under **POC Sent**, the latest fax that was actually sent shows:
+
+  - **Send method:** **Automated** (sent when the note was submitted), **Manual** (sent from the drawer or a bulk action), or **Manual (Bundle)** (sent with other documents from the faxing page).
+  - **Fax status:** **Delivered**, **Failed**, **In progress**, **Queued**, **Batching**, **Partially delivered**, or **Status unavailable**. A failed fax also lists the **Failure reason** in red.
+  - **View Fax:** opens the fax record on the **Faxing** page in a new tab.
+
+  <img
+    src="/images/air_admin/manage_your_practice/plan_of_care_tracking/plan_of_care_tracking_14.webp"
+    alt="POC Status section of the drawer showing the POC Sent card with send method, fax status, and a View Fax link"
+    title="Latest Fax Details in the POC Drawer"
+    style={{ width:"60%" }}
+  />
+
+  When the most recent attempt did not produce a fax, a **Latest Attempt Not Sent** card appears below **POC Sent** with the reason:
+
+  | **Reason shown** | **What it means** | **What to do** |
+  | :-- | :-- | :-- |
+  | **Not requested** | The provider chose not to fax when submitting the note | Click **Resend Fax** if the referring physician still needs the POC |
+  | **Site setting disabled auto-fax** | **Auto-Faxing Eval Notes** is set to **Never** in your practice settings | Send manually with **Resend Fax**, or change the preference |
+  | **Appointment type does not support auto-fax** | The appointment type has auto-fax turned off | Send manually with **Resend Fax** |
+  | **No POC data change since last send** | **Auto-Faxing Eval Notes** is set to **POC Updates** and the plan of care did not change | No action needed unless the physician needs a new copy |
+  | **No referring provider on file** | The appointment has no referring provider | Click **Change** next to the referring provider, pick the physician, then **Resend Fax** |
+  | **Fax send failed** | The system tried to send and hit an error | Check the fax status above, then **Resend Fax** |
+
+  <img
+    src="/images/air_admin/manage_your_practice/plan_of_care_tracking/plan_of_care_tracking_15.webp"
+    alt="Latest Attempt Not Sent card in the POC drawer showing the reason the fax was skipped"
+    title="Latest Attempt Not Sent"
+    style={{ width:"60%" }}
+  />
+
+  **Note:** A POC that was faxed earlier keeps its **POC Sent** details even when a later attempt is skipped, so both cards can appear together.
+
+  The row's **history** icon also lists every fax attempt in the timeline alongside status changes, as **Automated Fax Sent**, **Automated Fax Failed**, **Fax Resent**, or **Fax Skip Reason** entries.
 
   ---
 
@@ -303,6 +434,51 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
   />
 </Card>
 
+### **Bulk Actions**
+
+<Card>
+  Select several POCs and act on them at once instead of opening each row.
+
+  **Selecting rows**
+
+  - Tick the checkbox at the start of a row to select it. Hold **Shift** and tick another row to select everything in between.
+  - Tick the checkbox in the table header to select every row on the current page. Selection covers the current page only, so change the page size (10, 20, or 50 rows) if you need more rows at once.
+  - A panel appears at the bottom of the screen showing how many rows are selected. Click the **X** (**Clear selected**) to start over.
+
+  <img
+    src="/images/air_admin/manage_your_practice/plan_of_care_tracking/plan_of_care_tracking_16.webp"
+    alt="POC table with three rows selected and the bulk actions panel at the bottom showing Exempt Script and Resend Fax"
+    title="Bulk Actions Panel"
+    style={{ width:"70%" }}
+  />
+
+  **Available actions**
+
+  | **Action** | **Available in** | **What it does** | **Limits** |
+  | :-- | :-- | :-- | :-- |
+  | **Exempt Script** | **Certification** phase only | Marks each selected POC as **Script Exempt**, the same as ticking **Exempt** on the row | Rows still in **Not Sent** are skipped, because a POC must be sent before it can be exempted |
+  | **Resend Fax** | Both phases | Faxes each selected POC to its referring provider again | Up to **10** rows per batch. Rows without a referring provider or fax number on file are skipped |
+
+  Actions run as soon as you click them. There is no confirmation step.
+
+  **Reviewing results**
+
+  - When every row succeeds, a short confirmation appears, for example **Resent fax for 3 plans of care**.
+  - When any row fails, a summary card opens in the bottom-right corner. The card lists each patient and case with a green check or a red error icon under a header such as **7 of 10 updated (3 failed)**. Hover a red icon to read why that row failed. Rows that succeeded are not rolled back.
+  - Common reasons a fax fails: the referring provider has no fax number on file (the system also creates a reminder task under the patient), the note is marked documentation only, or your site has no outbound fax number configured.
+
+  <img
+    src="/images/air_admin/manage_your_practice/plan_of_care_tracking/plan_of_care_tracking_17.webp"
+    alt="Bulk action summary card listing patients and cases with success and failure icons, with a failure reason shown on hover"
+    title="Bulk Action Results"
+    style={{ width:"48%" }}
+  />
+
+  <Warning>
+    **Resend Fax** is disabled when more than 10 rows are selected. Deselect rows or run the action in batches of 10.
+  </Warning>
+</Card>
+
 ### **Best Practices**
 
 <Card>
@@ -311,6 +487,8 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
   - Send POCs within 1–2 days of the initial evaluation and confirm fax delivery.
   - Check the **Due Soon** tab every morning and follow up on cases approaching 20 days.
   - Call physician offices at 20 days if no response has been received.
+  - Check the **Upcoming Recertifications** tab weekly and flag cases to the treating provider before the 90-day deadline.
+  - Save a view for each payer group you review, so the daily check is one click.
   - Only apply the Script Exemption when a valid signed script is on file; always document that the POC was sent.
 
   ---
@@ -328,6 +506,7 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
 
   - Review the dashboard regularly to identify patterns and problem areas (e.g., a specific referring provider with high overdue rates).
   - Streamline the POC sending process and build relationships with high-volume physician offices.
+  - When one referring provider has several POCs outstanding, filter by that provider and use the **Resend Fax** bulk action, then follow up by phone.
   - Train staff on Medicare requirements and the correct handling of Due Soon and Overdue alerts.
 </Card>
 
@@ -369,6 +548,22 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
 
 <Accordion title="What if the referring provider information on file is incorrect?">
   Update the referring provider in the patient's chart, then resend the POC to the correct physician using the **Resend Fax** option and attach the corrected record.
+</Accordion>
+
+<Accordion title="Why does a Certified POC show a recertification alert?">
+  The alert and the status are two separate facts. **Certified** means the current POC has the required signature and keeps that status permanently. The **Upcoming Recertifications** badge means the 90-day recertification deadline for the next POC is within 15 days or has passed. Submit the Re-Certification Note or Progress Note for the case and the badge clears.
+</Accordion>
+
+<Accordion title="Can I run a bulk action on every filtered row at once?">
+  Bulk actions apply to the rows you select on the current page. Set the page size to 50 and tick the header checkbox to select the whole page, then repeat on the next page. **Resend Fax** accepts up to 10 rows per batch, so split larger lists into batches.
+</Accordion>
+
+<Accordion title="Can my teammates use the views I saved?">
+  No. Saved views are private to the user who created them. Each teammate saves their own views, and there is no shared or default view for the practice.
+</Accordion>
+
+<Accordion title="Why was a POC not faxed automatically?">
+  Open the row with the **edit** (pencil) icon and look for the **Latest Attempt Not Sent** card in the **POC Status** section. The card names the reason, such as a practice setting, an appointment type that blocks auto-fax, or a missing referring provider. Fix the cause where needed and click **Resend Fax**.
 </Accordion>
 
 <Accordion title="How far back can I view POC history?">
