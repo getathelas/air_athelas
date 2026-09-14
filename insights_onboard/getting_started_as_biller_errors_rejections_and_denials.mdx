@@ -26,29 +26,26 @@ The Claims Page shows you all encounters in your system. With thousands of claim
 
 Click **Filter** at the top of the page to narrow down your list. You can filter by:
 
-- **Encounter Status** — Draft, Ready for Review, Approved, Submitted, Denied
+- **Claim Status** — What needs to happen next on the claim, such as **Unsubmitted**, **Submission Errors**, **Rejections**, or **Full Denials**
 - **Assignment** — Claims assigned to you, others, or unassigned
 - **Insurance Provider** — Specific payers
 - **Claim Amount** — Dollar value ranges
 - **Age** — How long the claim has been in the system
 - **Date Ranges** — Creation, submission, or payment dates
 
-Combine multiple filters to get exactly what you need. For example: "Show me all Blue Cross claims over \$500 that are ready for review."
+Combine multiple filters to get exactly what you need. For example: "Show me all Blue Cross claims over \$500 that need initial review."
 
 ![Claims Page filters example](/images/insights_onboard/getting_started_as_biller_errors_rejections_and_denials/getting_started_as_biller_errors_rejections_and_denials_1.png)
 
 ### Understanding Claim Statuses
 
-As claims move through your workflow, they have different statuses:
+Three fields describe where a claim is and what it needs:
 
-| **Status** | **What It Means** | **What To Do** |
-| :--------- | :---------------- | :------------- |
-| **Draft** | Incomplete information | Complete missing fields |
-| **Ready for Review** | Complete and waiting for biller review | Review for accuracy, fix errors |
-| **Approved** | Reviewed and ready to submit | Final verification, then submit |
-| **Submitted** | Sent to payer | Monitor for response |
-| **Paid** | Payment received | Reconcile and close |
-| **Denied** | Rejected by payer | Review reason, correct, resubmit |
+- **Status** — what needs to happen next on the claim, and whether it needs action.
+- **Stage** — which party holds the balance right now: a payer or the patient.
+- **Payer status** — where the claim stands with one specific payer.
+
+For every value these three fields can take, and which statuses you can act on, see [**Claim Status, Stage & Payer Status**](/insights_biller/claim_details/status_and_stages).
 
 ## Open Encounters
 
@@ -75,8 +72,10 @@ You can save these filters as a view: set your filters, then click **Save** in t
 
 Claims that need attention appear in different places depending on **where** in the lifecycle the issue occurred. The table below summarizes the four types.
 
-| **Stage** | **Origin** | **Where It Occurs** | **Has Claim Been Submitted?** |
-| :-------- | :--------- | :------------------- | :---------------------------- |
+These four types are claim **Statuses**, not **Stages** — a claim's stage names the payer or the patient who holds the balance. Denials covers two statuses, **Full Denials** and **Partial Denials**. See [**Claim Status, Stage & Payer Status**](/insights_biller/claim_details/status_and_stages) for both value lists.
+
+| **Action Item Type** | **Origin** | **Where It Occurs** | **Has Claim Been Submitted?** |
+| :------------------- | :--------- | :------------------- | :---------------------------- |
 | **Import Errors** | EHR → Insights | Between systems | No |
 | **Submission Errors** | Insights | Internal rules engine | No |
 | **Rejections** | Clearinghouse / Gateway | Post-submission | Yes (not adjudicated) |
