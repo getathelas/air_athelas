@@ -121,13 +121,11 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
   1. Add the filters you want, for example **Insurance Type** set to Medicare.
   2. Click **Save** on the right of the filter row. The **Reset** button next to **Save** discards your changes instead.
   3. Type a name of at least 3 characters in the **Name your view...** field.
-  4. Click **Save View**.
-
-  The new view becomes the selected chip.
+  4. Click **Save View**. The new view becomes the selected chip.
 
   <img
-    src="/images/air_admin/manage_your_practice/plan_of_care_tracking/plan_of_care_tracking_11.webp"
-    alt="Filter row with an Insurance Type filter applied and the Name your view field open above it, with Cancel and Save View buttons"
+    src="/images/air_admin/manage_your_practice/plan_of_care_tracking/plan_of_care_tracking_11.gif"
+    alt="Applying an Insurance Type filter, clicking Save, naming the view, and the new view appearing as the selected chip"
     title="Saving a View"
     style={{ width:"70%" }}
   />
@@ -439,6 +437,10 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
 <Card>
   Select several POCs and act on them at once instead of opening each row.
 
+  <Warning>
+    Bulk actions run as soon as you click them. There is no confirmation step, so check your selection first.
+  </Warning>
+
   **Selecting rows**
 
   - Tick the checkbox at the start of a row to select it. Hold **Shift** and tick another row to select everything in between.
@@ -458,8 +460,6 @@ The Plan of Care Tracking feature helps your practice maintain Medicare Part B c
   | :-- | :-- | :-- | :-- |
   | **Exempt Script** | **Certification** phase only | Marks each selected POC as **Script Exempt**, the same as ticking **Exempt** on the row | Rows still in **Not Sent** are skipped, because a POC must be sent before it can be exempted |
   | **Resend Fax** | Both phases | Faxes each selected POC to its referring provider again | Up to **10** rows per batch. Rows without a referring provider or fax number on file are skipped |
-
-  Actions run as soon as you click them. There is no confirmation step.
 
   **Reviewing results**
 
