@@ -360,12 +360,13 @@ Use custom line items for charges outside copay, coinsurance, and deductible. Af
 
 | **Type** | **Use it for** | **System behavior** |
 | :--- | :--- | :--- |
-| Standard | A separate service or charge manually added to a specific appointment | Recorded as a payment; does not reconcile against a claim and does not automatically apply to encounters |
-| Self Pay | A line item intended to reconcile to patient responsibility for the date of service | Automatically applies to all encounters, including insured encounters, and reconciles against encounter PR |
-| Add Credits | Money that should become patient account credit | Adds a corresponding credit; staff can choose flexible credit or tie it to a date of service |
+| Product | A separate service or charge manually added to a specific appointment | Recorded as a payment; does not reconcile against a claim and does not automatically apply to encounters |
+| Deposit | A service or charge that should reconcile against the patient responsibility regardless of insurance status, self-pay or commercial | Automatically applies to all encounters, including insured encounters, and reconciles against encounter PR for the date of service |
+| Self Pay | A service or charge tied specifically to self-pay patients that reconciles against the patient responsibility | Automatically applies only to self-pay encounters, and reconciles self-pay PR for the date of service |
+| Add Credits | Money that should stay as a credit on the patient's account | Adds a corresponding credit; staff can choose flexible credit or tie it to a date of service |
 
 <Warning>
-  A **Self Pay** line item applies to **ALL** encounters, not only self-pay patients. Use **Standard** instead when the charge should be manually added and remain separate from claim reconciliation.
+  **Deposit** and **Self Pay** both reconcile against patient responsibility, but their scope differs: **Deposit** applies to every encounter, insured or self-pay, while **Self Pay** applies only to self-pay encounters. Pick the type before you create the line item, because the type cannot be changed later.
 </Warning>
 
 ### Create a custom payment type
@@ -412,15 +413,16 @@ You can also find the line item by typing its name directly into the **Type** fi
 <img src="/images/insights_admin/my_practice/eligibility_setup_guide/eligibility_setup_guide_26.webp" alt="Editing the name, status, or default amount of a custom payment line" style={{ width:"70%" }} />
 
 <Tip>
-  ✨**Smart Tip:** Type cannot be edited. To change a line item from Standard, Self Pay, or Add Credits to a different type, disable the existing line item and create a new one with the correct type.
+  ✨**Smart Tip:** Type cannot be edited. To change a line item from Product, Deposit, Self Pay, or Add Credits to a different type, disable the existing line item and create a new one with the correct type.
 </Tip>
 
 ### Confirm the intended accounting behavior
 
 | **Type** | **What you should see after collection** |
 | :--- | :--- |
-| Standard | A separate charge for the custom item; it may have no encounter ID and remains separate from the copay or other encounter-linked charge. |
-| Self Pay | The collected line item reconciles against final encounter patient responsibility after remittance. |
+| Product | A separate charge for the custom item; it may have no encounter ID and remains separate from the copay or other encounter-linked charge. |
+| Deposit | The collected line item reconciles against final encounter patient responsibility after remittance, on insured and self-pay encounters alike. |
+| Self Pay | The collected line item reconciles against self-pay patient responsibility for that date of service. Insured encounters are not affected. |
 | Add Credits | The payment appears as locked or flexible patient credit based on the option selected during collection. |
 
 ## Set up your self-pay fee schedule
@@ -545,8 +547,8 @@ See [How to Take a Partial or Split Payment](/insights_front_desk/patient_respon
   The Secondary Insurance rule, already configured for your site, sets Copay, Coinsurance, and Deductible amounts to \$0 whenever a secondary payer and secondary member ID are on file. This is because the patient responsibility passed by the primary payer is usually covered by the secondary payer, so no amount is recommended for upfront collection.
 </Accordion>
 
-<Accordion title="What's the difference between Standard, Self Pay, and Add Credits custom payment types?">
-  **Standard** records a separate charge that stays independent of claim reconciliation. **Self Pay** automatically applies to all encounters (insured or not) and reconciles against the encounter's final patient responsibility. **Add Credits** adds patient account credit instead of a charge. The type cannot be changed after creation — disable the item and create a new one with the correct type instead.
+<Accordion title="What's the difference between the Product, Deposit, Self Pay, and Add Credits custom payment types?">
+  **Product** records a separate charge that stays independent of claim reconciliation. **Deposit** applies to every encounter, insured or self-pay, and reconciles against the encounter's patient responsibility for that date of service. **Self Pay** applies only to self-pay encounters and reconciles against self-pay patient responsibility. **Add Credits** adds patient account credit instead of a charge. The type cannot be changed after creation — disable the item and create a new one with the correct type instead.
 </Accordion>
 
 <Accordion title="My Suggested PR Rule isn't applying — what should I check?">
