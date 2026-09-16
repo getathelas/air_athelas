@@ -31,6 +31,27 @@ Set defaults for pre-visit payment collection: which suggestions to show (copay 
 
 Set how many days to wait after a claim is approved before overpayment credits (held in reserve in case of resubmission) are automatically released to cover outstanding balances.
 
+#### Charging using Patient Credits
+
+1. When a patient has available credits, the credit balance appears in the **Tags** column of the [Appointments](https://insights.athelas.com/appointments) page.
+
+<img
+  src="/images/insights_front_desk/patient_responsibility/pr_settings/pr_settings_1.webp"
+  alt="An appointment row on the Appointments page showing a Patient Credits tag alongside the Charge action"
+  title="Available credits shown on the appointment row"
+  style={{ width:"100%" }}
+/>
+
+2. Click **Charge**, select **Apply credits**, and enter the amount to apply — either the full available credit or part of it.
+3. **Total due** is the subtotal minus the credits you applied.
+
+<img
+  src="/images/insights_front_desk/patient_responsibility/pr_settings/pr_settings_2.webp"
+  alt="The payment panel of the Charge Appointment window with Apply credits selected and the total due reduced by the applied patient credits"
+  title="Total due after applying patient credits"
+  style={{ width:"48%" }}
+/>
+
 ### Out of Network Insurances
 
 Map out-of-network insurances so Insights can run eligibility and provide PR suggestions for those patients.

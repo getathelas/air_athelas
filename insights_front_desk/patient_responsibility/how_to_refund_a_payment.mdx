@@ -5,22 +5,39 @@ description: "Refund a patient payment to credits, the original card, or as an e
 
 #### How to Refund a Payment
 
-1. Open the patient's profile. Find the payment on the **Charges** or **Transaction History** tab and click **View Details**.
-2. On the transaction details, find the transaction and click **Refund Payment**.
-3. Specify whether it's a full or partial refund, the refund method, the amount (if partial), and the reason.
-4. Click **Refund**.
+1. Open the patient's profile and go to the **Transaction** tab. Click the payment you want to refund.
+2. On the transaction details, click **Refund**.
+3. Choose the **Refund Method**, whether it's a full or partial refund, the amount (if partial), and the reason.
+
+<img
+  src="/images/insights_front_desk/patient_responsibility/how_to_refund_a_payment/how_to_refund_a_payment_1.webp"
+  alt="Refund Payment window with the refund method options, a full-amount toggle, an amount, and a reason field"
+  title="Choosing a refund method and amount"
+  style={{ width:"70%" }}
+/>
+
+4. Click **Confirm Refund**, then choose the **facility location** the refund should be recorded against.
+5. If the refunded payment was linked to patient responsibility, Insights asks whether to cancel that PR. Click **Yes** to remove the PR along with the payment.
+
+<img
+  src="/images/insights_front_desk/patient_responsibility/how_to_refund_a_payment/how_to_refund_a_payment_2.webp"
+  alt="Cancel Patient Responsibility prompt asking whether to cancel the PR linked to the refunded payment, with No and Yes options"
+  title="Cancelling the patient responsibility tied to the refund"
+  style={{ width:"70%" }}
+/>
 
 ##### Refund Methods
 
-- **Add Credit to Patient's Account** — the payment becomes credits, applied to future balances.
-- **Refund to Credit Card (via Stripe)** — for payments originally made on an Athelas card reader.
-- **Record External Refund (Cash/CC)** — record a cash or credit-card refund taken outside the Athelas card reader.
-- **Record External Check Refund** — record that you refunded the patient by check.
+- **Add Credit to Patient's Account** — keeps the funds on file as credit for future charges.
+- **Refund to Credit Card (via Stripe)** — refunds the original card. Available for payments originally taken on an Athelas card reader.
+- **Record External Cash Refund** — record a cash refund you already made outside Insights.
+- **Record External Card Reader Refund** — record a card refund already taken on a card reader outside Insights.
+- **Record External Check Refund** — mark a paper check refund as completed.
 
 A new row appears in the transaction table for the refund. If you refunded to credits, the credit appears on the patient's **Credits** tab.
 
 <Warning>
-  **Leftover PR:** Refunding a payment does **not** remove the patient responsibility tied to it. For example, a \$75 self-pay payment creates \$75 of PR; refunding the \$75 payment leaves the \$75 PR as a balance due. To remove both, [cancel the PR](/insights_front_desk/patient_responsibility/how_to_cancel_pr) on the Charges tab as well.
+  **Leftover PR:** Refunding a payment does **not** remove the patient responsibility tied to it. For example, a \$75 self-pay payment creates \$75 of PR; refunding the \$75 payment leaves the \$75 PR as a balance due. To remove both, click **Yes** on the **Cancel Patient Responsibility** prompt, or [cancel the PR](/insights_front_desk/patient_responsibility/how_to_cancel_pr) from the Charges tab afterwards.
 </Warning>
 
 ### FAQ

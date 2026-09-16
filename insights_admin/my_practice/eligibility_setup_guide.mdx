@@ -34,6 +34,50 @@ Hover over the icon to see what needs to be corrected before running the eligibi
 | Coverage / subscriber not found | Confirm current insurance with the patient, update the EHR, and Re-Run. |
 | Provider or payer enrollment message | Flag the appointment for Athelas eligibility review. |
 
+**Understanding eligibility responses:** The demo below walks through each status badge, the payer response behind it, and what to check when a result comes back inconclusive.
+
+<div style={{ position:"relative",paddingBottom:"calc(51.5% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://app.arcade.software/share/Oly0J9M1jRKJYgERDPs4"
+    title="Understanding Eligibility Responses"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: Read an eligibility response and the status badge it produces.
+  </p>
+</div>
+
+**Re-runs and live eligibility checks:** The demo below shows how to re-run a check after you correct patient information in your EHR, and how to use **Live Eligibility Check** for a patient without a scheduled appointment.
+
+<div style={{ position:"relative",paddingBottom:"calc(51.5% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://app.arcade.software/share/tOg5FiQavf6LCY4uStmn"
+    title="Re-runs and Live Eligibility Checks"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: Re-run an eligibility check and run a live eligibility check.
+  </p>
+</div>
+
 ## Types of eligibility rules
 
 To generate an accurate Patient Responsibility suggestion, Insights first parses a patient's insurance benefits, such as copays, deductibles, and coinsurance. This information comes from Waystar, Availity, and UHC.
@@ -316,12 +360,13 @@ Use custom line items for charges outside copay, coinsurance, and deductible. Af
 
 | **Type** | **Use it for** | **System behavior** |
 | :--- | :--- | :--- |
-| Standard | A separate service or charge manually added to a specific appointment | Recorded as a payment; does not reconcile against a claim and does not automatically apply to encounters |
-| Self Pay | A line item intended to reconcile to patient responsibility for the date of service | Automatically applies to all encounters, including insured encounters, and reconciles against encounter PR |
-| Add Credits | Money that should become patient account credit | Adds a corresponding credit; staff can choose flexible credit or tie it to a date of service |
+| Product | A separate service or charge manually added to a specific appointment | Recorded as a payment; does not reconcile against a claim and does not automatically apply to encounters |
+| Deposit | A service or charge that should reconcile against the patient responsibility regardless of insurance status, self-pay or commercial | Automatically applies to all encounters, including insured encounters, and reconciles against encounter PR for the date of service |
+| Self Pay | A service or charge tied specifically to self-pay patients that reconciles against the patient responsibility | Automatically applies only to self-pay encounters, and reconciles self-pay PR for the date of service |
+| Add Credits | Money that should stay as a credit on the patient's account | Adds a corresponding credit; staff can choose flexible credit or tie it to a date of service |
 
 <Warning>
-  A **Self Pay** line item applies to **ALL** encounters, not only self-pay patients. Use **Standard** instead when the charge should be manually added and remain separate from claim reconciliation.
+  **Deposit** and **Self Pay** both reconcile against patient responsibility, but their scope differs: **Deposit** applies to every encounter, insured or self-pay, while **Self Pay** applies only to self-pay encounters. Pick the type before you create the line item, because the type cannot be changed later.
 </Warning>
 
 ### Create a custom payment type
@@ -368,15 +413,16 @@ You can also find the line item by typing its name directly into the **Type** fi
 <img src="/images/insights_admin/my_practice/eligibility_setup_guide/eligibility_setup_guide_26.webp" alt="Editing the name, status, or default amount of a custom payment line" style={{ width:"70%" }} />
 
 <Tip>
-  ✨**Smart Tip:** Type cannot be edited. To change a line item from Standard, Self Pay, or Add Credits to a different type, disable the existing line item and create a new one with the correct type.
+  ✨**Smart Tip:** Type cannot be edited. To change a line item from Product, Deposit, Self Pay, or Add Credits to a different type, disable the existing line item and create a new one with the correct type.
 </Tip>
 
 ### Confirm the intended accounting behavior
 
 | **Type** | **What you should see after collection** |
 | :--- | :--- |
-| Standard | A separate charge for the custom item; it may have no encounter ID and remains separate from the copay or other encounter-linked charge. |
-| Self Pay | The collected line item reconciles against final encounter patient responsibility after remittance. |
+| Product | A separate charge for the custom item; it may have no encounter ID and remains separate from the copay or other encounter-linked charge. |
+| Deposit | The collected line item reconciles against final encounter patient responsibility after remittance, on insured and self-pay encounters alike. |
+| Self Pay | The collected line item reconciles against self-pay patient responsibility for that date of service. Insured encounters are not affected. |
 | Add Credits | The payment appears as locked or flexible patient credit based on the option selected during collection. |
 
 ## Set up your self-pay fee schedule
@@ -407,6 +453,86 @@ Once patient statements go out, patients will call or email with questions about
   ✨**Smart Tip:** Use a monitored line — the number and address entered here are what patients see when they have a question about a statement, so point them at a line your team actively monitors during business hours. If the support number changes later, update it here so outgoing statements stay accurate.
 </Tip>
 
+## Collect payment in the appointment workflow
+
+Once your rules and custom line items are configured, collection happens in the appointment payment flow. The demos below cover the payment methods available and the two cases that come up most at the front desk.
+
+### Different ways to collect payment
+
+Insights supports several ways to collect an upfront patient responsibility amount, including a payment link, a saved or new credit card, an Athelas card reader, and payments taken outside Insights and recorded after the fact. The demo below walks through choosing between them.
+
+<div style={{ position:"relative",paddingBottom:"calc(51.44644253322909% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://app.arcade.software/share/3WAWNGE8ytLkgpCUzWoG"
+    title="Different Payment Methods to Collect Upfront PR"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: Choose a payment method when collecting upfront patient responsibility.
+  </p>
+</div>
+
+See [How to Take Payments](/insights_front_desk/appointments/how_to_take_payments) for the full reference on each payment method.
+
+### Collect upfront PR and an outstanding balance
+
+Patients often arrive owing the upfront amount for today's visit plus a balance from an earlier date of service. The demo below follows that collection process end to end.
+
+<div style={{ position:"relative",paddingBottom:"calc(51.52462861610634% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://app.arcade.software/share/2brlC0pX1RsdK9F4lkSK"
+    title="Collection process for Upfront PR + Outstanding Balance"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: Collect upfront patient responsibility together with an outstanding balance.
+  </p>
+</div>
+
+### Collect a partial payment
+
+A patient may want to pay part of an amount now, or split one amount across two payment methods. Whatever is left stays on the patient's balance to collect later. The demo below shows how that split works.
+
+<div style={{ position:"relative",paddingBottom:"calc(51.4866979655712% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://app.arcade.software/share/3PFJBfHpX7ofslmp3Hi2"
+    title="Splitting Payments"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: Split one amount across more than one payment.
+  </p>
+</div>
+
+See [How to Take a Partial or Split Payment](/insights_front_desk/patient_responsibility/how_to_take_a_partial_or_split_payment) for the step-by-step walkthrough.
+
 ### FAQ
 
 <Accordion title="Can I override a suggested Patient Responsibility amount for a specific patient?">
@@ -421,8 +547,8 @@ Once patient statements go out, patients will call or email with questions about
   The Secondary Insurance rule, already configured for your site, sets Copay, Coinsurance, and Deductible amounts to \$0 whenever a secondary payer and secondary member ID are on file. This is because the patient responsibility passed by the primary payer is usually covered by the secondary payer, so no amount is recommended for upfront collection.
 </Accordion>
 
-<Accordion title="What's the difference between Standard, Self Pay, and Add Credits custom payment types?">
-  **Standard** records a separate charge that stays independent of claim reconciliation. **Self Pay** automatically applies to all encounters (insured or not) and reconciles against the encounter's final patient responsibility. **Add Credits** adds patient account credit instead of a charge. The type cannot be changed after creation — disable the item and create a new one with the correct type instead.
+<Accordion title="What's the difference between the Product, Deposit, Self Pay, and Add Credits custom payment types?">
+  **Product** records a separate charge that stays independent of claim reconciliation. **Deposit** applies to every encounter, insured or self-pay, and reconciles against the encounter's patient responsibility for that date of service. **Self Pay** applies only to self-pay encounters and reconciles against self-pay patient responsibility. **Add Credits** adds patient account credit instead of a charge. The type cannot be changed after creation — disable the item and create a new one with the correct type instead.
 </Accordion>
 
 <Accordion title="My Suggested PR Rule isn't applying — what should I check?">
