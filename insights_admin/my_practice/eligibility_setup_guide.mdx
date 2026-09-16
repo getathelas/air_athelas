@@ -34,6 +34,50 @@ Hover over the icon to see what needs to be corrected before running the eligibi
 | Coverage / subscriber not found | Confirm current insurance with the patient, update the EHR, and Re-Run. |
 | Provider or payer enrollment message | Flag the appointment for Athelas eligibility review. |
 
+**Understanding eligibility responses:** The demo below walks through each status badge, the payer response behind it, and what to check when a result comes back inconclusive.
+
+<div style={{ position:"relative",paddingBottom:"calc(51.5% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://app.arcade.software/share/Oly0J9M1jRKJYgERDPs4"
+    title="Understanding Eligibility Responses"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: Read an eligibility response and the status badge it produces.
+  </p>
+</div>
+
+**Re-runs and live eligibility checks:** The demo below shows how to re-run a check after you correct patient information in your EHR, and how to use **Live Eligibility Check** for a patient without a scheduled appointment.
+
+<div style={{ position:"relative",paddingBottom:"calc(51.5% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://app.arcade.software/share/tOg5FiQavf6LCY4uStmn"
+    title="Re-runs and Live Eligibility Checks"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: Re-run an eligibility check and run a live eligibility check.
+  </p>
+</div>
+
 ## Types of eligibility rules
 
 To generate an accurate Patient Responsibility suggestion, Insights first parses a patient's insurance benefits, such as copays, deductibles, and coinsurance. This information comes from Waystar, Availity, and UHC.
@@ -406,6 +450,86 @@ Once patient statements go out, patients will call or email with questions about
 <Tip>
   ✨**Smart Tip:** Use a monitored line — the number and address entered here are what patients see when they have a question about a statement, so point them at a line your team actively monitors during business hours. If the support number changes later, update it here so outgoing statements stay accurate.
 </Tip>
+
+## Collect payment in the appointment workflow
+
+Once your rules and custom line items are configured, collection happens in the appointment payment flow. The demos below cover the payment methods available and the two cases that come up most at the front desk.
+
+### Different ways to collect payment
+
+Insights supports several ways to collect an upfront patient responsibility amount, including a payment link, a saved or new credit card, an Athelas card reader, and payments taken outside Insights and recorded after the fact. The demo below walks through choosing between them.
+
+<div style={{ position:"relative",paddingBottom:"calc(51.44644253322909% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://app.arcade.software/share/3WAWNGE8ytLkgpCUzWoG"
+    title="Different Payment Methods to Collect Upfront PR"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: Choose a payment method when collecting upfront patient responsibility.
+  </p>
+</div>
+
+See [How to Take Payments](/insights_front_desk/appointments/how_to_take_payments) for the full reference on each payment method.
+
+### Collect upfront PR and an outstanding balance
+
+Patients often arrive owing the upfront amount for today's visit plus a balance from an earlier date of service. The demo below follows that collection process end to end.
+
+<div style={{ position:"relative",paddingBottom:"calc(51.52462861610634% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://app.arcade.software/share/2brlC0pX1RsdK9F4lkSK"
+    title="Collection process for Upfront PR + Outstanding Balance"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: Collect upfront patient responsibility together with an outstanding balance.
+  </p>
+</div>
+
+### Collect a partial payment
+
+A patient may want to pay part of an amount now, or split one amount across two payment methods. Whatever is left stays on the patient's balance to collect later. The demo below shows how that split works.
+
+<div style={{ position:"relative",paddingBottom:"calc(51.4866979655712% + 41px)",height:0,width:"100%" }}>
+  <iframe
+    src="https://app.arcade.software/share/3PFJBfHpX7ofslmp3Hi2"
+    title="Splitting Payments"
+    frameBorder="0"
+    loading="lazy"
+    webkitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allow="clipboard-write"
+    style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",colorScheme:"light" }}
+  />
+</div>
+
+<div>
+  <p style={{ textAlign:"left",marginTop:"8px",fontSize:"14px",color:"#666",fontStyle:"italic" }}>
+    Arcade demo: Split one amount across more than one payment.
+  </p>
+</div>
+
+See [How to Take a Partial or Split Payment](/insights_front_desk/patient_responsibility/how_to_take_a_partial_or_split_payment) for the step-by-step walkthrough.
 
 ### FAQ
 
