@@ -130,6 +130,27 @@ To change a dashboard you already saved, open it and select **Customize dashboar
   Deleting a saved dashboard is permanent, so the gallery asks you to confirm first. Duplicate a dashboard before making changes you may want to undo.
 </Warning>
 
+## Who can see what
+
+Access is granular, so two people can open the same dashboard and see different things. Your practice's admins set these in **Settings → Roles**.
+
+| **Permission** | **What it controls** |
+| :------------- | :------------------- |
+| **Dashboards** | Opening the page at all. Without it, **Dashboards** does not appear in the navigation. |
+| **View Financial Health template** | Access to the Financial Health Overview template. |
+| **View Biller Productivity template** | Access to the Biller Productivity template. |
+| **View Clinical Operations template** | Access to the Clinical Operations template. |
+| **View custom dashboards** | Whether the dashboards your practice built appear in the gallery, separately from the templates. |
+| **Edit all dashboards** | Creating, editing, duplicating, and deleting dashboards. Without it, the gallery is read-only. |
+| **All providers' data** | Whether metrics cover every provider or only the person's own. |
+| **All assignees' data** | Whether metrics cover every assignee or only the person's own claims. |
+
+The last two change the numbers rather than the layout. A biller limited to their own assignee data opens the Biller Productivity template and sees their own throughput, not the practice's — which is usually the intent, and worth knowing before comparing figures with a colleague.
+
+<Tip>
+  ✨**Smart Tip:** Give a provider the Clinical Operations template without **All providers' data** and the dashboard becomes their personal scorecard, with no visibility into anyone else's panel.
+</Tip>
+
 ## The Metrics Library
 
 These are the metrics available when you build a dashboard. The library grows regularly, so the panel in the product is always the current list.
@@ -140,9 +161,9 @@ These are the metrics available when you build a dashboard. The library grows re
 | **Biller Productivity** | Average daily biller actions, Daily biller actions, Daily submission actions, A/R actions, Claims worked, Rework rate, Clean claims rate, Unassigned claims, Biller leaderboard                              |
 | **Clinical**            | Visits, Arrival rate, No show rate, Cancellation rate, Schedule to fill rate, Average hourly visits, Appointment status, Acquisition funnel, NPS score                                                        |
 
-## Exports and Scheduled Reports
+## Exports
 
-Every drilldown exports to CSV. For recurring delivery — a report that runs on a cadence with your filters saved and arrives in your inbox — use [My Reports](/air_admin/analyze_your_reports/my_reports) rather than a dashboard.
+Every drilldown exports its claims to CSV with **Download**. For the standing reports your practice runs on a schedule, use [My Reports](/air_admin/analyze_your_reports/my_reports).
 
 The [Revenue Analysis](/insights_biller/analytics/the_revenue_analysis_page) and [Denials Analysis](/insights_biller/analytics/the_denials_analysis_page) pages remain available alongside Dashboards.
 
@@ -154,16 +175,10 @@ The [Revenue Analysis](/insights_biller/analytics/the_revenue_analysis_page) and
   **Note:** Reach out to your account manager to have it enabled, or to change who at your practice can see it.
 </Accordion>
 
-<Accordion title="My prior-period comparison looks wrong. What is it comparing against?">
-  The prior period follows the length of the range you selected, not a fixed month or week. A one-week window compares each day to the same weekday a week earlier; a multi-month window compares each month to the same month last year. See the bucketing table above for the full set.
-
-  If the current period is still running, the comparison window is trimmed to match how much of the period has elapsed, so a partial month is never compared against a full one.
-</Accordion>
-
 <Accordion title="Can I share a dashboard with my team?">
-  Paste the dashboard URL. It carries your filter selections, so anyone with access to Dashboards sees the same cut of the data.
+  Paste the dashboard URL. It opens the same dashboard with your filter selections applied.
 
-  Custom dashboards you save are visible to others at your practice who have access to the page. Per-dashboard view and edit permissions are not currently available.
+  **Note:** They may not see the same numbers. Permissions decide which rows each person can read, so a colleague limited to their own provider or assignee data sees their slice of the metric rather than yours. Seeing a custom dashboard at all takes the custom-dashboards permission. See [Who can see what](#who-can-see-what).
 </Accordion>
 
 <Accordion title="What is the difference between clean claims rate and first pass rate?">
@@ -173,7 +188,7 @@ The [Revenue Analysis](/insights_biller/analytics/the_revenue_analysis_page) and
 </Accordion>
 
 <Accordion title="A metric I need isn't in the library. Can it be added?">
-  Yes. The metrics library is added to regularly, and requests from practices drive what goes in next. Send the metric and its definition to your account manager.
+  Yes. We're adding to the metrics library regularly, driven by requests from practices. Send the metric and its definition to your account manager.
 </Accordion>
 
 ### Further Assistance
