@@ -1,0 +1,181 @@
+---
+title: "Dashboards"
+sidebarTitle: "Dashboards"
+tag: "New"
+toc: "true"
+---
+
+#### At a Glance
+
+[Dashboards](https://insights.athelas.com/dashboards) is the analytics page in Insights. It brings financial, billing-operations, and clinical metrics onto one page, with the same global filters applied across every tile.
+
+Every metric is traceable. Click a tile and you land on the claims or appointments behind the number, grouped by payer or facility, with a link straight into the claims worklist to act on what you find. You never have to export a report to answer the next question.
+
+The numbers are queried live — there is no report to generate and wait on. Each dashboard shows **Data last refreshed** next to the filter bar, so you can tell whether a number reflects this morning's posting.
+
+<Info>
+  Dashboards is new. If you do not see **Dashboards** in your left navigation, your role may not include access yet — your practice's admins control who can open the page, or reach out to your account manager.
+</Info>
+
+## Getting to Dashboards
+
+Select **Dashboards** in the left navigation. You land on the dashboard gallery, which lists the out-of-the-box templates you have access to alongside any dashboards your practice has built.
+
+<img src="/images/insights_biller/analytics/dashboards/dashboards_1.webp" alt="The Dashboards gallery showing the out-of-the-box templates" />
+
+The search box and **New dashboard** sit in the page toolbar, next to the **Dashboards** breadcrumb. Search filters the gallery by dashboard name or category.
+
+## Out-of-the-box Templates
+
+Each template is a curated set of metrics for one audience. You can open a template directly, or duplicate it and edit your copy.
+
+| **Template**                 | **Built for**                    | **What it covers**                                                                      |
+| :--------------------------- | :------------------------------- | :-------------------------------------------------------------------------------------- |
+| **Financial Health Overview** | CFOs and controllers             | Charges, payments, adjustments, A/R aging, days in A/R, denials, and the claim submission funnel |
+| **Biller Productivity**       | Billing managers and RCM leads   | Biller actions, claims worked, rework rate, clean claims rate, unassigned claims, and the biller leaderboard |
+| **Clinical Operations**       | Clinical and practice leads      | Visits, arrival rate, no-show and cancellation rates, appointment status, and schedule-to-fill rate |
+
+**Note:** The **Clinical Operations** template draws on Air scheduling data and is enabled for select accounts. Ask your account manager if you would like it turned on.
+
+## Global Filters
+
+The filter bar at the top of a dashboard applies to every tile on it.
+
+| **Filter**                    | **What it does**                                                                          |
+| :---------------------------- | :---------------------------------------------------------------------------------------- |
+| **Date range**                | Sets the reporting window. Choose **This week**, **This month**, **This quarter**, **Last 6 months**, or **YTD**, or set your own start and end dates. |
+| **Date posted / Date of service** | Controls which date each metric is measured on.                                        |
+| **Provider**                  | Limits results to one or more rendering providers.                                          |
+| **Payer**                     | Limits results to one or more payers.                                                       |
+| **Facility**                  | Limits results to one or more facilities.                                                   |
+| **Assignee**                  | Limits results to the user a claim is assigned to. Most useful on the Biller Productivity template. |
+
+<img src="/images/insights_biller/analytics/dashboards/dashboards_2.webp" alt="The global filter bar on a dashboard" />
+
+Every dimension filter supports both **includes any of** and **includes none of**, so you can exclude a payer or facility instead of listing all the others.
+
+<Tip>
+  ✨**Smart Tip:** Your filter selections are saved per dashboard and written into the page URL. Come back tomorrow and your last view is still there, and you can paste the URL to a colleague to hand them the exact same cut of the data.
+</Tip>
+
+## Reading a Tile
+
+<img src="/images/insights_biller/analytics/dashboards/dashboards_3.webp" alt="A metric tile showing the value, prior-period comparison, and trend chart" />
+
+Each tile shows the metric for your selected window, how it compares to the prior period, and a trend chart broken into time buckets. Hover a bar or point for the exact value.
+
+Select the metric name to see its definition and the calculation behind it, so there is no ambiguity about what a number counts.
+
+### How the trend is bucketed
+
+Bucket size and the prior period both follow the length of your date range, so each point is compared against a like-for-like window.
+
+| **Date range selected** | **Trend buckets** | **Each point compares to**       |
+| :---------------------- | :---------------- | :------------------------------- |
+| 1–7 days                | Daily             | The same weekday one week earlier |
+| 8–49 days               | Weekly            | Four weeks earlier                |
+| 50–216 days             | Monthly           | The same month last year          |
+| 217–650 days            | Quarterly         | The same quarter last year        |
+| More than 650 days      | Yearly            | No prior-period comparison        |
+
+On the **YTD** preset you can switch the buckets between monthly and quarterly. Every other preset and custom range is bucketed automatically by the table above.
+
+When the current period is still in progress, the prior period is trimmed to the same elapsed length, so a month that is half over is compared against half of the previous month rather than all of it.
+
+### Setting a goal
+
+Select **Set goal** on a tile to enter a target and the **Time period** it applies to. The period list is built from the date range you are viewing: the whole year first, then one entry per bar on the trend chart — weekly, monthly, or quarterly, matching the bucketing above. On a range short enough to bucket by day, only the whole-year options appear.
+
+The goal renders as a line on the tile's trend chart, so progress against it is visible at a glance. **Clear goal** removes it.
+
+<img src="/images/insights_biller/analytics/dashboards/dashboards_4.webp" alt="Setting a goal on a metric tile" />
+
+## Drilling Into a Metric
+
+Select a tile to open its drilldown. This is where a number becomes a work list.
+
+<img src="/images/insights_biller/analytics/dashboards/dashboards_5.webp" alt="The drilldown page for a metric, grouped by payer" />
+
+In the drilldown you can:
+
+- **Group the metric by payer or facility** to see each group's share of the total, sorted by volume. These groups are usually the fastest route to what moved.
+- **Select a group** to narrow everything below it to that payer or facility.
+- **Review the underlying claims**, including claim ID, date of service, charges, and insurance paid.
+- **Download** the claims as a CSV when you need the raw rows in a spreadsheet.
+- **Select a claim** to open it in the claims page with full context, or select **View Claims**, which shows the row count, to send the whole filtered set to the claims worklist and work it there.
+- **Expand Definition & calculation** at the bottom for the metric's precise definition and formula.
+
+<Tip>
+  ✨**Smart Tip:** The filters you set on the dashboard carry into the drilldown and into the claims worklist, so the list you work is exactly the population the metric counted.
+</Tip>
+
+On the **Biller Productivity** template, the **Biller leaderboard** drills the same way. Sort it by biller actions, clean claims rate, or first pass rate, then select a person to see their actions, the claims they worked, and the status of each — for the date range and filters you already have set.
+
+## Building Your Own Dashboard
+
+You can assemble a dashboard from the metrics library instead of using a template.
+
+1. From the gallery, select **New dashboard** to start from a blank canvas, or open the **⋮** menu on any card and choose **Duplicate** to start from a copy of a template or an existing dashboard.
+2. Name the dashboard and, optionally, give it a description — select the pencil to edit, then press Enter or click away to save. The description shows under the filter row when the dashboard is open, and on its card in the gallery.
+3. Name your first section — sections group related tiles, so a dashboard might hold a Financials section and a Productivity section. **Add Section** creates more.
+4. Select **Add A Metric** to open the metrics panel. Each metric is tagged **Financial**, **Biller Productivity**, or **Clinical** and carries a short definition, and the search box filters across all of them.
+5. Select a metric to place it in the section. Set each tile to a third, a half, or the full width of its row, drag tiles into the order you want, and remove any you do not need.
+6. Add as many sections as you need, then select **Done**. The dashboard appears in the gallery next to the templates. **Cancel** discards the draft.
+
+To change a dashboard you already saved, open it and select **Customize dashboard**.
+
+<img src="/images/insights_biller/analytics/dashboards/dashboards_6.webp" alt="The Add a metric panel with metrics grouped by category" />
+
+<Warning>
+  Deleting a saved dashboard is permanent, so the gallery asks you to confirm first. Duplicate a dashboard before making changes you may want to undo.
+</Warning>
+
+## The Metrics Library
+
+These are the metrics available when you build a dashboard. The library grows regularly, so the panel in the product is always the current list.
+
+| **Category**            | **Metrics**                                                                                                                                                                                                 |
+| :---------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Financial**           | Gross charges, Payment posted, Payments by CPT code, Adjustments, Allowed amount mix, Net collection rate, A/R aging, Days in A/R by bucket, Average days in A/R, Claim submission funnel, Denials, Rejections, First pass rate, Cycle time, Visit volume, Average revenue per encounter, Average billed per encounter, Units per claim |
+| **Biller Productivity** | Average daily biller actions, Daily biller actions, Daily submission actions, A/R actions, Claims worked, Rework rate, Clean claims rate, Unassigned claims, Biller leaderboard                              |
+| **Clinical**            | Visits, Arrival rate, No show rate, Cancellation rate, Schedule to fill rate, Average hourly visits, Appointment status, Acquisition funnel, NPS score                                                        |
+
+## Exports and Scheduled Reports
+
+Every drilldown exports to CSV. For recurring delivery — a report that runs on a cadence with your filters saved and arrives in your inbox — use [My Reports](/air_admin/analyze_your_reports/my_reports) rather than a dashboard.
+
+The [Revenue Analysis](/insights_biller/analytics/the_revenue_analysis_page) and [Denials Analysis](/insights_biller/analytics/the_denials_analysis_page) pages remain available alongside Dashboards.
+
+### FAQ
+
+<Accordion title="Why don't I see Dashboards in my left navigation?">
+  Access is role-based: your practice's admins control who can open the page and which templates each user sees, so a colleague may see it when you do not.
+
+  **Note:** Reach out to your account manager to have it enabled, or to change who at your practice can see it.
+</Accordion>
+
+<Accordion title="My prior-period comparison looks wrong. What is it comparing against?">
+  The prior period follows the length of the range you selected, not a fixed month or week. A one-week window compares each day to the same weekday a week earlier; a multi-month window compares each month to the same month last year. See the bucketing table above for the full set.
+
+  If the current period is still running, the comparison window is trimmed to match how much of the period has elapsed, so a partial month is never compared against a full one.
+</Accordion>
+
+<Accordion title="Can I share a dashboard with my team?">
+  Paste the dashboard URL. It carries your filter selections, so anyone with access to Dashboards sees the same cut of the data.
+
+  Custom dashboards you save are visible to others at your practice who have access to the page. Per-dashboard view and edit permissions are not currently available.
+</Accordion>
+
+<Accordion title="What is the difference between clean claims rate and first pass rate?">
+  **Clean claims rate** counts claims submitted without errors that needed rework before the payer adjudicated them. **First pass rate** counts claims that needed no rework after the first submission.
+
+  **Note:** A biller who works denials and submission errors all day can show a low or zero first pass rate by design, because the claims they touch are already on their second pass. Read those two metrics against what the person's queue actually contains.
+</Accordion>
+
+<Accordion title="A metric I need isn't in the library. Can it be added?">
+  Yes. The metrics library is added to regularly, and requests from practices drive what goes in next. Send the metric and its definition to your account manager.
+</Accordion>
+
+### Further Assistance
+
+We're here to help! Please get in touch with [support@getathelas.com](mailto:support@getathelas.com) if you'd like some hands-on assistance.

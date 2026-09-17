@@ -262,6 +262,7 @@
             "tag": "Biller",
             "public": true,
             "pages": [
+              "insights_biller/analytics/dashboards",
               "insights_biller/analytics/the_denials_analysis_page",
               "insights_biller/analytics/the_revenue_analysis_page"
             ]
