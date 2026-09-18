@@ -66,25 +66,9 @@ Each tile shows the metric for your selected window, how it compares to the prio
 
 Select the metric name to see its definition and the calculation behind it, so there is no ambiguity about what a number counts.
 
-### How the trend is bucketed
-
-Bucket size and the prior period both follow the length of your date range, so each point is compared against a like-for-like window.
-
-| **Date range selected** | **Trend buckets** | **Each point compares to**       |
-| :---------------------- | :---------------- | :------------------------------- |
-| 1–7 days                | Daily             | The same weekday one week earlier |
-| 8–49 days               | Weekly            | Four weeks earlier                |
-| 50–216 days             | Monthly           | The same month last year          |
-| 217–650 days            | Quarterly         | The same quarter last year        |
-| More than 650 days      | Yearly            | No prior-period comparison        |
-
-On the **YTD** preset you can switch the buckets between monthly and quarterly. Every other preset and custom range is bucketed automatically by the table above.
-
-When the current period is still in progress, the prior period is trimmed to the same elapsed length, so a month that is half over is compared against half of the previous month rather than all of it.
-
 ### Setting a goal
 
-Select **Set goal** on a tile to enter a target and the **Time period** it applies to. The period list is built from the date range you are viewing: the whole year first, then one entry per bar on the trend chart — weekly, monthly, or quarterly, matching the bucketing above. On a range short enough to bucket by day, only the whole-year options appear.
+Select **Set goal** on a tile to enter a target and the **Time period** it applies to. The period list is built from the date range you are viewing: the whole year first, then one entry per bar on the trend chart.
 
 The goal renders as a line on the tile's trend chart, so progress against it is visible at a glance. **Clear goal** removes it.
 
@@ -92,7 +76,7 @@ The goal renders as a line on the tile's trend chart, so progress against it is 
 
 ## Drilling Into a Metric
 
-Select a tile to open its drilldown. This is where a number becomes a work list.
+Select a tile to open its drilldown, which lets you see the claims behind the metric.
 
 <img src="/images/insights_biller/analytics/dashboards/dashboards_5.webp" alt="The drilldown page for a metric, grouped by payer" />
 
