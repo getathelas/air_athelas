@@ -221,7 +221,13 @@ Many rows in the tracker never need to be created by hand — the system auto-cr
 
 The check runs on case create and case update, evaluating each of the three insurance slots (**primary, secondary, tertiary**) independently. For each slot where an insurance is attached and no prior auth is already selected, the system instantly creates a shell record if _either_ the site-level rule on that payer or the patient-level override on that PII says an auth is required.
 
-
+<img
+  src="/images/image-10.png"
+  alt="Image"
+  title="Image"
+  className="mx-auto"
+  style={{ width:"72%" }}
+/>
 
 The shell record appears in the tracker with:
 
