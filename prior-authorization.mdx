@@ -115,7 +115,9 @@ There are three collapsible panels that open from icons on the right edge. These
 - **Attachments** — patient attachments with search, upload, bulk download, and a link into the full attachments page.
 - **Appointments** — patient appointments with row selection, "open in new tab," and CSV download of selected rows.
 
-
+<Frame>
+  ![Image](/images/image-5.png "Image")
+</Frame>
 
 ### **Assignment**
 
@@ -123,7 +125,9 @@ Each row shows the current assignee as an avatar in the Assignee column. Clickin
 
 For bulk assignment, select rows with the checkboxes, then use the floating bulk-actions panel at the bottom of the page. The picker there shows partial-selection indicators when the selected rows currently have different assignees.
 
-
+<Frame>
+  ![Image](/images/image-6.png "Image")
+</Frame>
 
 ### **The Utilization Tracker**
 
@@ -131,7 +135,9 @@ Every auth renders a utilization tracker — inline in the table's Utilization c
 
 **Visits and CPT-unit auths** show a horizontal progress bar with four stats: **Completed** (blue), **Claimed** (green), **Scheduled** (light blue), and either **Available** (gray) or **Exceeded** (red conic-gradient) depending on whether the count exceeds the authorized total. When exceeded, the drawer's Visit Utilization section grows to include the reassignment lists described above.
 
-
+<Frame>
+  ![Image](/images/image-7.png "Image")
+</Frame>
 
 **Unlimited auths** show a **Days** tracker instead: elapsed calendar time as a progress bar plus a 2×2 stats grid (Completed, Claimed, Scheduled, and _Days Left_). The bar and dot are green when under 90% elapsed, yellow at or above 90% (_nearing end of authorization_), and red at or above 100% (_authorization period ended_).
 
@@ -163,13 +169,25 @@ Fill in:
 - Tags
 - For Visits: the visits authorized; for CPTs: the CPT + unit rows
 
-
+<img
+  src="/images/image-8.png"
+  alt="Image"
+  title="Image"
+  className="mx-auto"
+  style={{ width:"42%" }}
+/>
 
 ### Automatic auth record creation
 
 Many rows in the tracker never need to be created by hand — the system auto-creates a **Needs Auth** shell record whenever a case is saved with an insurance that requires prior auth on that slot.
 
-
+<img
+  src="/images/image-9.png"
+  alt="Image"
+  title="Image"
+  className="mx-auto"
+  style={{ width:"43%" }}
+/>
 
 The check runs on case create and case update, evaluating each of the three insurance slots (**primary, secondary, tertiary**) independently. For each slot where an insurance is attached and no prior auth is already selected, the system instantly creates a shell record if _either_ the site-level rule on that payer or the patient-level override on that PII says an auth is required.
 
