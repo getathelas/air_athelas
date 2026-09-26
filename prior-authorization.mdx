@@ -8,15 +8,24 @@ The Prior Authorizations Tracker is the dedicated worklist for all authorization
 
 The tracker supports both **Pre-Certifications** (payer-based auths with an authorization number) and **Referrals** (referring-provider-based auths). It tracks utilization by **Visits** or **CPT units**, automatically decrements as appointments happen and claims submit, and warns staff before an auth runs out of visits or days.
 
-![Image](/images/image.png "Image")
+<img
+  src="/images/image.png"
+  alt="Image"
+  title="Image"
+  className="mx-auto"
+/>
 
 ## **Accessing the Tracker**
 
 The Prior Authorizations Tracker lives in the left sidebar under **Daily Operations**, labeled **Prior Authorizations**.
 
-<Frame>
-  ![Image](/images/image-1.png "Image")
-</Frame>
+<img
+  src="/images/image-1.png"
+  alt="Image"
+  title="Image"
+  className="mx-auto"
+  style={{ width:"29%" }}
+/>
 
 ### **Views: Pre-Certifications vs Referrals**
 
@@ -25,14 +34,13 @@ The tracker opens with two built-in views, shown as chips at the top left of the
 - **Pre-Certifications** — the payer-side view. Shows a **Payer** column and requires an Authorization Number when creating a new record.
 - **Referrals** — the referring-provider view. Replaces the Payer column with **Referring Provider**, and the Authorization Number becomes optional (labeled _Auth # (Optional)_ in the create form).
 
-<Frame>
-  <img
-    src="/images/image-2.png"
-    alt="Image"
-    title="Image"
-    className="mx-auto"
-  />
-</Frame>
+<img
+  src="/images/image-2.png"
+  alt="Image"
+  title="Image"
+  className="mx-auto"
+  style={{ width:"34%" }}
+/>
 
 You can also create **saved views** with any combination of filters, sort, grouping, and column visibility. Saved views appear to the right of the two defaults in the same view selector. The Pre-Cert vs Referral category travels with the view, so switching category from within the Create drawer selects the matching default view.
 
@@ -70,9 +78,13 @@ Filters live in the top filter bar. Every filter persists to both the URL (so vi
 - **Insurance** — filter by payer / insurance company
 - **Show Archived** — _Active Only_ (default) or _Show All_
 
-<Frame>
-  ![Image](/images/image-3.png "Image")
-</Frame>
+<img
+  src="/images/image-3.png"
+  alt="Image"
+  title="Image"
+  className="mx-auto"
+  style={{ width:"23%" }}
+/>
 
 ### **Stage vs Status — what's the difference?**
 
@@ -80,7 +92,13 @@ The tracker maintains two different fields which indicate properties about the a
 
 **Stage** represents where the record is in it’s journey from creation to completion, and you set it manually. It's a site-configurable list of labels meant to mirror your actual workflow of procuring and using an authorization — for example _Not Started_, _Auth Requested_, _Pending Payer Response_, _Auth Approved_, _Auth Denied_. Stage can be selected directly from the Stage column in the table or from the authorization details drawer. Sites define their own stages within EHR Preferences > Prior Authorization.
 
-![Image](/images/image-4.png "Image")
+<img
+  src="/images/image-4.png"
+  alt="Image"
+  title="Image"
+  className="mx-auto"
+  style={{ width:"85%" }}
+/>
 
 **Status** is a calculated field based on the expiration / effectiveness of the auth. It reflects where an auth sits relative to its dates and remaining visits:
 
@@ -115,9 +133,13 @@ There are three collapsible panels that open from icons on the right edge. These
 - **Attachments** — patient attachments with search, upload, bulk download, and a link into the full attachments page.
 - **Appointments** — patient appointments with row selection, "open in new tab," and CSV download of selected rows.
 
-<Frame>
-  ![Image](/images/image-5.png "Image")
-</Frame>
+<img
+  src="/images/image-5.png"
+  alt="Image"
+  title="Image"
+  className="mx-auto"
+  style={{ width:"52%" }}
+/>
 
 ### **Assignment**
 
@@ -125,9 +147,13 @@ Each row shows the current assignee as an avatar in the Assignee column. Clickin
 
 For bulk assignment, select rows with the checkboxes, then use the floating bulk-actions panel at the bottom of the page. The picker there shows partial-selection indicators when the selected rows currently have different assignees.
 
-<Frame>
-  ![Image](/images/image-6.png "Image")
-</Frame>
+<img
+  src="/images/image-6.png"
+  alt="Image"
+  title="Image"
+  className="mx-auto"
+  style={{ width:"48%" }}
+/>
 
 ### **The Utilization Tracker**
 
@@ -135,9 +161,13 @@ Every auth renders a utilization tracker — inline in the table's Utilization c
 
 **Visits and CPT-unit auths** show a horizontal progress bar with four stats: **Completed** (blue), **Claimed** (green), **Scheduled** (light blue), and either **Available** (gray) or **Exceeded** (red conic-gradient) depending on whether the count exceeds the authorized total. When exceeded, the drawer's Visit Utilization section grows to include the reassignment lists described above.
 
-<Frame>
-  ![Image](/images/image-7.png "Image")
-</Frame>
+<img
+  src="/images/image-7.png"
+  alt="Image"
+  title="Image"
+  className="mx-auto"
+  style={{ width:"68%" }}
+/>
 
 **Unlimited auths** show a **Days** tracker instead: elapsed calendar time as a progress bar plus a 2×2 stats grid (Completed, Claimed, Scheduled, and _Days Left_). The bar and dot are green when under 90% elapsed, yellow at or above 90% (_nearing end of authorization_), and red at or above 100% (_authorization period ended_).
 
