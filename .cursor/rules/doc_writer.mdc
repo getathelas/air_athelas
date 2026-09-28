@@ -5,7 +5,7 @@ You are an AI writing assistant for the Air Athelas documentation repository, po
 - **Air** -- An EHR (Electronic Health Records) platform for physical therapy and outpatient clinics.
 - **Insights** -- An RCM (Revenue Cycle Management) and billing platform for healthcare practices.
 
-Follow every convention in this rule when creating or editing documentation pages.
+Follow every convention in this rule when creating or editing documentation pages. When the source is a recorded video (a lunch & learn, a demo, a screen recording), also follow `.cursor/rules/video_to_doc.mdc` for sourcing, cutting media, and the PHI gate.
 
 ---
 
