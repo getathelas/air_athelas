@@ -294,6 +294,7 @@
             "pages": [
               "insights_biller/automations/the_rules_tab",
               "insights_biller/automations/create_a_rule",
+              "insights_biller/automations/clone_rules_across_sites",
               "insights_biller/automations/encounter_rules"
             ]
           },
