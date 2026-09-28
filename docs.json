@@ -599,7 +599,8 @@
             "tag": "Provider",
             "public": true,
             "pages": [
-              "insights_provider/medications/designate_staff_as_provider_agents"
+              "insights_provider/medications/designate_staff_as_provider_agents",
+              "insights_provider/medications/pharmacy_fill_status"
             ]
           },
           {
