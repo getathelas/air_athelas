@@ -1,0 +1,268 @@
+# Air Athelas video-to-doc rule
+
+Use this rule to turn a recorded video into docs.athelas.com updates: an internal lunch & learn, a PM demo, a customer walkthrough, or a screen recording made for the docs. It covers reading the video, deciding what is new and what changed, cutting clean clips and stills, and shipping the PR. Every writing, naming, and navigation convention in `.cursor/rules/doc_writer.mdc` still applies; this rule adds what is specific to working from video.
+
+The worked example is PR #183, which updated the Insights Rules pages from the Sep 17, 2026 "Rules in Air" lunch & learn. Its description is the model for what section 10 produces.
+
+**The one idea to hold onto:** a recording is evidence of what one person saw, on one site, on one day — usually a superuser impersonating a customer. It is not proof that a feature is live for customers, and almost every frame contains something that must not be published. Verify before you write (section 3), and gate every asset before you commit it (section 7).
+
+The mechanical parts run through `scripts/video_media.py` (`python3 scripts/video_media.py --help`). It needs `ffmpeg` and `webp`: `brew install ffmpeg webp` locally, `apt-get install -y ffmpeg webp` in a Linux sandbox.
+
+---
+
+## 1. Gather the sources
+
+| Source | What it is | Watch out for |
+| :-- | :-- | :-- |
+| **Recording** (`.mp4`) | The only record of what was on screen. Meet saves it to the organizer's Drive as `<meeting> - <date> <time> - Recording`. | A 1920x1080, 24 fps frame with the shared screen in a sub-rectangle and a presenter tile beside it. The audio carries voices; never ship it. |
+| **Chat** (`.sbv`) | Meet's chat log. **It is not a transcript.** | Questions asked in chat are usually answered out loud, so the answer lives in the recording, not the file. |
+| **Notes by Gemini** (Google Doc) | Summary, per-topic details, and next steps generated from the audio. | The Transcript tab can be nearly empty (transcription stops when a recording restarts), and the separate Transcript doc may not be shared with you. Gemini mishears names and labels. Take every label from the frames. |
+| **Slack** | Rollout posts, access model, the feedback channel. | It is internal: use it to verify, never quote it. |
+| **Code and tickets** | `sense_frontend` and `normandy` PRs, Linear projects. | The ground truth for labels, dialog copy, and what reached production. |
+
+- **Find the Drive files** by title (`title contains '<Meeting name>'`): the recording, chat, and Gemini notes share one prefix.
+- **Read the Gemini notes first.** They give you the agenda and the Q&A, which makes the frame pass much faster.
+- **Find the rollout post** by searching Slack for the feature name with "rolled out" or "GA". It usually states the date, who gets access, and which doc page is the enablement link.
+- **No transcript?** There is no local speech-to-text by default. Work from the notes plus the frames, or, with the user's OK, install `whisper-cpp` for exact wording.
+
+---
+
+## 2. Map the recording
+
+Build a map of what is on screen when before you judge anything.
+
+1. **Probe it:** `python3 scripts/video_media.py probe <video>` reports duration, resolution, fps, and audio.
+2. **Find the shared screen:** `python3 scripts/video_media.py region <video> --at <t>` estimates the rectangle. Confirm it on an extracted frame. For the Rules recording it was `0,147,1440,786`. Every later coordinate is measured inside this rectangle ("share space").
+3. **Skim, then zoom.** Use contact sheets at 60 s for the storyline, 20 s per section, and 0.25–1 s around anything you might cut:
+
+   ```bash
+   python3 scripts/video_media.py sheet <video> --share 0,147,1440,786 --every 20 --from 300 --to 900 --out _scratch/map/sheet.png
+   python3 scripts/video_media.py sheet <video> --share 0,147,1440,786 --times 1480,1485,1490 --out _scratch/map/detail.png
+   ```
+
+   The script prints which cell is which time (this ffmpeg build cannot draw labels). Read the PNGs as images. Extract single frames at full size for anything you need to read word for word.
+4. **Write the map** into your plan: time range, what is on screen, and whether it is usable.
+
+| Time | On screen | Usable? |
+| :-- | :-- | :-- |
+| 24:03–25:38 | AI builder, NU-modifier example | Yes, the best clip |
+| 29:25–30:45 | Dry run claim picker, CMS-1500 | **No: PHI** |
+| 43:40–46:45 | Bulk clone, conflict dialog | With pixelation, and a jump cut past the site picker |
+
+---
+
+## 3. Verify before you write
+
+A demo shows one role on one site on one day. For every feature and label you plan to document, confirm four things.
+
+- **Is it live for customers?** Look for a rollout post, a PR merged to production, or the Linear state. The demo alone does not count.
+  - `sense_frontend` feature PRs merge to `develop` and ship when a `release/*` PR merges to `master`.
+  - `git merge-base --is-ancestor <sha> origin/master` in a local checkout settles it.
+  - Unreleased and flag-gated features do not get pages (doc_writer §8).
+- **Who can use it?** Demos constantly show superuser-only and per-site behavior:
+  - a "(superuser only)" section;
+  - **Stop Impersonating**;
+  - "only superusers can clone here";
+  - a dialog that behaves differently for RCM Managed Services and Practice Manager sites.
+
+  Find the condition in code (the Rules Submit dialog branches on `qa_required`), and document what the customer sees.
+- **What exactly does the UI say?**
+  - Take labels from the frames.
+  - Take dialog and tooltip copy from the component source, not from the Gemini notes.
+  - Take enumerations from the backend. The Rules ID prefixes are `RULE_TYPE_CODE` in `normandy/app/api/v1/rule_engine/schemas.py`.
+- **Is it still true?** Search PRs merged after the recording date. The Claim adjustments card disappeared from the Rules landing page four days after the Sep 17 recording.
+
+Keep a short evidence list (PR numbers, Linear IDs, file paths) for the PR description.
+
+---
+
+## 4. Find what is new and what changed
+
+For each existing page on the topic, list two things with file and line:
+
+- **New:** capabilities the page does not mention at all.
+- **Changed:** statements the page makes that are no longer true (labels, columns, IDs, steps, access, Beta or rollout notes).
+
+Then:
+
+- **Audit the existing media on those pages too.**
+  - Decode every still and sample every video.
+  - Stale UI next to corrected text contradicts it.
+  - Older assets can carry PII their author missed: two Rules stills showed an employee's name and a superuser-only section.
+- **Decide where material goes.**
+  - Update in place by default, and keep page paths stable; pages are linked from Slack posts and customer agreements.
+  - Add a page only for a distinct audience or workflow. The Rules refresh added **Clone Rules Across Sites** for multi-site groups.
+  - Check `docs.json` redirects before adding a page (doc_writer §7).
+- **Mine the Q&A for FAQs.** Customer-relevant questions from the chat and the Gemini notes make good FAQ items. Internal process questions do not.
+- **Ask the user before building.** Give options and a recommendation on:
+  - how much media to cut;
+  - where new material goes;
+  - how to word behavior that differs by customer type;
+  - whether numbers visible on screen may be shown.
+
+---
+
+## 5. What never leaves the recording
+
+Everything in doc_writer §8 applies. From recordings specifically, never publish:
+
+| Category | Where it hides in a demo |
+| :-- | :-- |
+| **PHI** | Claim and patient pickers (name with date of service), CMS-1500 and UB-04 previews, claims and appointment lists, eligibility responses, patient dropdowns |
+| **Provider and employee PII** | Rule notes listing providers with NPIs; **Last Updated … by**, **Requested by**, and Activity entries; avatar hover tooltips ("Last updated by …"); the presenter's camera tile; voices |
+| **Customer identity** | The site switcher and impersonation banner, Scope and Type values, multi-site pickers (a superuser's **Clone into** list shows every customer), URLs carrying `impersonate_site_id` or site IDs, rule names that embed a site |
+| **Customer business data** | Totals and counts shown next to a named site (the Rules Metrics totals were pixelated) |
+| **Internal or unreleased** | Superuser-only sections, grayed "coming soon" buttons (**Use templates**), unreleased tabs, internal codenames in AI output, Retool, internal ticket systems, Slack channels, QA team process, turnaround times, roadmap talk |
+| **Embarrassing test data** | AI failure strings as draft names, "test" rules, misspelled saved views |
+
+Two more rules:
+
+- **Never publish or link the recording itself.** If it contains PHI, tell the user, so the owner can trim it before sharing it any further.
+- **When in doubt, cut it.** A still of a static panel is safer than a clip of a moving one, and leaving an asset out is always an option.
+
+---
+
+## 6. Cut clips and stills
+
+All media goes through one JSON spec per recording. Keep it in `_scratch/` (gitignored) or your session scratch directory:
+
+```json
+{
+  "video": "~/Desktop/Lunch & Learn_ Rules in Air (Internal) - 2026_09_17 11_59 PDT - Recording 2.mp4",
+  "share": [0, 147, 1440, 786],
+  "stills": {
+    "landing": {"t": 290, "crop": [8, 74, 1424, 648]},
+    "properties": {"t": 2985.5, "crop": [1186, 75, 254, 470],
+                   "boxes": [[1197, 221, 104, 31], [1282, 493, 132, 27]]}
+  },
+  "clips": {
+    "open_builder": {"segments": [[1065.7, 1069.1, 1.0]], "hold": 1.5,
+                     "boxes": [[14, 37, 84, 29, 1065.7, 1068.36]]},
+    "bulk_clone": {"segments": [[2618.0, 2629.4, 2.0], [2654.0, 2663.0, 1.5]], "hold": 1.5}
+  }
+}
+```
+
+```bash
+python3 scripts/video_media.py still _scratch/spec.json --out _scratch/out
+python3 scripts/video_media.py clip  _scratch/spec.json --out _scratch/out --only bulk_clone
+```
+
+- Rectangles are `[x, y, w, h]` in share space.
+- Clip boxes may add absolute source times, `[x, y, w, h, t0, t1]`. Without times, a box covers the whole clip.
+- A clip is a list of `[start, end, speed]` segments joined in order, so a gap between two segments is a jump cut.
+- The script reproduces the PR #183 assets byte for byte, so a spec is also the record of how each asset was made.
+
+Conventions:
+
+- **Match the existing assets.** Clips are silent H.264 (`crf 24`, `+faststart`) at the native share width, never upscaled, and 5–35 seconds long. Stills are `.webp` at quality 88. The script does all of this.
+- **Speed up the waiting, not the reading.** Spinners and AI "thinking" run at 5–6x. Moments where the reader must take in a question or a dialog run at 1.5–2.5x. Hold the last frame for 0.5–1.5 s.
+- **Prefer a still for anything static,** and a still over a clip whenever something identifying moves: pixelation boxes cannot follow a scrolling dialog.
+- **Cut around, not through.** End a clip before it navigates to a page with PII; the Rules AI clip ends on **Save**, before the saved rule's Properties load. Jump-cut past pickers and tooltips.
+- **Crop out what you can't show.** The unreleased tabs were cropped off the landing still rather than blurred.
+- **Pixelate, don't blur, and measure first.** Draw the planned boxes on the clean frame and look before rendering:
+
+  ```bash
+  python3 scripts/video_media.py outline <video> --share 0,147,1440,786 --at 2768 --boxes '[[682,262,96,28]]' --out _scratch/boxes.png
+  ```
+
+  Estimates taken from a zoomed crop were 13 px off on the Rules conflict dialog and left "Gra…" readable.
+- **Number and place assets per doc_writer §2:** `{page}_{N}` in order of appearance.
+  - When new media lands mid-page, renumber the existing assets with `git mv`, from the highest number down so nothing collides.
+  - Replace stale assets in place.
+
+---
+
+## 7. The PHI gate (blocking)
+
+No asset is copied into `images/` until it passes every step:
+
+1. **Stills:** read every decoded check image (`still` writes one to `<out>/check/`) at full size.
+2. **Clips:** read every sheet and every full-size frame the gate writes: the first frame, the last frame, and one per scene change.
+
+   ```bash
+   python3 scripts/video_media.py gate _scratch/out/<clip>.mp4 --out _scratch/gate/<clip> --every 0.25
+   ```
+
+3. **Flash check.** Run it over any stretch of source where a dropdown, picker, or tooltip can open; sampling misses two-frame flashes.
+   - On the Rules recording, the **Clone into** list, showing every customer site, was open for 0.083 s between two clean frames.
+   - Trace the area the list or tooltip would cover, frame by frame, across the whole segment, then start or end the segment clear of any jump:
+
+   ```bash
+   python3 scripts/video_media.py scan <video> --share 0,147,1440,786 --region 500,553,200,140 --from 2649 --to 2663
+   ```
+
+4. **Check the hold.** A fade-in caught on the last frame is frozen for the whole hold.
+
+Anything doubtful is re-cut or dropped. Record each asset's treatment (source time and what was pixelated) for the PR.
+
+---
+
+## 8. Write the pages
+
+doc_writer.mdc governs the writing. From video work specifically:
+
+- **Describe the product, not the demo.** No "in the demo", no presenter names, no "then they click…".
+- **Use the literal on-screen labels** you read in the frames, including their casing (**Submission blocking**, **+ New Rule**).
+- **When behavior differs by customer type,** write the generic path or point to the UI's own message ("the dialog tells you what happens next"), unless the user chose to split it.
+- **Speak only for the customer's view.** Leave out superuser-only paths, even when they are the most impressive part of the demo.
+- **Link only to anchors you have checked** (section 9). Mintlify keeps an apostrophe in a heading's slug as a curly quote.
+
+---
+
+## 9. Verify
+
+Run everything in doc_writer §9, plus the following.
+
+- **Proofread:** `python3 scripts/proofread.py <every changed page>`.
+  - **Pass new pages by path;** the default scan skips untracked files.
+  - Then run `--pronouns <file>` for each page, and do the copyedit read.
+- **Mint gates:** `npx -y mint@latest validate` and `npx -y mint@latest broken-links`. Neither checks media paths or `#anchors`.
+- **With `npx -y mint@latest dev --port <n>` running:**
+  - Every `/images/...` reference in the compiled HTML returns 200: `curl -s localhost:<n>/<page> | grep -oE '/images/[^"]+\.(webp|mp4)' | sort -u`.
+  - In a browser, every image has a `naturalWidth`, and every video loads metadata without an `error`. Check this with page JS: `<video>` frames never appear in screenshots.
+  - Every `#anchor` you link appears as an `id="…"` in the compiled HTML.
+- **Hash-check** each renumbered asset against its old number on `main`, and each new asset against its rendered source (`git hash-object`).
+- **Sweep for stale strings.** Search the changed pages for the strings you replaced (old labels, IDs, "Beta", "rolling out"). Prove the pattern matches `main`'s copy of the page: an empty result from a broken command looks exactly like a clean one.
+
+---
+
+## 10. Ship
+
+- **Two commits:** media first (`images/`), then pages (`.mdx`, `docs.json`), so the media can be reviewed on its own.
+- **The PR description** covers:
+  - a summary;
+  - a media table (asset | source time | treatment);
+  - what was left out, and why;
+  - questions for the PM;
+  - verification;
+  - follow-ups, typically the month's changelog entry and any re-captures on a non-superuser test site;
+  - a note to the recording's owner if the recording itself contains PHI.
+
+---
+
+## 11. Tooling pitfalls
+
+- **zsh does not word-split `$VAR`.** `grep … $FILES` searched one nonexistent path and "passed". Use `${=FILES}` or an array, or list the files.
+- **`lsof -ti tcp:<port>` returns clients too.** A desktop app and Chrome were among the PIDs. Stop a local server with `kill $(lsof -nP -iTCP:<port> -sTCP:LISTEN -t)`.
+- **`-ss` before `-i` resets timestamps to 0,** so any `enable=` window inside a filter is relative to the segment start. `video_media.py` converts spec times for you.
+- **An in-app browser can't show a local video.** Local files render as static snapshots, and `<video>` frames never appear in screenshots. Extract frames with ffmpeg and read the PNGs.
+- **Clearing a folder after a `cd`** can be blocked by the agent's shell safety check. Write each pass to a fresh `_scratch` folder instead.
+- **Mint slugs keep curly apostrophes** (`Rule's` becomes `rule’s`). Reword headings you link to.
+
+---
+
+## 12. Checklist
+
+Before opening the PR, verify:
+
+- [ ] Sources gathered, the Gemini notes and chat read, and the recording mapped with timestamps
+- [ ] Every documented feature is live for customers, with evidence
+- [ ] New and changed items listed per page, and the existing media on those pages audited
+- [ ] User decisions collected: media, structure, wording, sensitive numbers
+- [ ] Every asset passed the PHI gate; PHI segments are excluded, not blurred
+- [ ] Assets named per doc_writer §2, renumbered with `git mv`, and hash-checked
+- [ ] Pages pass proofread (new files by path), the pronoun check, `mint validate`, and `mint broken-links`
+- [ ] Compiled HTML: every media path returns 200, images decode, videos load, anchors exist
+- [ ] Media and pages in separate commits; the PR lists every asset's source time and treatment
+- [ ] The recording's owner has been told about any PHI in the recording
