@@ -67,7 +67,8 @@
               "air_admin/manage_your_practice/care_team_communications",
               "air_admin/manage_your_practice/pdmp_registration",
               "air_admin/manage_your_practice/lead_tracker",
-              "air_admin/manage_your_practice/automatic_lead_creation_from_faxes"
+              "air_admin/manage_your_practice/automatic_lead_creation_from_faxes",
+              "prior-authorization"
             ]
           },
           {
