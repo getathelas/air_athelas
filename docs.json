@@ -281,6 +281,7 @@
               "insights_biller/general_billing/payer_mapping",
               "insights_biller/general_billing/remittances",
               "insights_biller/general_billing/the_eobs_page",
+              "insights_biller/general_billing/eob_copilot_upload_guide",
               "insights_biller/general_billing/provider_adjustments",
               "insights_biller/general_billing/deposit_slip_ingestion",
               "insights_biller/general_billing/the_billing_rules_engine",
