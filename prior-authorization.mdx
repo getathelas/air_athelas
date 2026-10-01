@@ -44,7 +44,7 @@ The tracker opens with two built-in views, shown as chips at the top left of the
 
 You can also create **saved views** with any combination of filters, sort, grouping, and column visibility. Saved views appear to the right of the two defaults in the same view selector. The Pre-Cert vs Referral category travels with the view, so switching category from within the Create drawer selects the matching default view.
 
-## **Tracker Details**
+## **Display Properties:**
 
 Left to right, the prior auth table shows:
 
@@ -54,6 +54,9 @@ Left to right, the prior auth table shows:
 - **Start Date** — sortable, default sort
 - **End Date** — sortable
 - **Utilization** — the visits/units/days tracker (see below)
+- **Total** — authorized # of visits or units
+- **Remaining** —Total minus Completed and Claimed visits
+- **Available to Schedule** — Total minus Completed, Claimed, and Scheduled visits 
 - **Stage** — inline-editable dropdown of your site's workflow stages
 - **Status** — read-only, auto-calculated (Active / Expires Soon / Expired / Needs Auth)
 - **Type** — **Visits** (blue) or **CPTs** (yellow)
@@ -62,7 +65,15 @@ Left to right, the prior auth table shows:
 - **Tags** — site-defined labels
 - **Assignee** — click to open the assignee picker to assign to an internal staff member
 
-Default sort is **Start Date, descending**. You can sort by Patient, Authorization Number, Payer, Start Date, End Date, Stage, Status, or Type. Grouping options are None (default), Patient, Payer, Status, Stage, Provider, Facility, or Case; group ordering can be Default, Count, Stage, or Status. Grouped rows can be collapsed and expanded from the group headers. Columns can be hidden/shown from the **Display** popover.
+Default sort is **Start Date, descending**. You can sort by Patient, Authorization Number, Payer, Start Date, End Date, Total, Remaining, Available to Schedule, Stage, Status, or Type. Grouping options are None (default), Patient, Payer, Status, Stage, Provider, Facility, or Case; group ordering can be Default, Count, Stage, or Status. Grouped rows can be collapsed and expanded from the group headers. Columns can be hidden/shown from the **Display** popover.
+
+<img
+  src="/images/image-13.png"
+  alt="Image"
+  title="Image"
+  className="mx-auto"
+  style={{ width:"66%" }}
+/>
 
 ### **Filters**
 
@@ -209,7 +220,7 @@ Fill in:
 
 ### Automatic auth record creation
 
-Many rows in the tracker never need to be created by hand — the system auto-creates a **Needs Auth** shell record whenever a case is saved with an insurance that requires prior auth on that slot.
+Many rows in the tracker never need to be created by hand — the system auto-creates a **Needs Auth** shell record whenever a case is created with an insurance that requires prior auth.
 
 <img
   src="/images/image-9.png"
