@@ -1,0 +1,110 @@
+---
+title: "The EOBs Page"
+sidebarTitle: "The EOBs Page"
+toc: "true"
+---
+
+{/* TEMPLATE: this page is a first draft for review. Every TODO comment below marks a screenshot, a video, or a UI detail that must be supplied or confirmed before the page is merged. */}
+
+## Overview
+
+The **EOBs** tab on the **Remittances** page is where you upload Explanation of Benefits (EOB) files to Insights. It replaces the **EOB Creation** page and its **Post a New EOB** button, which were retired on September 30, 2026.
+
+This guide covers where to find the EOBs tab, how to upload one or several EOBs at once, and what to do if you cannot see the page.
+
+<Info>
+  Old bookmarks and saved links to the **EOB Creation** page no longer work. Update them to [https://insights.athelas.com/remittances/eobs](https://insights.athelas.com/remittances/eobs).
+</Info>
+
+## Find the EOBs tab
+
+1. In the left navigation menu, open **Daily Operations**.
+2. Select **Remittances**.
+3. Click the **EOBs** tab at the top of the Remittances page.
+
+You can also go straight to the tab with this link: [https://insights.athelas.com/remittances/eobs](https://insights.athelas.com/remittances/eobs).
+
+{/* TODO screenshot: left nav path Daily Operations → Remittances → EOBs tab. Save as /images/insights_biller/general_billing/the_eobs_page/the_eobs_page_1.webp */}
+
+**Note:** If **Remittances** does not appear in your navigation menu, or the link takes you to the Home page, your user does not have access yet. See [I can't see the Remittances page or the EOBs tab](#i-cant-see-the-remittances-page-or-the-eobs-tab).
+
+## Upload EOBs
+
+### Upload a single EOB
+
+1. Open the **EOBs** tab.
+2. Click **Create EOB**.
+3. Select the EOB file from your computer.
+4. Confirm the upload.
+
+{/* TODO screenshot: EOBs tab with the Create EOB button highlighted. Save as /images/insights_biller/general_billing/the_eobs_page/the_eobs_page_2.webp */}
+
+{/* TODO verify: the exact labels and order of the controls shown after clicking Create EOB (file picker vs. drag-and-drop area, any fields to fill in, and the label of the final confirm button). Steps 3 and 4 above are written generically until this is confirmed. */}
+
+{/* TODO verify: accepted file types and any file size or page limits. None are stated here because they have not been confirmed. */}
+
+### Upload multiple EOBs at once
+
+You can upload several EOB files in one go. This is the replacement for bulk upload on the old EOB Creation page.
+
+1. Open the **EOBs** tab.
+2. Click **Create EOB**.
+3. Select every EOB file you want to upload.
+4. Confirm the upload.
+
+{/* TODO video: multi-file upload walkthrough. Save as /images/insights_biller/general_billing/the_eobs_page/the_eobs_page_3.mp4 and embed with the <video> component from the doc writing rule. */}
+
+{/* TODO verify: how multiple files are selected in the upload dialog (multi-select in the file picker, drag-and-drop, or both) and whether there is a maximum number of files per upload. */}
+
+{/* TODO verify: what the user sees after uploading (where the new EOBs appear in the EOBs tab, the status names shown, and expected processing time). Add a short "After you upload" section once confirmed. */}
+
+## I can't see the Remittances page or the EOBs tab
+
+Access to the Remittances page, including the EOBs tab, is controlled by the **Remittances** page permission on each user.
+
+| **Role** | **Remittances access by default** |
+| :--- | :--- |
+| **Administrator** | Yes |
+| **Billing Manager** | Yes |
+| **Staff** | No |
+
+A user without the **Remittances** permission does not see **Remittances** in the navigation menu, and opening the EOBs link sends that user to the Home page.
+
+<Warning>
+  The old **EOB Creation** permission does not carry over. A user who could open the EOB Creation page still needs the **Remittances** permission to reach the EOBs tab.
+</Warning>
+
+### Grant access _(administrators)_
+
+1. Go to **Settings → My Practice → Team Members**.
+2. Find the user and click the **Edit** icon at the end of the row.
+3. Under page permissions, tick **Remittances**.
+4. Click **Save**.
+
+The user may need to log out and log back in to see the change.
+
+{/* TODO verify: the exact location and label of the Remittances checkbox when editing a user. The Manage Staff & Permissions page describes page permissions as part of a role's permission tree (Roles sidebar → edit role), so confirm whether Remittances is ticked on the user directly, on a custom role, or both, and adjust step 3. */}
+
+{/* TODO verify: the role label shown in the product is "Administrator" (as on the Manage Staff & Permissions page) rather than "Admin". */}
+
+For more on roles and page permissions, see [Manage Staff & Permissions](/insights_admin/my_practice/manage_staff_permissions).
+
+If you are not an administrator, ask an administrator at your practice to grant you the **Remittances** permission.
+
+### FAQ
+
+<Accordion title="Where did the Post a New EOB button go?">
+  The **EOB Creation** page and its **Post a New EOB** button were retired on September 30, 2026. Use the **Create EOB** button on the **EOBs** tab instead: **Daily Operations → Remittances → EOBs**.
+</Accordion>
+
+<Accordion title="How do I bulk upload EOBs like before?">
+  Click **Create EOB** on the **EOBs** tab and select all of the files you want to upload. Multiple EOB files can be uploaded in one go.
+</Accordion>
+
+<Accordion title="Why does the EOBs link take me to the Home page?">
+  Your user does not have the **Remittances** page permission. Ask an administrator at your practice to enable the permission under **Settings → My Practice → Team Members**, then log out and log back in.
+</Accordion>
+
+<Accordion title="I had access to EOB Creation. Why can't I see the new page?">
+  The old **EOB Creation** permission does not carry over to the new page. The EOBs tab requires the **Remittances** permission, which is enabled by default for the **Administrator** and **Billing Manager** roles but not for **Staff**.
+</Accordion>
