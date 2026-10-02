@@ -134,6 +134,7 @@
               "air_provider/fill_a_chart_note/pdmp",
               "air_provider/fill_a_chart_note/medications",
               "air_provider/fill_a_chart_note/prescriber_agents",
+              "air_provider/fill_a_chart_note/pharmacy_fill_status",
               "air_provider/fill_a_chart_note/medication_order_set",
               "air_provider/fill_a_chart_note/order_sets",
               "air_provider/fill_a_chart_note/orders",
