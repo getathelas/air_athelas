@@ -14,8 +14,6 @@ To submit or resubmit once you've reviewed a claim, see [Getting Started with th
 
 Understanding where a claim sits in its lifecycle makes the rest of the page easier to read.
 
-![The claim lifecycle from a signed note through submission and payment](/images/insights_biller/claim_details/working_a_claim/working_a_claim_1.png)
-
 1. **A note is signed.** A provider signs a chart note in your EHR (Air or an external system).
 2. **The claim is created.** The encounter is transformed into a claim and appears on the Claims Page.
 3. **Billing rules run.** When you preview a submission, the claim runs through the [billing rules engine](/insights_biller/general_billing/the_billing_rules_engine), which cleans it up for the payer.
@@ -32,19 +30,28 @@ Opening a claim shows one scrollable page (no clicking through section after sec
 
 - **Controls** — jump to any section of the claim, even when the panel is minimized, and **Review claim** to dry-run it through billing rules before submitting.
 - **Claim details** — the same content as the classic encounter details, all on one page: patient, insurance, provider, diagnoses, and procedures. This is where you add or edit claim data.
-- **Actions** — the primary **Submit** action sits prominently in blue; every other action (push to PR, adjust, request an appeal, defer, preview submission) lives in a secondary menu.
+- **Actions** — the primary **Submit** action sits prominently in blue; the **Actions** menu beside it holds the rest, such as **Adjust**, **Push to PR**, **Push to Next Payer**, and **Mark as Deferred**. Some actions appear only when they apply: **Request Appeal** after a denial, and **Upload an EOB** when the claim is in **Decision Pending** or **Decision Inconclusive**.
 - **Claim context** — the panel alongside the claim that brings together everything that has happened to the claim.
+
+Above the claim, next to the claim ID, are buttons to copy a link to the claim or its Claim ID, and a **…** menu. Choose **Go to...** there to jump to the claim's patient profile, Posting Tool, or Remittances page, and on Air EHR sites to its appointment, calendar, visit note, and EHR patient profile.
 
 ## Reading Claim Context
 
-The **Claim Context** panel (expandable to full width) is where you diagnose a claim. It has four key sections.
+The **Claim Context** panel is where you diagnose a claim. It gathers what you would otherwise collect from several pages, so you can read the claim's history on one side and work the claim on the other. Each section shows a count, and a section with nothing in it is grayed out.
 
-![The Claim Context panel showing claim details and history side by side](/images/insights_biller/claim_details/working_a_claim/working_a_claim_2.png)
-
-- **Status Reason** — explains *why* a claim is in its current work queue. It shows the denial, rejection, or error code, a plain-language description, the aggregate dollar amount, and a per-procedure breakdown. It updates automatically as the claim's situation changes. For what each status, stage, and payer status itself means, see [Claim Status, Stage & Payer Status](/insights_biller/claim_details/status_and_stages).
-- **Submissions** — the full history of every submission on the claim. Click into any one to see the payload, its metadata, the billing rules that were applied, and the CMS-1500 (or UB-04) PDF for that submission.
+- **Status Reason** — explains *why* a claim is in its current status. What it shows depends on the status: for a denial, the CARC and RARC codes with plain-language descriptions, the dollar amount, and the denied procedures; for a rejection, the clearinghouse's rejection reason; for a submission error, the errors blocking the claim. It updates automatically as the claim's situation changes. For what each status, stage, and payer status itself means, see [Claim Status, Stage & Payer Status](/insights_biller/claim_details/status_and_stages).
+- **Patient Attachments** — the patient's documents, grouped by type and searchable. Open an insurance card to check a member ID before you rerun eligibility, or an authorization letter to confirm you're attaching the right auth. On Air EHR sites, these are the patient's chart attachments; for select other EHR integrations, they include medical records Athelas extracts from your EHR.
+- **Submissions** — the full history of every submission on the claim. Click one to see its method, form type, and submission ID beside the claim, with buttons to show the billing rules that ran and the CMS-1500 (or UB-04) PDF. To see what changed between two submissions, check both and click **Compare**.
 - **Remittances** — remittance data with its source and deposit-verification status. You can download the raw **835 (ERA)** file or a PDF.
-- **Payments** — every payment on the claim. Group and sort by posted date, check number, submission ID, or procedure, and use **Display Settings** to control which columns appear (including a denied-reasons column). Click any payment for full detail.
+- **Payments** — every payment on the claim, per payer or per procedure. Group and sort by posted date, check number, submission ID, or procedure, and use **Display Settings** to control which columns appear (including a denied-reasons column). Click any payment for full detail.
+
+### Arranging Claim Context
+
+Put the sections you use most at the top. Drag a section by its handle to move it, and it stays in that position as you move from claim to claim. Someone working A/R might move **Payments** to the top, while someone working initial charge capture keeps **Status Reason** first.
+
+- Click a section's header to expand or collapse it, or **Shift**-click to expand or collapse every section.
+- Click **Expand to full width** at the top of the panel to read payment and posting details across the whole screen, and **Collapse to split view** to go back.
+- Press `I` to open Claim Context from anywhere on the claim.
 
 <Warning>
 When you open a per-payer view and a per-procedure view at the same time, the same payment can appear twice. This is a display quirk, not a duplicate payment — check the payment detail if a total looks off.
@@ -69,6 +76,8 @@ The **Activity Feed** tracks the full chronological story of a claim, from creat
 
 Responsibility changes, assignments, and deferrals all appear in the feed with their reasons — click **view more** to read the note. Reach the feed quickly using its icon in the claim panel, which scrolls you straight to it.
 
+The feed shows the oldest event first. Click the sort button next to **Feed** to show the newest first; Insights keeps your choice for the next claim you open.
+
 <Tip>
 ✨**Smart Tip:** Before you start working a claim, skim the Activity Feed. It tells you what a teammate already tried, what a payer said, and whether the claim is waiting on something — so you don't duplicate work.
 </Tip>
@@ -87,7 +96,7 @@ You can also assign a claim to a specific teammate so ownership is explicit in t
 
 Before submitting, use **Review claim** (or **Preview Submission**) to dry-run the claim through billing rules. The left side shows your input; the right side shows the output after rules run — for example, an updated zip code, referring provider, or NPI.
 
-![Previewing a submission after billing rules run, with the option to edit](/images/insights_biller/claim_details/working_a_claim/working_a_claim_3.png)
+![Previewing a submission after billing rules run, with the Edit Submission button highlighted](/images/insights_biller/claim_details/working_a_claim/working_a_claim_1.webp)
 
 - A **star indicator** next to a field means a rule applied and modified that field.
 - **View Rules** shows which billing rules fired; you can search within them for a specific field.
@@ -109,6 +118,10 @@ You can edit the submission directly after rules run, but those edits bypass the
 
 <Accordion title="Where did the old Encounter Timeline go?">
 It's now the **Activity Feed** inside the claim, combined with the **Submissions** history in Claim Context. Together they show the full chronological life of the claim — submissions sent, payments received, and changes made — in one place, without a separate timeline tab.
+</Accordion>
+
+<Accordion title="Can I change the order of the Claim Context sections?">
+Yes. Drag a section by its handle to move it up or down. The new order applies to every claim you open, so put the sections you check first — for example, **Payments** if you work A/R — at the top.
 </Accordion>
 
 <Accordion title="Is there a separate Remittances page?">
