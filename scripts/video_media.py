@@ -167,6 +167,9 @@ def cmd_probe(a):
             print(f"video  {s['codec_name']} {s['width']}x{s['height']} @ {fps:g} fps")
         else:
             print(f"{s['codec_type']:6} {s.get('codec_name', '?')}")
+    if not any(s["codec_type"] == "audio" for s in info["streams"]):
+        print("no audio stream: narration and Q&A are not in this file. A browser or YouTube download\n"
+              "(often named videoplayback.mp4) can be video-only; find the copy with audio before mapping.")
 
 
 def cmd_region(a):
@@ -203,6 +206,10 @@ def cmd_region(a):
     share = [x0, y0, (x1 - x0 + 1) // 2 * 2, (y1 - y0 + 1) // 2 * 2]
     print(f"share {','.join(map(str, share))}   (ffmpeg {ffcrop(share)})")
     print("Confirm it on an extracted frame before using it; dark UIs and full-screen shares need a check.")
+    if share[2] * share[3] < w * h // 2:
+        print(f"The estimate covers under half the frame. If the share fills the recording (a slide deck,\n"
+              f"or a browser with no presenter tile), it may have locked onto a bright panel inside it;\n"
+              f"a full-frame share is 0,0,{w},{h}.")
 
 
 def cmd_sheet(a):

@@ -2,7 +2,7 @@
 
 Use this rule to turn a recorded video into docs.athelas.com updates: an internal lunch & learn, a PM demo, a customer walkthrough, or a screen recording made for the docs. It covers reading the video, deciding what is new and what changed, cutting clean clips and stills, and shipping the PR. Every writing, naming, and navigation convention in `.cursor/rules/doc_writer.mdc` still applies; this rule adds what is specific to working from video.
 
-The worked example is PR #183, which updated the Insights Rules pages from the Sep 17, 2026 "Rules in Air" lunch & learn. Its description is the model for what section 10 produces.
+The worked examples are PR #183, which updated the Insights Rules pages from the Sep 17, 2026 "Rules in Air" lunch & learn, and PR #191, which updated the Claims page guides from the Aug 11, 2026 customer webinar "Claims Page & Workflows". Their descriptions are the model for what section 10 produces.
 
 **The one idea to hold onto:** a recording is evidence of what one person saw, on one site, on one day — usually a superuser impersonating a customer. It is not proof that a feature is live for customers, and almost every frame contains something that must not be published. Verify before you write (section 3), and gate every asset before you commit it (section 7).
 
@@ -14,7 +14,8 @@ The mechanical parts run through `scripts/video_media.py` (`python3 scripts/vide
 
 | Source | What it is | Watch out for |
 | :-- | :-- | :-- |
-| **Recording** (`.mp4`) | The only record of what was on screen. Meet saves it to the organizer's Drive as `<meeting> - <date> <time> - Recording`. | A 1920x1080, 24 fps frame with the shared screen in a sub-rectangle and a presenter tile beside it. The audio carries voices; never ship it. |
+| **Recording** (`.mp4`) | The only record of what was on screen. Meet saves it to the organizer's Drive as `<meeting> - <date> <time> - Recording`; customer webinars are often on YouTube instead. | A 1920x1080, 24 fps frame with the shared screen in a sub-rectangle and a presenter tile beside it, or, for a webinar, a full-frame share. The audio carries voices; never ship it. A browser or YouTube download (often `videoplayback.mp4`) can be **video only**: `probe` warns when there is no audio stream. |
+| **Deck** (Google Slides) | Customer webinars are a slide deck with short demo clips embedded in the slides. Search Drive for the webinar title. | The embedded clips play at about 640 px inside a 720p recording, too small to cut from. The deck's own copies are at native resolution, so ask the owner for them. The Drive connector returns no text for an image-only deck. |
 | **Chat** (`.sbv`) | Meet's chat log. **It is not a transcript.** | Questions asked in chat are usually answered out loud, so the answer lives in the recording, not the file. |
 | **Notes by Gemini** (Google Doc) | Summary, per-topic details, and next steps generated from the audio. | The Transcript tab can be nearly empty (transcription stops when a recording restarts), and the separate Transcript doc may not be shared with you. Gemini mishears names and labels. Take every label from the frames. |
 | **Slack** | Rollout posts, access model, the feedback channel. | It is internal: use it to verify, never quote it. |
@@ -23,7 +24,17 @@ The mechanical parts run through `scripts/video_media.py` (`python3 scripts/vide
 - **Find the Drive files** by title (`title contains '<Meeting name>'`): the recording, chat, and Gemini notes share one prefix.
 - **Read the Gemini notes first.** They give you the agenda and the Q&A, which makes the frame pass much faster.
 - **Find the rollout post** by searching Slack for the feature name with "rolled out" or "GA". It usually states the date, who gets access, and which doc page is the enablement link.
-- **No transcript?** There is no local speech-to-text by default. Work from the notes plus the frames, or, with the user's OK, install `whisper-cpp` for exact wording.
+- **No transcript?** There is no local speech-to-text by default. Work from the notes plus the frames, or, with the user's OK, install `whisper-cpp` for exact wording. It runs on the machine, so the audio never leaves it. On an M-series Mac, a one-hour recording takes several minutes:
+
+  ```bash
+  brew install whisper-cpp
+  curl -L -o _scratch/whisper/ggml-large-v3-turbo-q5_0.bin https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-turbo-q5_0.bin
+  ffmpeg -i <video> -ar 16000 -ac 1 -c:a pcm_s16le _scratch/whisper/audio.wav
+  whisper-cli -m _scratch/whisper/ggml-large-v3-turbo-q5_0.bin -f _scratch/whisper/audio.wav -l en -t 8 -osrt -otxt \
+    -of _scratch/whisper/transcript --prompt "Athelas, Insights, Claims page, Status Reason, ..."
+  ```
+
+  Seed `--prompt` with the product's vocabulary. Whisper still writes "Athelas" as "Athelous", "Othellis", or "AFL's", so take labels from the frames and the code, never from the transcript.
 
 ---
 
@@ -33,6 +44,7 @@ Build a map of what is on screen when before you judge anything.
 
 1. **Probe it:** `python3 scripts/video_media.py probe <video>` reports duration, resolution, fps, and audio.
 2. **Find the shared screen:** `python3 scripts/video_media.py region <video> --at <t>` estimates the rectangle. Confirm it on an extracted frame. For the Rules recording it was `0,147,1440,786`. Every later coordinate is measured inside this rectangle ("share space").
+   - When the share fills the whole recording (a slide deck, or a browser with no presenter tile), `region` locks onto a bright panel inside it and says so. The share is then `0,0,<width>,<height>`; it was `0,0,1108,720` for the Claims webinar.
 3. **Skim, then zoom.** Use contact sheets at 60 s for the storyline, 20 s per section, and 0.25–1 s around anything you might cut:
 
    ```bash
@@ -70,7 +82,9 @@ A demo shows one role on one site on one day. For every feature and label you pl
   - Take labels from the frames.
   - Take dialog and tooltip copy from the component source, not from the Gemini notes.
   - Take enumerations from the backend. The Rules ID prefixes are `RULE_TYPE_CODE` in `normandy/app/api/v1/rule_engine/schemas.py`.
-- **Is it still true?** Search PRs merged after the recording date. The Claim adjustments card disappeared from the Rules landing page four days after the Sep 17 recording.
+- **Is it flag-gated, and for whom?** Find the flag that guards the UI in the component (`isFeatureEnabled(FeatureFlag.X)`), then search Slack `#feature-flag-alerts` for its name. NormandyBot posts each production change with its scope: **Global (all users and sites)**, specific sites, or superuser-only. A Global, non-superuser flag is live for every customer. The Claims page's **Ask Athelas AI** and AI filter both sit behind `claims_page_copilot_chat`, which has been global since May.
+- **Did the presenter's timing hold?** "Coming next week" can be wrong on the day it is said. The AI filter, demoed as upcoming on Aug 11, shipped in that day's release. Check the release PR (`git log origin/master --merges` from the feature commit), not the narration.
+- **Is it still true?** Search PRs merged after the recording date. The Claim adjustments card disappeared from the Rules landing page four days after the Sep 17 recording. Six weeks after the Claims webinar, the Display panel got its own **Save**, so the demo's way of saving column choices was out of date.
 
 Keep a short evidence list (PR numbers, Linear IDs, file paths) for the PR description.
 
@@ -88,7 +102,9 @@ Then:
 - **Audit the existing media on those pages too.**
   - Decode every still and sample every video.
   - Stale UI next to corrected text contradicts it.
-  - Older assets can carry PII their author missed: two Rules stills showed an employee's name and a superuser-only section.
+  - Older assets can carry PII their author missed: two Rules stills showed an employee's name and a superuser-only section. The Claims audit found a user's name in a header, commenter names in a feed, names in an assign list, a fully readable CMS-1500, and a practice address with its NPI, among the 22 published images and 3 videos on five pages.
+  - Check the labels in old assets against the code too. A deferral still showed **Mark as Undeferred**, which is now **Cancel Deferral**.
+  - Before pixelating a name you don't recognize in test data, check whether it is seeded demo data (`normandy app/api/v1/demo_env/constants.py`). Seeded demo names can stay.
 - **Decide where material goes.**
   - Update in place by default, and keep page paths stable; pages are linked from Slack posts and customer agreements.
   - Add a page only for a distinct audience or workflow. The Rules refresh added **Clone Rules Across Sites** for multi-site groups.
@@ -167,6 +183,8 @@ Conventions:
   ```
 
   Estimates taken from a zoomed crop were 13 px off on the Rules conflict dialog and left "Gra…" readable.
+- **Re-render an existing screenshot through the same spec format** to crop or pixelate it: set `"video"` to the image path, `"share"` to its full size, and `"t": 0`. Scale `--block` with resolution: the default 8 suits a 1100 px frame, but retina screenshots 2000–5000 px wide need 20–32 to make text unreadable.
+- **When boxes must follow a layout change** (a name field pushing rows down), find the switch frame exactly with `sheet --times` at 0.04 s steps around a `scan` scene change, and overlap the before and after boxes by a frame or two.
 - **Number and place assets per doc_writer §2:** `{page}_{N}` in order of appearance.
   - When new media lands mid-page, renumber the existing assets with `git mv`, from the highest number down so nothing collides.
   - Replace stale assets in place.
@@ -248,6 +266,8 @@ Run everything in doc_writer §9, plus the following.
 - **`-ss` before `-i` resets timestamps to 0,** so any `enable=` window inside a filter is relative to the segment start. `video_media.py` converts spec times for you.
 - **An in-app browser can't show a local video.** Local files render as static snapshots, and `<video>` frames never appear in screenshots. Extract frames with ffmpeg and read the PNGs.
 - **Clearing a folder after a `cd`** can be blocked by the agent's shell safety check. Write each pass to a fresh `_scratch` folder instead.
+- **`git rm` of every file in an asset folder removes the folder.** Run `mkdir -p` before copying the replacements in.
+- **Older pages put a non-breaking space after bold text** (`**Assign claims**\u00a0individually`), so exact-match edits fail. Normalize them to plain spaces first.
 - **Mint slugs keep curly apostrophes** (`Rule's` becomes `rule’s`). Reword headings you link to.
 
 ---
@@ -256,8 +276,8 @@ Run everything in doc_writer §9, plus the following.
 
 Before opening the PR, verify:
 
-- [ ] Sources gathered, the Gemini notes and chat read, and the recording mapped with timestamps
-- [ ] Every documented feature is live for customers, with evidence
+- [ ] Sources gathered (including the deck), the recording confirmed to have audio, the Gemini notes or transcript and chat read, and the recording mapped with timestamps
+- [ ] Every documented feature is live for customers, with evidence; every flag's scope checked
 - [ ] New and changed items listed per page, and the existing media on those pages audited
 - [ ] User decisions collected: media, structure, wording, sensitive numbers
 - [ ] Every asset passed the PHI gate; PHI segments are excluded, not blurred
