@@ -24,24 +24,24 @@ Deferring **hides** a claim from views that filter for `Claim is not deferred` �
 
 When the expiration date arrives, one of two things happens:
 
-- If the work queue has **changed** in the meantime (because new data moved the claim forward), no further work is needed — the deferral did its job.
-- If the work queue is **unchanged**, the claim reappears in your worklist so you can pick it back up.
+- If the claim's status has **changed** in the meantime (because new data moved the claim forward), no further work is needed — the deferral did its job.
+- If the status is **unchanged**, the claim reappears in your worklist so you can pick it back up.
 
 <Warning>
-Deferring **does not change the work queue** — it only sets the claim aside in its current queue. The date, reason, and duration of every deferral are recorded in the [Activity Feed](/insights_biller/claim_details/working_a_claim).
+Deferring **does not change the claim's status** — it only sets the claim aside in its current status. The date, reason, and duration of every deferral are recorded in the [Activity Feed](/insights_biller/claim_details/working_a_claim).
 </Warning>
 
 ## How to Defer a Claim
 
-You can defer a claim from the **Actions** dropdown while viewing it.
+Open the claim's **Actions** menu and choose **Mark as Deferred**.
 
-![The Defer option in the Actions dropdown on a claim](/images/insights_biller/claim_details/deferring_a_claim/deferring_a_claim_1.png)
+![Mark as Deferred in a claim's Actions menu](/images/insights_biller/claim_details/deferring_a_claim/deferring_a_claim_1.webp)
 
-In the popup, provide a **Reason** and an **Expiration Date** (quick options like "1 month" are available). Both are required.
+In the **Mark as Deferred** dialog, choose a **Reason** and an **Expiration Date**. Both are required. Pick **Tomorrow**, **1 Week**, **1 Month**, or **2 Months**, or click **+** to choose a custom date up to 90 days out.
 
-![The defer popup with a reason and expiration date](/images/insights_biller/claim_details/deferring_a_claim/deferring_a_claim_2.png)
+![The Mark as Deferred dialog with reasons and expiration dates](/images/insights_biller/claim_details/deferring_a_claim/deferring_a_claim_2.webp)
 
-Once you save, the claim disappears from your workable views until it expires or its work queue changes.
+Click **Defer**, and the claim disappears from your workable views until the deferral expires or the claim's status changes.
 
 <Tip>
 ✨**Smart Tip:** To check whether a claim is currently deferred, open its **Actions** menu — the options shown tell you its deferral state.
@@ -49,9 +49,9 @@ Once you save, the claim disappears from your workable views until it expires or
 
 ## Deferring in Bulk
 
-You can defer — and cancel deferrals — for many claims at once. Select the claims, then choose **Defer** (or **Cancel Deferral**) from the bulk actions.
+You can defer — and cancel deferrals — for many claims at once. Select the claims, open **More Actions** at the bottom of the screen, and choose **Defer** (or **Cancel Deferral**). The **Defer Claims** dialog works the same way as for a single claim.
 
-![Deferring several claims at once with a bulk action](/images/insights_biller/claim_details/deferring_a_claim/deferring_a_claim_3.png)
+![Defer and Cancel Deferral in the More Actions list](/images/insights_biller/claim_details/deferring_a_claim/deferring_a_claim_3.webp)
 
 One thing to know:
 
@@ -59,17 +59,15 @@ One thing to know:
 
 ## Canceling or Extending a Deferral
 
-Once a claim is deferred, you can **cancel** the deferral at any time, the same way you deferred it.
-
-![Canceling a deferral from the Actions menu](/images/insights_biller/claim_details/deferring_a_claim/deferring_a_claim_5.png)
+Once a claim is deferred, you can **cancel** the deferral at any time: open the claim's **Actions** menu and choose **Cancel Deferral**, or use **Cancel Deferral** in **More Actions** for several claims.
 
 To **extend** a deferral, re-defer the claim with a new expiration date. Re-deferring without first canceling is supported through the bulk action.
 
 ## Creating Deferral Reasons
 
-To add a new reason, click the **+** button in the reason list and type it in.
+To add a new reason, click the **+** button next to the reasons, type it under **New deferral reason**, and click **Add Reason**.
 
-![Creating a new deferral reason with the plus button](/images/insights_biller/claim_details/deferring_a_claim/deferring_a_claim_6.png)
+![Adding a new deferral reason](/images/insights_biller/claim_details/deferring_a_claim/deferring_a_claim_4.webp)
 
 <Note>
 Deferral reasons are **site-specific** — once anyone at your site creates a reason, everyone at that site sees it as an option. Reasons can't be deleted once created (the same behavior as claim tags), so agree on a shared set of reasons before you go wide.
@@ -79,17 +77,17 @@ Deferral reasons are **site-specific** — once anyone at your site creates a re
 
 Deferrals take care of a few things on their own:
 
-- **Auto-clear** — a deferral clears automatically when it **expires** or when the claim's **work queue changes**. Both events are logged in the Activity Feed.
+- **Auto-clear** — a deferral clears automatically when it **expires** or when the claim's **status changes**. Both events are logged in the Activity Feed.
 - **Pauses patient responsibility** — while a claim is deferred, [patient responsibility (PR)](/insights_front_desk/patient_responsibility/patient_responsibility_page) generation is paused, so you won't send PR to a patient while you're still waiting on the claim.
 
 ## The "Updated in EHR" Reason (Billing-Only Sites)
 
-Sites that use Insights for billing only (not the Air EHR) get a built-in reason: **Updated in EHR**. When you choose it, the expiration date is set automatically to the date of the next scheduled EHR sync for that claim.
+Sites that use Insights for billing with an external EHR (not the Air EHR) get a built-in reason: **Updated in EHR**. Use it after you fix a claim in your EHR. When you choose it, the expiration date is set to **Next EHR Import**, the next time Insights imports that claim from your EHR; hover the option to see the date. You can still pick a different date.
 
-![The Updated in EHR deferral reason for billing-only sites](/images/insights_biller/claim_details/deferring_a_claim/deferring_a_claim_7.png)
+![The Updated in EHR reason with Next EHR Import selected](/images/insights_biller/claim_details/deferring_a_claim/deferring_a_claim_5.png)
 
-- Used in bulk, each claim is set to its own next sync date.
-- If a claim has **no future sync scheduled** (for example, a claim older than 120 days), this reason is disabled — a guardrail so you can't wait on an update that will never arrive.
+- Used in bulk, each claim is set to its own next import date.
+- If the reason is grayed out, hover it to see why. It is unavailable when EHR import isn't turned on for your site, when a claim has no EHR Claim ID, or when its date of service is too long ago to import again — a guardrail so you can't wait on an update that will never arrive.
 
 ### FAQ
 
@@ -106,7 +104,7 @@ The expiration date **resets** to the new date you choose — it doesn't extend 
 </Accordion>
 
 <Accordion title="Why is the 'Updated in EHR' reason missing or grayed out?">
-It only appears for billing-only sites (those not on the Air EHR). Even then, it's disabled for a claim that has no future EHR sync scheduled — for example, a claim older than 120 days — so you don't defer a claim that would never receive an update.
+It only appears for billing-only sites (those not on the Air EHR). Even then, it's disabled for a claim that Insights can't import again — one with no EHR Claim ID, or a date of service too long ago — so you don't defer a claim that would never receive an update. Hover the grayed-out reason to see which applies.
 </Accordion>
 
 <Accordion title="Can I still send patient responsibility while a claim is deferred?">
