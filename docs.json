@@ -365,6 +365,7 @@
             "pages": [
               "insights_front_desk/appointments/the_insights_appointments_page",
               "insights_front_desk/appointments/how_to_add_a_walk_in_patient",
+              "untitled-page",
               "insights_front_desk/appointments/how_to_run_an_eligibility_check",
               "insights_front_desk/appointments/how_to_take_payments",
               "insights_front_desk/appointments/insights_prior_authorization"
