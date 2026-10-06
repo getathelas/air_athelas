@@ -3,3 +3,179 @@ title: "Care Notes "
 ---
 
 Care Notes let care teams document clinically relevant, non-visit patient interactions, including phone calls, caregiver messages, physician-to-physician communication, faxes, and other correspondence, directly on the patient's timeline alongside visit notes.
+
+## Care Notes General Guide
+
+To access Care Notes, navigate to a patient's **Visits & Notes** tab.
+
+![Screenshot 2026-08-13 at 2.46.46 PM.png](attachment:3df6fb53-5bfb-441b-b24a-852db461284a:Screenshot_2026-08-13_at_2.46.46_PM.png)
+
+Care note rows appear merged into the same timeline as visit rows, distinguished by the **Clinical Note Type** column showing **"Care Note"**.
+
+![Screenshot 2026-08-13 at 2.49.46 PM.png](attachment:8d1475f9-8821-486d-b0e0-d1b785a87d9d:Screenshot_2026-08-13_at_2.49.46_PM.png)
+
+### Care Note statuses
+
+Each care note has one of three statuses:
+
+- **Open** (blue): editable, can receive new entries
+- **Closed** (grey): read-only, exportable
+- **Archived**: hidden from the default view
+
+![Screenshot 2026-08-13 at 2.51.21 PM.png](attachment:a8217885-e355-47f9-8f35-0a3b722ba87d:Screenshot_2026-08-13_at_2.51.21_PM.png)
+
+### Creating a Care Note
+
+Click the **Care Note** button in the page header to open the creation drawer.
+
+![Screenshot 2026-08-13 at 2.53.00 PM.png](attachment:e3c09a11-bed5-4d61-a361-3900343f4286:Screenshot_2026-08-13_at_2.53.00_PM.png)
+
+The creation form includes:
+
+- **Note** (required): the free-text entry, written in a rich-text composer
+- **Case** (optional)
+- **Source** (optional): who provided the information for this note (Patient, PCP / Physician, Hospital, Fax, etc.)
+- **Attachment** (optional): one existing patient attachment
+- **Assign member as task** (optional): creates a task for a teammate, linked back to this note
+
+![Screenshot 2026-08-13 at 2.54.08 PM.png](attachment:4ac1e057-481e-4815-a540-5855e764e0b3:Screenshot_2026-08-13_at_2.54.08_PM.png)
+
+Click **Create Care Note** to save. The drawer switches into edit/view mode, and the note appears as a new **Open** row in the table.
+
+![Screenshot 2026-08-13 at 2.54.50 PM.png](attachment:cc38c56e-2db1-4ce4-ae23-7af7efa7b3c7:Screenshot_2026-08-13_at_2.54.50_PM.png)
+
+### The Activity thread
+
+Once a note is created, all updates render as an append-only, immutable thread in the **Activity** section of the drawer. New note entries, metadata changes, assignments, closures, exports, and faxes are all logged with the actor and timestamp.
+
+![Screenshot 2026-08-13 at 3.00.10 PM.png](attachment:6bd6a732-cdf8-4f87-a86c-2397c5b06527:Screenshot_2026-08-13_at_3.00.10_PM.png)
+
+### Filtering the timeline
+
+Use the **Filters** drawer to toggle **Show Visits** / **Show Care Notes**, filter by date range or case, and toggle **Show Archived** to reveal archived notes.
+
+![Screenshot 2026-08-13 at 3.01.30 PM.png](attachment:be2b8353-8ad4-483e-9fb2-dff82b603dee:Screenshot_2026-08-13_at_3.01.30_PM.png)
+
+![Screenshot 2026-08-13 at 3.01.47 PM.png](attachment:d372eeb3-c6b5-4919-8577-564337d64492:Screenshot_2026-08-13_at_3.01.47_PM.png)
+
+## Example Workflows
+
+### Document a non-visit patient interaction
+
+**Steps:**
+
+1. From the patient's Visits & Notes page, click **Care Note**.
+2. Enter the note body describing the interaction (e.g. a phone call summary).
+3. Select a **Source** describing who provided the information.
+4. Optionally select a **Case** if the note is related to an active case.
+5. Click **Create Care Note**.
+
+Screen Recording 2026-08-13 at 3.03.06 [PM.mov](http://PM.mov)
+
+### Add supporting documentation to a Care Note
+
+**Steps:**
+
+1. Open an existing Care Note, or start creating a new one.
+2. In the **Attachment** field, select an existing patient attachment.
+3. Save (**Create Care Note** or **Update Care Note**).
+4. Once the note is closed, export it as a PDF. The attachment is appended after the note content.
+
+Screen Recording 2026-08-13 at 3.05.07 [PM.mov](http://PM.mov)
+
+### Hand off follow-up as a task
+
+**Steps:**
+
+1. Open a Care Note.
+2. In **Assign member as task**, select a teammate.
+3. Click **Update Care Note** (or **Create Care Note**, if new).
+4. Navigate to the **Tasks** page to find the generated task, titled "Care journey note: \{patient name\}".
+5. From the task, click **Open care note** to return to the note.
+
+Screen Recording 2026-08-13 at 3.08.05 [PM.mov](http://PM.mov)
+
+### Continue and reassign a Care Note
+
+**Steps:**
+
+1. Open an existing Open care note.
+2. Add a new entry in the composer.
+3. Change the assignee to a different teammate.
+4. Click **Update Care Note**.
+5. Review the Activity feed for the "added a new entry" and "reassigned from X to Y" events.
+
+Screen Recording 2026-08-13 at 3.06.25 [PM.mov](http://PM.mov)
+
+### Close a resolved Care Note
+
+**Steps:**
+
+1. Open the note.
+2. Click **Close note and Associated Tasks** in the drawer footer.
+3. Confirm with **Close Out**.
+
+\<aside><br />ℹ️
+
+Any unsaved text in the composer is auto-saved before the note closes.
+
+\</aside>
+
+Screen Recording 2026-08-13 at 3.09.09 [PM.mov](http://PM.mov)
+
+### Reopen a Care Note
+
+**Steps:**
+
+1. Open a Closed note.
+2. Click **Reopen** in the drawer footer.
+3. Confirm.
+
+\<aside><br />⚠️
+
+Reopening clears the assignee. A new task is not automatically created, so reassign manually if follow-up is still needed.
+
+\</aside>
+
+Screen Recording 2026-08-13 at 3.10.15 [PM.mov](http://PM.mov)
+
+### Export a single closed Care Note
+
+**Steps:**
+
+1. Locate a Closed care note row.
+2. Click the **Download** icon.
+3. Review the PDF preview.
+
+Screen Recording 2026-08-13 at 3.13.45 [PM.mov](http://PM.mov)
+
+### Bulk download or fax Care Notes
+
+**Steps:**
+
+1. Select up to 25 closed care note rows using the checkboxes.
+2. Click **Download PDF** or **Fax PDF** in the bulk action bar.
+3. Complete the fax form if faxing.
+
+Screen Recording 2026-08-13 at 3.14.44 [PM.mov](http://PM.mov)
+
+### Archive and restore a Care Note
+
+**Steps:**
+
+1. On a Closed care note row, open **More (⋮)** then **Archive Care Note**.
+2. Confirm.
+3. Enable **Show Archived** in Filters to find it again.
+4. Open **More (⋮)** then **Unarchive Care Note** to restore it.
+
+Screen Recording 2026-08-13 at 3.15.48 [PM.mov](http://PM.mov)
+
+## Important Behavior & Limitations
+
+- A note entry is required to create a Care Note; all other fields are optional.
+- Submitted entries are immutable. Once added, an entry cannot be edited.
+- Only one existing patient attachment can be selected per note.
+- Notes must be **Closed** before they can be exported or faxed.
+- Dismissing the drawer with **X** or clicking the backdrop discards unsaved text. Use **Update Care Note**, or the footer's close action, to save first.
+- Care Notes cannot be backdated or deleted. Closed notes can be archived instead, with a full audit trail.
+- Bulk export/fax is capped at 25 notes at a time.
