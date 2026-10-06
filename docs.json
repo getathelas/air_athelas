@@ -138,7 +138,8 @@
               "air_provider/fill_a_chart_note/order_sets",
               "air_provider/fill_a_chart_note/orders",
               "air_provider/fill_a_chart_note/smart_charge_capture",
-              "air_admin/manage_your_practice/custom_orders"
+              "air_admin/manage_your_practice/custom_orders",
+              "care-notes"
             ]
           },
           {
