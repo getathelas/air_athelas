@@ -39,12 +39,14 @@ You can assign a patient to a room that is already occupied, so rooming never ho
 
 ### **Move a Patient Through Stages**
 
-Stages track where a patient is in their visit. The **Stage** column updates so everyone on your team can see where the patient is.
+Stages track where a patient is in their visit. The **Stage** column updates so everyone on your team can see where the patient is:
 
 - Waiting for Room
 - In Room
 - In Treatment
 - Out of Room
+
+Stages will automatically update in response to the Room updates. If a patient is assigned a room their status will update to **In Room**. If a patient was occupying a room that was assigned to another patient, their Stage will update to **Out of Room**.
 
 ### **Open the Chart Note**
 
