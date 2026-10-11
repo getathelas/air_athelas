@@ -4,6 +4,288 @@ description: "Stay up to date with the latest product updates, bug fixes, and ne
 public: true
 ---
 
+<Update label="September 30, 2026" tags={["Insights"]}>
+
+  ### Rules Are Now Available at Every Site
+
+  The **Rules** page under **Automations** reached every site on September 18, together with the rule creation tools that were in beta in July and August:
+
+  - Everyone at your practice can view rules. Creating, editing, submitting, and switching rules on or off take write access, which your practice admin can add to a role.
+  - Describe a rule in plain language and the AI rule builder drafts it for you. Test it against real claims before it goes live.
+  - Parent sites can clone rules to their child sites in bulk. Conflicts are listed first, and you can swap the payer or skip the rule. Clones arrive as drafts, and you can put several drafts into effect at once.
+  - Ask for a rule to be turned on or off from its **Properties** panel. Depending on how your practice works with Athelas, the change takes effect right away or goes to review first, and you can cancel a pending request.
+  - The rules list opens on a **Drafts** view. You can filter it by rule ID or by **Failed** status, and Shift-click to select a range of rules. When you go back to the list, your search is kept and the rule you opened is highlighted.
+
+  See [The Rules Tab](/insights_biller/automations/the_rules_tab), [Create a Rule](/insights_biller/automations/create_a_rule), and [Clone Rules Across Sites](/insights_biller/automations/clone_rules_across_sites).
+
+  ### Dashboards Are Now Available at Every Site
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_09_30/dashboards-add-metric.webp" alt="Building a dashboard, with the Add a metric panel open and each metric tagged Financial, Biller Productivity, or Clinical" />
+
+  **Dashboards**, which entered beta in August, reached every site on September 18. Users with your practice's admin role or the **Dashboards** permission can open it, and admins can give other people access. September also added:
+
+  - **Duplicate** a template or an existing dashboard, then edit your copy.
+  - The **Add A Metric** panel tags each metric **Financial**, **Biller Productivity**, or **Clinical**, groups the library by category, and lets you filter by category.
+  - The biller leaderboard can be grouped by team.
+  - Drilldowns can be searched and sorted, and **View Claims** opens the claims behind a number in a new tab, so you keep your place on the dashboard.
+  - Payer filters can include or exclude payers, A/R tiles show the date their data is as of, and year-to-date tiles can be broken out by month or by quarter.
+  - First pass rate is now measured from each claim's submission date.
+
+  See the [Dashboards guide](/insights_biller/analytics/dashboards).
+
+  ### A New Look for Insights and Air
+
+  Insights and Air opened in a new layout by default starting September 28, after a week in which anyone could try it:
+
+  - **Global Search** sits at the top of every page. Press ⌘K (Ctrl+K on Windows) to find a claim, a patient, or a page.
+  - The notification bell gathers notifications, requests, messages, tasks, and medication updates in one place.
+  - **Scribe** and **Athelas AI** sit in the header, and the left navigation collapses to give the page more room.
+  - Your profile menu switches between light and dark appearance. The **Help** menu links to the documentation, this changelog, and **Give Feedback**.
+  - A short tour introduces the layout the first time you open it. For a limited time, **Go back to old version** in your profile menu returns you to the previous layout.
+
+  ### My Account and My Practice Are Now One Settings Page
+
+  Since September 15, **My Account** and **My Practice** have been tabs on a single **Settings** page. Open it from the gear icon at the top of the page, or from **Settings** at the bottom of the left navigation in the previous layout. **My Account** comes first, followed by your practice tabs, such as **Team Members**, **PR Settings**, **Facilities**, **Providers**, and **Payers**. Each person sees only the tabs they could see before, and old links to My Account and My Practice open the matching tab.
+
+  ### Front Desk Payments Appear on the Visit Right Away
+
+  Starting September 30, a payment your front desk collects at check-in appears on the visit as soon as the claim is submitted, instead of waiting for patient responsibility to be generated. It shows as an **Upfront Payment**, followed by an **Upfront Payment Adjustment** when patient responsibility is generated. This applies to visits on or after September 1, 2026. Nothing new is billed or collected from patients.
+
+  ### Claims Page: Filter by Status Reason, Download to Excel, and Arrange Your Columns
+
+  - **Filter by status reason.** Type part of a status reason, such as a denial code or an error message, to find every claim that matches.
+  - **Download to Excel.** Download the claims list as an **XLSX** file that keeps your view's grouping, or as a CSV. Both include the columns you see on the page.
+  - **Arrange the page your way.** Drag columns into the order you want, reorder your saved views, and add a filter on top of a saved view's own filters. Display settings now sit apart from filters, with their own save and clear controls.
+  - **Create a claim in the order you work.** **Date of Service** now sits right below the patient, so you can check eligibility and view eligibility history before you save the claim.
+  - **Open a rule from a claim.** Each **Rule #** on a claim's **Review** tab opens that rule on the Automations page in a new tab.
+  - **Activity feed and submissions.** Sort the activity feed oldest first, and hover over an earlier submission error status to see its details. The submissions table adds **Method** and **Submission ID** columns.
+
+  See [Organizing Your Claims Worklist](/insights_biller/claim_details/organizing_your_claims_worklist).
+
+  ### Appeals and Medical Records on the Claim
+
+  - Appeal and medical record submissions appear in the submissions table in Claim Context, next to the claim's other submissions.
+  - A new **Packet Pending** status marks a claim whose appeal or medical record packet is being prepared. A claim moves there when someone selects **Request Appeal**, or when Athelas determines from the denial codes that an appeal or medical records will resolve the denial. The claim moves on once the packet is submitted. Packet Pending is a workable status, so these claims appear in **Workable Claims**.
+
+  See [Claim Statuses and Stages](/insights_biller/claim_details/status_and_stages).
+
+  ### Write Off an Exact Amount on Each Procedure
+
+  On a single claim, you can now write off an exact amount on each procedure line and choose the adjustment type for each one. Each amount shows its procedure description, and the confirmation step lists every procedure and amount before you apply the write-off.
+
+  Pushing a balance to patient responsibility is also much faster. The patient's balance now appears within seconds instead of minutes, including after a write-off or a push from the claim form.
+
+  ### Filter Claims by Describing Them
+
+  If you aren't sure which filter to use, choose **AI filter** in the filter menu and describe the claims you want, such as "unsubmitted claims from the last week". The AI filter applies ordinary filters, so you can see which filters it chose, adjust them, and save the result as a view. The AI filter also works on the Appointments page. See [Filtering with AI](/insights_biller/claim_details/organizing_your_claims_worklist#filtering-with-ai).
+
+  ### Athelas Assistant on Billing Pages
+
+  - Athelas Assistant now opens by default on the Claims page, with quick starts for common billing tasks. Close it and it stays closed.
+  - **Analyze** on a claim opens Athelas Assistant with that claim ready to review.
+  - When a claim has a submission error, Athelas Assistant explains the error as soon as you open it.
+  - Confirmation prompts now name the action and bold its target, as in **Submit to Primary**, so you can catch the wrong payer before you confirm.
+
+  ### Remittances: Deposit Slips at Every Site, and EOB Uploads Move to the EOBs Tab
+
+  - The **Deposit Slips** tab reached every site on September 22. You can filter and sort deposit slips by file name, deposit date, amount, matching status, upload date, and parsing status.
+  - Automatic matching of checks to bank deposits now uses the check number as the primary match.
+  - **Process Virtual Card** now requires the check number, so the payment can be reconciled.
+  - **EOB Creation** stopped accepting uploads on September 30. Upload EOBs from **Remittances → EOBs** instead. EOBs already started on EOB Creation can still be finished there.
+
+  See [The EOBs Page](/insights_biller/general_billing/the_eobs_page).
+
+  ### The New Appointments Page Is Now the Default
+
+  Since September 14, the new **Appointments** page is the default at every site for users whose role includes the **Appointments (New)** permission. Admins can add that permission to other roles, and **Switch to Classic Appointments Page** is still available. Also new on the page:
+
+  - From a parent site, you can run a live eligibility check on a child site's claim, appointment, or patient.
+  - Large sites load the page faster when filtering by missed collections or prior authorization denials.
+
+  See [The Insights Appointments Page](/insights_front_desk/appointments/the_insights_appointments_page).
+
+  ### Patient Statement and Payment Settings
+
+  - **Only Send Post-Remittance PRs**, on the **Electronic** and **Paper** tabs of Patient Statements, sends statements only for patient responsibility created after the remittance posts.
+  - **Apply statement config filters to manual statement downloads**, under **PR Settings → General**, makes downloaded statements follow the same rules as statements you send.
+  - **Skip Specific Patients' Address Validation**, on the **Paper** tab, lets you send paper statements to selected patients whose addresses fail validation.
+  - **Prefer each user's default card reader over last-used**, under **PR Settings → General**, uses each staff member's own card reader. Each person sets theirs in **My Account → Card Reader**.
+  - Payment plans now appear on both the parent site and the child site.
+
+  ### Update to the October 1 Legacy Page Archive
+
+  This corrects our August 31 notice. On October 1, 2026, **Submission Errors**, **Rejections**, **Denials Worklist**, **Claim Recon**, **Bulk Resubmission**, and **Encounter Details** were retired for most sites, and links to them now open the [Claims page](/insights_biller/claim_details/claim_details_page). An Encounter Details link opens that claim. Some sites keep these pages a little longer, and your account manager can confirm your site's date. The old **Claim Details** page and the old appointments page were **not** retired on October 1 and are still available. We will announce their retirement ahead of time.
+
+  ### [Beta Users Only] Bad Debt Automation
+
+  Bad debt automation follows patient balances through a sequence of statements, a final notice, and a write-off to bad debt:
+
+  - Set it up from **Automations → Workflows → New Workflow**. Choose how many statements to send and how long to wait before the final notice, write the final notice wording, and set when the balance is written off to bad debt.
+  - A final notice is held back when the patient has an active payment plan or an upcoming appointment, or when their balance is already with a collection agency.
+  - The write-off is counted from when the final notice is delivered, not when it is sent, and every final notice appears in the patient's **Statements Sent** and touchpoints history.
+  - Review every balance in one table, filter it and save views, and pause, resume, or opt out a patient.
+
+  Contact your account manager for access.
+
+  ### [Beta Users Only] Eligibility Suggestions in Claim Context
+
+  When a claim is denied or rejected for coverage, Claim Context can now suggest the fix, such as adding or updating the primary insurance:
+
+  - Hover over a suggestion to see the reason, a field-by-field comparison, and the eligibility checks it is based on.
+  - Accept a suggestion to apply it, and undo it with one click if needed.
+  - Filter the Claims page to claims with an eligibility suggestion, any suggestion, or no suggestion, and save the filter in a view.
+
+  Contact your account manager for access.
+
+  ### [Beta Users Only] Scheduled Report Delivery
+
+  Schedule the **Revenue Activity** report from **My Reports** and have it emailed on a regular schedule. The run history lists every past run, and **Download all** gets every file from a run at once. Contact your account manager for access.
+
+  ### [Beta Users Only] Checks and Deposits Tabs
+
+  For users with the **Checks** and **Deposits** tabs on the Remittances page:
+
+  - Filter checks and deposits by payment method and receiving account, compare amounts in more ways, and find checks or deposits with no deposit source.
+  - Checks show the payer name, and the former deposit source field is now **Check Issuer**.
+  - A bank deposit links to its deposit slip.
+
+  Contact your account manager for access.
+
+  ### Bug Fixes and Improvements
+
+  **Claims & Submission:**
+  - Claim PDFs on the Claims page generate several times faster.
+  - Workers' comp claims can be submitted by mail and by fax again.
+  - Unsaved billing edits are no longer lost when the page refreshes in the background.
+  - The diagnosis limit message shows how many diagnoses you entered.
+  - The charge master shows the actual reason a charge item was rejected.
+
+  **Eligibility:**
+  - Eligibility checks now find coverage for patients with hyphenated names.
+  - An appointment's **Visit Limits** section now shows the limits from the same eligibility result as its eligibility details, without running a new check.
+  - A manual **Check Eligibility** task no longer closes itself because of an older check against a payer the patient no longer has.
+
+  **Reports & Practice Data:**
+  - My Reports adds a **Miscellaneous Revenue Activity** report.
+  - A new **Practice Data** page lists the adjustment types set up for your site. It is view-only.
+
+</Update>
+
+<Update label="September 29, 2026" tags={["Air"]}>
+
+  ### A New Prior Authorization Tracker
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_09_29/prior-auth-tracker.webp" alt="The new Prior Authorizations tracker on the Pre-Certifications view, with a utilization bar, stage, and status for each authorization" />
+
+  A rebuilt **Prior Authorizations** tracker under **Daily Operations** became available at every site on September 28. You can move between it and the classic tracker while your team gets used to it:
+
+  - A utilization bar shows completed, claimed, scheduled, and available visits for each authorization, and changes color as an authorization runs low.
+  - Each authorization has a **Stage** you can update from the table, and your practice can reorder stages in Preferences.
+  - Notes appear on the table, and you can sort by remaining visits and by start or end date, reorder columns, act on several authorizations at once, and export to CSV.
+  - The history timeline records facility and provider changes, and assigning an authorization to someone creates a task for them.
+  - When a case is created with an insurance that requires prior authorization, the tracker creates a **Needs Auth** record for it automatically, and a warning appears while you create the case.
+
+  See [Prior Authorization Tracking](/prior-authorization).
+
+  ### Clinical Tools on the Appointments Page
+
+  Since September 25, every Air site can run the clinic day from the **Appointments** page as well as the calendar:
+
+  - Check a patient in, or undo a check-in, and open the chart note or facesheet straight from the appointment row.
+  - The calendar's alerts, for eligibility, copays, prior authorization, Medicare and workers' comp, and intake completion, appear in the page's alerts section.
+  - Assign rooms and move patients through stages. Moving a patient into an occupied room moves the previous patient out, and you can filter by room and by stage.
+  - Edit an appointment's case, type, date, time, provider, and facility, add notes inline, and show clinical columns such as case, room, stage, and check-in time.
+  - Download the facesheets for many appointments as one PDF.
+
+  See [The Insights Appointments Page](/insights_front_desk/appointments/the_insights_appointments_page).
+
+  ### A New Look for Air
+
+  Air shares the new layout described in the Insights entry above. Since September 28 it has been the default, with **Global Search** (⌘K or Ctrl+K), a notification bell, **Scribe** and **Athelas AI** in the header, and light and dark appearance. For a limited time, **Go back to old version** in your profile menu returns you to the previous layout.
+
+  ### Smart Charge Capture and Care Notes Outside Physical Therapy
+
+  Two features that were in beta in August are now on at practices outside physical therapy:
+
+  - [Smart Charge Capture](/air_provider/fill_a_chart_note/smart_charge_capture) is on at every live site outside physical therapy as of September 23.
+  - [Care Notes](/care-notes) is on at sites outside physical therapy. A fax can now be linked to care notes from **Manage Care Notes** on the fax, and a care note's task can be assigned to a group.
+
+  Physical therapy practices can contact their account manager about access.
+
+  ### Procedure and Injection Orders at Every Site
+
+  The **Procedure** order type, which entered beta in August, is now available at every site. Record the procedure location, SIG, drug expiry date, lot number, NDC, units, route, and modifiers. When an in-house procedure order is completed, its CPT/HCPCS code fills into **Services**. Including procedures in order sets still requires order sets at your site.
+
+  ### Outreach Flows Analytics
+
+  Every site that uses Outreach Flows can now see how each flow performs:
+
+  - Messages sent, delivered, failed, and opened (for email) by day, plus link clicks, including review-link and portal-link clicks.
+  - Forms opened, completed, and partly completed.
+  - Filter or group the results by patient and by facility. A summary table color-codes click-through rate, form completion, and trend.
+
+  See the [Outreach Flows guide](/air_front_desk/communicate_with_patients/outreach_flows).
+
+  ### Plan of Care Tracker: Saved Views, Bulk Actions, and Upcoming Recertifications
+
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_09_29/poc-upcoming-recertifications.webp" alt="POC Certification Tracking with the Upcoming Recertifications tab selected, showing a days-to-recertify badge and a days-overdue badge" />
+
+  - Save the tracker's filters as a view.
+  - Select several plans of care and apply **Exempt Script** or **Resend Fax** to all of them.
+  - A new **Upcoming Recertifications** tab and column flag certified plans of care that are due for recertification soon or are overdue.
+  - The drawer links to the sent fax and shows why a plan of care was skipped, and exempted plans of care stand out in the **Certified** view.
+
+  See [Plan of Care Tracking](/air_admin/manage_your_practice/plan_of_care_tracking).
+
+  ### Financial Guarantor Replaces Financially Responsible Party
+
+  As of September 30, a patient's demographics in Air use the same **Financial Guarantor** as their billing profile, replacing the separate Financially Responsible Party section. A change in either place shows up in both, and existing financially responsible parties were moved over. The **Authorized Representative** is still separate and still controls portal access. See [Patient Demographics](/air_provider/review_patient_details/patient_demog).
+
+  ### Clinical Conditions in EHR Alert Rules
+
+  Since September 21, EHR alert rules can also match on clinical conditions. These cover the patient's problems (ICD-10), medications, allergies, procedures (CPT), and race, and whether the patient has lab orders, vitals, or an implantable device. See the [EHR Alert Rules guide](/air_admin/manage_your_practice/ehr_alert_rules).
+
+  ### [Beta Users Only] Care Team Communications
+
+  When a provider signs and submits a visit note, Air can send the note to the patient's care team automatically by fax or email. See [Care Team Communications](/air_admin/manage_your_practice/care_team_communications). Contact your account manager for access.
+
+  ### [Beta Users Only] Scheduling Templates Updates
+
+  - Restrict a template's blocks and slots to specific insurances or claim types. Availability, booking, and portal booking respect the restriction, and the overlap dialog shows insurance and claim-type conflicts.
+  - Copy and paste template slots, or drag and drop them.
+  - Assign one block to several facilities, and add notes to template blocks and calendar slots.
+  - Only admins can create, edit, or delete templates.
+
+  See the [Scheduling Templates guide](/air_admin/manage_your_practice/scheduling_templates). Contact your account manager for access.
+
+  ### Bug Fixes and Improvements
+
+  **Chart Notes & Air Scribe:**
+  - Preview the goals Air Scribe suggests before you apply them.
+  - Set a goal's target as a duration, such as 4 or 6 weeks, and the target date fills in.
+  - Air Scribe leaves out diagnosis ranges your site has turned off in its ICD-10 preferences, and no longer suggests billable CPT codes for procedures that were only recommended.
+  - **Regenerate** works when a visit has additional context but no transcription.
+  - Printed visit notes include addenda, chart note PDFs list CPT codes according to their units and minutes, and functional outcome questionnaire responses no longer print on chart note PDFs.
+  - Race and ethnicity accept **Declined to specify**.
+
+  **Orders & Medications:**
+  - A prescription you start keeps your progress if you leave the drawer before finishing.
+  - Unsigned prescription drafts can be discarded in bulk at every site.
+  - A prescription's end date now accounts for refills as well as days supply, and existing prescriptions were corrected.
+  - The Labs page filters by status, vendor, provider, and priority, sorts by last updated, and opens signed result PDFs from the download menu.
+  - An inbound fax can be attached to an outbound referral order, and tasks can include attachments.
+
+  **Scheduling & Front Desk:**
+  - The calendar can label its current-time line with a timezone. In **EHR Preferences → General**, choose whether to show the line and whether it follows the site, facility, or user timezone.
+  - Archive insurances you no longer use in **EHR Preferences → Insurances**, and restore them later. Archived insurances drop out of the **Add insurance** search, and existing patient insurances aren't affected.
+  - A patient's texting and marketing opt-in status shows on their demographics page.
+  - From an inbound fax, assign the fax to a patient or lead, or create a new one.
+  - Cases have a **PCP Last Seen Date** field, which carries over to the encounter and the claim.
+  - The member ID mismatch alert ignores trailing zeroes.
+  - At the kiosk, a patient who already checked in with forms still pending goes straight to the forms, and a suggested charge is no longer charged again when the appointment already has patient responsibility.
+
+</Update>
+
 <Update label="August 31, 2026" tags={["Insights"]}>
 
   ### Self-Serve Provider-Level Adjustments
