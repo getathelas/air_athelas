@@ -120,6 +120,74 @@ Clicking **+ Add Form** opens a window with all existing templates. Select any d
 
 ![Add Form picker](/images/air_front_desk/communicate_with_patients/outreach_flows/outreach_flows_18.webp)
 
+## Outreach Flows analytics
+
+Each workflow on the **Outreach Flows** page shows how its messages perform. The workflows table summarizes the last 7 days, and the **Metrics** window charts daily activity from sent messages through completed forms.
+
+### Summary columns
+
+The workflows table includes four analytics columns, each covering the last 7 days:
+
+| **Column** | **What It Shows** |
+| :--- | :--- |
+| **Sent 7D** | Messages the workflow sent, by text or email. |
+| **Trend 7D** | The change in **Sent 7D** compared with the 7 days before. |
+| **Form Completion 7D** | The share of delivered emails whose forms the patient completed. |
+| **CTR 7D** | The share of delivered emails that the patient opened. |
+
+Both rates are calculated from delivered emails. Text messages are not included, and an email that was sent but never delivered does not lower either rate. Each email counts once, however many times the patient opens it. A dash (**—**) means there is not enough data to calculate a value, such as a rate on a workflow that only sends texts, or a trend when nothing was sent in the previous 7 days.
+
+Values are color-coded so you can spot workflows that need attention:
+
+| **Column** | **Green** | **Amber** | **Red** |
+| :--- | :--- | :--- | :--- |
+| **CTR 7D** | 30% or higher | Between 15% and 30% | 15% or lower |
+| **Form Completion 7D** | 10% or higher | Between 5% and 10% | 5% or lower |
+| **Trend 7D** | Up 10% or more, with an up arrow | Not used | Down 10% or more, with a down arrow |
+
+**Trend 7D** measures send volume, not engagement. A change of less than 10% in either direction shows without a color or arrow.
+
+**Note:** The color thresholds are general guidelines for healthcare outreach, not benchmarks for your site.
+
+### Open the Metrics window
+
+1. Go to **Outreach Flows** in the sidebar, under **Automation**.
+2. In the workflow's row, click the **Metrics** icon (a bar chart).
+
+The **Metrics** window opens with the workflow's name at the top. Use the controls below the name to change what the window shows:
+
+- **Date range:** **7d**, **14d**, **30d**, or **90d**, ending today. The default is **14d**, and the chart plots one point per day.
+- **Filter by:** **All**, **Patient**, or **Facility**. When you choose **Patient** or **Facility**, select one in the field that appears, and the metrics load for that patient or facility only.
+- **Group by:** **None**, **Patient**, or **Facility**. Grouping draws a separate line for each patient or facility.
+- **Data sources:** Click a data source to add it to or remove it from the chart. **Sent**, **Email Delivered**, **Email Opened**, and **Form Completed** are on by default.
+
+### Data sources
+
+Each data source counts messages, so repeat opens or clicks on the same message count once.
+
+| **Data Source** | **What It Counts** |
+| :--- | :--- |
+| **Sent** | Messages Air sent, by text or email. |
+| **Email Delivered** | Emails accepted by the patient's email provider. |
+| **Failed** | Messages that could not be sent. |
+| **Email Opened** | Emails the patient opened. |
+| **Email Link Clicked** | Emails in which the patient clicked any link. |
+| **Review Link Clicked** | Messages in which the patient clicked the review link that [NPS surveys](#nps-survey-functionality) show to promoters. |
+| **Portal Link Clicked** | Messages in which the patient clicked the **Patient Portal Link**. |
+| **Form Opened** | Messages whose forms the patient opened. |
+| **Form Completed** | Messages whose forms the patient submitted. |
+| **Form Partially Completed** | Messages where the patient submitted the forms but at least one form was not saved. |
+
+Below the chart, **Source breakdown** shows a card for each data source with its total for the date range. Clicking a card also turns its data source on or off in the chart.
+
+When **Group by** is set to **Patient** or **Facility**, the chart shows one data source at a time. Select the data source you want to compare from **Data sources** or **Source breakdown**.
+
+If the workflow had no activity in the selected date range, the window shows **No outreach activity in this date range.**
+
+<Tip>
+  ✨**Smart Tip:** Set **Group by** to **Facility** and select **Form Completed** to see which locations get the most forms back from the same workflow.
+</Tip>
+
 ## Underscheduled Patients
 
 Underscheduled Patients is a pre-built workflow that targets patients who have fewer appointments scheduled in the following calendar week than prescribed by their active Plan of Care. They receive a text or email with a link to schedule additional appointments via the Patient Portal.

@@ -4,7 +4,7 @@ sidebarTitle: "EHR Alert Rules"
 toc: "true"
 ---
 
-EHR Alert Rules help you show site-specific guidance directly in chart note sections when an appointment matches conditions that you define. You can use these rules for payer reminders, documentation prompts, and compliance notes without blocking provider workflows.
+EHR Alert Rules help you show site-specific guidance directly in chart note sections when an appointment or patient matches conditions that you define. You can use these rules for payer reminders, documentation prompts, and compliance notes without blocking provider workflows.
 
 ## Before You Start
 
@@ -36,14 +36,16 @@ You can also use pagination and count indicators to track total rules.
 
 To create a rule:
 
-1. Click **Create Alert Rule**.
+1. Click **Create Rule**.
 2. Enter a **Title** (required).
 3. Enter **Content** (required). Multi-line text is supported.
-4. Configure at least one **Condition** (required).
+4. Configure at least one condition in **Conditions** or **Clinical Conditions** (required).
 5. Choose one or more **Display Locations**.
 6. Click **Create**.
 
 ### Available Condition Types
+
+The **Conditions** section filters on details of the appointment:
 
 | **Condition** | **How It Filters** |
 | :--- | :--- |
@@ -53,11 +55,35 @@ To create a rule:
 | **Facilities** | Matches appointments scheduled at selected facilities. |
 | **Provider Credentials** | Matches appointments where the rendering provider credential is selected. |
 
+### Clinical Conditions
+
+The **Clinical Conditions** section filters on the patient's chart instead of the appointment. Air checks these fields against the patient's current record each time the chart note loads.
+
+| **Condition** | **How It Filters** |
+| :--- | :--- |
+| **Problems (ICD-10)** | Matches patients with an active problem on their **Problem List** coded to one of the selected ICD-10 codes. Problems that are no longer active do not match. |
+| **Medications** | Matches patients with one of the selected medications marked active on their medication list. |
+| **Allergies** | Matches patients with one of the selected allergies recorded as active. |
+| **Race** | Matches patients whose demographics list one of the selected races. |
+| **Procedures (CPT)** | Matches patients with one of the selected CPT codes on any of their chart notes, from any visit. |
+| **Has Lab Orders** | **Yes** matches patients with at least one lab order. **No** matches patients with none. |
+| **Has Vitals** | **Yes** matches patients with at least one recorded set of vitals. **No** matches patients with none. |
+| **Has Implantable Device** | **Yes** matches patients with at least one active [implantable device](/air_developer/onc_feature_guides/adding_an_implantable_device). **No** matches patients with none. |
+
+- **Has Lab Orders**, **Has Vitals**, and **Has Implantable Device** default to **Any**, which does not filter. Set a field to **Yes** or **No** to filter on it.
+- Values match exactly. An ICD-10 code matches that code only, not other codes in the same category, and a race matches only patients recorded with that exact race, not those recorded with a more specific race in the same category. If a medication appears more than once in the list (for example, in different strengths), select each entry the rule should cover.
+- Clinical conditions count toward the one-condition minimum, so a rule can use clinical conditions alone.
+
 ### How Matching Logic Works
 
-- **Within one condition type (OR):** Multiple selected values match if any one value matches.
-- **Across condition types (AND):** Every populated condition type must match.
-- **Empty condition type:** Treated as no filter for that dimension.
+Matching works the same way for **Conditions** and **Clinical Conditions**:
+
+- **Within one condition type (OR):** Multiple selected values match if any one value matches. A rule with two medications matches a patient on either one.
+- **Across condition types (AND):** Every populated condition type must match. A rule with one insurance company and two ICD-10 codes appears only on appointments with that primary insurance, for patients with an active problem coded to either code.
+- **Empty condition type:** Treated as no filter for that dimension. **Any** on a **Has** field is also no filter.
+- **No matching data in the chart:** If a rule filters on a clinical condition and the patient's chart has nothing recorded for that condition, such as no active problems, the rule does not match that patient.
+
+To check a saved rule, hover over **See Conditions** in the Alert Rules table. The tooltip lists the rule's values, joined by **or** within a type and **and** between types.
 
 <Tip>
   ✨**Smart Tip:** Start with one high-impact payer or note-type rule first, then expand conditions after you confirm the behavior in live chart notes.
@@ -91,7 +117,7 @@ Deletion is permanent from the UI.
 
 ## How Alerts Appear in Chart Notes
 
-When a provider opens a chart note, the system evaluates active rules against appointment context, including insurance, note type, appointment type, facility, and provider credential.
+When a provider opens a chart note, the system evaluates active rules against the appointment (insurance, note type, appointment type, facility, and provider credential) and, for rules with clinical conditions, the patient's chart.
 
 Matching alerts appear as banner callouts in configured chart note sections.
 
@@ -130,6 +156,7 @@ Additional locations depend on enabled features (for example **Vitals**, **Medic
 - **Initial evaluation prompts:** Show required coding reminders only on **Initial Evaluation** notes.
 - **Credential-specific compliance alerts:** Display supervision reminders based on provider credential.
 - **Facility-specific workflows:** Add site-specific instructions for selected facilities.
+- **Clinical precautions:** Remind providers of a precaution for patients with an active implantable device, a selected allergy, or a selected medication.
 
 ### FAQ
 
@@ -142,7 +169,7 @@ No. Alert Rules are informational and do not block **Sign & Submit**.
 </Accordion>
 
 <Accordion title="Can I target a rule to a single patient?">
-Not currently. Rules are site-level and appear for any appointment that matches your configured conditions.
+Not currently. Rules are site-level and appear for any appointment that matches your configured conditions. To reach a group of patients, such as everyone with a particular problem, medication, or allergy, use **Clinical Conditions**.
 </Accordion>
 
 <Accordion title="What happens when a provider dismisses an alert?">
