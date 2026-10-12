@@ -201,7 +201,17 @@ public: true
 
   ### A New Look for Air
 
-  Air shares the new layout described in the Insights entry above. Since September 28 it has been the default, with **Global Search** (⌘K or Ctrl+K), a notification bell, **Scribe** and **Athelas AI** in the header, and light and dark appearance. For a limited time, **Go back to old version** in your profile menu returns you to the previous layout.
+  <img className="w-full rounded-xl" src="/images/master_changelogs/changelog/2026_09_29/new-layout.webp" alt="The new Air layout, with Global Search and the notification bell across the top, Scribe and Athelas AI at the top right, and the left navigation grouped into EHR, Insights, Daily Operations, and Utilities" />
+
+  Since September 28, Air opens in a new layout by default. Here is where to find things:
+
+  - **Global Search**, at the top of every page, finds a patient, a claim, or a page. Press ⌘K (Ctrl+K on Windows) to open it from anywhere.
+  - The **bell** beside it collects your notifications, requests, messages, tasks, and medication updates in one place.
+  - **Scribe** and **Athelas AI** sit at the top right of every page.
+  - The left navigation groups pages under **EHR**, **Insights**, **Daily Operations**, and **Utilities**. Collapse it with the button at the top left. **Settings** (the gear) and **Help** are at the bottom, next to your profile.
+  - Switch between light and dark appearance from your profile menu.
+
+  For a limited time, **Go back to old version** in your profile menu returns you to the previous layout.
 
   ### Smart Charge Capture and Care Notes Outside Physical Therapy
 
@@ -260,29 +270,10 @@ public: true
 
   ### Bug Fixes and Improvements
 
-  **Chart Notes & Air Scribe:**
-  - Preview the goals Air Scribe suggests before you apply them.
-  - Set a goal's target as a duration, such as 4 or 6 weeks, and the target date fills in.
-  - Air Scribe leaves out diagnosis ranges your site has turned off in its ICD-10 preferences, and no longer suggests billable CPT codes for procedures that were only recommended.
-  - **Regenerate** works when a visit has additional context but no transcription.
-  - Printed visit notes include addenda, chart note PDFs list CPT codes according to their units and minutes, and functional outcome questionnaire responses no longer print on chart note PDFs.
-  - Race and ethnicity accept **Declined to specify**.
-
-  **Orders & Medications:**
+  - Preview the goals Air Scribe suggests before you apply them to the note.
   - A prescription you start keeps your progress if you leave the drawer before finishing.
-  - Unsigned prescription drafts can be discarded in bulk at every site.
-  - A prescription's end date now accounts for refills as well as days supply, and existing prescriptions were corrected.
-  - The Labs page filters by status, vendor, provider, and priority, sorts by last updated, and opens signed result PDFs from the download menu.
-  - An inbound fax can be attached to an outbound referral order, and tasks can include attachments.
-
-  **Scheduling & Front Desk:**
-  - The calendar can label its current-time line with a timezone. In **EHR Preferences → General**, choose whether to show the line and whether it follows the site, facility, or user timezone.
-  - Archive insurances you no longer use in **EHR Preferences → Insurances**, and restore them later. Archived insurances drop out of the **Add insurance** search, and existing patient insurances aren't affected.
-  - A patient's texting and marketing opt-in status shows on their demographics page.
-  - From an inbound fax, assign the fax to a patient or lead, or create a new one.
-  - Cases have a **PCP Last Seen Date** field, which carries over to the encounter and the claim.
-  - The member ID mismatch alert ignores trailing zeroes.
-  - At the kiosk, a patient who already checked in with forms still pending goes straight to the forms, and a suggested charge is no longer charged again when the appointment already has patient responsibility.
+  - Archive insurances you no longer use in **EHR Preferences → Insurances**. Existing patient insurances aren't affected.
+  - The calendar's current-time line can show a timezone, set in **EHR Preferences → General**.
 
 </Update>
 
