@@ -64,6 +64,9 @@
     { path: "/air_developer/fhir_api/commure_ehr_fhir_api", label: "FHIR API" },
   ];
   var EXEMPT_PATHS = [TERMS_PATH].concat(ONC_PUBLIC.map(function (p) { return p.path; }));
+  // Whole sections left public by choice: the What's New tab (and the blog posts it
+  // links to) and the Changelog tab.
+  var EXEMPT_PREFIXES = ["/master_blogs/", "/master_changelogs/"];
   // Privacy policy linked from the notice at collection. Empty hides the link.
   var PRIVACY_URL = "";
   var RESEND_COOLDOWN_MS = 60 * 1000;
@@ -438,7 +441,8 @@
   // ---- Lock state ----------------------------------------------------------------
   function isExempt() {
     var path = location.pathname.replace(/\/+$/, "");
-    return EXEMPT_PATHS.indexOf(path) >= 0;
+    if (EXEMPT_PATHS.indexOf(path) >= 0) return true;
+    return EXEMPT_PREFIXES.some(function (prefix) { return path.indexOf(prefix) === 0; });
   }
   function lock() {
     root.classList.remove("athelas-gate-ok");
