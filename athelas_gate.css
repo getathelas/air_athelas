@@ -61,6 +61,20 @@ html.dark #athelas-gate {
   background: var(--ag-bg);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
 }
+.athelas-gate__mock {
+  margin: 0 0 16px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.athelas-gate__mock a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+}
 .athelas-gate__title {
   margin: 0 0 12px;
   font-size: 22px;

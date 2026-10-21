@@ -276,6 +276,15 @@
       gate = document.createElement("div");
       gate.id = "athelas-gate";
       gate.innerHTML = TEMPLATE;
+      if (mock) {
+        // Say so loudly: in mock mode nothing reaches the Form and no email is sent.
+        var badge = document.createElement("p");
+        badge.className = "athelas-gate__mock";
+        badge.innerHTML =
+          "Test mode: no email is sent and nothing is recorded. The confirmation link is in the console. " +
+          '<a href="?athelas_gate_mock=0">Turn off test mode</a>';
+        el(".athelas-gate__card").insertBefore(badge, el(".athelas-gate__title"));
+      }
       wire();
     }
     document.body.appendChild(gate);
