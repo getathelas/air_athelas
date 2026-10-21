@@ -665,6 +665,10 @@
       "destination": "/air_onboard/getting_started_with_air/index"
     },
     {
+      "source": "/legal/air_documentation_access_terms",
+      "destination": "/legal/athelas_documentation_access_terms"
+    },
+    {
       "source": "/insights_front_desk/utilities/self_service_credentialing",
       "destination": "/air_admin/manage_your_practice/provider_credentials"
     },

@@ -2,7 +2,7 @@
  * docs.athelas.com consent gate.
  *
  * Mintlify injects every .js file in this repo on every page, so this runs site-wide.
- * Visitors must agree to the Air Documentation Access Terms and confirm their email
+ * Visitors must agree to the Athelas Documentation Access Terms and confirm their email
  * (a link sent to their inbox) before the page content is shown.
  *
  * Every event (agreement, confirmation, pages viewed) is submitted to a Google Form.
@@ -46,10 +46,11 @@
   };
   // Bump when the Terms change: everyone re-agrees. Keep it in step with the
   // "Last updated" date on the Terms page.
-  var TERMS_VERSION = "2026-10-21";
+  // Not a date alone: the Terms were revised twice on 2026-10-21.
+  var TERMS_VERSION = "2026-10-21.2";
   var CONSENT_TTL_DAYS = 90;
   var LINK_TTL_MS = 24 * 60 * 60 * 1000;
-  var TERMS_PATH = "/legal/air_documentation_access_terms";
+  var TERMS_PATH = "/legal/athelas_documentation_access_terms";
   // Pages anyone must reach with no gate in the way. ONC requires these to be at a
   // "publicly accessible hyperlink" without preconditions, so don't gate them.
   var ONC_PUBLIC = [
@@ -238,11 +239,11 @@
     '<div class="athelas-gate__card" role="dialog" aria-modal="true" aria-labelledby="athelas-gate-title">' +
     '<h2 id="athelas-gate-title" class="athelas-gate__title">Before you continue</h2>' +
     '<div data-view="form">' +
-    '<p class="athelas-gate__lede">This webpage contains confidential and proprietary information about Athelas Air. ' +
+    '<p class="athelas-gate__lede">This webpage contains confidential and proprietary information about one or more Athelas products. ' +
     "By clicking “I agree,” you accept the " +
-    '<a href="' + TERMS_PATH + '" target="_blank" rel="noopener">Air Documentation Access Terms</a> and agree that you will:</p>' +
+    '<a href="' + TERMS_PATH + '" target="_blank" rel="noopener">Athelas Documentation Access Terms</a> and agree that you will:</p>' +
     '<ul class="athelas-gate__terms">' +
-    "<li>keep the materials on this webpage confidential and use them only to evaluate or use Air;</li>" +
+    "<li>keep the materials on Athelas’s product webpages confidential and use them only to evaluate or use Athelas products;</li>" +
     "<li>not copy, share, reverse engineer, or use them to build or improve any competing product; and</li>" +
     "<li>waive and release any claim that Athelas misappropriated, copied, or derived its products from yours.</li>" +
     "</ul>" +
