@@ -40,17 +40,6 @@
             ]
           },
           {
-            "group": "ONC Feature Guides",
-            "icon": "book-medical",
-            "public": true,
-            "pages": [
-              "air_developer/onc_feature_guides/adding_family_health_history",
-              "air_developer/onc_feature_guides/adding_an_implantable_device",
-              "air_developer/onc_feature_guides/view_ccda",
-              "air_developer/onc_feature_guides/reconcile_incoming_ccda"
-            ]
-          },
-          {
             "group": "Getting Started with Air",
             "icon": "stars",
             "public": true,
@@ -208,6 +197,17 @@
               "air_admin/analyze_your_reports/growth_engine",
               "air_admin/analyze_your_reports/retention_engine",
               "air_admin/analyze_your_reports/efficiency_engine"
+            ]
+          },
+          {
+            "group": "ONC Feature Guides",
+            "icon": "book-medical",
+            "public": true,
+            "pages": [
+              "air_developer/onc_feature_guides/adding_family_health_history",
+              "air_developer/onc_feature_guides/adding_an_implantable_device",
+              "air_developer/onc_feature_guides/view_ccda",
+              "air_developer/onc_feature_guides/reconcile_incoming_ccda"
             ]
           }
         ]

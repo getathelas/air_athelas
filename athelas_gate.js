@@ -52,7 +52,9 @@
   var LINK_TTL_MS = 24 * 60 * 60 * 1000;
   var TERMS_PATH = "/legal/athelas_documentation_access_terms";
   // Pages anyone must reach with no gate in the way. ONC requires these to be at a
-  // "publicly accessible hyperlink" without preconditions, so don't gate them.
+  // "publicly accessible hyperlink" without preconditions, so don't gate them. Our
+  // ONC consultant confirmed this is the complete list and that the ONC feature
+  // guides can stay behind the gate.
   var ONC_PUBLIC = [
     // §170.523(k)(1) transparency disclosures
     { path: "/air_developer/onc_certification/mandatory_disclosure", label: "Mandatory Disclosure" },
@@ -61,16 +63,7 @@
     // §170.315(g)(10) API documentation, §170.404(a)(2)
     { path: "/air_developer/fhir_api/commure_ehr_fhir_api", label: "FHIR API" },
   ];
-  // Public by choice, not by rule (pending confirmation from our ONC consultant).
-  var ONC_FEATURE_GUIDES = [
-    "/air_developer/onc_feature_guides/adding_family_health_history",
-    "/air_developer/onc_feature_guides/adding_an_implantable_device",
-    "/air_developer/onc_feature_guides/view_ccda",
-    "/air_developer/onc_feature_guides/reconcile_incoming_ccda",
-  ];
-  var EXEMPT_PATHS = [TERMS_PATH]
-    .concat(ONC_PUBLIC.map(function (p) { return p.path; }))
-    .concat(ONC_FEATURE_GUIDES);
+  var EXEMPT_PATHS = [TERMS_PATH].concat(ONC_PUBLIC.map(function (p) { return p.path; }));
   // Privacy policy linked from the notice at collection. Empty hides the link.
   var PRIVACY_URL = "";
   var RESEND_COOLDOWN_MS = 60 * 1000;
