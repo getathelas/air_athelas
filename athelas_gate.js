@@ -50,7 +50,28 @@
   var CONSENT_TTL_DAYS = 90;
   var LINK_TTL_MS = 24 * 60 * 60 * 1000;
   var TERMS_PATH = "/legal/air_documentation_access_terms";
-  var EXEMPT_PATHS = [TERMS_PATH];
+  // Pages anyone must reach with no gate in the way. ONC requires these to be at a
+  // "publicly accessible hyperlink" without preconditions, so don't gate them.
+  var ONC_PUBLIC = [
+    // §170.523(k)(1) transparency disclosures
+    { path: "/air_developer/onc_certification/mandatory_disclosure", label: "Mandatory Disclosure" },
+    // §170.315(b)(10) EHI export format documentation
+    { path: "/air_developer/patient_information_export/patient_information_export", label: "EHI Export Format" },
+    // §170.315(g)(10) API documentation, §170.404(a)(2)
+    { path: "/air_developer/fhir_api/commure_ehr_fhir_api", label: "FHIR API" },
+  ];
+  // Public by choice, not by rule (pending confirmation from our ONC consultant).
+  var ONC_FEATURE_GUIDES = [
+    "/air_developer/onc_feature_guides/adding_family_health_history",
+    "/air_developer/onc_feature_guides/adding_an_implantable_device",
+    "/air_developer/onc_feature_guides/view_ccda",
+    "/air_developer/onc_feature_guides/reconcile_incoming_ccda",
+  ];
+  var EXEMPT_PATHS = [TERMS_PATH]
+    .concat(ONC_PUBLIC.map(function (p) { return p.path; }))
+    .concat(ONC_FEATURE_GUIDES);
+  // Privacy policy linked from the notice at collection. Empty hides the link.
+  var PRIVACY_URL = "";
   var RESEND_COOLDOWN_MS = 60 * 1000;
   var REQUEST_TIMEOUT_MS = 15000;
 
@@ -187,44 +208,26 @@
   }
 
   // ---- Visit tracking ------------------------------------------------------------
-  var queued = [];
-  var session = (function () {
-    try {
-      return JSON.parse(sessionStorage.getItem(KEY_SESSION) || "null") || { started: false, seen: [] };
-    } catch (e) {
-      return { started: false, seen: [] };
-    }
-  })();
-  function saveSession() {
-    try {
-      sessionStorage.setItem(KEY_SESSION, JSON.stringify(session));
-    } catch (e) {}
-  }
+  // Every page view is sent the moment it happens, repeats included: one row per view
+  // in the Visits tab. Only verified visitors are logged, so anonymous readers of the
+  // public ONC pages leave no trace.
+  var lastLoggedPath = null;
   function trackPath() {
     var c = validConsent();
     if (!c) return;
     var path = location.pathname;
-    if (session.seen.indexOf(path) >= 0) return;
-    session.seen.push(path);
-    if (!session.started) {
-      // First page of the browser session goes out right away, so a visit is
-      // recorded even if the tab is killed before pagehide.
-      session.started = true;
-      beacon({ event: "visit", consent_id: c.id, paths: path, referrer: document.referrer });
-    } else {
-      queued.push(path);
+    // Route hooks fire on replaceState and hash changes too; one view per path change.
+    if (path === lastLoggedPath) return;
+    lastLoggedPath = path;
+    // The referrer only means something on the first view in a tab.
+    var firstInTab = !sessionStorage.getItem(KEY_SESSION);
+    if (firstInTab) {
+      try {
+        sessionStorage.setItem(KEY_SESSION, "1");
+      } catch (e) {}
     }
-    saveSession();
+    beacon({ event: "visit", consent_id: c.id, paths: path, referrer: firstInTab ? document.referrer : "" });
   }
-  function flush() {
-    var c = validConsent();
-    if (!c || !queued.length) return;
-    beacon({ event: "visit", consent_id: c.id, paths: queued.splice(0).join("\n"), referrer: "" });
-  }
-  addEventListener("pagehide", flush);
-  document.addEventListener("visibilitychange", function () {
-    if (document.visibilityState === "hidden") flush();
-  });
 
   // ---- Modal ---------------------------------------------------------------------
   var gate = null;
@@ -250,8 +253,14 @@
     '<label class="athelas-gate__hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>' +
     '<p class="athelas-gate__error" role="alert" hidden></p>' +
     '<button type="submit" class="athelas-gate__primary" disabled>I agree</button>' +
-    '<p class="athelas-gate__fine">We’ll email you a link to confirm your address. Your name, email, and the pages you view are recorded.</p>' +
+    '<p class="athelas-gate__fine">We’ll email you a link to confirm your address. ' +
+    "Your name, email, company, and the pages you view are recorded to administer these Terms." +
+    (PRIVACY_URL ? ' See our <a href="' + PRIVACY_URL + '" target="_blank" rel="noopener">Privacy Policy</a>.' : "") +
+    "</p>" +
     "</form>" +
+    '<p class="athelas-gate__public">Looking for our ONC certification disclosures? These pages are public: ' +
+    ONC_PUBLIC.map(function (p) { return '<a href="' + p.path + '">' + p.label + "</a>"; }).join(" · ") +
+    "</p>" +
     "</div>" +
     '<div data-view="sent" hidden>' +
     '<p class="athelas-gate__lede">We sent a confirmation link to <strong data-slot="email"></strong>. ' +

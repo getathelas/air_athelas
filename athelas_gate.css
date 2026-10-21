@@ -189,6 +189,19 @@ html.dark #athelas-gate {
     box-shadow: none;
   }
 }
+.athelas-gate__fine a,
+.athelas-gate__public a {
+  color: var(--ag-primary);
+  text-decoration: underline;
+}
+.athelas-gate__public {
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--ag-border);
+  color: var(--ag-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
 #athelas-gate [hidden] {
   display: none !important;
 }
