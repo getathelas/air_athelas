@@ -31,6 +31,8 @@
  *    and writes the widget config (Form URL + field IDs) to the Config tab.
  * 4. Copy the Config tab's values into FORM_URL and FIELDS in athelas_gate.js.
  * Running setup again is safe: it reuses the Form and replaces the trigger.
+ * 5. Run `installRetentionTrigger` once to schedule the daily 6-year retention
+ *    cleanup (see Retention below). `previewRetention` shows what it would delete.
  */
 
 const LINK_TTL_MS = 24 * 60 * 60 * 1000;
@@ -226,6 +228,172 @@ function handleVisit(v) {
   ]);
   const sheet = getSheet('Visits', VISIT_HEADERS);
   sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, rows[0].length).setValues(rows);
+}
+
+// ---- Retention ------------------------------------------------------------------
+// Privacy notice: "We keep this information while you have access and for six years
+// after your last access, or longer if needed for a legal claim or tax or financial
+// reasons." A person's last access is their latest agreement, confirmation, or page
+// view, across every consent_id under their email. Once that is more than
+// RETENTION_YEARS old, everything about them is deleted: their Consents, Visits, and
+// Raw events rows, and the Form's own copy of their submissions. Emails listed on
+// the "Legal hold" tab are never deleted. Rows that can't be tied to an email (for
+// example a bad consent_id) go once their own timestamp is past the cutoff.
+// Not covered: the confirmation emails in the sending account's Sent folder.
+const RETENTION_YEARS = 6;
+const RETENTION_LOG_HEADERS = [
+  'ran_at', 'mode', 'cutoff', 'people', 'consents_rows', 'visits_rows', 'raw_rows', 'form_responses',
+];
+
+// Daily trigger target.
+function purgeExpired() {
+  return enforceRetention_(false);
+}
+
+// Run from the editor: logs what a purge would delete, deletes nothing.
+function previewRetention() {
+  return enforceRetention_(true);
+}
+
+// Run once from the editor to schedule purgeExpired daily around 3 AM.
+function installRetentionTrigger() {
+  ScriptApp.getProjectTriggers()
+    .filter((t) => t.getHandlerFunction() === 'purgeExpired')
+    .forEach((t) => ScriptApp.deleteTrigger(t));
+  ScriptApp.newTrigger('purgeExpired').timeBased().everyDays(1).atHour(3).create();
+}
+
+function enforceRetention_(dryRun) {
+  const ss = spreadsheet();
+  const lock = LockService.getScriptLock();
+  lock.waitLock(30000);
+  try {
+    const now = new Date();
+    const cutoff = new Date(now);
+    cutoff.setFullYear(cutoff.getFullYear() - RETENTION_YEARS);
+
+    const consents = getSheet('Consents', CONSENT_HEADERS);
+    const visits = getSheet('Visits', VISIT_HEADERS);
+    const raw = ss.getSheets().find((sh) => sh.getFormUrl());
+    const holdSheet = getSheet('Legal hold', ['email', 'reason', 'added_by', 'added_at']);
+    const holds = dataRows_(holdSheet).map((r) => String(r[0]).trim().toLowerCase()).filter(Boolean);
+
+    const plan = planRetention_(dataRows_(consents), dataRows_(visits), raw ? dataRows_(raw) : [], holds, cutoff);
+
+    let formDeleted = 0;
+    const formId = PropertiesService.getScriptProperties().getProperty('FORM_ID');
+    if (formId) {
+      const form = FormApp.openById(formId);
+      form.getResponses().forEach((resp) => {
+        const values = {};
+        resp.getItemResponses().forEach((ir) => {
+          values[ir.getItem().getTitle()] = String(ir.getResponse() || '');
+        });
+        if (shouldPurge_(plan, values.email, values.consent_id, resp.getTimestamp())) {
+          formDeleted++;
+          if (!dryRun) form.deleteResponse(resp.getId());
+        }
+      });
+    }
+
+    if (!dryRun) {
+      deleteRows_(consents, plan.consentRows);
+      deleteRows_(visits, plan.visitRows);
+      if (raw) deleteRows_(raw, plan.rawRows);
+    }
+
+    const counts = [
+      now, dryRun ? 'preview' : 'purge', cutoff, plan.people.length,
+      plan.consentRows.length, plan.visitRows.length, plan.rawRows.length, formDeleted,
+    ];
+    getSheet('Retention log', RETENTION_LOG_HEADERS).appendRow(counts);
+    console.log(JSON.stringify({ mode: counts[1], people: counts[3], consents: counts[4],
+      visits: counts[5], raw: counts[6], form: counts[7] }));
+    return counts;
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+// Pure planning step: which people and which sheet rows (1-based, header = row 1)
+// to delete. Kept free of Apps Script services so it can be tested on plain arrays.
+function planRetention_(consentRows, visitRows, rawRows, holds, cutoff) {
+  const cut = cutoff.getTime();
+  const held = new Set(holds.map((e) => String(e).trim().toLowerCase()));
+  const idToEmail = {};
+  const last = {};
+  const touch = (email, when) => {
+    const t = toMs_(when);
+    if (!email || t === null) return;
+    if (!(email in last) || t > last[email]) last[email] = t;
+  };
+
+  consentRows.forEach((r) => {
+    const id = String(r[COL.consent_id - 1]);
+    const email = String(r[COL.email - 1]).trim().toLowerCase();
+    if (id && email) idToEmail[id] = email;
+    touch(email, r[COL.created_at - 1]);
+    touch(email, r[COL.verified_at - 1]);
+  });
+  visitRows.forEach((r) => {
+    const email = String(r[2]).trim().toLowerCase() || idToEmail[String(r[1])];
+    touch(email, r[0]);
+  });
+  // Raw events columns: Timestamp, then the Form questions in FIELDS order.
+  const rawEmail = (r) =>
+    String(r[1 + FIELDS.indexOf('email')]).trim().toLowerCase() || idToEmail[String(r[1 + FIELDS.indexOf('consent_id')])];
+  rawRows.forEach((r) => touch(rawEmail(r), r[0]));
+
+  const expired = new Set(Object.keys(last).filter((e) => last[e] < cut && !held.has(e)));
+  const plan = { people: [...expired], expired, held, idToEmail, cut, consentRows: [], visitRows: [], rawRows: [] };
+  consentRows.forEach((r, i) => {
+    if (shouldPurge_(plan, r[COL.email - 1], r[COL.consent_id - 1], r[COL.created_at - 1])) plan.consentRows.push(i + 2);
+  });
+  visitRows.forEach((r, i) => {
+    if (shouldPurge_(plan, r[2], r[1], r[0])) plan.visitRows.push(i + 2);
+  });
+  rawRows.forEach((r, i) => {
+    if (shouldPurge_(plan, r[1 + FIELDS.indexOf('email')], r[1 + FIELDS.indexOf('consent_id')], r[0])) plan.rawRows.push(i + 2);
+  });
+  return plan;
+}
+
+function shouldPurge_(plan, email, consentId, when) {
+  const e = String(email || '').trim().toLowerCase() || plan.idToEmail[String(consentId || '')] || '';
+  if (e) return plan.expired.has(e);
+  // No email to go on: judge the row by its own date.
+  const t = toMs_(when);
+  return t !== null && t < plan.cut;
+}
+
+function dataRows_(sheet) {
+  const n = sheet.getLastRow() - 1;
+  return n > 0 ? sheet.getRange(2, 1, n, sheet.getLastColumn()).getValues() : [];
+}
+
+// Deletes the given 1-based rows, bottom-up in contiguous runs.
+function deleteRows_(sheet, rows) {
+  if (!rows.length) return;
+  // Sheets refuses to delete every non-frozen row, so keep a spare one.
+  if (sheet.getMaxRows() - rows.length <= sheet.getFrozenRows()) sheet.insertRowsAfter(sheet.getMaxRows(), 1);
+  const sorted = rows.slice().sort((a, b) => b - a);
+  let i = 0;
+  while (i < sorted.length) {
+    let start = sorted[i];
+    let count = 1;
+    while (i + count < sorted.length && sorted[i + count] === start - 1) {
+      start--;
+      count++;
+    }
+    sheet.deleteRows(start, count);
+    i += count;
+  }
+}
+
+function toMs_(v) {
+  if (v === '' || v === null || v === undefined) return null;
+  const t = (v instanceof Date ? v : new Date(v)).getTime();
+  return isNaN(t) ? null : t;
 }
 
 function findConsentRow(id) {
