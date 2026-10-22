@@ -67,8 +67,9 @@
   // Whole sections left public by choice: the What's New tab (and the blog posts it
   // links to) and the Changelog tab.
   var EXEMPT_PREFIXES = ["/master_blogs/", "/master_changelogs/"];
-  // Privacy policy linked from the notice at collection. Empty hides the link.
-  var PRIVACY_URL = "";
+  // Privacy policy linked from the popup, as Legal specified. Once the policy gains a
+  // section covering this gate, Legal wants this to be an anchor link to that section.
+  var PRIVACY_URL = "https://www.athelas.com/legal/privacy-policy";
   var RESEND_COOLDOWN_MS = 60 * 1000;
   var REQUEST_TIMEOUT_MS = 15000;
 
@@ -248,12 +249,10 @@
     '<label>Work email<input name="email" type="email" autocomplete="email" maxlength="200" required></label>' +
     '<label>Company or practice<input name="company" autocomplete="organization" maxlength="160" required></label>' +
     '<label class="athelas-gate__hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>' +
+    '<p class="athelas-gate__privacy"><a href="' + PRIVACY_URL + '" target="_blank" rel="noopener">Privacy Policy</a></p>' +
     '<p class="athelas-gate__error" role="alert" hidden></p>' +
     '<button type="submit" class="athelas-gate__primary" disabled>I agree</button>' +
-    '<p class="athelas-gate__fine">We’ll email you a link to confirm your address. ' +
-    "Your name, email, company, and the pages you view are recorded to administer these Terms." +
-    (PRIVACY_URL ? ' See our <a href="' + PRIVACY_URL + '" target="_blank" rel="noopener">Privacy Policy</a>.' : "") +
-    "</p>" +
+    '<p class="athelas-gate__fine">We’ll email you a link to confirm your address. Your name, email, and the pages you view are recorded.</p>' +
     "</form>" +
     '<p class="athelas-gate__public">Looking for our ONC certification disclosures? These pages are public: ' +
     ONC_PUBLIC.map(function (p) { return '<a href="' + p.path + '">' + p.label + "</a>"; }).join(" · ") +

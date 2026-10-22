@@ -203,7 +203,11 @@ html.dark #athelas-gate {
     box-shadow: none;
   }
 }
-.athelas-gate__fine a,
+.athelas-gate__privacy {
+  margin: 0;
+  font-size: 14px;
+}
+.athelas-gate__privacy a,
 .athelas-gate__public a {
   color: var(--ag-primary);
   text-decoration: underline;
