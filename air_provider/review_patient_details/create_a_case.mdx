@@ -1,0 +1,105 @@
+---
+title: "Create a Case"
+sidebarTitle: "Create a Case"
+toc: "true"
+---
+
+## Overview
+
+A **case** groups a patient's related visits, insurance, and authorizations so that claims bill correctly. This page walks through every field on the **New Case** screen: what it means, when to fill it in, and which values Air sets for you.
+
+You can open the **New Case** screen in two places:
+
+- From the patient's profile, under **Patient Demographics → Cases**. See [Active and Discharged Cases](/air_provider/review_patient_details/patient_demog#active-and-discharged-cases).
+- While scheduling, by selecting a patient and clicking **Create New Case**. See [Add a New Case](/air_front_desk/take_in_a_patient/new_appt#add-a-new-case).
+
+![The New Case screen, showing the Case Name, Insurance, date, provider, Notes, and Tags fields](/images/air_provider/review_patient_details/create_a_case/create_a_case_1.webp)
+
+The fields below are listed in the order they appear on the screen, from top to bottom.
+
+## What's required
+
+- **Always required:** Case name. The **Create** button stays disabled until you enter one.
+- **Required only in some setups:**
+  - Referring provider, when your site requires one for every case or when an institutional (UB) payer is on the case.
+  - Date of onset and Initial treatment date, when your site requires onset and treatment dates for UB-04 claims.
+- **Everything else is optional.** Fill in what applies to the patient. You can add the rest later.
+
+## Case name
+
+A short, recognizable label for the case, such as "Right knee – post-op PT" or "Low back pain". This is how the case appears in lists and on appointments.
+
+## Insurance
+
+This section links the patient's coverage to the case. Every insurance field is optional, so you can create a self-pay case with no insurance. What you choose here drives how claims are billed.
+
+- **Add Insurance** opens a side panel to add a new insurance to the patient's profile when the one you need isn't listed yet. The button is disabled until a patient is selected and their insurance list has loaded.
+- **Primary Insurance** is the patient's main payer for this case, chosen from the insurances on file. Clearing it also clears the secondary and tertiary insurances and their prior authorizations.
+- **Secondary Insurance** is disabled until you choose a primary insurance, and it doesn't list the payer you already picked as primary.
+- **Tertiary Insurance** is disabled until you choose a secondary insurance, and it doesn't list the payers already used as primary or secondary.
+- **Prior authorization:** once you select an insurance, you can attach one of the patient's existing prior authorizations next to it, or open the prior authorization window to add a new one.
+
+<Note>
+  **Workers' Compensation:** if the primary insurance is a Workers' Compensation payer, an **Accident date** field appears. It can't be a future date. If the patient's Workers' Compensation insurance record already has an accident date on file, Air uses that stored date when you save the case.
+</Note>
+
+## Dates
+
+None of the dates can be in the future.
+
+- **Date of onset** is the date the patient's condition or symptoms began.
+- **Initial treatment date** is the date treatment for this condition first started.
+- **PCP last seen date** is the date the patient last saw their primary care provider. Some billing and authorization requirements depend on a recent PCP visit.
+
+If your site requires onset and treatment dates for UB-04 claims, **Date of onset** and **Initial treatment date** become required and their labels show an asterisk (\*). If your site has UB-04 date suggestions turned on, these fields may also suggest dates from the patient's other cases.
+
+## Providers and referrals
+
+### Referring provider
+
+Optional, unless your site requires a referring provider for every case or an insurance on the case is an institutional (UB) payer. In either situation, the screen shows an error until you choose one.
+
+Click the document icon beside the field to search the Provider Directory, which is sourced from the NPI Registry. Changing the referring provider resets the referral and prior authorization selections linked to it.
+
+### Referral
+
+Optional. Attaches one of the patient's existing referrals to the case. The list only shows referrals from the selected referring provider, so it stays disabled until you choose a referring provider. It shows "No referrals available" when there are none.
+
+### Supervising Provider
+
+Optional. The provider supervising care for this case. Your site may exclude Physical Therapist Assistants (PTAs) from this list, since a PTA can't be a supervising provider.
+
+### Case Owning Provider
+
+Optional, and only shown when the Case Owning Provider feature is enabled for your site. By default, this is the provider who completes the initial evaluation or the first appointment, and you can pick any provider from the list.
+
+The Case Owning Provider decides which provider the patient counts toward in the [Active Patient Breakdown](/air_admin/analyze_your_reports/kpi_dashboard#review-the-status-of-active-patients) report. You can reassign it at any time.
+
+### Was a provider specifically requested?
+
+Optional, and only shown when the provider request feature is enabled for your site. Check the box when the patient asked for a particular provider, then choose that provider in the **Requested provider** dropdown that appears. Unchecking the box clears the selection.
+
+## Notes and tags
+
+- **Case notes** holds free-text notes about the case. Click the copy icon in the field to pull in the patient's existing notes instead of retyping them.
+- **Tags** are one or more labels from your site's shared case and appointment tag list. Use them for filtering and reporting.
+
+## Values Air sets for you
+
+You don't need to enter these. Air fills them in when the case is created:
+
+- **Patient:** the patient whose profile or appointment you started from.
+- **Site:** the site you're logged into.
+- **Accident date:** for Workers' Compensation cases, the accident date stored on the insurance record, when there is one.
+- **Measurements version:** a site setting decides whether the case uses the newer measurements experience.
+- **Prior authorization records:** Air creates the prior authorization links the case needs, based on the insurances and authorizations you selected.
+- **Referring provider for imported appointments:** if the case is created from an appointment imported from another EHR, Air carries over that appointment's referring provider.
+
+## How case edits affect appointments
+
+When you edit a case, the changes apply from that point forward.
+
+- **Future appointments:** the **Update Future Appointments With New Case Information** checkbox is on by default. It copies the updated insurance, prior authorizations, and providers to the case's upcoming appointments.
+- **Completed appointments:** these don't change unless you choose them. If retro billing is enabled for your site, click **Select Past Visits** and pick the completed appointments to update. Air revises the claims for only the appointments you select. See [Billing Addendums + Retro Billing](/air_admin/manage_your_practice/billing_addendums_and_retro_billing).
+
+Case edits never rewrite past appointments unless you select them.

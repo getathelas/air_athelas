@@ -47,6 +47,7 @@
             "pages": [
               "air_provider/review_patient_details/patient_info",
               "air_provider/review_patient_details/patient_demog",
+              "air_provider/review_patient_details/create_a_case",
               "air_provider/review_patient_details/patient_appts",
               "air_provider/review_patient_details/patient_attachments",
               "air_front_desk/portal_and_online_scheduling/patient_portal"
