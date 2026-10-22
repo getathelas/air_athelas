@@ -156,7 +156,8 @@ function handleRequest(v) {
   const sheet = getSheet('Consents', CONSENT_HEADERS);
   const row = [
     v.consent_id, new Date(), v.name.slice(0, 120), email.slice(0, 200), v.company.slice(0, 160),
-    v.terms_version, 'pending', '', '', v.page, v.user_agent, v.device_id,
+    // page and user_agent columns stay for layout but are no longer collected.
+    v.terms_version, 'pending', '', '', '', '', v.device_id,
   ];
   const note = (msg) => {
     row[COL.note - 1] = msg;
@@ -224,7 +225,8 @@ function handleVisit(v) {
   const status = r ? consents.getRange(r, COL.status).getValue() : 'unknown consent';
   const now = new Date();
   const rows = paths.map((p, i) => [
-    now, v.consent_id, email, status, p.slice(0, 300), i === 0 ? v.referrer : '', v.device_id, v.terms_version,
+    // The referrer column stays for layout but is no longer collected.
+    now, v.consent_id, email, status, p.slice(0, 300), '', v.device_id, v.terms_version,
   ]);
   const sheet = getSheet('Visits', VISIT_HEADERS);
   sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, rows[0].length).setValues(rows);

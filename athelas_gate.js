@@ -29,6 +29,9 @@
   // localhost can still exercise it with ?athelas_gate_mock=1.
   var FORM_URL =
     "https://docs.google.com/forms/d/e/1FAIpQLSe8dKIXbawlKbWiEsLd17q3aaGQTeYQwLFgTT5jMe-4Xg7ktg/formResponse";
+  // Only these fields are ever sent. The Form also has page, referrer, and user_agent
+  // questions from the first version; Legal's notice doesn't list them, so the widget
+  // no longer fills them in.
   var FIELDS = {
     event: "entry.19320997",
     consent_id: "entry.60276758",
@@ -37,12 +40,9 @@
     email: "entry.1440043602",
     company: "entry.509444957",
     terms_version: "entry.841562366",
-    page: "entry.1104046661",
     paths: "entry.169391222",
-    referrer: "entry.933083598",
     return_url: "entry.472492843",
     device_id: "entry.1437740226",
-    user_agent: "entry.1453548354",
   };
   // Bump when the Terms change: everyone re-agrees. Keep it in step with the
   // "Last updated" date on the Terms page.
@@ -51,6 +51,10 @@
   var CONSENT_TTL_DAYS = 90;
   var LINK_TTL_MS = 24 * 60 * 60 * 1000;
   var TERMS_PATH = "/legal/athelas_documentation_access_terms";
+  // Every confirmation link points here, so the link (which the Form stores) never
+  // reveals the page someone was on. That page is kept only in their own browser,
+  // and they are sent back to it after confirming.
+  var LANDING_PATH = "/air_onboard/getting_started_with_air/index";
   // Pages anyone must reach with no gate in the way. ONC requires these to be at a
   // "publicly accessible hyperlink" without preconditions, so don't gate them. Our
   // ONC consultant confirmed this is the complete list and that the ONC feature
@@ -76,7 +80,6 @@
   var KEY_CONSENT = "athelas_gate_consent";
   var KEY_PENDING = "athelas_gate_pending";
   var KEY_DEVICE = "athelas_gate_device";
-  var KEY_SESSION = "athelas_gate_session";
   var KEY_MOCK = "athelas_gate_mock";
   var VERIFY_PARAM = "athelas_verify";
 
@@ -217,14 +220,7 @@
     // Route hooks fire on replaceState and hash changes too; one view per path change.
     if (path === lastLoggedPath) return;
     lastLoggedPath = path;
-    // The referrer only means something on the first view in a tab.
-    var firstInTab = !sessionStorage.getItem(KEY_SESSION);
-    if (firstInTab) {
-      try {
-        sessionStorage.setItem(KEY_SESSION, "1");
-      } catch (e) {}
-    }
-    beacon({ event: "visit", consent_id: c.id, paths: path, referrer: firstInTab ? document.referrer : "" });
+    beacon({ event: "visit", consent_id: c.id, paths: path });
   }
 
   // ---- Modal ---------------------------------------------------------------------
@@ -359,12 +355,13 @@
     box.hidden = !msg;
   }
 
-  function returnUrl() {
+  // Where to send someone after they confirm: the page they were on. Stored only in
+  // their browser (KEY_PENDING), never sent.
+  function currentPath() {
     var u = new URL(location.href);
     u.searchParams.delete(VERIFY_PARAM);
     u.searchParams.delete("athelas_gate_mock");
-    u.hash = "";
-    return u.toString();
+    return u.pathname + u.search;
   }
   // Each send, including a resend, is a new agreement row with its own link.
   function submit(isResend) {
@@ -373,7 +370,10 @@
     if (!v) return;
     if (isResend && p && Date.now() - p.sentAt < RESEND_COOLDOWN_MS) return;
     var id = newConsentId();
-    var pending = { id: id, name: v.name, email: v.email, company: v.company, sentAt: Date.now() };
+    var pending = {
+      id: id, name: v.name, email: v.email, company: v.company, sentAt: Date.now(),
+      returnPath: (isResend && p && p.returnPath) || currentPath(),
+    };
     if (!isResend) setState("sending");
     var sent = v.website
       ? Promise.resolve() // honeypot: look normal, record nothing
@@ -383,9 +383,7 @@
           name: v.name,
           email: v.email,
           company: v.company,
-          return_url: returnUrl(),
-          page: location.pathname,
-          user_agent: navigator.userAgent,
+          return_url: location.origin + LANDING_PATH,
         });
     sent
       .then(function () {
@@ -426,10 +424,12 @@
     }
     var p = read(KEY_PENDING);
     var who = p && p.id === id ? p : lastKnown();
+    var backTo = p && p.id === id && p.returnPath;
     submitEvent({ event: "verify", consent_id: id, token: token })
       .then(function () {
         saveConsent(id, who);
-        unlock();
+        if (backTo && backTo !== currentPath()) location.replace(backTo);
+        else unlock();
       })
       .catch(function () {
         setState("form");
