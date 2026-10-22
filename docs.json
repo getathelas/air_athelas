@@ -30,6 +30,16 @@
         "icon": "laptop-medical",
         "groups": [
           {
+            "group": "ONC Certification",
+            "icon": "certificate",
+            "public": true,
+            "pages": [
+              "air_developer/onc_certification/mandatory_disclosure",
+              "air_developer/patient_information_export/patient_information_export",
+              "air_developer/fhir_api/commure_ehr_fhir_api"
+            ]
+          },
+          {
             "group": "Getting Started with Air",
             "icon": "stars",
             "public": true,
@@ -192,15 +202,6 @@
             ]
           },
           {
-            "group": "ONC Certification",
-            "icon": "certificate",
-            "public": true,
-            "pages": [
-              "air_developer/patient_information_export/patient_information_export",
-              "air_developer/onc_certification/mandatory_disclosure"
-            ]
-          },
-          {
             "group": "ONC Feature Guides",
             "icon": "book-medical",
             "public": true,
@@ -209,14 +210,6 @@
               "air_developer/onc_feature_guides/adding_an_implantable_device",
               "air_developer/onc_feature_guides/view_ccda",
               "air_developer/onc_feature_guides/reconcile_incoming_ccda"
-            ]
-          },
-          {
-            "group": "FHIR API",
-            "icon": "code",
-            "public": true,
-            "pages": [
-              "air_developer/fhir_api/commure_ehr_fhir_api"
             ]
           }
         ]
@@ -669,6 +662,14 @@
     }
   },
   "redirects": [
+    {
+      "source": "/",
+      "destination": "/air_onboard/getting_started_with_air/index"
+    },
+    {
+      "source": "/legal/air_documentation_access_terms",
+      "destination": "/legal/athelas_documentation_access_terms"
+    },
     {
       "source": "/insights_front_desk/utilities/self_service_credentialing",
       "destination": "/air_admin/manage_your_practice/provider_credentials"
