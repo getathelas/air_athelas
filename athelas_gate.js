@@ -71,9 +71,12 @@
   // Whole sections left public by choice: the What's New tab (and the blog posts it
   // links to) and the Changelog tab.
   var EXEMPT_PREFIXES = ["/master_blogs/", "/master_changelogs/"];
-  // Privacy policy linked from the popup, as Legal specified. Once the policy gains a
-  // section covering this gate, Legal wants this to be an anchor link to that section.
-  var PRIVACY_URL = "https://www.athelas.com/legal/privacy-policy";
+  // Privacy policy linked from the popup. Legal requires the link to land on the
+  // policy's "Gated Content Privacy Notice" section. That heading has no HTML id yet,
+  // so this uses a text-fragment link (#:~:text=), which current Chrome, Edge,
+  // Safari, and Firefox scroll to; older browsers open the top of the policy. If the
+  // section gets an id, switch to "#<that id>".
+  var PRIVACY_URL = "https://www.athelas.com/legal/privacy-policy#:~:text=Gated%20Content%20Privacy%20Notice";
   var RESEND_COOLDOWN_MS = 60 * 1000;
   var REQUEST_TIMEOUT_MS = 15000;
 
