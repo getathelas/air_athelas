@@ -51,6 +51,8 @@ const MAX_PATHS_PER_EVENT = 50;
 // Confirmation links may only point back at these origins.
 const ALLOWED_ORIGINS = [
   'https://docs.athelas.com',
+  // Another domain for the same Mintlify site, with the same gate.
+  'https://trainings.air.athelas.com',
   'http://localhost:3000',
   'http://localhost:3333',
 ];
