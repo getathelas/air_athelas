@@ -182,12 +182,6 @@ html.dark #athelas-gate {
   color: var(--ag-error);
   font-size: 14px;
 }
-.athelas-gate__fine {
-  margin: 0;
-  color: var(--ag-muted);
-  font-size: 12px;
-  line-height: 1.5;
-}
 
 @media (max-width: 600px) {
   #athelas-gate {
@@ -203,9 +197,11 @@ html.dark #athelas-gate {
     box-shadow: none;
   }
 }
+/* Legal: a bit smaller than the lede (15px) and terms (14px), but not tiny. */
 .athelas-gate__privacy {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 1.5;
 }
 .athelas-gate__privacy a,
 .athelas-gate__public a {
