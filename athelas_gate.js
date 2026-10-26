@@ -248,10 +248,11 @@
     '<label>Work email<input name="email" type="email" autocomplete="email" maxlength="200" required></label>' +
     '<label>Company or practice<input name="company" autocomplete="organization" maxlength="160" required></label>' +
     '<label class="athelas-gate__hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>' +
-    '<p class="athelas-gate__privacy"><a href="' + PRIVACY_URL + '" target="_blank" rel="noopener">Gated Content Privacy Notice</a></p>' +
+    '<p class="athelas-gate__privacy">We collect your name, work email, company or practice, and the pages you view to give you access and keep a record of your acceptance. ' +
+    "We’ll email you a link to confirm your email address. " +
+    'See our <a href="' + PRIVACY_URL + '" target="_blank" rel="noopener">Privacy Policy</a> for what we collect, how we use it, and your opt-out choices.</p>' +
     '<p class="athelas-gate__error" role="alert" hidden></p>' +
     '<button type="submit" class="athelas-gate__primary" disabled>I agree</button>' +
-    '<p class="athelas-gate__fine">We’ll email you a link to confirm your address. Your name, email, and the pages you view are recorded.</p>' +
     "</form>" +
     '<p class="athelas-gate__public">Looking for our ONC certification disclosures? These pages are public: ' +
     ONC_PUBLIC.map(function (p) { return '<a href="' + p.path + '">' + p.label + "</a>"; }).join(" · ") +
