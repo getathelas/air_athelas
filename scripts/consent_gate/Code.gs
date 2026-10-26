@@ -11,6 +11,12 @@
  *   Visits    one row per page viewed, joined to the consent's email
  * The raw submissions stay in "Raw events".
  *
+ * Athelas and Commure staff go through the same gate, but once their email is
+ * verified their consent and its visits move to "Internal consents" and "Internal
+ * visits", so the main tabs only show customers. The move waits for verification on
+ * purpose: anyone can type an @commure.com address, and an unverified one stays in
+ * Consents with a note so it gets noticed.
+ *
  * The browser cannot read Form responses, so the widget trusts a confirmation link
  * as soon as it is opened. A forged link gets someone past the gate, but this script
  * still checks the link's signature, and only a real link marks a row "verified".
@@ -33,6 +39,9 @@
  * Running setup again is safe: it reuses the Form and replaces the trigger.
  * 5. Run `installRetentionTrigger` once to schedule the daily 6-year retention
  *    cleanup (see Retention below). `previewRetention` shows what it would delete.
+ * 6. Once, after adding the internal tabs to an existing Sheet: run
+ *    `previewInternalMove` to see which verified internal rows already in Consents
+ *    and Visits would move, then `moveInternalRows` to move them.
  */
 
 const LINK_TTL_MS = 24 * 60 * 60 * 1000;
@@ -58,6 +67,12 @@ const VISIT_HEADERS = [
   'ts', 'consent_id', 'email', 'consent_status', 'path', 'referrer', 'device_id', 'terms_version',
 ];
 const COL = Object.fromEntries(CONSENT_HEADERS.map((h, i) => [h, i + 1]));
+const VCOL = Object.fromEntries(VISIT_HEADERS.map((h, i) => [h, i + 1]));
+// Staff domains. Matched exactly, so subdomains and look-alikes don't count.
+const INTERNAL_DOMAINS = ['athelas.com', 'commure.com'];
+const INTERNAL_CONSENTS = 'Internal consents';
+const INTERNAL_VISITS = 'Internal visits';
+const INTERNAL_UNVERIFIED_NOTE = 'internal domain, not verified yet';
 
 // The Sheet this script is attached to, or the one named by the SHEET_ID script
 // property for a standalone script.
@@ -99,6 +114,8 @@ function setup() {
   if (raw && raw.getName() !== 'Raw events') raw.setName('Raw events');
   getSheet('Consents', CONSENT_HEADERS);
   getSheet('Visits', VISIT_HEADERS);
+  getSheet(INTERNAL_CONSENTS, CONSENT_HEADERS);
+  getSheet(INTERNAL_VISITS, VISIT_HEADERS);
   const sheet1 = ss.getSheetByName('Sheet1');
   if (sheet1 && sheet1.getLastRow() === 0 && ss.getSheets().length > 1) ss.deleteSheet(sheet1);
 
@@ -164,7 +181,8 @@ function handleRequest(v) {
     sheet.appendRow(row);
   };
 
-  if (!/^[a-z0-9]+-[a-z0-9]+$/.test(v.consent_id) || findConsentRow(v.consent_id)) {
+  if (!/^[a-z0-9]+-[a-z0-9]+$/.test(v.consent_id) || findConsentRow(v.consent_id) ||
+      findConsentRow(v.consent_id, INTERNAL_CONSENTS)) {
     return note('bad or duplicate consent_id');
   }
   if (v.name.length < 2 || v.company.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
@@ -195,6 +213,7 @@ function handleRequest(v) {
       '<p style="color:#6b7280;font-size:12px">If you did not request this, you can ignore this email.</p>',
   });
   cache.put(rlKey, String(sent + 1), 3600);
+  if (isInternalEmail(email)) row[COL.note - 1] = INTERNAL_UNVERIFIED_NOTE;
   sheet.appendRow(row);
 }
 
@@ -214,13 +233,23 @@ function handleVerify(v) {
     return;
   }
   sheet.getRange(r, COL.status, 1, 2).setValues([['verified', new Date()]]);
+  if (isInternalEmail(sheet.getRange(r, COL.email).getValue())) moveToInternal_([v.consent_id]);
 }
 
 function handleVisit(v) {
   const paths = v.paths.split('\n').map((p) => p.trim()).filter(Boolean).slice(0, MAX_PATHS_PER_EVENT);
   if (!paths.length) return;
-  const r = findConsentRow(v.consent_id);
-  const consents = getSheet('Consents', CONSENT_HEADERS);
+  let r = findConsentRow(v.consent_id);
+  let tab = 'Consents';
+  let visitTab = 'Visits';
+  if (!r) {
+    r = findConsentRow(v.consent_id, INTERNAL_CONSENTS);
+    if (r) {
+      tab = INTERNAL_CONSENTS;
+      visitTab = INTERNAL_VISITS;
+    }
+  }
+  const consents = getSheet(tab, CONSENT_HEADERS);
   const email = r ? consents.getRange(r, COL.email).getValue() : '';
   const status = r ? consents.getRange(r, COL.status).getValue() : 'unknown consent';
   const now = new Date();
@@ -228,7 +257,105 @@ function handleVisit(v) {
     // The referrer column stays for layout but is no longer collected.
     now, v.consent_id, email, status, p.slice(0, 300), '', v.device_id, v.terms_version,
   ]);
-  const sheet = getSheet('Visits', VISIT_HEADERS);
+  const sheet = getSheet(visitTab, VISIT_HEADERS);
+  sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, rows[0].length).setValues(rows);
+}
+
+// ---- Internal staff -------------------------------------------------------------
+// Verified Athelas and Commure consents live in their own tabs. See the header.
+
+function isInternalEmail(email) {
+  const e = String(email || '').trim().toLowerCase();
+  const at = e.lastIndexOf('@');
+  return at > 0 && INTERNAL_DOMAINS.indexOf(e.slice(at + 1)) >= 0;
+}
+
+// Moves the given consents out of Consents, and their visits out of Visits, into
+// the internal tabs. Visits logged before verification are marked verified too.
+// Callers hold the script lock.
+function moveToInternal_(consentIds) {
+  const ids = new Set(consentIds.map(String));
+  if (!ids.size) return { consents: 0, visits: 0 };
+  const consents = getSheet('Consents', CONSENT_HEADERS);
+  const visits = getSheet('Visits', VISIT_HEADERS);
+  const width = CONSENT_HEADERS.length;
+  const vwidth = VISIT_HEADERS.length;
+
+  const consentRows = [];
+  const consentValues = [];
+  dataRows_(consents).forEach((r, i) => {
+    if (!ids.has(String(r[COL.consent_id - 1]))) return;
+    const row = r.slice(0, width);
+    if (row[COL.note - 1] === INTERNAL_UNVERIFIED_NOTE) row[COL.note - 1] = '';
+    consentRows.push(i + 2);
+    consentValues.push(row);
+  });
+  const visitRows = [];
+  const visitValues = [];
+  dataRows_(visits).forEach((r, i) => {
+    if (!ids.has(String(r[VCOL.consent_id - 1]))) return;
+    const row = r.slice(0, vwidth);
+    row[VCOL.consent_status - 1] = 'verified';
+    visitRows.push(i + 2);
+    visitValues.push(row);
+  });
+
+  // Copy before deleting, so a failure in between duplicates rows rather than losing them.
+  appendRows_(getSheet(INTERNAL_CONSENTS, CONSENT_HEADERS), consentValues);
+  appendRows_(getSheet(INTERNAL_VISITS, VISIT_HEADERS), visitValues);
+  deleteRows_(consents, consentRows);
+  deleteRows_(visits, visitRows);
+  return { consents: consentRows.length, visits: visitRows.length };
+}
+
+// Run once from the editor: moves verified internal consents already in Consents,
+// and their visits, to the internal tabs.
+function moveInternalRows() {
+  return moveExistingInternal_(false);
+}
+
+// Run from the editor: logs what moveInternalRows would move, moves nothing.
+function previewInternalMove() {
+  return moveExistingInternal_(true);
+}
+
+function moveExistingInternal_(dryRun) {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(30000);
+  try {
+    const consentRows = dataRows_(getSheet('Consents', CONSENT_HEADERS));
+    const ids = consentRows
+      .filter((r) => r[COL.status - 1] === 'verified' && isInternalEmail(r[COL.email - 1]))
+      .map((r) => String(r[COL.consent_id - 1]));
+    let result;
+    if (dryRun) {
+      const idSet = new Set(ids);
+      const visits = dataRows_(getSheet('Visits', VISIT_HEADERS))
+        .filter((r) => idSet.has(String(r[VCOL.consent_id - 1]))).length;
+      result = { consents: ids.length, visits: visits };
+    } else {
+      result = moveToInternal_(ids);
+    }
+    // Unverified internal rows stay put; flag the ones made before the note existed.
+    let flagged = 0;
+    const consents = getSheet('Consents', CONSENT_HEADERS);
+    dataRows_(consents).forEach((r, i) => {
+      if (r[COL.status - 1] !== 'verified' && isInternalEmail(r[COL.email - 1]) && !r[COL.note - 1]) {
+        if (!dryRun) consents.getRange(i + 2, COL.note).setValue(INTERNAL_UNVERIFIED_NOTE);
+        flagged++;
+      }
+    });
+    result.mode = dryRun ? 'preview' : 'move';
+    result.flagged_unverified = flagged;
+    console.log(JSON.stringify(result));
+    return result;
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function appendRows_(sheet, rows) {
+  if (!rows.length) return;
   sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, rows[0].length).setValues(rows);
 }
 
@@ -238,7 +365,8 @@ function handleVisit(v) {
 // reasons." A person's last access is their latest agreement, confirmation, or page
 // view, across every consent_id under their email. Once that is more than
 // RETENTION_YEARS old, everything about them is deleted: their Consents, Visits, and
-// Raw events rows, and the Form's own copy of their submissions. Emails listed on
+// Raw events rows (internal tabs included), and the Form's own copy of their
+// submissions. Emails listed on
 // the "Legal hold" tab are never deleted. Rows that can't be tied to an email (for
 // example a bad consent_id) go once their own timestamp is past the cutoff.
 // Not covered: the confirmation emails in the sending account's Sent folder.
@@ -276,11 +404,14 @@ function enforceRetention_(dryRun) {
 
     const consents = getSheet('Consents', CONSENT_HEADERS);
     const visits = getSheet('Visits', VISIT_HEADERS);
+    const internalConsents = getSheet(INTERNAL_CONSENTS, CONSENT_HEADERS);
+    const internalVisits = getSheet(INTERNAL_VISITS, VISIT_HEADERS);
     const raw = ss.getSheets().find((sh) => sh.getFormUrl());
     const holdSheet = getSheet('Legal hold', ['email', 'reason', 'added_by', 'added_at']);
     const holds = dataRows_(holdSheet).map((r) => String(r[0]).trim().toLowerCase()).filter(Boolean);
 
-    const plan = planRetention_(dataRows_(consents), dataRows_(visits), raw ? dataRows_(raw) : [], holds, cutoff);
+    const plan = planRetention_(dataRows_(consents), dataRows_(visits), raw ? dataRows_(raw) : [], holds, cutoff,
+      dataRows_(internalConsents), dataRows_(internalVisits));
 
     let formDeleted = 0;
     const formId = PropertiesService.getScriptProperties().getProperty('FORM_ID');
@@ -301,12 +432,16 @@ function enforceRetention_(dryRun) {
     if (!dryRun) {
       deleteRows_(consents, plan.consentRows);
       deleteRows_(visits, plan.visitRows);
+      deleteRows_(internalConsents, plan.internalConsentRows);
+      deleteRows_(internalVisits, plan.internalVisitRows);
       if (raw) deleteRows_(raw, plan.rawRows);
     }
 
+    // The log's consents and visits counts include the internal tabs.
     const counts = [
       now, dryRun ? 'preview' : 'purge', cutoff, plan.people.length,
-      plan.consentRows.length, plan.visitRows.length, plan.rawRows.length, formDeleted,
+      plan.consentRows.length + plan.internalConsentRows.length,
+      plan.visitRows.length + plan.internalVisitRows.length, plan.rawRows.length, formDeleted,
     ];
     getSheet('Retention log', RETENTION_LOG_HEADERS).appendRow(counts);
     console.log(JSON.stringify({ mode: counts[1], people: counts[3], consents: counts[4],
@@ -319,7 +454,9 @@ function enforceRetention_(dryRun) {
 
 // Pure planning step: which people and which sheet rows (1-based, header = row 1)
 // to delete. Kept free of Apps Script services so it can be tested on plain arrays.
-function planRetention_(consentRows, visitRows, rawRows, holds, cutoff) {
+function planRetention_(consentRows, visitRows, rawRows, holds, cutoff, internalConsentRows, internalVisitRows) {
+  const iConsents = internalConsentRows || [];
+  const iVisits = internalVisitRows || [];
   const cut = cutoff.getTime();
   const held = new Set(holds.map((e) => String(e).trim().toLowerCase()));
   const idToEmail = {};
@@ -330,14 +467,14 @@ function planRetention_(consentRows, visitRows, rawRows, holds, cutoff) {
     if (!(email in last) || t > last[email]) last[email] = t;
   };
 
-  consentRows.forEach((r) => {
+  consentRows.concat(iConsents).forEach((r) => {
     const id = String(r[COL.consent_id - 1]);
     const email = String(r[COL.email - 1]).trim().toLowerCase();
     if (id && email) idToEmail[id] = email;
     touch(email, r[COL.created_at - 1]);
     touch(email, r[COL.verified_at - 1]);
   });
-  visitRows.forEach((r) => {
+  visitRows.concat(iVisits).forEach((r) => {
     const email = String(r[2]).trim().toLowerCase() || idToEmail[String(r[1])];
     touch(email, r[0]);
   });
@@ -347,13 +484,20 @@ function planRetention_(consentRows, visitRows, rawRows, holds, cutoff) {
   rawRows.forEach((r) => touch(rawEmail(r), r[0]));
 
   const expired = new Set(Object.keys(last).filter((e) => last[e] < cut && !held.has(e)));
-  const plan = { people: [...expired], expired, held, idToEmail, cut, consentRows: [], visitRows: [], rawRows: [] };
-  consentRows.forEach((r, i) => {
-    if (shouldPurge_(plan, r[COL.email - 1], r[COL.consent_id - 1], r[COL.created_at - 1])) plan.consentRows.push(i + 2);
+  const plan = {
+    people: [...expired], expired, held, idToEmail, cut,
+    consentRows: [], visitRows: [], rawRows: [], internalConsentRows: [], internalVisitRows: [],
+  };
+  const purgeConsents = (rows, out) => rows.forEach((r, i) => {
+    if (shouldPurge_(plan, r[COL.email - 1], r[COL.consent_id - 1], r[COL.created_at - 1])) out.push(i + 2);
   });
-  visitRows.forEach((r, i) => {
-    if (shouldPurge_(plan, r[2], r[1], r[0])) plan.visitRows.push(i + 2);
+  const purgeVisits = (rows, out) => rows.forEach((r, i) => {
+    if (shouldPurge_(plan, r[2], r[1], r[0])) out.push(i + 2);
   });
+  purgeConsents(consentRows, plan.consentRows);
+  purgeConsents(iConsents, plan.internalConsentRows);
+  purgeVisits(visitRows, plan.visitRows);
+  purgeVisits(iVisits, plan.internalVisitRows);
   rawRows.forEach((r, i) => {
     if (shouldPurge_(plan, r[1 + FIELDS.indexOf('email')], r[1 + FIELDS.indexOf('consent_id')], r[0])) plan.rawRows.push(i + 2);
   });
@@ -398,9 +542,9 @@ function toMs_(v) {
   return isNaN(t) ? null : t;
 }
 
-function findConsentRow(id) {
+function findConsentRow(id, tab) {
   if (!id) return null;
-  const sheet = getSheet('Consents', CONSENT_HEADERS);
+  const sheet = getSheet(tab || 'Consents', CONSENT_HEADERS);
   const hit = sheet.getRange(1, COL.consent_id, Math.max(sheet.getLastRow(), 1), 1)
     .createTextFinder(id).matchEntireCell(true).findNext();
   return hit ? hit.getRow() : null;
