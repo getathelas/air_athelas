@@ -328,14 +328,26 @@
             "pages": [
               "air_admin/analyze_your_reports/my_reports",
               "insights_biller/reports/building_and_running_reports",
-              "insights_biller/reports/month_end_close",
+              {
+                "group": "Month End",
+                "pages": [
+                  "insights_biller/reports/month_end_close",
+                  "insights_biller/reports/month_end_unposted_money",
+                  "insights_biller/reports/month_end_accrual_entries",
+                  "insights_biller/reports/month_end_cash_entries",
+                  "insights_biller/reports/encounter_revenue_activity_report",
+                  "insights_biller/reports/misc_revenue_activity_report",
+                  "insights_biller/reports/provider_adjustments_report",
+                  "insights_biller/reports/bank_deposit_reconciliation_report",
+                  "insights_biller/reports/patient_credits_report"
+                ]
+              },
               "insights_biller/reports/submitted_claims_report",
               "insights_biller/reports/detailed_charges_report",
               "insights_biller/reports/claim_adjustments_report",
               "insights_biller/reports/export_claim_details",
               "insights_biller/reports/patient_claims_one_pagers",
               "insights_biller/reports/revenue_activity_report",
-              "insights_biller/reports/provider_adjustments_report",
               "insights_biller/reports/aging_ar_report",
               "insights_biller/reports/ar_reports",
               "insights_biller/reports/posting_log_report",
@@ -346,7 +358,6 @@
               "insights_biller/reports/generate_a_transaction_report",
               "insights_biller/reports/site_transaction_report",
               "insights_biller/reports/site_transaction_report_summary",
-              "insights_biller/reports/bank_deposit_reconciliation_report",
               "insights_biller/reports/patient_balances_report",
               "insights_biller/reports/patient_charges_report",
               "insights_biller/reports/patient_eligibility_report",

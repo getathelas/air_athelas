@@ -1,0 +1,72 @@
+---
+title: "Month-End Close: Cash-Basis Entries"
+sidebarTitle: "Cash-Basis Entries"
+toc: "true"
+---
+
+This page is for practices that recognize revenue when cash is received. You do not carry accounts receivable on the balance sheet, and charges and adjustments generate no entries. If you book AR, charges, and allowances, use [Accrual-Basis Entries](/insights_biller/reports/month_end_accrual_entries) instead.
+
+For the full close workflow, see [Month-End Close with Insights Reports](/insights_biller/reports/month_end_close).
+
+## Running the reports
+
+<Info>
+**Filters to set before you export.** Run each report for the full calendar month you are closing. **Start and end dates are inclusive** on every report, so a September 1 to September 30 run captures both of those days. The [Encounter Revenue Activity Report](/insights_biller/reports/encounter_revenue_activity_report) is keyed to **Date Posted**; the [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report) is keyed to **Bank Deposit Date**. Summarize at whichever dimensions match your ledger.
+</Info>
+
+## The life of a dollar
+
+<img
+  src="/images/insights_biller/reports/month_end_cash_entries/month_end_cash_entries_1.svg"
+  alt="Five cash-basis entries that carry a dollar from the bank through Unapplied Revenue to revenue, and out again through a refund"
+  title="The cash-basis life of a dollar"
+  style={{ width:"100%" }}
+/>
+
+Every movement passes through Unposted Money, which on a cash basis usually appears in the chart of accounts as **Unapplied Revenue**. It is the same account described in [Understanding Unposted Money](/insights_biller/reports/month_end_unposted_money), playing a contra-revenue role.
+
+## The entries
+
+| **#** | **What you're booking** | **Debit** | **Credit** | **Source** |
+| :-- | :-- | :-- | :-- | :-- |
+| 1 | Cash received (by deposit date) | Cash | Unposted Money (Unapplied Revenue) | Bank statement, or Bank Deposit Reconciliation `total_cash_usd` by Bank Deposit Date |
+| 2 | Revenue recognized | Unposted Money (Unapplied Revenue) | Revenue (at your dimensions) | Encounter Revenue Activity **Paid**, plus [Misc Revenue Activity](/insights_biller/reports/misc_revenue_activity_report) **Payments**, plus [Provider Adjustments](/insights_biller/reports/provider_adjustments_report) **Payer Aux Cash** |
+| 3 | Payments voided | Revenue | Unposted Money (Unapplied Revenue) | Encounter Revenue Activity, negative **Paid** activity |
+| 4 | Refunds issued in Insights | Unposted Money (Unapplied Revenue) | Patient Refund Expense | [Patient Credits](/insights_biller/reports/patient_credits_report), **Flexible** credits |
+| 5 | Refund checks cut | Patient Refund Expense | Cash | Your disbursement records |
+
+<Tip>
+✨**Smart Tip:** Use a Patient Refund Expense account, not a refund liability. On a cash basis, you are not carrying a liability; you are recognizing the eventual cash outflow. Entry 4 credits the expense, and entry 5 debits it back when the money actually leaves, which is the point at which the expense is truly recognized.
+</Tip>
+
+<Note>
+**Entry 4 reads backwards to most people, and it is correct.** Flagging a credit as refundable is not the same event as paying it out. Booking both legs keeps Unapplied Revenue clean and stops refundable credits from being recognized as revenue you get to keep.
+</Note>
+
+## What you do not book
+
+Charges, contractual adjustments, other adjustments, AR transfers, and accounts receivable require **no entries** on a cash basis. Use the Encounter Revenue Activity Report's **Detailed Activity** and **Aging AR Activity** sheets for operational monitoring only. They will not tie to your ledger, and they are not meant to.
+
+## Why cash will not equal revenue
+
+Within any one period, your cash and your recognized revenue will differ, and the gap sits in Unposted Money. The usual causes:
+
+- **Timing:** cash deposited near month-end that has not posted yet.
+- **Payer credits:** money withheld at the check level through a forward balance.
+- **Patient credits:** money collected but not yet applied to an encounter.
+
+Because the account is contra-revenue on this basis, its balance can be a debit in one month and a credit in the next. That swing is expected. See [Understanding Unposted Money](/insights_biller/reports/month_end_unposted_money) for how the account behaves over time.
+
+### FAQ
+
+<Accordion title="Is Unapplied Revenue the same account as Unposted Money?">
+  Yes. On a cash basis, Unposted Money usually appears in the chart of accounts as **Unapplied Revenue**. See [Understanding Unposted Money](/insights_biller/reports/month_end_unposted_money).
+</Accordion>
+
+<Accordion title="Do I book charges or adjustments on a cash basis?">
+  No. On a cash basis you book only cash, recognized revenue, voids, and refunds. Treat the Encounter Revenue Activity sheets as operational monitoring, not ledger support.
+</Accordion>
+
+<Accordion title="Why did my Unapplied Revenue balance flip from a debit to a credit?">
+  The swing is expected. Unapplied Revenue is a contra-revenue account on this basis, so it can carry either balance depending on whether cash or posted revenue ran ahead that month.
+</Accordion>
