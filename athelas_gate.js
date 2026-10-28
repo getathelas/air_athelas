@@ -16,6 +16,9 @@
  * so llms-full.txt, the .md page variants, crawlers, and DevTools still reach the
  * content. Real login is the Mintlify Enterprise + User Manager project.
  *
+ * Mintlify preview deployments (*.mintlify.site) are not gated, so PR reviewers can
+ * read them. Code.gs never emails confirmation links to those origins.
+ *
  * Kill switch: set GATE_ENABLED to false. The git history of that line is the record
  * of when the gate was in effect.
  */
@@ -96,8 +99,11 @@
   var mockParam = /[?&]athelas_gate_mock=([01])\b/.exec(location.search);
   if (isLocalhost && mockParam) localStorage.setItem(KEY_MOCK, mockParam[1]);
   var mock = isLocalhost && localStorage.getItem(KEY_MOCK) === "1";
+  // Mintlify preview deployments (<project>-<branch>.mintlify.site). Only Mintlify's
+  // own hosts match, never docs.athelas.com or trainings.air.athelas.com.
+  var isPreview = /\.mintlify\.(site|app)$/.test(location.hostname);
 
-  if (!GATE_ENABLED || (!FORM_URL && !mock)) {
+  if (!GATE_ENABLED || isPreview || (!FORM_URL && !mock)) {
     root.classList.add("athelas-gate-ok");
     return;
   }
