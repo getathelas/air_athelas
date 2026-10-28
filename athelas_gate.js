@@ -50,8 +50,8 @@
   // Bump when the Terms change: everyone re-agrees. Keep it in step with the
   // "Last updated" date on the Terms page.
   // Not always a date alone: the Terms were revised twice on 2026-10-21. When the
-  // Terms change, also copy the old version to legal/archive/ as the record of what
-  // was accepted.
+  // Terms change, add the new version to the Sheet's "Terms versions" tab (see
+  // Code.gs) so Legal can read the text behind each terms_version.
   var TERMS_VERSION = "2026-10-28";
   var CONSENT_TTL_DAYS = 90;
   var LINK_TTL_MS = 24 * 60 * 60 * 1000;
@@ -74,8 +74,8 @@
   ];
   var EXEMPT_PATHS = [TERMS_PATH].concat(ONC_PUBLIC.map(function (p) { return p.path; }));
   // Whole sections left public by choice: the What's New tab (and the blog posts it
-  // links to), the Changelog tab, and the archived versions of the Terms.
-  var EXEMPT_PREFIXES = ["/master_blogs/", "/master_changelogs/", "/legal/archive/"];
+  // links to) and the Changelog tab.
+  var EXEMPT_PREFIXES = ["/master_blogs/", "/master_changelogs/"];
   // Privacy policy linked from the popup. Legal requires the link to land on the
   // policy's "Gated Content Privacy Notice" section. That heading has no HTML id yet,
   // so this uses a text-fragment link (#:~:text=), which current Chrome, Edge,
