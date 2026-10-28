@@ -80,6 +80,13 @@
   // Safari, and Firefox scroll to; older browsers open the top of the policy. If the
   // section gets an id, switch to "#<that id>".
   var PRIVACY_URL = "https://www.athelas.com/legal/privacy-policy#:~:text=Gated%20Content%20Privacy%20Notice";
+  // Shown when a request to the Form never completes. A no-cors post only fails that
+  // way, so the usual cause is a workplace firewall or a browser extension blocking
+  // docs.google.com, not the visitor's details. Name the host so their IT can allow it.
+  var BLOCKED_HINT =
+    "Your network or a browser extension may be blocking docs.google.com, which we use for this step. " +
+    "Try another browser or network, or ask your IT team to allow docs.google.com. " +
+    "Still stuck? Email support@athelas.com.";
   var RESEND_COOLDOWN_MS = 60 * 1000;
   var REQUEST_TIMEOUT_MS = 15000;
 
@@ -404,7 +411,7 @@
       .catch(function () {
         // Fail closed: no record, no access.
         setState(isResend ? "sent" : "form");
-        showError("We couldn't record your agreement. Check your connection and try again.");
+        showError("We couldn't record your agreement. " + BLOCKED_HINT);
       });
   }
   function startCooldown() {
@@ -443,7 +450,7 @@
       })
       .catch(function () {
         setState("form");
-        showError("We couldn't confirm your email. Check your connection and reload this page.");
+        showError("We couldn't confirm your email. " + BLOCKED_HINT);
       });
   }
 
