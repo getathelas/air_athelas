@@ -326,7 +326,7 @@
             "tag": "Biller",
             "public": true,
             "pages": [
-              "air_admin/analyze_your_reports/my_reports",
+              "insights_biller/reports/my_reports",
               "insights_biller/reports/building_and_running_reports",
               "insights_biller/reports/month_end_close",
               "insights_biller/reports/submitted_claims_report",
