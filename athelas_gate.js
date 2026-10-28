@@ -49,8 +49,10 @@
   };
   // Bump when the Terms change: everyone re-agrees. Keep it in step with the
   // "Last updated" date on the Terms page.
-  // Not a date alone: the Terms were revised twice on 2026-10-21.
-  var TERMS_VERSION = "2026-10-21.2";
+  // Not always a date alone: the Terms were revised twice on 2026-10-21. When the
+  // Terms change, add the new version to the Sheet's "Terms versions" tab (see
+  // Code.gs) so Legal can read the text behind each terms_version.
+  var TERMS_VERSION = "2026-10-28";
   var CONSENT_TTL_DAYS = 90;
   var LINK_TTL_MS = 24 * 60 * 60 * 1000;
   var TERMS_PATH = "/legal/athelas_documentation_access_terms";
@@ -249,13 +251,13 @@
     '<h2 id="athelas-gate-title" class="athelas-gate__title">Before you continue</h2>' +
     '<div data-view="form">' +
     '<p class="athelas-gate__lede">This webpage contains confidential and proprietary information about one or more Athelas products. ' +
-    "By clicking “I agree,” you accept the " +
-    '<a href="' + TERMS_PATH + '" target="_blank" rel="noopener">Athelas Documentation Access Terms</a> and agree that you will:</p>' +
-    '<ul class="athelas-gate__terms">' +
-    "<li>keep the materials on Athelas’s product webpages confidential and use them only to evaluate or use Athelas products;</li>" +
-    "<li>not copy, share, reverse engineer, or use them to build or improve any competing product; and</li>" +
-    "<li>waive and release any claim that Athelas misappropriated, copied, or derived its products from yours.</li>" +
-    "</ul>" +
+    "Access is limited to authorized users who accept the " +
+    '<a href="' + TERMS_PATH + '" target="_blank" rel="noopener">Athelas Documentation Access Terms</a>.</p>' +
+    '<p class="athelas-gate__lede">By clicking “I agree” below, you confirm that you have read and agree to be bound by the ' +
+    '<a href="' + TERMS_PATH + '" target="_blank" rel="noopener">Athelas Documentation Access Terms</a>. ' +
+    "Under these terms, you agree to keep the materials on Athelas’s product webpages confidential and use them only to evaluate or use Athelas products.</p>" +
+    '<p class="athelas-gate__lede">If you are accepting on behalf of a company or practice, you confirm that you are authorized to bind that company or practice, ' +
+    "and that the company or practice is also bound by these terms.</p>" +
     '<form class="athelas-gate__form" novalidate>' +
     '<label>Full name<input name="name" autocomplete="name" maxlength="120" required></label>' +
     '<label>Work email<input name="email" type="email" autocomplete="email" maxlength="200" required></label>' +

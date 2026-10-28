@@ -11,6 +11,14 @@
  *   Visits    one row per page viewed, joined to the consent's email
  * The raw submissions stay in "Raw events".
  *
+ * Every Consents row records the terms_version the person agreed to, and agreeing
+ * again (for example after the Terms change) adds a new row, so a person's rows are
+ * their acceptance history. The "Terms versions" tab holds the popup text and the
+ * full Terms behind each terms_version, with the dates it was live. Visitors never
+ * need an old version, so it lives only here, not on the docs site. When the Terms
+ * change, fill in the old row's in_effect_until and add a row for the new version.
+ * The tab holds no personal data, so retention never touches it.
+ *
  * Athelas and Commure staff go through the same gate, but once their email is
  * verified their consent and its visits move to "Internal consents" and "Internal
  * visits", so the main tabs only show customers. The move waits for verification on
@@ -42,6 +50,8 @@
  * 6. Once, after adding the internal tabs to an existing Sheet: run
  *    `previewInternalMove` to see which verified internal rows already in Consents
  *    and Visits would move, then `moveInternalRows` to move them.
+ * 7. Fill in the "Terms versions" tab (setup creates it) for every terms_version
+ *    the widget has used.
  */
 
 const LINK_TTL_MS = 24 * 60 * 60 * 1000;
@@ -67,6 +77,9 @@ const CONSENT_HEADERS = [
 ];
 const VISIT_HEADERS = [
   'ts', 'consent_id', 'email', 'consent_status', 'path', 'referrer', 'device_id', 'terms_version',
+];
+const TERMS_VERSION_HEADERS = [
+  'terms_version', 'in_effect_from', 'in_effect_until', 'popup_text', 'terms_text', 'note',
 ];
 const COL = Object.fromEntries(CONSENT_HEADERS.map((h, i) => [h, i + 1]));
 const VCOL = Object.fromEntries(VISIT_HEADERS.map((h, i) => [h, i + 1]));
@@ -118,6 +131,7 @@ function setup() {
   getSheet('Visits', VISIT_HEADERS);
   getSheet(INTERNAL_CONSENTS, CONSENT_HEADERS);
   getSheet(INTERNAL_VISITS, VISIT_HEADERS);
+  getSheet('Terms versions', TERMS_VERSION_HEADERS);
   const sheet1 = ss.getSheetByName('Sheet1');
   if (sheet1 && sheet1.getLastRow() === 0 && ss.getSheets().length > 1) ss.deleteSheet(sheet1);
 
