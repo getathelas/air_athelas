@@ -129,9 +129,17 @@ See [Month-End Close](/insights_biller/reports/month_end_close) for the full wal
 | **unmatched_posted_usd** | *Date Posted mode.* Payments posted in the date range whose check is not on any included deposit yet. These rows have no deposit columns. |
 | **total_cash_usd** | The cash this row accounts for. In Bank Deposit Date mode, the total across all of a deposit's rows equals the deposit's bank amount. |
 
-In **Bank Deposit Date** mode, every row satisfies:
+In **Bank Deposit Date** mode, every row adds up like this:
 
-`total_cash_usd = matched_posted_usd + matched_unposted_usd + unmatched_usd + others_usd + provider_level_adjustment_matched_posted_usd + provider_level_adjustment_matched_unposted_usd`
+| | **Column** |
+| :-: | :-- |
+| | `matched_posted_usd` |
+| **+** | `matched_unposted_usd` |
+| **+** | `unmatched_usd` |
+| **+** | `others_usd` |
+| **+** | `provider_level_adjustment_matched_posted_usd` |
+| **+** | `provider_level_adjustment_matched_unposted_usd` |
+| **=** | `total_cash_usd` |
 
 <Note>
   For the bank-linking workflow that feeds this report, see [Bank Deposit Verification](/insights_front_desk/utilities/bank_deposit_verification). To work the exceptions this report surfaces, see the matched-unposted and unmatched steps in [Month-End Close](/insights_biller/reports/month_end_close).

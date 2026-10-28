@@ -59,15 +59,10 @@ There is one row per patient per category.
 
 Only **Flexible** credits represent money you may owe back to patients:
 
-```txt
-Accrual basis
-DR  Unposted Money
-CR  Patient Refund Liability          ← Flexible credit balance as of month-end
-
-Cash basis
-DR  Unposted Money
-CR  Patient Refund Expense            ← Flexible credit balance as of month-end
-```
+| **Basis** | **Debit** | **Credit** | **Amount** |
+| :-- | :-- | :-- | :-- |
+| Accrual | Unposted Money | Patient Refund Liability | **Flexible** credit balance as of month-end |
+| Cash | Unposted Money | Patient Refund Expense | **Flexible** credit balance as of month-end |
 
 Book the change in the Flexible balance each month (or restate to the report's as-of balance). Held, Locked, and in-transition credits stay in your Unposted Money balance, because they are on their way to becoming applied payments.
 

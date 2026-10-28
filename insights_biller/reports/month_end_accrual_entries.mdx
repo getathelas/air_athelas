@@ -42,24 +42,27 @@ For the full close workflow, see [Month-End Close with Insights Reports](/insigh
 
 Use this check to prove that your entries reconstruct the ending balance. Which formula applies depends on how you aggregate.
 
-```txt
-Summarized (single AR account)
+**Summarized (single AR account)**
 
-Ending AR  =  Beginning AR
-           +  Payer Net Charges
-           −  Paid
-           −  Total Adjustments (contractual + other)
+| | **Amount** |
+| :-: | :-- |
+| | Beginning AR |
+| **+** | **Payer Net Charge** |
+| **−** | **Paid** |
+| **−** | **Adjustments** (contractual and other) |
+| **=** | Ending AR |
 
+**By insurance group**
 
-By insurance group
-
-Ending AR  =  Beginning AR
-           +  Payer Net Charges
-           +  Transfer In
-           −  Paid
-           −  Total Adjustments (contractual + other)
-           −  Transfer Out
-```
+| | **Amount** |
+| :-: | :-- |
+| | Beginning AR |
+| **+** | **Payer Net Charge** |
+| **+** | **Transfer In** |
+| **−** | **Paid** |
+| **−** | **Adjustments** (contractual and other) |
+| **−** | **Transfer Out** |
+| **=** | Ending AR |
 
 At the summarized level, transfers wash out, so leave them out of the formula. Once you break AR down by insurance group, they matter, because a transfer moves balance from one class to another.
 

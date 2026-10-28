@@ -49,15 +49,14 @@ Cash enters Unposted Money on the **deposit date** and leaves on the **date post
 
 The closest support available today:
 
-```txt
-Unposted Money  ≈   Unmatched deposit cash
-                +   Matched but unposted cash
-                −   Posted cash with no matched deposit
-                +   Patient credit balances (Held, Locked, Appt Payment in Transition)
-                +   Payer credit balances, if you do not keep a separate account
-```
-
-The first three lines come from the [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report), the fourth from the [Patient Credits Report](/insights_biller/reports/patient_credits_report), and the fifth from the [Provider Adjustments Report](/insights_biller/reports/provider_adjustments_report).
+| | **Amount** | **Report** |
+| :-: | :-- | :-- |
+| | Unmatched deposit cash | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report) |
+| **+** | Matched but unposted cash | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report) |
+| **−** | Posted cash with no matched deposit | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report) |
+| **+** | Patient credit balances (**Held**, **Locked**, **Appt Payment in Transition**) | [Patient Credits](/insights_biller/reports/patient_credits_report) |
+| **+** | Payer credit balances, if you do not keep a separate account | [Provider Adjustments](/insights_biller/reports/provider_adjustments_report) |
+| **≈** | **Unposted Money** account balance | Your general ledger |
 
 ### Known limitations of this support today
 

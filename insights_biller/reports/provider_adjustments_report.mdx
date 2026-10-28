@@ -82,12 +82,7 @@ For the full set of entries, see [Month-End Close: Accrual-Basis Entries](/insig
 
 ## The tie-out this report completes
 
-Run the [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report) by **Date Posted**, and use the same Date Posted range on all three reports:
-
-`matched_posted_usd + unmatched_posted_usd + provider_level_adjustment_posted_usd`
-`= Encounter Revenue Activity Paid for payer index 1 to 3 + Provider Adjustments Total Amount (USD) for Payer Aux Cash, Payer Credit Account and Payer Credits Untied`
-
-The left side comes from the Bank Deposit Reconciliation Report. Run this report with **Include Non-Encounter Provider Adjustments** checked, because that is where the **Payer Aux Cash** rows come from. See [Month-End Close](/insights_biller/reports/month_end_close) for the full walkthrough.
+Posted insurance in the Bank Deposit Reconciliation Report includes provider adjustments that aren't linked to an encounter, while the Encounter Revenue Activity Report doesn't. This report supplies the difference: run it with **Include Non-Encounter Provider Adjustments** checked and sum **Total Amount (USD)** for the **Payer Aux Cash**, **Payer Credit Account**, and **Payer Credits Untied** rows. For the full tie-out table, see [Tie posted insurance to Encounter Revenue Activity](/insights_biller/reports/month_end_close#tie-posted-insurance-to-encounter-revenue-activity).
 
 ## Filters
 
