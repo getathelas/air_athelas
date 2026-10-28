@@ -90,15 +90,8 @@ html.dark #athelas-gate {
   color: var(--ag-primary);
   text-decoration: underline;
 }
-.athelas-gate__terms {
-  margin: 0 0 20px;
-  padding-left: 20px;
-  font-size: 14px;
-  line-height: 1.6;
-  list-style: disc;
-}
-.athelas-gate__terms li {
-  margin-bottom: 6px;
+.athelas-gate__lede + .athelas-gate__form {
+  margin-top: 20px;
 }
 .athelas-gate__form {
   display: flex;
