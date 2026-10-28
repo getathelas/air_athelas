@@ -83,12 +83,12 @@ The entry tables live on two separate pages, so you only need to read the one th
 
 At month-end, the balance should represent the money in your bank that has not been applied yet:
 
-| | **Amount** | **Report** |
-| :-: | :-- | :-- |
-| | Unposted cash | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report) |
-| **+** | Patient credit balances | [Patient Credits](/insights_biller/reports/patient_credits_report) |
-| **+** | Payer credit balance, if you do not keep a separate account | [Provider Adjustments](/insights_biller/reports/provider_adjustments_report) |
-| **≈** | **Unposted Money** account balance | Your general ledger |
+| **Amount** | **Report** |
+| :-- | :-- |
+| Unposted cash | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report) |
+| **+**&nbsp;&nbsp;Patient credit balances | [Patient Credits](/insights_biller/reports/patient_credits_report) |
+| **+**&nbsp;&nbsp;Payer credit balance, if you do not keep a separate account | [Provider Adjustments](/insights_biller/reports/provider_adjustments_report) |
+| **≈**&nbsp;&nbsp;**Unposted Money** account balance | Your general ledger |
 
 <Warning>
 **Material support, not a penny-perfect tie-out.** A 100% match from your Unposted Money account to Insights reporting is not realistically achievable. Normal timing differences between workflow handoffs and data differences between systems (for example, activity that reaches your bank without ever reaching Insights) both get in the way. Support the balance materially and investigate the variances that matter. The full method and its current limitations are on [Understanding Unposted Money](/insights_biller/reports/month_end_unposted_money).
@@ -98,22 +98,15 @@ At month-end, the balance should represent the money in your bank that has not b
 
 Insurance cash posted in the month should agree between the Bank Deposit Reconciliation Report and the Encounter Revenue Activity Report, once you remove the provider adjustments that aren't linked to an encounter.
 
-| | **Amount** | **Report and settings** |
-| :-: | :-- | :-- |
-| | `matched_posted_usd` | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report), **Date Type** = **Date Posted** |
-| **+** | `unmatched_posted_usd` | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report), **Date Type** = **Date Posted** |
-| **+** | `provider_level_adjustment_posted_usd` | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report), **Date Type** = **Date Posted** |
-| **−** | **Total Amount (USD)** for rows whose **Account Type** is **Payer Aux Cash**, **Payer Credit Account**, or **Payer Credits Untied** | [Provider Adjustments](/insights_biller/reports/provider_adjustments_report), only **Include Non-Encounter Provider Adjustments** selected |
-| **=** | **Paid** for **Payer Index** 1, 2, and 3 | [Encounter Revenue Activity](/insights_biller/reports/encounter_revenue_activity_report) |
+| **Amount** | **Report and settings** |
+| :-- | :-- |
+| `matched_posted_usd` | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report), **Date Type** = **Date Posted** |
+| **+**&nbsp;&nbsp;`unmatched_posted_usd` | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report), **Date Type** = **Date Posted** |
+| **+**&nbsp;&nbsp;`provider_level_adjustment_posted_usd` | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report), **Date Type** = **Date Posted** |
+| **−**&nbsp;&nbsp;**Total Amount (USD)** for rows whose **Account Type** is **Payer Aux Cash**, **Payer Credit Account**, or **Payer Credits Untied** | [Provider Adjustments](/insights_biller/reports/provider_adjustments_report), only **Include Non-Encounter Provider Adjustments** selected |
+| **=**&nbsp;&nbsp;**Paid** for **Payer Index** 1, 2, and 3 | [Encounter Revenue Activity](/insights_biller/reports/encounter_revenue_activity_report) |
 
 Run all three reports for the same dates.
-
-**To tie out posted insurance:**
-
-1. Run the [**Bank Deposit Reconciliation Report**](/insights_biller/reports/bank_deposit_reconciliation_report) with **Date Type** set to **Date Posted** for the closed month. Add up `matched_posted_usd`, `unmatched_posted_usd`, and `provider_level_adjustment_posted_usd`.
-2. Run the [**Provider Adjustments Report**](/insights_biller/reports/provider_adjustments_report) for the same dates with only **Include Non-Encounter Provider Adjustments** selected. Sum **Total Amount (USD)** for the rows whose **Account Type** is **Payer Aux Cash**, **Payer Credit Account**, or **Payer Credits Untied**.
-3. Subtract the step 2 total from the step 1 total.
-4. Run the [**Encounter Revenue Activity Report**](/insights_biller/reports/encounter_revenue_activity_report) for the same dates and sum **Paid** for **Payer Index** 1, 2, and 3. That sum should equal the step 3 result.
 
 **Why the subtraction:** when the Bank Deposit Reconciliation Report runs by date posted, `provider_level_adjustment_posted_usd` includes both encounter-linked and non-encounter provider adjustments, while Encounter Revenue Activity carries only the encounter-linked ones. You book non-encounter adjustments, such as payer interest and forward balances, from the Provider Adjustments Report instead. **Payer Credits Untied** rows and their matching **Payer Credit Account** rows net to zero, so including all three account types keeps the total right.
 

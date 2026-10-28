@@ -131,15 +131,15 @@ See [Month-End Close](/insights_biller/reports/month_end_close) for the full wal
 
 In **Bank Deposit Date** mode, every row adds up like this:
 
-| | **Column** |
-| :-: | :-- |
-| | `matched_posted_usd` |
-| **+** | `matched_unposted_usd` |
-| **+** | `unmatched_usd` |
-| **+** | `others_usd` |
-| **+** | `provider_level_adjustment_matched_posted_usd` |
-| **+** | `provider_level_adjustment_matched_unposted_usd` |
-| **=** | `total_cash_usd` |
+| **Column** |
+| :-- |
+| `matched_posted_usd` |
+| **+**&nbsp;&nbsp;`matched_unposted_usd` |
+| **+**&nbsp;&nbsp;`unmatched_usd` |
+| **+**&nbsp;&nbsp;`others_usd` |
+| **+**&nbsp;&nbsp;`provider_level_adjustment_matched_posted_usd` |
+| **+**&nbsp;&nbsp;`provider_level_adjustment_matched_unposted_usd` |
+| **=**&nbsp;&nbsp;`total_cash_usd` |
 
 <Note>
   For the bank-linking workflow that feeds this report, see [Bank Deposit Verification](/insights_front_desk/utilities/bank_deposit_verification). To work the exceptions this report surfaces, see the matched-unposted and unmatched steps in [Month-End Close](/insights_biller/reports/month_end_close).
