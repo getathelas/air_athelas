@@ -28,7 +28,7 @@ There are two entry points.
   Your browser does not support the video tag.
 </video>
 
-**The calendar toolbar.** Click the **Scheduling Templates** icon in the top-right of the calendar to open the drawer, where you can see what is currently in effect and apply a template without leaving the calendar.
+**Calendar** — click the **Scheduling Templates** icon on the top-right calendar toolbar to open the drawer, where you can see what's active and apply a template without leaving the calendar.
 
 <video controls className="w-full aspect-video rounded-xl">
   <source src="/images/air_admin/manage_your_practice/scheduling_templates/scheduling_templates_2.mp4" type="video/mp4" />
@@ -37,18 +37,22 @@ There are two entry points.
 
 ## Creating a template
 
-1. From **Preferences → Calendar → Scheduling Templates**, click **+ Provider Schedule**. The template editor opens with a Sunday–Saturday week grid and a configuration panel on the right.
-2. Enter a **title** in place of **Add Title**, and optionally a description. Give it a name your team will recognize later — for example "Main Office - Summer Schedule," "PTA Standard Week," or "Holiday Coverage."
-3. Under **Facility(s)**, choose **Single** or **Multiple** and select the facilities this template applies to.
-4. Optionally set **Specific Provider(s)**. Providers named here are prefilled automatically when you apply the template.
-5. Set **My Availability** by checking each day the provider works and entering start and end times. Grid intervals follow your site and facility calendar settings once availability is entered — see [**Calendar Settings**](/air_admin/manage_your_practice/calendar_settings) to change them.
-6. Add slots by dragging on the week grid, then click any slot to configure it in the side panel:
-   - **Slot Title**
-   - **Bookable?** — **Yes** or **Not Bookable**
-   - **Appt Length** — the slot's start and end time
-   - **Days** — repeat the slot across other days of the week
-   - **Expire if vacant?** — **Yes** releases the slot's restrictions a set number of hours before the appointment time, so an unfilled protected slot can still be used. **Don't Expire** keeps the restrictions in place.
+1. From **EHR Preferences → Calendar → Scheduling Templates**, click “**\+ Provider Schedule**”. The Template Editor opens with a Sunday–Saturday week grid and a configuration panel on the right.
+2. Enter a **title** for the template. Give it a name your team will recognize later — "Main Office - Summer Schedule," "PTA Standard Week," "Holiday Coverage."
+3. Select the **facility or facilities** and, optionally, the **providers** this template is intended for.
+   - _Providers set here are prefilled automatically when you apply the template._
+4. Set **My Availability** — the start and end time for each day the provider works. The grid intervals update to match your site and facility calendar settings once availability is entered.
+5. Add slots by dragging on the week grid. Click any slot to configure it in the side panel:
+   - **Title** (required)
+   - **Bookable or non-bookable**
+   - **Start and end time**
+   - **Days** — If this slot repeats over multiple days of the week
+   - **Facilities** — when using multiple facilities, choose which ones this block applies to
+   - **Color** — how the block appears on the calendar
+   - **Expire if vacant?** — releases the slot's restrictions a set number of hours before the appointment time, so unfilled protected slots can be used
    - **Required Appointment Types** — which appointment types can be booked in this slot
+   - **Notes** — optional details for your team, on either bookable or non-bookable blocks
+   - **Required Insurance Group** — for bookable slots, select insurance companies or claim insurance types that can use the slot
 7. Refine the week with drag-and-drop, resize, and copy/paste. To delete a slot, select it and click **Remove Block**.
 8. Click **Save** in the top-right. Use the back arrow next to the template title to return to the list.
 
