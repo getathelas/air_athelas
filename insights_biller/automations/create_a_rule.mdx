@@ -1,31 +1,30 @@
 ---
-title: "Create a Rule (Beta)"
+title: "Create a Rule"
 sidebarTitle: "Create a Rule"
-tag: "Beta"
 toc: "true"
 ---
 
 ### At a Glance
 
-When your practice keeps correcting the same field on the same kind of claim, that correction belongs in a rule. This guide covers the three ways to build one: describe it in plain language and let Athelas Assistant draft it, clone a rule that is already close to what you need, or build each condition and action yourself.
+When your practice keeps correcting the same field on the same kind of claim, that correction belongs in a rule. This guide covers the three ways to build one: describe it in plain language and let Athelas Assistant draft it, clone a rule that is already close to what you need, or build each condition and action yourself. It then walks through submitting the rule so it can take effect.
 
 For how to read, search, edit, and dry run the rules you already have, see [The Rules Tab](/insights_biller/automations/the_rules_tab).
 
 <Note>
-Rule creation is in beta and is not yet live for every practice. If you do not see **+ New Rule** on the Rules tab yet, contact your account manager for access.
+Creating rules takes write access to rules. If you cannot create one, ask your practice admin to add that access to your role.
 </Note>
 
 ![The Create New Rule screen asking what rule you want to build, with options to create manually, clone, or describe the rule in plain language](/images/insights_biller/automations/create_a_rule/create_a_rule_1.webp)
 
 ## Open the Rule Builder
 
-Go to **Automations → Rules**, open the rule engine you want to add to, then click **+ New Rule** in the top right.
+Go to **Automations → Rules** and click **+ New Rule** in the top right.
 
 <video controls>
   <source src="/images/insights_biller/automations/create_a_rule/create_a_rule_2.mp4" type="video/mp4" />
 </video>
 
-The engine you start from sets the new rule's **Rule Type**, and that field is fixed once the builder opens. To build a rule of a different type, start from that engine's tab instead.
+You do not need to know which rule type you want before you start. When you start from the Rules landing page, describe the rule and Athelas Assistant works out the **Rule Type** and confirms it with you. If you build the rule manually, you pick the type yourself. If you open a rule type's card first and click **+ New Rule** from there, the builder starts with that type filled in.
 
 ## Three Ways to Build a Rule
 
@@ -43,14 +42,19 @@ Whichever route you take, you land in the same builder and fill in the same part
 
 | **Section** | **What you set** |
 | :-- | :-- |
-| **General** | **Rule ID**, **Site**, **Rule Type**, **State**, and **Priority**. New rules start in **Draft**. |
+| **General** | **Rule name**, **Rule Type**, and **Priority**. The **Rule ID** is assigned for you, and a submission blocking rule also has an **Overridable** switch. Every new rule starts as a **Draft**. |
 | **Description** | **Reason for rule** and **Explanation of rule**. Both are required, so every rule explains itself to whoever reads it months from now. |
 | **Conditions** | What must be true for the rule to fire. Add conditions one at a time or in groups, and set the operator to decide whether **ALL** of them or **ANY** of them must be satisfied. |
 | **Actions** | What happens once the conditions are met. One rule can trigger more than one action off the same set of conditions. |
 
 ## Build a Rule with AI
 
-Instead of assembling conditions field by field, type what you want into the prompt box and click **Send**.
+Instead of assembling conditions field by field, type what you want into the prompt box and click **Send**. The builder opens as **Draft a Rule**, with Athelas Assistant working in the panel beside it:
+
+1. **It asks why.** If your description does not say why the rule is needed, the assistant asks before it builds anything: a payer requirement, a denial pattern, or an audit finding, for example. Your answer becomes the rule's reason, and it gives whoever reviews the rule the context they need.
+2. **It builds the rule.** The assistant picks the **Rule Type**, fills in the description, conditions, and actions, and then summarizes what it set.
+3. **It flags what to check.** When part of the rule depends on how your data is stored, the assistant calls that out before you save.
+4. **You review and save.** Check the form, adjust anything you need, and click **Save**.
 
 <video controls>
   <source src="/images/insights_biller/automations/create_a_rule/create_a_rule_3.mp4" type="video/mp4" />
@@ -58,9 +62,9 @@ Instead of assembling conditions field by field, type what you want into the pro
 
 For example, you could describe:
 
+- "For each occurrence of any L CPT code within a claim, add the NU modifier to the procedure."
 - "Block claims from submitting if the rendering provider's NPI is missing."
 - "Flag any claim over \$5,000 for manual review before it goes out."
-- "When a claim is denied for a missing modifier, automatically route it to the Appeals queue."
 
 Your description runs through a few checks before anything reaches the builder:
 
@@ -68,33 +72,37 @@ Your description runs through a few checks before anything reaches the builder:
 - **Ambiguity gets resolved.** The assistant picks the condition type that matches what you actually mean, for example whether a value simply needs to be present or needs to occur in combination with something else.
 - **Scope stays where you put it.** Conditions and actions stay within the object type they belong to, so a rule cannot quietly reach beyond what you asked it to touch.
 
-Review and adjust the draft before you submit it. AI-drafted rules go through the same approval step as rules you build by hand.
+**Save** checks the result as well. If a rule is put together in a way its engine cannot run, the builder tells you what to change instead of saving it.
+
+Review and adjust the draft before you submit it. AI-drafted rules are submitted the same way as rules you build by hand.
 
 ## Build a Rule by Cloning
 
 Choose **Clone a rule** to start from something that already works.
 
-![The Clone Rule panel with a rule selected by URL and a full preview of that rule's trigger, conditions, and actions](/images/insights_biller/automations/create_a_rule/create_a_rule_4.webp)
+![The Clone Rule dialog with a rule found by URL and a preview of that rule's name and description](/images/insights_biller/automations/create_a_rule/create_a_rule_4.webp)
 
-You can point at the source rule two ways:
+In the **Clone Rule** dialog, point at the source rule one of two ways:
 
-- **By ID.** Find the rule's ID in the top left of the rule you want to copy, then select it from **Select Rule ID**.
-- **By URL.** Copy the rule's URL from your browser, or use the link button at the top of the rule, then paste it into **Rule URL**.
+- **By ID.** In **Input Rule ID**, enter the ID shown in the top left of the rule you want to copy.
+- **By URL.** Copy the rule's URL from your browser, or use the link button at the top of the rule, then paste it into **Input Rule URL**.
 
-Either way, the panel previews the source rule's full **Structure**, its trigger, conditions, and actions, so you can confirm you grabbed the right one. Click **Continue** and the clone opens as a new draft with those conditions and actions already filled in. Give it its own ID and description, change what differs, then save.
+Either way, the dialog previews the source rule's name, description, and structure, so you can confirm you grabbed the right one. Click **Continue** and the clone opens as a new draft with those conditions and actions already filled in. Give it its own name and description, change what differs, then save.
+
+To copy several rules at once, or to copy rules to your other sites, see [Clone Rules Across Sites](/insights_biller/automations/clone_rules_across_sites).
 
 ## Build a Rule Manually
 
 Choose **Create a rule manually** to work through the builder section by section.
 
-![The rule builder titled Draft a Rule, showing General, Description, Conditions, and Actions sections with the Athelas Assistant panel open alongside](/images/insights_biller/automations/create_a_rule/create_a_rule_5.webp)
+![The rule builder titled Draft a Rule, showing the General and Description sections, a prompt to select a rule type, and the Athelas Assistant panel open alongside](/images/insights_biller/automations/create_a_rule/create_a_rule_5.webp)
 
 **To build a rule from scratch:**
 
-1. Fill in **General**: give the rule an **ID**, pick the **Site** it applies to, and set a **Priority**. **Rule Type** is already filled in from the engine you started in, and **State** starts as **Draft**.
+1. Fill in **General**: name the rule, choose its **Rule Type** if it is not already filled in, and set a **Priority**. For a submission blocking rule, turn on **Overridable** if your team should be able to release a claim past the block.
 2. Write the **Description**: the **Reason for rule** and the **Explanation of rule**. Both are required.
-3. Add your **Conditions**. Use **+ Condition** for a single test and **+ Group** for a nested set, then set the operator on each level to **ALL** or **ANY** to control how they combine.
-4. Add your **Actions** with **+ Action**. Add more than one if the same conditions should produce several outcomes.
+3. Add your **Conditions**. Use **+ Condition** for a single test and **+ Subgroup** or **+ Group** for a nested set, then set the operator on each level to **ALL** or **ANY** to control how they combine. **Duplicate Group** copies a group you want to reuse with small changes.
+4. Add your **Actions** with **+ Action**. Add more than one if the same conditions should produce several outcomes. Some actions take extra details: **Block Claim From Submission**, for example, asks for a **Reason To Block** and an **Owner**, the party responsible for fixing the claim.
 5. Click **Save**. The rule is saved as a **Draft**.
 
 <Tip>
@@ -103,21 +111,34 @@ Choose **Create a rule manually** to work through the builder section by section
 
 **Note:** Prefer to work in code? Click **JSON** to paste conditions and actions in directly instead of setting each field one at a time.
 
-## Before Your Rule Goes Live
+## Submit Your Rule for Review
 
-Saving a rule does not activate it. Two things happen first, and both are worth using deliberately:
+Saving a rule does not put it into effect. A saved rule stays a **Draft**, with an ID such as `BIL-D653`, until you submit it.
 
-1. **Dry run it.** Replay the rule against real records to see which conditions match and exactly which fields it would change, without touching anything. See [Dry Running a Rule](/insights_biller/automations/the_rules_tab#dry-running-a-rule-before-it-goes-live).
-2. **Send it for approval.** Every rule, whether you drafted it with AI or built it by hand, goes through an approval step before it takes effect.
+**To submit a rule:**
+
+1. **Dry run it first.** Replay the rule against real records to see which conditions match and exactly which fields it would change, without touching anything. See [Dry Running a Rule](/insights_biller/automations/the_rules_tab#dry-running-a-rule-before-it-goes-live).
+2. Open the draft and click **Submit**.
+3. In **Submit Rule**, fill in any of the optional fields the dialog shows:
+   - **Claim submission ID** gives the reviewer a real claim to test the rule against. Use one you dry ran the rule on.
+   - **Estimated claims impacted** is your rough count of the claims the rule will touch, which helps prioritize the review.
+   - **Rollout cap**, for rule types that support a phased rollout, limits the rule to a set number of encounters. Leave it blank to apply the rule to all encounters.
+4. Click **Submit**.
+
+![The Submit Rule dialog, with optional Claim submission ID and Estimated claims impacted fields](/images/insights_biller/automations/create_a_rule/create_a_rule_6.webp)
+
+The message at the top of **Submit Rule** tells you what happens next. A rule that goes to review becomes **Inactive**, with its State set to **Requested**, until the review finishes. If it passes review, the State changes to **Passed** and the rule goes live; a rule that does not pass shows **Failed**. Otherwise, the rule becomes **Active** as soon as you submit it. Either way, the rule trades its draft ID for a permanent one.
+
+To submit several drafts at once, select them on the **Drafts** tab and use **Promote**. See [Clone Rules Across Sites](/insights_biller/automations/clone_rules_across_sites#submitting-drafts-together).
 
 <Warning>
-A rule that has passed review can still be switched off. After approval, confirm **Rule Status** reads **Active** and check **Rollout Cap** in the rule's **Properties** panel, because a rule on a phased rollout only touches part of your volume until it reads **Fully Released**.
+A rule that has passed review can still be switched off. Once it passes, confirm **Rule Status** reads **Active** and check **Rollout Cap** in the rule's **Properties** panel, because a rule on a phased rollout applies only to a set number of encounters until its **Rollout Cap** reads **Fully Released**.
 </Warning>
 
 ### FAQ
 
 <Accordion title="Does my rule start working as soon as I save it?">
-  No. New rules save in **Draft**, and every rule goes through an approval step before it takes effect. Dry run it first so you know what it would do, then send it for approval.
+  No. A saved rule is a **Draft**, and it takes effect only once you submit it and, if it goes to review, once the review passes. Dry run it first so you know what it would do.
 </Accordion>
 
 <Accordion title="Can one rule do more than one thing?">
@@ -130,10 +151,10 @@ A rule that has passed review can still be switched off. After approval, confirm
   Rephrase using data the rule can see, or clone an existing rule that already tests something similar to find the supported equivalent.
 </Accordion>
 
-<Accordion title="Do I really have to write both description fields?">
-  Yes, **Reason for rule** and **Explanation of rule** are both required. The reason captures why the rule exists and the explanation captures what it does in practice. Together they are what makes a rule readable to the next person who opens it, including you in six months.
+<Accordion title="Why does every rule need a reason?">
+  **Reason for rule** and **Explanation of rule** are both required, and the assistant asks for the reason before it builds a rule. The reason captures why the rule exists and the explanation captures what it does in practice. Together they are what makes a rule readable to its reviewer and to the next person who opens it, including you in six months.
 </Accordion>
 
-<Accordion title="Can I paste in JSON instead of building each field?">
-  Yes. Click **JSON** in the builder to enter conditions and actions directly. It is the fastest route when you already have the logic written out, or when you are recreating a rule from another site.
+<Accordion title="What should I enter as the Claim submission ID?">
+  The ID of a claim the rule should affect, ideally one you have already dry run it against. The reviewer uses it to test the rule on a real claim. The field is optional, so leave it blank if you do not have a good example.
 </Accordion>

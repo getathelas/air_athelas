@@ -1,0 +1,9 @@
+# Athelas
+
+> Documentation for Air (the EHR) and Insights (the billing platform). Reading the guides requires agreeing to the Athelas Documentation Access Terms at https://docs.athelas.com.
+
+## ONC public documentation
+
+- [Mandatory Disclosure](https://docs.athelas.com/air_developer/onc_certification/mandatory_disclosure)
+- [EHI Export Format](https://docs.athelas.com/air_developer/patient_information_export/patient_information_export)
+- [FHIR API](https://docs.athelas.com/air_developer/fhir_api/commure_ehr_fhir_api)

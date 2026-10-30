@@ -9,14 +9,14 @@ toc: "true"
 
 They apply to encounters imported from a third-party EHR and to encounters created in Air, so one rule covers both paths into your billing data.
 
-Find them under **Automations → Rules**. Their rule IDs carry the `ENM-` prefix, so an ID alone tells you the rule is an encounter rule.
+Find them under **Automations → Rules**, in the **Import** group. Encounter modifying rule IDs carry the `ENM-` prefix and encounter blocking rule IDs carry `ENB-`, so an ID alone tells you the rule is an encounter rule.
 
 ## Two Kinds of Encounter Rule
 
-| **Kind** | **What it does** | **Engine** |
+| **Kind** | **What it does** | **Rule type** |
 | :-- | :-- | :-- |
-| **Modifying** | Updates a field on the encounter when your conditions are met. | **Encounter Modifying** |
-| **Blocking** | Keeps a matching encounter out of your billing data, so it never generates a claim. | **Encounter Blocking** |
+| **Modifying** | Updates a field on the encounter when your conditions are met. | **Encounter modifying** |
+| **Blocking** | Keeps a matching encounter out of your billing data, so it never generates a claim. | **Encounter blocking** |
 
 ### Modifying rules
 
@@ -48,24 +48,24 @@ Practices most often use blocking rules to:
 
 Encounter rules are built in the same rule builder as every other engine, so the mechanics are covered once elsewhere:
 
-- **[Create a Rule](/insights_biller/automations/create_a_rule)** — the three routes into the builder (describe it in plain language, clone an existing rule, or build it field by field), what every rule contains, and the dry run and approval steps a rule clears before it goes live.
-- **[The Rules Tab](/insights_biller/automations/the_rules_tab)** — reading the rules table, what **Priority**, **Type**, **State**, and **Status** each mean, and how to search and edit what you already have.
+- **[Create a Rule](/insights_biller/automations/create_a_rule)** — the three routes into the builder (describe it in plain language, clone an existing rule, or build it field by field), what every rule contains, and the dry run and submission steps a rule clears before it goes live.
+- **[The Rules Tab](/insights_biller/automations/the_rules_tab)** — reading the rules table, what **Priority**, **Scope**, **State**, and **Status** each mean, and how to search and edit what you already have.
 
 Two things are worth knowing before you start:
 
-- **The engine you start from fixes the rule's type.** Open the **Encounter Modifying** or **Encounter Blocking** engine first, because **Rule Type** cannot be changed once the builder opens.
-- **Saving does not activate.** A new rule saves as a **Draft** and goes through an approval step, so you can write one without affecting live data.
+- **Start from the right place.** Open the **Encounter modifying** or **Encounter blocking** card to start with that rule type filled in, or click **+ New Rule** on the landing page and let Athelas Assistant pick the type from your description.
+- **Saving does not activate.** A new rule saves as a **Draft** and takes effect only after you submit it, so you can write one without affecting live data.
 
 <Tip>
   ✨**Smart Tip:** Describe the rule the way you would explain the problem to a colleague — "block all encounters for patient Schedule Block", or "set place of service to telehealth when the appointment type is Telehealth Home". A description that names the trigger and the outcome gives the assistant everything it needs to draft the conditions.
 </Tip>
 
-## Global and Local Rules
+## Athelas Rules and Your Own Rules
 
-The rules list mixes two kinds of ownership:
+The rules list mixes two kinds of ownership, shown in the **Scope** column:
 
-- **Global** rules are maintained by Athelas across every site and handle common scenarios. You cannot edit them.
-- **Local** rules belong to a single site. Your practice creates them and controls them.
+- Rules with an **Athelas** scope are maintained by Athelas across every site and handle common scenarios. You cannot edit them.
+- Rules scoped to your site's name belong to your practice. Your practice creates them and controls them.
 
 <Warning>
   Set a **Priority** on every rule you create for your own site. A rule saved without one can end up outside your control, and the fix is not something you can apply yourself — contact your account team if that happens.
@@ -74,7 +74,7 @@ The rules list mixes two kinds of ownership:
 ## Things to know
 
 - **Rules apply going forward.** An encounter rule affects encounters imported after the rule goes live, not the ones already in your data. Ask your account team about options for existing encounters.
-- **Clone before you rebuild.** If a rule is close to what you need, select it in the list and use **Clone** rather than starting over, so the conditions you already trust carry across.
+- **Clone before you rebuild.** If a rule is close to what you need, start a new rule with **Clone a rule** rather than starting over, so the conditions you already trust carry across. To copy rules to your other sites, see [Clone Rules Across Sites](/insights_biller/automations/clone_rules_across_sites).
 - **Blocking is not deleting.** A blocked encounter never enters your billing data. The encounter still exists in your EHR, which remains the source of truth.
 
 ### FAQ
@@ -84,7 +84,7 @@ The rules list mixes two kinds of ownership:
 </Accordion>
 
 <Accordion title="Can I turn a rule off without losing it?">
-  Yes. A rule's **Status** is separate from whether it exists, so a rule can sit **Inactive** and be switched back on later. See [The Rules Tab](/insights_biller/automations/the_rules_tab).
+  Yes. A rule's **Status** is separate from whether it exists, so a rule can sit **Inactive** and be switched back on later. See [Turning a Rule On or Off](/insights_biller/automations/the_rules_tab#turning-a-rule-on-or-off).
 </Accordion>
 
 <Accordion title="What happens when two encounter rules match the same encounter?">

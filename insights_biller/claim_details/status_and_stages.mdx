@@ -12,7 +12,9 @@ Three fields describe where a claim is and what it needs. Read them in order:
 - **Stage** — which party holds the balance right now: a payer or the patient.
 - **Payer status** — where the claim stands with one specific payer, either what that payer has said so far or that the payer has not responded yet.
 
-This page defines every value the three fields can take. For the page they appear on, see [Getting Started with the Claims Page](/insights_biller/claim_details/claim_details_page); to filter and group by them, see [Organizing Your Claims Worklist](/insights_biller/claim_details/organizing_your_claims_worklist).
+This page defines every value the three fields can take, plus [payment status](#payment-status): the icons in a claim's **Payments** section that show, for each payer, the patient, and each procedure, what has been paid and who still owes the rest.
+
+For the page the three fields appear on, see [Getting Started with the Claims Page](/insights_biller/claim_details/claim_details_page); to filter and group by them, see [Organizing Your Claims Worklist](/insights_biller/claim_details/organizing_your_claims_worklist).
 
 ## Status
 
@@ -103,6 +105,73 @@ These payer statuses are listed in the order a claim moves through them.
 | :-- | :-- |
 | **Approved** | The payer allowed something. The allowed amount is paid plus copay plus coinsurance plus deductible, and that total is greater than zero. |
 | **Denied** | The payer allowed nothing. |
+
+## Payment Status
+
+Payment status is the icon at the start of each row in the **Payments** section of [Claim Context](/insights_biller/claim_details/working_a_claim#reading-claim-context). Hover an icon to see its label. The section has two tables: the top one has a row for each payer plus a **Patient** row, and **Adjudication Detail** below it has a row for each procedure.
+
+Payment status follows the money: what has been paid, and who still owes the rest. Payer status, above, follows the claim's progress with each payer.
+
+Both tables use the same columns:
+
+| **Column** | **What it shows** |
+| :-- | :-- |
+| **Charges** | The amount billed. On a payer row, it is what was billed to that payer, or to the patient on the **Patient** row. |
+| **Paid** | What has been paid. On a procedure row, insurance and patient payments are added together. |
+| **PR** | On a payer row, what that payer passed on to the next payer or the patient. On a procedure row, the patient's share of the line. |
+| **Adj.** | Adjustments, such as contractual write-downs. |
+| **Balance** | What is still owed. On a payer row, it is the amount still with that payer: not paid, adjusted, or passed on. On a procedure row, it is everything still owed on the line, including the patient's share. |
+
+An ⓘ icon beside a procedure's **PR** means the amount is provisional. Insurance hasn't finished adjudicating, or the claim isn't balanced, so the patient's share may still change.
+
+### Payer Rows
+
+| **Icon** | **Payment status** | **What it means** |
+| :-- | :-- | :-- |
+| Gray clock | **Pending** | The payer has not decided yet, or nothing from that payer has been posted. |
+| Red ✕ | **Denied** | The payer allowed nothing. |
+| Blue arrow | **Forwarded to** the next payer | The payer paid nothing and passed the balance on, for example when the whole charge applied to the deductible. |
+| Green half-filled circle | **Paid, Balance Remaining** | The payer paid, but part of the charge is still with this payer: not paid, adjusted, or passed on. The row's **Balance** is the amount left. |
+| Green check | **Paid, No Balance** | The payer paid, and the rest was adjusted or passed on. Nothing is left with this payer. |
+| Gray invoice | **Adjusted Off** | The payer paid nothing and passed nothing on, and the charge was adjusted. |
+
+### The Patient Row
+
+| **Icon** | **Payment status** | **What it means** |
+| :-- | :-- | :-- |
+| Gray clock | **Pending** | Insurance is still working the claim, or a payer still holds part of the balance, so nothing is the patient's yet. |
+| Gray clock | **PR Processing** | Insurance is finished, but the patient's responsibility has not been generated yet. |
+| Red exclamation mark | **Payment Due** | The patient's responsibility has been generated, and the patient has not paid any of it. |
+| Green half-filled circle | **Paid, Balance Remaining** | The patient has paid part of their responsibility and still owes the rest. |
+| Green check | **Paid, No Balance** | The patient has paid their responsibility in full. |
+| Gray invoice | **Written Off** | The patient's whole responsibility was written off. |
+
+When the **Patient** row is **Pending** or **PR Processing** and something is blocking the patient's responsibility from being generated, an ⓘ icon appears beside **Patient**. Hover the icon for the reason, such as a workers' comp claim, a claim that isn't balanced, or a balance still with a payer.
+
+### Procedure Rows
+
+A procedure's payment status sums up every payer and the patient on that line. Read the status together with the line's **PR** and **Balance**.
+
+| **Icon** | **Payment status** | **What it means** |
+| :-- | :-- | :-- |
+| Gray clock | **Pending** | Nothing has been paid or adjusted on this line yet. |
+| Blue arrow | **Pending Secondary** | Insurance adjusted this line but paid nothing, and the line isn't settled yet. Usually the balance is waiting on the next payer. |
+| Green half-filled circle | **Paid, Balance Remaining** | Something has been paid and a balance remains. This status covers two different situations, described below the table. |
+| Gray clock | **PR Processing** | Insurance is finished and a balance remains, but no patient responsibility has been generated for this line yet. |
+| Red exclamation mark | **Payment Due** | Insurance is finished, everything left on the line is the patient's, and the patient has not paid any of it, so the **Balance** matches the **PR**. On a self-pay claim, any unpaid line shows **Payment Due**. |
+| Green check | **Paid, No Balance** | Nothing is owed on this line. |
+| Gray invoice | **Adjusted Off** | Nothing was paid, and the line was adjusted down to zero. |
+
+On a procedure, **Paid, Balance Remaining** means one of two things. The **PR** column tells you which:
+
+- **The PR has an ⓘ icon or is blank: insurance isn't finished with the line.** Part of the balance is still with insurance, or an expected payer hasn't posted yet, so the patient's share is provisional. The **Balance** is usually more than the **PR**, and the difference is what insurance still holds.
+- **The PR has no ⓘ icon: the patient has paid part of their share.** The **Balance** is less than the **PR**, and it is what the patient still owes.
+
+<Tip>
+✨**Smart Tip:** A green half-filled circle means *partly paid*, not *all clear*. A line showing **Paid, Balance Remaining** with a provisional PR can need more work than a red **Payment Due** line: the red line is ready for the patient to pay, while the green line still has money sitting with insurance. Expand a procedure's row to see every payment and adjustment on that procedure.
+</Tip>
+
+Procedures under **Unsubmitted Procedures**, **Procedures Not On Latest Claim**, and the two **Procedures Deleted** groups show a gray **Not Submitted**, **Removed from Claim**, or **Excluded from Claim** icon instead of a payment status.
 
 ### FAQ
 

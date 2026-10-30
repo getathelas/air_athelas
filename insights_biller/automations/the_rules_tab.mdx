@@ -6,31 +6,38 @@ toc: "true"
 
 ### At a Glance
 
-Every claim, encounter, and payment that moves through Insights passes through rules: small IF/THEN decisions that clean up data before it reaches a payer, block submissions that would be rejected, and route work to the right place. The **Rules** tab puts all of them in one table, described in plain language, so you can see what your practice automates without reading code or opening a separate screen for every engine.
+Every claim, encounter, and payment that moves through Insights passes through rules: small IF/THEN decisions that clean up data before it reaches a payer, block submissions that would be rejected, and route work to the right place. The **Rules** tab puts all of them in one place, described in plain language, so you can see what your practice automates without reading code or opening a separate screen for every engine.
 
-Find it under **Automations → Rules**, then choose the rule engine you want to look at.
+Find it under **Automations → Rules**.
 
 <Note>
-The Rules tab is still rolling out. If you do not see **Automations → Rules** in your sidebar yet, contact your account manager for access.
+Everyone at your practice can view rules. Creating, editing, submitting, and switching rules on or off take write access to rules, which your practice admin can add to your role. See [Manage Staff & Permissions](/insights_admin/my_practice/manage_staff_permissions).
 </Note>
 
-![The Rules tab showing the Billing engine's rules in a single sortable table with priority, state, status, name, actions, and conditions columns](/images/insights_biller/automations/the_rules_tab/the_rules_tab_1.webp)
+## Finding Your Rules
+
+The Rules tab opens on a page of cards, one for every rule type at your practice, grouped by the part of the revenue cycle each type controls. Each card shows how many rules of that type you have. The panel on the right totals your **Active Rules**, your **Rule Types**, and any **Drafts** that are **Waiting for review**.
+
+![The Rules landing page, with rule type cards grouped under Claims, Appointments, and Remittance, each showing a rule count, beside totals for active rules, rule types, and drafts waiting for review](/images/insights_biller/automations/the_rules_tab/the_rules_tab_1.webp)
+
+Click a card to open the rules of that type. To start a new rule, click **+ New Rule** in the top right. You do not need to pick a rule type first; see [Create a Rule](/insights_biller/automations/create_a_rule).
 
 ## What Is a Rule?
 
 A rule is a single **IF these conditions are true, THEN take one or more actions** statement. One rule can fire several actions off the same set of conditions.
 
-Rules are grouped and run by a **rule engine**, the system that evaluates each rule in order and applies the ones that match. Each engine has its own tab under **Rules**. Engines you are likely to see include:
+Every rule belongs to a **rule type**, and each rule type has its own **rule engine**: the system that evaluates those rules in order and applies the ones that match. The landing page groups rule types like this:
 
-| **Rule engine** | **What it governs** |
-| :-- | :-- |
-| **Billing** | Changes applied to a claim as it is built for a payer, such as routing, modifiers, and code substitutions. |
-| **Submission blocking** | Checks that hold a claim back from submission until someone reviews it. |
-| **Encounter modifying** | Changes applied to an encounter before it becomes a claim. See [Encounter Rules](/insights_biller/automations/encounter_rules). |
-| **Adjustments** | Changes applied to a procedure's balance after a payment posts. |
-| **Appointments** | Logic that runs against appointments and scheduling data. |
+| **Group** | **Rule types** | **What they govern** |
+| :-- | :-- | :-- |
+| **Claims** | Billing, Submission blocking, Claim assignment | How a claim is built for a payer (routing, modifiers, and code substitutions), the checks that hold a claim back from submission until someone reviews it, and who each claim is assigned to. |
+| **Appointments** | Appointments, Eligibility, Pre-visit PR, Post-visit PR | Logic that runs on appointment events and eligibility responses, and the patient responsibility suggested before and after a visit. |
+| **Remittance** | Adjustments, Bank deposits, Claim remit posting, Remittance posting, Encounter adjustments | How payments post and how balances are adjusted once a remittance arrives. |
+| **Import** | Encounter modifying, Encounter blocking, Import normalization | Changes and exclusions applied to encounters as they are imported, before any of them becomes a claim. See [Encounter Rules](/insights_biller/automations/encounter_rules). |
 
-Every rule ID carries a prefix for the engine that owns it, so an ID alone tells you where a rule lives: `CLM-1716` is a Billing rule, `PCL-561439` is a Submission blocking rule, `ADJ-434765` is an Adjustments rule, `ENM-818753` is an Encounter modifying rule, and `APT-219096` is an Appointments rule.
+The rule types you see depend on how your practice is set up, so your landing page may show more or fewer cards than this table lists.
+
+Every rule ID carries a prefix for its rule type, so an ID alone tells you where a rule lives: `BIL-1716` is a Billing rule, `SBL-561439` is a Submission blocking rule, `ADJ-434765` is an Adjustments rule, `ENM-818753` is an Encounter modifying rule, and `APT-219096` is an Appointments rule. A rule that has not been submitted yet carries a **D** after the prefix, such as `BIL-D653`, and gets its permanent number when you submit it.
 
 <Note>
 Rules are a subset of automations. An automation is an end-to-end pipeline (a trigger, then steps, then an outcome). A rule is one self-contained decision inside that pipeline.
@@ -38,22 +45,29 @@ Rules are a subset of automations. An automation is an end-to-end pipeline (a tr
 
 ## Reading the Rules Table
 
-Two tabs sit above the table. **All Rules** shows every rule at your practice for the selected engine, with a running count, and **Active Rules** narrows the list to the ones currently in effect.
+Open a rule type to see its rules in one table. The tabs above the table narrow the list:
+
+- **All Rules** shows every rule of that type, with a running count.
+- **Active Rules** shows only the rules currently in effect.
+- **Drafts** shows rules that are saved but not yet submitted.
+- Any views you save appear as extra tabs beside these. See [Saving a View](#saving-a-view).
+
+![The Billing rules table on the Active Rules tab, with Priority, ID, Scope, State, Status, Name, Actions, and Conditions columns](/images/insights_biller/automations/the_rules_tab/the_rules_tab_2.webp)
 
 Here is what each column tells you:
 
 | **Column** | **What it shows** |
 | :-- | :-- |
-| **PRI** | Priority, meaning the order a rule runs in relative to other rules of the same type. Rules run in ascending order, so a lower number runs earlier. A rule with no priority set runs first, then 0, then 1, and so on. |
-| **ID** | The rule's unique identifier, prefixed by its rule engine. |
-| **Type** | **Global** for a rule Athelas maintains across all sites, or **Local** for one built for a single site. |
-| **Site** | Which site a **Local** rule belongs to. **Global** rules show a dash, because they apply everywhere. |
-| **State** | Where the rule sits in review: **Passed**, **Published**, **Pending**, or **Failed**. |
-| **Status** | Whether the rule is currently **Active** or **Inactive**. |
-| **Name** | A short plain-language title for the rule. An **AI** badge means the title was generated from the rule's logic rather than typed by hand. |
+| **Priority** | The order a rule runs in relative to other rules of the same type. Rules run in ascending order, so a lower number runs earlier. A rule with no priority set runs first, then 0, then 1, and so on. |
+| **ID** | The rule's unique identifier, prefixed by its rule type. |
+| **Scope** | Who the rule belongs to. **Athelas** marks a rule Athelas maintains across all sites, and your site's name marks a rule built for your practice. |
+| **State** | Where the rule sits in review: **Pending** (not reviewed yet), **Requested** (submitted and waiting for review), **Passed** or **Failed** (review is finished), or **Published** (an Athelas rule). |
+| **Status** | Whether the rule is **Active**, **Inactive**, or still a **Draft**. |
+| **Name** | A short plain-language title for the rule. |
 | **Actions** | A plain-language summary of what happens when the rule's conditions are met. |
 | **Conditions** | A plain-language summary of what must be true for the rule to fire. |
-| **Assignee** | An avatar for the person who created the rule. |
+
+The avatar at the end of each row shows who last updated the rule. Hover over a **State** or **Status** badge for a reminder of what it means.
 
 <Tip>
 ✨**Smart Tip:** **State** and **Status** answer different questions. **State** tells you whether a rule cleared review, and **Status** tells you whether it is running right now. A rule can be **Passed** and still **Inactive**.
@@ -63,53 +77,59 @@ Here is what each column tells you:
 
 Open **Display** to reshape the table around how you work.
 
-![The Display popover showing the Board and List toggle, Ordering, Grouping, and Display Properties controls](/images/insights_biller/automations/the_rules_tab/the_rules_tab_2.webp)
+![The Display popover showing the Board and List toggle, Ordering, Grouping, and Display Properties controls](/images/insights_biller/automations/the_rules_tab/the_rules_tab_3.webp)
 
 It gives you four controls:
 
-- **Board or List** switches between a column board and the standard table.
+- **Board or List** switches between the standard table and a board of rule cards, laid out in one column per group.
 - **Ordering** sorts the table by a property such as **Priority**, and the button beside it flips between ascending and descending.
-- **Grouping** breaks the list into sections by a property, or leaves it flat with **None**.
+- **Grouping** breaks the list into sections by **Status**, **State**, or **Scope**, or leaves it flat with **None**.
 - **Display Properties** turns individual columns on and off.
 
 **Turn off the columns you do not need** so the table stays readable:
 
 <video controls>
-  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_3.mp4" type="video/mp4" />
+  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_4.mp4" type="video/mp4" />
 </video>
 
 **Group rules** to break a long list into sections you can scan:
 
 <video controls>
-  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_4.mp4" type="video/mp4" />
+  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_5.mp4" type="video/mp4" />
 </video>
 
 **Filter** so the table shows only the rules you care about:
 
 <video controls>
-  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_5.mp4" type="video/mp4" />
+  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_6.mp4" type="video/mp4" />
 </video>
+
+### Saving a View
+
+Once you have filtered or sorted the table the way you like it, click **Save** to keep that setup as a view of its own. Saved views appear as tabs beside **All Rules**, **Active Rules**, and **Drafts**, so a list you check every week is one click away. **Reset** puts the table back the way it was.
+
+Hover over a saved view's tab to see its name, ordering, and filters. Right-click the tab to edit, duplicate, or delete the view.
 
 ### Searching for a Rule
 
 Click the magnifying glass to search. You can find a rule two ways: by its **ID**, or by its **name**.
 
 <video controls>
-  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_6.mp4" type="video/mp4" />
+  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_7.mp4" type="video/mp4" />
 </video>
 
 ## Inside a Rule
 
 Click any row to open the rule. The **Controls** panel on the left holds four sections:
 
-![A rule's detail view showing the Controls panel, the AI generated title, and the reason and explanation for the rule](/images/insights_biller/automations/the_rules_tab/the_rules_tab_7.webp)
+![A rule's detail view showing the Controls panel, the rule's title, and the reason and explanation for the rule](/images/insights_biller/automations/the_rules_tab/the_rules_tab_8.webp)
 
 | **Section** | **What it shows** |
 | :-- | :-- |
 | **Description** | Why the rule exists and what it does in practice, split into **Reason for the rule** and **Explanation of rule**. |
 | **Conditions** | What must be true for the rule to fire. |
 | **Actions** | What happens once those conditions are met. |
-| **Activity** | The rule's full history: who created it, every edit since, and a version link for each change. |
+| **Activity** | The rule's full history: who created it, every edit since, and a version link for each change. You can also leave a comment here for whoever works on the rule next. |
 
 Conditions and actions are laid out as a **Structure** you can read top to bottom:
 
@@ -123,40 +143,67 @@ An **AI Generated** badge marks any summary written from the rule's logic. It is
 
 The **Properties** panel on the right shows the rule's current settings at a glance.
 
-![The Properties panel showing Priority, Type, State, Rule Status, Rollout Cap, and Last Updated](/images/insights_biller/automations/the_rules_tab/the_rules_tab_8.webp)
+![The Properties panel showing Priority, Type, State, Rule Status, Rollout Cap, and Last Updated](/images/insights_biller/automations/the_rules_tab/the_rules_tab_9.webp)
 
-- **Priority** and **Type** are the same values shown in the table.
+- **Priority** is the same value shown in the table.
+- **Type** shows the rule's scope: **Athelas**, or your site's name.
 - **State** is the rule's review status, for example **Passed**.
-- **Rule Status** is whether the rule is **Active** or **Inactive**.
-- **Rollout Cap** shows how much of your volume a rule currently touches, or **Fully Released** once it applies to everything.
+- **Rule Status** is whether the rule is **Active**, **Inactive**, or a **Draft**. It is also where you switch a rule on or off; see [Turning a Rule On or Off](#turning-a-rule-on-or-off).
+- **Rollout Cap** shows how many encounters a rule on a phased rollout applies to, or **Fully Released** once it applies to all of them.
 - **Last Updated** shows when the rule last changed and who changed it.
+
+### Checking the Impact of a Rule
+
+Before you change or switch off a rule, check what it has been doing. Click the chart icon in the top right of the rule to open **Metrics**:
+
+- **Claims Affected** counts the claims the rule has touched, and **Total Billed** adds up what those claims billed.
+- A chart breaks the affected claims down by claim status, such as **Created**, **Submitted**, **Rejected**, and **Payment Denied**.
+- The link icon on either total opens the Claims page filtered to those claims, so you can work through them directly.
+
+![The Metrics panel beside a rule, with Claims Affected and Total Billed totals above a bar chart of the affected claims by status](/images/insights_biller/automations/the_rules_tab/the_rules_tab_10.webp)
+
+Metrics are available for inactive rules too, so you can see what a rule did while it was running.
+
+### Turning a Rule On or Off
+
+**To change whether a rule is running:**
+
+1. Open the rule.
+2. In the **Properties** panel, click the **Rule Status** badge and choose the new status.
+3. Confirm the change.
+
+Depending on how your practice works with Athelas, the change either takes effect right away or goes to review first. While it is in review, the status you asked for appears beneath the current one, along with who requested it and a **Cancel** link for withdrawing the request.
+
+![The Rule Status property showing Active, with a pending request to make the rule Inactive and a Cancel link beneath it](/images/insights_biller/automations/the_rules_tab/the_rules_tab_11.webp)
+
+**Note:** A draft has no on/off switch. To put a draft into effect, submit it; see [Submit Your Rule for Review](/insights_biller/automations/create_a_rule#submit-your-rule-for-review).
 
 ### Comparing Versions
 
 The dropdown beside the rule ID in the breadcrumb lists every version of the rule. Use it to compare what changed between versions and to confirm which version is the one running today. The same version links also appear in the **Activity** section.
 
 <video controls>
-  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_9.mp4" type="video/mp4" />
+  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_12.mp4" type="video/mp4" />
 </video>
 
 ## Editing a Rule
 
-**Prerequisite:** You need edit permissions for the site or the rule engine the rule belongs to.
+**Prerequisite:** You need write access to rules.
 
-![The edit view titled Draft an update to Rule, with General and Description fields and the Athelas Assistant panel open](/images/insights_biller/automations/the_rules_tab/the_rules_tab_10.webp)
+![The edit view titled Draft an update to Rule, with the General, Description, and Conditions sections](/images/insights_biller/automations/the_rules_tab/the_rules_tab_13.webp)
 
 **To change an existing rule:**
 
 1. Open the rule from the Rules table.
 2. Click **Edit**. The rule opens as **Draft an update to Rule**, followed by its ID.
 3. Update what you need:
-   - **General** holds **State**, **Priority**, and the **Active** toggle. **Rule ID** and **Rule Type** are fixed and cannot be changed here.
+   - **General** holds the **Rule name** and **Priority**. **Rule ID** and **Rule Type** are fixed and cannot be changed here.
    - **Description** holds **Reason for rule** and **Explanation of rule**. Both are required, so a rule always explains itself to whoever reads it next.
-   - **Conditions** and **Actions** hold the logic itself.
+   - **Conditions** and **Actions** hold the logic itself. Use **+ Condition** for a single test, **+ Subgroup** or **+ Group** for a nested set, and **Duplicate Group** to copy a group you want to vary. You can drag a condition from one group to another, and the info icon beside each condition or action explains what it does.
 4. Click **Save**.
 
 <video controls>
-  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_11.mp4" type="video/mp4" />
+  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_14.mp4" type="video/mp4" />
 </video>
 
 <Tip>
@@ -169,7 +216,7 @@ The dropdown beside the rule ID in the breadcrumb lists every version of the rul
 
 A dry run replays a rule against real records and shows you exactly what it would have done.
 
-![The Dry Run view showing the trigger, conditions with a Not Satisfied verdict, and the Changes section](/images/insights_biller/automations/the_rules_tab/the_rules_tab_12.webp)
+![The Dry Run view showing the trigger, conditions with a Not Satisfied verdict, and the Changes section](/images/insights_biller/automations/the_rules_tab/the_rules_tab_15.webp)
 
 <Note>
 A dry run makes no changes to your environment. Nothing is saved, submitted, or posted.
@@ -178,21 +225,25 @@ A dry run makes no changes to your environment. Nothing is saved, submitted, or 
 **To dry run a rule:**
 
 1. Open the rule and click **Dry Run**.
-2. Choose your scope:
+2. In **Choose your dry run scope**, pick what to test:
    - **Only This Rule** tests the rule on its own, so you see its conditions and its changes in isolation.
-   - **All [Rule Type] Rules**, for example **All Submission Blocking Rules**, tests your draft alongside every other active rule in the same category, so you can see how it interacts with rules that are already live.
-3. In **Controls**, open the entity tab that matches the rule type, such as **Claim Submissions IDs** for a billing rule or **Encounters IDs** for an adjustment rule. Search for the records you want to test against and add them with **+**.
+   - **All [Rule Type] Rules**, for example **All Billing Rules**, tests your draft alongside every other active rule of the same type, so you can see how it interacts with rules that are already live.
+3. Search for the records you want to test against, such as claim IDs for a billing rule, and select them.
 4. Click **Continue**.
+
+![The Choose your dry run scope dialog, with Only This Rule and All Billing Rules options above a Select Claim IDs search](/images/insights_biller/automations/the_rules_tab/the_rules_tab_16.webp)
+
+The records you picked are listed under **Controls**, where **+** adds more and clicking a record shows its results.
 
 Testing a single rule shows you the conditions that matched, the action it took, and the exact fields it changed:
 
 <video controls>
-  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_13.mp4" type="video/mp4" />
+  <source src="/images/insights_biller/automations/the_rules_tab/the_rules_tab_17.mp4" type="video/mp4" />
 </video>
 
-Testing against every rule in the category adds a **Rules** list, so you can see your draft in the context of the rules already running:
+Testing against every rule of the type adds a **Rules** list, so you can see your draft in the context of the rules already running:
 
-![A dry run across all rules in a category, with each rule marked Triggered or Skipped and a Changes table for the selected rule](/images/insights_biller/automations/the_rules_tab/the_rules_tab_14.webp)
+![A dry run across all rules of a type, with each rule marked Triggered or Skipped and a Changes table for the selected rule](/images/insights_biller/automations/the_rules_tab/the_rules_tab_18.webp)
 
 ### Reading Dry Run Results
 
@@ -201,6 +252,7 @@ Testing against every rule in the category adds a **Rules** list, so you can see
 | **Triggered** or **Skipped** | Whether that rule fired on the record you selected. Only triggered rules can change anything. |
 | **Satisfied** or **Not Satisfied** | Whether the rule's conditions were met as a whole. |
 | A mark on each condition | Which individual conditions passed and which failed, so you can see precisely why a rule did not fire. |
+| **Actual** | The value the record really had for that condition, such as the CPT codes on the claim. |
 | **Changes** | A row for every field the rule touched, showing the **Operation** (such as Add or Update), the **Field**, and its **Old** and **New** values. |
 | "This rule did not change this entity." | The rule ran but left the record alone. |
 
@@ -208,11 +260,12 @@ Testing against every rule in the category adds a **Rules** list, so you can see
 
 Once the dry run finishes, click **View CMS Form** in the top right to open a **CMS 1500 Comparison**. **Before** and **After** sit side by side, so you can confirm the rule changed the boxes you expected and nothing else.
 
-![The CMS 1500 Comparison view with Before and After panes side by side](/images/insights_biller/automations/the_rules_tab/the_rules_tab_15.webp)
+![The CMS 1500 Comparison view with Before and After panes side by side](/images/insights_biller/automations/the_rules_tab/the_rules_tab_19.webp)
 
 ## Related Guides
 
-- [**Create a Rule**](/insights_biller/automations/create_a_rule) covers building a new rule with AI, by cloning an existing one, or field by field.
+- [**Create a Rule**](/insights_biller/automations/create_a_rule) covers building a new rule with AI, by cloning an existing one, or field by field, and submitting it.
+- [**Clone Rules Across Sites**](/insights_biller/automations/clone_rules_across_sites) covers copying rules to your other sites and submitting drafts in bulk.
 - [**Working a Claim: Context & Activity Feed**](/insights_biller/claim_details/working_a_claim) covers dry running billing rules from an individual claim before you submit it.
 - [**The Billing Rules Engine**](/insights_biller/general_billing/the_billing_rules_engine) covers the older engine-specific view of billing rules.
 
@@ -221,25 +274,23 @@ Once the dry run finishes, click **View CMS Form** in the top right to open a **
 <Accordion title="In what order do my rules run?">
   Rules run in ascending priority order within the same rule type. A rule with no priority set runs first, then priority 0, then 1, then 2, and so on.
 
-  **Note:** Sorting the table by **PRI** changes only how the list is displayed. It does not change the order rules actually run in.
+  **Note:** Sorting the table by **Priority** changes only how the list is displayed. It does not change the order rules actually run in.
 </Accordion>
 
-<Accordion title="What is the difference between a rule and an automation?">
-  An automation is an end-to-end pipeline: something triggers it, it runs a series of steps, and it produces an outcome. A rule is one self-contained decision inside that pipeline, in the form of "if these conditions are true, take these actions."
-
-  A rule engine is what groups and runs rules. The Rules tab lets you manage the individual rules underneath every engine in one place, rather than opening a separate screen for each.
+<Accordion title="Can I change a rule whose Scope is Athelas?">
+  No. A rule with an **Athelas** scope is maintained by Athelas across every site, so you can read it, dry run it, and check its metrics, but not edit it. If you think one is wrong for your practice, contact your account manager.
 </Accordion>
 
 <Accordion title="A rule says Passed but nothing is happening. Why?">
   **State** and **Status** are two different things. **State** tells you the rule cleared review, so **Passed** means it is valid. **Status** tells you whether it is running, so a rule that is **Passed** but **Inactive** is approved and switched off.
 
-  Check **Rule Status** in the **Properties** panel, and check **Rollout Cap** too: a rule on a phased rollout only touches part of your volume until it reads **Fully Released**.
+  Check **Rule Status** in the **Properties** panel, including any request that is still waiting beneath it, and check **Rollout Cap** too: a rule on a phased rollout applies only to a set number of encounters until its **Rollout Cap** reads **Fully Released**.
+</Accordion>
+
+<Accordion title="What does Requested mean?">
+  **Requested** means a change is waiting for review. In the **State** column, it marks a rule that was submitted and has not finished review yet; when the review is done, the State changes to **Passed** or **Failed**. Under **Rule Status**, it marks a pending request to switch the rule on or off, which you can withdraw with **Cancel** while it waits.
 </Accordion>
 
 <Accordion title="Does a dry run affect real claims?">
   No. A dry run replays the rule against records you choose and reports what it would have done. Nothing is saved, submitted, or posted, and the records you test against are left untouched.
-</Accordion>
-
-<Accordion title="How do I tell which version of a rule is live?">
-  Open the dropdown beside the rule ID in the breadcrumb to list every version, or open the **Activity** section for the full history with a version link on each change. Together they show who changed what, when, and which version is in effect now.
 </Accordion>

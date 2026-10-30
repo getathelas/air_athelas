@@ -6,86 +6,138 @@ toc: "true"
 
 ### At a Glance
 
-The Claims Page can hold thousands of claims at once, so the difference between a slow day and a productive one is how well you organize the list. This guide covers the tools that turn the full claim list into a focused, prioritized worklist: **default views**, **grouping**, **display settings**, **selection**, and **date filters**.
+The Claims Page can hold thousands of claims at once, so the difference between a slow day and a productive one is how well you organize the list. This guide covers the tools that turn the full claim list into a focused, prioritized worklist: **views**, **grouping**, **display settings**, **selection**, and **filters**.
 
-For the basics of filtering and saving your own views, see [Getting Started with the Claims Page](/insights_biller/claim_details/claim_details_page). To act on many claims at once from a group, see the bulk actions in [How to Resubmit Claims in Bulk](/insights_biller/claim_details/how_to_resubmit_claims_in_bulk).
+For the basics of creating a view, see [Getting Started with the Claims Page](/insights_biller/claim_details/claim_details_page#creating-custom-views). To act on many claims at once from a group, see the bulk actions in [How to Resubmit Claims in Bulk](/insights_biller/claim_details/how_to_resubmit_claims_in_bulk).
 
-## Start from a Default View
+## Start from a Built-in View
 
-Every user starts with three built-in views on the left side of the Claims Page. They are a good starting point before you build your own.
+Views appear as tabs across the top of the Claims Page. Every user starts with three built-in views, and the selected view shows how many claims it holds.
 
-| **View** | **What it shows** |
-| :-- | :-- |
-| **All Claims** | Every claim, with no filters applied. |
-| **Workable Claims** | Claims that are your site's responsibility, sit in an actionable work queue, and are **not** deferred. |
-| **My Claims** | Workable claims that are assigned to you. |
+| **View** | **What it shows** | **Shortcut** |
+| :-- | :-- | :-- |
+| **All Claims** | Every claim, with no filters applied. | `1` |
+| **Workable Claims** | Claims that are your site's responsibility, are in a [workable status](/insights_biller/claim_details/status_and_stages), and are **not** deferred. It opens grouped by **Status Reason**, with the highest-balance groups first. | `2` |
+| **My Claims** | Claims assigned to you. | `3` |
+
+Workable Claims brings submission errors, rejections, denials, and the other statuses that need a person into one list, so you can see which bucket holds the most claims or the most dollars instead of switching between pages.
 
 <Tip>
 ✨**Smart Tip:** Start your day in **My Claims** to see only the work assigned to you, then switch to **Workable Claims** when you're ready to pull more.
 </Tip>
 
-Your own saved views appear alongside the defaults. Views are stored per user and **follow you across sessions, devices, and sites** — set one up once and it's there tomorrow, no matter where you log in.
+## Working with Your Own Views
+
+Your saved views appear to the right of the built-in views, after a divider. They are personal: no one else at your practice sees them. Views follow you across sessions, devices, and sites, so the filters you set up this morning are still there tomorrow.
+
+- **See what a view does** by hovering over its tab. The **View Configuration** card lists the view's name, ordering, grouping, and filters.
+- **Edit, duplicate, or delete** a view by right-clicking its tab.
+- **Reorder** your views by dragging their tabs.
+- **Jump to a view** with the number keys. `4` through `0` open your first seven saved views.
+
+![The View Configuration card for a saved view, listing its name, ordering, and filters](/images/insights_biller/claim_details/organizing_your_claims_worklist/organizing_your_claims_worklist_1.webp)
+
+### Updating a View
+
+When you change the filters on a view, **Reset** and **Save** appear next to the filter bar.
+
+- **Reset** returns the view to its saved filters.
+- On one of your own views, **Save** offers **Save to this view** (update it) or **Create new view** (keep the original and save a copy).
+- On a built-in view, **Save** always creates a new view, because the built-in views can't be changed.
+
+A view saves its display settings, too: grouping, ordering, and which columns appear. Set those up from the **Display** button (see [Choosing Which Columns to Show](#choosing-which-columns-to-show)), so a denials view can be laid out differently from a submission errors view.
 
 ## Grouping Claims
 
-Grouping breaks a long, flat list into collapsible buckets so you can see the shape of your work and attack it in order.
+Grouping breaks a long, flat list into collapsible buckets so you can see the shape of your work and attack it in order. Open the **Display** button to choose a **Grouping** and a **Group Ordering**.
 
-![Claims grouped by status](/images/insights_biller/claim_details/organizing_your_claims_worklist/organizing_your_claims_worklist_1.png)
+![The Display panel with claims grouped by Status, showing Grouping, Group Ordering, and Display Properties](/images/insights_biller/claim_details/organizing_your_claims_worklist/organizing_your_claims_worklist_2.webp)
 
-You can group by **status**, **reason**, **site**, and other fields. Within a grouped list you can:
+You can group by more than 20 fields, including **Status**, **Status Reason**, **Patient**, **Provider**, **Assignee**, **Stage**, **Date of Service**, the primary, secondary, or tertiary insurance, and **Site** when your site has child sites. Within a grouped list you can:
 
-- **Order groups by count or balance** — sort by balance to work the biggest-dollar buckets first.
-- **Collapse a group** — right-click a group header to collapse all groups and scan the buckets at a glance.
+- **Order groups by count or balance** with **Group Ordering**. Sort by balance to work the biggest-dollar buckets first.
+- **Collapse a group** by right-clicking its header row. Choose **Collapse**, or **Collapse all** to scan every bucket at a glance.
 
-**Group by Reason** is the most powerful option for daily work. It merges submission errors, rejections, and denials into a single prioritized worklist, with each reason broken out into its own bucket — so you no longer bounce between separate lists.
-
-![The Grouping menu, including Status and Reason, alongside the Claim Status filter options](/images/insights_biller/claim_details/organizing_your_claims_worklist/organizing_your_claims_worklist_2.png)
+**Group by Status Reason** is the most useful grouping for daily work. The status reason explains *why* a claim is in its status, so each bucket holds claims that need the same fix: one denial code, one rejection reason, or one submission error.
 
 <Tip>
-✨**Smart Tip:** A common team setup — **managers** group **all claims by status** and order by balance to see the full revenue funnel; **individual billers** filter to one status, **group by reason**, order by count or balance, and save that as a view so they always work the highest-leverage bucket first.
+✨**Smart Tip:** A common team setup — **managers** group **all claims by status** and order by balance to see the full revenue funnel; **individual billers** filter to one status, **group by Status Reason**, order by count or balance, and save that as a view so they always work the highest-leverage bucket first.
 </Tip>
 
 ### Acting on a Whole Group
 
 Once a bucket is worth a repeatable action, you can act on the whole group at once:
 
-1. **Right-click** the empty space in the group and choose **Select all in the group**.
+1. **Right-click** the group's header row and choose **Select all in group**.
 2. Open **More Actions** at the bottom of the screen.
 3. Choose the action — for example, update insurance, submit, or edit prior authorization — to apply it to every selected claim.
 
-![Selecting all claims in a group and opening More Actions](/images/insights_biller/claim_details/organizing_your_claims_worklist/organizing_your_claims_worklist_3.png)
+![The More Actions menu open for a selection of claims](/images/insights_biller/claim_details/organizing_your_claims_worklist/organizing_your_claims_worklist_3.webp)
 
 ## Choosing Which Columns to Show
 
-Use the **Display** button to control which columns appear in the table. Several useful columns are hidden by default, including:
+Not every column matters for every workflow. Someone working initial charge capture may want **Charges** but not **Ins. Paid** or **PR Paid**, while someone working A/R wants the payment columns. In the **Display** panel, click a column under **Display Properties** to show or hide it, and drag a column's header in the table to move the column.
 
-- **Site** — visible in both the table and the individual claim view, which helps when you work out of a parent site across multiple child sites.
-- **Supervising provider**
-- **Submitted insurance**
+These columns are hidden by default:
+
+- **Time in Status**
+- **Supervising Provider**
+- **Submitted Insurances**
+- **Facility**
+- **Procedures**
+- **Site**, available when your site has child sites, so you can tell which child site each claim belongs to.
 
 Turn on the **Show Pre-Athelas Claims** toggle (off by default) to include historical claims from before your practice's go-live date.
 
+After you change display settings, the **Display** panel shows **Reset**, and on your own views **Save**, which saves the new layout to the view.
+
+### Finding Stuck Claims with Time in Status
+
+**Time in Status** shows how long each claim has been in its current status. Turn it on under **Display Properties**, then click the column header to sort. The first sort puts the claims that have waited longest at the top.
+
+![The Time in Status column next to Status, showing how long each claim has been in its status](/images/insights_biller/claim_details/organizing_your_claims_worklist/organizing_your_claims_worklist_4.webp)
+
+For example, open **Workable Claims**, filter to **Submission Errors**, and sort by **Time in Status** to work the oldest errors first.
+
 ## Selecting Claims
 
-You can select up to **50 claims at a time** — a deliberate performance limit so the page stays fast, even on lower-powered machines.
+Select claims with the checkboxes on the left. The header checkbox, or `CMD` + `A` on Mac (`CTRL` + `A` on Windows), selects every claim that is currently loaded, and `Esc` clears the selection.
 
-To work a larger bucket, scroll down to load more rows first, then select. Each time you re-select, the page grabs everything currently loaded — so scroll to the bottom of a group, then select all to capture it in one pass.
+The list loads 50 claims at a time as you scroll. To work a larger bucket, scroll down to load more rows first, then select. Most bulk actions work on up to 500 claims at once.
 
-## Filtering by Submission and Remittance Dates
+## Filtering by Date
 
-When your list of claims and remittances grows into the thousands, date filters are the fastest way to zero in on a specific window. Open the filter panel to find four date filters: **Submission before**, **Submission after**, **Remittance before**, and **Remittance after**.
+When your list grows into the thousands, date filters are the fastest way to zero in on a specific window. Click **Filter** (or press `F`) and open **Dates**:
 
-![The submission and remittance date filters in the filter panel](/images/insights_biller/claim_details/organizing_your_claims_worklist/organizing_your_claims_worklist_4.png)
-
-The process is the same for all four. For example, click **Submission before** and pick a date.
-
-![Choosing a date for the Submission before filter](/images/insights_biller/claim_details/organizing_your_claims_worklist/organizing_your_claims_worklist_5.png)
-
-The list updates to show every claim submitted before your chosen date, starting with the submission closest to that date. Filtering by **Submission after** instead begins the list with the most recent submission.
-
-![Claims filtered by submission date](/images/insights_biller/claim_details/organizing_your_claims_worklist/organizing_your_claims_worklist_6.png)
+| **Filter** | **What it matches** |
+| :-- | :-- |
+| **Service Date** | Claims with a date of service on, before, or after a date. |
+| **Service Date Range** | Claims with a date of service in a range. |
+| **Initial Submission Date** | Claims first submitted in a range. |
+| **Most Recent Submission Date** | Claims whose latest submission falls in a range. |
+| **Created Date Range** | Claims created in a range. |
+| **Posted Date Range** | Claims with a payment posted in a range. |
 
 <Tip>
-✨**Smart Tip:** Combine a date filter with **Group by Reason** and save it as a view — for example, "Denials, last 30 days" — to build a repeatable, time-boxed worklist.
+✨**Smart Tip:** Combine a date filter with **Group by Status Reason** and save it as a view — for example, "Denials, last 30 days" — to build a repeatable, time-boxed worklist.
 </Tip>
 
+## Filtering with AI
+
+If you don't know which filter to use, describe what you want instead. Click **Filter**, choose **AI filter**, type a request such as "unsubmitted claims from the last week", and click **Apply filter**. You can also type a request into the filter search and choose **Ask AI** to run it as an AI filter.
+
+The AI filter applies ordinary filters, so the filter bar shows exactly what it applied. You can adjust those filters and save the result as a view.
+
+### FAQ
+
+<Accordion title="Can I share a view with my team?">
+No. Saved views are personal, so no one else at your practice sees them. To give a teammate the same setup, share the filters you used, or right-click your view and choose **Duplicate** to keep a starting point for variations of your own.
+</Accordion>
+
+<Accordion title="Why did my view change when I changed the grouping?">
+Grouping, ordering, and column choices are display settings, and they apply to the view you're on. On one of your own views, click **Save** in the **Display** panel to keep the new layout, or **Reset** to go back to the saved one.
+</Accordion>
+
+<Accordion title="Why isn't a claim in Workable Claims?">
+A claim leaves Workable Claims when it is Athelas' responsibility, when its status doesn't need work right now (for example, it is submitted and waiting on the payer), or when it is [deferred](/insights_biller/claim_details/deferring_a_claim). Check **All Claims** to find it.
+</Accordion>

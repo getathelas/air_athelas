@@ -1,0 +1,4 @@
+# Repo files that are not docs pages. Mintlify already skips .git, .github,
+# .claude, .cursor and README.md.
+AGENTS.md
+scripts/

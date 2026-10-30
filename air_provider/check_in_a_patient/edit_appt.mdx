@@ -10,16 +10,16 @@ Before starting a consultation, you may need to update the Appointment or Case T
 
 **Add an Existing Case Type**
 
-<Card title=" ">
+<Warning>
+  You can ONLY update a case when an appointment is in the SCHEDULED / CONFIRMED status. After CHECK_IN / SIGNATURE, you will not be able to update a case on an appointment!
+</Warning>
+
+<Card>
   **Enter existing Case Type:** Open the appointment → click the **Edit** icon → select the Case from the drop-down in the Case bar.
 
-  ![6 Add Case Type Gi](/images/air_provider/check_in_a_patient/edit_appt/edit_appt_3.gif)
-</Card>
+  The only required field is **Case Name**. However, because insurance is required on the Appointments page, we recommend setting the **Insurance Priority** as well.
 
-**Create a New Case Type**
-
-<Card title=" ">
-  **Create a new Case Type:** The only required field is **Case Name**. However, because insurance is required on the Appointments page, we recommend setting the **Insurance Priority** as well.
+  <video src="/videos/update_case.mp4" controls />
 </Card>
 
 ### <Icon icon="display-medical" iconType="duotone" color="#F9345F" size={23} />  Change the Appointment Type
@@ -33,13 +33,14 @@ Before starting a consultation, you may need to update the Appointment or Case T
 ### <Icon icon="note-medical" iconType="duotone" color="#F9345F" size={23} />  Change the Clinical Note Type
 
 <Card title=" ">
-  **Change Clinical Note Type:** This allows you to update documentation based on plan of care logic. Available Clinical Note Types include:
+  **Change Clinical Note Type:** This allows you to update documentation based on plan of care logic. **_This is only available to be updated from within the chart note._** 
+
+  Available Clinical Note Types include:
 
   - Initial Evaluation
   - Daily Note
   - Progress Note
   - Re-Certification Note
   - Discharge Note
-
-  ![11 Update Note Type Gi](/images/air_provider/check_in_a_patient/edit_appt/edit_appt_3.gif)
+    <video src="/videos/change_clinical_note_type.mp4" controls />
 </Card>

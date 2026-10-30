@@ -1,0 +1,130 @@
+---
+title: "Track Pharmacy Fill Status"
+sidebarTitle: "Pharmacy Fill Status"
+toc: "true"
+---
+
+<Icon icon="flask" iconType="duotone" color="#F9345F" size={16} /> **Beta.** In product and working, but ask your Athelas team to turn it on.
+
+When you send an e-prescription, you can ask the pharmacy to report back on whether it filled the prescription. Air records each update on the medication, so you can see whether a patient picked up their medication without calling the pharmacy.
+
+You control which updates the pharmacy sends with the **Pharmacy fill status notifications** setting. You can set a default for each provider, change it on a new prescription, change it after a prescription is sent, and set it when you respond to a renewal or change request.
+
+## Set a default for each provider
+
+Each provider has a default for every facility they are nominated for. Air uses this default on every new prescription the provider sends from that facility.
+
+**To set a provider's default:**
+
+1. Go to **Preferences → Medications**.
+2. In **Provider Nominations - Prescribing Medications**, click the arrow next to the provider to show their facilities.
+3. In the **Pharmacy Fill Status** column, select an option for each facility. Air saves your choice as soon as you select it.
+
+![Pharmacy Fill Status column in Provider Nominations](/images/air_provider/fill_a_chart_note/pharmacy_fill_status/pharmacy_fill_status_1.webp)
+
+**Note:** A facility shows **Not requested** until you choose a default. Prescriptions from that facility do not ask the pharmacy for fill updates unless you pick an option on the prescription itself.
+
+## Choose notifications on a new prescription
+
+The **Pharmacy fill status notifications** field appears in the **Create Medication** drawer, below the appointment and facility fields. Air fills it with the prescribing provider's default for the selected facility. If you pick a different option, Air keeps your choice even when you change the provider or facility.
+
+**To choose notifications for a prescription:**
+
+1. Open the patient's profile and select the **Medications** tab.
+2. Click **Create New** and select **Pharmacy Order**.
+3. Review **Pharmacy fill status notifications**. Keep the default, or select a different option.
+4. Complete the medication and click **Proceed to Review**.
+
+![Pharmacy fill status notifications field in the Create Medication drawer](/images/air_provider/fill_a_chart_note/pharmacy_fill_status/pharmacy_fill_status_2.webp)
+
+The setting applies to every medication in the order, not to each medication separately. Each option controls which fill updates the pharmacy sends back:
+
+| **Option** | **The pharmacy reports back when the prescription is…** |
+| :-- | :-- |
+| **All Fill Statuses** | Dispensed, partially dispensed, not dispensed, or transferred |
+| **All Fill Statuses Except Transferred** | Dispensed, partially dispensed, or not dispensed |
+| **Dispensed And Partially Dispensed** | Fully or partially dispensed |
+| **Partially Dispensed And Not Dispensed** | Partially dispensed or not dispensed at all |
+| **Not Dispensed And Transferred** | Not dispensed, or transferred to another pharmacy |
+| **Partially Dispensed** | Partially dispensed |
+| **Not Dispensed** | Not dispensed |
+| **Cancel All Fill Statuses** | Never — the pharmacy stops sending fill updates for this prescription |
+
+![Pharmacy fill status notification options](/images/air_provider/fill_a_chart_note/pharmacy_fill_status/pharmacy_fill_status_3.webp)
+
+<Tip>
+  ✨**Smart Tip:** Choose **Not Dispensed** or **Not Dispensed And Transferred** to hear only about prescriptions that may need follow-up.
+</Tip>
+
+## Change notifications on a sent prescription
+
+You can change the setting after Air sends a prescription. Air sends the new setting to the pharmacy.
+
+**To change notifications on a sent prescription:**
+
+1. Open the patient's profile and select the **Medications** tab.
+2. Find the prescription and click the **More actions** icon (**⋮**).
+3. Select **Change pharmacy fill status notifications**.
+
+   ![Change pharmacy fill status notifications in the More actions menu](/images/air_provider/fill_a_chart_note/pharmacy_fill_status/pharmacy_fill_status_4.webp)
+
+4. Select the new option.
+5. Click **Send To Pharmacy**. The button stays disabled until you pick an option different from the current one.
+
+<img
+  src="/images/air_provider/fill_a_chart_note/pharmacy_fill_status/pharmacy_fill_status_5.webp"
+  alt="Change pharmacy fill status notifications dialog"
+  title="Change pharmacy fill status notifications dialog"
+  style={{ width:"48%" }}
+/>
+
+**Note:** This action appears only on prescriptions Air has sent to a pharmacy. It does not appear on drafts or discontinued medications.
+
+## Respond to renewal and change requests
+
+When a pharmacy sends a renewal or change request, you can set fill status notifications for the prescription you send back.
+
+**To set notifications on a response:**
+
+1. Go to **Pharmacy Requests** and click **Review** on a renewal or change request.
+2. Under **Pharmacy fill status notifications**, select an option. Leave it as **No preference** to keep the setting from the original prescription.
+3. Finish reviewing the request and send your response as usual.
+
+<img
+  src="/images/air_provider/fill_a_chart_note/pharmacy_fill_status/pharmacy_fill_status_6.webp"
+  alt="Pharmacy fill status notifications field in the RX Request drawer"
+  title="Pharmacy fill status notifications field in the RX Request drawer"
+  style={{ width:"48%" }}
+/>
+
+## Read the fill status
+
+The **Fill Status** column on the patient's **Medications** tab shows the latest update from the pharmacy. Hover over a status to see what it means.
+
+![Fill Status column on the Medications tab](/images/air_provider/fill_a_chart_note/pharmacy_fill_status/pharmacy_fill_status_7.webp)
+
+| **Fill Status** | **Meaning** |
+| :-- | :-- |
+| **Dispensed** | The pharmacy has fully dispensed the prescription. |
+| **Partially Dispensed** | The pharmacy has dispensed part of the prescription; the remainder is still pending. |
+| **Not Dispensed** | The pharmacy has not dispensed the prescription. |
+| **Transferred** | The prescription was transferred to a different pharmacy. |
+| **Not filled** | Air has not received a fill update from the pharmacy. |
+
+### FAQ
+
+<Accordion title="Why does a prescription still show Not filled?">
+  The pharmacy only reports the statuses you asked for. If the setting is **Not requested**, **Cancel All Fill Statuses**, or an option that excludes what happened, Air does not receive an update.
+</Accordion>
+
+<Accordion title="Does changing a provider's default update prescriptions that are already sent?">
+  No. The default applies only to new prescriptions. To change a prescription that is already sent, use **More actions → Change pharmacy fill status notifications**.
+</Accordion>
+
+<Accordion title="Can I set different notifications for each medication in one order?">
+  No. The setting applies to the whole order. To use different settings, send the medications as separate orders.
+</Accordion>
+
+<Accordion title="Why don't I see the Pharmacy fill status notifications field?">
+  Pharmacy fill status is in Beta. Ask your Athelas team to turn it on for your practice.
+</Accordion>

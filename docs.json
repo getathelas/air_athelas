@@ -30,6 +30,16 @@
         "icon": "laptop-medical",
         "groups": [
           {
+            "group": "ONC Certification",
+            "icon": "certificate",
+            "public": true,
+            "pages": [
+              "air_developer/onc_certification/mandatory_disclosure",
+              "air_developer/patient_information_export/patient_information_export",
+              "air_developer/fhir_api/commure_ehr_fhir_api"
+            ]
+          },
+          {
             "group": "Getting Started with Air",
             "icon": "stars",
             "public": true,
@@ -47,6 +57,7 @@
             "pages": [
               "air_provider/review_patient_details/patient_info",
               "air_provider/review_patient_details/patient_demog",
+              "air_provider/review_patient_details/create_a_case",
               "air_provider/review_patient_details/patient_appts",
               "air_provider/review_patient_details/patient_attachments",
               "air_front_desk/portal_and_online_scheduling/patient_portal"
@@ -114,7 +125,6 @@
                   "air_provider/fill_a_chart_note/scribe_text_snippets",
                   "air_provider/fill_a_chart_note/scribe_faq",
                   "air_provider/fill_a_chart_note/other_sec_chart_note",
-                  "air_provider/fill_a_chart_note/measurements",
                   "air_provider/fill_a_chart_note/flowsheets",
                   "air_provider/fill_a_chart_note/services",
                   "air_provider/fill_a_chart_note/progress_note_automatic_conversion",
@@ -129,16 +139,19 @@
             "tag": "Provider",
             "public": true,
             "pages": [
+              "air_provider/fill_a_chart_note/measurements",
               "air_provider/fill_a_chart_note/nav_inbox",
               "air_provider/fill_a_chart_note/functional_outcomes",
               "air_provider/fill_a_chart_note/pdmp",
               "air_provider/fill_a_chart_note/medications",
               "air_provider/fill_a_chart_note/prescriber_agents",
+              "air_provider/fill_a_chart_note/pharmacy_fill_status",
               "air_provider/fill_a_chart_note/medication_order_set",
               "air_provider/fill_a_chart_note/order_sets",
               "air_provider/fill_a_chart_note/orders",
               "air_provider/fill_a_chart_note/smart_charge_capture",
-              "air_admin/manage_your_practice/custom_orders"
+              "air_admin/manage_your_practice/custom_orders",
+              "care-notes"
             ]
           },
           {
@@ -189,15 +202,6 @@
             ]
           },
           {
-            "group": "ONC Certification",
-            "icon": "certificate",
-            "public": true,
-            "pages": [
-              "air_developer/patient_information_export/patient_information_export",
-              "air_developer/onc_certification/mandatory_disclosure"
-            ]
-          },
-          {
             "group": "ONC Feature Guides",
             "icon": "book-medical",
             "public": true,
@@ -206,14 +210,6 @@
               "air_developer/onc_feature_guides/adding_an_implantable_device",
               "air_developer/onc_feature_guides/view_ccda",
               "air_developer/onc_feature_guides/reconcile_incoming_ccda"
-            ]
-          },
-          {
-            "group": "FHIR API",
-            "icon": "code",
-            "public": true,
-            "pages": [
-              "air_developer/fhir_api/commure_ehr_fhir_api"
             ]
           }
         ]
@@ -280,6 +276,8 @@
               "insights_biller/general_billing/getting_started_with_charge_master",
               "insights_biller/general_billing/payer_mapping",
               "insights_biller/general_billing/remittances",
+              "insights_biller/general_billing/the_eobs_page",
+              "insights_biller/general_billing/eob_copilot_upload_guide",
               "insights_biller/general_billing/provider_adjustments",
               "insights_biller/general_billing/deposit_slip_ingestion",
               "insights_biller/general_billing/the_billing_rules_engine",
@@ -294,6 +292,7 @@
             "pages": [
               "insights_biller/automations/the_rules_tab",
               "insights_biller/automations/create_a_rule",
+              "insights_biller/automations/clone_rules_across_sites",
               "insights_biller/automations/encounter_rules"
             ]
           },
@@ -327,7 +326,7 @@
             "tag": "Biller",
             "public": true,
             "pages": [
-              "air_admin/analyze_your_reports/my_reports",
+              "insights_biller/reports/my_reports",
               "insights_biller/reports/building_and_running_reports",
               "insights_biller/reports/month_end_close",
               "insights_biller/reports/submitted_claims_report",
@@ -362,6 +361,7 @@
             "pages": [
               "insights_front_desk/appointments/the_insights_appointments_page",
               "insights_front_desk/appointments/how_to_add_a_walk_in_patient",
+              "insights_front_desk/appointments/how_to_checkin_and_room_a_patient",
               "insights_front_desk/appointments/how_to_run_an_eligibility_check",
               "insights_front_desk/appointments/how_to_take_payments",
               "insights_front_desk/appointments/insights_prior_authorization"
@@ -662,6 +662,14 @@
     }
   },
   "redirects": [
+    {
+      "source": "/",
+      "destination": "/air_onboard/getting_started_with_air/index"
+    },
+    {
+      "source": "/legal/air_documentation_access_terms",
+      "destination": "/legal/athelas_documentation_access_terms"
+    },
     {
       "source": "/insights_front_desk/utilities/self_service_credentialing",
       "destination": "/air_admin/manage_your_practice/provider_credentials"
