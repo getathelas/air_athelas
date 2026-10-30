@@ -133,8 +133,51 @@ Saving a template does not change anyone's calendar. Only applying the template 
 </video>
 
 <Warning>
-  Only one template can be in effect per provider on a given day. Applying a new template over a date range replaces whatever was there before.
+  Only one template can be in effect per provider on a given day. Applying a template over a date range updates **template-generated schedule coverage** for the dates you select, except for existing schedules you choose to **Keep**. It does not always remove the provider's entire calendar history.
+
+  How existing template coverage is resolved depends on overlap:
+
+  - **Fully inside the new range:** the prior applied schedule is removed for that period.
+  - **Starts before the new range and ends inside it:** the prior schedule is **shortened** so it ends the day before the new start date.
+  - **Starts inside the new range and extends past the new end date:** the prior schedule is **shortened** so it resumes the day after the new end date.
+  - **The new range falls in the middle of an existing schedule:** the existing schedule is **split**. The portion before the new range stays, the portion after resumes after the new range ends, and the middle is replaced by the newly applied template.
 </Warning>
+
+### **Keeping Existing Templates When Applying a New Schedule**
+
+When changing a provider’s regular schedule, you may want to keep a holiday or out-of-office template that is already on the calendar. Where this option is enabled, the **Overlapping schedules** step lets you make that choice before applying.
+
+1. Select your providers and dates, then click **Apply Schedule**.
+2. Review the overlapping templates. Each row shows the template name and the providers and dates it covers. Hover over **+N more**, if shown, to see additional schedules.
+3. Choose an action for each template:
+   - **Keep** — leaves that template on the calendar. The new schedule applies around its dates.
+   - **Replace** — replaces that template within the date range you are applying. This is the default.
+4. Click **Continue**. The confirmation shows which templates will be replaced, which will be kept, and any appointment or slot conflicts in the dates being changed.
+5. Confirm the application. You can use **Back** to change your choices before applying.
+
+For example, if you are applying a new regular schedule from November onward, choose **Keep** for “Thanksgiving OOO” and “Christmas OOO.” The new schedule fills the dates around those breaks.
+
+![Image](/images/image-17.png "Image")
+
+Example: replace the regular schedule while keeping holiday templates.
+
+<Info>
+  **Keep applies to this application.** It does not permanently protect a template from future changes. Review your choices each time you apply, especially when leaving the end date open. If the overlapping schedules step is not available, applying replaces existing template coverage within your selected range.
+</Info>
+
+### **What happens to recurring template slots**
+
+Template-generated **recurring** slots (for example, weekly appointment slots) follow the same date range you apply. When a new apply overlaps an existing recurring series:
+
+- Occurrences **inside** the apply range are replaced by the new template's slots, except where you chose to **Keep** an existing schedule.
+- Occurrences **before** the apply range are preserved as a continuing series on the calendar.
+- Occurrences **after** the apply range are also preserved. If the underlying applied schedule was split around your date range, the post-range portion stays linked to the surviving schedule after the gap.
+
+In practice, applying a two-week template over a year-long schedule replaces those two weeks only. Recurring slots outside that window remain.
+
+<Info>
+  **Manual slots are not removed by apply.** Apply overwrites **template-generated** slots and applied schedule coverage in the selected range. Slots you created directly on the calendar are left unchanged, even if they overlap the apply range. Booked appointments are also unchanged.
+</Info>
 
 ## Managing templates
 
@@ -151,12 +194,63 @@ From **Preferences → Calendar → Scheduling Templates** you can:
 
 ## The Scheduling Templates drawer
 
-Once a template is applied, it drives what the calendar shows. Open the drawer from the **Scheduling Templates** icon in the top-right of the calendar toolbar. It contains:
+Once a template is applied, it drives what the calendar shows. Open the drawer from the **Scheduling Templates** icon in the top-center of the calendar toolbar. It contains:
 
 - **Visible on Calendar** — a toggle at the top that shows or hides template shading and blocks. Your preference is remembered.
-- **Active** — templates currently in effect, grouped by template with the covered providers listed beneath. Shows **No templates active** when there are none.
-- **Upcoming** — templates scheduled to start in the future, each with a **Sched. MM/DD/YY** badge. Hidden when empty.
-- **All Templates** — a collapsible, searchable list of every template at the site.
+- **Active** — schedules currently in effect, grouped by provider. Expand or collapse a provider’s name to see their applied schedules. The number beside the name is the number of schedule entries in that section. Shows **No templates active** when there are none.
+- **Upcoming** — schedules that start in the future, also grouped by provider and ordered by start date. Hidden when empty.
+- **Schedule dates** — each row shows the template name and its start and end dates, or **No end date** for an open-ended schedule. The same template can appear more than once when it has been applied for separate periods.
+- **Clear** — hover over a schedule row to reveal this action. It opens the clear dialog for that provider and schedule.
+- **All Templates** — a collapsible list of saved templates at the site, with search and provider and facility filters.
+
+Active and Upcoming follow today’s date at your site and the providers selected on the calendar. They show what is applied; **All Templates** shows what is saved for reuse. A schedule applied directly from the builder can appear under Active or Upcoming even when you did not save it to the template list.
+
+![Image](/images/image-18.png "Image")
+
+### **Clearing a Template from a Provider’s Calendar**
+
+Clearing removes a template from providers' calendars over a date range. It can also cancel a template that is scheduled to start in the future. To do this:
+
+1. Open the **Scheduling Templates** drawer from the calendar toolbar.
+   - _Clearing is only available from the calendar, not EHR Preferences._
+2. Expand the provider under **Active** or **Upcoming**, hover over the schedule row you want to remove, and click **Clear**. The **Clear Template** modal opens, or **Cancel Upcoming Template** for a schedule that has not started yet.
+3. Confirm the **provider** shown. Clearing from a row targets that provider’s schedule; it does not select every provider who uses the same template.
+4. Set the **Start Date**. To clear a set period, turn on **Have schedule expire on specific date** and set an **End Date**. Leave it off to clear everything from the start date onward.
+5. Click **Clear Schedule Template**.
+
+<video src="/videos/Screen-Recording-2026-10-02-at-7.18.48-PM.mov" controls />
+
+<Info>
+  Clearing only removes that template's schedule coverage and template-generated slots in the selected range. Manual slots, other templates, and booked appointments are unchanged. Appointments in cleared slots stay booked but may appear as conflicts (see **Resolving Conflicts**). Clearing does not restore the template that was there before. To put a schedule back, apply the desired template again.
+</Info>
+
+### **Resolving Conflicts**
+
+Applying or clearing a template can leave existing appointments and slots out of step with the new schedule. These show up as conflicts. Conflicts never block an apply or clear; you can resolve them afterward.
+
+- **Slot conflicts:** a manual slot falls within the applied or cleared date range.
+- **Appointment conflicts:** a booked appointment no longer fits the schedule — for example, there is no available bookable slot, the available slots are already at capacity, or the appointment does not match the slot’s restrictions.
+
+When you apply a template from the calendar, the confirmation step shows the number of conflicting appointments and slots. Click **Apply Only** to apply now, or **Apply & View Conflicts** to apply and open the **Conflicts** tab. When applying from the builder or EHR Preferences, you can return to the calendar to review conflicts afterward.
+
+To resolve conflicts:
+
+1. Click the requests button in the calendar header and open the **Conflicts** tab.
+2. Filter by **conflict type**, **provider**, **patient**, or **facility** as needed. The list shows unresolved conflicts from today onward, with the earliest dates first. Scroll to load more.
+3. Review each row’s date, time, and details, then choose an action:
+   - **Slots** — click **Remove** to remove the manual slot, or open the action dropdown and choose **Keep** to leave it on the schedule and mark the conflict resolved.
+   - **Appointments** — click **Reschedule** to open the appointment on the calendar and choose a new time. Use the dropdown to **Keep** it as is, **Cancel**, or **Archive** it. You can also click the patient’s name to open their profile.
+4. To resolve several at once, select the rows and use the bulk actions at the top:
+   - **Slots only** — **Keep** or **Delete**.
+   - **Appointments only** — **Keep** or **Cancel**.
+   - **Slots and appointments together** — the action menu lets you keep all, delete the selected slots, or cancel the selected appointments.
+5. Review the confirmation before removing slots or canceling appointments.
+
+<Info>
+  **Select all only selects the rows already loaded in the list.** Scroll to load more conflicts before selecting additional rows. The **Clear** button in the bulk action bar clears your selection; it does not clear a template from the calendar.
+</Info>
+
+Keeping an appointment means you have reviewed it and want it to stay scheduled, even if it does not fit the new template. Rescheduling is complete only after you choose and save a new appointment time.
 
 ## Booking appointments on available slots
 
@@ -178,6 +272,10 @@ Use this together with slot layout: side-by-side slots create the capacity, and 
 
 ### FAQ
 
+<Accordion title="**How do I keep holiday or out-of-office schedules when changing regular hours?**">
+  Where the overlapping schedules step is enabled, choose **Keep** for those templates before confirming the new application. Leave **Replace** selected for the regular schedule you want to change. Review this each time you apply.
+</Accordion>
+
 <Accordion title="Does saving a template change any calendars?">
   No. A saved template is only configuration. Nothing appears on a calendar until you apply it to specific providers and dates.
 </Accordion>
@@ -196,4 +294,8 @@ Use this together with slot layout: side-by-side slots create the capacity, and 
 
 <Accordion title="What happens if the feature is turned off for my site?">
   The Scheduling Templates interface is hidden and the calendar returns to legacy [**Reserve Blocks**](/air_front_desk/portal_and_online_scheduling/reserve_blocks) and schedule blocks, with provider hours managed again from [**Provider Settings**](/air_admin/manage_your_practice/provider_settings).
+</Accordion>
+
+<Accordion title="**Can I apply a schedule without saving a template?**">
+  Yes. Click **Apply** in the builder to use the schedule currently shown, including unsaved changes. It updates the selected providers’ calendars without adding a template to your saved list. If you started from an existing template, that saved template stays as it was until you click **Save**.
 </Accordion>
