@@ -23,6 +23,9 @@
     "dark": "#FB8DA5"
   },
   "favicon": "images/air_archive/athelas_favicon_bkg.png",
+  "contextual": {
+    "options": []
+  },
   "navigation": {
     "tabs": [
       {
