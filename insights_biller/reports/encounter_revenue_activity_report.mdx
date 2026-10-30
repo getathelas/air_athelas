@@ -1,0 +1,264 @@
+---
+title: "Encounter Revenue Activity Report"
+sidebarTitle: "Encounter Revenue Activity"
+toc: "true"
+---
+
+<Info>
+  **Your source of truth for encounter (insurance and self-pay) revenue.** Use this report to book charges, insurance payments, adjustments, and accounts receivable for all encounter-linked activity.
+</Info>
+
+<Note>
+  This is not the same report as the older [**Revenue Activity Report**](/insights_biller/reports/revenue_activity_report). The Encounter Revenue Activity Report covers encounter activity only. Non-encounter charges are in the [**Miscellaneous Revenue Activity Report**](/insights_biller/reports/misc_revenue_activity_report), and unapplied patient money is in the [**Patient Credits Report**](/insights_biller/reports/patient_credits_report).
+</Note>
+
+## What this report covers
+
+The report covers every financial event tied to an **encounter** (a billed visit): charges, insurance and patient payments applied to claims, contractual and other adjustments, balance transfers between payers, and the resulting accounts receivable.
+
+All activity is keyed to **Date Posted** in your site's timezone, and the report is **drift-free**: re-running it for a closed month always returns the same numbers, even if claims have since been reworked.
+
+## Where to find it
+
+Go to **My Reports**, open the **Month End** tab, and select **Encounter Revenue Activity Report**. The Month End tab may not appear for every site.
+
+For the full close workflow, see [**Month End Close**](/insights_biller/reports/month_end_close).
+
+## Report options
+
+| **Option** | **What it does** |
+| :-- | :-- |
+| **Detailed Activities** | Includes the Detailed Activity sheet. Selected by default. |
+| **Aging AR Activity** | Includes the Aging AR Activity sheet. Not selected by default. |
+| **Start Date** / **End Date** | The **Date Posted** window for the Detailed Activity sheet. Both dates are inclusive and use your site's timezone. The defaults are one month ago through today. |
+| **As-Of Date** | Anchors the Aging AR buckets to the balance as of this date. It defaults to the End Date and can't be later than today. |
+| **Exclude Pre-Launch Encounters** | When checked, excludes encounters whose date of service is before the site's backfill date (or go-live date). Checked by default. |
+| **Excel** / **CSV** | The download format. Excel is the default. |
+
+### Filters
+
+Under **Apply Filters**, the **Date Filters** group holds the Date Posted range and the As-Of Date. It also has two optional windows that apply on top of the Date Posted range:
+
+- **Date of Service Start** / **Date of Service End**: drops every row of any encounter whose date of service is outside the window.
+- **Date of Submission Start** / **Date of Submission End**: drops only the payer rows submitted outside the window, so the encounter's other payer rows stay on the sheet.
+
+The remaining filter groups narrow the rows to the values you pick:
+
+| **Filter group** | **Filters** |
+| :-- | :-- |
+| **Patient Filters** | Patient |
+| **Site-Facility Filters** | Facility, plus Site on parent sites |
+| **Provider Filters** | Rendering Provider, Supervising Provider, Billing Provider |
+| **Insurance Filters** | Submitted Insurance, Inputted Insurance |
+| **Procedure Filters** | CPT Code |
+
+**Note:** Rows without a claim yet (pre-submission rows and self-pay rows) drop out when you filter by a submitted-side value, such as Submitted Insurance or Billing Provider.
+
+### Columns, grouping, and sort order
+
+- **Select Columns** picks which columns the export includes. Leaving it untouched uses the default set.
+- **Apply Group Bys** rolls rows up by the dimensions you pick: Site (parent sites only), Facility, Patient, Encounter, Procedure, Rendering Provider, Supervising Provider, Billing Provider, CPT Code, Inputted Insurance, Submitted Insurance, Submitted Insurance Group, Latest Claim Submission, Payer Index, Day of Service, Day Posted, or Day of Submission. In a grouped export, money columns become totals (for example, **Total Paid**) and the dimensions you didn't group by become distinct counts (for example, **Patient ID Count**). Switching between grouped and ungrouped resets your column selection to that mode's default.
+- **Apply Order By** sorts the export by the columns you pick, each ascending or descending.
+
+## The two sheets
+
+| **Sheet** | **What it shows** | **Use it to** |
+| :-- | :-- | :-- |
+| **Detailed Activity** | One row per encounter / procedure / payer with activity in the period | Book revenue, payments, and adjustments; slice by any dimension |
+| **Aging AR Activity** | Open receivables as of the As-Of Date, bucketed by days outstanding | Validate ending AR and monitor collections |
+
+**How the two sheets differ.** Detailed Activity is a **flow**; Aging AR is a **level**.
+
+- **Detailed Activity** sums the movement posted **within the report window**: every dollar of charge, payment, adjustment, and transfer whose Date Posted falls between the start and end dates. A row exists because something _happened_ in the period, even if the receivable is now zero.
+- **Aging AR Activity** is a snapshot of every receivable still **open as of the As-Of Date**, regardless of when its activity posted. A row exists because a balance _remains_, aged by days outstanding from the date of service. Its money columns are point-in-time balances, so never add them to the movement columns on Detailed Activity.
+
+## The Detailed Activity sheet
+
+The **Posted Amounts** columns are the classic Revenue Activity measures (charges, payments, adjustments, transfers between payers, and the AR change they create), and accrual sites book from them. The **Accrued Estimates** columns are the net-revenue view: the service-date revenue accrual, the allowances expected against it, and the AR ladder up to Net Revenue. Both families are computed from the same rows at the same grain, so they can't disagree with each other.
+
+How to work with it:
+
+- **Read columns by name, not position.** The layout groups columns left to right: identity (site, facility, patient, encounter, providers), what was performed (EHR side), who pays and what was submitted, RVUs, money from estimate through collection, adjustments, then the AR columns.
+- **Book from Posted Amounts; accrue from Accrued Estimates.** Transfers net to zero across the whole report, and **Net Receivable** is exactly the AR change created by the period's activity. The Aging AR sheet doesn't reflect only the current period's activity; it reflects all activity from the start of time.
+- **Slice by drift-free dimensions** whenever the cut has to be reproducible. See **Choosing dimensions** below.
+
+### Drift-free dimensions
+
+These are locked at posting time. Dollars never move between values of these columns when you re-run a closed month, so they are safe to summarize journal entries by.
+
+| **Column** | **Description** |
+| :-- | :-- |
+| **Site ID** | Core grain. The site the activity is billed under. A report run at a parent site expands to every child site, so this column tells you which practice each row belongs to. Appears only on parent-site runs. |
+| **Site Name** | Name of the site, resolved from **Site ID**. Appears only on parent-site runs. |
+| **Encounter ID** | Core grain. The billed visit. |
+| **Procedure ID** | Core grain. The procedure line on the encounter. |
+| **Payer Index** | Core grain. Position in the payer waterfall: 1 = primary, 2–3 = secondary/tertiary, 4 = patient responsibility (self-pay). |
+| **Facility ID** | Athelas identifier for the facility. |
+| **Facility Name** | Facility name on the encounter. |
+| **Patient ID** | The patient on the encounter. |
+| **Rendering Provider ID** | Athelas identifier for the rendering provider on the encounter. |
+| **Rendering Provider** | Rendering provider on the encounter. |
+| **Supervising Provider ID** | Athelas identifier for the supervising provider on the encounter. Only some specialties and incident-to billing carry one. |
+| **Supervising Provider** | Supervising provider on the encounter. |
+| **Billing Provider ID** | Identifier of the provider the claim was submitted under. Blank before the claim is submitted and on self-pay. |
+| **Billing Provider** | Name of the provider the claim was submitted under. |
+| **EHR CPT Code** | CPT code on the encounter **in the EHR** at posting time. |
+| **EHR Modifiers** | Modifiers on the encounter in the EHR at posting time. |
+| **EHR Service Unit Count** | Service units on the encounter in the EHR, captured at posting time. Can differ from **Submitted Service Unit Count** because of billing rules. **Unsigned**: see the unsigned-units warning below this table. |
+| **EHR Inputted Insurance Name** | Insurance entered in the EHR, captured at posting time. Shows `SELF-PAY` on the patient payer row. |
+| **Latest Claim Submission ID** | The claim submission stamped on the activity at posting time. Every submitted column derives from it. |
+| **Date of Submission** | When the claim was submitted. |
+| **Latest Date Posted** | The site-local day the line last posted within the window. |
+| **Submitted Inputted Insurance** | The inputted insurance at the time of submission. |
+| **Submitted Insurance Name** | The payer the claim was actually billed to, resolved from the submission stamped on the ledger. Shows `SELF-PAY` on patient rows. |
+| **Submitted Insurance Group** | Payer group of the submitted insurance. |
+| **Submitted CPT Code** | CPT code actually submitted on the claim. |
+| **Submitted Modifiers** | Modifiers actually submitted on the claim. |
+| **Submitted Service Unit Count** | Service units actually submitted on the claim. The three RVU columns are computed from this multiplier, so without it you can't reconcile the RVU figures against a per-unit rate. **Unsigned**: see the unsigned-units warning below this table. |
+| **Encounter Is Intended to Bill** | Not currently populated. |
+
+<Note>
+  **A note on name columns** (**Site Name**, **Rendering Provider**, **Supervising Provider**): these are labels resolved live from their drift-free ID columns, and they are listed here because names rarely change in practice. There is one exception: if a site or provider is **renamed**, a re-run of a closed month shows the new name, so numbers summarized **by name will drift** to the new label. Numbers summarized **by the ID columns never drift**.
+</Note>
+
+<Warning>
+  **Service unit counts are unsigned.** Every row records units as a positive number, including rows where the gross charge was reduced or voided, so summing a units column can overstate true volume. Until signed units are available, derive the sign per row: combine **Net Estimated Payer Charge** and **Payer Net Charge**, and treat units as positive where that total is above zero, negative where it is below, and zero where it nets out. This matters most when you explain a revenue change driven by CPT codes being added to or removed from an encounter.
+</Warning>
+
+### Non-drift-free dimensions
+
+These are reference descriptors. They are reliable for analysis, but they are read from the current encounter record or from point-in-time descriptors, so a later edit can restate them. If you summarize journal entries by these columns, a re-run of a closed month could shift dollars between rows.
+
+| **Column** | **Description** |
+| :-- | :-- |
+| **Date of Service** | Date of service from the encounter record. It changes if the encounter is edited. |
+| **Submitted Work RVU** | Work RVU. Entirely **submitted-side**: the rate is looked up on the submitted CPT, ranked by the submitted modifiers (place-of-service aware), then multiplied by the submitted unit count. Blank when no claim was stamped. |
+| **Submitted Malpractice RVU** | Malpractice RVU, computed the same submitted-side way. |
+| **Submitted PE RVU** | Practice-expense RVU, computed the same submitted-side way. |
+
+### Posted Amounts
+
+This is movement actually posted to the ledger in the period. Accrual sites book from these columns. They are drift-free and sum cleanly across any drift-free dimension.
+
+| **Column** | **Description** |
+| :-- | :-- |
+| **Billed Amount** | Gross charges posted to this payer in the period. |
+| **Transfer In** | Balance transferred **in** to this payer from the prior payer in the waterfall. Transfers net to zero across the whole report. |
+| **Payer Net Charge** | `Billed Amount − Transfer In`: the **new** charge burden created at this payer, meaning gross charges net of the balance inherited from a prior payer. |
+| **Paid** | Payments applied in the period: insurance payments by payer, and patient payments on the patient payer row (**Payer Index** 4). |
+| **Expected Transfer Out** | The next-payer balance per the payer's adjudication (EOB): what is slated to move on to the next payer. |
+| **Transfer Out** | Balance actually transferred **out** to the next payer in the period. |
+| **Adjustments** | `Contractual Adjustment Amount + Other Adjustments`. |
+| **Contractual Adjustment Amount** | Contractual allowances taken per your payer contracts. |
+| **Other Adjustments** | All non-contractual adjustments. |
+| **Net Receivable** | `Billed Amount − Paid − Adjustments − Transfer Out`: the change in **charged AR** created by this period's posted activity. Posted side only, with no estimates. |
+
+### Accrued Estimates
+
+This is the service-date accrual and the net-revenue ladder built on it. These columns appear only when net revenue is enabled for your site, which requires your payer contracts and fee schedules to be loaded so allowances can be estimated.
+
+| **Column** | **Description** |
+| :-- | :-- |
+| **Base Estimated Payer Charge** | Period movement in the **base** charge estimate: revenue accrued at the date of service, before the claim is even submitted. |
+| **Net Estimated Payer Charge** | Period movement in the **open** portion of that estimate. It unwinds as actual billed charges replace it, so charge recognition shifts from estimated to posted without double counting. |
+| **Estimated Adjustment Source** | Which contract model produced the estimate for the row. `NO SOURCE AVAILABLE` means no contractual model resolved: the expected allowance is then 0, and **Net Revenue** is **overstated by the entire remaining estimate** for that row. It appears on each row so you can see the condition instead of inferring it. |
+| **Base Estimated Payer Adjustment** | Period movement in the **base** expected contractual allowance, estimated from your contracts. |
+| **Net Estimated Payer Adjustments** | Period movement in the **open** expected allowance. It unwinds as actual adjustments post. |
+| **Gross AR** | Second rung of the AR ladder: **Net Receivable** (the first rung, posted charged AR, listed under Posted Amounts) **plus** **Net Estimated Payer Charge**. This is AR including revenue accrued for services rendered but not yet billed. Use it when you want AR to reflect unbilled work. |
+| **Net AR** | Third and final rung of the AR ladder: **Gross AR** **minus** **Net Estimated Payer Adjustments**. This is AR net of the allowances you expect to be taken, meaning what you actually expect to collect. |
+| **Net Revenue** | Revenue **earned** in the period: **Paid** plus the period's movement in **Net AR**. Equivalently, it is payments received plus the change in expected future collections, net of expected allowances. It is only meaningful where **Estimated Adjustment Source** resolved; see that column's note. |
+
+<Note>
+  **Net AR vs Net Revenue.** The two columns answer different questions. **Net AR** is a **balance** concept: how much you still expect to collect (an asset). **Net Revenue** is an **earnings** concept: how much you earned in the period, whether or not cash has arrived. They are linked by the identity `Net Revenue = Paid + ΔNet AR`.
+
+  Two examples:
+
+  - When an insurance payment posts, **Paid** goes up and **Net AR** goes down by the same amount. **Net Revenue** is **unchanged**, because that revenue was already earned when the service was rendered.
+  - When a new service is rendered but not yet billed or paid, **Net AR** and **Net Revenue** both go up, because revenue is earned on the service date, ahead of any cash.
+</Note>
+
+## The Aging AR Activity sheet
+
+**Purpose.** The sheet is a point-in-time picture of your open receivables from the start of time: every site / encounter / procedure / payer combination still carrying a balance **as of the As-Of Date**, aged by days outstanding from the date of service. Start Date isn't used on this sheet. Use it to validate ending AR at close, watch collections work balances down month over month, and spot receivables aging past intervention thresholds. Days outstanding are counted from the date of service to the As-Of Date.
+
+**Balances, not movement.** Its three money columns (**Net Receivable**, **Gross AR**, and **Net AR**) are the same AR ladder the Detailed Activity sheet carries, read as **levels at one instant** rather than as movement over a window. A row exists because a balance _remains_, not because anything happened in the period, so never add these columns to the movement columns on Detailed Activity.
+
+**How it ties out with Detailed Activity.** Both sheets close on the same instant when Start Date is your go-live date. **AR at the start of the period + the period's Net Receivable movement from Detailed Activity = this sheet's Net Receivable.** The same identity holds up the ladder: **Gross AR** adds the open estimated charges, and **Net AR** nets the expected allowances, whose period movements are the Accrued Estimates columns.
+
+### Aging AR columns
+
+The Aging AR Activity sheet carries the same dimension columns as Detailed Activity, resolved from the snapshot that was current as of the As-Of Date, so a re-run for a past As-Of Date returns the same values. It adds two aging columns and replaces the movement columns with three point-in-time balances. Only rows with a non-zero balance appear on the sheet.
+
+| **Column** | **Description** |
+| :-- | :-- |
+| **Date of Service** | Date of service from the encounter record. It changes if the encounter's date of service is edited, and it is the **aging basis** for the two columns below. |
+| **Days Outstanding** | As-Of Date − **Date of Service**, in days. It changes with the As-Of Date **by design** (the same receivable ages as you move the anchor forward), and it inherits any change to **Date of Service**. |
+| **Aging Bucket** | **Days Outstanding** classified into `0-30`, `31-60`, `61-90`, `91-120`, and `120+`. Rows with no date of service are labeled `Unknown` rather than being misfiled into the oldest bucket. |
+| **Net Receivable** | First rung of the AR ladder: the posted receivable, meaning cumulative billed − paid − adjusted − transferred out for this payer. Posted side only, with no estimates. This is the level whose period movement appears as **Net Receivable** on the Detailed Activity sheet. |
+| **Gross AR** | Second rung: **Net Receivable** **plus** the open estimated charge. This is AR including revenue accrued for services rendered but not yet billed. Appears only when net revenue is enabled. |
+| **Net AR** | Third and final rung: **Gross AR** **minus** the open expected allowances. This is what you actually expect to collect on this receivable, and the number to validate ending AR against. Appears only when net revenue is enabled. |
+
+## Booking GL entries from this report
+
+See [**Accrual-Basis Entries**](/insights_biller/reports/month_end_accrual_entries) and [**Cash-Basis Entries**](/insights_biller/reports/month_end_cash_entries) for the full entry tables. In short:
+
+- **Accrual sites** book gross charges (DR Accounts Receivable / CR Gross Revenue), relieve AR for payments (DR [Unposted Money](/insights_biller/reports/month_end_unposted_money) / CR AR from **Paid**), and book contractual and other adjustments against AR from the adjustment columns. With net revenue enabled, they also book the service-date accrual and allowance estimate.
+- **Cash-basis sites** recognize revenue from the **Paid** column and use the rest of the report for monitoring only.
+
+## Choosing dimensions: what's drift-free
+
+You can summarize journal entries at whatever level matches your ledger. Each transaction is locked to the dimension values in effect **when it posted**, so summaries cut by the **drift-free dimension set** return the same answer every time you re-run a closed month. That set is:
+
+- the core grain (site, encounter, procedure, payer index, date posted)
+- everything captured on the ledger at posting time (facility, patient, rendering and supervising providers, EHR CPT, modifiers, and insurance, unit counts)
+- the entire claim-submission block (submitted CPT, modifiers, and insurance, insurance group, date of submission), because a submitted claim's contents never change after the fact
+
+Two things to know beyond that:
+
+- **Name columns** (provider name, facility, and so on) are labels resolved live from their snapshotted ID columns. They only drift if a provider or facility is **renamed**; cuts by the ID columns never drift.
+- A small set of descriptors is **not drift-free**: date of service and the RVU columns. They are reliable for reference and analysis, but a re-run of a closed month can shift dollars between rows if you summarize journal entries by them.
+
+## Caveats
+
+<Warning>
+  **Accrued Estimates (net revenue) columns are not enabled by default.** They require your payer contracts and fee schedules to be loaded so allowances can be estimated. Where no contract model resolves, **Estimated Adjustment Source** reads `NO SOURCE AVAILABLE` and **Net Revenue** is overstated by the entire remaining estimate for that row. Don't book it.
+</Warning>
+
+<Warning>
+  **Service unit counts are unsigned.** Summing a units column can overstate your true unit volume. Derive the sign per row as described under [Drift-free dimensions](#drift-free-dimensions).
+</Warning>
+
+<Note>
+  **Insurance group** comes from the billed insurance on the claim submission, so it is drift-free as long as your payer-to-group mapping is unchanged. If you reorganize payer groups, historical re-runs will reflect the new grouping.
+</Note>
+
+<Note>
+  **Very recent postings aren't included yet.** The report reads activity up to about three hours before you run it, so anything posted in the last few hours shows up on the next run.
+</Note>
+
+## Tips
+
+- Summarize entries at the dimension that matches your ledger: provider, facility, payer group, CPT, and so on. The report supports any consistent roll-up.
+- Run the report for the full calendar month. **Start and end dates are inclusive**, so a September 1 to September 30 run captures both of those days.
+
+### FAQ
+
+<Accordion title="Why does a row show up on Detailed Activity when the encounter has no balance left?">
+  Detailed Activity is a flow. A row appears because something posted in the window (a charge, payment, adjustment, or transfer), even if the receivable is now zero. Open balances are on the Aging AR Activity sheet.
+</Accordion>
+
+<Accordion title="Can I add the Aging AR money columns to the Detailed Activity columns?">
+  No. Aging AR columns are point-in-time balances as of the As-Of Date, and Detailed Activity columns are movement within the report window. Use the tie-out identity instead: AR at the start of the period plus the period's **Net Receivable** movement equals the Aging AR **Net Receivable**.
+</Accordion>
+
+<Accordion title="I re-ran last month and the totals by provider name changed. Why?">
+  A provider was probably renamed. Name columns are resolved live, so a rename moves dollars to the new label. Summarize by **Rendering Provider ID** instead; ID columns never drift.
+</Accordion>
+
+<Accordion title="Why don't I see the Net Revenue columns?">
+  The Accrued Estimates columns appear only when net revenue is enabled for your site, which requires your payer contracts and fee schedules to be loaded. Contact your Athelas team if you want to set this up.
+</Accordion>
+
+<Accordion title="How is this different from the Revenue Activity Report?">
+  The [**Revenue Activity Report**](/insights_biller/reports/revenue_activity_report) is the older report. The older report also carries miscellaneous charges and an Unapplied Payments sheet. This report covers encounter activity only. Non-encounter charges are in the [**Miscellaneous Revenue Activity Report**](/insights_biller/reports/misc_revenue_activity_report).
+</Accordion>

@@ -1,0 +1,135 @@
+---
+title: "Miscellaneous Revenue Activity Report"
+sidebarTitle: "Misc Revenue Activity"
+toc: "true"
+---
+
+<Info>
+  **Everything you charge that isn't a claim.** Products, supplies, membership and program fees, no-show fees, and other charges not billed to insurance as an encounter.
+</Info>
+
+## What this report covers
+
+Revenue activity has two components: encounter (claim) activity lives in the [**Encounter Revenue Activity Report**](/insights_biller/reports/encounter_revenue_activity_report), and all **non-encounter charges** live here. Each row is a miscellaneous charge with its payments and write-offs.
+
+## Where to find it
+
+Go to **My Reports**, open the **Month End** tab, and select **Miscellaneous Revenue Activity Report**. The Month End tab and this card may not appear for every site.
+
+For the full close workflow, see [**Month End Close**](/insights_biller/reports/month_end_close).
+
+## Report options
+
+| **Option** | **What it does** |
+| :-- | :-- |
+| **Misc Activity Detail** | Includes the Misc Activity Detail sheet. Selected by default. |
+| **Aging AR** | Includes the Aging AR sheet. Not selected by default. |
+| **Start Date** / **End Date** | The posting-date window for the Misc Activity Detail sheet. Both dates are inclusive and use your site's timezone. The defaults are one month ago through today. |
+| **As-Of Date** | Anchors the Aging AR buckets to the balance as of this date. It defaults to the End Date and can't be later than today. |
+| **Excel** / **CSV** | The download format. Excel is the default. With both sheets selected, CSV downloads as a zip of two files. |
+
+## The two sheets
+
+| **Sheet** | **What it shows** | **Use it to** |
+| :-- | :-- | :-- |
+| **Misc Activity Detail** | One row per charge: amount charged, paid, and written off, with line-item detail | Book miscellaneous revenue and monitor write-offs |
+| **Aging AR** | Open (unpaid) miscellaneous balances, bucketed by charge age as of the As-Of Date | Monitor outstanding non-claim balances |
+
+**How the two sheets differ.** Misc Activity Detail sums the activity events (charges, payments, refunds, and write-offs) whose posting date falls between the start and end dates. Aging AR has no start date: it is the all-time balance through the As-Of Date.
+
+## The Misc Activity Detail sheet
+
+There is one row per charge (**Charge ID** is the grain), with the window's summed financial activity and the charge's descriptors.
+
+### Dimensions
+
+| **Column** | **Description** |
+| :-- | :-- |
+| **Charge ID** | The grain: one row per miscellaneous charge. |
+| **Patient ID** | Athelas identifier for the patient. |
+| **Patient Name** | Patient's full name. |
+| **Customer ID** | Athelas identifier for the customer (non-patient). |
+| **Customer Name** | Customer's full name. |
+| **Facility** | Facility tied to the charge. |
+| **Line Item** | Current line item the charge was booked under (product, program fee, no-show fee, and so on). |
+| **Line Item Type** | The line item's category. Useful for summarizing by revenue type when your ledger separates product sales from fees. |
+| **Rendering Provider** | Provider on the charge. Often blank, because miscellaneous charges frequently carry no provider. |
+| **Description** | Free-text description on the charge. |
+| **One-Off Reason** | Reason recorded for one-off charges. |
+| **Date of Service** | Date of service on the charge record. It can be edited after the fact, and it is not the aging basis: aging uses **Charge Created Date**. |
+| **Charge Created Date** | Site-local day the charge was created. It never changes, and it is the **aging basis** for the Aging AR sheet. |
+| **Charge Status** | The charge's **current** lifecycle status. The money columns are event deltas, so a charge that was cancelled shows its negative delta in the period the cancellation posted, while this column shows only the latest status. |
+
+### Posted Amounts
+
+All four columns are movement **within the report window**, at charge grain. **Payments** is signed cash (refunds are negative), **Total Adjustments** is positive, and **Balance** = **Charges** − **Payments** − **Total Adjustments**.
+
+| **Column** | **Description** |
+| :-- | :-- |
+| **Charges** | Net charge amount posted in the window, as an **event stream**: creating a charge posts its amount, and a cancellation posts a negative delta on its own posting date. Closed periods therefore never move when a charge is later edited or cancelled. |
+| **Payments** | Cash applied to the charge in the window: payments are positive and refunds are negative. **Net of processing fees**: this is what landed against the charge, not what the patient was charged. Includes payments made with credit balances. |
+| **Total Adjustments** | Write-offs posted against the charge in the window. |
+| **Balance** | `Charges − Payments − Total Adjustments`: the window's net receivable movement for this charge. Zero means the window's activity fully settled itself (for example, charged and paid in the same period). |
+
+## The Aging AR sheet
+
+There is one row per **patient / provider / facility** group, with the group's balance through the As-Of Date bucketed by **charge age**.
+
+| **Column** | **Description** |
+| :-- | :-- |
+| **Patient ID** | Athelas identifier for the patient. Blank for customer charges. |
+| **Patient Name** | Patient's full name. |
+| **Rendering Provider** | Provider on the charge. Often blank for miscellaneous charges. |
+| **Facility** | Facility on the charge. |
+| **All Time Net Receivable** | The group's net receivable through the As-Of Date: the sum of charges − payments − adjustments over the group's charges. Equals the sum of the seven bucket columns. |
+| **0_to_30_days** … **366_plus_days** | **All Time Net Receivable** split by **charge age**: As-Of Date − **Charge Created Date**, in days, into seven buckets (0–30, 31–60, 61–90, 91–120, 121–180, 181–365, 366+). Charges with no created date or a future created date land in **366_plus_days**, so the buckets always add up to the total. |
+
+## The full miscellaneous revenue picture
+
+<Warning>
+  **Miscellaneous revenue has two sources.** Total misc revenue for the month =
+
+  **Miscellaneous Revenue Activity Report (Payments)** + **Payer Aux Cash** from the [**Provider Adjustments Report**](/insights_biller/reports/provider_adjustments_report).
+
+  Payer Aux Cash captures money payers send that isn't tied to any claim, such as interest, late-payment fees, and incentive payments.
+</Warning>
+
+## Booking GL entries from this report
+
+- **Revenue:** DR [Unposted Money](/insights_biller/reports/month_end_unposted_money) / CR Miscellaneous Revenue, for the period's **Payments** total plus Payer Aux Cash. Summarize by **Line Item Type** if your ledger separates product sales from fees.
+- **Accrual sites** may also book misc charges to a receivable when charged and relieve it on payment. Most practices keep misc revenue on a cash-recognition basis, because balances are small and short-lived.
+- **Write-offs** are broken out per charge. Book them to your write-off account if you track them separately.
+
+For the full entry tables, see [**Accrual-Basis Entries**](/insights_biller/reports/month_end_accrual_entries) and [**Cash-Basis Entries**](/insights_biller/reports/month_end_cash_entries).
+
+## Scope and caveats
+
+<Note>
+  **What counts as miscellaneous:** any charge with **no encounter and no appointment**.
+</Note>
+
+<Note>
+  **Blank names or descriptions?** Patient Name, Customer Name, Description, and One-Off Reason are blank for users whose role doesn't include access to patient health information.
+</Note>
+
+<Note>
+  **Stored-credit top-ups and deposits are excluded entirely.** Charges whose line item is a credit top-up or a deposit are out of scope, including the charge, its payments, and its write-offs. Buying stored credit isn't revenue; the revenue is recognized when the credit is later spent, and credit-funded payments do count in **Payments**.
+</Note>
+
+### FAQ
+
+<Accordion title="Why is a cancelled charge showing a negative amount?">
+  **Charges** is an event stream. A cancellation posts a negative delta on the date the cancellation posted, so the period the charge was originally booked in never changes. **Charge Status** shows only the charge's current status.
+</Accordion>
+
+<Accordion title="Why doesn't Payments match what the patient was charged on their card?">
+  **Payments** is net of card processing fees. It shows what landed against the charge, not the gross amount the patient was charged.
+</Accordion>
+
+<Accordion title="Does Start Date affect the Aging AR sheet?">
+  No. Aging AR is the all-time balance through the As-Of Date. Start and End Date only window the Misc Activity Detail sheet.
+</Accordion>
+
+<Accordion title="Where do patient payments on visits show up?">
+  Patient payments applied to encounters are in the [**Encounter Revenue Activity Report**](/insights_biller/reports/encounter_revenue_activity_report) on the patient payer row. Unapplied patient money is in the [**Patient Credits Report**](/insights_biller/reports/patient_credits_report).
+</Accordion>

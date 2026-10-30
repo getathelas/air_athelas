@@ -1,0 +1,102 @@
+---
+title: "Patient Credits Report"
+sidebarTitle: "Patient Credits"
+---
+
+<Info>
+  **Patient money you're holding but haven't applied.** Payments sitting on patient accounts, broken down by whether they can be refunded today, are tied to a visit, or are about to apply on their own. This report replaces the Unapplied Payments report.
+</Info>
+
+## What this report covers
+
+The report shows every unapplied patient credit balance, either **as of** the report end date (cumulative mode) or the **activity** between two dates (period mode). The report is **drift-free**: it reconstructs each credit's state as of your end date, so re-running a closed month always returns the same answer, even if the credit has since been applied or refunded.
+
+## Where to find it
+
+Go to **My Reports**, open the **Month End** tab, and select **Patient Credits Report**. On sites without the Month End tab, the card is in the **Revenue** tab. The card may not appear for every site.
+
+For the full close workflow, see [**Month End Close**](/insights_biller/reports/month_end_close).
+
+## Report options
+
+<img
+  src="/images/insights_biller/reports/patient_credits_report/patient_credits_report_1.webp"
+  alt="Patient Credits Report dialog with an empty Start Date, an End Date, and Excel or CSV format options"
+  title="Patient Credits Report dialog"
+  style={{ width:"70%" }}
+/>
+
+| **Option** | **What it does** |
+| :-- | :-- |
+| **Start Date** | Optional, and empty by default. Leave it empty for **cumulative mode**: outstanding credits by category as of the End Date. Enter a date for **period mode**: how credits changed between Start Date and End Date. |
+| **End Date** | The cutoff. The date is inclusive and uses your site's timezone. Defaults to today. |
+| **Excel** / **CSV** | The download format. Excel is the default. |
+
+For month-end close, leave Start Date empty and set End Date to the last day of the month.
+
+## Columns
+
+There is one row per patient per category.
+
+| **Column** | **Description** |
+| :-- | :-- |
+| **Patient ID** | Athelas identifier for the patient. |
+| **Patient Name** | Patient's full name. |
+| **Category** | The credit category. See the table below. |
+| **Credits (USD)** | The net credit for that patient and category. |
+| **Date of Latest Transaction** | Site-local date of the newest transaction in that patient's category. |
+
+## The credit categories
+
+| **Category** | **What it means** | **Month-end treatment** |
+| :-- | :-- | :-- |
+| **Flexible** | Not tied to a date of service. The patient could be refunded today. | **Book to Patient Refund Liability** (the only category that needs a GL entry) |
+| **Held** | Tied to a date of service whose encounters have all finalized, or that has no encounter status recorded yet | No entry, but expect it to move to refund liability soon |
+| **Locked** | Tied to a date of service with at least one encounter that hasn't finalized yet | No entry. It stays in [Unposted Money](/insights_biller/reports/month_end_unposted_money) and is expected to apply. |
+| **Appt Payment in Transition** | Pre-visit payment (for example, a copay) collected at the appointment and not yet applied to the encounter | No entry. It applies as soon as the encounter is remitted and Patient Responsibility has generated. |
+
+## Booking GL entries from this report
+
+Only **Flexible** credits represent money you may owe back to patients:
+
+| **Basis** | **Debit** | **Credit** | **Amount** |
+| :-- | :-- | :-- | :-- |
+| Accrual | Unposted Money | Patient Refund Liability | **Flexible** credit balance as of month-end |
+| Cash | Unposted Money | Patient Refund Expense | **Flexible** credit balance as of month-end |
+
+Book the change in the Flexible balance each month (or restate to the report's as-of balance). Held, Locked, and in-transition credits stay in your Unposted Money balance, because they are on their way to becoming applied payments.
+
+For the full entry tables, see [**Accrual-Basis Entries**](/insights_biller/reports/month_end_accrual_entries) and [**Cash-Basis Entries**](/insights_biller/reports/month_end_cash_entries).
+
+<Tip>
+  ✨**Smart Tip:** Cash-basis practices use an expense account, not a liability. You are not carrying a liability on this basis; you are recognizing the eventual cash outflow. The expense is debited back when the refund check is actually cut.
+</Tip>
+
+<Tip>
+  ✨**Smart Tip:** When your team creates a credit for a future visit, always enter the **date of service**. That keeps the credit out of **Flexible**, keeps it out of your refund liability, and keeps this report clean.
+</Tip>
+
+## Caveats
+
+- **Rows that net to zero are dropped.** A payment that was fully refunded doesn't appear. Negative rows are kept, because an over-refund or an unmapped payment is something you want to see.
+- **Period mode can show negative amounts** in any category. **Appt Payment in Transition** in particular shows a signed change: positive means cash entered the unapplied bucket, and negative means the cash left because the charge was remitted onto an encounter.
+- **Beginning + activity = ending holds for total credits, not per category.** A credit can move between categories (for example, from Locked to Held when an encounter finalizes) without a new transaction.
+- **End dates before April 9, 2026:** encounter status history isn't available before that date, so dated credits on earlier cutoffs show as **Held**.
+
+## Related: patient cash
+
+This report tracks **unapplied** patient money. For the applied side, patient payments posted against encounters appear in the [**Encounter Revenue Activity Report**](/insights_biller/reports/encounter_revenue_activity_report) on the patient payer row, and non-claim patient charges appear in the [**Miscellaneous Revenue Activity Report**](/insights_biller/reports/misc_revenue_activity_report). Together with this report, those two cover patient cash for month-end purposes.
+
+### FAQ
+
+<Accordion title="Which number do I book at month-end?">
+  The **Flexible** total, run in cumulative mode (Start Date empty) with End Date set to the last day of the month. The other categories don't need a GL entry.
+</Accordion>
+
+<Accordion title="Why did a patient's credit move from Locked to Held?">
+  Locked and Held both mean the credit is tied to a date of service. It moves to Held once every encounter for that patient and date of service has finalized.
+</Accordion>
+
+<Accordion title="Will re-running last month's report give me different numbers?">
+  No. The report reconstructs each credit's state as of the End Date, so a closed month returns the same answer even if credits were applied or refunded afterward.
+</Accordion>

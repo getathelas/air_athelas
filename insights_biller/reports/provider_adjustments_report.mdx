@@ -1,40 +1,128 @@
 ---
 title: "Provider Adjustments Report"
 sidebarTitle: "Provider Adjustments"
+toc: "true"
 ---
 
+The Provider Adjustments Report covers payer money that is not tied to a specific claim: interest payments, penalties, forward balances and recoupments that payers add to or subtract from their checks. Without this report, your bank deposits will not tie to your posted claim payments.
+
+**Where to find it:** **My Reports**, under the **Month End** tab or the **Revenue** tab, depending on how your site is set up.
+
 <Note>
-Related: to post, archive, or reallocate the adjustments this report summarizes, see [Provider Adjustments](/insights_biller/general_billing/provider_adjustments); for GL entries covering encounter-based revenue and payments, see the [Revenue Activity Report](/insights_biller/reports/revenue_activity_report); for tying insurance deposits to the bank, see the [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report); this report is also used during [Month-End Close](/insights_biller/reports/month_end_close).
+  To post, archive or reallocate the adjustments this report summarizes, see [Provider Adjustments](/insights_biller/general_billing/provider_adjustments). For tying insurance deposits to the bank, see the [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report). This report is one of the reports used in [Month-End Close](/insights_biller/reports/month_end_close).
 </Note>
 
-#### Summary
+## What this report covers
 
-**Provider adjustments** are check-level adjustments a payer applies directly on a remittance (835 PLB segment) — for example an overpayment recovery, a payer takeback, or another correction that isn't tied to a specific claim line. Because most provider adjustments aren't linked to an encounter, they don't appear in encounter-based reports like the [Revenue Activity Report](/insights_biller/reports/revenue_activity_report) or [Detailed Charges Report](/insights_biller/reports/detailed_charges_report). The Provider Adjustments Report surfaces this activity separately so it can be reviewed and reconciled on its own.
+When a payer sends a check, the remittance (835) sometimes includes **provider-level adjustments**, also called PLBs. These are line items that change the check total without referencing a specific claim line. Common examples:
 
-Each row groups all provider adjustments posted during the selected period by **payer** and **reason code**.
+- **Interest and late-payment fees** the payer owes you.
+- **Forward balances**: the payer withholds part of today's payment and settles the withheld amount on a future check.
+- **Recoupments and clawbacks**: the payer takes back a prior overpayment.
 
-#### Key Use Cases
+Most provider adjustments are not linked to an encounter, so they do not appear in encounter-based reports such as the [Encounter Revenue Activity Report](/insights_biller/reports/encounter_revenue_activity_report). This report surfaces that activity so it can be reviewed, reconciled and booked on its own.
 
-- Surface provider-level (check-level) adjustments that fall outside normal encounter-based revenue reporting.
-- Reconcile total provider adjustments against cash actually deposited — tie out against the [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report) for the same period.
-- Record and account for miscellaneous revenue during month-end close (see [Month-End Close](/insights_biller/reports/month_end_close)).
-- Distinguish adjustments that happened to be auto-matched to an encounter from true check-level-only adjustments with no encounter tie.
+The report covers **posted** adjustments only. An adjustment appears once it has been posted to your ledger, not when the remittance is received, and the date range always filters on the date the adjustment was posted.
 
-#### Filters Supported
+## The four account types
 
-- Date Range: Date Posted
-- Include Encounter-Linked Adjustments toggle — when off, only adjustments with no encounter link are included (this is the version that ties out to the Bank Deposit Reconciliation Report); when on, all provider adjustments in the period are included regardless of encounter link
+Each row is one combination of **site**, **remit payer**, **reason code** and **Account Type**. The Account Type tells you how to treat the row:
 
-#### Data Dictionary
+| **Account Type** | **Kind** | **What it is** | **How to use it** |
+| :-- | :-- | :-- | :-- |
+| **Encounter Payment** | Real | A provider adjustment posted against a specific encounter, for example a recoupment applied to a claim. | Already reflected in encounter A/R; it flows through the [Encounter Revenue Activity Report](/insights_biller/reports/encounter_revenue_activity_report). |
+| **Payer Aux Cash** | Real | A provider adjustment posted with no encounter attached, such as interest, late fees or incentives. | **Miscellaneous revenue.** Combine it with the [Miscellaneous Revenue Activity Report](/insights_biller/reports/misc_revenue_activity_report). |
+| **Payer Credit Account** | Balancing | Rows the report adds to track payer credits, such as forward balances, between the original adjustment and its settlement on a later remittance. | Read together with **Payer Credits Untied**. |
+| **Payer Credits Untied** | Balancing | Reclassification rows for payer credits that could not be linked to an encounter. | Read together with **Payer Credit Account**. |
 
-| Column Name | Description |
-| --- | --- |
-| Payer | The insurance company on the remittance that posted the adjustment — this is the remittance's payer, not necessarily the insurance entered or billed on the encounter |
-| Reason Code | The payer's adjustment reason code from the remittance |
-| Reason Description | Plain-language label for the reason code (e.g. "Overpayment Recovery") |
-| Linked to an Encounter | Whether any adjustment in this Payer + Reason Code group is tied to a specific encounter. Most provider adjustments are not — that's why they're excluded from encounter-based reports |
-| Adjustment Count | Number of distinct provider adjustments included in this row |
-| Payment Item Count | Number of distinct posted payment records behind those adjustments (normally one per adjustment) |
-| Encounter-Linked Adjustments | Number of adjustments in this row that were matched to a specific encounter |
-| Non-Encounter Adjustments | Number of adjustments in this row with no encounter tie — the check-level-only adjustments |
-| Total Amount | Total dollar amount posted for this Payer + Reason Code combination during the selected period |
+<Warning>
+  **Payer Credit Account** and **Payer Credits Untied** are balancing rows that the report creates so your cash reconciles. They are not separate adjustments, and you will not find them elsewhere in Insights.
+
+  - **When you sum dollar amounts** (for the cash tie-out or GL entries), include every row.
+  - **When you count adjustments or payment items**, keep only the **Encounter Payment** and **Payer Aux Cash** rows. A balancing row repeats the adjustment and payment item it was built from, so counting that row counts the same adjustment twice.
+</Warning>
+
+## Payer credits and forward balances
+
+A forward balance is a provider-level adjustment where the payer holds back part of a payment on one remittance and settles the withheld amount on a later one. The effect is that your posted claim payments and your bank deposit disagree, even though nothing is wrong. The two balancing account types exist to explain that difference.
+
+### How Payer Credit Account rows are built
+
+When a provider adjustment is posted against an encounter, the encounter's payment changes but the matching cash movement exists nowhere else in your data. That is why the Encounter Revenue Activity Report on its own cannot tie to bank deposits between a re-adjudication notice and the payer's actual takeback. For every encounter-linked provider adjustment posted in the date range, the report adds a **Payer Credit Account** row for the same amount with the **opposite sign**.
+
+For example, a forward balance that reduces an encounter's payment by \$100 produces the rows below. The Encounter Payment row appears only when **Include Encounter Provider Adjustments** is checked; the Payer Credit Account row appears either way.
+
+| **Account Type** | **Total Amount (USD)** |
+| :-- | :-- |
+| Encounter Payment | −100 |
+| Payer Credit Account | +100 |
+
+If the payer later settles that credit with an adjustment in the opposite direction, the new rows carry the opposite signs, and over the life of the forward balance the payer credit rows net back to zero.
+
+### How Payer Credits Untied rows are built
+
+Sometimes a provider adjustment arrives with no encounter to attribute it to, even though its reason code is one that normally ties to an encounter: `WO`, `FB`, `72`, `B2`, `L6`, `C5` or `WU`. The report keeps the real **Payer Aux Cash** row and also writes a matched pair. For an unlinked \$100 withhold:
+
+| **Account Type** | **Total Amount (USD)** |
+| :-- | :-- |
+| Payer Aux Cash | −100 |
+| Payer Credits Untied | +100 |
+| Payer Credit Account | −100 |
+
+The pair is equal and opposite, so the pair reclassifies the amount without moving cash: neither the report total nor the bank tie-out changes. Adjustments with other reason codes, such as interest, bonuses, transmission fees and penalties, stay in **Payer Aux Cash** only.
+
+## Booking GL entries from this report
+
+| **What you're booking** | **Source rows** | **Entry** |
+| :-- | :-- | :-- |
+| Payer interest, fees and incentives | **Payer Aux Cash** | **DR Unposted Money / CR Miscellaneous Revenue** |
+| Forward balances and other payer credits | **Payer Credit Account** + **Payer Credits Untied** | Book the month's **net** total of these rows against Unposted Money, as one entry for the month. |
+
+For the full set of entries, see [Month-End Close: Accrual-Basis Entries](/insights_biller/reports/month_end_accrual_entries) and [Month-End Close: Cash-Basis Entries](/insights_biller/reports/month_end_cash_entries).
+
+## The tie-out this report completes
+
+Posted insurance in the Bank Deposit Reconciliation Report includes provider adjustments that aren't linked to an encounter, while the Encounter Revenue Activity Report doesn't. This report supplies the difference: run it with **Include Non-Encounter Provider Adjustments** checked and sum **Total Amount (USD)** for the **Payer Aux Cash**, **Payer Credit Account**, and **Payer Credits Untied** rows. For the full tie-out table, see [Tie posted insurance to Encounter Revenue Activity](/insights_biller/reports/month_end_close#tie-posted-insurance-to-encounter-revenue-activity).
+
+## Filters
+
+- **Select Date Type**: **Date Posted** is the only option.
+- **Start Date** and **End Date**: the posted-date window, inclusive.
+- **Include Non-Encounter Provider Adjustments** (checked by default): includes adjustments posted with no encounter link, the **Payer Aux Cash** rows.
+- **Include Encounter Provider Adjustments** (unchecked by default): includes adjustments posted against an encounter, the **Encounter Payment** rows.
+- **Excel** (default) or **CSV** output.
+
+At least one of the two checkboxes must be selected to download. The **Payer Credit Account** and **Payer Credits Untied** rows are the same whichever checkbox you select, as long as one is checked.
+
+## Data dictionary
+
+| **Column** | **Description** |
+| :-- | :-- |
+| **Site ID** | The site the remittance was received under. A report run at a parent site includes every child site, so this column tells you which practice each row belongs to. |
+| **Remit Insurance Company ID** | The payer that sent the remittance carrying the adjustment. This is the remittance's payer, not necessarily the insurance billed on the encounter. |
+| **Remit Insurance Company Name** | The name of that payer. Reads `Unknown Insurance Company Name` when no payer is matched to the remittance, so those dollars are never hidden under a blank label. |
+| **Reason Code** | The provider-level adjustment code explaining what the payer did, for example `FB` for a forward balance or `WO` for an overpayment recovery. |
+| **Reason Code Value** | The description that came with the reason code on the remittance. |
+| **Account Type** | **Encounter Payment**, **Payer Aux Cash**, **Payer Credit Account** or **Payer Credits Untied**. The only column that separates real activity from balancing rows; see [The four account types](#the-four-account-types). |
+| **Impacts Encounters** | TRUE on **Encounter Payment** rows and FALSE on all others. |
+| **Adjustment Count** | The number of distinct provider adjustments behind the row. On Encounter Payment rows this is the count of encounter-linked adjustments; everywhere else it is the count of adjustments with no encounter. Sum this column over Encounter Payment and Payer Aux Cash rows only. |
+| **Payment Item Count** | The number of distinct posted payment records behind the row. Sum this column over Encounter Payment and Payer Aux Cash rows only. |
+| **Total Amount (USD)** | The row's net dollar amount for the period, rounded to cents. On real rows, a payer withholding \$50 appears as −50 and money the payer adds (interest, incentives) is positive. Balancing rows carry the opposite sign of the adjustment they were built from. |
+
+### FAQ
+
+<Accordion title="Why don't these adjustments show up in my encounter-based reports?">
+  Most provider adjustments are made at the check level and are not linked to an encounter, so reports built on encounters, such as the [Encounter Revenue Activity Report](/insights_biller/reports/encounter_revenue_activity_report), never see them. This report is where that money is accounted for.
+</Accordion>
+
+<Accordion title="Why do my adjustment counts look doubled?">
+  You are probably counting the **Payer Credit Account** and **Payer Credits Untied** rows. Those balancing rows repeat the adjustment they were built from. Count only **Encounter Payment** and **Payer Aux Cash** rows; sum dollar amounts over every row.
+</Accordion>
+
+<Accordion title="I don't see any Encounter Payment rows. Is something missing?">
+  **Include Encounter Provider Adjustments** is unchecked by default. Check that box to add the encounter-linked rows. You don't need those rows for the month-end tie-out, which uses the Payer Aux Cash and payer credit rows only.
+</Accordion>
+
+<Accordion title="Why is there a balance in Payer Credits Untied?">
+  These rows hold provider adjustments that carry a reason code that normally ties to an encounter, but that could not be linked to one. Read these rows together with **Payer Credit Account**: the matching pair nets to zero. If you have questions about a specific adjustment, contact support@getathelas.com.
+</Accordion>

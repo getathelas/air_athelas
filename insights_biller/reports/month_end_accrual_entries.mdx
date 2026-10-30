@@ -1,0 +1,92 @@
+---
+title: "Month-End Close: Accrual-Basis Entries"
+sidebarTitle: "Accrual-Basis Entries"
+toc: "true"
+---
+
+This page is for practices that book accounts receivable. You recognize revenue when the charge is raised, carry AR on the balance sheet, and relieve it as payments and adjustments post. If you recognize revenue only when cash arrives, use [Cash-Basis Entries](/insights_biller/reports/month_end_cash_entries) instead.
+
+For the full close workflow, see [Month-End Close with Insights Reports](/insights_biller/reports/month_end_close).
+
+## Running the reports
+
+<Info>
+**Filters to set before you export.** Run each report for the full calendar month you are closing. **Start and end dates are inclusive** on every report, so a September 1 to September 30 run captures both of those days. The [Encounter Revenue Activity Report](/insights_biller/reports/encounter_revenue_activity_report) is keyed to **Date Posted**; the [Bank Deposit Reconciliation Report](/insights_biller/reports/bank_deposit_reconciliation_report) is keyed to **Bank Deposit Date**. Summarize at whichever dimensions match your ledger.
+</Info>
+
+## The entries
+
+| **#** | **What you're booking** | **Debit** | **Credit** | **Source** |
+| :-- | :-- | :-- | :-- | :-- |
+| 1 | Cash received (by deposit date) | Cash | Unposted Money | Bank statement, or Bank Deposit Reconciliation `total_cash_usd` by Bank Deposit Date |
+| 2 | Gross charges | Accounts Receivable | Gross Revenue | Encounter Revenue Activity **Payer Net Charge** |
+| 3 | Payments applied | Unposted Money | Accounts Receivable | Encounter Revenue Activity **Paid** (by date posted) |
+| 4 | Contractual adjustments | Contractual Allowance (contra-revenue) | Accounts Receivable | Encounter Revenue Activity **Contractual Adjustment Amount** |
+| 5 | Other adjustments | Bad Debt / Sliding Fee / Capitation / Write-off | Accounts Receivable | Encounter Revenue Activity **Other Adjustments** |
+| 6 | AR transfers (only if you track AR by insurance group) | AR, receiving insurance group | AR, sending insurance group | Encounter Revenue Activity **Transfer In** and **Transfer Out** |
+| 7 | Miscellaneous revenue | Unposted Money | Miscellaneous Revenue | [Misc Revenue Activity](/insights_biller/reports/misc_revenue_activity_report) **Payments**, plus [Provider Adjustments](/insights_biller/reports/provider_adjustments_report) **Payer Aux Cash** |
+| 8 | Payer credits (forward balances and re-adjudication notices) | Unposted Money | Payer Credits (contra-AR) | Provider Adjustments, net change in **Payer Credit Account**. See [forward balances and payer credits](/insights_biller/reports/provider_adjustments_report). |
+| 9 | Patient refund liability | Unposted Money | Patient Refund Liability | [Patient Credits](/insights_biller/reports/patient_credits_report), **Flexible** credits |
+| 10 | Service-date accrual (net revenue enabled only) | Accounts Receivable | Revenue | Encounter Revenue Activity **Net Estimated Payer Charge** |
+| 11 | Contractual allowance estimate (net revenue enabled only) | Contractual Expense | Allowance | Encounter Revenue Activity **Net Estimated Payer Adjustments** |
+
+<Warning>
+**If net revenue is enabled, do not book entry 2 from the Payer Net Charge column.** With net revenue turned on, that column no longer reflects your gross charge activity accurately. Recognize revenue through entries 10 and 11 instead. If net revenue is not enabled, entry 2 is correct as written.
+</Warning>
+
+<Note>
+**On entry 6.** Transfers move a balance between insurance groups, such as primary to secondary or insurance to self-pay. They have no effect on total AR, so if you carry a single AR account, you can skip this entry entirely. The transfer columns are designed to net to zero across the whole report. In practice, small residuals can appear, so investigate them rather than assume.
+</Note>
+
+## The AR roll-forward check
+
+Use this check to prove that your entries reconstruct the ending balance. Which formula applies depends on how you aggregate.
+
+**Summarized (single AR account)**
+
+| **Amount** |
+| :-- |
+| Beginning AR |
+| **+**&nbsp;&nbsp;**Payer Net Charge** |
+| **−**&nbsp;&nbsp;**Paid** |
+| **−**&nbsp;&nbsp;**Adjustments** (contractual and other) |
+| **=**&nbsp;&nbsp;Ending AR |
+
+**By insurance group**
+
+| **Amount** |
+| :-- |
+| Beginning AR |
+| **+**&nbsp;&nbsp;**Payer Net Charge** |
+| **+**&nbsp;&nbsp;**Transfer In** |
+| **−**&nbsp;&nbsp;**Paid** |
+| **−**&nbsp;&nbsp;**Adjustments** (contractual and other) |
+| **−**&nbsp;&nbsp;**Transfer Out** |
+| **=**&nbsp;&nbsp;Ending AR |
+
+At the summarized level, transfers wash out, so leave them out of the formula. Once you break AR down by insurance group, they matter, because a transfer moves balance from one class to another.
+
+Ending AR should agree with the **Aging AR Activity** sheet as of the same end date. If it does not, the difference is almost always a date-range mismatch. Confirm that both reports were run with the same inclusive end date.
+
+## Why cash will not equal payments
+
+A gap between cash and payments is expected, and [Unposted Money](/insights_biller/reports/month_end_unposted_money) exists to absorb it. The usual causes:
+
+- **Timing:** cash deposited near month-end that has not posted yet.
+- **Forward balance provider adjustments:** money the payer withheld at the check level.
+- **Payer auxiliary cash:** interest, late-payment fees, and incentive payments that arrive without a claim attached.
+- **Patient credits:** money collected but not yet applied to an encounter.
+
+### FAQ
+
+<Accordion title="Do I need to book AR transfers?">
+  Only when you track AR by insurance group. With a single AR account, skip entry 6 and use the summarized roll-forward formula.
+</Accordion>
+
+<Accordion title="My ending AR doesn't agree with the Aging AR Activity sheet. What should I check first?">
+  Start with the dates. A mismatch is almost always two runs with different end dates, so rerun both with the same inclusive end date.
+</Accordion>
+
+<Accordion title="Which entries change when net revenue is enabled?">
+  Don't book entry 2 from **Payer Net Charge**. Recognize revenue through entries 10 and 11 instead, using **Net Estimated Payer Charge** and **Net Estimated Payer Adjustments**.
+</Accordion>

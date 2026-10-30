@@ -1,0 +1,85 @@
+---
+title: "Understanding Unposted Money"
+sidebarTitle: "Unposted Money"
+toc: "true"
+---
+
+Unposted Money is the account that absorbs the gap between the cash sitting in your bank and the payments Insights has posted. Every practice on a co-sourced platform needs it, on cash basis and accrual basis alike.
+
+## Why you need this account
+
+<img
+  src="/images/insights_biller/reports/month_end_unposted_money/month_end_unposted_money_1.svg"
+  alt="Comparison of a self-posted system, where cash equals posted payments, and a co-sourced platform, where cash equals posted payments plus Unposted Money"
+  title="Why you need an Unposted Money account"
+  style={{ width:"100%" }}
+/>
+
+Before moving to Insights, some practices posted their own payments. Their team chased every deposit and made sure it was applied before the books closed, so cash and posted payments agreed and no clearing account was needed.
+
+On a co-sourced platform, that is no longer true. Remittances arrive after the deposit. Some deposits are still being matched to a check. Patient credits sit on account, waiting for a claim to finalize. **Insights will not have posted every payment by the time your month closes.**
+
+The difference is real cash. It is in your bank, it belongs to you, and it has to appear somewhere on your balance sheet. That somewhere is Unposted Money.
+
+## One name, one account
+
+Different systems call this a clearing account, a suspense account, or unapplied cash. Throughout the Insights documentation, we use a single term, **Unposted Money**, so there is no ambiguity about which account we mean.
+
+| **If you are…** | **You may see it labeled** | **It functions as** |
+| :-- | :-- | :-- |
+| **Accrual basis** | Unposted Money | A contra-asset that sits against Accounts Receivable |
+| **Cash basis** | Unposted Money, often titled Unapplied Revenue in the chart of accounts | A contra-revenue account |
+
+## What flows through it
+
+<img
+  src="/images/insights_biller/reports/month_end_unposted_money/month_end_unposted_money_2.svg"
+  alt="Diagram of payer and patient cash entering Unposted Money by deposit date and leaving by date posted into applied payments, miscellaneous payments, and patient refund liability"
+  title="How money moves into and out of Unposted Money"
+  style={{ width:"100%" }}
+/>
+
+Cash enters Unposted Money on the **deposit date** and leaves on the **date posted**. The two dates rarely fall in the same month, and the residue on the last day of the month is your balance.
+
+## Supporting the balance
+
+<Warning>
+**Aim to support this balance materially, not to the penny.** A 100% match from your Unposted Money account to Insights reporting is not realistically achievable. Normal timing differences between workflow handoffs and data differences between systems (for example, activity that reaches your bank without ever reaching Insights) both get in the way. Support the balance materially and investigate the variances that matter.
+</Warning>
+
+The closest support available today:
+
+| **Amount** | **Report** |
+| :-- | :-- |
+| Unmatched deposit cash | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report) |
+| **+**&nbsp;&nbsp;Matched but unposted cash | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report) |
+| **−**&nbsp;&nbsp;Posted cash with no matched deposit | [Bank Deposit Reconciliation](/insights_biller/reports/bank_deposit_reconciliation_report) |
+| **+**&nbsp;&nbsp;Patient credit balances (**Held**, **Locked**, **Appt Payment in Transition**) | [Patient Credits](/insights_biller/reports/patient_credits_report) |
+| **+**&nbsp;&nbsp;Payer credit balances, if you do not keep a separate account | [Provider Adjustments](/insights_biller/reports/provider_adjustments_report) |
+| **≈**&nbsp;&nbsp;**Unposted Money** account balance | Your general ledger |
+
+### Known limitations of this support today
+
+- Run by **Bank Deposit Date**, the Bank Deposit Reconciliation Report covers only deposits dated within your range. To support a month-end balance, you may need several months of runs, checking which of that cash has since posted.
+- Use the **As-Of Date** on the Bank Deposit Reconciliation Report to lock the matched, unmatched, posted, and unposted status of deposited cash as of your close date.
+- If Athelas does not receive your lockbox, the Bank Deposit Reconciliation Report cannot see every deposit. Your **bank statement is the source of truth**, and the report becomes a reconciliation tool rather than a complete picture.
+
+## What does not belong in it
+
+Patient payments toward miscellaneous charges are not part of Unposted Money, because they are matched and settled to miscellaneous AR directly.
+
+Miscellaneous payer payments start out as part of unposted cash. Later, when they post, they are applied either to the corresponding encounter (for example, forward balances) or to payer auxiliary revenue (for example, payer interest).
+
+### FAQ
+
+<Accordion title="Do I need an Unposted Money account if I'm on cash basis?">
+  Yes, both bases need it. Cash-basis charts of accounts usually call it **Unapplied Revenue**, and it works as a contra-revenue account rather than a contra-asset.
+</Accordion>
+
+<Accordion title="Why won't my Unposted Money balance tie to Insights to the penny?">
+  Handoff timing and bank activity that never reaches Insights both leave small gaps. Use the formula in [Supporting the balance](#supporting-the-balance) and chase only the variances that are material.
+</Accordion>
+
+<Accordion title="Do patient payments toward miscellaneous charges go through Unposted Money?">
+  No. They are matched and settled to miscellaneous AR directly. Miscellaneous payer payments, such as payer interest, do start in unposted cash until they post.
+</Accordion>
