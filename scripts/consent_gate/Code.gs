@@ -56,15 +56,16 @@
 
 const LINK_TTL_MS = 24 * 60 * 60 * 1000;
 const RATE_LIMIT_PER_HOUR = 3;
+// Across all addresses, so cycling fake emails can't drain the daily mail quota.
+const GLOBAL_RATE_LIMIT_PER_HOUR = 50;
 const MIN_MAIL_QUOTA = 25;
 const MAX_PATHS_PER_EVENT = 50;
-// Confirmation links may only point back at these origins.
+// Confirmation links may only point back at these origins. Local `mint dev` uses
+// the widget's mock mode (?athelas_gate_mock=1), which never reaches this script.
 const ALLOWED_ORIGINS = [
   'https://docs.athelas.com',
   // Another domain for the same Mintlify site, with the same gate.
   'https://trainings.air.athelas.com',
-  'http://localhost:3000',
-  'http://localhost:3333',
 ];
 // Form questions, in order. The widget submits these by entry ID.
 const FIELDS = [
@@ -194,7 +195,7 @@ function handleRequest(v) {
   ];
   const note = (msg) => {
     row[COL.note - 1] = msg;
-    sheet.appendRow(row);
+    sheet.appendRow(row.map(asText_));
   };
 
   if (!/^[a-z0-9]+-[a-z0-9]+$/.test(v.consent_id) || findConsentRow(v.consent_id) ||
@@ -211,6 +212,10 @@ function handleRequest(v) {
   const rlKey = 'rl:' + email;
   const sent = Number(cache.get(rlKey) || 0);
   if (sent >= RATE_LIMIT_PER_HOUR) return note('rate limited: no email sent');
+  // Fixed hourly window, so a flood only blocks emails until the hour turns over.
+  const globalKey = 'rl:all:' + Math.floor(Date.now() / 3600000);
+  const sentAll = Number(cache.get(globalKey) || 0);
+  if (sentAll >= GLOBAL_RATE_LIMIT_PER_HOUR) return note('site-wide rate limit: no email sent');
   if (MailApp.getRemainingDailyQuota() < MIN_MAIL_QUOTA) return note('mail quota low: no email sent');
 
   const link = v.return_url + (v.return_url.indexOf('?') < 0 ? '?' : '&') +
@@ -229,8 +234,9 @@ function handleRequest(v) {
       '<p style="color:#6b7280;font-size:12px">If you did not request this, you can ignore this email.</p>',
   });
   cache.put(rlKey, String(sent + 1), 3600);
+  cache.put(globalKey, String(sentAll + 1), 3600);
   if (isInternalEmail(email)) row[COL.note - 1] = INTERNAL_UNVERIFIED_NOTE;
-  sheet.appendRow(row);
+  sheet.appendRow(row.map(asText_));
 }
 
 function handleVerify(v) {
@@ -272,7 +278,7 @@ function handleVisit(v) {
   const rows = paths.map((p, i) => [
     // The referrer column stays for layout but is no longer collected.
     now, v.consent_id, email, status, p.slice(0, 300), '', v.device_id, v.terms_version,
-  ]);
+  ].map(asText_));
   const sheet = getSheet(visitTab, VISIT_HEADERS);
   sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, rows[0].length).setValues(rows);
 }
@@ -370,9 +376,10 @@ function moveExistingInternal_(dryRun) {
   }
 }
 
+// getValues returns a text cell's raw string, so copied rows need asText_ again.
 function appendRows_(sheet, rows) {
   if (!rows.length) return;
-  sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, rows[0].length).setValues(rows);
+  sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, rows[0].length).setValues(rows.map((r) => r.map(asText_)));
 }
 
 // ---- Retention ------------------------------------------------------------------
@@ -585,6 +592,12 @@ function getSheet(name, headers) {
 
 function clean(v, max) {
   return String(v == null ? '' : v).trim().slice(0, max);
+}
+
+// Visitor text starting with = + - @ would be stored as a formula, which could
+// rewrite the log or send other rows to an outside URL. A leading ' keeps it text.
+function asText_(v) {
+  return typeof v === 'string' && /^[=+\-@]/.test(v) ? "'" + v : v;
 }
 
 function escapeHtml(s) {
